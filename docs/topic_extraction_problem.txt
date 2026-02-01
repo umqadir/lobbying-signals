@@ -1,0 +1,162 @@
+# Topic Extraction Problem Statement
+
+## Goal
+
+We're building a system to detect **newsworthy signals** in US federal lobbying disclosure data. The end product is alerts like:
+
+> "Tariff lobbying hit an all-time high in Q1 2025, with 47 companies spending $12M—triple the 5-year average"
+
+To generate these signals, we need to know **what specific topics** each lobbying activity is about.
+
+## The Data
+
+We have ~200,000 lobbying activity records per year from the Senate's SOPR database. Each record has:
+
+- **`description`**: Free-text field (50-500 words) describing what was lobbied on
+- **`issue_code`**: One of 80 broad categories (e.g., "TRD" for Trade, "HCR" for Healthcare)
+
+## The Problem
+
+The existing `issue_code` is too coarse. "TRD" (Trade) contains everything from tariffs to export controls to trade agreements to sanctions. We can't detect that *tariff* lobbying specifically is spiking.
+
+We need to extract **1-3 specific, searchable topics** from each description. Good topics are:
+- Specific enough to be meaningful ("tariffs" not "trade")
+- General enough to aggregate across filings ("tariffs" not "steel tariffs Section 232")
+- Consistent terminology (don't have both "drug pricing" and "pharmaceutical costs")
+
+### Example Outputs
+
+| Description (truncated) | Extracted Topics |
+|------------------------|------------------|
+| "tariffs on steel and aluminum imports; Section 232..." | `["tariffs", "section 232", "steel imports"]` |
+| "Lower Drug Costs Now Act; Medicare Part D rebate..." | `["drug pricing", "medicare", "fda approval"]` |
+| "AI safety research funding; NIST AI Risk Management..." | `["ai regulation", "section 230"]` |
+
+## Constraints
+
+| Constraint | Value |
+|------------|-------|
+| Records to process | ~200,000/year (need to backfill 5 years = 1M total) |
+| Budget | Prefer <$50 total, ideally <$10 |
+| Time | Hours acceptable, days is too slow |
+| Quality | Topics must be specific enough for trend detection |
+| Consistency | Same concept should map to same topic string |
+| Updates | Need to process ~20K new records quarterly |
+
+## What We've Tried
+
+- **Zero-shot LLM prompting** (Gemini 2.0 Flash): Works well, ~$6.40 per 200K records, ~6 hours
+- **Issue codes alone**: Too coarse, not useful for signal detection
+
+## Open Questions
+
+1. **Is an LLM the right tool?** Would a fine-tuned classifier, embedding clustering, or traditional NLP approach work better given our constraints?
+
+2. **If LLM, which one?** We benchmarked Gemini. Options include Groq, DeepSeek, Cerebras, local models (Ollama/MLX on M4 Mac).
+
+3. **Consistency problem**: How do we ensure "drug pricing" and "pharmaceutical pricing" don't both appear? Post-processing normalization? Constrained generation? Embedding-based deduplication?
+
+4. **Taxonomy vs. open extraction**: Should we define a fixed taxonomy of ~200 topics and classify into it? Or extract freely and normalize after?
+
+5. **Hybrid approaches**: Could we use embeddings for cheap clustering, then LLM only for ambiguous cases?
+
+## Success Criteria
+
+1. Topics are specific enough that we can detect "tariff lobbying is up 300%" (not just "trade lobbying is up 50%")
+2. Topics are consistent enough that the same concept always gets the same label
+3. Cost and time are reasonable for quarterly updates
+4. Quality is good enough that a journalist would trust the categorization
+
+--------------------------------------------------------------------------------
+SAMPLE DATA (30 real records)
+--------------------------------------------------------------------------------
+
+1. [HCR] RWJ BARNABAS HEALTH
+   "Physician reimbursement, monitoring healthcare legislation; monitor CHIP reauthorization; monitor maternal health; surprise billing legislation; Medicaid reimbursement cuts under HR 1 & COVID reimbursement via OMB"
+
+2. [CPT] ELI LILLY AND COMPANY
+   "Issues related to intellectual property; Issues related to S. 1041 - Affordable Prescriptions for Patients Act; Issues related to patent thickets; Issues related to S. 1096 Preserve Access to Affordable Generics and Biosimilars Act."
+
+3. [TAX] ELECTRIC DRIVE TRANSPORTATION ASSOCIATION
+   "Tax incentives for electric transportation, infrastructure and manufacturing in HR 1, the One Big Beautiful bill"
+
+4. [TAX] DELL TECHNOLOGIES INC
+   "Issues relating to domestic and international corporate tax; H.R. 1, One Big Beautiful Bill Act; H.R. 1990/S.1639, American Innovation and R&D Competitiveness Act of 2025; implementation of 2017 Tax Cuts and Jobs Act (P.L. No. 115-97)."
+
+5. [BUD] UNIVERSITY OF ARIZONA
+   "Advocacy/appropriations discussions and strategy relating to University of Arizona priorities and initiatives. Issues relating to critical minerals, NASA, NSF, NIL, education research, NIH and research and development."
+
+6. [HCR] F HOFFMANN-LA ROCHE LTD
+   "(HCR) Issues related to public health emergency preparedness, including Pandemic All-Hazards Preparedness Act and H.R.1108 The Diagnostics Testing Preparedness Plan Act. Issues related to the FDA regulation of diagnostics. Issues related to diagnostics to support Preeclampsia, Alzheimer's and Influenza Preparedness"
+
+7. [BUD] SAN LUIS OBISPO COUNTY-CA
+   "FY2026, FY2025 and FY2024 appropriations and Community Project Funding and Congressionally Directed Spending; FY2025 and FY2024 Energy & Water, Interior, and Agriculture appropriations related to drought relief, water infrastructure, water supply and other water resource matters including Salinas River Water Basin Study, Salinas Dam, and other regional water infrastructure; FY2025 and FY2024 Transportation appropriations and funding for surface transportation and rail safety; FEMA hazard mitigation; nuclear waste disposal and related legislation and initiatives; Community Project Funding opportunities related to public safety communications infrastructure; Bipartisan Infrastructure Law funding for infrastructure projects. Healthcare and Medicaid funding."
+
+8. [LAW] NATIONAL INSURANCE CRIME BUREAU
+   "Motor vehicle theft; catalytic converter theft (H.R. 5221); cargo theft (S. 1404; H.R. 2853); staged accidents (H.R. 2662); law enforcement information sharing"
+
+9. [DEF] SEURAT TECHNOLOGIES
+   "Issues related to additive manufacturing; H.R. 4016, National Defense Authorization Act, Defense Appropriations Act"
+
+10. [TAX] NATIONAL ASSOCIATION OF PEDIATRIC NURSE PRACTITIONERS
+    "Legislation and policies related to: Taxation of income and benefits and tax incentives affecting nursing education and practice Taxation of non-profit organizations Implementation of provisions of the One Big, Beautiful Bill Act (PL 119-21) H.R. 593, Strengthening Pathways to Health Professions Act H.R. 1582/S. 786, Personal Health Investment Today (PHIT) Act H.R. 3145/S. 1548, Nurse Corps Tax Parity Act of 2025 S. 46/H.R. 247, Health Care Affordability Act of 2025 S. 131/H.R. 392, Providing Real-World Education and Clinical Experience by Precepting Tomorrows (PRECEPT) Nurses Act"
+
+11. [ENG] EDISON ELECTRIC INSTITUTE
+    "Permitting Reform Executive Orders relating to the National Energy Emergency Order, and Make Coal Great Again"
+
+12. [NAT] NORTHERN CALIFORNIA WATER ASSOCIATION
+    "Energy and Water Development Appropriations bill, Water infrastructure legislation, Sites Reservoir authorization act."
+
+13. [DEF] PALANTIR TECHNOLOGIES, INC.
+    "Issues related to DOD software technology procurement. IG Acquisition Issues. Data Issues. VA Data Management."
+
+14. [MMM] AMERICAN PSYCHIATRIC ASSOCIATION
+    "Letter to the Administration regarding Contract Year 2026 Policy and Technical Changes to the Medicare Advantage Program. Letter to the Administration regarding policy recommendations related to Medicare Physician Fee schedule."
+
+15. [HOM] SOUTHWEST AIRLINES
+    "Homeland Security Appropriations for FY26 (H.R. 4213); SAFEGUARDS Act of 2025 (S. 2387); Safer Skies Act of 2025 (H.R. 2353). Specific issues include aviation workforce staffing; aviation security, including crew, passenger, baggage and cargo screening; customs and passenger facilitation issues; cybersecurity."
+
+16. [SCI] SECURITY INDUSTRY ASSOCIATION
+    "Wireless Spectrum Issues. Supply Chain Issues. Facial Recognition Technology Issues. Drone Technology Issues. Privacy Issues. School Security Issues."
+
+17. [BUD] CITY OF THORNTON
+    "Advocacy on behalf of FY26 appropriations requests. Support local government funding, including Community Project Funding and Congressionally Direct Spending requests in FY26 appropriations."
+
+18. [URB] CITY OF LOMPOC, CA
+    "Local government related issues and initiatives, including infrastructure, transportation, public safety, and FY 2026 appropriations."
+
+19. [TRA] AMERICAN APPAREL & FOOTWEAR ASSOCIATION
+    "Transportation Discussions with Congress and Administration on shipping delays from the Red Sea crisis Discussions with Congress on freedom of navigation in Red Sea and South China Sea Discussions with Congress on protecting arctic shipping routes Discussions with Congress on protecting undersea cables Discussions with Congress and Administration on West Coast port, Canada port, and East Coast port labor contract negotiations Discussions with Congress and Administration on Hours of Service (HoS) and other driver-related rules. Discussions with Congress on port metrics. Discussions with Congress and the administration on rail issues Discussions with Congress and the administration on trucking issues Discussions with Federal Maritime Commission (FMC) and Congress on shipping delays, ocean carrier / port terminal issues, including congestion surcharges, demurrage charges, anti-trust issues, and PierPass. o Specifically on Detention and Demurrage Billing Requirements Final Rule Discussions with Congress and the Administration on comprehensive infrastructure funding and repair. o Specifically on relief funding for Key Bridge Specific legislation on key transportation issues impacting the industry: o SHIPS for America Act - in opposition of fees and restrictions o Ocean Shipping Reform Act (Public Law No: 117-146) - in support of o Truck Parking Safety Improvement Act (H.R. 2367) - in support of US Trade Representative Section 301 Investigation into Chinas Maritime Logistics and Shipbuilding Sectors - in opposition of proposed fees and restrictions"
+
+20. [MED] STERILIS SOLUTIONS, LLC
+    "General education to advance policies that support medical waste disposal technology; VA COST SAVINGS Enhancements Act (draft)."
+
+21. [BUD] SALT RIVER PROJECT
+    "FY26 Appropriations Issues related to the funding of the Low Income Home Energy Assistance Program (LIHEAP) Issues related to mandatory Budget Sequestration"
+
+22. [LAW] U.S. CHAMBER OF COMMERCE
+    "General litigation reform issues; Third party litigation funding issues; H.R. 1109 - Litigation Transparency Act of 2025; Issues related to the One Big Beautiful Bill Act (PL 119-21); H.R. 2675 - Protecting Our Courts from Foreign Manipulation Act of 2025."
+
+23. [SCI] TACTILE ENGINEERING INC.
+    "Monitoring issues concerning Inclusion workforce training for the blind and visually impaired through technology. Monitoring funding related to blind and visually impaired research and development. Handheld devices for the Blind and visually impaired."
+
+24. [LBR] AMERICAN COLLEGE OF EMERGENCY PHYSICIANS
+    "Workplace violence prevention for health care workers H.R. 2531-Workplace Violence Prevention for Health Care and Social Service Workers Act, to require OSHA to issue workplace violence prevention standards to protect health care and social service workers H.R. 3413-Physician and Patient Safety Act, to provide due process protections for physicians H.R. 3791-EMS Counts Act, to ensure more accurate counts of trained EMS personnel by Bureau of Labor Statistics S. 1232-Workplace Violence Prevention for Health Care and Social Service Workers Act, to require OSHA to issue workplace violence prevention standards to protect health care and social service workers S. 1767-Physician and Patient Safety Act, to provide due process protections for physicians S. 2031-Workforce Mobility Act of 2025, to prohibit the use of noncompete agreements"
+
+25. [BUD] ALAMEDA-CONTRA COSTA TRANSIT DISTRICT
+    "Low and No Emission grant Alliance for Renewable Clean Hydrogen Energy Systems (ARCHES) Transportation, Housing and Urban Development, and Related Agencies Appropriations Act, FY2026, Transit funding for FIFA games; and Community Project funding projects Surface Rransportation Reauthorization, MPO revisions Monitor the following: Public Law 117-58, Infrastructure Investment and Jobs Act, Implementation H.R.9028/S.4796, Transportation, Housing and Urban Development, and Related Agencies Appropriations Act, FY2025, Transit funding"
+
+26. [CPT] CATERPILLAR INC
+    "Discussions regarding automotive right to repair efforts (H.R.1566 - Right to Equitable and Professional Auto Industry Repair Act; entire bill)"
+
+27. [ENG] AMERICAN CLEAN POWER ASSOCIATION
+    "H.R.8467 - Farm, Food, and National Security Act of 2024 (118th Congress) S. 373 / H.R. 913 - RISEE Act (118th Congress); H.R. 178 - Public Lands Renewable Energy Development Act (118th Congress); Presidential Memorandum: Temporary Withdrawal of All Areas on the Outer Continental Shelf from Offshore Wind Leasing and Review of the Federal Governments Leasing and Permitting Practices for Wind Projects. Issues to offshore wind leasing; and Issues related to renewable development on federal lands."
+
+28. [SCI] ASSOCIATION OF CALIFORNIA WATER AGENCIES
+    "S.322 Improving Atmospheric River Forecasts Act. Support efforts to improve weather forecasting (Also under NAT) Engage on issues related to improving weather data and weather forecasting including seasonal to sub-seasonal forecasting."
+
+29. [ENV] JOHNSON MATTHEY INC.
+    "Issues related to clear air technologies, hydrogen technologies, platinum group metals, and catalyst technologies inclusive of 45z, 45q, 45v, 45x, iridium, palladium, rhodium, platinum, and tariffs."
+
+30. [HOM] ANALOGIC CORPORATION
+    "Issues related to deployment of CT technology at airports; TSA reauthorization: S.2378 - SAFEGUARDS Act."

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobbying Signals</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lobbying Signals</h1>
+        <p class="subtitle">Tracking trends in federal lobbying disclosure data</p>
+        <p class="updated" id="last-updated">Loading...</p>
+    </header>
+
+    <main>
+        <!-- Alerts Section -->
+        <section id="alerts-section">
+            <h2>Notable Trends</h2>
+            <div id="alerts-container" class="alerts-grid">
+                <div class="loading">Loading alerts...</div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats-section">
+            <h2>Overview</h2>
+            <div id="stats-container" class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-filings">-</span>
+                    <span class="stat-label">Total Filings</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-activities">-</span>
+                    <span class="stat-label">Activities</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-extracted">-</span>
+                    <span class="stat-label">Classified</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-range">-</span>
+                    <span class="stat-label">Date Range</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Topics Section -->
+        <section id="trends-section">
+            <h2>Trending Topics</h2>
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-period="7d">7 Days</button>
+                <button class="tab-btn" data-period="30d">30 Days</button>
+            </div>
+            <div id="trends-container" class="trends-list">
+                <div class="loading">Loading trends...</div>
+            </div>
+        </section>
+
+        <!-- Entities Section -->
+        <section id="entities-section">
+            <h2>Government Entities</h2>
+            <div id="entities-container" class="trends-list">
+                <div class="loading">Loading entities...</div>
+            </div>
+        </section>
+
+        <!-- Recent Filings Section -->
+        <section id="recent-section">
+            <h2>Recent Filings</h2>
+            <div id="recent-container" class="filings-list">
+                <div class="loading">Loading recent filings...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Data from <a href="https://lda.senate.gov">Senate LDA</a> |
+           Updated every 6 hours |
+           <a href="https://github.com/YOUR_USERNAME/lobbying-signals">Source</a></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

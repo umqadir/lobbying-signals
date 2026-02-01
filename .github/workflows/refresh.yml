@@ -1,0 +1,80 @@
+name: Refresh Data
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+    inputs:
+      extract_limit:
+        description: 'Max activities to extract'
+        required: false
+        default: '500'
+      normalize:
+        description: 'Rebuild normalization dictionary'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Download database from release
+        run: |
+          gh release download data --pattern 'filings.db' -D data/ || echo "No existing database, starting fresh"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Initialize database if needed
+        run: |
+          if [ ! -f data/filings.db ]; then
+            echo "Creating fresh database..."
+            python -c "from db import init_db; init_db()"
+          fi
+
+      - name: Run refresh
+        run: |
+          python 07_refresh.py \
+            --extract-limit ${{ github.event.inputs.extract_limit || '500' }} \
+            ${{ github.event.inputs.normalize == 'true' && '--normalize' || '' }}
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
+
+      - name: Create release if not exists
+        run: |
+          gh release view data || gh release create data --title "Data Storage" --notes "SQLite database storage for the lobbying signals dashboard"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload database to release
+        run: |
+          gh release upload data data/filings.db --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit JSON exports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/
+          git diff --staged --quiet || git commit -m "Update data exports [skip ci]"
+          git push
