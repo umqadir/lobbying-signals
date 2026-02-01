@@ -1,4 +1,241 @@
 {
-  "generated_at": "2026-02-01T00:26:36.182278",
-  "alerts": []
+  "generated_at": "2026-02-01T01:27:31.938606",
+  "alerts": [
+    {
+      "type": "spike",
+      "category": "topic",
+      "name": "appropriation",
+      "current_count": 78,
+      "prev_count": 0,
+      "change_pct": 100,
+      "top_clients": [
+        "NATIONAL ASSOCIATION OF PEDIATRIC NURSE PRACTITIONERS",
+        "AMERICAN TRUCKING ASSOCIATIONS",
+        "PATRIOT RAIL COMPANY (FKA PIONEER LINES (FKA PIONEER RAILCORP))",
+        "JEFFERSON COUNTY (AL)",
+        "SPINA BIFIDA ASSOCIATION OF AMERICA"
+      ],
+      "total_income": 6752937.0,
+      "headline": "Lobbying on 'appropriation' doubles (78 activities in 30 days)"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "Senate",
+      "current_count": 48,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to Senate doubles (48 mentions)"
+    },
+    {
+      "type": "spike",
+      "category": "topic",
+      "name": "tariff",
+      "current_count": 43,
+      "prev_count": 0,
+      "change_pct": 100,
+      "top_clients": [
+        "NATIONAL ASSN OF CREDIT MANAGEMENT",
+        "NATIONAL RESTAURANT ASSOCIATION",
+        "MOTORCYCLE INDUSTRY COUNCIL",
+        "INFINEON TECHNOLOGIES AMERICAS CORP.",
+        "O'NEAL INDUSTRIES"
+      ],
+      "total_income": 2732000.0,
+      "headline": "Lobbying on 'tariff' doubles (43 activities in 30 days)"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "House of Representatives",
+      "current_count": 26,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to House of Representatives doubles (26 mentions)"
+    },
+    {
+      "type": "spike",
+      "category": "legislation",
+      "name": "H.R. 1 (One Big Beautiful Bill Act)",
+      "current_count": 24,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Lobbying on H.R. 1 (One Big Beautiful Bill Act) up 100%"
+    },
+    {
+      "type": "spike",
+      "category": "topic",
+      "name": "artificial intelligence",
+      "current_count": 23,
+      "prev_count": 0,
+      "change_pct": 100,
+      "top_clients": [
+        "AMERICAN LIBRARY ASSOCIATION",
+        "PALLADYNE AI",
+        "COMMON SENSE MEDIA",
+        "GOOGLE, INC.",
+        "ELECTRONIC TRANSACTIONS ASSOCIATION"
+      ],
+      "total_income": 1980641.0,
+      "headline": "Lobbying on 'artificial intelligence' doubles (23 activities in 30 days)"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "Department of Defense",
+      "current_count": 23,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to Department of Defense doubles (23 mentions)"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "Congress",
+      "current_count": 23,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to Congress doubles (23 mentions)"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "EPA",
+      "current_count": 21,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to EPA doubles (21 mentions)"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "House",
+      "current_count": 19,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to House doubles (19 mentions)"
+    },
+    {
+      "type": "spike",
+      "category": "topic",
+      "name": "tax credit",
+      "current_count": 18,
+      "prev_count": 0,
+      "change_pct": 100,
+      "top_clients": [
+        "LABORERS' INTERNATIONAL UNION OF NORTH AMERICA",
+        "NATIONAL COUNCIL OF TEXTILE ORGANIZATIONS",
+        "COUNTY OF SANTA BARBARA",
+        "PATRIOT RAIL COMPANY (FKA PIONEER LINES (FKA PIONEER RAILCORP))",
+        "RED RIVER VALLEY & WESTERN RAILROAD COMPANY"
+      ],
+      "total_income": 1177000.0,
+      "headline": "Lobbying on 'tax credit' doubles (18 activities in 30 days)"
+    },
+    {
+      "type": "spike",
+      "category": "topic",
+      "name": "medicaid",
+      "current_count": 18,
+      "prev_count": 0,
+      "change_pct": 100,
+      "top_clients": [
+        "FAMILIES USA FOUNDATION INC",
+        "ELLIS HOSPITAL",
+        "NETWORK",
+        "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES",
+        "UNIVERSITY OF MISSISSIPPI MEDICAL CENTER"
+      ],
+      "total_income": 1814000.0,
+      "headline": "Lobbying on 'medicaid' doubles (18 activities in 30 days)"
+    },
+    {
+      "type": "spike",
+      "category": "legislation",
+      "name": "H.R. 1",
+      "current_count": 18,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Lobbying on H.R. 1 up 100%"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "FAA",
+      "current_count": 17,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to FAA doubles (17 mentions)"
+    },
+    {
+      "type": "spike",
+      "category": "legislation",
+      "name": "Farm Bill",
+      "current_count": 17,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Lobbying on Farm Bill up 100%"
+    },
+    {
+      "type": "spike",
+      "category": "topic",
+      "name": "workforce development",
+      "current_count": 16,
+      "prev_count": 0,
+      "change_pct": 100,
+      "top_clients": [
+        "AMERICAN LIBRARY ASSOCIATION",
+        "NATIONAL ASSOCIATION OF PEDIATRIC NURSE PRACTITIONERS",
+        "THE BROADCAST CENTER",
+        "QUANTA SERVICES, INC.",
+        "DOTERRA"
+      ],
+      "total_income": 353035.0,
+      "headline": "Lobbying on 'workforce development' doubles (16 activities in 30 days)"
+    },
+    {
+      "type": "spike",
+      "category": "topic",
+      "name": "grant",
+      "current_count": 16,
+      "prev_count": 0,
+      "change_pct": 100,
+      "top_clients": [
+        "UCAN",
+        "THE TOWN OF BAY HARBOR ISLAND",
+        "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES",
+        "THRESHOLDS",
+        "NATIONAL LOUIS UNIVERSITY"
+      ],
+      "total_income": 585000.0,
+      "headline": "Lobbying on 'grant' doubles (16 activities in 30 days)"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "FEMA",
+      "current_count": 16,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to FEMA doubles (16 mentions)"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "Department of Education",
+      "current_count": 16,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to Department of Education doubles (16 mentions)"
+    },
+    {
+      "type": "spike",
+      "category": "entity",
+      "name": "NIH",
+      "current_count": 15,
+      "prev_count": 0,
+      "change_pct": 100,
+      "headline": "Attention to NIH doubles (15 mentions)"
+    }
+  ]
 }

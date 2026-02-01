@@ -93,14 +93,16 @@ def extract_batch(batch_size: int = 100, model: str = "gemini-3-flash-preview"):
         thinking_config=types.ThinkingConfig(thinking_level='minimal')
     )
 
-    # Get activities without extractions
+    # Get activities without extractions, prioritizing recent filings
     sql = '''
         SELECT a.id, a.description
         FROM activities a
+        JOIN filings f ON a.filing_id = f.id
         LEFT JOIN activity_extractions e ON a.id = e.activity_id
         WHERE e.id IS NULL
           AND a.description IS NOT NULL
           AND LENGTH(a.description) > 50
+        ORDER BY f.filing_date DESC
         LIMIT ?
     '''
 
