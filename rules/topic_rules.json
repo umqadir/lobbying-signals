@@ -1,0 +1,1521 @@
+{
+  "version": "2026-02-08",
+  "description": "Deterministic topic dictionary for rule-based activity extraction.",
+  "topics": [
+    {
+      "id": "artificial_intelligence",
+      "label": "Artificial Intelligence",
+      "issue_codes": ["CPI", "SCI", "TEC", "CPT", "DEF", "HCR", "EDU", "FIN", "HOM", "GOV", "CSP"],
+      "keywords": [
+        "artificial intelligence",
+        "generative ai",
+        "machine learning",
+        "foundation model",
+        "large language model",
+        "algorithmic decision",
+        "automated decision",
+        "ai safety",
+        "ai governance",
+        "synthetic media",
+        "deepfake"
+      ],
+      "programs": [
+        "national ai initiative",
+        "nist ai risk management framework",
+        "ai executive order"
+      ],
+      "acts": [
+        "ai advancement act",
+        "ai foundation model",
+        "future of ai innovation"
+      ],
+      "exclude": ["artificial insemination"]
+    },
+    {
+      "id": "cybersecurity",
+      "label": "Cybersecurity",
+      "issue_codes": [
+        "TEC", "DEF", "HOM", "FIN", "CPI", "INT", "SCI", "CSP", "GOV", "ENG",
+        "BUD", "HCR", "INS", "BAN", "COM", "AUT", "EDU", "TRD", "TRA", "UTI", "VET"
+      ],
+      "keywords": [
+        "cybersecurity",
+        "cyber security",
+        "ransomware",
+        "cyber incident",
+        "network security",
+        "critical infrastructure cyber",
+        "zero trust",
+        "incident reporting",
+        "information security",
+        "security operations center",
+        "data breach",
+        "cyber threat"
+      ],
+      "programs": ["cisa directive", "cyber incident reporting", "fisma", "fedramp"],
+      "acts": ["cyber incident reporting for critical infrastructure act", "federal information security modernization act"],
+      "exclude": []
+    },
+    {
+      "id": "data_privacy",
+      "label": "Data Privacy",
+      "issue_codes": ["TEC", "CPI", "CPT", "COM", "FIN", "CSP", "SCI", "GOV", "BAN", "INS", "HCR", "HOM", "INT", "LAW", "EDU"],
+      "keywords": [
+        "privacy",
+        "data privacy",
+        "consumer privacy",
+        "personal data",
+        "data protection",
+        "data broker",
+        "children's privacy",
+        "online privacy",
+        "online safety",
+        "kids online safety",
+        "privacy framework",
+        "biometric data",
+        "breach notification",
+        "consumer data protection",
+        "data minimization"
+      ],
+      "programs": ["privacy impact assessment", "state privacy law harmonization"],
+      "acts": [
+        "american data privacy and protection act",
+        "children and teens online privacy protection act",
+        "kids online safety act"
+      ],
+      "exclude": []
+    },
+    {
+      "id": "antitrust_competition",
+      "label": "Antitrust and Competition",
+      "issue_codes": ["TEC", "FIN", "COM", "CPT"],
+      "keywords": [
+        "antitrust",
+        "competition policy",
+        "merger review",
+        "market concentration",
+        "dominant platform",
+        "interoperability requirement",
+        "self-preferencing",
+        "competition law"
+      ],
+      "programs": ["ftc merger guidelines", "doj antitrust division"],
+      "acts": ["american innovation and choice online act", "open app markets act"],
+      "exclude": []
+    },
+    {
+      "id": "digital_assets",
+      "label": "Digital Assets and Crypto",
+      "issue_codes": ["FIN", "TAX", "CPI", "TEC"],
+      "keywords": [
+        "digital asset",
+        "cryptocurrency",
+        "crypto exchange",
+        "stablecoin",
+        "blockchain",
+        "token issuance",
+        "virtual currency",
+        "custody rule crypto"
+      ],
+      "programs": ["sec digital asset", "cftc digital commodity"],
+      "acts": ["financial innovation and technology for the 21st century act", "clarity for payment stablecoins act"],
+      "exclude": []
+    },
+    {
+      "id": "tariff_trade_enforcement",
+      "label": "Tariffs and Trade Enforcement",
+      "issue_codes": ["TRD", "TAR", "TRA", "FIN", "MAN"],
+      "keywords": [
+        "tariff",
+        "import duty",
+        "section 301",
+        "section 232",
+        "anti dumping",
+        "countervailing duty",
+        "trade remedy",
+        "customs valuation",
+        "drawback",
+        "rules of origin"
+      ],
+      "programs": ["usitc investigation", "cbp enforcement"],
+      "acts": ["trade facilitation and trade enforcement act", "miscellaneous tariff bill"],
+      "exclude": []
+    },
+    {
+      "id": "export_controls_sanctions",
+      "label": "Export Controls and Sanctions",
+      "issue_codes": ["TRD", "FOR", "DEF", "INT", "TEC"],
+      "keywords": [
+        "export control",
+        "export administration regulations",
+        "ear",
+        "dual-use",
+        "entity list",
+        "office of foreign assets control",
+        "ofac sanctions",
+        "embargo",
+        "foreign direct product rule",
+        "investment restriction"
+      ],
+      "programs": ["bureau of industry and security", "ofac general license"],
+      "acts": ["export control reform act", "international emergency economic powers act"],
+      "exclude": []
+    },
+    {
+      "id": "trade_agreements",
+      "label": "Trade Agreements",
+      "issue_codes": ["TRD", "FOR", "TRA", "AGR", "MAN"],
+      "keywords": [
+        "trade agreement",
+        "free trade agreement",
+        "usmca",
+        "world trade organization",
+        "wto dispute",
+        "market access commitment",
+        "digital trade",
+        "trade promotion authority"
+      ],
+      "programs": ["u.s. trade representative", "trade negotiation"],
+      "acts": ["trade act of 1974", "bipartisan congressional trade priorities and accountability act"],
+      "exclude": []
+    },
+    {
+      "id": "farm_policy",
+      "label": "Farm Policy",
+      "issue_codes": ["AGR", "FOO", "NAT", "TRD"],
+      "keywords": [
+        "farm bill",
+        "crop insurance",
+        "commodity program",
+        "conservation reserve program",
+        "agricultural subsidy",
+        "agricultural producer",
+        "specialty crop",
+        "livestock mandatory reporting",
+        "grain inspection"
+      ],
+      "programs": ["usda farm service agency", "eqip", "csp conservation stewardship"],
+      "acts": ["agriculture improvement act", "justice for black farmers act"],
+      "exclude": []
+    },
+    {
+      "id": "nutrition_assistance",
+      "label": "Nutrition Assistance",
+      "issue_codes": ["AGR", "WEL", "HCR", "CSP"],
+      "keywords": [
+        "snap",
+        "supplemental nutrition assistance",
+        "wic",
+        "school lunch",
+        "child nutrition",
+        "food assistance",
+        "food insecurity",
+        "nutrition program"
+      ],
+      "programs": ["thrifty food plan", "summer ebt"],
+      "acts": ["healthy meals healthy kids act"],
+      "exclude": []
+    },
+    {
+      "id": "biofuels",
+      "label": "Biofuels",
+      "issue_codes": ["AGR", "ENG", "ENV", "FUE", "TAX"],
+      "keywords": [
+        "biofuel",
+        "ethanol",
+        "biodiesel",
+        "renewable diesel",
+        "renewable fuel standard",
+        "rfs waiver",
+        "blender tax credit",
+        "sustainable aviation fuel"
+      ],
+      "programs": ["renewable volume obligation", "rins credit"],
+      "acts": ["sustainable aviation fuel act"],
+      "exclude": []
+    },
+    {
+      "id": "drug_pricing",
+      "label": "Drug Pricing",
+      "issue_codes": ["HCR", "MMM", "PHA", "MED", "TAX"],
+      "keywords": [
+        "drug pricing",
+        "prescription drug",
+        "medicare drug negotiation",
+        "inflation rebate",
+        "340b",
+        "pharmacy benefit manager",
+        "pbm reform",
+        "international reference pricing",
+        "rebate reform"
+      ],
+      "programs": ["center for medicare and medicaid innovation", "drug rebate program"],
+      "acts": ["lower costs more transparency act"],
+      "exclude": []
+    },
+    {
+      "id": "medicare_medicaid",
+      "label": "Medicare and Medicaid",
+      "issue_codes": ["MMM", "HCR", "WEL", "CSP"],
+      "keywords": [
+        "medicare",
+        "medicaid",
+        "chip",
+        "medicare advantage",
+        "site neutral payment",
+        "physician fee schedule",
+        "hospital reimbursement",
+        "value-based care",
+        "prior authorization"
+      ],
+      "programs": ["cms rulemaking", "center for medicare"],
+      "acts": ["medicare access and chip reauthorization act"],
+      "exclude": []
+    },
+    {
+      "id": "fda_regulation",
+      "label": "FDA Regulation",
+      "issue_codes": ["HCR", "PHA", "FOO", "CSP", "MIA"],
+      "keywords": [
+        "food and drug administration",
+        "fda guidance",
+        "fda approval",
+        "drug approval",
+        "medical device",
+        "510(k)",
+        "breakthrough device",
+        "clinical trial modernization",
+        "drug shortage"
+      ],
+      "programs": ["pdufa", "bsufa", "gdufa"],
+      "acts": ["food drug and cosmetic act", "21st century cures act"],
+      "exclude": []
+    },
+    {
+      "id": "telehealth",
+      "label": "Telehealth",
+      "issue_codes": ["HCR", "MMM", "TEC", "CSP"],
+      "keywords": [
+        "telehealth",
+        "telemedicine",
+        "virtual care",
+        "remote patient monitoring",
+        "audio-only telehealth",
+        "cross-state licensure",
+        "digital health"
+      ],
+      "programs": ["hospital at home", "telehealth waiver"],
+      "acts": ["telehealth modernization act", "connect for health act"],
+      "exclude": []
+    },
+    {
+      "id": "tax_policy",
+      "label": "Tax Policy",
+      "issue_codes": ["TAX", "FIN", "SMB", "MAN", "ENG"],
+      "keywords": [
+        "tax credit",
+        "tax deduction",
+        "tax incentive",
+        "corporate tax",
+        "tax treatment",
+        "pass-through",
+        "capital gains",
+        "estate tax",
+        "tax extenders",
+        "section 45q",
+        "section 48",
+        "section 199a"
+      ],
+      "programs": ["internal revenue service guidance", "treasury proposed rule", "joint committee on taxation"],
+      "acts": ["tax cuts and jobs act", "tax relief for american families and workers act"],
+      "exclude": []
+    },
+    {
+      "id": "international_tax",
+      "label": "International Tax",
+      "issue_codes": ["TAX", "FIN", "TRD"],
+      "keywords": [
+        "globe",
+        "oecd pillar",
+        "oecd international tax",
+        "pillar 1",
+        "pillar 2",
+        "base erosion and anti-abuse tax",
+        "global intangible low-taxed income",
+        "gilti",
+        "undertaxed profits rule",
+        "income inclusion rule",
+        "foreign tax credit",
+        "transfer pricing",
+        "country-by-country reporting"
+      ],
+      "programs": ["oecd inclusive framework", "pillar two"],
+      "acts": [],
+      "exclude": []
+    },
+    {
+      "id": "banking_financial_regulation",
+      "label": "Banking and Financial Regulation",
+      "issue_codes": ["FIN", "BAN", "BNK", "INS", "TAX"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "capital requirement",
+        "basel iii",
+        "stress test",
+        "liquidity coverage ratio",
+        "community reinvestment act",
+        "consumer financial protection bureau",
+        "bank merger",
+        "payment system",
+        "open banking",
+        "safe banking",
+        "bank holding company",
+        "brokered deposits",
+        "anti-money laundering",
+        "bank secrecy act",
+        "credit union",
+        "banking",
+        "housing finance",
+        "fednow",
+        "interchange fee",
+        "resolution planning",
+        "home equity investment"
+      ],
+      "programs": ["occ rulemaking", "fdic rulemaking", "federal reserve supervision"],
+      "acts": ["dodd-frank wall street reform and consumer protection act"],
+      "exclude": []
+    },
+    {
+      "id": "insurance_policy",
+      "label": "Insurance Policy",
+      "issue_codes": ["INS", "HCR", "FIN", "DIS"],
+      "keywords": [
+        "insurance rate",
+        "reinsurance",
+        "catastrophe coverage",
+        "flood insurance",
+        "nfip",
+        "risk insurance",
+        "medical loss ratio",
+        "insurance solvency"
+      ],
+      "programs": ["federal insurance office", "fema flood map"],
+      "acts": ["terrorism risk insurance act", "pandemic risk insurance act"],
+      "exclude": []
+    },
+    {
+      "id": "appropriations",
+      "label": "Appropriations",
+      "issue_codes": [
+        "BUD", "DEF", "HCR", "EDU", "TRA", "AGR", "HOM", "ENV", "ENG", "NAT", "SCI",
+        "GOV", "AVI", "LAW", "IND", "TAX", "URB", "MED", "MAR", "ECN", "AER", "DIS",
+        "FOR", "CAW", "LBR", "VET", "ROD", "SMB", "FIN"
+      ],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "appropriations",
+        "budget reconciliation",
+        "continuing resolution",
+        "omnibus",
+        "supplemental appropriations",
+        "allocation",
+        "committee report language",
+        "fiscal year funding"
+      ],
+      "programs": ["house appropriations committee", "senate appropriations committee"],
+      "acts": ["further consolidated appropriations act", "continuing appropriations act"],
+      "exclude": []
+    },
+    {
+      "id": "defense_procurement",
+      "label": "Defense Procurement",
+      "issue_codes": ["DEF", "INT", "AER", "AVI", "CPT"],
+      "keywords": [
+        "defense procurement",
+        "dod acquisition",
+        "federal acquisition regulation supplement",
+        "major defense acquisition program",
+        "security assistance",
+        "defense industrial base",
+        "contracting officer",
+        "small business set-aside defense"
+      ],
+      "programs": ["defense production act", "office of the secretary of defense acquisition"],
+      "acts": ["defense production act"],
+      "exclude": []
+    },
+    {
+      "id": "defense_authorization",
+      "label": "Defense Authorization",
+      "issue_codes": ["DEF", "INT", "VET", "HOM"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "national defense authorization act",
+        "ndaa",
+        "military readiness",
+        "force structure",
+        "base realignment",
+        "security cooperation",
+        "missile defense"
+      ],
+      "programs": ["armed services committee mark", "authorization title"],
+      "acts": ["national defense authorization act"],
+      "exclude": []
+    },
+    {
+      "id": "veterans_policy",
+      "label": "Veterans Policy",
+      "issue_codes": ["VET", "HCR", "DEF", "WEL"],
+      "keywords": [
+        "veterans affairs",
+        "va benefit",
+        "veterans health",
+        "community care network",
+        "burn pit",
+        "veteran suicide prevention",
+        "gi bill"
+      ],
+      "programs": ["veterans health administration", "veterans benefits administration"],
+      "acts": ["sergeant first class heath robinson honoring our pact act"],
+      "exclude": []
+    },
+    {
+      "id": "immigration_visa",
+      "label": "Immigration and Visas",
+      "issue_codes": ["IMM", "LBR", "HOM", "EDU", "SMB"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "immigration reform",
+        "visa",
+        "h-1b",
+        "h-2a",
+        "h-2b",
+        "employment-based immigration",
+        "green card",
+        "asylum processing",
+        "border processing",
+        "e-verify"
+      ],
+      "programs": ["u.s. citizenship and immigration services", "customs and border protection"],
+      "acts": ["immigration and nationality act", "protecting children of long-term visa holders act"],
+      "exclude": []
+    },
+    {
+      "id": "labor_employment",
+      "label": "Labor and Employment",
+      "issue_codes": ["LBR", "UNM", "HCR", "SMB", "EDU", "HOU", "GOV"],
+      "keywords": [
+        "employment law",
+        "overtime rule",
+        "worker classification",
+        "independent contractor",
+        "prevailing wage",
+        "occupational safety",
+        "osha standard",
+        "leave policy",
+        "non-compete",
+        "wagner-peyser",
+        "fiduciary",
+        "workforce development",
+        "job training",
+        "workforce training",
+        "apprenticeship"
+      ],
+      "programs": [
+        "department of labor rulemaking",
+        "wage and hour division",
+        "employment and training administration"
+      ],
+      "acts": [
+        "fair labor standards act",
+        "worker adjustment and retraining notification act",
+        "wagner peyser act"
+      ],
+      "exclude": []
+    },
+    {
+      "id": "union_collective_bargaining",
+      "label": "Unions and Collective Bargaining",
+      "issue_codes": ["LBR", "TRU", "MAN", "DEF"],
+      "keywords": [
+        "collective bargaining",
+        "union organizing",
+        "national labor relations board",
+        "labor-management",
+        "joint employer",
+        "project labor agreement",
+        "right to organize"
+      ],
+      "programs": ["nlrb rulemaking"],
+      "acts": ["protecting the right to organize act"],
+      "exclude": []
+    },
+    {
+      "id": "minimum_wage",
+      "label": "Minimum Wage",
+      "issue_codes": ["LBR", "SMB", "WEL"],
+      "keywords": [
+        "minimum wage",
+        "living wage",
+        "wage floor",
+        "tip credit",
+        "subminimum wage"
+      ],
+      "programs": [],
+      "acts": ["raise the wage act"],
+      "exclude": []
+    },
+    {
+      "id": "energy_renewables",
+      "label": "Renewable Energy",
+      "issue_codes": ["ENG", "ENV", "FUE", "TAX", "UTI"],
+      "keywords": [
+        "renewable energy",
+        "solar",
+        "wind energy",
+        "battery storage",
+        "clean energy",
+        "renewable generation",
+        "distributed generation",
+        "energy storage",
+        "offshore wind",
+        "green hydrogen",
+        "clean hydrogen",
+        "hydrogen hub",
+        "production tax credit",
+        "investment tax credit"
+      ],
+      "programs": ["loan programs office", "power purchase agreement", "regional clean hydrogen hubs"],
+      "acts": ["clean electricity performance program", "inflation reduction act"],
+      "exclude": []
+    },
+    {
+      "id": "oil_gas",
+      "label": "Oil and Gas",
+      "issue_codes": ["FUE", "ENG", "ENV", "NAT", "TRD"],
+      "keywords": [
+        "oil and gas",
+        "liquefied natural gas",
+        "lng export",
+        "pipeline permitting",
+        "offshore leasing",
+        "methane fee",
+        "drilling permit",
+        "refinery"
+      ],
+      "programs": ["bureau of land management lease sale", "federal energy regulatory commission"],
+      "acts": ["natural gas act", "outer continental shelf lands act"],
+      "exclude": []
+    },
+    {
+      "id": "nuclear_policy",
+      "label": "Nuclear Policy",
+      "issue_codes": ["ENG", "ENV", "DEF", "SCI"],
+      "keywords": [
+        "nuclear reactor",
+        "nuclear fuel",
+        "spent fuel",
+        "small modular reactor",
+        "nuclear waste",
+        "nrc licensing",
+        "advanced reactor"
+      ],
+      "programs": ["nuclear regulatory commission", "civil nuclear credit"],
+      "acts": ["nuclear energy innovation and modernization act"],
+      "exclude": []
+    },
+    {
+      "id": "electric_vehicles",
+      "label": "Electric Vehicles",
+      "issue_codes": ["TRA", "AUT", "ENG", "ENV", "TAX"],
+      "keywords": [
+        "electric vehicle",
+        "ev charging",
+        "charging infrastructure",
+        "battery supply chain",
+        "zero emission vehicle",
+        "vehicle electrification",
+        "ev tax credit"
+      ],
+      "programs": ["national electric vehicle infrastructure", "alternative fuel corridor"],
+      "acts": ["affordable american-made auto act"],
+      "exclude": []
+    },
+    {
+      "id": "carbon_climate",
+      "label": "Carbon and Climate",
+      "issue_codes": ["ENV", "ENG", "CAW", "WAS", "NAT"],
+      "keywords": [
+        "climate resilience",
+        "greenhouse gas",
+        "carbon capture",
+        "carbon removal",
+        "methane emission",
+        "methane",
+        "emission standard",
+        "decarbonization",
+        "net zero",
+        "carbon market",
+        "carbon offset",
+        "scope 3 emissions"
+      ],
+      "programs": ["epa greenhouse gas reporting", "social cost of carbon"],
+      "acts": ["clean air act", "carbon capture improvement act"],
+      "exclude": []
+    },
+    {
+      "id": "infrastructure_broadband",
+      "label": "Infrastructure and Broadband",
+      "issue_codes": ["TRA", "ROD", "URB", "UTI", "TEC", "SMB"],
+      "keywords": [
+        "infrastructure investment",
+        "highway program",
+        "bridge repair",
+        "water infrastructure",
+        "broadband deployment",
+        "affordable connectivity",
+        "middle mile",
+        "dig once",
+        "infrastructure grant",
+        "rural broadband",
+        "fiber deployment"
+      ],
+      "programs": [
+        "broadband equity access and deployment",
+        "infrastructure investment and jobs act",
+        "affordable connectivity program",
+        "middle mile grant program"
+      ],
+      "acts": ["infrastructure investment and jobs act"],
+      "exclude": []
+    },
+    {
+      "id": "aviation_policy",
+      "label": "Aviation Policy",
+      "issue_codes": ["AVI", "TRA", "HOM", "TAX"],
+      "keywords": [
+        "federal aviation administration",
+        "faa reauthorization",
+        "air traffic control",
+        "aviation safety",
+        "airport improvement program",
+        "pilot training",
+        "sustainable aviation fuel"
+      ],
+      "programs": ["faa rulemaking", "airport terminal program"],
+      "acts": ["faa reauthorization act"],
+      "exclude": []
+    },
+    {
+      "id": "rail_policy",
+      "label": "Rail Policy",
+      "issue_codes": ["RRR", "TRA", "TRU", "ROD"],
+      "keywords": [
+        "rail safety",
+        "railroad retirement",
+        "surface transportation board",
+        "passenger rail",
+        "freight rail",
+        "positive train control",
+        "high-speed rail"
+      ],
+      "programs": ["federal railroad administration"],
+      "acts": ["rail safety improvement act"],
+      "exclude": []
+    },
+    {
+      "id": "housing_policy",
+      "label": "Housing Policy",
+      "issue_codes": ["HOU", "RES", "URB", "FIN", "TAX", "BAN", "BUD", "GOV", "HCR", "VET", "TRA", "ECN", "LBR", "DEF", "IND", "IMM", "INS"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "housing",
+        "multifamily housing",
+        "housing reform",
+        "federal housing programs",
+        "section 8 housing",
+        "renter relief",
+        "housing stability",
+        "affordable housing",
+        "low-income housing tax credit",
+        "lihtc",
+        "federal housing administration",
+        "housing voucher",
+        "zoning reform",
+        "housing supply",
+        "rent burden",
+        "real estate",
+        "land use",
+        "housing finance",
+        "rental assistance"
+      ],
+      "programs": ["hud rulemaking", "community development block grant", "renters bill of rights"],
+      "acts": ["housing choice voucher mobility demonstration act", "veterans housing stability act"],
+      "exclude": []
+    },
+    {
+      "id": "clean_water",
+      "label": "Clean Water",
+      "issue_codes": ["CAW", "ENV", "WAS", "NAT"],
+      "keywords": [
+        "clean water",
+        "safe drinking water",
+        "drinking water standard",
+        "waters of the united states",
+        "wotus",
+        "wastewater",
+        "pfas drinking water",
+        "water utility"
+      ],
+      "programs": ["state revolving fund", "nPDES permit", "drinking water state revolving fund"],
+      "acts": ["clean water act", "safe drinking water act"],
+      "exclude": []
+    },
+    {
+      "id": "clean_air_chemicals",
+      "label": "Clean Air and Chemicals",
+      "issue_codes": ["CAW", "ENV", "WAS", "CHM", "ENG"],
+      "keywords": [
+        "clean air",
+        "air quality standard",
+        "national ambient air quality standards",
+        "chemical safety",
+        "toxic substance",
+        "tsca",
+        "hazardous air pollutant",
+        "ozone standard",
+        "particulate matter"
+      ],
+      "programs": ["epa final rule", "epa proposed rule", "risk evaluation rule"],
+      "acts": ["toxic substances control act", "clean air act"],
+      "exclude": []
+    },
+    {
+      "id": "education_student_aid",
+      "label": "Education and Student Aid",
+      "issue_codes": ["EDU", "WEL", "HCR", "SCI"],
+      "keywords": [
+        "student aid",
+        "pell grant",
+        "higher education act",
+        "career and technical education",
+        "stem education",
+        "title ix",
+        "school nutrition",
+        "workforce training grant"
+      ],
+      "programs": ["department of education rulemaking"],
+      "acts": ["higher education act", "student aid and fiscal responsibility act"],
+      "exclude": []
+    },
+    {
+      "id": "small_business",
+      "label": "Small Business",
+      "issue_codes": ["SMB", "FIN", "TAX", "MAN", "LBR"],
+      "keywords": [
+        "small business administration",
+        "sba lending",
+        "7(a) loan",
+        "504 loan",
+        "ppp loan",
+        "restaurant revitalization fund",
+        "small business contract",
+        "entrepreneurship"
+      ],
+      "programs": ["sba office of advocacy"],
+      "acts": ["small business jobs act"],
+      "exclude": []
+    },
+    {
+      "id": "postal_policy",
+      "label": "Postal Policy",
+      "issue_codes": ["POS", "COM", "TRA", "LBR"],
+      "keywords": [
+        "united states postal service",
+        "usps",
+        "postal reform",
+        "mail processing",
+        "postal pricing",
+        "shipping access",
+        "postal service standards"
+      ],
+      "programs": ["postal regulatory commission"],
+      "acts": ["postal service reform act", "usps serves us act"],
+      "exclude": []
+    },
+    {
+      "id": "firearms_policy",
+      "label": "Firearms Policy",
+      "issue_codes": ["FIR", "LAW", "CON", "CSP"],
+      "keywords": [
+        "firearm",
+        "gun safety",
+        "background check",
+        "federal firearms licensee",
+        "assault weapon",
+        "atf rule",
+        "second amendment"
+      ],
+      "programs": ["bureau of alcohol tobacco firearms and explosives"],
+      "acts": ["bipartisan safer communities act"],
+      "exclude": []
+    },
+    {
+      "id": "constitutional_civil_rights",
+      "label": "Constitutional and Civil Rights",
+      "issue_codes": ["CON", "CIV", "LAW", "GOV"],
+      "keywords": [
+        "first amendment",
+        "equal protection",
+        "due process",
+        "constitutional amendment",
+        "free speech",
+        "civil rights",
+        "voting rights",
+        "religious liberty",
+        "privacy rights",
+        "campaign finance",
+        "election integrity",
+        "redistricting",
+        "lobbying disclosure",
+        "government ethics",
+        "decennial census"
+      ],
+      "programs": ["department of justice civil rights division"],
+      "acts": [
+        "voting rights act",
+        "civil rights act",
+        "equality act",
+        "john lewis voting rights advancement act"
+      ],
+      "exclude": []
+    },
+    {
+      "id": "gaming_betting",
+      "label": "Gaming and Betting",
+      "issue_codes": ["GAM", "FIN", "TAX", "TRD"],
+      "keywords": [
+        "gaming",
+        "sports betting",
+        "sports wagering",
+        "online gaming",
+        "tribal gaming",
+        "wire act",
+        "betting market",
+        "wagering",
+        "casino"
+      ],
+      "programs": ["indian gaming regulatory act implementation"],
+      "acts": ["indian gaming regulatory act"],
+      "exclude": []
+    },
+    {
+      "id": "arts_humanities",
+      "label": "Arts and Humanities",
+      "issue_codes": ["ART", "EDU", "CPT"],
+      "keywords": [
+        "national endowment for the arts",
+        "national endowment for the humanities",
+        "arts funding",
+        "arts education",
+        "live events",
+        "ticketing",
+        "performing arts",
+        "cultural institution"
+      ],
+      "programs": ["nea grant", "neh grant"],
+      "acts": ["save our stages act"],
+      "exclude": []
+    },
+    {
+      "id": "bankruptcy_creditor_rights",
+      "label": "Bankruptcy and Creditor Rights",
+      "issue_codes": ["BNK", "FIN", "LAW"],
+      "keywords": [
+        "bankruptcy code",
+        "chapter 11",
+        "chapter 13",
+        "debtor",
+        "creditor",
+        "restructuring",
+        "insolvency",
+        "automatic stay"
+      ],
+      "programs": ["u.s. trustee program"],
+      "acts": ["bankruptcy abuse prevention and consumer protection act"],
+      "exclude": []
+    },
+    {
+      "id": "sports_governance",
+      "label": "Sports Governance",
+      "issue_codes": ["SPO", "LAW", "HCR", "EDU"],
+      "keywords": [
+        "athlete safety",
+        "safesport",
+        "ncaa",
+        "name image likeness",
+        "name image and likeness",
+        "college athletics",
+        "student athletes",
+        "nil rights",
+        "nil",
+        "sports integrity",
+        "anti-doping",
+        "olympic and amateur sports"
+      ],
+      "programs": ["u.s. center for safesport"],
+      "acts": ["protecting young victims from sexual abuse and safe sport authorization act"],
+      "exclude": []
+    },
+    {
+      "id": "unemployment_benefits",
+      "label": "Unemployment Benefits",
+      "issue_codes": ["UNM", "LBR", "WEL"],
+      "keywords": [
+        "unemployment insurance",
+        "unemployment benefit",
+        "reemployment services",
+        "ui trust fund",
+        "extended benefits",
+        "workforce innovation and opportunity act",
+        "state unemployment system"
+      ],
+      "programs": ["employment and training administration", "ui modernization"],
+      "acts": ["workforce innovation and opportunity act"],
+      "exclude": []
+    },
+    {
+      "id": "tobacco_nicotine",
+      "label": "Tobacco and Nicotine",
+      "issue_codes": ["TOB", "HCR", "TAX", "CSP"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "tobacco",
+        "nicotine",
+        "vaping",
+        "e-cigarette",
+        "flavor ban",
+        "cigarette tax",
+        "smoking cessation",
+        "menthol"
+      ],
+      "programs": ["fda center for tobacco products"],
+      "acts": ["family smoking prevention and tobacco control act"],
+      "exclude": []
+    },
+    {
+      "id": "retirement_pensions",
+      "label": "Retirement and Pensions",
+      "issue_codes": ["RET", "FIN", "TAX", "LBR"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "retirement plan",
+        "401(k)",
+        "pension",
+        "defined benefit",
+        "defined contribution",
+        "retirement security",
+        "pension reform",
+        "fiduciary rule",
+        "fiduciary",
+        "erisa",
+        "required minimum distribution",
+        "secure act"
+      ],
+      "programs": ["employee benefits security administration"],
+      "acts": ["secure 2.0 act", "secure act", "employee retirement income security act"],
+      "exclude": []
+    },
+    {
+      "id": "foreign_relations_diplomacy",
+      "label": "Foreign Relations and Diplomacy",
+      "issue_codes": ["FOR", "INT", "TRD", "DEF"],
+      "keywords": [
+        "foreign assistance",
+        "state foreign operations",
+        "foreign operations appropriations",
+        "diplomatic engagement",
+        "bilateral relations",
+        "embassy security",
+        "international claims",
+        "expropriated properties",
+        "u.s. agency for international development",
+        "foreign relations committee",
+        "human rights",
+        "ukraine",
+        "israel",
+        "iran"
+      ],
+      "programs": ["state foreign operations appropriations", "usaid programming"],
+      "acts": ["foreign assistance act"],
+      "exclude": []
+    },
+    {
+      "id": "tort_liability",
+      "label": "Tort and Liability",
+      "issue_codes": ["TOR", "LAW", "HCR", "INS"],
+      "keywords": [
+        "tort reform",
+        "liability",
+        "damages cap",
+        "medical malpractice",
+        "civil litigation",
+        "class action",
+        "preemption of state common law"
+      ],
+      "programs": ["civil justice reform"],
+      "acts": ["camp lejeune justice act"],
+      "exclude": []
+    },
+    {
+      "id": "animal_welfare_livestock",
+      "label": "Animal Welfare and Livestock",
+      "issue_codes": ["ANI", "AGR", "FOO"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "animal welfare",
+        "animal health",
+        "veterinary medicine",
+        "livestock",
+        "poultry",
+        "cattle",
+        "grain inspection packers and stockyards",
+        "animal disease",
+        "companion animal"
+      ],
+      "programs": ["animal and plant health inspection service"],
+      "acts": ["animal welfare act", "packers and stockyards act"],
+      "exclude": []
+    },
+    {
+      "id": "beverage_alcohol_policy",
+      "label": "Beverage and Alcohol Policy",
+      "issue_codes": ["BEV", "ALC", "TAX", "TRA"],
+      "keywords": [
+        "distilled spirits",
+        "beer",
+        "wine",
+        "alcohol beverage",
+        "ttb",
+        "excise tax beverage",
+        "alcohol distribution",
+        "three-tier system",
+        "responsible beverage service"
+      ],
+      "programs": ["alcohol and tobacco tax and trade bureau"],
+      "acts": ["federal alcohol administration act"],
+      "exclude": []
+    },
+    {
+      "id": "media_journalism",
+      "label": "Media and Journalism",
+      "issue_codes": ["MIA", "COM", "TEC", "CPT", "GOV"],
+      "keywords": [
+        "journalism",
+        "news publisher",
+        "local news",
+        "local media",
+        "journalism competition",
+        "news publishing",
+        "broadcasting",
+        "media ownership",
+        "press freedom",
+        "news content",
+        "platform and publisher",
+        "journalist shield"
+      ],
+      "programs": ["fcc media bureau"],
+      "acts": ["journalism competition and preservation act", "press act"],
+      "exclude": []
+    },
+    {
+      "id": "economic_development",
+      "label": "Economic Development",
+      "issue_codes": ["ECN", "SMB", "URB", "BUD", "IND", "MAN"],
+      "keywords": [
+        "economic development",
+        "regional development",
+        "opportunity zone",
+        "industrial policy",
+        "public-private partnership",
+        "workforce and economic development",
+        "development finance",
+        "community development finance",
+        "manufacturing extension partnership"
+      ],
+      "programs": ["economic development administration", "community development block grant"],
+      "acts": ["public works and economic development act"],
+      "exclude": []
+    },
+    {
+      "id": "intellectual_property",
+      "label": "Intellectual Property",
+      "issue_codes": ["CPT", "COM", "TEC", "TRD"],
+      "keywords": [
+        "intellectual property",
+        "patent reform",
+        "patent eligibility",
+        "patent infringement",
+        "march-in rights",
+        "copyright reform",
+        "trademark",
+        "consent decrees ascap bmi"
+      ],
+      "programs": ["u.s. patent and trademark office", "copyright office modernization"],
+      "acts": ["defend trade secrets act"],
+      "exclude": []
+    },
+    {
+      "id": "criminal_justice_policing",
+      "label": "Criminal Justice and Policing",
+      "issue_codes": ["LAW", "CIV", "GOV", "HOM"],
+      "keywords": [
+        "criminal justice reform",
+        "criminal justice",
+        "justice policing",
+        "policing reform",
+        "law enforcement accountability",
+        "first step act",
+        "cops hiring program",
+        "george floyd justice in policing act",
+        "law enforcement funding",
+        "byrne jag",
+        "scaap",
+        "crime victims fund",
+        "organized retail crime"
+      ],
+      "programs": ["office of community oriented policing services", "bureau of justice assistance"],
+      "acts": ["first step act"],
+      "exclude": []
+    },
+    {
+      "id": "consumer_product_safety",
+      "label": "Consumer Product Safety",
+      "issue_codes": ["CSP", "HCR", "LAW", "TEC"],
+      "keywords": [
+        "consumer product safety commission",
+        "cpsc",
+        "consumer product safety",
+        "product safety",
+        "battery safety",
+        "table saw safety",
+        "right to repair",
+        "consumer safety standards"
+      ],
+      "programs": ["cpsc rulemaking"],
+      "acts": ["consumer product safety act"],
+      "exclude": []
+    },
+    {
+      "id": "disaster_resilience_recovery",
+      "label": "Disaster Resilience and Recovery",
+      "issue_codes": ["DIS", "HOM", "ENV", "BUD", "TRA"],
+      "keywords": [
+        "disaster recovery",
+        "disaster mitigation",
+        "disaster response",
+        "hazard mitigation",
+        "fema public assistance",
+        "fema disaster relief fund",
+        "building resilient infrastructure and communities",
+        "bric program"
+      ],
+      "programs": ["fema hazard mitigation assistance", "fema public assistance"],
+      "acts": ["stafford act"],
+      "exclude": []
+    },
+    {
+      "id": "clinical_research_diagnostics",
+      "label": "Clinical Research and Diagnostics",
+      "issue_codes": ["MED", "HCR", "PHA", "SCI"],
+      "keywords": [
+        "laboratory developed test",
+        "in vitro clinical test",
+        "ivct",
+        "diagnostic reimbursement",
+        "clinical laboratory",
+        "nih research",
+        "national institutes of health",
+        "biomedical research",
+        "medical research",
+        "disease research",
+        "clinical research",
+        "clinical trials",
+        "genomic testing",
+        "organ procurement"
+      ],
+      "programs": ["nih research funding", "centers for medicare and medicaid services diagnostics"],
+      "acts": ["verifying accurate leading-edge ivct development act"],
+      "exclude": []
+    },
+    {
+      "id": "maritime_fisheries",
+      "label": "Maritime and Fisheries",
+      "issue_codes": ["MAR", "AGR", "NAT", "TRD", "TRA"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "maritime",
+        "jones act",
+        "coast guard authorization",
+        "fishery disaster",
+        "fisheries",
+        "magnuson-stevens",
+        "merchant marine",
+        "maritime administration"
+      ],
+      "programs": ["noaa fisheries", "coast guard authorization"],
+      "acts": ["jones act", "magnuson-stevens fishery conservation and management act"],
+      "exclude": []
+    },
+    {
+      "id": "public_lands_water_management",
+      "label": "Public Lands and Water Management",
+      "issue_codes": ["NAT", "RES", "ENV", "CAW", "AGR"],
+      "keywords": [
+        "public lands",
+        "bureau of reclamation",
+        "water rights",
+        "colorado river",
+        "payment in lieu of taxes",
+        "pilt",
+        "federal land management",
+        "land use planning"
+      ],
+      "programs": ["bureau of land management", "bureau of reclamation programs"],
+      "acts": ["federal land policy and management act"],
+      "exclude": []
+    },
+    {
+      "id": "trucking_freight",
+      "label": "Trucking and Freight",
+      "issue_codes": ["TRU", "TRA", "ROD", "MAN"],
+      "keywords": [
+        "trucking",
+        "truck parking",
+        "truck size and weight",
+        "hours of service",
+        "commercial motor vehicle",
+        "freight trucking",
+        "driver retention",
+        "trucking industry"
+      ],
+      "programs": ["federal motor carrier safety administration"],
+      "acts": [],
+      "exclude": []
+    },
+    {
+      "id": "accounting_auditing",
+      "label": "Accounting and Auditing",
+      "issue_codes": ["ACC", "FIN", "TAX"],
+      "keywords": [
+        "accounting standards",
+        "accounting standard setting",
+        "auditing standards",
+        "audit independence",
+        "pcaob",
+        "financial accounting standards board",
+        "gaap",
+        "public company accounting oversight board"
+      ],
+      "programs": ["securities and exchange commission accounting"],
+      "acts": [],
+      "exclude": []
+    },
+    {
+      "id": "commodity_derivatives_markets",
+      "label": "Commodity and Derivatives Markets",
+      "issue_codes": ["CDT", "FIN", "AGR", "TRD"],
+      "keywords": [
+        "commodity futures trading commission",
+        "cftc",
+        "commodity derivatives",
+        "swaps regulation",
+        "futures market",
+        "position limits",
+        "derivatives clearing",
+        "cftc reauthorization"
+      ],
+      "programs": ["cftc rulemaking"],
+      "acts": ["commodity exchange act"],
+      "exclude": []
+    },
+    {
+      "id": "advertising_marketing",
+      "label": "Advertising and Marketing",
+      "issue_codes": ["ADV", "CPT", "CSP", "TAX"],
+      "keywords": [
+        "online advertising",
+        "digital advertising",
+        "targeted advertising",
+        "advertising privacy",
+        "advertising tax deduction",
+        "ad transparency",
+        "marketing claims",
+        "advertising standards"
+      ],
+      "programs": [],
+      "acts": [],
+      "exclude": []
+    },
+    {
+      "id": "manufacturing_supply_chain",
+      "label": "Manufacturing and Supply Chains",
+      "issue_codes": ["MAN", "APP", "SMB", "TRA", "TAX"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "advanced manufacturing",
+        "manufacturing",
+        "supply chain resiliency",
+        "semiconductor manufacturing",
+        "chips and science act",
+        "remanufacturing",
+        "buy american",
+        "medical supply chain",
+        "onshore sourcing",
+        "apparel industry",
+        "personal protective equipment"
+      ],
+      "programs": ["manufacturing extension partnership", "department of commerce chips program"],
+      "acts": ["chips and science act"],
+      "exclude": []
+    },
+    {
+      "id": "space_aerospace_policy",
+      "label": "Space and Aerospace Policy",
+      "issue_codes": ["AER", "SCI", "DEF", "AVI"],
+      "keywords": [
+        "commercial space",
+        "space launch",
+        "spaceflight",
+        "nasa authorization",
+        "nasa appropriations",
+        "aerospace workforce",
+        "space situational awareness",
+        "human landing system"
+      ],
+      "programs": [
+        "national aeronautics and space administration",
+        "federal aviation administration office of commercial space transportation"
+      ],
+      "acts": ["commercial space launch act"],
+      "exclude": []
+    },
+    {
+      "id": "waste_recycling_management",
+      "label": "Waste and Recycling Management",
+      "issue_codes": ["WAS", "ENV", "CAW", "CHM", "NAT"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "waste management",
+        "solid waste",
+        "waste disposal",
+        "recycling",
+        "landfill",
+        "waste-to-energy",
+        "nuclear waste",
+        "e-scrap",
+        "hazardous waste"
+      ],
+      "programs": ["resource conservation and recovery act implementation", "epa solid waste program"],
+      "acts": ["resource conservation and recovery act"],
+      "exclude": []
+    },
+    {
+      "id": "substance_use_treatment",
+      "label": "Substance Use and Treatment",
+      "issue_codes": ["ALC", "HCR", "MMM", "LAW", "CSP"],
+      "keywords": [
+        "substance use disorder",
+        "addiction treatment",
+        "opioid use disorder",
+        "substance abuse",
+        "overdose prevention",
+        "medication assisted treatment",
+        "recovery services",
+        "behavioral health treatment"
+      ],
+      "programs": ["substance abuse and mental health services administration"],
+      "acts": ["mainstreaming addiction treatment act"],
+      "exclude": []
+    },
+    {
+      "id": "science_research_funding",
+      "label": "Science Research Funding",
+      "issue_codes": ["SCI", "BUD", "MED", "HCR", "AER"],
+      "allow_single_support_relaxed": true,
+      "keywords": [
+        "national science foundation",
+        "nsf",
+        "nist",
+        "research funding",
+        "research and development",
+        "stem education",
+        "science and technology funding",
+        "quantum research",
+        "quantum initiative",
+        "research appropriations",
+        "commerce justice science appropriations",
+        "earth science",
+        "federally-sponsored research"
+      ],
+      "programs": ["national science foundation programs", "national institute of standards and technology"],
+      "acts": ["chips and science act", "national quantum initiative act"],
+      "exclude": []
+    },
+    {
+      "id": "tourism_travel_promotion",
+      "label": "Tourism and Travel Promotion",
+      "issue_codes": ["TOU", "TRA", "AVI", "HOM"],
+      "keywords": [
+        "tourism",
+        "travel promotion",
+        "visitor economy",
+        "destination marketing",
+        "travel and tourism",
+        "international visitor",
+        "visa processing for tourism",
+        "national park tourism"
+      ],
+      "programs": ["office of travel and tourism industries", "brand usa"],
+      "acts": ["omnibus travel and tourism act"],
+      "exclude": []
+    },
+    {
+      "id": "family_reproductive_policy",
+      "label": "Family and Reproductive Policy",
+      "issue_codes": ["FAM", "HCR", "WEL", "CIV"],
+      "keywords": [
+        "family planning",
+        "reproductive health",
+        "maternal health",
+        "child care",
+        "pregnancy support",
+        "adoption policy",
+        "abortion policy",
+        "parental leave"
+      ],
+      "programs": ["title x program", "maternal and child health block grant"],
+      "acts": ["pregnant workers fairness act"],
+      "exclude": []
+    },
+    {
+      "id": "tribal_native_affairs",
+      "label": "Tribal and Native Affairs",
+      "issue_codes": ["IND", "NAT", "HOU", "LAW"],
+      "keywords": [
+        "tribal nation",
+        "tribal sovereignty",
+        "indian health service",
+        "bureau of indian affairs",
+        "native american",
+        "trust land",
+        "indian gaming",
+        "tribal water rights",
+        "self-determination compact"
+      ],
+      "programs": ["bureau of indian affairs", "indian health service"],
+      "acts": ["indian self-determination and education assistance act"],
+      "exclude": []
+    }
+  ]
+}

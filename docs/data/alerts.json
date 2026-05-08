@@ -1,241 +1,405 @@
 {
-  "generated_at": "2026-02-01T01:27:31.938606",
+  "generated_at": "2026-02-13T12:10:24.412211",
   "alerts": [
     {
-      "type": "spike",
-      "category": "topic",
-      "name": "appropriation",
-      "current_count": 78,
-      "prev_count": 0,
-      "change_pct": 100,
-      "top_clients": [
-        "NATIONAL ASSOCIATION OF PEDIATRIC NURSE PRACTITIONERS",
-        "AMERICAN TRUCKING ASSOCIATIONS",
-        "PATRIOT RAIL COMPANY (FKA PIONEER LINES (FKA PIONEER RAILCORP))",
-        "JEFFERSON COUNTY (AL)",
-        "SPINA BIFIDA ASSOCIATION OF AMERICA"
-      ],
-      "total_income": 6752937.0,
-      "headline": "Lobbying on 'appropriation' doubles (78 activities in 30 days)"
-    },
-    {
-      "type": "spike",
-      "category": "entity",
-      "name": "Senate",
-      "current_count": 48,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to Senate doubles (48 mentions)"
-    },
-    {
-      "type": "spike",
-      "category": "topic",
-      "name": "tariff",
-      "current_count": 43,
-      "prev_count": 0,
-      "change_pct": 100,
-      "top_clients": [
-        "NATIONAL ASSN OF CREDIT MANAGEMENT",
-        "NATIONAL RESTAURANT ASSOCIATION",
-        "MOTORCYCLE INDUSTRY COUNCIL",
-        "INFINEON TECHNOLOGIES AMERICAS CORP.",
-        "O'NEAL INDUSTRIES"
-      ],
-      "total_income": 2732000.0,
-      "headline": "Lobbying on 'tariff' doubles (43 activities in 30 days)"
-    },
-    {
-      "type": "spike",
-      "category": "entity",
-      "name": "House of Representatives",
-      "current_count": 26,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to House of Representatives doubles (26 mentions)"
-    },
-    {
-      "type": "spike",
-      "category": "legislation",
-      "name": "H.R. 1 (One Big Beautiful Bill Act)",
-      "current_count": 24,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Lobbying on H.R. 1 (One Big Beautiful Bill Act) up 100%"
-    },
-    {
-      "type": "spike",
+      "type": "signal",
       "category": "topic",
       "name": "artificial intelligence",
-      "current_count": 23,
-      "prev_count": 0,
-      "change_pct": 100,
+      "current_count": 1420,
+      "prev_count": 1330,
+      "yoy_count": 2255,
+      "share_delta_yoy_pp": 0.552,
+      "share_delta_prev_pp": 0.342,
+      "signal_confidence": "high",
       "top_clients": [
-        "AMERICAN LIBRARY ASSOCIATION",
-        "PALLADYNE AI",
-        "COMMON SENSE MEDIA",
-        "GOOGLE, INC.",
-        "ELECTRONIC TRANSACTIONS ASSOCIATION"
+        "MICROSOFT CORPORATION",
+        "AMERICANS FOR RESPONSIBLE INNOVATION",
+        "NEWS MEDIA ALLIANCE",
+        "NVIDIA CORPORATION",
+        "ORACLE CORPORATION"
       ],
-      "total_income": 1980641.0,
-      "headline": "Lobbying on 'artificial intelligence' doubles (23 activities in 30 days)"
+      "total_income": 309486394.02,
+      "headline": "'artificial intelligence' share up 0.55 pp vs year-ago period (1420 mentions)"
     },
     {
-      "type": "spike",
+      "type": "signal",
       "category": "entity",
-      "name": "Department of Defense",
-      "current_count": 23,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to Department of Defense doubles (23 mentions)"
-    },
-    {
-      "type": "spike",
-      "category": "entity",
-      "name": "Congress",
-      "current_count": 23,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to Congress doubles (23 mentions)"
-    },
-    {
-      "type": "spike",
-      "category": "entity",
-      "name": "EPA",
-      "current_count": 21,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to EPA doubles (21 mentions)"
-    },
-    {
-      "type": "spike",
-      "category": "entity",
-      "name": "House",
-      "current_count": 19,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to House doubles (19 mentions)"
-    },
-    {
-      "type": "spike",
-      "category": "topic",
-      "name": "tax credit",
-      "current_count": 18,
-      "prev_count": 0,
-      "change_pct": 100,
+      "name": "VA",
+      "current_count": 609,
+      "prev_count": 416,
+      "yoy_count": 845,
+      "share_delta_yoy_pp": 0.391,
+      "share_delta_prev_pp": 0.502,
+      "signal_confidence": "high",
       "top_clients": [
-        "LABORERS' INTERNATIONAL UNION OF NORTH AMERICA",
-        "NATIONAL COUNCIL OF TEXTILE ORGANIZATIONS",
-        "COUNTY OF SANTA BARBARA",
-        "PATRIOT RAIL COMPANY (FKA PIONEER LINES (FKA PIONEER RAILCORP))",
-        "RED RIVER VALLEY & WESTERN RAILROAD COMPANY"
+        "NORTH CAROLINA STATE UNIVERSITY",
+        "UNITED SERVICES AUTOMOBILE ASSOCIATION",
+        "AMERICAN ASSOCIATION OF NURSE ANESTHETISTS",
+        "THE NATIONAL ALLIANCE FOR EYE AND VISION RESEARCH",
+        "HOUSING POLICY COUNCIL"
       ],
-      "total_income": 1177000.0,
-      "headline": "Lobbying on 'tax credit' doubles (18 activities in 30 days)"
+      "total_income": 119897223.34,
+      "headline": "VA attention up 0.50 pp vs prior period (609 mentions)"
     },
     {
-      "type": "spike",
-      "category": "topic",
-      "name": "medicaid",
-      "current_count": 18,
-      "prev_count": 0,
-      "change_pct": 100,
-      "top_clients": [
-        "FAMILIES USA FOUNDATION INC",
-        "ELLIS HOSPITAL",
-        "NETWORK",
-        "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES",
-        "UNIVERSITY OF MISSISSIPPI MEDICAL CENTER"
-      ],
-      "total_income": 1814000.0,
-      "headline": "Lobbying on 'medicaid' doubles (18 activities in 30 days)"
-    },
-    {
-      "type": "spike",
+      "type": "signal",
       "category": "legislation",
       "name": "H.R. 1",
-      "current_count": 18,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Lobbying on H.R. 1 up 100%"
-    },
-    {
-      "type": "spike",
-      "category": "entity",
-      "name": "FAA",
-      "current_count": 17,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to FAA doubles (17 mentions)"
-    },
-    {
-      "type": "spike",
-      "category": "legislation",
-      "name": "Farm Bill",
-      "current_count": 17,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Lobbying on Farm Bill up 100%"
-    },
-    {
-      "type": "spike",
-      "category": "topic",
-      "name": "workforce development",
-      "current_count": 16,
-      "prev_count": 0,
-      "change_pct": 100,
+      "current_count": 1463,
+      "prev_count": 2538,
+      "yoy_count": 92,
+      "share_delta_yoy_pp": 3.394,
+      "share_delta_prev_pp": -2.339,
+      "signal_confidence": "medium",
       "top_clients": [
-        "AMERICAN LIBRARY ASSOCIATION",
-        "NATIONAL ASSOCIATION OF PEDIATRIC NURSE PRACTITIONERS",
-        "THE BROADCAST CENTER",
-        "QUANTA SERVICES, INC.",
-        "DOTERRA"
-      ],
-      "total_income": 353035.0,
-      "headline": "Lobbying on 'workforce development' doubles (16 activities in 30 days)"
-    },
-    {
-      "type": "spike",
-      "category": "topic",
-      "name": "grant",
-      "current_count": 16,
-      "prev_count": 0,
-      "change_pct": 100,
-      "top_clients": [
-        "UCAN",
-        "THE TOWN OF BAY HARBOR ISLAND",
+        "INVITATION HOMES INC.",
+        "NETWORK",
         "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES",
-        "THRESHOLDS",
-        "NATIONAL LOUIS UNIVERSITY"
+        "AMERICAN ASSOCIATION OF COLLEGES OF NURSING",
+        "AMERICAN ASSOCIATION OF NURSE ANESTHETISTS"
       ],
-      "total_income": 585000.0,
-      "headline": "Lobbying on 'grant' doubles (16 activities in 30 days)"
+      "total_income": 179519086.04,
+      "headline": "H.R. 1 share up 3.39 pp vs year-ago period (1463 mentions)"
     },
     {
-      "type": "spike",
-      "category": "entity",
-      "name": "FEMA",
-      "current_count": 16,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to FEMA doubles (16 mentions)"
+      "type": "signal",
+      "category": "legislation",
+      "name": "One Big Beautiful Bill",
+      "current_count": 1273,
+      "prev_count": 2209,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 3.054,
+      "share_delta_prev_pp": -2.036,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "INVITATION HOMES INC.",
+        "MICROSOFT CORPORATION",
+        "LANZAJET INC",
+        "TRAVERE THERAPEUTICS",
+        "UNITED STATES TOUR OPERATORS ASSOCIATION"
+      ],
+      "total_income": 194124307.0,
+      "headline": "One Big Beautiful Bill share up 3.05 pp vs year-ago period (1273 mentions)"
     },
     {
-      "type": "spike",
-      "category": "entity",
-      "name": "Department of Education",
-      "current_count": 16,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to Department of Education doubles (16 mentions)"
+      "type": "signal",
+      "category": "topic",
+      "name": "tariff",
+      "current_count": 1603,
+      "prev_count": 1630,
+      "yoy_count": 960,
+      "share_delta_yoy_pp": 2.631,
+      "share_delta_prev_pp": 0.09,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "DOMTAR CORPORATION",
+        "SHEET METAL & AIR CONDITIONING CONTRACTORS NAT'L ASSN",
+        "HUNTSMAN INTERNATIONAL LLC",
+        "SOCIETY OF CHEMICAL MANUFACTURERS & AFFILIATES",
+        "AMERICAN AIRLINES, INC."
+      ],
+      "total_income": 322691947.38,
+      "headline": "'tariff' share up 2.63 pp vs year-ago period (1603 mentions)"
     },
     {
-      "type": "spike",
-      "category": "entity",
-      "name": "NIH",
-      "current_count": 15,
-      "prev_count": 0,
-      "change_pct": 100,
-      "headline": "Attention to NIH doubles (15 mentions)"
+      "type": "signal",
+      "category": "legislation",
+      "name": "P.L. 119-21",
+      "current_count": 785,
+      "prev_count": 964,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 1.883,
+      "share_delta_prev_pp": -0.338,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "MICROSOFT CORPORATION",
+        "NATIONAL LEAGUE FOR NURSING",
+        "NATIONAL ASSOCIATION OF PEDIATRIC NURSE PRACTITIONERS",
+        "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES",
+        "RIVIAN AUTOMOTIVE LLC"
+      ],
+      "total_income": 118809843.0,
+      "headline": "P.L. 119-21 share up 1.88 pp vs year-ago period (785 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "H.R. 4016",
+      "current_count": 732,
+      "prev_count": 781,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 1.756,
+      "share_delta_prev_pp": -0.044,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "HAWKEYE 360 INC.",
+        "UNIVERSITY OF IDAHO",
+        "GENERAL DYNAMICS",
+        "METREA LLC",
+        "PERSISTENT SYSTEMS, LLC"
+      ],
+      "total_income": 56336625.0,
+      "headline": "H.R. 4016 share up 1.76 pp vs year-ago period (732 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "S. 2296",
+      "current_count": 711,
+      "prev_count": 889,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 1.706,
+      "share_delta_prev_pp": -0.343,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "GPS INNOVATION ALLIANCE",
+        "METREA LLC",
+        "NATIONAL BORDER PATROL COUNCIL",
+        "PERSISTENT SYSTEMS, LLC",
+        "PHLOW CORPORATION"
+      ],
+      "total_income": 151125391.0,
+      "headline": "S. 2296 share up 1.71 pp vs year-ago period (711 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "S. 2572",
+      "current_count": 463,
+      "prev_count": 489,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 1.111,
+      "share_delta_prev_pp": -0.016,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "UNIVERSITY OF IDAHO",
+        "METREA LLC",
+        "HAWKEYE 360 INC.",
+        "IDEAL AEROSMITH, INC.",
+        "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES"
+      ],
+      "total_income": 55503084.0,
+      "headline": "S. 2572 share up 1.11 pp vs year-ago period (463 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "H.R. 3838",
+      "current_count": 462,
+      "prev_count": 571,
+      "yoy_count": 2,
+      "share_delta_yoy_pp": 1.106,
+      "share_delta_prev_pp": -0.207,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "GPS INNOVATION ALLIANCE",
+        "NATIONAL BORDER PATROL COUNCIL",
+        "MICROSOFT CORPORATION",
+        "SOUTHERN POVERTY LAW CENTER, INC.",
+        "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES"
+      ],
+      "total_income": 92563220.0,
+      "headline": "H.R. 3838 share up 1.11 pp vs year-ago period (462 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "domain",
+      "name": "Tariff/Imports",
+      "current_count": 605,
+      "prev_count": 630,
+      "yoy_count": 342,
+      "share_delta_yoy_pp": 1.019,
+      "share_delta_prev_pp": 0,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "THE J.M. SMUCKER COMPANY",
+        "PORT OF CORPUS CHRISTI",
+        "ENERGY FAIR TRADE COALITION",
+        "TETRA PAK, INC.",
+        "SOCIETY OF CHEMICAL MANUFACTURERS & AFFILIATES"
+      ],
+      "total_income": 102702358.82,
+      "headline": "Tariff/Imports domain share up 1.02 pp vs year-ago period (605 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "domain",
+      "name": "Trade",
+      "current_count": 1300,
+      "prev_count": 1310,
+      "yoy_count": 1694,
+      "share_delta_yoy_pp": 0.974,
+      "share_delta_prev_pp": 0.1,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "NIKE, INC.",
+        "ELI LILLY AND COMPANY",
+        "HELLENIC CABLES AMERICAS CO",
+        "FEDEX CORPORATION",
+        "WALMART INC"
+      ],
+      "total_income": 285861059.02,
+      "headline": "Trade domain share up 0.97 pp vs year-ago period (1300 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "S. 2587",
+      "current_count": 407,
+      "prev_count": 388,
+      "yoy_count": 40,
+      "share_delta_yoy_pp": 0.926,
+      "share_delta_prev_pp": 0.082,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "AMERICAN ASSOCIATION OF NURSE ANESTHETISTS",
+        "ENERGETICS TECHNOLOGY CENTER",
+        "CEDARS-SINAI MEDICAL CENTER",
+        "GIFFORDS",
+        "TEAM GLEASON FOUNDATION"
+      ],
+      "total_income": 40299876.0,
+      "headline": "S. 2587 share up 0.93 pp vs year-ago period (407 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "H.R. 4552",
+      "current_count": 329,
+      "prev_count": 283,
+      "yoy_count": 6,
+      "share_delta_yoy_pp": 0.782,
+      "share_delta_prev_pp": 0.137,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "METREA LLC",
+        "CITY OF WEST MEMPHIS",
+        "JACKSONVILLE TRANSPORTATION AUTHORITY",
+        "HAMILTON COUNTY BOARD OF COMMISSIONERS",
+        "JOBY AERO, INC."
+      ],
+      "total_income": 32591077.0,
+      "headline": "H.R. 4552 share up 0.78 pp vs year-ago period (329 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "H.R. 5304",
+      "current_count": 326,
+      "prev_count": 310,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 0.782,
+      "share_delta_prev_pp": 0.068,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "JEWISH FEDERATIONS OF NORTH AMERICA",
+        "APPALACHIAN VOICES",
+        "UAB HEALTH SYSTEM",
+        "VANDERBILT UNIVERSITY",
+        "UNIVERSITY OF CALIFORNIA"
+      ],
+      "total_income": 63775567.0,
+      "headline": "H.R. 5304 share up 0.78 pp vs year-ago period (326 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "S. 2465",
+      "current_count": 271,
+      "prev_count": 243,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 0.65,
+      "share_delta_prev_pp": 0.09,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "METREA LLC",
+        "AMERICAN PUBLIC TRANSPORTATION ASSOCIATION",
+        "CITY OF WEST MEMPHIS",
+        "JOBY AERO, INC.",
+        "NOLA EDUCATION, LLC"
+      ],
+      "total_income": 30350592.0,
+      "headline": "S. 2465 share up 0.65 pp vs year-ago period (271 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "domain",
+      "name": "Defense",
+      "current_count": 2298,
+      "prev_count": 2320,
+      "yoy_count": 3893,
+      "share_delta_yoy_pp": 0.584,
+      "share_delta_prev_pp": 0.167,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "GENERAL DYNAMICS",
+        "LOCKHEED MARTIN CORPORATION",
+        "UNITED LAUNCH ALLIANCE",
+        "THE NATIONAL ALLIANCE FOR EYE AND VISION RESEARCH",
+        "PERSISTENT SYSTEMS, LLC"
+      ],
+      "total_income": 219002104.73000002,
+      "headline": "Defense domain share up 0.58 pp vs year-ago period (2298 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "S. 2354",
+      "current_count": 234,
+      "prev_count": 222,
+      "yoy_count": 2,
+      "share_delta_yoy_pp": 0.559,
+      "share_delta_prev_pp": 0.05,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "GIFFORDS",
+        "AMERICAN SMALL MANUFACTURERS COALITION",
+        "BLUE ORIGIN LLC",
+        "COALITION OF EPSCOR STATES",
+        "TEXAS A&M UNIVERSITY SYSTEM"
+      ],
+      "total_income": 47816499.0,
+      "headline": "S. 2354 share up 0.56 pp vs year-ago period (234 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "H.R. 5371",
+      "current_count": 236,
+      "prev_count": 112,
+      "yoy_count": 12,
+      "share_delta_yoy_pp": 0.551,
+      "share_delta_prev_pp": 0.308,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "NORTH CAROLINA STATE UNIVERSITY",
+        "UNITED STATES CAPITOL POLICE LABOR COMMITTEE",
+        "INSTITUTE FOR SUSTAINABLE INFRASTRUCTURE",
+        "GENERAL ATOMICS",
+        "UNITED SERVICES AUTOMOBILE ASSOCIATION"
+      ],
+      "total_income": 56337077.41,
+      "headline": "H.R. 5371 share up 0.55 pp vs year-ago period (236 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "H.R. 4553",
+      "current_count": 228,
+      "prev_count": 206,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 0.547,
+      "share_delta_prev_pp": 0.072,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "APPALACHIAN VOICES",
+        "SHEET METAL & AIR CONDITIONING CONTRACTORS NAT'L ASSN",
+        "HAMILTON COUNTY BOARD OF COMMISSIONERS",
+        "WATERWAYS COUNCIL INC",
+        "BATTELLE MEMORIAL INSTITUTE"
+      ],
+      "total_income": 26594590.0,
+      "headline": "H.R. 4553 share up 0.55 pp vs year-ago period (228 mentions)"
     }
   ]
 }

@@ -4,82 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lobbying Signals</title>
+    <meta name="description" content="A static dashboard for tracking signals in federal lobbying disclosure filings from the Senate LDA data feed.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lobbying Signals">
+    <meta property="og:description" content="Track emerging topics, agencies, clients, and legislation in federal lobbying disclosures.">
+    <meta property="og:url" content="https://umqadir.github.io/lobbying-signals/">
+    <meta property="og:image" content="https://umqadir.github.io/lobbying-signals/social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lobbying Signals">
+    <meta name="twitter:description" content="Track emerging topics, agencies, clients, and legislation in federal lobbying disclosures.">
+    <meta name="twitter:image" content="https://umqadir.github.io/lobbying-signals/social-preview.png">
+    <link rel="icon" href="data:,">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Lobbying Signals</h1>
-        <p class="subtitle">Tracking trends in federal lobbying disclosure data</p>
-        <p class="updated" id="last-updated">Loading...</p>
-    </header>
-
-    <main>
-        <!-- Alerts Section -->
-        <section id="alerts-section">
-            <h2>Notable Trends</h2>
-            <div id="alerts-container" class="alerts-grid">
-                <div class="loading">Loading alerts...</div>
+    <div class="dash">
+        <header class="toolbar">
+            <div class="toolbar-brand">
+                <h1>Lobbying Signals</h1>
+                <span id="last-updated"></span>
             </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section id="stats-section">
-            <h2>Overview</h2>
-            <div id="stats-container" class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-filings">-</span>
-                    <span class="stat-label">Total Filings</span>
+            <div class="toolbar-controls">
+                <select id="mode-select">
+                    <option value="topics">Topics</option>
+                    <option value="entities">Entities</option>
+                    <option value="domains">Domains</option>
+                    <option value="legislation">Legislation</option>
+                    <option value="recent">Recent Filings</option>
+                </select>
+                <div class="seg" id="window-toggle">
+                    <button class="seg-btn active" data-window="90d" type="button">90d</button>
+                    <button class="seg-btn" data-window="30d" type="button">30d</button>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-activities">-</span>
-                    <span class="stat-label">Activities</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-extracted">-</span>
-                    <span class="stat-label">Classified</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value" id="stat-range">-</span>
-                    <span class="stat-label">Date Range</span>
-                </div>
+                <select id="compare-select">
+                    <option value="yoy">vs year-ago</option>
+                    <option value="prev">vs prior period</option>
+                </select>
+                <select id="volume-select">
+                    <option value="1">&ge; 1 mention</option>
+                    <option value="10">&ge; 10 mentions</option>
+                    <option value="25">&ge; 25 mentions</option>
+                    <option value="100">&ge; 100 mentions</option>
+                </select>
+                <input id="nav-search" placeholder="Filter…" autocomplete="off" />
             </div>
-        </section>
-
-        <!-- Trending Topics Section -->
-        <section id="trends-section">
-            <h2>Trending Topics</h2>
-            <div class="tab-buttons">
-                <button class="tab-btn active" data-period="7d">7 Days</button>
-                <button class="tab-btn" data-period="30d">30 Days</button>
-            </div>
-            <div id="trends-container" class="trends-list">
-                <div class="loading">Loading trends...</div>
-            </div>
-        </section>
-
-        <!-- Entities Section -->
-        <section id="entities-section">
-            <h2>Government Entities</h2>
-            <div id="entities-container" class="trends-list">
-                <div class="loading">Loading entities...</div>
-            </div>
-        </section>
-
-        <!-- Recent Filings Section -->
-        <section id="recent-section">
-            <h2>Recent Filings</h2>
-            <div id="recent-container" class="filings-list">
-                <div class="loading">Loading recent filings...</div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>Data from <a href="https://lda.senate.gov">Senate LDA</a> |
-           Updated every 6 hours |
-           <a href="https://github.com/YOUR_USERNAME/lobbying-signals">Source</a></p>
-    </footer>
-
-    <script src="app.js"></script>
+        </header>
+        <div class="panels">
+            <section class="list-panel" id="list-panel"></section>
+            <section class="detail-panel" id="detail-panel"></section>
+        </div>
+    </div>
+    <script src="app.js?v=20260215-3"></script>
 </body>
 </html>

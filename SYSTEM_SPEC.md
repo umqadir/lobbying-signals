@@ -59,7 +59,7 @@ Automated system to detect newsworthy trends in federal lobbying data. Runs on G
 
 ### 5. JSON Export (07_refresh.py)
 - Export pre-computed data for static dashboard
-- Small files (<500KB total) committed to repo
+- JSON exports committed to repo for GitHub Pages (size varies; keep payload minimal for fast page loads)
 
 ## File Structure
 
@@ -183,7 +183,9 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          uv venv --python 3.12
+          uv pip install -r requirements.txt
 
       - name: Download database
         run: gh release download data --pattern 'filings.db' -O data/filings.db
@@ -191,7 +193,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run refresh
-        run: python 07_refresh.py
+        run: uv run python 07_refresh.py
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}

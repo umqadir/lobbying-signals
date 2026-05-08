@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-01T01:27:31.938822",
+  "generated_at": "2026-02-13T12:10:24.412658",
   "filings": [
     {
       "id": 81610,
@@ -9,8 +9,15 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Indian/Native American",
+      "domains": [
+        "Indian/Native American"
+      ],
+      "topics": [],
+      "entities": [
+        "SBA"
+      ],
+      "legislation": []
     },
     {
       "id": 81609,
@@ -21,9 +28,16 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
       "topics": [
         "white paper"
-      ]
+      ],
+      "entities": [
+        "DEVCOM"
+      ],
+      "legislation": []
     },
     {
       "id": 61768,
@@ -33,8 +47,15 @@
       "income": 20000.0,
       "year": 2025,
       "quarter": 3,
-      "domain": null,
-      "topics": []
+      "domain": "Taxation",
+      "domains": [
+        "Taxation"
+      ],
+      "topics": [
+        "tax credit"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81608,
@@ -45,10 +66,15 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Trade and Health",
+      "domains": [
+        "Trade and Health"
+      ],
       "topics": [
         "importation",
         "active pharmaceutical ingredient"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81607,
@@ -58,8 +84,15 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Taxation",
+      "domains": [
+        "Taxation"
+      ],
+      "topics": [
+        "tax credit"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81606,
@@ -69,8 +102,16 @@
       "income": 15000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Education",
+      "domains": [
+        "Education",
+        "Immigration"
+      ],
+      "topics": [],
+      "entities": [
+        "Department of Education"
+      ],
+      "legislation": []
     },
     {
       "id": 81605,
@@ -80,8 +121,13 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Telecommunications",
+      "domains": [
+        "Telecommunications"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81604,
@@ -91,8 +137,13 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Civil Rights",
+      "domains": [
+        "Civil Rights"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81603,
@@ -102,8 +153,13 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Constitution",
+      "domains": [
+        "Constitution"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81602,
@@ -113,8 +169,14 @@
       "income": 40000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Health Issues",
+      "domains": [
+        "Health Issues",
+        "Manufacturing"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81601,
@@ -124,8 +186,18 @@
       "income": 10000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Trade",
+      "domains": [
+        "Trade",
+        "Labor Issues"
+      ],
+      "topics": [
+        "trade agreement"
+      ],
+      "entities": [
+        "Department of Labor"
+      ],
+      "legislation": []
     },
     {
       "id": 81600,
@@ -136,10 +208,19 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Education",
+      "domains": [
+        "Education"
+      ],
       "topics": [
         "learning disability",
         "special education",
         "appropriation"
+      ],
+      "entities": [],
+      "legislation": [
+        "IDEA Full Funding Act",
+        "Respond, Innovate, Succeeds, and Empower Act",
+        "21st Century Dyslexia Act"
       ]
     },
     {
@@ -151,7 +232,10 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81598,
@@ -162,7 +246,10 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81597,
@@ -172,8 +259,15 @@
       "income": 15000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Utilities",
+      "domains": [
+        "Utilities"
+      ],
+      "topics": [],
+      "entities": [
+        "Congress"
+      ],
+      "legislation": []
     },
     {
       "id": 81596,
@@ -184,11 +278,17 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Defense and Space",
+      "domains": [
+        "Defense and Space",
+        "Aerospace"
+      ],
       "topics": [
         "acquisition",
         "space policy",
         "defense policy"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81595,
@@ -198,8 +298,13 @@
       "income": 30000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Aerospace",
+      "domains": [
+        "Aerospace"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81594,
@@ -210,11 +315,25 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Budget and Appropriations",
+      "domains": [
+        "Budget and Appropriations",
+        "Aerospace and Science"
+      ],
       "topics": [
+        "science",
         "commerce",
         "justice",
-        "science",
-        "space exploration"
+        "space exploration",
+        "funding",
+        "in-space servicing assembly and manufacturing",
+        "space technology"
+      ],
+      "entities": [
+        "NASA"
+      ],
+      "legislation": [
+        "FY2026 Commerce, Justice, Science Appropriations",
+        "2025 NASA Authorization"
       ]
     },
     {
@@ -226,17 +345,47 @@
       "year": 2025,
       "quarter": 4,
       "domain": "International Trade and Finance",
+      "domains": [
+        "International Trade and Finance",
+        "International Trade",
+        "Defense"
+      ],
       "topics": [
         "trade bloc",
         "foreign direct investment",
         "economic development",
         "trade barrier",
         "tariff",
+        "stock market",
         "financial stability",
         "environmental economics",
         "sustainable development",
-        "stock market",
-        "financial system"
+        "financial system",
+        "human rights",
+        "military surveillance"
+      ],
+      "entities": [
+        "Bank of Canada",
+        "Financial Consumer Agency of Canada",
+        "Canadian International Trade Tribunal",
+        "G20",
+        "Organization of American States",
+        "NORAD",
+        "Department of Defense"
+      ],
+      "legislation": [
+        "12 U.S.C",
+        "15 U.S.C",
+        "19 U.S.C",
+        "22 U.S.C",
+        "26 U.S.C",
+        "31 U.S.C",
+        "35 U.S.C",
+        "Bank of Canada Act",
+        "Financial Administration Act",
+        "Financial Consumer Agency of Canada Act",
+        "Export Development Act",
+        "Canadian International Trade Tribunal Act"
       ]
     },
     {
@@ -248,10 +397,27 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Finance",
+      "domains": [
+        "Finance"
+      ],
       "topics": [
         "bond guarantee",
         "liquidity",
-        "capitalization assistance"
+        "capitalization assistance",
+        "programmatic appropriation",
+        "tax credit",
+        "budget reconciliation"
+      ],
+      "entities": [
+        "Senate",
+        "CDFI Fund",
+        "Treasury Department"
+      ],
+      "legislation": [
+        "S. 1880",
+        "S. 2296",
+        "Senate Amendment 3732",
+        "New Markets Tax Credit"
       ]
     },
     {
@@ -263,10 +429,15 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Natural Resources",
+      "domains": [
+        "Natural Resources"
+      ],
       "topics": [
         "critical mineral",
         "domestic production"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81590,
@@ -277,9 +448,17 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Telecommunications",
+      "domains": [
+        "Telecommunications"
+      ],
       "topics": [
         "wireless leadership",
-        "open radio access network"
+        "open radio access network",
+        "wireless ecosystem"
+      ],
+      "entities": [],
+      "legislation": [
+        "NDAA"
       ]
     },
     {
@@ -291,11 +470,16 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Telecommunications",
+      "domains": [
+        "Telecommunications"
+      ],
       "topics": [
         "wireless network jamming",
         "signal interference",
         "open radio access network"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81588,
@@ -306,12 +490,23 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Small Business and Finance",
+      "domains": [
+        "Small Business and Finance"
+      ],
       "topics": [
         "small business loan",
         "capital access",
         "credit risk management",
         "mission lending"
-      ]
+      ],
+      "entities": [
+        "SBA",
+        "SBA Office of Capital Access",
+        "SBA Office of Credit Risk Management",
+        "House Small Business Committee",
+        "Senate Small Business Committee"
+      ],
+      "legislation": []
     },
     {
       "id": 81587,
@@ -322,7 +517,10 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81586,
@@ -333,7 +531,10 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81585,
@@ -344,7 +545,10 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81584,
@@ -355,7 +559,10 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81583,
@@ -365,8 +572,15 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81582,
@@ -376,8 +590,15 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81581,
@@ -387,8 +608,15 @@
       "income": 6000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81580,
@@ -398,8 +626,15 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81579,
@@ -409,8 +644,15 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81578,
@@ -421,7 +663,10 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81577,
@@ -431,8 +676,15 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81576,
@@ -443,11 +695,18 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Appropriations",
+      "domains": [
+        "Appropriations"
+      ],
       "topics": [
         "agriculture",
         "legislative branch funding",
         "military construction",
         "veterans affairs"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 5371"
       ]
     },
     {
@@ -459,10 +718,23 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Small Business",
+      "domains": [
+        "Small Business"
+      ],
       "topics": [
         "federal funding",
-        "women's business center"
-      ]
+        "women's business center",
+        "women entrepreneurship",
+        "childcare program",
+        "access to capital",
+        "manufacturing",
+        "rural community"
+      ],
+      "entities": [
+        "SBA",
+        "Women's Business Centers"
+      ],
+      "legislation": []
     },
     {
       "id": 81574,
@@ -472,8 +744,34 @@
       "income": 30000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Small Business",
+      "domains": [
+        "Small Business",
+        "Taxation",
+        "Small Business and Economic Development"
+      ],
+      "topics": [
+        "research and development tax credit",
+        "child tax credit",
+        "small business payroll tax",
+        "microloan",
+        "technical assistance",
+        "micro-entrepreneur",
+        "women's business center",
+        "veteran outreach",
+        "7-a loan",
+        "community navigator",
+        "minority business development",
+        "small business health care"
+      ],
+      "entities": [
+        "SBA",
+        "Department of Commerce",
+        "Minority Business Development Agency",
+        "CMS",
+        "HHS"
+      ],
+      "legislation": []
     },
     {
       "id": 81573,
@@ -484,11 +782,26 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Small Business and Taxation",
+      "domains": [
+        "Small Business and Taxation",
+        "Taxation",
+        "Labor and Employment"
+      ],
       "topics": [
         "tax credit",
         "procurement",
         "small business",
-        "capital access"
+        "capital access",
+        "research and development tax credit",
+        "joint employer standard",
+        "independent contractor classification",
+        "workforce development"
+      ],
+      "entities": [],
+      "legislation": [
+        "Corporate Transparency Act",
+        "Section 199(a",
+        "Workforce Innovation and Opportunity Act"
       ]
     },
     {
@@ -499,8 +812,16 @@
       "income": 20000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Small Business",
+      "domains": [
+        "Small Business",
+        "Government Issues"
+      ],
+      "topics": [
+        "procurement"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81571,
@@ -511,13 +832,28 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Small Business and Finance",
+      "domains": [
+        "Small Business and Finance",
+        "Community Development"
+      ],
       "topics": [
+        "community development financial institution",
         "access to capital",
         "small business",
         "veteran business outreach",
         "women's business center",
-        "community development financial institution"
-      ]
+        "community development block grant",
+        "rural micro entrepreneur assistance"
+      ],
+      "entities": [
+        "SBA",
+        "Department of the Treasury",
+        "Community Development Financial Institutions Fund",
+        "HUD",
+        "Department of Treasury",
+        "Department of Agriculture"
+      ],
+      "legislation": []
     },
     {
       "id": 81570,
@@ -528,6 +864,9 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Financial Services",
+      "domains": [
+        "Financial Services"
+      ],
       "topics": [
         "international payment",
         "remittance de-risking",
@@ -535,6 +874,12 @@
         "payment infrastructure modernization",
         "nonbank access",
         "interchange fee"
+      ],
+      "entities": [
+        "Federal Reserve"
+      ],
+      "legislation": [
+        "FedNow"
       ]
     },
     {
@@ -546,8 +891,24 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Commerce",
+      "domains": [
+        "Commerce",
+        "Small Business and Entrepreneurship",
+        "Banking"
+      ],
       "topics": [
-        "minority business development"
+        "minority business development",
+        "procurement",
+        "lending capital",
+        "exporting"
+      ],
+      "entities": [
+        "Minority Business Development Agency",
+        "Department of Commerce",
+        "SBA"
+      ],
+      "legislation": [
+        "Community Reinvestment"
       ]
     },
     {
@@ -558,8 +919,14 @@
       "income": 12500.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Energy/Nuclear"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81567,
@@ -570,9 +937,16 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
       "topics": [
         "tariff"
-      ]
+      ],
+      "entities": [
+        "Senate"
+      ],
+      "legislation": []
     },
     {
       "id": 81566,
@@ -582,20 +956,45 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": "Budget and Social Policy",
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Immigration",
+        "Budget and Social Policy"
+      ],
       "topics": [
         "tax cut",
-        "housing",
-        "healthcare",
-        "veteran service",
-        "senior service",
-        "family detention",
-        "private prison",
-        "immigration",
+        "premium tax credit",
+        "deportation",
         "medicaid",
-        "food assistance",
         "national debt",
-        "premium tax credit"
+        "child tax credit",
+        "paid family leave",
+        "medical leave",
+        "nutrition assistance",
+        "medicaid funding",
+        "immigration detention",
+        "healthcare coverage"
+      ],
+      "entities": [
+        "House of Representatives",
+        "EPA",
+        "Department of Energy",
+        "Senate"
+      ],
+      "legislation": [
+        "H.R. 1",
+        "H.Con.Res. 14",
+        "Full-Year Continuing Appropriations and Extensions Act, 2025",
+        "Affordable Care Act",
+        "American Family Act",
+        "FAMILY Act",
+        "FY 25 Budget Reconciliation Act",
+        "Supplemental Nutrition Assistance Program",
+        "H.R. 2",
+        "S. 146",
+        "H.R. 633",
+        "H.J. Res. 61"
       ]
     },
     {
@@ -607,10 +1006,18 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Labor and Employment",
+      "domains": [
+        "Labor and Employment",
+        "Banking"
+      ],
       "topics": [
         "joint employer standard",
         "board composition"
-      ]
+      ],
+      "entities": [
+        "NLRB"
+      ],
+      "legislation": []
     },
     {
       "id": 81564,
@@ -620,11 +1027,35 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": "Healthcare",
+      "domain": "Health",
+      "domains": [
+        "Health",
+        "Healthcare",
+        "Firearms"
+      ],
       "topics": [
         "medicare",
         "audiology",
-        "student degree"
+        "student degree",
+        "medical research funding",
+        "hearing screening",
+        "early intervention",
+        "early hearing detection and intervention",
+        "funding restoration",
+        "program spending"
+      ],
+      "entities": [
+        "NIH",
+        "CDC",
+        "HRSA"
+      ],
+      "legislation": [
+        "H.R. 2757",
+        "S. 1996",
+        "H.R. 6718",
+        "H.R. 1",
+        "FY 2026 LHHS Appropriations Act",
+        "Early Hearing Detection and Intervention Program"
       ]
     },
     {
@@ -636,12 +1067,21 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Mining and International Development",
+      "domains": [
+        "Mining and International Development"
+      ],
       "topics": [
         "mining",
         "appropriation",
         "loan",
         "grant"
-      ]
+      ],
+      "entities": [
+        "DOE",
+        "DOD",
+        "DFC"
+      ],
+      "legislation": []
     },
     {
       "id": 81562,
@@ -652,12 +1092,17 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Foreign Affairs",
+      "domains": [
+        "Foreign Affairs"
+      ],
       "topics": [
         "diplomatic support",
         "development finance",
         "hydro-electric project",
         "renewable energy"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81561,
@@ -667,8 +1112,22 @@
       "income": 130000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Defense",
+      "domains": [
+        "Defense",
+        "Firearms",
+        "Defense and International Relations"
+      ],
+      "topics": [
+        "defense industry",
+        "bilateral relationship",
+        "private sector partnership"
+      ],
+      "entities": [
+        "SEC",
+        "National Association of Ukrainian Defense Industry"
+      ],
+      "legislation": []
     },
     {
       "id": 81560,
@@ -678,8 +1137,15 @@
       "income": 40000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81559,
@@ -690,9 +1156,16 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
       "topics": [
         "memorial day parade",
         "funding"
+      ],
+      "entities": [],
+      "legislation": [
+        "NDAA"
       ]
     },
     {
@@ -703,8 +1176,13 @@
       "income": 40000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Homeland Security",
+      "domains": [
+        "Homeland Security"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81557,
@@ -714,8 +1192,19 @@
       "income": 30000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Government Issues",
+      "domains": [
+        "Government Issues",
+        "Trade and Procurement"
+      ],
+      "topics": [
+        "domestic content requirement",
+        "infrastructure procurement"
+      ],
+      "entities": [],
+      "legislation": [
+        "Build America, Buy America Act"
+      ]
     },
     {
       "id": 81556,
@@ -725,8 +1214,17 @@
       "income": 45000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [
+        "Department of Defense"
+      ],
+      "legislation": []
     },
     {
       "id": 81555,
@@ -736,8 +1234,16 @@
       "income": 20000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Law Enforcement",
+      "domains": [
+        "Law Enforcement",
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81554,
@@ -747,8 +1253,17 @@
       "income": 15000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Manufacturing",
+      "domains": [
+        "Manufacturing"
+      ],
+      "topics": [
+        "medicaid"
+      ],
+      "entities": [],
+      "legislation": [
+        "CHIPS"
+      ]
     },
     {
       "id": 81553,
@@ -758,8 +1273,15 @@
       "income": 15000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Government Issues",
+      "domains": [
+        "Government Issues",
+        "Veterans",
+        "Small Business"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81552,
@@ -769,8 +1291,19 @@
       "income": 30000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Homeland Security",
+      "domains": [
+        "Homeland Security",
+        "Intelligence"
+      ],
+      "topics": [
+        "cybersecurity",
+        "appropriation"
+      ],
+      "entities": [
+        "SEC"
+      ],
+      "legislation": []
     },
     {
       "id": 81551,
@@ -781,9 +1314,14 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Appropriations",
+      "domains": [
+        "Appropriations"
+      ],
       "topics": [
         "legislative initiative"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81550,
@@ -794,14 +1332,32 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Defense and National Security",
+      "domains": [
+        "Defense and National Security",
+        "Foreign Relations",
+        "Defense and Foreign Policy"
+      ],
       "topics": [
-        "budget",
         "nuclear weapon",
         "arms control",
+        "budget",
+        "foreign relation",
+        "non-proliferation",
         "nuclear non-proliferation",
         "diplomacy",
-        "foreign relation",
-        "nuclear policy"
+        "nuclear policy",
+        "missile defense",
+        "ground based strategic deterrent",
+        "sea-launched cruise missile-nuclear",
+        "warhead"
+      ],
+      "entities": [
+        "Department of Defense",
+        "Department of Energy",
+        "NATO"
+      ],
+      "legislation": [
+        "NDAA"
       ]
     },
     {
@@ -813,6 +1369,9 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Education",
+      "domains": [
+        "Education"
+      ],
       "topics": [
         "college access",
         "college affordability",
@@ -822,6 +1381,10 @@
         "data privacy",
         "free speech",
         "right to assembly"
+      ],
+      "entities": [],
+      "legislation": [
+        "Negotiated Rulemaking"
       ]
     },
     {
@@ -833,13 +1396,18 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
       "topics": [
         "biopharma manufacturing",
         "supply chain",
         "drug shortage",
         "technology advancement",
         "patient outcome"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81547,
@@ -850,11 +1418,16 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
       "topics": [
         "health technology quality",
         "healthcare coverage",
         "transparency"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81546,
@@ -865,12 +1438,17 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food"
+      ],
       "topics": [
         "appropriation",
         "school meal",
         "local food",
         "community eligibility"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81545,
@@ -881,11 +1459,18 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Economic Policy",
+      "domains": [
+        "Economic Policy"
+      ],
       "topics": [
         "economic development",
         "tax",
         "budget",
         "rum tax"
+      ],
+      "entities": [],
+      "legislation": [
+        "One Big Beautiful Bill"
       ]
     },
     {
@@ -897,11 +1482,18 @@
       "year": 2025,
       "quarter": 3,
       "domain": "Economic Policy",
+      "domains": [
+        "Economic Policy"
+      ],
       "topics": [
         "economic development",
         "tax",
         "budget",
         "rum tax"
+      ],
+      "entities": [],
+      "legislation": [
+        "One Big Beautiful Bill"
       ]
     },
     {
@@ -913,11 +1505,19 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Foreign Affairs",
+      "domains": [
+        "Foreign Affairs",
+        "Foreign Policy"
+      ],
       "topics": [
         "political prisoner",
         "extradition",
-        "prisoner exchange"
-      ]
+        "prisoner exchange",
+        "conflict-related detention",
+        "international law"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81543,
@@ -928,9 +1528,31 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Education",
+      "domains": [
+        "Education",
+        "Taxation",
+        "Science and Technology"
+      ],
       "topics": [
         "higher education",
-        "research funding"
+        "research funding",
+        "research cost",
+        "federal financial aid",
+        "federal work study",
+        "pell grant",
+        "public service loan forgiveness",
+        "college athletics",
+        "accreditation",
+        "federal research",
+        "regulatory compliance",
+        "federal support"
+      ],
+      "entities": [
+        "U.S. Congress"
+      ],
+      "legislation": [
+        "FY26",
+        "NDAA"
       ]
     },
     {
@@ -942,9 +1564,25 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Defense",
+      "domains": [
+        "Defense",
+        "Labor and Employment",
+        "Science and Technology"
+      ],
       "topics": [
         "appropriation",
-        "military funding"
+        "military funding",
+        "crane safety",
+        "tag line",
+        "grant access",
+        "funding"
+      ],
+      "entities": [
+        "Army National Guard",
+        "OSHA"
+      ],
+      "legislation": [
+        "SBIR"
       ]
     },
     {
@@ -956,6 +1594,9 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Foreign Relations",
+      "domains": [
+        "Foreign Relations"
+      ],
       "topics": [
         "transatlantic relation",
         "human rights",
@@ -964,6 +1605,24 @@
         "security assistance",
         "child abduction",
         "defense authorization"
+      ],
+      "entities": [
+        "NATO",
+        "EU"
+      ],
+      "legislation": [
+        "S. 1009",
+        "H.R. 2548",
+        "S. 1241",
+        "H.R. 1158",
+        "S.Res. 91",
+        "H.R. 36",
+        "S. 868",
+        "H.Res. 564",
+        "S.Res. 236",
+        "H.R. 5543",
+        "S. 2918",
+        "S. Rept. 119-39"
       ]
     },
     {
@@ -975,7 +1634,10 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81539,
@@ -986,11 +1648,22 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Financial Services",
+      "domains": [
+        "Financial Services",
+        "Finance",
+        "International Trade"
+      ],
       "topics": [
         "insurance regulation",
         "retirement product",
-        "pension risk transfer"
-      ]
+        "pension risk transfer",
+        "investment",
+        "multinational corporation",
+        "market access",
+        "multinational business operation"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81538,
@@ -1001,10 +1674,18 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Tax",
+      "domains": [
+        "Tax",
+        "Labor and Employment"
+      ],
       "topics": [
         "employment status",
-        "tax law"
-      ]
+        "tax law",
+        "labor classification",
+        "independent contractor"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81537,
@@ -1015,9 +1696,20 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Taxation",
+      "domains": [
+        "Taxation",
+        "Trade"
+      ],
       "topics": [
         "tax policy",
-        "reconciliation"
+        "reconciliation",
+        "tariff",
+        "food product",
+        "supply chain"
+      ],
+      "entities": [],
+      "legislation": [
+        "TCJA"
       ]
     },
     {
@@ -1028,8 +1720,13 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Health Issues",
+      "domains": [
+        "Health Issues"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81535,
@@ -1039,8 +1736,13 @@
       "income": 15000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Pharmacy",
+      "domains": [
+        "Pharmacy"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81534,
@@ -1050,8 +1752,13 @@
       "income": 0.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Health Issues",
+      "domains": [
+        "Health Issues"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81533,
@@ -1062,13 +1769,18 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Energy",
+      "domains": [
+        "Energy"
+      ],
       "topics": [
         "electric power",
         "pipeline",
         "industrial infrastructure",
         "telecommunications",
         "workforce development"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81532,
@@ -1079,12 +1791,23 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Labor and Employment",
+      "domains": [
+        "Labor and Employment",
+        "Taxation"
+      ],
       "topics": [
         "professional employer organization",
         "human resource benefit",
         "small business",
-        "medium business"
-      ]
+        "medium business",
+        "research and development tax credit",
+        "employee retention tax credit",
+        "payroll processing"
+      ],
+      "entities": [
+        "Congress"
+      ],
+      "legislation": []
     },
     {
       "id": 81531,
@@ -1095,13 +1818,25 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Alcohol Beverage Regulation",
+      "domains": [
+        "Alcohol Beverage Regulation",
+        "Taxation",
+        "Transportation"
+      ],
       "topics": [
         "alcohol regulation",
         "tax differentiation",
         "cannabis",
         "hemp",
         "beer",
-        "liquor"
+        "liquor",
+        "tax cut",
+        "beer transportation"
+      ],
+      "entities": [],
+      "legislation": [
+        "Tax Cuts and Jobs Act",
+        "H.R. 1707"
       ]
     },
     {
@@ -1113,10 +1848,15 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Economic Development",
+      "domains": [
+        "Economic Development"
+      ],
       "topics": [
         "economic development",
         "community affairs"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81529,
@@ -1127,10 +1867,15 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
       "topics": [
         "electric vehicle infrastructure",
         "mobility implementation"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81528,
@@ -1140,8 +1885,18 @@
       "income": 10000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Media/Publishing",
+      "domains": [
+        "Media/Publishing",
+        "Utilities"
+      ],
+      "topics": [
+        "infrastructure"
+      ],
+      "entities": [
+        "Department of Labor"
+      ],
+      "legislation": []
     },
     {
       "id": 81527,
@@ -1151,8 +1906,19 @@
       "income": 10000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Economics",
+      "domains": [
+        "Economics",
+        "Utilities",
+        "Government Issues"
+      ],
+      "topics": [
+        "infrastructure"
+      ],
+      "entities": [
+        "IRS"
+      ],
+      "legislation": []
     },
     {
       "id": 81526,
@@ -1162,8 +1928,15 @@
       "income": 10000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Aviation",
+      "domains": [
+        "Aviation"
+      ],
+      "topics": [
+        "infrastructure"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81525,
@@ -1173,8 +1946,16 @@
       "income": 10000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Disaster Planning",
+      "domains": [
+        "Disaster Planning",
+        "Aviation"
+      ],
+      "topics": [
+        "procurement"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81524,
@@ -1184,8 +1965,17 @@
       "income": 10000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Economics",
+      "domains": [
+        "Economics",
+        "Infrastructure"
+      ],
+      "topics": [
+        "shoreline improvement",
+        "transportation infrastructure"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81523,
@@ -1195,8 +1985,14 @@
       "income": 10000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Clean Air & Water",
+      "domains": [
+        "Clean Air & Water",
+        "Economics"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81522,
@@ -1206,8 +2002,16 @@
       "income": 15000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Roads/Highway",
+      "domains": [
+        "Roads/Highway",
+        "Disaster Planning"
+      ],
+      "topics": [
+        "infrastructure"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81521,
@@ -1218,13 +2022,21 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Economic Development and Infrastructure",
+      "domains": [
+        "Economic Development and Infrastructure",
+        "Clean Air & Water",
+        "Housing"
+      ],
       "topics": [
         "stem initiative",
         "emergency response",
         "economic development",
         "community affairs",
-        "water infrastructure"
-      ]
+        "water infrastructure",
+        "infrastructure"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81520,
@@ -1235,7 +2047,10 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81519,
@@ -1245,8 +2060,15 @@
       "income": 10000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "infrastructure"
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81518,
@@ -1257,10 +2079,15 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Veterans Affairs",
+      "domains": [
+        "Veterans Affairs"
+      ],
       "topics": [
         "workforce development",
         "career placement"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81517,
@@ -1270,8 +2097,19 @@
       "income": 20000.0,
       "year": 2025,
       "quarter": 4,
-      "domain": null,
-      "topics": []
+      "domain": "Economics",
+      "domains": [
+        "Economics",
+        "Housing",
+        "Indian/Native American"
+      ],
+      "topics": [
+        "workforce development"
+      ],
+      "entities": [
+        "IRS"
+      ],
+      "legislation": []
     },
     {
       "id": 81516,
@@ -1282,10 +2120,17 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
       "topics": [
         "economic assistance",
         "agricultural worker reform",
         "free market trade"
+      ],
+      "entities": [],
+      "legislation": [
+        "2025/2026 Farm Bill 2.0"
       ]
     },
     {
@@ -1297,10 +2142,15 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Consumer Protection",
+      "domains": [
+        "Consumer Protection"
+      ],
       "topics": [
         "kratom",
         "consumer access"
-      ]
+      ],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 81514,
@@ -1311,10 +2161,19 @@
       "year": 2025,
       "quarter": 4,
       "domain": "Justice and Labor",
+      "domains": [
+        "Justice and Labor"
+      ],
       "topics": [
         "federal detention facility",
         "job corps program"
-      ]
+      ],
+      "entities": [
+        "BOP",
+        "U.S. Marshals Service",
+        "DOJ"
+      ],
+      "legislation": []
     },
     {
       "id": 81513,
@@ -1325,7 +2184,5342 @@
       "year": 2025,
       "quarter": 4,
       "domain": null,
-      "topics": []
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81512,
+      "date": "2026-01-30T10:32:56-05:00",
+      "client": "MONUMENT STRATEGIES, LLC",
+      "registrant": "THE ROYER LAW FIRM (FORMERLY ROYER & BROOKS)",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81511,
+      "date": "2026-01-30T10:30:14-05:00",
+      "client": "TRADE EXCHANGE OF AMERICA",
+      "registrant": "THE ROYER LAW FIRM (FORMERLY ROYER & BROOKS)",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81510,
+      "date": "2026-01-30T10:28:35-05:00",
+      "client": "RENT-A-CENTER",
+      "registrant": "THE ROYER LAW FIRM (FORMERLY ROYER & BROOKS)",
+      "income": 50000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81508,
+      "date": "2026-01-30T10:27:22-05:00",
+      "client": "FEDERAL HOME LOAN BANK OF NEW YORK",
+      "registrant": "THE ROYER LAW FIRM (FORMERLY ROYER & BROOKS)",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81509,
+      "date": "2026-01-30T10:27:22-05:00",
+      "client": "ENVISION STRATEGY ON BEHALF OF HEALTHCARE ASSOCIATION OF NEW YORK STATE, INC.",
+      "registrant": "MCB CONSULTING, INC.",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "medicaid",
+        "medicare",
+        "hospital",
+        "healthcare regulation"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81507,
+      "date": "2026-01-30T10:26:46-05:00",
+      "client": "ENVISION STRATEGY, LLC ON BEHALF OF AFFF LITIGATION CORPORATION",
+      "registrant": "MCB CONSULTING, INC.",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81506,
+      "date": "2026-01-30T10:25:37-05:00",
+      "client": "VINEYARD OFFSHORE, LLC",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy/Nuclear",
+      "domains": [
+        "Energy/Nuclear"
+      ],
+      "topics": [
+        "renewable energy"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81505,
+      "date": "2026-01-30T10:25:13-05:00",
+      "client": "SARATOGA COUNTY, NY",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Government Affairs",
+      "domains": [
+        "Government Affairs"
+      ],
+      "topics": [
+        "local government program",
+        "clean water",
+        "historic preservation",
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81504,
+      "date": "2026-01-30T10:24:41-05:00",
+      "client": "AFFF LITIGATION CORPORATION",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 40000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81503,
+      "date": "2026-01-30T10:24:10-05:00",
+      "client": "ELLIS HOSPITAL",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 50000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "medicare",
+        "medicaid",
+        "budget",
+        "medical education",
+        "hospital funding"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81502,
+      "date": "2026-01-30T10:23:44-05:00",
+      "client": "CHILDRENS LAW CENTER OF CALIFORNIA",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Family/Abortion",
+      "domains": [
+        "Family/Abortion"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81501,
+      "date": "2026-01-30T10:23:16-05:00",
+      "client": "AVAYA GOVERNMENT SOLUTIONS",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Telecommunications",
+      "domains": [
+        "Telecommunications"
+      ],
+      "topics": [
+        "spectrum",
+        "accessibility",
+        "citizen services delivery",
+        "emergency communication"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81500,
+      "date": "2026-01-30T10:22:44-05:00",
+      "client": "FT. TICONDEROGA",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Historic Preservation",
+      "domains": [
+        "Historic Preservation"
+      ],
+      "topics": [
+        "semi-sesquintennial programming",
+        "battlefield protection",
+        "interior appropriation"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81499,
+      "date": "2026-01-30T10:21:50-05:00",
+      "client": "HEALTHCARE ASSOCIATION OF NEW YORK STATE, INC.",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Medicare/Medicaid",
+      "domains": [
+        "Medicare/Medicaid"
+      ],
+      "topics": [
+        "medicaid",
+        "medicare"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81498,
+      "date": "2026-01-30T10:20:53-05:00",
+      "client": "NEW YORK ROAD AND INFRASTRUCTURE COALITION",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Roads/Highway",
+      "domains": [
+        "Roads/Highway"
+      ],
+      "topics": [
+        "infrastructure",
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81497,
+      "date": "2026-01-30T10:20:26-05:00",
+      "client": "HOME CARE ASSOCIATION OF NEW YORK",
+      "registrant": "ENVISION STRATEGY, LLC",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81496,
+      "date": "2026-01-30T09:34:58-05:00",
+      "client": "ADVOCATES FOR MULTI-USE OF PUBLIC LANDS",
+      "registrant": "BIGHORN PUBLIC AFFAIRS GROUP",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Natural Resources",
+      "domains": [
+        "Natural Resources"
+      ],
+      "topics": [
+        "conservation",
+        "recreation",
+        "federal land"
+      ],
+      "entities": [
+        "USFS"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81495,
+      "date": "2026-01-30T09:33:54-05:00",
+      "client": "RED RIVER WATERSHED MANAGEMENT BOARD",
+      "registrant": "BIGHORN PUBLIC AFFAIRS GROUP",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Government Appropriations",
+      "domains": [
+        "Government Appropriations"
+      ],
+      "topics": [
+        "homeland security",
+        "energy",
+        "water"
+      ],
+      "entities": [
+        "Senate"
+      ],
+      "legislation": [
+        "FY2026 Homeland Security Appropriations",
+        "FY2026 Energy and Water Appropriations"
+      ]
+    },
+    {
+      "id": 81494,
+      "date": "2026-01-30T09:32:10-05:00",
+      "client": "DIVERSIFIED ENERGY COMPANY",
+      "registrant": "BIGHORN PUBLIC AFFAIRS GROUP",
+      "income": 40000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy",
+      "domains": [
+        "Energy"
+      ],
+      "topics": [
+        "natural gas production",
+        "natural gas marketing",
+        "natural gas transport",
+        "well retirement",
+        "liquid natural gas",
+        "natural gas liquid"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 61766,
+      "date": "2026-01-30T09:20:44-05:00",
+      "client": "LET EXPERIENCED PILOTS FLY",
+      "registrant": "BLUE TUSK COMMUNICATIONS",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 3,
+      "domain": "Aviation",
+      "domains": [
+        "Aviation"
+      ],
+      "topics": [
+        "commercial pilot age requirement"
+      ],
+      "entities": [
+        "Congress"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 61765,
+      "date": "2026-01-30T09:13:24-05:00",
+      "client": "RED ONE MEDICAL",
+      "registrant": "BLUE TUSK COMMUNICATIONS",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "medical management system"
+      ],
+      "entities": [
+        "Congress",
+        "VA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81493,
+      "date": "2026-01-30T09:11:20-05:00",
+      "client": "QUANTA SERVICES, INC.",
+      "registrant": "BIGHORN PUBLIC AFFAIRS GROUP",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Natural Resources",
+      "domains": [
+        "Natural Resources",
+        "Energy"
+      ],
+      "topics": [
+        "forest management",
+        "aerial firefighting",
+        "electric power",
+        "pipeline",
+        "industrial industry",
+        "communications industry",
+        "disaster repair",
+        "transmission and distribution infrastructure",
+        "utility",
+        "hurricane recovery",
+        "mitigation",
+        "permitting reform"
+      ],
+      "entities": [
+        "USFS"
+      ],
+      "legislation": [
+        "H.R. 471",
+        "S. 160",
+        "H.R. 4776"
+      ]
+    },
+    {
+      "id": 81492,
+      "date": "2026-01-30T09:07:18-05:00",
+      "client": "AMERICAN MAGNESIUM, LLC",
+      "registrant": "BIGHORN PUBLIC AFFAIRS GROUP",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Natural Resources",
+      "domains": [
+        "Natural Resources"
+      ],
+      "topics": [
+        "national monument",
+        "critical mineral",
+        "mining"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81491,
+      "date": "2026-01-30T09:04:09-05:00",
+      "client": "DRY-REDWATER REGIONAL WATER AUTHORITY",
+      "registrant": "BIGHORN PUBLIC AFFAIRS GROUP",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Clean Air & Water",
+      "domains": [
+        "Clean Air & Water",
+        "Energy and Water"
+      ],
+      "topics": [
+        "appropriation",
+        "energy",
+        "water"
+      ],
+      "entities": [
+        "Senate"
+      ],
+      "legislation": [
+        "FY2026 Energy and Water Appropriations"
+      ]
+    },
+    {
+      "id": 81490,
+      "date": "2026-01-30T09:02:23-05:00",
+      "client": "SUBCOM",
+      "registrant": "SUNUNU ENTERPRISES LLC",
+      "income": 45000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Taxation and Maritime Policy",
+      "domains": [
+        "Taxation and Maritime Policy",
+        "Taxation"
+      ],
+      "topics": [
+        "tonnage tax",
+        "undersea cable"
+      ],
+      "entities": [
+        "SEC"
+      ],
+      "legislation": [
+        "26 U.S.C. 1355",
+        "H.R. 2503"
+      ]
+    },
+    {
+      "id": 81489,
+      "date": "2026-01-30T08:49:27-05:00",
+      "client": "BAKERY, CONFECTIONERY, TOBACCO WORKERS AND GRAIN MILLERS INTERNATIONAL UNION",
+      "registrant": "BAKERY, CONFECTIONERY, TOBACCO WORKERS AND GRAIN MILLERS INTERNATIONAL UNION",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Labor and Employment",
+      "domains": [
+        "Labor and Employment",
+        "Tariff/Imports"
+      ],
+      "topics": [
+        "heat stress",
+        "labor rights",
+        "unionization",
+        "tariff",
+        "occupational safety",
+        "workplace health",
+        "federal funding"
+      ],
+      "entities": [
+        "OSHA",
+        "NIOSH",
+        "DOL"
+      ],
+      "legislation": [
+        "S. 567"
+      ]
+    },
+    {
+      "id": 81488,
+      "date": "2026-01-30T08:44:20-05:00",
+      "client": "FINANCIAL SERVICES FORUM",
+      "registrant": "FINANCIAL SERVICES FORUM",
+      "income": 630000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Financial Services",
+      "domains": [
+        "Financial Services"
+      ],
+      "topics": [
+        "capital standard",
+        "liquidity standard",
+        "risk-based capital requirement",
+        "leverage capital requirement",
+        "capital surcharge",
+        "global systemically important bank",
+        "basel iii finalization",
+        "nonbank regulation",
+        "stress testing",
+        "bank supervision",
+        "payment stablecoin",
+        "digital asset market structure"
+      ],
+      "entities": [
+        "Federal Reserve"
+      ],
+      "legislation": [
+        "S. 394",
+        "H.R. 3633",
+        "S. 2999",
+        "H.R. 5270"
+      ]
+    },
+    {
+      "id": 81487,
+      "date": "2026-01-30T01:09:42-05:00",
+      "client": "CITY OF HITCHCOCK ECONOMIC DEVELOPMENT CORPORATION",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81486,
+      "date": "2026-01-30T01:05:57-05:00",
+      "client": "CAPITAL CORE GROUP, INC., ON BEHALF OF PARADISE IRRIGATION DISTRICT",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 5000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Emergency Management",
+      "domains": [
+        "Emergency Management",
+        "Appropriations"
+      ],
+      "topics": [
+        "disaster recovery",
+        "homeland security",
+        "commerce",
+        "justice",
+        "science",
+        "energy",
+        "water development",
+        "interior",
+        "environment",
+        "hazard mitigation grant",
+        "funding",
+        "water resource development"
+      ],
+      "entities": [
+        "FEMA"
+      ],
+      "legislation": [
+        "H.R. 4669",
+        "Water Resources Development Act",
+        "H.R. 4213",
+        "H.R. 6938",
+        "H.R. 7148"
+      ]
+    },
+    {
+      "id": 81485,
+      "date": "2026-01-29T23:43:21-05:00",
+      "client": "NATIONAL VOLUNTEER FIRE COUNCIL",
+      "registrant": "NATIONAL VOLUNTEER FIRE COUNCIL",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Labor and Employment",
+      "domains": [
+        "Labor and Employment",
+        "Copyright/Patent/Trademark",
+        "Transportation and Infrastructure"
+      ],
+      "topics": [
+        "firefighter grant",
+        "lithium-ion battery",
+        "fire sprinkler",
+        "emergency response staffing",
+        "urban search and rescue",
+        "emergency medical service",
+        "fire safety",
+        "building code",
+        "wildfire prevention",
+        "fire station construction",
+        "public housing",
+        "personal protective technology"
+      ],
+      "entities": [
+        "United States Fire Administration",
+        "HUD",
+        "DHS",
+        "FEMA",
+        "National Fire Academy",
+        "NIOSH",
+        "National Personal Protective Technology Laboratory",
+        "World Trade Center Health Program",
+        "OSHA",
+        "PHMSA",
+        "Department of Homeland Security",
+        "NHTSA"
+      ],
+      "legislation": [
+        "H.R. 4213",
+        "H.R. 4754",
+        "S. 2431",
+        "H.R. 4552",
+        "S. 2465",
+        "H.R. 973",
+        "S. 389",
+        "H.R. 3791",
+        "H.R. 4009",
+        "Executive Order 13976",
+        "H.R. 5304",
+        "S. 2587"
+      ]
+    },
+    {
+      "id": 81484,
+      "date": "2026-01-29T23:01:40-05:00",
+      "client": "ENCORE ENERGY CORP.",
+      "registrant": "MR. ROBERT K WEIDNER",
+      "income": 21000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy and Natural Resources",
+      "domains": [
+        "Energy and Natural Resources",
+        "Energy/Nuclear"
+      ],
+      "topics": [
+        "uranium mining",
+        "nuclear power generation",
+        "import"
+      ],
+      "entities": [],
+      "legislation": [
+        "1872 Mining Law"
+      ]
+    },
+    {
+      "id": 81483,
+      "date": "2026-01-29T22:59:07-05:00",
+      "client": "MAMMOTH LAKES, CALIFORNIA",
+      "registrant": "MR. ROBERT K WEIDNER",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Waste/Hazardous",
+      "domains": [
+        "Waste/Hazardous"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81482,
+      "date": "2026-01-29T22:58:01-05:00",
+      "client": "AMERICAN CLEAN ENERGY RESOURCES TRUST (ACERT)",
+      "registrant": "MR. ROBERT K WEIDNER",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81481,
+      "date": "2026-01-29T22:56:50-05:00",
+      "client": "RPLCC",
+      "registrant": "MR. ROBERT K WEIDNER",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Natural Resources",
+      "domains": [
+        "Natural Resources"
+      ],
+      "topics": [
+        "rural school funding",
+        "payment in lieu of taxes",
+        "mining",
+        "wild horse",
+        "burro",
+        "forest management",
+        "livestock grazing",
+        "hardrock mining"
+      ],
+      "entities": [],
+      "legislation": [
+        "Wild and Free-Roaming Horses and Burros Act of 1971",
+        "Secure Rural Schools and Community Self-Determination Act",
+        "Mining Law of 1872"
+      ]
+    },
+    {
+      "id": 81480,
+      "date": "2026-01-29T19:35:12-05:00",
+      "client": "VACCINATE YOUR FAMILY",
+      "registrant": "VACCINATE YOUR FAMILY",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "immunization program",
+        "community health worker",
+        "medicaid payment model",
+        "medicare payment model",
+        "federally qualified health center",
+        "rural health clinic",
+        "vaccine coverage",
+        "vaccine injury compensation"
+      ],
+      "entities": [
+        "CDC"
+      ],
+      "legislation": [
+        "Section 317",
+        "H.R. 5448",
+        "S. 2857",
+        "Vaccine Injury Compensation Program"
+      ]
+    },
+    {
+      "id": 81479,
+      "date": "2026-01-29T18:13:55-05:00",
+      "client": "THE CORMAC GROUP OBO THE BELL LEGAL GROUP",
+      "registrant": "MR. DANIEL WEISS",
+      "income": 5000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Veterans",
+      "domains": [
+        "Veterans"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": [
+        "Ensuring Justice for Camp Lejuene Victims"
+      ]
+    },
+    {
+      "id": 81478,
+      "date": "2026-01-29T18:10:52-05:00",
+      "client": "COMMON SENSE MEDIA",
+      "registrant": "COMMON SENSE MEDIA",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "artificial intelligence",
+        "law enforcement",
+        "online safety",
+        "social media"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81477,
+      "date": "2026-01-29T16:54:19-05:00",
+      "client": "PRESERVATION ACTION",
+      "registrant": "PRESERVATION ACTION",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Historic Preservation",
+      "domains": [
+        "Historic Preservation",
+        "Taxation",
+        "Cultural and Historic Preservation"
+      ],
+      "topics": [
+        "historic preservation fund",
+        "funding release",
+        "consultation process",
+        "rehabilitation tax credit",
+        "historic preservation easement",
+        "historic preservation",
+        "cultural program",
+        "national heritage area",
+        "arts funding",
+        "humanities funding"
+      ],
+      "entities": [
+        "National Park Service",
+        "National Endowment for the Arts",
+        "National Endowment for the Humanities",
+        "Advisory Council on Historic Preservation"
+      ],
+      "legislation": [
+        "H.R. 3418",
+        "National Historic Preservation Act",
+        "Section 106",
+        "H.R. 2941",
+        "S. 1459",
+        "Historic Preservation Fund"
+      ]
+    },
+    {
+      "id": 81476,
+      "date": "2026-01-29T16:52:46-05:00",
+      "client": "COMPUTER & COMMUNICATIONS INDUSTRY ASSOCIATION",
+      "registrant": "MR. JONATHAN BAND",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Intellectual Property",
+      "domains": [
+        "Intellectual Property"
+      ],
+      "topics": [
+        "copyright",
+        "internet",
+        "technology company",
+        "artificial intelligence"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81475,
+      "date": "2026-01-29T16:51:29-05:00",
+      "client": "LIBRARY COPYRIGHT ALLIANCE",
+      "registrant": "MR. JONATHAN BAND",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Intellectual Property",
+      "domains": [
+        "Intellectual Property"
+      ],
+      "topics": [
+        "copyright",
+        "library",
+        "artificial intelligence"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81474,
+      "date": "2026-01-29T15:37:43-05:00",
+      "client": "UPSTREAM USA",
+      "registrant": "UPSTREAM USA",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "contraception",
+        "medicare coverage",
+        "disability",
+        "health insurance"
+      ],
+      "entities": [
+        "Senator Maggie Hassan's office",
+        "Medicare",
+        "Medicaid"
+      ],
+      "legislation": [
+        "S. 3560",
+        "Affordable Care Act"
+      ]
+    },
+    {
+      "id": 81473,
+      "date": "2026-01-29T15:30:58-05:00",
+      "client": "T-MOBILE USA, INC.",
+      "registrant": "HOLLIS PUBLIC AFFAIRS",
+      "income": 50000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Telecommunications",
+      "domains": [
+        "Telecommunications"
+      ],
+      "topics": [
+        "broadband industry practice",
+        "spectrum management"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81472,
+      "date": "2026-01-29T15:23:27-05:00",
+      "client": "JETBLUE AIRWAYS CORPORATION",
+      "registrant": "HOLLIS PUBLIC AFFAIRS",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "air traffic control funding",
+        "commercial aviation finance"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81471,
+      "date": "2026-01-29T14:51:07-05:00",
+      "client": "THORN RUN PARTNERS ON BEHALF OF CLEMSON UNIVERSITY",
+      "registrant": "CDB PROJX LLC",
+      "income": 12000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense",
+      "domains": [
+        "Defense",
+        "Energy/Nuclear"
+      ],
+      "topics": [
+        "directed energy laser",
+        "autonomous ground vehicle",
+        "combat vehicle",
+        "hypersonic vehicle",
+        "thermal protection"
+      ],
+      "entities": [
+        "Army",
+        "DoD",
+        "Air Force",
+        "House",
+        "Senate",
+        "Department of Energy"
+      ],
+      "legislation": [
+        "FY 26 House Appropriations bill",
+        "FY 26 Senate Appropriations bill",
+        "FY26 NDAA"
+      ]
+    },
+    {
+      "id": 81470,
+      "date": "2026-01-29T14:48:16-05:00",
+      "client": "SANTA BARBARA COUNTY ASSOCIATION OF GOVERNMENTS",
+      "registrant": "THOMAS WALTERS & ASSOCIATES, INC.",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Telecommunications"
+      ],
+      "topics": [
+        "zero-emission vehicle",
+        "community project funding",
+        "congressionally directed spending",
+        "broadband",
+        "infrastructure",
+        "grant funding"
+      ],
+      "entities": [],
+      "legislation": [
+        "FY 2026 Transportation, Housing and Urban Development Appropriations Act"
+      ]
+    },
+    {
+      "id": 81469,
+      "date": "2026-01-29T14:46:58-05:00",
+      "client": "COUNTY OF SANTA BARBARA",
+      "registrant": "THOMAS WALTERS & ASSOCIATES, INC.",
+      "income": 24000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Government Appropriations and Policy",
+      "domains": [
+        "Government Appropriations and Policy"
+      ],
+      "topics": [
+        "community project funding",
+        "congressionally directed spending",
+        "nutrition funding",
+        "pest detection",
+        "pest prevention",
+        "security grant",
+        "behavioral health treatment",
+        "federally qualified health center",
+        "payment in lieu of taxes",
+        "law enforcement assistance",
+        "air quality program",
+        "land and water conservation"
+      ],
+      "entities": [
+        "HUD",
+        "FEMA",
+        "Army Corps of Engineers",
+        "EPA",
+        "National Endowment for the Arts",
+        "National Weather Service"
+      ],
+      "legislation": [
+        "2018 Farm Bill",
+        "Capital Fund Program",
+        "Community Development Block Grant",
+        "HOME Investment Partnerships",
+        "Increasing Behavioral Health Treatment Act",
+        "Energy and Water Appropriations Act",
+        "Interior, Environment and Related Agencies Appropriations Act",
+        "Land and Water Conservation Fund",
+        "Temporary Assistance for Needy Families",
+        "National Flood Insurance Program",
+        "Special Supplemental Nutrition Program for Women, Infants and Children (WIC",
+        "Labor, Health and Human Services funding"
+      ]
+    },
+    {
+      "id": 81468,
+      "date": "2026-01-29T14:46:38-05:00",
+      "client": "WATEREUSE",
+      "registrant": "WATEREUSE ASSOCIATION",
+      "income": 50000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Environment",
+      "domains": [
+        "Environment",
+        "Water Resources",
+        "Environment and Public Works"
+      ],
+      "topics": [
+        "water reuse",
+        "water recycling",
+        "per- and polyfluoroalkyl substance",
+        "clean water",
+        "water quality",
+        "drinking water",
+        "safe drinking water",
+        "investment tax credit",
+        "industrial water recycling",
+        "pfas",
+        "drinking water safety",
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": [
+        "Clean Water Act",
+        "Safe Drinking Water Act",
+        "H.R. 2940",
+        "Pilot Program for Alternative Water Source Grants",
+        "Title XVI Water Reuse Grants Program",
+        "Desalination and Water Purification Program",
+        "Clean Water State Revolving Fund",
+        "Drinking Water State Revolving Fund",
+        "Title XVI-WIIN Water Reuse Grants Program",
+        "Large-Scale Water Recycling Projects Competitive Grants Program"
+      ]
+    },
+    {
+      "id": 81467,
+      "date": "2026-01-29T14:45:43-05:00",
+      "client": "SWEETWATER AUTHORITY",
+      "registrant": "THOMAS WALTERS & ASSOCIATES, INC.",
+      "income": 6500.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Infrastructure",
+      "domains": [
+        "Infrastructure"
+      ],
+      "topics": [
+        "dam rehabilitation",
+        "water infrastructure",
+        "transboundary aquifer assessment"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81466,
+      "date": "2026-01-29T14:44:07-05:00",
+      "client": "MONTEREY SALINAS TRANSIT",
+      "registrant": "THOMAS WALTERS & ASSOCIATES, INC.",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "infrastructure grant",
+        "appropriation",
+        "community project funding",
+        "hydrogen facility",
+        "zero-emission vehicle",
+        "bus facility",
+        "capital investment grant"
+      ],
+      "entities": [
+        "FTA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81465,
+      "date": "2026-01-29T14:43:07-05:00",
+      "client": "STARFIGHTERS SPACE",
+      "registrant": "RYAN STRATEGIC LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Aerospace",
+      "domains": [
+        "Aerospace"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81464,
+      "date": "2026-01-29T14:41:49-05:00",
+      "client": "COUNTY OF VENTURA",
+      "registrant": "THOMAS WALTERS & ASSOCIATES, INC.",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Government Appropriations and Social Policy",
+      "domains": [
+        "Government Appropriations and Social Policy"
+      ],
+      "topics": [
+        "budget reconciliation",
+        "nutrition",
+        "renewable fuel",
+        "disaster relief",
+        "community project funding",
+        "congressionally directed spending",
+        "pest detection",
+        "pest prevention",
+        "public housing",
+        "community development",
+        "security grant",
+        "behavioral health"
+      ],
+      "entities": [
+        "FEMA",
+        "HUD",
+        "EPA",
+        "Army Corps of Engineers",
+        "National Endowment for the Arts"
+      ],
+      "legislation": [
+        "H.R. 1",
+        "H.R. 4022",
+        "2018 Farm Bill",
+        "FY 2026 Energy and Water Appropriations Act",
+        "FY 2026 Interior, Environment and Related Agencies Appropriations Act",
+        "Capital Fund Program",
+        "Community Development Block Grant",
+        "HOME Investment Partnerships program",
+        "Payments in Lieu of Taxes program",
+        "Land and Water Conservation Fund",
+        "Temporary Assistance for Needy Families",
+        "National Flood Insurance Program"
+      ]
+    },
+    {
+      "id": 81463,
+      "date": "2026-01-29T14:39:51-05:00",
+      "client": "CLEMSON UNIVERSITY",
+      "registrant": "CDB PROJX LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education"
+      ],
+      "topics": [
+        "pell grant",
+        "name image likeness",
+        "veterinary school"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81462,
+      "date": "2026-01-29T14:22:21-05:00",
+      "client": "CROPLIFE AMERICA",
+      "registrant": "CROPLIFE AMERICA",
+      "income": 1053903.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture",
+        "Natural Resources",
+        "Tariff/Imports"
+      ],
+      "topics": [
+        "pesticide",
+        "pesticide registration",
+        "environmental review",
+        "food safety",
+        "crop protection chemical",
+        "chemical approval",
+        "tariff",
+        "endangered species",
+        "fungicide",
+        "rodenticide",
+        "appropriation",
+        "codex funding"
+      ],
+      "entities": [
+        "EPA",
+        "FDA",
+        "Department of Agriculture"
+      ],
+      "legislation": [
+        "Pesticide Registration Improvement Act",
+        "Farm Bill",
+        "Federal Insecticide, Fungicide, and Rodenticide Act",
+        "Amendments to the Endangered Species",
+        "Endangered Species Act",
+        "Federal Insecticide, Fungicide and Rodenticide Act",
+        "FY 25 Interior, Environment and Related Agencies appropriations",
+        "FY 26 Interior, Environment and Related Agencies appropriations",
+        "FY 25 Agriculture Appropriation",
+        "FY 26 Agriculture Appropriation",
+        "H.R. 1968"
+      ]
+    },
+    {
+      "id": 81461,
+      "date": "2026-01-29T14:22:19-05:00",
+      "client": "PRIMACY STRATEGY GROUP",
+      "registrant": "DAVID CARLUCCI CONSULTING",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education"
+      ],
+      "topics": [
+        "apprenticeship",
+        "higher education"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 4588",
+        "S. 2028"
+      ]
+    },
+    {
+      "id": 81460,
+      "date": "2026-01-29T14:20:30-05:00",
+      "client": "CROPLIFE AMERICA",
+      "registrant": "CROPLIFE AMERICA",
+      "income": 1053903.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture",
+        "Agriculture and Environment",
+        "Environment"
+      ],
+      "topics": [
+        "pesticide",
+        "pesticide registration",
+        "endangered species",
+        "fungicide",
+        "rodenticide",
+        "appropriation",
+        "food standard",
+        "environmental review",
+        "food safety",
+        "crop protection chemical",
+        "chemical approval",
+        "tariff"
+      ],
+      "entities": [
+        "EPA",
+        "Department of Agriculture",
+        "FDA"
+      ],
+      "legislation": [
+        "Farm Bill",
+        "Pesticide Registration Improvement Act",
+        "Endangered Species Act",
+        "Federal Insecticide, Fungicide and Rodenticide Act",
+        "FY 25 Interior, Environment and Related Agencies Appropriations Act",
+        "FY 26 Interior, Environment and Related Agencies Appropriations Act",
+        "FY 25 Agriculture Appropriation",
+        "FY 26 Agriculture Appropriation",
+        "H.R. 1968",
+        "Federal Insecticide, Fungicide, and Rodenticide Act",
+        "Amendments to the Endangered Species"
+      ]
+    },
+    {
+      "id": 81459,
+      "date": "2026-01-29T14:02:56-05:00",
+      "client": "ISSUE ONE",
+      "registrant": "ISSUE ONE",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Technology and Telecommunications",
+      "domains": [
+        "Technology and Telecommunications",
+        "Trade",
+        "Government Operations and Constitutional Law"
+      ],
+      "topics": [
+        "tariff",
+        "information sharing",
+        "power of the purse",
+        "emergency power",
+        "election worker protection",
+        "online safety",
+        "minor protection",
+        "social media",
+        "data privacy",
+        "personal data",
+        "mental health",
+        "warning label"
+      ],
+      "entities": [
+        "Congress",
+        "House",
+        "Senate",
+        "FTC",
+        "HHS",
+        "Surgeon General",
+        "House Administration Committee",
+        "United States Marshals Service",
+        "Election Assistance Commission",
+        "House Appropriations Committee",
+        "Senate Appropriations Committee",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "S. 1748",
+        "S. 1885",
+        "Cybersecurity Information Sharing Act of 2015",
+        "H.R. 6746",
+        "S. 3546",
+        "Section 230",
+        "S. 1272",
+        "Trade Review Act",
+        "Article I",
+        "H.R. 5106",
+        "S. 1873",
+        "H.R. 3607"
+      ]
+    },
+    {
+      "id": 81458,
+      "date": "2026-01-29T14:01:07-05:00",
+      "client": "SEEING MACHINES",
+      "registrant": "GRIFFIN STRATEGIES, LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Consumer Issues/Safety",
+      "domains": [
+        "Consumer Issues/Safety",
+        "Transportation"
+      ],
+      "topics": [
+        "appropriation",
+        "privacy",
+        "highway reauthorization",
+        "vehicle technology",
+        "data privacy"
+      ],
+      "entities": [
+        "HUD"
+      ],
+      "legislation": [
+        "HALT Act"
+      ]
+    },
+    {
+      "id": 81457,
+      "date": "2026-01-29T13:59:19-05:00",
+      "client": "SAFE KIDS WORLDWIDE",
+      "registrant": "GRIFFIN STRATEGIES, LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Budget/Appropriations",
+        "Consumer Issues/Safety"
+      ],
+      "topics": [
+        "child safety",
+        "highway reauthorization",
+        "transportation appropriation",
+        "appropriation"
+      ],
+      "entities": [
+        "Children's Safety Caucus",
+        "HUD"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81456,
+      "date": "2026-01-29T12:48:46-05:00",
+      "client": "COMMERCIAL SPACEFLIGHT FEDERATION",
+      "registrant": "COMMERCIAL SPACEFLIGHT FEDERATION",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Government Appropriations",
+      "domains": [
+        "Government Appropriations",
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "appropriation",
+        "aerospace",
+        "aviation",
+        "commerce"
+      ],
+      "entities": [
+        "NASA",
+        "FAA",
+        "DOC"
+      ],
+      "legislation": [
+        "FY2026 NASA Authorization"
+      ]
+    },
+    {
+      "id": 81455,
+      "date": "2026-01-29T12:15:52-05:00",
+      "client": "PLUMBING-HEATING-COOLING CONTRACTORS--NATIONAL ASSOCIATION",
+      "registrant": "PLUMBING-HEATING-COOLING CONTRACTORS--NATIONAL ASSOCIATION",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Appropriations",
+      "domains": [
+        "Appropriations",
+        "Chemicals/Toxics",
+        "Education"
+      ],
+      "topics": [
+        "labor",
+        "health and human services",
+        "energy",
+        "water",
+        "plumbing research funding",
+        "workforce development",
+        "oil and gas",
+        "lead mitigation",
+        "drinking water",
+        "indoor air quality",
+        "public building",
+        "pfas"
+      ],
+      "entities": [
+        "NIST"
+      ],
+      "legislation": [
+        "Refrigerants and AIM",
+        "Energy Choice",
+        "Infrastructure Improvement"
+      ]
+    },
+    {
+      "id": 81454,
+      "date": "2026-01-29T12:00:28-05:00",
+      "client": "UNIVERSITY OF NORTHERN IOWA",
+      "registrant": "UNIVERSITY OF NORTHERN IOWA",
+      "income": 5000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Economic Development",
+      "domains": [
+        "Economic Development",
+        "Defense and Manufacturing",
+        "Appropriations"
+      ],
+      "topics": [
+        "metalcasting",
+        "manufacturing technology",
+        "federal student aid",
+        "corrosion prevention",
+        "technology commercialization",
+        "rural economic development",
+        "additive manufacturing",
+        "investment casting",
+        "foundry program",
+        "industry 4.0",
+        "manufacturing",
+        "technology"
+      ],
+      "entities": [
+        "Defense Logistics Agency",
+        "America Makes",
+        "Department of Defense",
+        "DOD",
+        "EDA",
+        "USDA"
+      ],
+      "legislation": [
+        "Title IV",
+        "Small Business Innovation Research (SBIR) Program",
+        "Small Business Technology Transfer (STTR) Program",
+        "Higher Education Act",
+        "Title II"
+      ]
+    },
+    {
+      "id": 81453,
+      "date": "2026-01-29T11:53:21-05:00",
+      "client": "ANCIENT COIN COLLECTORS GUILD",
+      "registrant": "THE DLM GROUP",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Arts/Entertainment",
+      "domains": [
+        "Arts/Entertainment",
+        "Trade and Cultural Property"
+      ],
+      "topics": [
+        "numismatic material",
+        "cultural property",
+        "trade"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 595",
+        "Convention on Cultural Property Implementation Act"
+      ]
+    },
+    {
+      "id": 81452,
+      "date": "2026-01-29T11:52:07-05:00",
+      "client": "GLOBAL HERITAGE ALLIANCE, INC.",
+      "registrant": "THE DLM GROUP",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Foreign Relations",
+      "domains": [
+        "Foreign Relations"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81451,
+      "date": "2026-01-29T11:50:45-05:00",
+      "client": "GENESIS HEALTH CARE, INC.",
+      "registrant": "THE DLM GROUP",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Environment",
+      "domains": [
+        "Environment"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": [
+        "Monitor legislative"
+      ]
+    },
+    {
+      "id": 81450,
+      "date": "2026-01-29T11:49:07-05:00",
+      "client": "LONE STAR ANALYSIS (FKA LONE STAR AEROSPACE)",
+      "registrant": "THE DLM GROUP",
+      "income": 19500.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81449,
+      "date": "2026-01-29T11:45:18-05:00",
+      "client": "SPINA BIFIDA ASSOCIATION OF AMERICA",
+      "registrant": "SPINA BIFIDA ASSOCIATION OF AMERICA",
+      "income": 39793.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Media/Publishing"
+      ],
+      "topics": [
+        "appropriation",
+        "disability",
+        "health access",
+        "medical equipment",
+        "medication",
+        "research"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81448,
+      "date": "2026-01-29T10:57:18-05:00",
+      "client": "GIRL SCOUTS OF THE U.S.A.",
+      "registrant": "GIRL SCOUTS OF THE U.S.A.",
+      "income": 32279.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Finance and Government Operations",
+      "domains": [
+        "Finance and Government Operations",
+        "Education"
+      ],
+      "topics": [
+        "pension obligation",
+        "federal grant reform",
+        "charitable deduction",
+        "charitable tax provision",
+        "civics education funding",
+        "k-12 out of school time",
+        "internet safety"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81447,
+      "date": "2026-01-29T10:16:14-05:00",
+      "client": "CROHN'S & COLITIS FOUNDATION",
+      "registrant": "CROHN'S & COLITIS FOUNDATION",
+      "income": 40000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "medicaid",
+        "medical research",
+        "appropriation",
+        "patient copay",
+        "pharmacy benefit manager",
+        "tax credit",
+        "biosimilar",
+        "medicare reimbursement",
+        "ostomy supply"
+      ],
+      "entities": [
+        "NIH",
+        "CDC",
+        "DoD",
+        "CMS"
+      ],
+      "legislation": [
+        "H.R. 1",
+        "ACA",
+        "Help Ensure Lower Patient Copays Act",
+        "Accelerating Kids Access to Care Act",
+        "Pharmacy Benefit Manager Transparency Act",
+        "H.R. 5509",
+        "S. 2903",
+        "ACA Marketplace Integrity and Affordability Rule"
+      ]
+    },
+    {
+      "id": 81446,
+      "date": "2026-01-29T09:54:55-05:00",
+      "client": "AHRA: THE ASSOCIATION FOR MEDICAL IMAGING MANAGEMENT",
+      "registrant": "CAPITOL ASSOCIATES, INC.",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "radiology",
+        "tariff",
+        "medical imaging supply",
+        "medicare reimbursement",
+        "appropriate use criteria",
+        "prior authorization",
+        "price transparency"
+      ],
+      "entities": [],
+      "legislation": [
+        "Medicare Access to Radiology Care Act (MARCA",
+        "Medicare Access to Radiology Act",
+        "S. 1692"
+      ]
+    },
+    {
+      "id": 81445,
+      "date": "2026-01-29T09:54:02-05:00",
+      "client": "NATIONAL ASSOCIATION OF RURAL HEALTH CLINICS",
+      "registrant": "CAPITOL ASSOCIATES, INC.",
+      "income": 100000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "scope of practice",
+        "rural health clinic",
+        "telehealth reimbursement",
+        "medicare advantage",
+        "medicaid cut",
+        "tax relief",
+        "health professional scholarship",
+        "loan payment",
+        "critical access hospital designation",
+        "prior authorization",
+        "audiology",
+        "workforce development"
+      ],
+      "entities": [
+        "Congress",
+        "Medicare",
+        "Medicaid",
+        "Census Bureau"
+      ],
+      "legislation": [
+        "S. 1261",
+        "H.R. 1",
+        "H.R. 593",
+        "H.R. 771",
+        "H.R. 1317",
+        "H.R. 2433",
+        "H.R. 2757",
+        "S. 1816",
+        "H.R. 5145",
+        "H.R. 5217",
+        "H.R. 5198",
+        "H.R. 5199"
+      ]
+    },
+    {
+      "id": 81444,
+      "date": "2026-01-29T09:32:38-05:00",
+      "client": "INUPIAT COMMUNITY OF THE ARCTIC SLOPE",
+      "registrant": "GIIZHIK LAW PLLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Economics",
+      "domains": [
+        "Economics"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81443,
+      "date": "2026-01-29T09:31:25-05:00",
+      "client": "RED LAKE BAND OF CHIPPEWA INDIANS",
+      "registrant": "GIIZHIK LAW PLLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Native American Affairs",
+      "domains": [
+        "Native American Affairs"
+      ],
+      "topics": [
+        "tiwahe initiative",
+        "appropriation",
+        "public safety",
+        "tribal jurisdiction"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81442,
+      "date": "2026-01-29T09:29:57-05:00",
+      "client": "SHAKOPEE MDEWAKANTON SIOUX COMMUNITY",
+      "registrant": "GIIZHIK LAW PLLC",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture and Tribal Affairs",
+      "domains": [
+        "Agriculture and Tribal Affairs",
+        "Native American Affairs"
+      ],
+      "topics": [
+        "tribal self-governance",
+        "tribal labor sovereignty",
+        "gaming",
+        "labor sovereignty"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 1723",
+        "S. 1301",
+        "Farm Bill"
+      ]
+    },
+    {
+      "id": 81441,
+      "date": "2026-01-29T01:04:54-05:00",
+      "client": "NORTH AMERICAN SOCIETY FOR PEDIATRIC GASTROENTEROLOGY, HEPATOLOGY AND NUTRITION",
+      "registrant": "SUMMIT HEALTH CARE CONSULTING",
+      "income": 25500.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Immigration"
+      ],
+      "topics": [
+        "medical food",
+        "formula access",
+        "hepatitis c",
+        "pediatric indication",
+        "biologic product",
+        "inflammatory bowel disease",
+        "physician",
+        "nonimmigrant worker",
+        "entry restriction"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 5684",
+        "S. 3304",
+        "S. 1941",
+        "H-1B",
+        "Proclamation, Restriction on Entry of Certain Nonimmigrant Workers"
+      ]
+    },
+    {
+      "id": 81440,
+      "date": "2026-01-29T00:58:10-05:00",
+      "client": "AMERICAN SOCIETY FOR GASTROINTESTINAL ENDOSCOPY",
+      "registrant": "SUMMIT HEALTH CARE CONSULTING",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "medicare physician fee schedule",
+        "efficiency adjustment",
+        "practice expense site differential",
+        "wholesale acquisition cost",
+        "average sales price",
+        "biosimilar",
+        "medicare part b reimbursement"
+      ],
+      "entities": [
+        "CMS",
+        "Congress",
+        "Department of Health and Human Services"
+      ],
+      "legislation": [
+        "Section 1847A(c)(4) of the Social Security Act"
+      ]
+    },
+    {
+      "id": 81439,
+      "date": "2026-01-28T23:14:06-05:00",
+      "client": "1A SMART START LLC",
+      "registrant": "1A SMART START LLC",
+      "income": 40000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "impaired driving prevention",
+        "surface transportation re-authorization"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 2788"
+      ]
+    },
+    {
+      "id": 81438,
+      "date": "2026-01-28T19:05:04-05:00",
+      "client": "AMERICAN COLLEGE OF OSTEOPATHIC INTERNISTS",
+      "registrant": "SUMMIT HEALTH CARE CONSULTING",
+      "income": 21600.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Health"
+      ],
+      "topics": [
+        "medicare physician payment",
+        "efficiency adjustment",
+        "medical residency",
+        "osteopathic medical student training",
+        "medical education"
+      ],
+      "entities": [],
+      "legislation": [
+        "S. 2715",
+        "H.R. 2314",
+        "H.R. 3885"
+      ]
+    },
+    {
+      "id": 81437,
+      "date": "2026-01-28T18:59:47-05:00",
+      "client": "AMERICAN SOCIETY FOR NUCLEAR CARDIOLOGY",
+      "registrant": "SUMMIT HEALTH CARE CONSULTING",
+      "income": 22500.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "medicare physician payment",
+        "efficiency adjustment"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81436,
+      "date": "2026-01-28T18:48:13-05:00",
+      "client": "NATIONAL SMALL BUSINESS ASSOCIATION.",
+      "registrant": "JERE GLOVER",
+      "income": 6000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81435,
+      "date": "2026-01-28T18:40:17-05:00",
+      "client": "SANTEE SIOUX NATION",
+      "registrant": "STARZYK & ASSOCIATES, LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Native American Affairs",
+      "domains": [
+        "Native American Affairs"
+      ],
+      "topics": [
+        "indian country representation",
+        "project funding"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81434,
+      "date": "2026-01-28T18:39:07-05:00",
+      "client": "SOUTHERN UTE TRIBE OF COLORADO",
+      "registrant": "STARZYK & ASSOCIATES, LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Clean Air & Water",
+      "domains": [
+        "Clean Air & Water"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81433,
+      "date": "2026-01-28T18:37:56-05:00",
+      "client": "INDIAN PUEBLO CULTURAL CENTER",
+      "registrant": "STARZYK & ASSOCIATES, LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Indian/Native American",
+      "domains": [
+        "Indian/Native American"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81432,
+      "date": "2026-01-28T18:35:24-05:00",
+      "client": "PUEBLO OF SAN FELIPE",
+      "registrant": "STARZYK & ASSOCIATES, LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Native American Affairs",
+      "domains": [
+        "Native American Affairs"
+      ],
+      "topics": [
+        "gaming",
+        "economic development",
+        "sovereignty"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81431,
+      "date": "2026-01-28T18:33:38-05:00",
+      "client": "THE SETTER GROUP",
+      "registrant": "STARZYK & ASSOCIATES, LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Indian/Native American",
+      "domains": [
+        "Indian/Native American"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81430,
+      "date": "2026-01-28T17:15:15-05:00",
+      "client": "INTERNATIONAL SAFETY EQUIPMENT ASSOCIATION",
+      "registrant": "INTERNATIONAL SAFETY EQUIPMENT ASSOCIATION",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Labor and Employment",
+      "domains": [
+        "Labor and Employment"
+      ],
+      "topics": [
+        "regulatory update",
+        "respirator approval program",
+        "consensus standard",
+        "occupational safety",
+        "funding",
+        "national consensus standard"
+      ],
+      "entities": [
+        "OSHA",
+        "NIOSH"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81429,
+      "date": "2026-01-28T17:09:33-05:00",
+      "client": "HENKEL OF AMERICA INC.",
+      "registrant": "HENKEL OF AMERICA INC.",
+      "income": 160000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Environmental Regulation",
+      "domains": [
+        "Environmental Regulation",
+        "Manufacturing",
+        "Trade"
+      ],
+      "topics": [
+        "chemical safety",
+        "toxic substance control",
+        "product labeling",
+        "domestic manufacturing",
+        "tariff",
+        "clean energy tax incentive",
+        "foreign direct investment"
+      ],
+      "entities": [
+        "EPA"
+      ],
+      "legislation": [
+        "Toxic Substances Control Act",
+        "Safer Choice Program"
+      ]
+    },
+    {
+      "id": 81428,
+      "date": "2026-01-28T16:50:29-05:00",
+      "client": "MACRO BIOLOGICS, INC.",
+      "registrant": "GRASSROOTS POLITICAL CONSULTING LLC",
+      "income": 25000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare and Defense",
+      "domains": [
+        "Healthcare and Defense"
+      ],
+      "topics": [
+        "sepsis therapeutic",
+        "medical countermeasure",
+        "burn treatment",
+        "blast injury",
+        "chemical exposure",
+        "packaging technology"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81427,
+      "date": "2026-01-28T16:49:30-05:00",
+      "client": "SHERPA 6, INC.",
+      "registrant": "GRASSROOTS POLITICAL CONSULTING LLC",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense",
+      "domains": [
+        "Defense",
+        "Technology and Security"
+      ],
+      "topics": [
+        "situational awareness software",
+        "tactical assault kit",
+        "military procurement",
+        "tak ecosystem"
+      ],
+      "entities": [
+        "PEO Soldier",
+        "Army",
+        "US SOCOM",
+        "Congress",
+        "CBP",
+        "USSS"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81426,
+      "date": "2026-01-28T16:48:02-05:00",
+      "client": "MUSCULAR DYSTROPHY ASSOCIATION, INC.",
+      "registrant": "MUSCULAR DYSTROPHY ASSOCIATION, INC.",
+      "income": 250000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Transportation",
+        "Health Care"
+      ],
+      "topics": [
+        "amyotrophic lateral sclerosis",
+        "medical research",
+        "pediatric care",
+        "prescription drug user fee",
+        "aging in place",
+        "premium tax credit",
+        "appropriation",
+        "appropriations",
+        "pharmacy benefit manager",
+        "indirect cost",
+        "fshd",
+        "rare pediatric disease"
+      ],
+      "entities": [
+        "NIH",
+        "FDA",
+        "Senate Special Committee on Aging",
+        "Senate Appropriations Committee",
+        "Congress",
+        "Senate Finance Committee",
+        "CDC",
+        "House Appropriations Committee",
+        "Muscular Dystrophy Coordinating Committee",
+        "CMS",
+        "Department of Labor",
+        "Department of Health and Human Services"
+      ],
+      "legislation": [
+        "Accelerating Kids' Access to Care Act",
+        "Patient Access Act",
+        "ABC Act",
+        "Gives Kids a Chance Act",
+        "ACT for ALS",
+        "MVP Act",
+        "PDUFA VIII",
+        "Senate FY 2026 Labor, Health and Human Services, Education, and Related Agencies Appropriations Bill",
+        "Peer Reviewed Medical Research Program",
+        "HEARD Act",
+        "FAA Reauthorization Act of 2024",
+        "Rare Pediatric Disease PRV Program"
+      ]
+    },
+    {
+      "id": 81425,
+      "date": "2026-01-28T15:38:11-05:00",
+      "client": "PALLADYNE AI",
+      "registrant": "ATLANTIC STRATEGIES GROUP LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
+      "topics": [
+        "artificial intelligence",
+        "defense authorization",
+        "defense appropriation"
+      ],
+      "entities": [
+        "Congress"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81424,
+      "date": "2026-01-28T15:32:42-05:00",
+      "client": "REPUBLICAN JEWISH COALITION",
+      "registrant": "REPUBLICAN JEWISH COALITION",
+      "income": 100000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education",
+        "Foreign Policy",
+        "Veterans Affairs"
+      ],
+      "topics": [
+        "sanction",
+        "boycott",
+        "terrorism financing",
+        "international court",
+        "oligarch",
+        "religious heritage",
+        "fallen serviceman",
+        "memorial",
+        "holocaust era asset",
+        "art recovery",
+        "statute of limitations"
+      ],
+      "entities": [],
+      "legislation": [
+        "DETERRENT",
+        "H.R. 1048",
+        "S. 1296",
+        "H.R. 23",
+        "S. 224",
+        "H.R. 867",
+        "H.R. 348",
+        "H.R. 1710",
+        "S. 198",
+        "H.R. 2570",
+        "H.R. 1422",
+        "S. 556"
+      ]
+    },
+    {
+      "id": 81423,
+      "date": "2026-01-28T15:26:23-05:00",
+      "client": "JEWISH FEDERATIONS OF NORTH AMERICA",
+      "registrant": "THE JEWISH FEDERATIONS OF NORTH AMERICA",
+      "income": 217763.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Civil Rights",
+      "domains": [
+        "Civil Rights",
+        "Technology and Child Safety",
+        "Appropriations"
+      ],
+      "topics": [
+        "antisemitism",
+        "internet safety",
+        "minor protection",
+        "parental tool",
+        "labor",
+        "health",
+        "human services",
+        "education",
+        "preparedness grant",
+        "nonprofit security",
+        "law enforcement",
+        "security infrastructure"
+      ],
+      "entities": [
+        "Department of Labor",
+        "Department of Education",
+        "FEMA",
+        "Department of Homeland Security",
+        "DHS",
+        "HHS",
+        "Department of Health and Human Services"
+      ],
+      "legislation": [
+        "H.R. 4213",
+        "H.R. 1007",
+        "S. 558",
+        "H.R. 5360",
+        "H.R. 6499",
+        "H.R. 6289",
+        "H.R. 5304",
+        "S. 2947",
+        "H.R. 5645",
+        "Nonprofit Security Grant Program",
+        "H.R. 2540",
+        "S. 1234"
+      ]
+    },
+    {
+      "id": 81422,
+      "date": "2026-01-28T15:03:17-05:00",
+      "client": "MICHIGAN CREDIT UNION LEAGUE",
+      "registrant": "MICHIGAN CREDIT UNION LEAGUE",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Financial Services",
+      "domains": [
+        "Financial Services"
+      ],
+      "topics": [
+        "data security",
+        "consumer information",
+        "data breach notification",
+        "national data standard",
+        "state preemption",
+        "business loan",
+        "veteran",
+        "member business lending cap",
+        "board governance",
+        "housing finance",
+        "credit union tax status",
+        "tax exemption"
+      ],
+      "entities": [
+        "Congress",
+        "CDFI Fund",
+        "Bureau of Consumer Financial Protection"
+      ],
+      "legislation": [
+        "Federal Credit Union Act",
+        "S. 210",
+        "H.R. 507",
+        "S. 522",
+        "H.R. 975",
+        "budget reconciliation legislation",
+        "Dodd-Frank Wall Street Reform and Consumer Protection Act",
+        "Credit Card Competition Act",
+        "H.R. 3445",
+        "Durbin Amendment"
+      ]
+    },
+    {
+      "id": 81421,
+      "date": "2026-01-28T14:50:11-05:00",
+      "client": "SOCIETY OF CHEMICAL MANUFACTURERS & AFFILIATES",
+      "registrant": "SOCIETY OF CHEMICAL MANUFACTURERS & AFFILIATES",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Chemicals/Toxics",
+      "domains": [
+        "Chemicals/Toxics",
+        "Tariff/Imports",
+        "Manufacturing"
+      ],
+      "topics": [
+        "tariff",
+        "petrochemical manufacturing",
+        "specialty chemical manufacturing",
+        "permitting",
+        "small business impact",
+        "risk management plan",
+        "toxic substance control"
+      ],
+      "entities": [
+        "EPA"
+      ],
+      "legislation": [
+        "RMP",
+        "TSCA"
+      ]
+    },
+    {
+      "id": 81420,
+      "date": "2026-01-28T14:14:02-05:00",
+      "client": "NORTH AMERICAN EXPORT GRAIN ASSOCIATION",
+      "registrant": "NORTH AMERICAN EXPORT GRAIN ASSOCIATION",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
+      "topics": [
+        "market access",
+        "grain",
+        "oilseed",
+        "export sales reporting",
+        "user fee"
+      ],
+      "entities": [
+        "USDA",
+        "Foreign Agricultural Service",
+        "Federal Grain Inspection Service"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81419,
+      "date": "2026-01-28T14:00:29-05:00",
+      "client": "BROTHERHOOD OF MAINTENANCE OF WAY EMPLOYES DIVISION IBT",
+      "registrant": "BROTHERHOOD OF MAINTENANCE OF WAY EMPLOYES DIVISION, IBT",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Taxation",
+        "Retirement"
+      ],
+      "topics": [
+        "surface transportation",
+        "infrastructure investment",
+        "rail safety",
+        "grant",
+        "track inspection",
+        "overtime tax"
+      ],
+      "entities": [
+        "Railroad Retirement Board"
+      ],
+      "legislation": [
+        "H.R. 5475",
+        "Infrastructure Investment & Jobs Act (IIJA",
+        "H.R. 928",
+        "CRISI Grants"
+      ]
+    },
+    {
+      "id": 81418,
+      "date": "2026-01-28T13:50:05-05:00",
+      "client": "TRAVEL TECH: THE TRAVEL TECHNOLOGY ASSOCIATION",
+      "registrant": "TRAVEL TECH: THE TRAVEL TECHNOLOGY ASSOCIATION",
+      "income": 309000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation and Tourism",
+      "domains": [
+        "Transportation and Tourism",
+        "Technology and Telecommunications",
+        "Taxation"
+      ],
+      "topics": [
+        "transportation assistance",
+        "hotel fee transparency",
+        "online safety",
+        "artificial intelligence",
+        "pricing",
+        "data privacy",
+        "travel advisory",
+        "national defense",
+        "airline content distribution",
+        "airline competition",
+        "airline ticket sale"
+      ],
+      "entities": [],
+      "legislation": [
+        "S. 1218",
+        "S. 314",
+        "H.R. 1479",
+        "Section 230",
+        "Communications Decency Act",
+        "S. 1748",
+        "S. 2296",
+        "Amendment #3617",
+        "National Defense Authorization Act",
+        "Section 6203",
+        "FY 2026 National Defense Authorization Act",
+        "H.R. 5663"
+      ]
+    },
+    {
+      "id": 81417,
+      "date": "2026-01-28T13:35:49-05:00",
+      "client": "ISLAMIC RELIEF WORLDWIDE",
+      "registrant": "FAHMY HUDOME INTERNATIONAL, INC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Foreign Affairs",
+      "domains": [
+        "Foreign Affairs"
+      ],
+      "topics": [
+        "humanitarian aid",
+        "disaster relief"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81416,
+      "date": "2026-01-28T13:18:48-05:00",
+      "client": "AMERICA'S ESSENTIAL HOSPITALS",
+      "registrant": "EYMAN PARTNERS LLC (FKA EYMAN ASSOCIATES PC)",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "medicaid payment",
+        "drug discount",
+        "hospital funding",
+        "healthcare access"
+      ],
+      "entities": [],
+      "legislation": [
+        "340B Drug Discount Program"
+      ]
+    },
+    {
+      "id": 81415,
+      "date": "2026-01-28T13:07:41-05:00",
+      "client": "COWEN GROUP",
+      "registrant": "DC STRATEGIES GROUP, LLC",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Financial Institutions",
+      "domains": [
+        "Financial Institutions"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81414,
+      "date": "2026-01-28T12:06:47-05:00",
+      "client": "RENEWABLE FUELS ASSOCIATION",
+      "registrant": "RENEWABLE FUELS ASSOCIATION",
+      "income": 327152.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture and Energy",
+      "domains": [
+        "Agriculture and Energy",
+        "Energy",
+        "Taxation"
+      ],
+      "topics": [
+        "sustainable aviation fuel",
+        "biofuel production",
+        "feedstock price",
+        "feedstock availability",
+        "food price",
+        "food availability",
+        "agriculture",
+        "carbon emission",
+        "greenhouse gas emission",
+        "carbon sequestration",
+        "carbon utilization",
+        "climate smart agriculture"
+      ],
+      "entities": [
+        "Indo Pacific Economic Framework",
+        "Biofuture Platform",
+        "Global Biofuel Alliance"
+      ],
+      "legislation": [
+        "HBIIP Program",
+        "Farm Bill",
+        "H.R. 1346",
+        "S. 593",
+        "Inflation Reduction Act",
+        "26 U.S.C. 45Q",
+        "26 U.S.C. 45Z",
+        "26 U.S.C. 40B",
+        "Renovabio Program",
+        "Canada Clean Fuel Regulation",
+        "ReFuelEU Aviation Regulations",
+        "FuelEU Maritime Regulation"
+      ]
+    },
+    {
+      "id": 81413,
+      "date": "2026-01-28T11:55:08-05:00",
+      "client": "SCHWAN'S COMPANY",
+      "registrant": "SCHWAN'S COMPANY",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture",
+        "Health and Food Safety",
+        "Trade"
+      ],
+      "topics": [
+        "ingredient",
+        "labeling",
+        "public health",
+        "retaliatory tariff",
+        "export",
+        "import",
+        "finished product"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81412,
+      "date": "2026-01-28T11:46:53-05:00",
+      "client": "VINYL INSTITUTE",
+      "registrant": "VINYL INSTITUTE",
+      "income": 120000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Environmental Policy",
+      "domains": [
+        "Environmental Policy",
+        "Agriculture",
+        "Trade"
+      ],
+      "topics": [
+        "chemical safety",
+        "plastic pollution",
+        "water infrastructure funding",
+        "farm bill",
+        "tariff"
+      ],
+      "entities": [
+        "EPA",
+        "UNEP"
+      ],
+      "legislation": [
+        "TSCA",
+        "IRIS",
+        "SRF",
+        "Farm Bill LEAPS"
+      ]
+    },
+    {
+      "id": 81411,
+      "date": "2026-01-28T11:44:36-05:00",
+      "client": "FLORIDA STATE UNIVERSITY",
+      "registrant": "FLORIDA STATE UNIVERSITY",
+      "income": 105000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Sports/Athletics",
+      "domains": [
+        "Sports/Athletics",
+        "Budget/Appropriations",
+        "Natural Resources and Appropriations"
+      ],
+      "topics": [
+        "appropriation",
+        "mineral production",
+        "funding opportunity",
+        "indirect cost",
+        "public health"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 4312",
+        "SCORE",
+        "FY2026 Appropriations Bills",
+        "Executive Order: Immediate Measures to Increase American Mineral Production",
+        "FY26 Appropriations"
+      ]
+    },
+    {
+      "id": 81410,
+      "date": "2026-01-28T11:32:37-05:00",
+      "client": "ELECTRONIC TRANSACTIONS ASSOCIATION",
+      "registrant": "ELECTRONIC TRANSACTIONS ASSOCIATION",
+      "income": 550000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Financial Services",
+      "domains": [
+        "Financial Services",
+        "Technology and Financial Services"
+      ],
+      "topics": [
+        "data security",
+        "data storage",
+        "privacy",
+        "digital asset",
+        "mobile payment",
+        "fraud",
+        "open banking",
+        "regulatory reform",
+        "tax reporting",
+        "payment system",
+        "cybersecurity",
+        "merchant cash advance"
+      ],
+      "entities": [
+        "FinCEN"
+      ],
+      "legislation": [
+        "S. 2983",
+        "H.R. 5079",
+        "S. 2019",
+        "H.R. 4936",
+        "H.R. 5371",
+        "H.R. 3074"
+      ]
+    },
+    {
+      "id": 81409,
+      "date": "2026-01-28T11:31:30-05:00",
+      "client": "VIOLENCE POLICY CENTER",
+      "registrant": "VIOLENCE POLICY CENTER",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Firearms Policy",
+      "domains": [
+        "Firearms Policy"
+      ],
+      "topics": [
+        "bump stock",
+        "assault weapon ban",
+        "concealed carry",
+        "firearm regulation"
+      ],
+      "entities": [],
+      "legislation": [
+        "BUMP Act",
+        "National Firearms Act"
+      ]
+    },
+    {
+      "id": 81408,
+      "date": "2026-01-28T11:26:43-05:00",
+      "client": "HITHER CREEK STRATEGIES, LLC OBO AANA",
+      "registrant": "ATLANTIC STRATEGIES GROUP LLC",
+      "income": 6000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
+      "topics": [
+        "orthoscopic funding",
+        "military healthcare"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81407,
+      "date": "2026-01-28T11:25:32-05:00",
+      "client": "TRIDEUM CORP",
+      "registrant": "ATLANTIC STRATEGIES GROUP LLC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Technology and Defense",
+      "domains": [
+        "Technology and Defense"
+      ],
+      "topics": [
+        "research and development",
+        "test and evaluation",
+        "modeling and simulation",
+        "information technology"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81406,
+      "date": "2026-01-28T11:23:54-05:00",
+      "client": "ALASKA STRUCTURES",
+      "registrant": "ATLANTIC STRATEGIES GROUP LLC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
+      "topics": [
+        "energy efficiency",
+        "military shelter"
+      ],
+      "entities": [
+        "Department of Defense"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81405,
+      "date": "2026-01-28T11:22:31-05:00",
+      "client": "SPECTRUM HEALTHCARE RESOURCES",
+      "registrant": "ATLANTIC STRATEGIES GROUP LLC",
+      "income": 6000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense and Healthcare",
+      "domains": [
+        "Defense and Healthcare"
+      ],
+      "topics": [
+        "healthcare staffing",
+        "military treatment facility",
+        "resource allocation"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81404,
+      "date": "2026-01-28T11:20:13-05:00",
+      "client": "SCIENTIFIC RESEARCH CORPORATION",
+      "registrant": "ATLANTIC STRATEGIES GROUP LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
+      "topics": [
+        "joint test evaluation",
+        "cyber program",
+        "threat system development"
+      ],
+      "entities": [
+        "DOD"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81403,
+      "date": "2026-01-28T11:17:45-05:00",
+      "client": "FRIENDS OF FORT RUCKER",
+      "registrant": "ATLANTIC STRATEGIES GROUP LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
+      "topics": [
+        "military value",
+        "base enhancement"
+      ],
+      "entities": [
+        "Fort Rucker"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81402,
+      "date": "2026-01-28T11:10:43-05:00",
+      "client": "TRIWEST HEALTHCARE ALLIANCE",
+      "registrant": "ATLANTIC STRATEGIES GROUP LLC",
+      "income": 50000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense",
+      "domains": [
+        "Defense"
+      ],
+      "topics": [
+        "military healthcare"
+      ],
+      "entities": [
+        "House of Representatives",
+        "Senate"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81401,
+      "date": "2026-01-28T10:44:43-05:00",
+      "client": "UNION STATION REDEVELOPMENT CORPORATION",
+      "registrant": "PEYSER ASSOCIATES LLC",
+      "income": 45000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "railroad program",
+        "appropriation",
+        "surface transportation",
+        "redevelopment"
+      ],
+      "entities": [],
+      "legislation": [
+        "Infrastructure Investment and Jobs Act",
+        "Union Station Redevelopment Act"
+      ]
+    },
+    {
+      "id": 81400,
+      "date": "2026-01-28T10:43:04-05:00",
+      "client": "SAN DIEGO METROPOLITAN TRANSIT SYSTEM",
+      "registrant": "PEYSER ASSOCIATES LLC",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "appropriation",
+        "surface transportation",
+        "infrastructure"
+      ],
+      "entities": [],
+      "legislation": [
+        "Infrastructure Investment and Jobs Act"
+      ]
+    },
+    {
+      "id": 81399,
+      "date": "2026-01-28T10:41:21-05:00",
+      "client": "COMMUNITY TRANSIT",
+      "registrant": "PEYSER ASSOCIATES LLC",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "appropriation",
+        "surface transportation",
+        "infrastructure"
+      ],
+      "entities": [],
+      "legislation": [
+        "Infrastructure Investment and Jobs Act"
+      ]
+    },
+    {
+      "id": 81398,
+      "date": "2026-01-28T10:39:34-05:00",
+      "client": "KADESH & ASSOCIATES ON BEHALF OF CALIFORNIA HIGH SPEED RAIL AUTHORITY",
+      "registrant": "PEYSER ASSOCIATES LLC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Budget/Appropriations"
+      ],
+      "topics": [
+        "surface transportation",
+        "appropriation",
+        "railroad program",
+        "grant administration"
+      ],
+      "entities": [
+        "FRA"
+      ],
+      "legislation": [
+        "Infrastructure Investment and Jobs Act"
+      ]
+    },
+    {
+      "id": 81397,
+      "date": "2026-01-28T10:38:03-05:00",
+      "client": "SAN DIEGO ASSOCIATION OF GOVERNMENTS (SANDAG)",
+      "registrant": "PEYSER ASSOCIATES LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "appropriation",
+        "surface transportation",
+        "infrastructure investment"
+      ],
+      "entities": [],
+      "legislation": [
+        "Infrastructure Investment and Jobs Act",
+        "Fiscal Year 2026 appropriations"
+      ]
+    },
+    {
+      "id": 81396,
+      "date": "2026-01-28T10:36:21-05:00",
+      "client": "CENTRAL PUGET SOUND REGIONAL TRANSIT AUTHORITY (SOUND TRANSIT)",
+      "registrant": "PEYSER ASSOCIATES LLC",
+      "income": 43200.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "appropriation",
+        "infrastructure investment",
+        "surface transportation"
+      ],
+      "entities": [],
+      "legislation": [
+        "Infrastructure Investment and Jobs Act"
+      ]
+    },
+    {
+      "id": 81395,
+      "date": "2026-01-28T10:23:07-05:00",
+      "client": "BOAT OWNERS ASSOCIATION OF THE UNITED STATES",
+      "registrant": "BOATU.S.",
+      "income": 5000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation and Infrastructure",
+      "domains": [
+        "Transportation and Infrastructure",
+        "Communications/Broadcasting"
+      ],
+      "topics": [
+        "aquatic invasive species prevention",
+        "dredging project"
+      ],
+      "entities": [
+        "USCG",
+        "Army Corps of Engineers"
+      ],
+      "legislation": [
+        "H.R. 4275",
+        "H.R. 3858"
+      ]
+    },
+    {
+      "id": 81394,
+      "date": "2026-01-28T10:08:20-05:00",
+      "client": "ANIMAL HEALTH INSTITUTE",
+      "registrant": "ANIMAL HEALTH INSTITUTE",
+      "income": 50000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations",
+        "Trade",
+        "Agriculture"
+      ],
+      "topics": [
+        "fda approval",
+        "appropriation",
+        "tariff",
+        "trade agreement",
+        "veterinary biologic",
+        "highly pathogenic avian influenza",
+        "screwworm",
+        "animal drug approval",
+        "animal drug compounding",
+        "antimicrobial resistance",
+        "reporting"
+      ],
+      "entities": [
+        "FDA",
+        "EPA",
+        "USDA",
+        "USDA Center for Veterinary Biologics",
+        "Center for Veterinary Medicine"
+      ],
+      "legislation": [
+        "Farm Bill",
+        "CARES Act"
+      ]
+    },
+    {
+      "id": 81393,
+      "date": "2026-01-28T09:36:40-05:00",
+      "client": "INTERSTATE GAS SUPPLY LLC",
+      "registrant": "BENTLEY LEGAL SERVICES PLLC",
+      "income": 12000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy",
+      "domains": [
+        "Energy"
+      ],
+      "topics": [
+        "energy policy"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81392,
+      "date": "2026-01-28T09:32:49-05:00",
+      "client": "INTERNATIONAL UNION OF BRICKLAYERS & ALLIED CRAFTWORKERS",
+      "registrant": "INTERNATIONAL UNION OF BRICKLAYERS & ALLIED CRAFTWORKERS",
+      "income": 120000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Housing",
+      "domains": [
+        "Housing",
+        "Immigration",
+        "Education"
+      ],
+      "topics": [
+        "affordable housing",
+        "housing development",
+        "modular housing",
+        "rural housing",
+        "homeownership",
+        "rental assistance",
+        "citizenship",
+        "legal status",
+        "undocumented immigrant",
+        "dreamer",
+        "temporary protected status",
+        "deferred enforced departure"
+      ],
+      "entities": [
+        "HUD",
+        "FHA",
+        "Congress"
+      ],
+      "legislation": [
+        "S. 2651",
+        "H.R. 1589",
+        "H.R. 3548"
+      ]
+    },
+    {
+      "id": 81391,
+      "date": "2026-01-28T09:29:52-05:00",
+      "client": "RICHARD SCRUSHY",
+      "registrant": "FAHMY HUDOME INTERNATIONAL, INC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81390,
+      "date": "2026-01-28T09:21:37-05:00",
+      "client": "NATIONAL CHILDREN'S ALLIANCE",
+      "registrant": "NATIONAL CHILDREN'S ALLIANCE",
+      "income": 120000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Aerospace",
+      "domains": [
+        "Aerospace"
+      ],
+      "topics": [
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81389,
+      "date": "2026-01-28T08:58:29-05:00",
+      "client": "NATIONAL WATERMELON ASSOCIATION",
+      "registrant": "MR. ROBERT L. REDDING JR.",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
+      "topics": [
+        "h2a visa reform",
+        "trade review",
+        "nutrition",
+        "appropriation"
+      ],
+      "entities": [],
+      "legislation": [
+        "2025 Farm Bill",
+        "USMCA",
+        "Fiscal Year 2026 Appropriations"
+      ]
+    },
+    {
+      "id": 81388,
+      "date": "2026-01-28T08:56:36-05:00",
+      "client": "WASHINGTON RED RASPBERRY COMMISSION",
+      "registrant": "MR. ROBERT L. REDDING JR.",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
+      "topics": [
+        "food purchase",
+        "nutrition",
+        "raspberry import",
+        "agricultural labor reform",
+        "import",
+        "agricultural labor"
+      ],
+      "entities": [
+        "USDA"
+      ],
+      "legislation": [
+        "2025 Farm Bill"
+      ]
+    },
+    {
+      "id": 81387,
+      "date": "2026-01-28T08:54:24-05:00",
+      "client": "NATIONAL PECAN FEDERATION",
+      "registrant": "MR. ROBERT L. REDDING JR.",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
+      "topics": [
+        "pecan import",
+        "tariff",
+        "disaster assistance",
+        "economic assistance",
+        "h2a reform"
+      ],
+      "entities": [
+        "Department of Agriculture"
+      ],
+      "legislation": [
+        "2025 Farm Bill",
+        "FY 2026 Ag Appropriations"
+      ]
+    },
+    {
+      "id": 81386,
+      "date": "2026-01-28T08:51:28-05:00",
+      "client": "GEORGIA FRUIT & VEGETABLE GROWERS ASSN",
+      "registrant": "MR. ROBERT L. REDDING JR.",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
+      "topics": [
+        "seasonal import",
+        "fruit",
+        "vegetable",
+        "disaster assistance",
+        "labor reform"
+      ],
+      "entities": [],
+      "legislation": [
+        "FY 2026 Ag Appropriations",
+        "H2A",
+        "2025 Farm Bill"
+      ]
+    },
+    {
+      "id": 81385,
+      "date": "2026-01-28T08:38:15-05:00",
+      "client": "GEORGIA PEANUT COMMISSION",
+      "registrant": "MR. ROBERT L. REDDING JR.",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
+      "topics": [
+        "economic assistance",
+        "appropriation",
+        "disaster assistance",
+        "peanut trade",
+        "dietary guideline"
+      ],
+      "entities": [
+        "HHS"
+      ],
+      "legislation": [
+        "2025 Farm Bill"
+      ]
+    },
+    {
+      "id": 81384,
+      "date": "2026-01-28T08:36:22-05:00",
+      "client": "VIDALIA ONION BUSINESS COUNCIL",
+      "registrant": "MR. ROBERT L. REDDING JR.",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
+      "topics": [
+        "appropriation",
+        "labor reform",
+        "farm bill"
+      ],
+      "entities": [],
+      "legislation": [
+        "FY 2026 Appropriations",
+        "2025 Farm Bill"
+      ]
+    },
+    {
+      "id": 81383,
+      "date": "2026-01-28T08:34:47-05:00",
+      "client": "UNIVERSITY OF GEORGIA",
+      "registrant": "MR. ROBERT L. REDDING JR.",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
+      "topics": [
+        "agricultural research",
+        "appropriation",
+        "project implementation"
+      ],
+      "entities": [
+        "Agricultural Research Service"
+      ],
+      "legislation": [
+        "2025 Farm Bill",
+        "FY 2026 Appropriations Bill"
+      ]
+    },
+    {
+      "id": 81382,
+      "date": "2026-01-28T08:32:18-05:00",
+      "client": "AUTOMOTIVE SERVICE ASSOCIATION",
+      "registrant": "MR. ROBERT L. REDDING JR.",
+      "income": 100000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "vehicle inspection",
+        "vehicle data access",
+        "auto insurance",
+        "apprenticeship funding",
+        "autonomous vehicle"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81381,
+      "date": "2026-01-28T07:49:34-05:00",
+      "client": "CLEAN ENERGY",
+      "registrant": "SHL AND ASSOCIATES, INC.",
+      "income": 80000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy",
+      "domains": [
+        "Energy",
+        "Transportation",
+        "Accounting"
+      ],
+      "topics": [
+        "renewable natural gas",
+        "transportation",
+        "tax incentive",
+        "clean fuel production",
+        "transit bus",
+        "low emission vehicle",
+        "zero emission vehicle",
+        "grant program"
+      ],
+      "entities": [
+        "FTA",
+        "SEC"
+      ],
+      "legislation": [
+        "26 U.S.C. 45Z",
+        "RNG Tax Incentive Act",
+        "H.R. 1",
+        "S. 1252",
+        "H.R. 2596",
+        "Renewable Natural Gas Incentive Act",
+        "Section 45Z",
+        "Clean Fuel Production Act",
+        "Inflation Reduction Act",
+        "Clean Fuel Production"
+      ]
+    },
+    {
+      "id": 81380,
+      "date": "2026-01-28T07:41:58-05:00",
+      "client": "CENTRIC PIPE, LLC",
+      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
+      "income": 40000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81379,
+      "date": "2026-01-28T07:38:54-05:00",
+      "client": "HILLTOP HOLDINGS INC.",
+      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
+      "income": 80000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Banking",
+      "domains": [
+        "Banking"
+      ],
+      "topics": [
+        "banking regulation"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81378,
+      "date": "2026-01-28T07:36:01-05:00",
+      "client": "TULARE COUNTY ASSOCIATION OF GOVERNMENTS",
+      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Agriculture",
+        "Aviation"
+      ],
+      "topics": [
+        "highway reauthorization",
+        "farm to market",
+        "highway",
+        "roadway",
+        "transit bus grant",
+        "low emission vehicle",
+        "community funding project",
+        "infrastructure"
+      ],
+      "entities": [
+        "House Appropriations Committee",
+        "FTA"
+      ],
+      "legislation": [
+        "House THUD Appropriations legislation"
+      ]
+    },
+    {
+      "id": 81377,
+      "date": "2026-01-28T07:25:57-05:00",
+      "client": "NATIONAL ASSN OF CREDIT MANAGEMENT",
+      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Bankruptcy",
+      "domains": [
+        "Bankruptcy",
+        "Trade"
+      ],
+      "topics": [
+        "tariff",
+        "executive action"
+      ],
+      "entities": [
+        "Executive Office of the President"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81376,
+      "date": "2026-01-27T21:42:53-05:00",
+      "client": "ASSN. OF STATE AND TERRITORIAL HEALTH OFFICIALS",
+      "registrant": "ASSN. OF STATE AND TERRITORIAL HEALTH OFFICIALS",
+      "income": 46531.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Public Health",
+      "domains": [
+        "Public Health",
+        "Health"
+      ],
+      "topics": [
+        "appropriation",
+        "public health infrastructure",
+        "environmental health",
+        "tobacco cessation",
+        "data modernization",
+        "violent death reporting",
+        "school health",
+        "maternal and child health",
+        "nutrition assistance",
+        "preterm birth",
+        "maternal mortality",
+        "hepatitis vaccine"
+      ],
+      "entities": [
+        "CDC",
+        "HRSA"
+      ],
+      "legislation": [
+        "Title V MCH Services Block Grant",
+        "Special Supplemental Nutrition Program for Women, Infants, and Children (WIC",
+        "H.R. 1197",
+        "S. 1562",
+        "H.R. 1909",
+        "S. 2621"
+      ]
+    },
+    {
+      "id": 81375,
+      "date": "2026-01-27T20:07:42-05:00",
+      "client": "INTERNATIONAL LONGSHOREMEN'S ASSOCIATION",
+      "registrant": "INTERNATIONAL LONGSHOREMEN'S ASSOCIATION",
+      "income": 150000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation and Infrastructure",
+      "domains": [
+        "Transportation and Infrastructure"
+      ],
+      "topics": [
+        "shipbuilding",
+        "harbor infrastructure",
+        "national defense",
+        "surface transportation",
+        "port security",
+        "maritime supply chain security"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 3151",
+        "S. 1541",
+        "H.R. 4016",
+        "Surface Transportation Reauthorization Act",
+        "H.R. 252",
+        "H.R. 2390"
+      ]
+    },
+    {
+      "id": 81374,
+      "date": "2026-01-27T19:04:47-05:00",
+      "client": "INTRINSIC INNOVATION LLC",
+      "registrant": "CROWELL & MORING LLP",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "artificial intelligence",
+        "robotic technology",
+        "advanced robotics"
+      ],
+      "entities": [
+        "National Security Commission on Advanced Robotics"
+      ],
+      "legislation": [
+        "National Defense Authorization Act for Fiscal Year 2026"
+      ]
+    },
+    {
+      "id": 81373,
+      "date": "2026-01-27T18:39:17-05:00",
+      "client": "RED MAPLE CONSULTING, LLC (ON BEHALF OF SKYROCKET EDUCATION SERVICES)",
+      "registrant": "LODESTONE DC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education"
+      ],
+      "topics": [
+        "charter school",
+        "school flexibility",
+        "education appropriation",
+        "charter school program",
+        "special education funding",
+        "workforce development"
+      ],
+      "entities": [],
+      "legislation": [
+        "ESEA",
+        "IDEA",
+        "WIOA"
+      ]
+    },
+    {
+      "id": 81372,
+      "date": "2026-01-27T18:33:00-05:00",
+      "client": "AMERICAN INSTITUTES FOR RESEARCH",
+      "registrant": "LODESTONE DC",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education",
+        "Labor and Education"
+      ],
+      "topics": [
+        "apprenticeship",
+        "education research",
+        "skilled trade job",
+        "education research funding",
+        "workforce funding",
+        "education funding",
+        "skilled trade"
+      ],
+      "entities": [
+        "Institute for Education Sciences",
+        "Institute of Education Sciences"
+      ],
+      "legislation": [
+        "Preparing Americans for High-Paying Skilled Trade Jobs of the Future Executive Order",
+        "Regional Educational Laboratories program",
+        "Comprehensive Center program",
+        "FY 25",
+        "FY 26"
+      ]
+    },
+    {
+      "id": 81371,
+      "date": "2026-01-27T18:31:20-05:00",
+      "client": "BETTER FUTURE FORWARD",
+      "registrant": "LODESTONE DC",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education"
+      ],
+      "topics": [
+        "outcomes based financing",
+        "student loan",
+        "tax treatment",
+        "bankruptcy",
+        "consumer protection",
+        "private loan"
+      ],
+      "entities": [],
+      "legislation": [
+        "Outcomes Based Financing for Students Act",
+        "One Big Beautiful Bill Act"
+      ]
+    },
+    {
+      "id": 81370,
+      "date": "2026-01-27T18:30:24-05:00",
+      "client": "VITALSOURCE TECHNOLOGIES, LLC",
+      "registrant": "LODESTONE DC",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education"
+      ],
+      "topics": [
+        "cash management regulation",
+        "higher education",
+        "course material access",
+        "open education resource",
+        "open textbook",
+        "course material",
+        "affordable access program"
+      ],
+      "entities": [
+        "Department of Labor",
+        "Department of Health and Human Services",
+        "Department of Education"
+      ],
+      "legislation": [
+        "FY 26 Labor, Health and Human Services, Education, and related agencies bill"
+      ]
+    },
+    {
+      "id": 81369,
+      "date": "2026-01-27T18:27:40-05:00",
+      "client": "EXCELLENCE IN EDUCATION NATIONAL, INC.",
+      "registrant": "LODESTONE DC",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education"
+      ],
+      "topics": [
+        "education research and development",
+        "artificial intelligence",
+        "assessment",
+        "accountability",
+        "education research",
+        "education development",
+        "educational assessment"
+      ],
+      "entities": [
+        "Institute of Education Sciences",
+        "National Assessment of Educational Progress",
+        "National Center for Advanced Development in Education"
+      ],
+      "legislation": [
+        "H.R. 8548",
+        "Elementary and Secondary Education Act",
+        "Educational Flexibility Partnership Act of 1999"
+      ]
+    },
+    {
+      "id": 81368,
+      "date": "2026-01-27T18:25:37-05:00",
+      "client": "COMMUNITIES IN SCHOOLS",
+      "registrant": "LODESTONE DC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education"
+      ],
+      "topics": [
+        "community school",
+        "integrated student support",
+        "appropriation",
+        "school safety"
+      ],
+      "entities": [],
+      "legislation": [
+        "FY 2025 LHHS Appropriations Bill",
+        "FY 2026 LHHS Appropriations Bill",
+        "Full Service Community Schools Program",
+        "Title IV-A",
+        "Title I",
+        "School Safety National Activities",
+        "ESEA",
+        "Full Service Community Schools Expansion Act"
+      ]
+    },
+    {
+      "id": 81367,
+      "date": "2026-01-27T18:24:16-05:00",
+      "client": "REGIONAL AIRLINE ASSOCIATION",
+      "registrant": "LODESTONE DC",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education and Workforce",
+      "domains": [
+        "Education and Workforce"
+      ],
+      "topics": [
+        "student loan limit",
+        "pilot training",
+        "higher education",
+        "workforce development",
+        "professional student"
+      ],
+      "entities": [],
+      "legislation": [
+        "Higher Education Act",
+        "S. 1292",
+        "H.R. 2874",
+        "Flight Education Access Act",
+        "One Big Beautiful Bill Act"
+      ]
+    },
+    {
+      "id": 81366,
+      "date": "2026-01-27T18:22:29-05:00",
+      "client": "DATA QUALITY CAMPAIGN, INC.",
+      "registrant": "LODESTONE DC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Education",
+      "domains": [
+        "Education"
+      ],
+      "topics": [
+        "statewide longitudinal data system",
+        "workforce data quality initiative grant",
+        "education research",
+        "data collection",
+        "educational assessment",
+        "appropriation",
+        "data privacy"
+      ],
+      "entities": [
+        "Institute of Education Sciences"
+      ],
+      "legislation": [
+        "New Essential Education Discoveries (NEED) Act",
+        "FY 2025 Appropriations",
+        "FY 2026 Appropriations"
+      ]
+    },
+    {
+      "id": 81365,
+      "date": "2026-01-27T18:20:39-05:00",
+      "client": "BLUE LEARNING",
+      "registrant": "LODESTONE DC",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Budget/Appropriations",
+      "domains": [
+        "Budget/Appropriations",
+        "Education"
+      ],
+      "topics": [
+        "appropriation",
+        "charter school",
+        "charter school program competition"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81364,
+      "date": "2026-01-27T18:12:42-05:00",
+      "client": "THE MOSAIC COMPANY",
+      "registrant": "THE MOSAIC COMPANY",
+      "income": 410000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Environment and Energy",
+      "domains": [
+        "Environment and Energy"
+      ],
+      "topics": [
+        "permitting"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 3898",
+        "S. 1014"
+      ]
+    },
+    {
+      "id": 81363,
+      "date": "2026-01-27T18:03:20-05:00",
+      "client": "NOVA LABS, INC.",
+      "registrant": "CAPITOL CORE GROUP, INC.",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Financial Services",
+      "domains": [
+        "Financial Services",
+        "Telecommunications",
+        "Communications/Broadcasting"
+      ],
+      "topics": [
+        "cryptocurrency",
+        "market structure",
+        "financial innovation",
+        "financial regulation",
+        "decentralized physical infrastructure network",
+        "emerging technology",
+        "digital ledger technology",
+        "decentralized physical infrastructure",
+        "wireless network",
+        "broadband deployment"
+      ],
+      "entities": [
+        "First Responder Network Authority",
+        "SEC"
+      ],
+      "legislation": [
+        "H.R. 3633",
+        "CLARITY Act",
+        "Responsible Financial Innovations Act",
+        "H.R. 3690",
+        "Securing Innovation in Financial Regulation Act"
+      ]
+    },
+    {
+      "id": 81362,
+      "date": "2026-01-27T17:57:37-05:00",
+      "client": "CITY OF RIDGECREST",
+      "registrant": "CAPITOL CORE GROUP, INC.",
+      "income": 7500.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Clean Air & Water",
+      "domains": [
+        "Clean Air & Water",
+        "Appropriations",
+        "Natural Resources"
+      ],
+      "topics": [
+        "clean water state revolving fund",
+        "state and tribal assistance grant"
+      ],
+      "entities": [
+        "Department of Commerce",
+        "Department of Justice",
+        "Department of Energy"
+      ],
+      "legislation": [
+        "H.R. 4754",
+        "H.R. 6938",
+        "H.R. 7148"
+      ]
+    },
+    {
+      "id": 81361,
+      "date": "2026-01-27T17:53:21-05:00",
+      "client": "INDIAN WELLS VALLEY GROUNDWATER AUTHORITY",
+      "registrant": "CAPITOL CORE GROUP, INC.",
+      "income": 5918.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Appropriations",
+      "domains": [
+        "Appropriations",
+        "Infrastructure and Defense",
+        "Environment"
+      ],
+      "topics": [
+        "interior environment",
+        "defense",
+        "energy",
+        "water",
+        "commerce",
+        "justice",
+        "science",
+        "environmental infrastructure",
+        "water right",
+        "procurement",
+        "climate resilience",
+        "water supply"
+      ],
+      "entities": [
+        "Army Corps of Engineers",
+        "Federal Reserve",
+        "EPA"
+      ],
+      "legislation": [
+        "H.R. 4754",
+        "H.R. 4016",
+        "S. 2572",
+        "Energy and Water and Related Agencies Appropriations Act for Fiscal Year 2027",
+        "H.R. 6938",
+        "Section 219",
+        "S. 2296",
+        "H.R. 3838"
+      ]
+    },
+    {
+      "id": 81360,
+      "date": "2026-01-27T17:49:38-05:00",
+      "client": "ENVISION HEALTHCARE",
+      "registrant": "ENVISION HEALTHCARE",
+      "income": 253000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Health"
+      ],
+      "topics": [
+        "provider protection",
+        "insurer noncompliance",
+        "penalty parity",
+        "dispute resolution",
+        "tax credit",
+        "prior authorization",
+        "reimbursement denial",
+        "downcoding",
+        "medicare reimbursement",
+        "physician fee schedule",
+        "telemedicine",
+        "medicaid enrollment"
+      ],
+      "entities": [
+        "Medicare",
+        "Medicaid"
+      ],
+      "legislation": [
+        "No Surprises Act",
+        "No Surprises Act Enforcement Act",
+        "Lorna Breen Provider Protection Act",
+        "No Surprises Act Dispute Resolution Operations Proposed Rule",
+        "Enhanced Advance Premium Tax Credits",
+        "H.R. 879",
+        "Acute Unscheduled Care Model",
+        "Dr. Lorna Breen Provider Protection Reauthorization Act"
+      ]
+    },
+    {
+      "id": 81359,
+      "date": "2026-01-27T16:36:43-05:00",
+      "client": "AMERICAN INTERNATIONAL AUTOMOBILE DEALERS ASSOCIATION",
+      "registrant": "AMERICAN INTERNATIONAL AUTOMOBILE DEALERS ASSOCIATION",
+      "income": 350000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Environmental and Automotive Regulation",
+      "domains": [
+        "Environmental and Automotive Regulation",
+        "Trade",
+        "Taxation"
+      ],
+      "topics": [
+        "motor vehicle emission",
+        "engine pollution control",
+        "waiver of preemption",
+        "automotive repair",
+        "congressional disapproval",
+        "tariff",
+        "auto",
+        "auto part",
+        "steel",
+        "aluminum",
+        "pass-through deduction",
+        "individual tax rate"
+      ],
+      "entities": [
+        "EPA"
+      ],
+      "legislation": [
+        "H.J. Res. 88",
+        "S.J. Res. 45",
+        "H.R. 1566",
+        "S. 1379",
+        "5 U.S.C. Chapter 8",
+        "Section 232",
+        "IEEPA",
+        "Section 301",
+        "Section 199A",
+        "H.R. 1301",
+        "S. 587",
+        "H.R. 1"
+      ]
+    },
+    {
+      "id": 81358,
+      "date": "2026-01-27T16:31:55-05:00",
+      "client": "ST. LUKE'S HOSPITAL & HEALTH NETWORK",
+      "registrant": "ST. LUKE'S HOSPITAL & HEALTH NETWORK",
+      "income": 15542.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "medicaid funding"
+      ],
+      "entities": [
+        "Congress",
+        "House of Representatives",
+        "Senate"
+      ],
+      "legislation": [
+        "H.R. 1"
+      ]
+    },
+    {
+      "id": 81357,
+      "date": "2026-01-27T15:59:36-05:00",
+      "client": "RECREATION VEHICLE DEALERS ASSOCIATION OF NORTH AMERICA",
+      "registrant": "RECREATION VEHICLE DEALERS ASSOCIATION OF NORTH AMERICA",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Natural Resources and Environment",
+      "domains": [
+        "Natural Resources and Environment",
+        "Criminal Justice and Transportation"
+      ],
+      "topics": [
+        "recreation permitting",
+        "digital fee collection",
+        "outdoor recreation data",
+        "federal land access",
+        "catalytic converter theft",
+        "motor vehicle marking",
+        "grant program",
+        "record-keeping",
+        "emission-control device",
+        "trafficking"
+      ],
+      "entities": [
+        "Department of the Interior",
+        "National Park Service",
+        "Bureau of Land Management",
+        "U.S. Fish and Wildlife Service",
+        "U.S. Forest Service",
+        "Department of Agriculture",
+        "National Oceanic and Atmospheric Administration",
+        "Office of Management and Budget",
+        "House of Representatives",
+        "Senate"
+      ],
+      "legislation": [
+        "EXPLORE Act",
+        "PART Act",
+        "H.R. 5221",
+        "S. 2238"
+      ]
+    },
+    {
+      "id": 81356,
+      "date": "2026-01-27T15:51:33-05:00",
+      "client": "MILITARY OFFICERS ASSOCIATION OF AMERICA",
+      "registrant": "MILITARY OFFICERS ASSOCIATION OF AMERICA",
+      "income": 446040.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense and Veterans Affairs",
+      "domains": [
+        "Defense and Veterans Affairs",
+        "Veterans Affairs",
+        "Taxation and Labor"
+      ],
+      "topics": [
+        "basic allowance for housing",
+        "defense procurement",
+        "au pair program",
+        "military healthcare",
+        "professional licensing",
+        "military pay",
+        "bank fee",
+        "student loan",
+        "toxic substance exposure",
+        "credit monitoring",
+        "commissary",
+        "government shutdown"
+      ],
+      "entities": [
+        "VHA"
+      ],
+      "legislation": [
+        "H.R. 1956",
+        "H.R. 3838",
+        "National Defense Authorization Act for Fiscal Year 2026",
+        "H.R. 4199",
+        "H.R. 4768",
+        "H.R. 5035",
+        "H.R. 5095",
+        "H.R. 5401",
+        "H.R. 5586",
+        "H.R. 5660",
+        "H.R. 5953",
+        "H.R. 6044"
+      ]
+    },
+    {
+      "id": 81355,
+      "date": "2026-01-27T15:45:00-05:00",
+      "client": "MIKHAIL KOKORICH",
+      "registrant": "1607 STRATEGIES, LLC",
+      "income": 40000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Financial Institutions",
+      "domains": [
+        "Financial Institutions"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81354,
+      "date": "2026-01-27T15:43:35-05:00",
+      "client": "FAMILIES USA ACTION",
+      "registrant": "FAMILIES USA ACTION",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "hospital billing",
+        "site-neutral payment",
+        "off-campus outpatient department",
+        "site neutral payment"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81353,
+      "date": "2026-01-27T15:39:54-05:00",
+      "client": "FAMILIES USA FOUNDATION INC",
+      "registrant": "FAMILIES USA FOUNDATION, INC.",
+      "income": 6000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Health Care"
+      ],
+      "topics": [
+        "risk adjustment",
+        "medicare advantage",
+        "eligibility redetermination",
+        "medicaid",
+        "pregnancy-related service",
+        "federal loan",
+        "cost-sharing agreement",
+        "medicaid reimbursement",
+        "site neutral payment",
+        "hospital billing",
+        "hybrid payment",
+        "primary care"
+      ],
+      "entities": [
+        "CMS",
+        "FTC",
+        "USPTO",
+        "FDA",
+        "Congress",
+        "Department of Health and Human Services"
+      ],
+      "legislation": [
+        "S. 1105",
+        "Social Security Act",
+        "H.R. 6148",
+        "S. 2497",
+        "S. 2355",
+        "S. 527",
+        "S. 1040",
+        "S. 1041",
+        "S. 1097",
+        "S. 1095",
+        "S. 1096",
+        "Federal Trade Commission Act"
+      ]
+    },
+    {
+      "id": 81352,
+      "date": "2026-01-27T15:39:13-05:00",
+      "client": "UNFI, INC.",
+      "registrant": "UNITED NATURAL FOODS, INC. FKA UNFI, INC.",
+      "income": 260000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Financial Services"
+      ],
+      "topics": [
+        "food safety",
+        "nutrition",
+        "credit card competition",
+        "penny shortage"
+      ],
+      "entities": [],
+      "legislation": [
+        "Credit Card Competition Act"
+      ]
+    },
+    {
+      "id": 81351,
+      "date": "2026-01-27T15:27:56-05:00",
+      "client": "PHARMACEUTICAL INDUSTRY LABOR-MANAGEMENT ASSOCIATION",
+      "registrant": "CHRISTOPHER HEINZ",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Labor and Employment",
+      "domains": [
+        "Labor and Employment"
+      ],
+      "topics": [
+        "prescription drug industry",
+        "domestic construction",
+        "maintenance employment"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81350,
+      "date": "2026-01-27T14:18:53-05:00",
+      "client": "FIDELIS NEW ENERGY",
+      "registrant": "KILPATRICK TOWNSEND & STOCKTON",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "hydrogen",
+        "carbon capture",
+        "clean energy tax credit",
+        "permitting reform"
+      ],
+      "entities": [],
+      "legislation": [
+        "H.R. 1"
+      ]
+    },
+    {
+      "id": 81349,
+      "date": "2026-01-27T13:38:06-05:00",
+      "client": "NWF ACTION FUND",
+      "registrant": "DAVENPORT POLICY",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81348,
+      "date": "2026-01-27T13:35:48-05:00",
+      "client": "COLUMBUS COLLEGE OF ART & DESIGN",
+      "registrant": "BEHRCO",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81347,
+      "date": "2026-01-27T13:19:14-05:00",
+      "client": "SCEYE, INC.",
+      "registrant": "THE FERGUSON GROUP",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Aerospace and Defense",
+      "domains": [
+        "Aerospace and Defense",
+        "Environment and Technology"
+      ],
+      "topics": [
+        "government funding",
+        "high altitude platform system",
+        "government procurement",
+        "methane leak monitoring",
+        "wildfire detection",
+        "wildfire monitoring",
+        "wildfire response"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 61764,
+      "date": "2026-01-27T13:18:38-05:00",
+      "client": "SCEYE, INC.",
+      "registrant": "THE FERGUSON GROUP",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 3,
+      "domain": "Aerospace and Defense",
+      "domains": [
+        "Aerospace and Defense",
+        "Environment and Technology"
+      ],
+      "topics": [
+        "government funding",
+        "high altitude platform system",
+        "government procurement",
+        "methane leak monitoring",
+        "wildfire detection",
+        "wildfire monitoring",
+        "wildfire response"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 40758,
+      "date": "2026-01-27T13:17:57-05:00",
+      "client": "SCEYE, INC.",
+      "registrant": "THE FERGUSON GROUP",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 2,
+      "domain": "Aerospace and Defense",
+      "domains": [
+        "Aerospace and Defense",
+        "Environment and Technology"
+      ],
+      "topics": [
+        "government funding",
+        "high altitude platform system",
+        "government procurement",
+        "methane leak monitoring",
+        "wildfire detection",
+        "wildfire monitoring",
+        "wildfire response"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81346,
+      "date": "2026-01-27T13:10:58-05:00",
+      "client": "CHEMO MOUTHPIECE",
+      "registrant": "HANDSHAKE LLC",
+      "income": 18000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Postal",
+      "domains": [
+        "Postal"
+      ],
+      "topics": [
+        "medicare"
+      ],
+      "entities": [
+        "CMS"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81345,
+      "date": "2026-01-27T12:53:54-05:00",
+      "client": "NATIONAL ASSOCIATION OF RESIDENTIAL PROPERTY MANAGERS",
+      "registrant": "ORGANIZATION MANAGEMENT GROUP (DBA LEGISLATIVE STRATEGIES GROUP)",
+      "income": 50000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Housing and Real Estate",
+      "domains": [
+        "Housing and Real Estate"
+      ],
+      "topics": [
+        "landlord-tenant issue",
+        "emotional support animal",
+        "disparate impact",
+        "housing choice voucher",
+        "source of income",
+        "rental assistance",
+        "flood insurance",
+        "real estate taxation",
+        "lead based paint certification",
+        "corporate transparency"
+      ],
+      "entities": [],
+      "legislation": [
+        "Choice in Affordable Housing Act",
+        "Respect State Housing Laws Act",
+        "Corporate Transparency Act",
+        "NFIP"
+      ]
+    },
+    {
+      "id": 81344,
+      "date": "2026-01-27T12:51:22-05:00",
+      "client": "908 DEVICES, INC.",
+      "registrant": "BRENDAN NEAL STRATEGIES, LLC",
+      "income": 22500.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Government Appropriations",
+      "domains": [
+        "Government Appropriations",
+        "Homeland Security",
+        "Defense"
+      ],
+      "topics": [
+        "law enforcement funding",
+        "air force funding",
+        "navy funding"
+      ],
+      "entities": [
+        "Department of Justice",
+        "Department of Commerce",
+        "Department of Defense",
+        "Air Force",
+        "Navy"
+      ],
+      "legislation": [
+        "FY26 CJS Appropriations",
+        "FY26 DOD Appropriations"
+      ]
+    },
+    {
+      "id": 81343,
+      "date": "2026-01-27T12:41:05-05:00",
+      "client": "LABORERS' INTERNATIONAL UNION OF NORTH AMERICA",
+      "registrant": "LABORERS' INTERNATIONAL UNION OF NORTH AMERICA",
+      "income": 280000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Labor and Employment",
+      "domains": [
+        "Labor and Employment",
+        "Immigration",
+        "Civil Rights"
+      ],
+      "topics": [
+        "collective bargaining",
+        "immigrant",
+        "temporary protected status",
+        "job security",
+        "employee benefit",
+        "due process",
+        "voting rights",
+        "prevailing wage",
+        "labor standard",
+        "tax credit",
+        "housing",
+        "union organizing"
+      ],
+      "entities": [
+        "Department of Defense"
+      ],
+      "legislation": [
+        "H.R. 1589",
+        "Defense Reauthorization Bill",
+        "H.R. 14",
+        "S. 852",
+        "H.R. 20",
+        "Protecting the Right to Organize Act",
+        "Public Service Freedom to Negotiate Act",
+        "Budget Reconciliation Bill",
+        "Surface Transportation Act"
+      ]
+    },
+    {
+      "id": 81342,
+      "date": "2026-01-27T12:30:47-05:00",
+      "client": "MICCOSUKEE TRIBE OF INDIANS OF FLORIDA",
+      "registrant": "LARRAGAN CREST STRATEGIES",
+      "income": 35000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Appropriations",
+      "domains": [
+        "Appropriations",
+        "Natural Resources",
+        "Government Issues"
+      ],
+      "topics": [
+        "public safety vehicle acquisition",
+        "mineral rights",
+        "wilderness designation"
+      ],
+      "entities": [
+        "Big Cypress National Preserve"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81341,
+      "date": "2026-01-27T12:04:08-05:00",
+      "client": "PUBLIC LANDS COUNCIL",
+      "registrant": "PUBLIC LANDS COUNCIL",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Natural Resources and Environment",
+      "domains": [
+        "Natural Resources and Environment",
+        "Environment and Natural Resources",
+        "Appropriations"
+      ],
+      "topics": [
+        "endangered species",
+        "environmental policy",
+        "conservation funding",
+        "predator control",
+        "agriculture",
+        "interior",
+        "energy",
+        "water",
+        "drought program",
+        "greenhouse gas reporting",
+        "appropriation",
+        "grazing"
+      ],
+      "entities": [
+        "BLM",
+        "USFS",
+        "Bureau of Land Management"
+      ],
+      "legislation": [
+        "Clean Air Act",
+        "Clean Water Act",
+        "Endangered Species Act",
+        "NEPA",
+        "H.R. 1",
+        "Conservation and Landscape Health Rule",
+        "FY26 Appropriations",
+        "Continuing Resolution",
+        "Wild Horse and Burro Act",
+        "H.R. 1110",
+        "H.R. 281",
+        "S. 316"
+      ]
+    },
+    {
+      "id": 81340,
+      "date": "2026-01-27T11:27:44-05:00",
+      "client": "PRIME POLICY GROUP ON BEHALF OF NEW HANOVER COUNTY, NC",
+      "registrant": "KH STRATEGIES",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Environment and Infrastructure",
+      "domains": [
+        "Environment and Infrastructure"
+      ],
+      "topics": [
+        "budget",
+        "coastal barrier resource"
+      ],
+      "entities": [
+        "Army Corps of Engineers"
+      ],
+      "legislation": [
+        "Coastal Barrier Resources Act"
+      ]
+    },
+    {
+      "id": 81339,
+      "date": "2026-01-27T11:10:30-05:00",
+      "client": "SULLIVAN STRATEGIES OBO OREGON DEPARTMENT OF TRANSPORTATION",
+      "registrant": "MS. ANNA HANSEN",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81338,
+      "date": "2026-01-27T11:10:04-05:00",
+      "client": "SULLIVAN STRATEGIES OBO NORTHERN TECHNOLOGIES INTERNATIONAL",
+      "registrant": "MS. ANNA HANSEN",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81337,
+      "date": "2026-01-27T11:09:35-05:00",
+      "client": "SULLIVAN STRATEGIES OBO GLASS AVIATION HOLDINGS",
+      "registrant": "MS. ANNA HANSEN",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81336,
+      "date": "2026-01-27T11:09:07-05:00",
+      "client": "SULLIVAN STRATEGIES OBO JOBSOHIO",
+      "registrant": "MS. ANNA HANSEN",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81335,
+      "date": "2026-01-27T10:58:12-05:00",
+      "client": "BACKCOUNTRY HUNTERS & ANGLERS",
+      "registrant": "BACKCOUNTRY HUNTERS & ANGLERS",
+      "income": 5000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Natural Resources",
+      "domains": [
+        "Natural Resources",
+        "Natural Resources and Public Lands",
+        "Real Estate"
+      ],
+      "topics": [
+        "appropriation",
+        "land conservation",
+        "water conservation",
+        "conservation area",
+        "land exchange",
+        "oil spill recovery",
+        "scenic trail",
+        "federal land management",
+        "land grant",
+        "petroleum reserve"
+      ],
+      "entities": [
+        "Bureau of Land Management"
+      ],
+      "legislation": [
+        "Land & Water Conservation Fund",
+        "S. 1787",
+        "S. 2016",
+        "S. 1470",
+        "S. 2262",
+        "S. 1363",
+        "H.J. Res. 140",
+        "Public Land Order No. 7917",
+        "S.J. Res. 80",
+        "H.J. Res. 124",
+        "Brian Head Town Land Conveyance",
+        "S. 1860"
+      ]
+    },
+    {
+      "id": 81334,
+      "date": "2026-01-27T10:56:29-05:00",
+      "client": "QURALIS",
+      "registrant": "GRANITE CAPITOL CONSULTING LLC",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81333,
+      "date": "2026-01-27T10:42:44-05:00",
+      "client": "NATIONAL PTA",
+      "registrant": "NATIONAL PTA",
+      "income": 17667.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture",
+        "Education",
+        "Law Enforcement"
+      ],
+      "topics": [
+        "appropriation",
+        "covid relief",
+        "child health",
+        "wellness",
+        "mental health"
+      ],
+      "entities": [
+        "USDA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81332,
+      "date": "2026-01-27T10:40:17-05:00",
+      "client": "FREEDOM FROM RELIGION FOUNDATION",
+      "registrant": "FREEDOM FROM RELIGION FOUNDATION",
+      "income": 40000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Health and Civil Rights",
+      "domains": [
+        "Health and Civil Rights"
+      ],
+      "topics": [
+        "reproductive health",
+        "abortion access",
+        "postal regulation"
+      ],
+      "entities": [],
+      "legislation": [
+        "S. 951",
+        "H.R. 2029",
+        "Comstock Act"
+      ]
+    },
+    {
+      "id": 81331,
+      "date": "2026-01-27T10:06:13-05:00",
+      "client": "NATIONAL COFFEE ASSOCIATION",
+      "registrant": "RED FLAG CONSULTING USA(FORMALLY KNOWN AS INTERNATIONAL BUSINESS-GOVERNMENT COUNSELLORS, INC)",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Agriculture",
+      "domains": [
+        "Agriculture"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81330,
+      "date": "2026-01-27T09:49:04-05:00",
+      "client": "A NEW POLICY INC.",
+      "registrant": "A NEW POLICY INC.",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Foreign Relations",
+      "domains": [
+        "Foreign Relations",
+        "Civil Rights and Constitutional Law"
+      ],
+      "topics": [
+        "international humanitarian law",
+        "public diplomacy",
+        "humanitarian aid",
+        "defense article transfer",
+        "genocide",
+        "research and development",
+        "defense partnership",
+        "first amendment",
+        "tax-exempt status",
+        "antisemitism",
+        "academic freedom",
+        "visa"
+      ],
+      "entities": [
+        "Congress"
+      ],
+      "legislation": [
+        "H.Res. 876 (Recognizing the genocide of the Palestinian people in Gaza",
+        "H.Res. 839 (Condemning Hamas for assassinating innocent Palestinians",
+        "H.Res. 769 (Affirming the State of Palestine's right to exist",
+        "H.R. 4983",
+        "H.R. 4473",
+        "H.R. 1136",
+        "H.R. 1229",
+        "H.R. 23",
+        "H.R. 3208",
+        "H.R. 902",
+        "H.R. 3045",
+        "H.R. 2411"
+      ]
+    },
+    {
+      "id": 81329,
+      "date": "2026-01-27T09:43:10-05:00",
+      "client": "LIGHTBRIDGE CORPORATION",
+      "registrant": "PALMERSTON, LLC",
+      "income": 52500.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy and Defense",
+      "domains": [
+        "Energy and Defense"
+      ],
+      "topics": [
+        "plutonium disposition",
+        "nuclear fuel",
+        "nuclear powered icebreaker",
+        "nuclear reactor"
+      ],
+      "entities": [],
+      "legislation": [
+        "ADVANCE Act"
+      ]
+    },
+    {
+      "id": 81328,
+      "date": "2026-01-27T09:42:52-05:00",
+      "client": "AMERICAN COLLEGE OF GASTROENTEROLOGY",
+      "registrant": "AMERICAN COLLEGE OF GASTROENTEROLOGY",
+      "income": 92407.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Science and Technology"
+      ],
+      "topics": [
+        "prior authorization",
+        "prescription drug",
+        "medicare physician reimbursement",
+        "patient access",
+        "inflation adjustment",
+        "preventive service",
+        "colonoscopy",
+        "medical research funding",
+        "research funding",
+        "medicare plan",
+        "medical appeal",
+        "peer-to-peer review"
+      ],
+      "entities": [
+        "NIH",
+        "Department of Health and Human Services",
+        "Medicare"
+      ],
+      "legislation": [
+        "H.R. 2433",
+        "H.R. 879"
+      ]
+    },
+    {
+      "id": 81327,
+      "date": "2026-01-27T09:34:58-05:00",
+      "client": "MARYLAND-DISTRICT OF COLUMBIA-DELAWARE BROADCASTERS ASSOCIATION",
+      "registrant": "BROOKS, PIERCE, MCLENDON, HUMPHREY & LEONARD, L.L.P.",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Telecommunications",
+      "domains": [
+        "Telecommunications"
+      ],
+      "topics": [
+        "broadcast industry",
+        "am radio",
+        "local radio fee",
+        "ownership rule",
+        "television broadcaster",
+        "radio broadcaster"
+      ],
+      "entities": [],
+      "legislation": [
+        "S. 315",
+        "H.R. 979",
+        "H.Con.Res. 12 (Local Radio Freedom Act",
+        "S.Con.Res. 8 (Local Radio Freedom Act"
+      ]
+    },
+    {
+      "id": 81326,
+      "date": "2026-01-27T09:33:50-05:00",
+      "client": "IOWA BROADCASTERS ASSOCIATION",
+      "registrant": "BROOKS, PIERCE, MCLENDON, HUMPHREY & LEONARD, L.L.P.",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Telecommunications",
+      "domains": [
+        "Telecommunications"
+      ],
+      "topics": [
+        "broadcast industry",
+        "am radio",
+        "local radio fee",
+        "ownership rule",
+        "television broadcaster",
+        "radio broadcaster"
+      ],
+      "entities": [],
+      "legislation": [
+        "S. 315",
+        "H.R. 979",
+        "H.Con.Res. 12 (Local Radio Freedom Act",
+        "S.Con.Res. 8 (Local Radio Freedom Act"
+      ]
+    },
+    {
+      "id": 81325,
+      "date": "2026-01-27T09:31:46-05:00",
+      "client": "NORTH CAROLINA ASSOCIATION OF BROADCASTERS",
+      "registrant": "BROOKS, PIERCE, MCLENDON, HUMPHREY & LEONARD, L.L.P.",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Telecommunications",
+      "domains": [
+        "Telecommunications"
+      ],
+      "topics": [
+        "broadcast industry",
+        "am radio",
+        "automobile",
+        "local radio fee",
+        "ownership rule",
+        "television broadcaster",
+        "radio broadcaster"
+      ],
+      "entities": [],
+      "legislation": [
+        "S. 315",
+        "H.R. 979",
+        "H.Con.Res. 12 (Local Radio Freedom Act",
+        "S.Con.Res. 8 (Local Radio Freedom Act"
+      ]
+    },
+    {
+      "id": 81324,
+      "date": "2026-01-27T08:42:38-05:00",
+      "client": "TDS TELECOMMUNICATIONS CORPORATION",
+      "registrant": "TDS TELECOMMUNICATIONS CORPORATION",
+      "income": 14890.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Telecommunications",
+      "domains": [
+        "Telecommunications"
+      ],
+      "topics": [
+        "universal service",
+        "broadband regulation",
+        "compliance",
+        "program implementation"
+      ],
+      "entities": [
+        "FCC"
+      ],
+      "legislation": [
+        "BEAM program"
+      ]
+    },
+    {
+      "id": 81323,
+      "date": "2026-01-27T08:27:39-05:00",
+      "client": "ALLIANCE FOR VEHICLE EFFICIENCY",
+      "registrant": "ARMITAGE CONSULTING, LLC",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Energy and Environment",
+        "Environment"
+      ],
+      "topics": [
+        "fuel economy standard",
+        "advanced engine",
+        "emission control",
+        "propulsion technology",
+        "transportation program",
+        "infrastructure investment",
+        "air quality",
+        "emission standard",
+        "light duty vehicle",
+        "heavy duty vehicle",
+        "life cycle emission",
+        "emission modeling"
+      ],
+      "entities": [
+        "NHTSA"
+      ],
+      "legislation": [
+        "H.R. 1",
+        "H.R. 3684",
+        "Inflation Reduction Act"
+      ]
+    },
+    {
+      "id": 81322,
+      "date": "2026-01-27T08:25:03-05:00",
+      "client": "BORGWARNER INC.",
+      "registrant": "ARMITAGE CONSULTING, LLC",
+      "income": 15000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy",
+      "domains": [
+        "Energy",
+        "Manufacturing",
+        "Taxation"
+      ],
+      "topics": [
+        "research and development grant",
+        "funding opportunity",
+        "federal spending",
+        "automotive manufacturing",
+        "tax credit"
+      ],
+      "entities": [
+        "Department of Energy"
+      ],
+      "legislation": [
+        "Inflation Reduction"
+      ]
+    },
+    {
+      "id": 81321,
+      "date": "2026-01-27T08:22:52-05:00",
+      "client": "LAS VEGAS PAIUTE TRIBE",
+      "registrant": "ARMITAGE CONSULTING, LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Natural Resources and Native American Affairs",
+      "domains": [
+        "Natural Resources and Native American Affairs",
+        "Native American Affairs"
+      ],
+      "topics": [
+        "tribal sovereignty",
+        "public land development",
+        "reservation expansion"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81320,
+      "date": "2026-01-27T08:18:49-05:00",
+      "client": "THE BARONA BAND OF MISSION INDIANS",
+      "registrant": "ARMITAGE CONSULTING, LLC",
+      "income": 30000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Tribal Affairs",
+      "domains": [
+        "Tribal Affairs",
+        "Native American Affairs",
+        "Infrastructure"
+      ],
+      "topics": [
+        "infrastructure funding",
+        "tribal infrastructure",
+        "tribal sovereignty",
+        "economic development",
+        "water infrastructure",
+        "tribal water system"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81319,
+      "date": "2026-01-26T22:39:47-05:00",
+      "client": "REWIRING AMERICA INC.",
+      "registrant": "WT ENERGY LLC",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy",
+      "domains": [
+        "Energy"
+      ],
+      "topics": [
+        "residential electrification",
+        "virtual power plant",
+        "weatherization",
+        "appliance standard",
+        "heat pump",
+        "financial assistance"
+      ],
+      "entities": [
+        "DOE"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 81318,
+      "date": "2026-01-26T21:13:53-05:00",
+      "client": "SALIM KALIL",
+      "registrant": "1607 STRATEGIES, LLC",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Banking",
+      "domains": [
+        "Banking"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 81317,
+      "date": "2026-01-26T20:01:16-05:00",
+      "client": "NORTH STAR MANGANESE INC",
+      "registrant": "CAPITOL PILLAR LLC",
+      "income": 20000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Natural Resources",
+      "domains": [
+        "Natural Resources"
+      ],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     }
   ]
 }

@@ -22,6 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    concurrency:
+      group: refresh-data
+      cancel-in-progress: false
 
     steps:
       - name: Checkout repository
@@ -31,15 +34,32 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'pip'
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          uv venv --python 3.12
+          uv pip install -r requirements.txt
 
-      - name: Download database from release
+      - name: Ensure data release exists
         run: |
-          gh release download data --pattern 'filings.db' -D data/ || echo "No existing database, starting fresh"
+          gh release view data || gh release create data --title "Data Storage" --notes "SQLite database storage for the lobbying signals dashboard"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download database from release (if present)
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          if gh release view data --json assets -q '.assets[].name' | grep -qx 'filings.db'; then
+            gh release download data --pattern 'filings.db' -D data/
+          else
+            echo "No existing database asset, starting fresh"
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -47,23 +67,17 @@ jobs:
         run: |
           if [ ! -f data/filings.db ]; then
             echo "Creating fresh database..."
-            python -c "from db import init_db; init_db()"
+            uv run python -c "from db import init_db; init_db()"
           fi
 
       - name: Run refresh
         run: |
-          python 07_refresh.py \
+          uv run python 07_refresh.py \
             --extract-limit ${{ github.event.inputs.extract_limit || '500' }} \
             ${{ github.event.inputs.normalize == 'true' && '--normalize' || '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
-
-      - name: Create release if not exists
-        run: |
-          gh release view data || gh release create data --title "Data Storage" --notes "SQLite database storage for the lobbying signals dashboard"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload database to release
         run: |

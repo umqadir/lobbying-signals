@@ -21,6 +21,9 @@ env/
 data/filings.db
 data/raw/
 
+# Legacy local UI/server (not used by GitHub Pages dashboard)
+static/
+
 # Environment
 .env
 .env.local

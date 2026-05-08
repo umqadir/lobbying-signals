@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-02-13T12:10:21.754127",
+  "window": "90d",
+  "status": "needs_attention",
+  "severity_counts": {
+    "high": 1,
+    "medium": 3,
+    "low": 0
+  },
+  "metrics": {
+    "mentions_current_90d": 41680,
+    "mentions_prev_90d": 43395,
+    "mentions_yoy_90d": 78982,
+    "mentions_vs_prev_pct": -4.0,
+    "mentions_vs_yoy_pct": -47.2,
+    "filings_current_90d": 20256,
+    "filings_prev_90d": 21074,
+    "filings_yoy_90d": 18577,
+    "filings_vs_prev_pct": -3.9,
+    "filings_vs_yoy_pct": 9.0,
+    "due_vs_non_due_ratio_4y": 27.75,
+    "due_month_avg_filings": 11053.4,
+    "non_due_month_avg_filings": 398.3,
+    "quarter_due_month_share_pct": 93.3,
+    "coverage_recent_90d_pct": 52.3,
+    "coverage_all_time_pct": 91.1,
+    "legislation_dropped_pct": 3.6,
+    "legislation_normalized_pct": 27.5,
+    "top_topic_share_pct": 3.85,
+    "top5_topic_share_pct": 10.78,
+    "secular_change_pct": 38.0,
+    "secular_cagr_pct": 6.66,
+    "secular_start_year": 2020,
+    "secular_end_year": 2025
+  },
+  "flags": [
+    {
+      "severity": "medium",
+      "title": "Large window-volume shift",
+      "detail": "90d extracted mentions are -47.2% vs year-ago (41,680 vs 78,982)."
+    },
+    {
+      "severity": "high",
+      "title": "Strong seasonal pattern",
+      "detail": "Due-cycle months average 27.75x filing volume vs other months."
+    },
+    {
+      "severity": "medium",
+      "title": "Quarter-cycle concentration",
+      "detail": "93.3% of average monthly volume falls in Jan/Apr/Jul/Oct."
+    },
+    {
+      "severity": "medium",
+      "title": "Extraction coverage dip",
+      "detail": "Recent 90d coverage is 52.3% vs 91.1% all-time."
+    }
+  ]
+}

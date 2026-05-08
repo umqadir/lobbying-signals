@@ -154,6 +154,13 @@ def load_filings_to_db(filings: list[dict]):
     with get_db() as conn:
         for f in filings:
             try:
+                existing = conn.execute(
+                    "SELECT id FROM filings WHERE sopr_filing_id = ?",
+                    (f.get("filing_id"),)
+                ).fetchone()
+                if existing:
+                    continue
+
                 if not f.get("registrant_id") or not f.get("registrant_name"):
                     continue
                 if not f.get("client_id") or not f.get("client_name"):
