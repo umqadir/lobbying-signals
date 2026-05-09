@@ -78,6 +78,7 @@ jobs:
             ${{ github.event.inputs.normalize == 'true' && '--normalize' || '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
 
       - name: Upload database to release
