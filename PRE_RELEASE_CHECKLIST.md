@@ -1,31 +1,32 @@
 # Lobbying Signals Prerelease Checklist
 
-Status date: 2026-05-08
+Status date: 2026-05-09
 
 This is the practical checklist for releasing Lobbying Signals as a low-stakes personal project. It intentionally excludes nice-to-have polish and focuses on things that would break the site, make the data look unserious, or make the launch feel unfinished.
 
 ## Must Fix Before Sharing
 
-- [ ] Make the public URL work. *(requires GitHub Pages/repo setup)*
+- [x] Make the public URL work.
   - Target URL: `https://umqadir.github.io/lobbying-signals/`.
-  - Configure GitHub Pages to serve from `/docs`, or publish the static dashboard somewhere else.
+  - GitHub Pages serves from `/docs`; the public URL returns `HTTP 200`.
 
-- [ ] Connect this local repo to the GitHub repo. *(requires knowing the intended remote)*
-  - `git remote -v` currently returns no remotes.
-  - Add the intended remote before trying to push or rely on Actions/Pages.
+- [x] Connect this local repo to the GitHub repo.
+  - Remote `origin` points to `git@github.com:umqadir/lobbying-signals.git`.
+  - GitHub repo is public at `https://github.com/umqadir/lobbying-signals`.
 
 - [x] Fix refresh idempotency.
   - Re-ingesting a filing can currently append duplicate activities because existing filings are skipped but their activities are inserted again.
   - This is the main real pipeline bug to fix before scheduled autoupdates.
   - Add a uniqueness guard or skip activity insertion when the filing already exists.
 
-- [ ] Run one clean manual refresh in GitHub Actions. *(requires pushed repo, secrets, and GitHub access)*
+- [x] Run one clean manual refresh in GitHub Actions.
   - Verify the workflow can download/upload `data/filings.db`, run `07_refresh.py`, commit `docs/data/`, and update Pages.
-  - Confirm required secrets exist: `GEMINI_API_KEY` or `GOOGLE_API_KEY`; `LDA_API_KEY` is optional but recommended.
+  - Manual run `25609765180` succeeded on 2026-05-09.
+  - Required repo secrets exist: `GEMINI_API_KEY`, `GOOGLE_API_KEY`, and `LDA_API_KEY`.
 
-- [ ] Make sure the launch data is current enough. *(do at launch after the hosted refresh path works)*
-  - The stale local export is expected right now, but the public version should show a recent generated timestamp and filing range.
-  - After refreshing, open the deployed site and confirm the UI does not say something like “Updated 84d ago.”
+- [x] Make sure the launch data is current enough.
+  - Public `docs/data/stats.json` shows `generated_at` `2026-05-09T19:50:43.655166`.
+  - Filing date range now ends at `2026-05-09T15:45:30-04:00`.
 
 - [x] Check the database storage limit.
   - Local `data/filings.db` is about `1.8GB`.
@@ -42,9 +43,9 @@ This is the practical checklist for releasing Lobbying Signals as a low-stakes p
   - Examples seen locally: `VA`, `H.R. 1`, and fragmentary legislation labels like `and Related Agencies Appropriations`.
   - You do not need perfect normalization, but the top visible entries should not look broken.
 
-- [ ] Replace old screenshots if using screenshots in the post. *(only needed if those files are used in the LinkedIn post)*
-  - Existing checked-in screenshots show an older briefing-style UI.
-  - Current app is the two-panel signal browser.
+- [x] Replace old screenshots if using screenshots in the post.
+  - No old dashboard screenshots are tracked or referenced by the published site.
+  - The only tracked PNG is the current `docs/social-preview.png` used for social metadata.
 
 - [x] Add LinkedIn/social preview metadata.
   - Add Open Graph title, description, and preview image to `docs/index.html`.
@@ -52,11 +53,11 @@ This is the practical checklist for releasing Lobbying Signals as a low-stakes p
 
 ## Quick Final Smoke Test
 
-- [ ] Public URL returns `200`. *(requires hosted deployment)*
+- [x] Public URL returns `200`.
 - [x] Dashboard loads with no console errors.
-- [ ] Data timestamp is recent. *(requires launch refresh)*
+- [x] Data timestamp is recent.
 - [x] Top few signals look plausible to a human.
-- [ ] GitHub Action has succeeded once manually. *(requires GitHub access/secrets)*
+- [x] GitHub Action has succeeded once manually.
 - [x] Re-running ingestion does not create duplicate activity rows.
 - [x] README matches what the app actually does.
 
