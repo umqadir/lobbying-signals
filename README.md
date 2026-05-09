@@ -6,7 +6,7 @@ Automated detection of directional signals in federal lobbying disclosure data. 
 
 **[View Dashboard](https://umqadir.github.io/lobbying-signals/)**
 
-Updated every 6 hours via GitHub Actions.
+Updated daily via GitHub Actions.
 
 ## Features
 
@@ -19,7 +19,7 @@ Updated every 6 hours via GitHub Actions.
 ## Architecture
 
 ```
-GitHub Actions (cron every 6h)
+GitHub Actions (daily cron)
     │
     ├── Download DB from GitHub Release
     ├── Ingest new LDA filings
@@ -58,7 +58,7 @@ python 07_refresh.py
 
 # Or run individual steps
 python 01_ingest.py              # Download new filings
-python 06_extract.py extract 500 # Extract topics from 500 activities
+python 06_extract.py extract 100 # Extract topics from 100 activities
 python 08_trends.py export       # Generate JSON exports
 ```
 

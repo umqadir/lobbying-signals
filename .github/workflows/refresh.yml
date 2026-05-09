@@ -2,15 +2,15 @@ name: Refresh Data
 
 on:
   schedule:
-    # Run every 6 hours
-    - cron: '0 */6 * * *'
+    # Run daily at 10:00 UTC
+    - cron: '0 10 * * *'
   workflow_dispatch:
     # Allow manual trigger
     inputs:
       extract_limit:
         description: 'Max activities to extract'
         required: false
-        default: '500'
+        default: '100'
       normalize:
         description: 'Rebuild normalization dictionary'
         required: false
@@ -74,7 +74,7 @@ jobs:
       - name: Run refresh
         run: |
           uv run python 07_refresh.py \
-            --extract-limit ${{ github.event.inputs.extract_limit || '500' }} \
+            --extract-limit ${{ github.event.inputs.extract_limit || '100' }} \
             ${{ github.event.inputs.normalize == 'true' && '--normalize' || '' }}
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

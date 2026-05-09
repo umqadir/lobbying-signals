@@ -28,7 +28,7 @@ def _load_module(path: str, name: str):
 
 def refresh(
     ingest_latest: bool = True,
-    extract_limit: int = 500,
+    extract_limit: int = 100,
     normalize: bool = False,
     export: bool = True,
     verbose: bool = True
@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Refresh lobbying data')
     parser.add_argument('--no-ingest', action='store_true', help='Skip ingestion')
-    parser.add_argument('--extract-limit', type=int, default=500, help='Max activities to extract')
+    parser.add_argument('--extract-limit', type=int, default=100, help='Max activities to extract')
     parser.add_argument('--normalize', action='store_true', help='Rebuild normalization dictionary')
     parser.add_argument('--no-export', action='store_true', help='Skip JSON export')
     parser.add_argument('--check-env', action='store_true', help='Check environment and exit')

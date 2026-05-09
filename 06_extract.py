@@ -93,16 +93,27 @@ def extract_batch(batch_size: int = 100, model: str = "gemini-3-flash-preview"):
         thinking_config=types.ThinkingConfig(thinking_level='minimal')
     )
 
-    # Get activities without extractions, prioritizing recent filings
+    # Get activities without extractions. Randomize within filing-quarter buckets
+    # and round-robin buckets so small batches do not overfit to the newest filings.
     sql = '''
-        SELECT a.id, a.description
-        FROM activities a
-        JOIN filings f ON a.filing_id = f.id
-        LEFT JOIN activity_extractions e ON a.id = e.activity_id
-        WHERE e.id IS NULL
-          AND a.description IS NOT NULL
-          AND LENGTH(a.description) > 50
-        ORDER BY f.filing_date DESC
+        WITH eligible AS (
+            SELECT
+                a.id,
+                a.description,
+                ROW_NUMBER() OVER (
+                    PARTITION BY f.year, f.quarter
+                    ORDER BY RANDOM()
+                ) AS quarter_rank
+            FROM activities a
+            JOIN filings f ON a.filing_id = f.id
+            LEFT JOIN activity_extractions e ON a.id = e.activity_id
+            WHERE e.id IS NULL
+              AND a.description IS NOT NULL
+              AND LENGTH(a.description) > 50
+        )
+        SELECT id, description
+        FROM eligible
+        ORDER BY quarter_rank, RANDOM()
         LIMIT ?
     '''
 
