@@ -2,10 +2,9 @@
 
 This script is called by GitHub Actions to:
 1. Ingest new filings from LDA API
-2. Extract classifications for new activities
-3. Update normalization dictionary (periodically)
-4. Compute trends and generate alerts
-5. Export JSON for dashboard
+2. Extract rule-based classifications for new activities
+3. Compute trends and generate alerts
+4. Export JSON for dashboard
 """
 
 import os
@@ -28,8 +27,7 @@ def _load_module(path: str, name: str):
 
 def refresh(
     ingest_latest: bool = True,
-    extract_limit: int = 100,
-    normalize: bool = False,
+    rules_batch_size: int = 2_000_000,
     export: bool = True,
     verbose: bool = True
 ):
@@ -49,25 +47,27 @@ def refresh(
         ingest_module.ingest_latest()
         log("  Ingestion complete")
 
-    # 2. Extract classifications for new activities
-    if extract_limit > 0:
-        log(f"Step 2: Extracting classifications (limit={extract_limit})...")
-        extract_module = _load_module("06_extract.py", "extract")
-        extract_module.init_extraction_tables()
-        extracted = extract_module.extract_batch(extract_limit)
-        log(f"  Extracted {extracted} activities")
-
-    # 3. Build normalization dictionary (weekly or on request)
-    if normalize:
-        log("Step 3: Building normalization dictionary...")
+    # 2. Extract deterministic rule-based classifications for new activities
+    if rules_batch_size > 0:
+        log(f"Step 2: Extracting deterministic classifications (batch={rules_batch_size})...")
+        rules_module = _load_module("12_extract_rules.py", "rules_extract")
+        conn = rules_module.connect()
         try:
-            extract_module = _load_module("06_extract.py", "extract")
-            for field in ["topics", "entities", "legislation"]:
-                extract_module.build_normalization_batch(field)
-        except Exception as e:
-            log(f"  Warning: Normalization failed: {e}")
+            rules_module.init_tables(conn)
+            rules = rules_module.load_rules(rules_module.RULES_PATH)
+            extracted = rules_module.process_batch(
+                conn=conn,
+                rules=rules,
+                batch_size=rules_batch_size,
+                min_description_len=20,
+                refresh_existing=False,
+                issue_codes=None,
+            )
+        finally:
+            conn.close()
+        log(f"  Rule-extracted {extracted} activities")
 
-    # 4. Export JSON for dashboard
+    # 3. Export JSON for dashboard
     if export:
         log("Step 4: Exporting JSON for dashboard...")
         try:
@@ -82,19 +82,8 @@ def refresh(
 
 def check_env():
     """Check required environment variables."""
-    issues = []
-
-    if not os.getenv('GEMINI_API_KEY') and not os.getenv('GOOGLE_API_KEY'):
-        issues.append("GEMINI_API_KEY or GOOGLE_API_KEY not set (needed for extraction)")
-
     if not os.getenv('LDA_API_KEY'):
         print("Warning: LDA_API_KEY not set (ingestion will be slower)")
-
-    if issues:
-        print("Environment issues:")
-        for issue in issues:
-            print(f"  - {issue}")
-        return False
     return True
 
 
@@ -103,8 +92,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Refresh lobbying data')
     parser.add_argument('--no-ingest', action='store_true', help='Skip ingestion')
-    parser.add_argument('--extract-limit', type=int, default=100, help='Max activities to extract')
-    parser.add_argument('--normalize', action='store_true', help='Rebuild normalization dictionary')
+    parser.add_argument('--rules-batch-size', type=int, default=2_000_000, help='Max activities to classify with deterministic rules')
     parser.add_argument('--no-export', action='store_true', help='Skip JSON export')
     parser.add_argument('--check-env', action='store_true', help='Check environment and exit')
 
@@ -117,7 +105,6 @@ if __name__ == "__main__":
 
     refresh(
         ingest_latest=not args.no_ingest,
-        extract_limit=args.extract_limit,
-        normalize=args.normalize,
+        rules_batch_size=args.rules_batch_size,
         export=not args.no_export
     )

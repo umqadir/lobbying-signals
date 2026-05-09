@@ -516,7 +516,7 @@ function renderSignalDetail(panel, signal) {
     inner.appendChild(head);
 
     const note = el("div", "method-note");
-    note.textContent = "Source: Senate LDA filings. Mentions are activity-level tags, not unique filings; comparisons are directional signals, not causal claims.";
+    note.textContent = "Source: Senate LDA filings. Mentions are deterministic rule matches on activity text, not unique filings; comparisons are directional signals, not causal claims.";
     inner.appendChild(note);
 
     // Stats grid

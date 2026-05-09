@@ -7,15 +7,10 @@ on:
   workflow_dispatch:
     # Allow manual trigger
     inputs:
-      extract_limit:
-        description: 'Max activities to extract'
+      rules_batch_size:
+        description: 'Max activities to classify with deterministic rules'
         required: false
-        default: '100'
-      normalize:
-        description: 'Rebuild normalization dictionary'
-        required: false
-        type: boolean
-        default: false
+        default: '2000000'
 
 jobs:
   refresh:
@@ -74,11 +69,8 @@ jobs:
       - name: Run refresh
         run: |
           uv run python 07_refresh.py \
-            --extract-limit ${{ github.event.inputs.extract_limit || '100' }} \
-            ${{ github.event.inputs.normalize == 'true' && '--normalize' || '' }}
+            --rules-batch-size ${{ github.event.inputs.rules_batch_size || '2000000' }}
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
 
       - name: Upload database to release

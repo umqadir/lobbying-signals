@@ -5,8 +5,50 @@ import re
 from datetime import datetime, timedelta
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+from pathlib import Path
 
 from db import get_db, query_to_dicts
+
+RULES_PATH = Path("rules/topic_rules.json")
+
+COARSE_TOPIC_LABELS = {
+    "trade": "Trade",
+    "healthcare": "Healthcare",
+    "technology": "Technology",
+    "energy_environment": "Energy and Environment",
+    "defense_security": "Defense and Security",
+    "agriculture_food": "Agriculture and Food",
+    "labor_immigration": "Labor and Immigration",
+    "finance_tax": "Finance and Tax",
+    "transportation": "Transportation",
+    "education_social": "Education and Social Policy",
+    "housing_urban": "Housing and Urban Development",
+    "government_budget": "Government and Budget",
+    "industry_business": "Industry and Business",
+    "other": "Other",
+    "unknown": "Unknown",
+}
+
+
+def _humanize_slug(value: str) -> str:
+    return " ".join(part for part in value.replace("_", " ").split()).title()
+
+
+def _load_topic_labels() -> dict[str, str]:
+    try:
+        data = json.loads(RULES_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+    labels = {}
+    for topic in data.get("topics", []):
+        topic_id = topic.get("id")
+        label = topic.get("label")
+        if topic_id and label:
+            labels[topic_id] = label
+    return labels
+
+
+TOPIC_LABELS = _load_topic_labels()
 
 LEGISLATION_NOISE_EXACT = {
     "a",
@@ -94,6 +136,28 @@ def normalize_legislation(value: str) -> str:
     return tag
 
 
+def display_topic(value: str) -> str:
+    tag = normalize_tag(value)
+    if not tag:
+        return ""
+    if tag in TOPIC_LABELS:
+        return TOPIC_LABELS[tag]
+    if tag.startswith("general_"):
+        return f"General: {_humanize_slug(tag.removeprefix('general_'))}"
+    return _humanize_slug(tag)
+
+
+def is_general_topic(value: str) -> bool:
+    return normalize_tag(value).startswith("general_")
+
+
+def display_domain(value: str) -> str:
+    tag = normalize_tag(value)
+    if not tag:
+        return ""
+    return COARSE_TOPIC_LABELS.get(tag, _humanize_slug(tag))
+
+
 def get_extraction_counts(days_back: int = None, start_date: str = None, end_date: str = None) -> dict:
     """Get counts of topics, entities, legislation from extractions."""
     with get_db() as conn:
@@ -109,14 +173,14 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
             date_filter = ""
 
         sql = f'''
-            SELECT f.id as filing_id, e.domain, e.topics, e.entities, e.legislation,
+            SELECT f.id as filing_id, e.coarse_topic as domain, e.topics, e.entities, e.legislation,
                    f.filing_date, c.name as client_name, r.name as registrant_name, f.income
-            FROM activity_extractions e
+            FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
             JOIN filings f ON a.filing_id = f.id
             JOIN clients c ON f.client_id = c.id
             JOIN registrants r ON f.registrant_id = r.id
-            WHERE e.domain IS NOT NULL
+            WHERE e.coarse_topic IS NOT NULL
             {date_filter}
         '''
         rows = query_to_dicts(conn, sql, tuple(params))
@@ -159,7 +223,7 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
         income = row.get('income') or 0
         filing_date = row.get('filing_date')
 
-        domain = normalize_tag(row.get('domain'))
+        domain = display_domain(row.get('domain'))
         if domain:
             domains.counts[domain] += 1
             if client:
@@ -170,7 +234,9 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
             add_example(domain_examples, domain, filing_id, filing_date, client, registrant, income)
 
         for topic in json.loads(row['topics'] or '[]'):
-            topic = normalize_tag(topic)
+            if is_general_topic(topic):
+                continue
+            topic = display_topic(topic)
             if not topic:
                 continue
             topics.counts[topic] += 1
@@ -276,7 +342,14 @@ def compute_trends() -> dict:
             return 'low'
         return 'low'
 
-    def calc_change(current: dict, previous: dict, yoy: dict, key: str, min_count: int = 1) -> tuple[list, dict]:
+    def calc_change(
+        current: dict,
+        previous: dict,
+        yoy: dict,
+        key: str,
+        min_count: int = 1,
+        max_items: int = 500
+    ) -> tuple[list, dict]:
         current_counts = current[key]
         prev_counts = previous[key]
         yoy_counts = yoy[key]
@@ -328,13 +401,15 @@ def compute_trends() -> dict:
             results,
             key=lambda x: (-x['score'], -x['count'], x['name'])
         )
+        capped_results = sorted_results[:max_items]
         meta = {
             'unique_current': len(current_counts),
             'min_count': min_count,
             'dropped_min_count': dropped_min,
             'ranked': len(sorted_results),
+            'exported': len(capped_results),
         }
-        return sorted_results, meta
+        return capped_results, meta
 
     def keep_for(top_list: list[dict], mapping: dict) -> dict:
         if not mapping:
@@ -369,10 +444,10 @@ def compute_trends() -> dict:
         previous = parts['prev']
         yoy = parts['yoy']
 
-        topics, topics_meta = calc_change(current, previous, yoy, 'topics')
+        topics, topics_meta = calc_change(current, previous, yoy, 'topics', min_count=1, max_items=500)
         domains, domains_meta = calc_change(current, previous, yoy, 'domains')
-        entities, entities_meta = calc_change(current, previous, yoy, 'entities')
-        legislation, legislation_meta = calc_change(current, previous, yoy, 'legislation')
+        entities, entities_meta = calc_change(current, previous, yoy, 'entities', min_count=1, max_items=500)
+        legislation, legislation_meta = calc_change(current, previous, yoy, 'legislation', min_count=5, max_items=500)
 
         result['window_totals'][window_key] = {
             'current_total_mentions': current.get('total_rows', 0),
@@ -489,7 +564,7 @@ def get_stats() -> dict:
     with get_db() as conn:
         total_filings = conn.execute('SELECT COUNT(*) FROM filings').fetchone()[0]
         total_activities = conn.execute('SELECT COUNT(*) FROM activities').fetchone()[0]
-        total_extracted = conn.execute('SELECT COUNT(*) FROM activity_extractions').fetchone()[0]
+        total_extracted = conn.execute('SELECT COUNT(*) FROM activity_extractions_rules').fetchone()[0]
 
         date_range = conn.execute('''
             SELECT MIN(filing_date), MAX(filing_date) FROM filings
@@ -511,6 +586,7 @@ def get_stats() -> dict:
         'total_activities': total_activities,
         'total_extracted': total_extracted,
         'extracted_pct': round(total_extracted / total_activities * 100, 1) if total_activities > 0 else 0,
+        'extraction_source': 'deterministic_rules',
         'date_range': {
             'start': date_range[0] if date_range else None,
             'end': date_range[1] if date_range else None
@@ -536,12 +612,12 @@ def get_recent_filings(limit: int = 300) -> list:
             SELECT
                 f.id, f.filing_date, f.income, f.year, f.quarter,
                 c.name as client_name, r.name as registrant_name,
-                e.domain, e.topics, e.entities, e.legislation
+                e.coarse_topic AS domain, e.topics, e.entities, e.legislation
             FROM recent f
             JOIN clients c ON f.client_id = c.id
             JOIN registrants r ON f.registrant_id = r.id
             LEFT JOIN activities a ON a.filing_id = f.id
-            LEFT JOIN activity_extractions e ON e.activity_id = a.id
+            LEFT JOIN activity_extractions_rules e ON e.activity_id = a.id
         '''
         rows = query_to_dicts(conn, sql, (limit,))
 
@@ -559,19 +635,23 @@ def get_recent_filings(limit: int = 300) -> list:
                 'quarter': row['quarter'],
                 'domain_counts': Counter(),
                 'topics': Counter(),
+                'general_topics': Counter(),
                 'entities': Counter(),
                 'legislation': Counter(),
             }
 
         rec = by_filing[fid]
-        domain = normalize_tag(row.get('domain'))
+        domain = display_domain(row.get('domain'))
         if domain:
             rec['domain_counts'][domain] += 1
 
         for t in json.loads(row.get('topics') or '[]'):
-            topic = normalize_tag(t)
+            topic = display_topic(t)
             if topic:
-                rec['topics'][topic] += 1
+                if is_general_topic(t):
+                    rec['general_topics'][topic] += 1
+                else:
+                    rec['topics'][topic] += 1
         for e in json.loads(row.get('entities') or '[]'):
             entity = normalize_tag(e)
             if entity:
@@ -584,6 +664,7 @@ def get_recent_filings(limit: int = 300) -> list:
     filings = []
     for rec in by_filing.values():
         domain = rec['domain_counts'].most_common(1)[0][0] if rec['domain_counts'] else None
+        topic_counts = rec['topics'] if rec['topics'] else rec['general_topics']
         filings.append({
             'id': rec['id'],
             'date': rec['date'],
@@ -594,7 +675,7 @@ def get_recent_filings(limit: int = 300) -> list:
             'quarter': rec['quarter'],
             'domain': domain,
             'domains': [d for d, _ in rec['domain_counts'].most_common(3)],
-            'topics': [t for t, _ in rec['topics'].most_common(12)],
+            'topics': [t for t, _ in topic_counts.most_common(12)],
             'entities': [e for e, _ in rec['entities'].most_common(12)],
             'legislation': [l for l, _ in rec['legislation'].most_common(12)],
         })
@@ -670,7 +751,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             SELECT
                 (f.year * 4 + f.quarter) AS q_index,
                 e.topics
-            FROM activity_extractions e
+            FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
             JOIN filings f ON a.filing_id = f.id
             WHERE f.year IS NOT NULL
@@ -688,7 +769,9 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             continue
         topics = json.loads(row['topics'] or '[]')
         for topic in topics:
-            topic = normalize_tag(topic)
+            if is_general_topic(topic):
+                continue
+            topic = display_topic(topic)
             if topic:
                 topic_by_quarter[q_index][topic] += 1
 
@@ -821,7 +904,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
                 COUNT(DISTINCT e.activity_id) AS extracted_activities
             FROM activities a
             JOIN filings f ON a.filing_id = f.id
-            LEFT JOIN activity_extractions e ON e.activity_id = a.id
+            LEFT JOIN activity_extractions_rules e ON e.activity_id = a.id
             WHERE f.filing_date BETWEEN ? AND ?
             """,
             (current_start, current_end),
@@ -830,7 +913,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
             conn,
             """
             SELECT e.legislation
-            FROM activity_extractions e
+            FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
             JOIN filings f ON a.filing_id = f.id
             WHERE f.filing_date BETWEEN ? AND ?

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-09T19:50:49.759488",
+  "generated_at": "2026-05-09T16:57:34.370579",
   "filings": [
     {
       "id": 431616,
@@ -9,40 +9,32 @@
       "income": 75000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": "Energy and Natural Resources",
+      "domain": "Energy and Environment",
       "domains": [
-        "Energy and Natural Resources",
-        "Government Operations and Budget",
-        "Environmental Policy"
+        "Energy and Environment",
+        "Agriculture and Food",
+        "Industry and Business"
       ],
       "topics": [
-        "energy grant",
-        "energy loan",
-        "processing facility",
-        "rare earth",
-        "critical mineral",
-        "appropriation",
-        "budget reconciliation",
-        "water quality",
-        "air quality",
-        "regulation",
-        "restriction",
-        "percentage depletion"
+        "Tariffs and Trade Enforcement",
+        "Appropriations",
+        "Tax Policy"
       ],
       "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "Department of the Interior",
         "EPA",
+        "Department of Commerce",
+        "OSHA",
+        "HHS",
         "FDA",
-        "STB"
+        "Department of Transportation"
       ],
       "legislation": [
-        "Continuing Resolution for 2026",
-        "Budget Reconciliation Package",
-        "2026 Appropriations Legislation",
-        "WOTUS",
-        "Inflation Reduction Act",
         "Section 899",
-        "Reliable Rail Service Act of 2025",
-        "TSCA"
+        "Reliable Rail Service Act of 2025"
       ]
     },
     {
@@ -58,31 +50,17 @@
         "Healthcare"
       ],
       "topics": [
-        "provider tax",
-        "state directed payment",
-        "sequestration",
-        "disproportionate share hospital funding",
-        "site-neutral payment",
-        "nurse immigration",
-        "rural emergency hospital",
-        "premium tax credit",
-        "340B program",
-        "graduate medical education",
-        "rural emergency hospital program",
-        "critical access hospital"
+        "Medicare and Medicaid",
+        "Drug Pricing"
       ],
       "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
         "CMS",
-        "Medicare"
+        "DHS"
       ],
-      "legislation": [
-        "One Big Beautiful bill",
-        "ACA",
-        "FLEX",
-        "SHIP",
-        "Rural Community Hospital Demonstration Program",
-        "One Big Beautiful Bill Act"
-      ]
+      "legislation": []
     },
     {
       "id": 431614,
@@ -97,12 +75,13 @@
         "Healthcare"
       ],
       "topics": [
-        "hospital reimbursement",
-        "covid-19 pandemic",
-        "bankruptcy",
-        "cost report"
+        "General: Health Issues"
       ],
-      "entities": [],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -118,10 +97,13 @@
         "Healthcare"
       ],
       "topics": [
-        "hospital funding",
-        "pandemic relief"
+        "General: Health Issues"
       ],
-      "entities": [],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -132,15 +114,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": "Native American Affairs",
+      "domain": "Industry and Business",
       "domains": [
-        "Native American Affairs"
+        "Industry and Business"
       ],
       "topics": [
-        "tribal gaming",
-        "regulatory compliance"
+        "Gaming and Betting"
       ],
-      "entities": [],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": [
         "Tribal Gaming Regulatory Compliance Act"
       ]
@@ -153,10 +137,17 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -167,16 +158,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": "Health",
+      "domain": "Healthcare",
       "domains": [
-        "Health"
+        "Healthcare"
       ],
       "topics": [
-        "congenital heart disease surveillance",
-        "medical research",
-        "healthcare workforce development"
+        "Labor and Employment"
       ],
-      "entities": [],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -189,14 +181,19 @@
       "quarter": 1,
       "domain": "Healthcare",
       "domains": [
-        "Healthcare"
+        "Healthcare",
+        "Defense and Security",
+        "Government and Budget"
       ],
       "topics": [
-        "nasal decolonization",
-        "infection control",
-        "alcohol-based antiseptic"
+        "General: Health Issues",
+        "General: Defense",
+        "General: Budget Appropriations"
       ],
-      "entities": [],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -207,16 +204,20 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": "Health",
+      "domain": "Government and Budget",
       "domains": [
-        "Health"
+        "Government and Budget",
+        "Healthcare",
+        "Defense and Security"
       ],
       "topics": [
-        "polycystic kidney disease",
-        "medical research funding"
+        "General: Budget Appropriations",
+        "General: Health Issues",
+        "General: Defense"
       ],
       "entities": [
-        "Peer Reviewed Medical Research Program"
+        "Senate",
+        "House of Representatives"
       ],
       "legislation": []
     },
@@ -228,19 +229,26 @@
       "income": 24300.0,
       "year": 2026,
       "quarter": 1,
-      "domain": "Environment",
+      "domain": "Energy and Environment",
       "domains": [
-        "Environment"
+        "Energy and Environment",
+        "Agriculture and Food"
       ],
       "topics": [
-        "wetland restoration",
-        "water infrastructure funding",
-        "natural area restoration"
+        "General: Environment",
+        "General: Natural Resources",
+        "General: Agriculture"
       ],
-      "entities": [],
-      "legislation": [
-        "Indian River Lagoon Everglades project"
-      ]
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "OMB",
+        "Department of the Interior",
+        "Army Corps of Engineers",
+        "USDA",
+        "EPA"
+      ],
+      "legislation": []
     },
     {
       "id": 431606,
@@ -255,15 +263,17 @@
         "Transportation"
       ],
       "topics": [
-        "air traffic control modernization",
-        "cargo security",
-        "on-demand operation",
-        "passenger security program",
-        "agency funding"
+        "General: Aviation"
       ],
       "entities": [
-        "TSA",
-        "FAA"
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Defense",
+        "Treasury",
+        "FAA",
+        "Department of Transportation",
+        "DHS"
       ],
       "legislation": []
     },
@@ -275,24 +285,32 @@
       "income": 80000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": "Health",
+      "domain": "Healthcare",
       "domains": [
-        "Health"
+        "Healthcare",
+        "Finance and Tax",
+        "Trade"
       ],
       "topics": [
-        "orphan drug exemption",
-        "genomic testing",
-        "pediatric health",
-        "most favored nation",
-        "drug pricing",
-        "genomic health"
+        "General: Pharmacy",
+        "General: Trade",
+        "General: Financial Institutions",
+        "General: Health Issues",
+        "General: Medicare Medicaid",
+        "General: Insurance",
+        "General: Economics"
       ],
-      "entities": [],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": [
         "H.R. 7118",
         "H.R. 1414",
         "H.R. 1492",
-        "S. 832"
+        "S. 832",
+        "Childrens Health Act",
+        "EPIC Act"
       ]
     },
     {
@@ -303,11 +321,23 @@
       "income": 60000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "Housing Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "OMB"
+      ],
+      "legislation": [
+        "H.R. 6644",
+        "S. 2651",
+        "Housing Act"
+      ]
     },
     {
       "id": 431603,
@@ -317,10 +347,20 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations",
+        "Science Research Funding"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
       "legislation": []
     },
     {
@@ -331,11 +371,40 @@
       "income": 1160000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Finance and Tax",
+        "Transportation"
+      ],
+      "topics": [
+        "Clean Air and Chemicals",
+        "Appropriations",
+        "Biofuels",
+        "Waste and Recycling Management",
+        "Tax Policy",
+        "Cybersecurity"
+      ],
+      "entities": [
+        "House of Representatives",
+        "Senate",
+        "EPA",
+        "DHS"
+      ],
+      "legislation": [
+        "H.R. 5636",
+        "H.R. 5301",
+        "H.R. 3898",
+        "H.R. 6398",
+        "H.R. 6373",
+        "H.R. 4218",
+        "H.R. 6409",
+        "S. 2742",
+        "H.R. 161",
+        "H.R. 1346",
+        "H.R. 3109",
+        "H.R. 3699"
+      ]
     },
     {
       "id": 431601,
@@ -345,10 +414,26 @@
       "income": 18000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Education and Social Policy",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Sports Governance",
+        "Appropriations",
+        "Education and Student Aid",
+        "Science Research Funding",
+        "Defense Authorization"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Congress",
+        "White House"
+      ],
       "legislation": []
     },
     {
@@ -359,10 +444,16 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate"
+      ],
       "legislation": []
     },
     {
@@ -373,10 +464,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "General: Science Technology"
+      ],
+      "entities": [
+        "White House",
+        "Executive Office of the President"
+      ],
       "legislation": []
     },
     {
@@ -387,10 +485,17 @@
       "income": 31407.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -415,11 +520,28 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "Aviation Policy",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "FAA",
+        "DHS"
+      ],
+      "legislation": [
+        "H.R. 4552",
+        "H.R. 4213",
+        "H.R. 4754",
+        "S. 2465",
+        "S. 2431",
+        "P.L. 119-21"
+      ]
     },
     {
       "id": 431595,
@@ -429,11 +551,34 @@
       "income": 305901.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Data Privacy",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
+      "legislation": [
+        "H.R. 8163",
+        "H.R. 7961",
+        "H.R. 7884",
+        "H.R. 7686",
+        "H.R. 7520",
+        "H.R. 7118",
+        "H.R. 1",
+        "H.R. 3514",
+        "H.R. 3580",
+        "H.R. 2389",
+        "H.R. 4942",
+        "H.R. 5392"
+      ]
     },
     {
       "id": 431594,
@@ -443,10 +588,18 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "General: Copyright Patent Trademark",
+        "General: Telecommunications"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -457,10 +610,17 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "Infrastructure and Broadband"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -471,10 +631,17 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "Aviation Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -485,10 +652,16 @@
       "income": 50000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "General: Telecommunications"
+      ],
+      "entities": [
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -499,10 +672,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -513,10 +693,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -527,10 +714,17 @@
       "income": 7000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -541,10 +735,17 @@
       "income": 8000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -555,10 +756,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -569,10 +777,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -583,10 +798,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -597,10 +819,20 @@
       "income": 17000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Cybersecurity",
+        "FDA Regulation",
+        "Defense Authorization"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -611,10 +843,17 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Government Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -625,10 +864,18 @@
       "income": 35000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "FDA"
+      ],
       "legislation": []
     },
     {
@@ -639,10 +886,19 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "General: Government Issues",
+        "General: Education"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -653,10 +909,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -667,10 +930,16 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Clean Water"
+      ],
+      "entities": [
+        "Senate"
+      ],
       "legislation": []
     },
     {
@@ -681,10 +950,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -695,10 +971,17 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Artificial Intelligence"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -709,10 +992,19 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "Army Corps of Engineers"
+      ],
       "legislation": []
     },
     {
@@ -723,10 +1015,19 @@
       "income": 14000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development",
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Housing",
+        "General: Government Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -737,10 +1038,19 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy",
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Consumer Issues Safety",
+        "General: Government Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -751,10 +1061,17 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -765,10 +1082,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -779,10 +1103,18 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "HHS",
+        "CMS",
+        "FDA"
+      ],
       "legislation": []
     },
     {
@@ -793,10 +1125,17 @@
       "income": 7500.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -807,11 +1146,22 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Other",
+      "domains": [
+        "Other",
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Accounting",
+        "General: Advertising"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "Section 45Z"
+      ]
     },
     {
       "id": 431567,
@@ -821,11 +1171,22 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Other",
+      "domains": [
+        "Other",
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Accounting",
+        "General: Advertising"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "Section 45Z"
+      ]
     },
     {
       "id": 431566,
@@ -835,9 +1196,14 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Renewable Energy",
+        "Tax Policy"
+      ],
       "entities": [],
       "legislation": []
     },
@@ -849,10 +1215,17 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -863,10 +1236,25 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Government and Budget",
+        "Trade"
+      ],
+      "topics": [
+        "Appropriations",
+        "Tariffs and Trade Enforcement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USDA",
+        "White House",
+        "USTR",
+        "FDA",
+        "EPA"
+      ],
       "legislation": []
     },
     {
@@ -877,10 +1265,24 @@
       "income": 360000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax",
+        "Trade",
+        "Labor and Immigration"
+      ],
+      "topics": [
+        "Export Controls and Sanctions",
+        "Tariffs and Trade Enforcement",
+        "Labor and Employment"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Treasury",
+        "Department of Commerce",
+        "USTR"
+      ],
       "legislation": []
     },
     {
@@ -905,11 +1307,43 @@
       "income": 340000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax",
+        "Transportation",
+        "Trade"
+      ],
+      "topics": [
+        "Tax Policy",
+        "Electric Vehicles",
+        "Tariffs and Trade Enforcement",
+        "Trade Agreements"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Treasury",
+        "Congress",
+        "EPA",
+        "FTC",
+        "Executive Office of the President",
+        "White House",
+        "Department of Commerce",
+        "SEC",
+        "USTR"
+      ],
+      "legislation": [
+        "H.R. 1301",
+        "H.R. 1",
+        "S. 587",
+        "Section 199A",
+        "Death Tax Repeal Act of 2025",
+        "One Big Beautiful Bill Act",
+        "H.R. 1566",
+        "S. 1379",
+        "Professional Auto Industry Repair Act",
+        "REPAIR Act"
+      ]
     },
     {
       "id": 431560,
@@ -919,11 +1353,25 @@
       "income": 62512.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Government and Budget",
+        "Industry and Business"
+      ],
+      "topics": [
+        "Infrastructure and Broadband"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation",
+        "OMB"
+      ],
+      "legislation": [
+        "P.L. 117-58",
+        "Jobs Act"
+      ]
     },
     {
       "id": 431559,
@@ -933,10 +1381,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Housing Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -947,10 +1402,18 @@
       "income": 12000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Veterans"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Veterans Affairs"
+      ],
       "legislation": []
     },
     {
@@ -961,10 +1424,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -975,11 +1445,22 @@
       "income": 9700.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Veterans Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "Department of Veterans Affairs"
+      ],
+      "legislation": [
+        "Trade Adjustment Act"
+      ]
     },
     {
       "id": 431555,
@@ -989,10 +1470,19 @@
       "income": 36000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -1003,10 +1493,17 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1017,11 +1514,20 @@
       "income": 36000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Indian Native American"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "Paiutes Jurisdictional Clarity Act"
+      ]
     },
     {
       "id": 431552,
@@ -1031,10 +1537,19 @@
       "income": 36000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -1045,10 +1560,19 @@
       "income": 36000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -1059,10 +1583,19 @@
       "income": 24000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -1073,10 +1606,19 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -1087,10 +1629,20 @@
       "income": 75000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "Department of Transportation",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -1101,10 +1653,19 @@
       "income": 24000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Indian Native American"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -1115,10 +1676,17 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Gaming and Betting"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1129,10 +1697,17 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1143,10 +1718,17 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1157,10 +1739,18 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Indian Native American"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
       "legislation": []
     },
     {
@@ -1185,11 +1775,25 @@
       "income": 60000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Industry and Business"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Drug Pricing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "CMS"
+      ],
+      "legislation": [
+        "H.R. 1708",
+        "S. 1087"
+      ]
     },
     {
       "id": 431540,
@@ -1199,11 +1803,22 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "HHS"
+      ],
+      "legislation": [
+        "H.R. 1",
+        "P.L. 119-21",
+        "One Big Beautiful Bill Act"
+      ]
     },
     {
       "id": 431539,
@@ -1213,10 +1828,22 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Budget Appropriations",
+        "General: Agriculture",
+        "General: Food Industry"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "FDA",
+        "USDA"
+      ],
       "legislation": []
     },
     {
@@ -1227,10 +1854,21 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "General: Transportation",
+        "General: Financial Institutions"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "Department of Transportation"
+      ],
       "legislation": []
     },
     {
@@ -1241,10 +1879,24 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Finance and Tax",
+        "Other"
+      ],
+      "topics": [
+        "General: Transportation",
+        "General: Financial Institutions",
+        "General: Accounting",
+        "General: Roads Highway"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation",
+        "Department of Energy"
+      ],
       "legislation": []
     },
     {
@@ -1269,10 +1921,19 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "General: Health Issues",
+        "General: Taxation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1283,10 +1944,20 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax",
+        "Technology"
+      ],
+      "topics": [
+        "General: Financial Institutions",
+        "General: Science Technology"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "SEC"
+      ],
       "legislation": []
     },
     {
@@ -1297,10 +1968,17 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax"
+      ],
+      "topics": [
+        "General: Economics"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1311,10 +1989,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Budget Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1325,9 +2010,15 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Transportation",
+        "General: Budget Appropriations"
+      ],
       "entities": [],
       "legislation": []
     },
@@ -1339,10 +2030,22 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Budget Appropriations",
+        "General: Energy Nuclear"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "OMB",
+        "Department of Energy",
+        "NRC"
+      ],
       "legislation": []
     },
     {
@@ -1353,11 +2056,28 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Veterans Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Veterans Affairs",
+        "CMS",
+        "OMB"
+      ],
+      "legislation": [
+        "H.R. 658",
+        "H.R. 8081",
+        "S. 4202",
+        "Provider Support Act of 2026"
+      ]
     },
     {
       "id": 431528,
@@ -1367,11 +2087,26 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Veterans Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "CMS",
+        "Department of Veterans Affairs"
+      ],
+      "legislation": [
+        "H.R. 8081",
+        "S. 4202",
+        "Provider Support Act of 2026",
+        "H.R. 658"
+      ]
     },
     {
       "id": 431527,
@@ -1381,11 +2116,23 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Oil and Gas"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of the Interior"
+      ],
+      "legislation": [
+        "Oil Pollution Act of 1990",
+        "One Big Beautiful Bill Act"
+      ]
     },
     {
       "id": 431526,
@@ -1395,11 +2142,40 @@
       "income": 90000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Trade",
+        "Defense and Security"
+      ],
+      "topics": [
+        "FDA Regulation",
+        "Tariffs and Trade Enforcement",
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "House of Representatives",
+        "Senate",
+        "FDA",
+        "Department of Commerce",
+        "Department of Defense",
+        "Department of Energy"
+      ],
+      "legislation": [
+        "H.R. 4306",
+        "H.R. 4968",
+        "H.R. 4958",
+        "H.R. 7291",
+        "H.R. 8370",
+        "H.R. 7366",
+        "H.R. 8385",
+        "S. 2341",
+        "S. 3677",
+        "S. 3797",
+        "Cosmetic Act",
+        "Transparency Act"
+      ]
     },
     {
       "id": 431525,
@@ -1409,10 +2185,19 @@
       "income": 140000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
       "legislation": []
     },
     {
@@ -1423,10 +2208,21 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Natural Resources",
+        "General: Commodities"
+      ],
+      "entities": [
+        "White House",
+        "Department of Defense",
+        "Department of Commerce",
+        "Treasury"
+      ],
       "legislation": []
     },
     {
@@ -1437,10 +2233,18 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Environment"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA"
+      ],
       "legislation": []
     },
     {
@@ -1451,10 +2255,17 @@
       "income": 55000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "Farm Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1465,10 +2276,21 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "CMS"
+      ],
       "legislation": []
     },
     {
@@ -1479,10 +2301,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "General: Agriculture"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1493,10 +2322,21 @@
       "income": 200000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Trade",
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Budget Appropriations",
+        "General: Foreign Relations",
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1507,10 +2347,18 @@
       "income": 42723.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "General: Education"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House"
+      ],
       "legislation": []
     },
     {
@@ -1521,11 +2369,48 @@
       "income": 90000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Defense and Security",
+        "Transportation"
+      ],
+      "topics": [
+        "Appropriations",
+        "Housing Policy",
+        "Clinical Research and Diagnostics",
+        "Medicare and Medicaid",
+        "Drug Pricing",
+        "Veterans Policy",
+        "Aviation Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Congress",
+        "CMS",
+        "FDA",
+        "Department of Defense",
+        "Department of Veterans Affairs",
+        "FAA",
+        "Department of Transportation",
+        "Department of Energy"
+      ],
+      "legislation": [
+        "Chance Act",
+        "Care Act",
+        "Patient Access Act",
+        "Caregiving Act",
+        "MVP Act",
+        "Veterans Care Protection Act",
+        "Caregivers Act",
+        "HEARD Act",
+        "Newborn Screening Saves Lives Act",
+        "FAA Reauthorization Act of 2024",
+        "H.R. 7148",
+        "Consolidated Appropriations Act of 2026"
+      ]
     },
     {
       "id": 431516,
@@ -1535,9 +2420,13 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
       "entities": [],
       "legislation": []
     },
@@ -1549,9 +2438,13 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing"
+      ],
       "entities": [],
       "legislation": []
     },
@@ -1563,11 +2456,36 @@
       "income": 70000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Education and Social Policy",
+        "Healthcare"
+      ],
+      "topics": [
+        "Education and Student Aid",
+        "Science Research Funding",
+        "Defense Authorization",
+        "Appropriations",
+        "Sports Governance"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "Department of Energy",
+        "NASA",
+        "HHS",
+        "State Department"
+      ],
+      "legislation": [
+        "One Big Beautiful Bill Act",
+        "H.R. 7148",
+        "H.R. 7006",
+        "H.R. 4312",
+        "Endorsements Act",
+        "SCORE Act"
+      ]
     },
     {
       "id": 431513,
@@ -1577,10 +2495,19 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Other"
+      ],
+      "topics": [
+        "General: Energy Nuclear",
+        "General: Accounting"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1591,10 +2518,19 @@
       "income": 60000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Drug Pricing",
+        "Telehealth"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1605,10 +2541,19 @@
       "income": 60000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Drug Pricing",
+        "Telehealth"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1619,10 +2564,18 @@
       "income": 70000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Trade"
+      ],
+      "topics": [
+        "Tariffs and Trade Enforcement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1633,11 +2586,30 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Public Lands and Water Management",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
+      "legislation": [
+        "H.R. 471",
+        "H.R. 4776",
+        "H.R. 7603",
+        "S. 1462",
+        "S. 1737",
+        "Forests Act",
+        "Scenic Rivers Act",
+        "SPEED Act"
+      ]
     },
     {
       "id": 431508,
@@ -1647,11 +2619,31 @@
       "income": 5185.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Education and Social Policy",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 6137",
+        "S. 3211",
+        "Direct Support Professionals Act",
+        "H.R. 2598",
+        "S. 1277",
+        "Support IDEA Full Funding Act",
+        "H.R. 2540",
+        "S. 1234",
+        "SSI Savings Penalty Elimination Act"
+      ]
     },
     {
       "id": 431507,
@@ -1661,10 +2653,18 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
       "legislation": []
     },
     {
@@ -1675,10 +2675,17 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1689,11 +2696,32 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Veterans Affairs"
+      ],
+      "legislation": [
+        "H.R. 4648",
+        "H.R. 8119",
+        "H.R. 220",
+        "H.R. 2557",
+        "H.R. 6797",
+        "S. 2035",
+        "S. 2408",
+        "S. 2534",
+        "S. 1231",
+        "S. 797",
+        "Protect IVF Act",
+        "Care Act"
+      ]
     },
     {
       "id": 431504,
@@ -1703,11 +2731,23 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Appropriations",
+        "Drug Pricing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 7391",
+        "Community Health Center Drug Pricing Protection Act"
+      ]
     },
     {
       "id": 431503,
@@ -1717,10 +2757,21 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Transportation",
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "House of Representatives",
+        "Senate",
+        "CMS",
+        "USDA"
+      ],
       "legislation": []
     },
     {
@@ -1731,10 +2782,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1745,11 +2803,23 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Other"
+      ],
+      "topics": [
+        "General: Transportation",
+        "General: Banking"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 1235",
+        "Federal Infrastructure Bank Act of 2025"
+      ]
     },
     {
       "id": 431500,
@@ -1759,11 +2829,22 @@
       "income": 105000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Government and Budget",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "House of Representatives",
+        "Senate"
+      ],
+      "legislation": [
+        "H.R. 4312"
+      ]
     },
     {
       "id": 431499,
@@ -1773,10 +2854,18 @@
       "income": 25000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
       "legislation": []
     },
     {
@@ -1787,10 +2876,17 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1801,10 +2897,17 @@
       "income": 50000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1843,10 +2946,16 @@
       "income": 50000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1857,10 +2966,16 @@
       "income": 50000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1871,11 +2986,24 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax",
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "Data Privacy",
+        "Cybersecurity",
+        "Insurance Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Treasury"
+      ],
+      "legislation": [
+        "Tomorrow's Workforce Act"
+      ]
     },
     {
       "id": 431491,
@@ -1885,10 +3013,18 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
       "legislation": []
     },
     {
@@ -1899,10 +3035,17 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Indian Native American"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1913,10 +3056,17 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "Artificial Intelligence"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1927,10 +3077,18 @@
       "income": 8000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Indian Native American"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -1941,10 +3099,17 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Indian Native American"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1955,10 +3120,21 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "Farm Policy",
+        "Nutrition Assistance",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "USDA"
+      ],
       "legislation": []
     },
     {
@@ -1969,10 +3145,19 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Aerospace",
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -1983,10 +3168,18 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "General: Science Technology"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "NASA"
+      ],
       "legislation": []
     },
     {
@@ -1997,10 +3190,22 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology",
+        "Industry and Business"
+      ],
+      "topics": [
+        "Space and Aerospace Policy",
+        "Appropriations"
+      ],
+      "entities": [
+        "Department of Defense",
+        "NASA",
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce"
+      ],
       "legislation": []
     },
     {
@@ -2011,10 +3216,17 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2025,10 +3237,21 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Labor and Immigration"
+      ],
+      "topics": [
+        "Appropriations",
+        "Cybersecurity",
+        "Artificial Intelligence",
+        "Labor and Employment"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2039,10 +3262,20 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations",
+        "Defense Authorization"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "Army Corps of Engineers"
+      ],
       "legislation": []
     },
     {
@@ -2053,10 +3286,17 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Labor and Immigration",
+      "domains": [
+        "Labor and Immigration"
+      ],
+      "topics": [
+        "General: Labor Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2081,10 +3321,18 @@
       "income": 22500.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "General: Agriculture"
+      ],
+      "entities": [
+        "Senate",
+        "White House",
+        "USDA"
+      ],
       "legislation": []
     },
     {
@@ -2095,11 +3343,25 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Agriculture",
+        "General: Alcohol Drug Abuse"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USDA"
+      ],
+      "legislation": [
+        "H.R. 3479",
+        "S. 1753",
+        "RESTORE Act"
+      ]
     },
     {
       "id": 431475,
@@ -2109,10 +3371,17 @@
       "income": 15388.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "General: Education"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2123,11 +3392,24 @@
       "income": 22500.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Technology",
+      "domains": [
+        "Technology",
+        "Finance and Tax",
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "Housing Policy",
+        "Artificial Intelligence"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "S. 2651",
+        "Housing Act of 2025"
+      ]
     },
     {
       "id": 431473,
@@ -2137,9 +3419,13 @@
       "income": 16500.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "Housing Policy"
+      ],
       "entities": [],
       "legislation": []
     },
@@ -2151,11 +3437,28 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Trade"
+      ],
+      "topics": [
+        "General: Transportation",
+        "General: Trucking Shipping",
+        "General: Trade"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce",
+        "Department of Transportation"
+      ],
+      "legislation": [
+        "H.R. 3151",
+        "S. 1536",
+        "S. 1541",
+        "America Act of 2025"
+      ]
     },
     {
       "id": 431471,
@@ -2165,11 +3468,25 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Veterans Policy"
+      ],
+      "entities": [
+        "Department of Veterans Affairs",
+        "Senate",
+        "House of Representatives",
+        "CMS"
+      ],
+      "legislation": [
+        "H.R. 740",
+        "Veterans ACCESS Act of 2025"
+      ]
     },
     {
       "id": 431470,
@@ -2179,10 +3496,16 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "CMS"
+      ],
       "legislation": []
     },
     {
@@ -2193,10 +3516,17 @@
       "income": 19000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2207,10 +3537,17 @@
       "income": 12000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2221,10 +3558,25 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Technology",
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "General: Health Issues",
+        "General: Telecommunications",
+        "General: Agriculture",
+        "General: Environment"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "FCC",
+        "EPA"
+      ],
       "legislation": []
     },
     {
@@ -2235,11 +3587,26 @@
       "income": 110000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "General: Energy Nuclear",
+        "General: Natural Resources",
+        "General: Agriculture"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "USDA"
+      ],
+      "legislation": [
+        "Federal Power Act",
+        "Fix Our Forests Act"
+      ]
     },
     {
       "id": 431465,
@@ -2249,10 +3616,19 @@
       "income": 70000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Farm Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA"
+      ],
       "legislation": []
     },
     {
@@ -2263,10 +3639,24 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Defense",
+        "HHS",
+        "CMS",
+        "FDA"
+      ],
       "legislation": []
     },
     {
@@ -2277,11 +3667,24 @@
       "income": 86813.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Trucking and Freight",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA"
+      ],
+      "legislation": [
+        "H.R. 1659",
+        "Truck Parking Safety Improvement Act"
+      ]
     },
     {
       "id": 431462,
@@ -2291,10 +3694,21 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "General: Retirement",
+        "General: Government Issues",
+        "General: Taxation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2305,11 +3719,36 @@
       "income": 55000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Constitutional and Civil Rights"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "SEC",
+        "DHS",
+        "Department of Veterans Affairs"
+      ],
+      "legislation": [
+        "H.R. 3544",
+        "H.R. 7300",
+        "H.R. 22",
+        "S. 2296",
+        "S. 1383",
+        "SAVE Act",
+        "SAVE America Act",
+        "H.R. 2586",
+        "H.R. 1510",
+        "Federal Prison Oversight Act",
+        "Private Prison Information Act",
+        "Law Act"
+      ]
     },
     {
       "id": 431460,
@@ -2319,10 +3758,23 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Energy Nuclear"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Defense",
+        "Department of Commerce",
+        "Treasury",
+        "Department of Energy",
+        "EPA"
+      ],
       "legislation": []
     },
     {
@@ -2347,10 +3799,29 @@
       "income": 147050.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Industry and Business",
+        "Trade"
+      ],
+      "topics": [
+        "General: Energy Nuclear",
+        "General: Fuel Gas Oil",
+        "General: Utilities",
+        "General: Trade"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Energy",
+        "FERC",
+        "Department of the Interior",
+        "EPA",
+        "Department of Commerce",
+        "USTR"
+      ],
       "legislation": []
     },
     {
@@ -2361,10 +3832,22 @@
       "income": 60000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Veterans Affairs",
+        "Congress",
+        "White House",
+        "Department of Defense"
+      ],
       "legislation": []
     },
     {
@@ -2375,11 +3858,32 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Government and Budget",
+        "Industry and Business"
+      ],
+      "topics": [
+        "Appropriations",
+        "Disaster Resilience and Recovery"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DHS",
+        "Executive Office of the President"
+      ],
+      "legislation": [
+        "H.R. 4669",
+        "FEMA Act of 2025",
+        "Homeland Security Appropriations Act",
+        "Related Agencies Appropriations Act",
+        "H.R. 471",
+        "S. 1462",
+        "Fix Our Forests Act of 2026",
+        "Water Resources Development Act of 2026"
+      ]
     },
     {
       "id": 431455,
@@ -2389,11 +3893,28 @@
       "income": 25000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Defense and Security",
+        "Healthcare"
+      ],
+      "topics": [
+        "Appropriations",
+        "Defense Authorization",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "HHS"
+      ],
+      "legislation": [
+        "National Defense Authorization Act",
+        "H.R. 842",
+        "Gardner Sewell Medicare Multi-Cancer Early Detection Screening Coverage Act"
+      ]
     },
     {
       "id": 431454,
@@ -2403,10 +3924,18 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Technology"
+      ],
+      "topics": [
+        "General: Transportation",
+        "General: Science Technology"
+      ],
+      "entities": [
+        "Senate"
+      ],
       "legislation": []
     },
     {
@@ -2417,10 +3946,18 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
       "legislation": []
     },
     {
@@ -2431,11 +3968,26 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Clinical Research and Diagnostics",
+        "Appropriations",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "HHS"
+      ],
+      "legislation": [
+        "H.R. 842",
+        "Gardner Sewell Medicare Multi-Cancer Early Detection Screening Coverage Act"
+      ]
     },
     {
       "id": 431451,
@@ -2445,10 +3997,18 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Budget Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
       "legislation": []
     },
     {
@@ -2459,10 +4019,21 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Budget Appropriations",
+        "General: Arts Entertainment"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "USDA"
+      ],
       "legislation": []
     },
     {
@@ -2473,10 +4044,19 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "General: Budget Appropriations",
+        "General: Economics"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2487,11 +4067,28 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "Appropriations",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "CMS"
+      ],
+      "legislation": [
+        "H.R. 5304",
+        "S. 2587",
+        "Affordable Care Act",
+        "H.R. 1"
+      ]
     },
     {
       "id": 431447,
@@ -2501,11 +4098,30 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Defense and Security",
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Budget Appropriations",
+        "General: Law Enforcement",
+        "General: Disaster Planning"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "DHS",
+        "USDA"
+      ],
+      "legislation": [
+        "H.R. 5371",
+        "H.R. 5342",
+        "H.R. 4552",
+        "S. 2354"
+      ]
     },
     {
       "id": 431446,
@@ -2515,11 +4131,28 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget",
+        "Industry and Business"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "HHS",
+        "CMS"
+      ],
+      "legislation": [
+        "H.R. 1",
+        "Affordable Care Act",
+        "H.R. 4213"
+      ]
     },
     {
       "id": 431445,
@@ -2529,11 +4162,26 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Drug Pricing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "HHS",
+        "CMS"
+      ],
+      "legislation": [
+        "H.R. 1",
+        "Affordable Care Act"
+      ]
     },
     {
       "id": 431444,
@@ -2543,9 +4191,13 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing"
+      ],
       "entities": [],
       "legislation": []
     },
@@ -2557,10 +4209,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Natural Resources"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2585,11 +4244,37 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax",
+        "Healthcare",
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "Tax Policy",
+        "Medicare and Medicaid",
+        "Drug Pricing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "HHS",
+        "USDA",
+        "Executive Office of the President",
+        "USTR"
+      ],
+      "legislation": [
+        "Affordable Care Act",
+        "S. 1480",
+        "H.R. 1",
+        "H.R. 4669",
+        "FEMA Act",
+        "American Infrastructure Bond Act",
+        "H.R. 4213",
+        "H.R. 4552",
+        "S. 2465"
+      ]
     },
     {
       "id": 431440,
@@ -2613,10 +4298,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2641,10 +4333,21 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Energy Nuclear",
+        "General: Defense",
+        "General: Natural Resources"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
       "legislation": []
     },
     {
@@ -2655,10 +4358,18 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
       "legislation": []
     },
     {
@@ -2683,10 +4394,17 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2697,10 +4415,17 @@
       "income": 50000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2711,11 +4436,27 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Appropriations",
+        "Drug Pricing",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
+      "legislation": [
+        "H.R. 1",
+        "Budget Reconciliation Act",
+        "Affordable Care Act"
+      ]
     },
     {
       "id": 431431,
@@ -2725,11 +4466,26 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "Army Corps of Engineers"
+      ],
+      "legislation": [
+        "Affordable Care Act",
+        "S. 1480",
+        "American Infrastructure Bond Act"
+      ]
     },
     {
       "id": 431430,
@@ -2739,10 +4495,18 @@
       "income": 50000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "General: Science Technology"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy"
+      ],
       "legislation": []
     },
     {
@@ -2753,10 +4517,20 @@
       "income": 50000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Waste and Recycling Management"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "White House",
+        "OMB"
+      ],
       "legislation": []
     },
     {
@@ -2767,11 +4541,26 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax",
+        "Energy and Environment",
+        "Industry and Business"
+      ],
+      "topics": [
+        "Disaster Resilience and Recovery"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "S. 1480",
+        "American Infrastructure Bond Act",
+        "H.R. 4669",
+        "FEMA Act of 2025",
+        "H.R. 5301"
+      ]
     },
     {
       "id": 431427,
@@ -2781,10 +4570,18 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology",
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2795,10 +4592,16 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs"
+      ],
+      "entities": [
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -2809,10 +4612,19 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tribal and Native Affairs"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "OMB",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -2823,10 +4635,24 @@
       "income": 25000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Energy and Environment",
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Transportation",
+        "General: Environment",
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation"
+      ],
       "legislation": []
     },
     {
@@ -2837,10 +4663,22 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "Economic Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "EPA",
+        "Department of Transportation",
+        "Department of Labor",
+        "Army Corps of Engineers"
+      ],
       "legislation": []
     },
     {
@@ -2851,10 +4689,17 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Clinical Research and Diagnostics"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2865,11 +4710,23 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Tax Policy",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "IRS"
+      ],
+      "legislation": [
+        "Section 899",
+        "Jobs Act"
+      ]
     },
     {
       "id": 431420,
@@ -2879,11 +4736,24 @@
       "income": 31427.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Beverage and Alcohol Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "FDA",
+        "OSHA"
+      ],
+      "legislation": [
+        "Barns Act",
+        "Corporate Transparency Act"
+      ]
     },
     {
       "id": 431419,
@@ -2893,10 +4763,18 @@
       "income": 52854.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Natural Resources"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation"
+      ],
       "legislation": []
     },
     {
@@ -2907,10 +4785,16 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Law Enforcement"
+      ],
+      "entities": [
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2921,10 +4805,16 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2935,10 +4825,16 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Criminal Justice and Policing"
+      ],
+      "entities": [
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2949,10 +4845,17 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Transportation"
+      ],
+      "topics": [
+        "Maritime and Fisheries"
+      ],
+      "entities": [
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -2977,10 +4880,18 @@
       "income": 80000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Technology",
+      "domains": [
+        "Technology"
+      ],
+      "topics": [
+        "Data Privacy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "FTC"
+      ],
       "legislation": []
     },
     {
@@ -2991,11 +4902,20 @@
       "income": 12000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Medicare Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 1"
+      ]
     },
     {
       "id": 431411,
@@ -3005,11 +4925,20 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Medicare Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 1"
+      ]
     },
     {
       "id": 431410,
@@ -3019,10 +4948,20 @@
       "income": 37500.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Civil Rights",
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -3033,11 +4972,29 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Civil Rights"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "Technology Accessibility Act",
+        "Software Applications Accessibility Act",
+        "All Act",
+        "Medical Device Nonvisual Accessibility Act",
+        "Low Vision Devices Act",
+        "Cogswell Macy Act",
+        "AV Start Act",
+        "Transportation Act",
+        "Competitive Integrate Employment Act",
+        "Wait Act"
+      ]
     },
     {
       "id": 431408,
@@ -3047,10 +5004,18 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -3061,11 +5026,27 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations",
+        "Housing Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 7148",
+        "H.R. 5304",
+        "H.R. 4552",
+        "H.R. 4779",
+        "H.R. 8595",
+        "S. 2587",
+        "S. 2465"
+      ]
     },
     {
       "id": 431406,
@@ -3075,11 +5056,24 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Science Research Funding",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
+      "legislation": [
+        "H.R. 4016",
+        "S. 2572",
+        "Defense Appropriations Act"
+      ]
     },
     {
       "id": 431405,
@@ -3089,11 +5083,25 @@
       "income": 60000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations",
+        "Defense Authorization"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
+      "legislation": [
+        "H.R. 4016",
+        "S. 2572",
+        "Defense Appropriations Act"
+      ]
     },
     {
       "id": 431404,
@@ -3103,11 +5111,26 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "Department of Energy"
+      ],
+      "legislation": [
+        "H.R. 4553",
+        "H.R. 4016",
+        "S. 2572",
+        "Related Agencies Appropriations Act",
+        "Defense Appropriations Act"
+      ]
     },
     {
       "id": 431403,
@@ -3117,11 +5140,24 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Cybersecurity",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
+      "legislation": [
+        "H.R. 4016",
+        "S. 2572",
+        "Defense Appropriations Act"
+      ]
     },
     {
       "id": 431402,
@@ -3131,11 +5167,23 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
+      "legislation": [
+        "H.R. 4016",
+        "S. 2572",
+        "Defense Appropriations Act"
+      ]
     },
     {
       "id": 431401,
@@ -3145,11 +5193,32 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "FDA",
+        "Department of the Interior"
+      ],
+      "legislation": [
+        "H.R. 4016",
+        "H.R. 4121",
+        "H.R. 4553",
+        "H.R. 4754",
+        "S. 2572",
+        "S. 2256",
+        "S. 2354",
+        "S. 2431",
+        "Defense Appropriations Act",
+        "Related Agencies Appropriations Act"
+      ]
     },
     {
       "id": 431400,
@@ -3159,11 +5228,24 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
+      "legislation": [
+        "H.R. 4016",
+        "S. 2572",
+        "Defense Appropriations Act"
+      ]
     },
     {
       "id": 431399,
@@ -3173,11 +5255,21 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 4553",
+        "Related Agencies Appropriations Act"
+      ]
     },
     {
       "id": 431398,
@@ -3187,10 +5279,18 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -3201,11 +5301,23 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
+      "legislation": [
+        "H.R. 4016",
+        "S. 2572",
+        "Defense Appropriations Act"
+      ]
     },
     {
       "id": 431396,
@@ -3215,10 +5327,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Tax Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3229,10 +5348,17 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Budget Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3257,11 +5383,31 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Housing and Urban Development",
+        "Technology"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Department of Transportation",
+        "DHS"
+      ],
+      "legislation": [
+        "H.R. 173",
+        "S. 504",
+        "Hise Rise Fire Sprinkler Act",
+        "H.R. 7386",
+        "H.R. 2257",
+        "S. 4051",
+        "National Fallen Firefighters Memorial Coin Act"
+      ]
     },
     {
       "id": 431392,
@@ -3285,11 +5431,43 @@
       "income": 468727.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Healthcare",
+        "Transportation"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Education and Student Aid",
+        "Substance Use and Treatment",
+        "Appropriations",
+        "Family and Reproductive Policy",
+        "FDA Regulation",
+        "Telehealth",
+        "Criminal Justice and Policing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "OSHA",
+        "CMS",
+        "Department of Transportation"
+      ],
+      "legislation": [
+        "Lorna Breen Health Care Provider Protection Act",
+        "S. 1595",
+        "H.R. 2433",
+        "H.R. 2028",
+        "S. 942",
+        "REDI Act",
+        "Higher Education Act of 1965",
+        "H.R. 2004",
+        "H.R. 2483",
+        "S. 921",
+        "S. 2121",
+        "S. 3522"
+      ]
     },
     {
       "id": 431390,
@@ -3299,11 +5477,35 @@
       "income": 205678.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Labor and Immigration",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Carbon and Climate",
+        "Immigration and Visas",
+        "Defense Authorization",
+        "Science Research Funding",
+        "Space and Aerospace Policy",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "OSTP",
+        "Department of Defense",
+        "Department of Energy",
+        "OMB",
+        "Department of Commerce",
+        "EPA",
+        "DOJ",
+        "NASA"
+      ],
+      "legislation": [
+        "Emerging Research Institutions, Researcher Act"
+      ]
     },
     {
       "id": 431389,
@@ -3313,10 +5515,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3327,10 +5536,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3341,10 +5557,19 @@
       "income": 16848.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Fuel Gas Oil"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -3355,10 +5580,16 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "EPA"
+      ],
       "legislation": []
     },
     {
@@ -3369,10 +5600,18 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "General: Agriculture"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USDA"
+      ],
       "legislation": []
     },
     {
@@ -3383,10 +5622,18 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "Farm Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USDA"
+      ],
       "legislation": []
     },
     {
@@ -3397,10 +5644,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3411,10 +5665,19 @@
       "income": 25000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
       "legislation": []
     },
     {
@@ -3425,10 +5688,18 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Clinical Research and Diagnostics"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -3439,10 +5710,17 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Family and Reproductive Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3453,10 +5731,20 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Appropriations",
+        "FDA Regulation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "FDA"
+      ],
       "legislation": []
     },
     {
@@ -3467,10 +5755,21 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -3481,10 +5780,19 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -3495,10 +5803,21 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -3509,10 +5828,19 @@
       "income": 36000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -3523,10 +5851,17 @@
       "income": 25000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3537,10 +5872,20 @@
       "income": 50000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Budget Appropriations",
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
       "legislation": []
     },
     {
@@ -3551,10 +5896,19 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -3565,10 +5919,17 @@
       "income": 45000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3593,11 +5954,22 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
+      "legislation": [
+        "Pandemic All Hazards Preparedness Act"
+      ]
     },
     {
       "id": 431368,
@@ -3607,11 +5979,22 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Energy and Environment",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "Fix Our Forests Act"
+      ]
     },
     {
       "id": 431367,
@@ -3621,11 +6004,27 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Housing and Urban Development",
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Housing Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
+      "legislation": [
+        "Forest Service Flexible Housing Partnerships Act",
+        "Housing For All Act",
+        "Housing Act",
+        "Century Act",
+        "Fix Our Forests Act"
+      ]
     },
     {
       "id": 431366,
@@ -3635,11 +6034,25 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Transportation",
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "Farm Policy",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation"
+      ],
+      "legislation": [
+        "Fix Our Forests Act",
+        "Off-Shore Wind, RESTORE Act"
+      ]
     },
     {
       "id": 431365,
@@ -3649,10 +6062,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "General: Welfare"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3677,9 +6097,13 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax"
+      ],
+      "topics": [
+        "General: Insurance"
+      ],
       "entities": [],
       "legislation": []
     },
@@ -3691,10 +6115,18 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Constitution"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House"
+      ],
       "legislation": []
     },
     {
@@ -3733,10 +6165,18 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
+      "topics": [
+        "Foreign Relations and Diplomacy",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3747,10 +6187,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Government Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3761,10 +6208,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Government Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3789,10 +6243,20 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Government and Budget",
+        "Transportation"
+      ],
+      "topics": [
+        "Appropriations",
+        "Economic Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3803,10 +6267,19 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Industry and Business",
+        "Trade"
+      ],
+      "topics": [
+        "Oil and Gas"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3817,10 +6290,18 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS"
+      ],
       "legislation": []
     },
     {
@@ -3831,10 +6312,19 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Transportation"
+      ],
+      "topics": [
+        "Public Lands and Water Management",
+        "Appropriations"
+      ],
+      "entities": [
+        "House of Representatives",
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -3845,11 +6335,24 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Artificial Intelligence"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 5269",
+        "H.R. 7148",
+        "RESULTS Act",
+        "Consolidated Appropriations Act of 2026"
+      ]
     },
     {
       "id": 431350,
@@ -3859,10 +6362,16 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Natural Resources"
+      ],
+      "entities": [
+        "Department of the Interior"
+      ],
       "legislation": []
     },
     {
@@ -3873,10 +6382,16 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
+      "topics": [
+        "General: Foreign Relations"
+      ],
+      "entities": [
+        "Department of Commerce"
+      ],
       "legislation": []
     },
     {
@@ -3887,10 +6402,18 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax",
+        "Trade"
+      ],
+      "topics": [
+        "General: Financial Institutions",
+        "General: Trade"
+      ],
+      "entities": [
+        "Department of Commerce"
+      ],
       "legislation": []
     },
     {
@@ -3901,10 +6424,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3915,10 +6445,17 @@
       "income": 15000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Medicare Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3929,10 +6466,19 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Manufacturing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "OSHA",
+        "USTR"
+      ],
       "legislation": []
     },
     {
@@ -3943,10 +6489,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -3957,10 +6510,21 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Manufacturing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce",
+        "EPA",
+        "OSHA",
+        "USTR"
+      ],
       "legislation": []
     },
     {
@@ -3971,10 +6535,20 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tax Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce",
+        "Department of Labor",
+        "USTR"
+      ],
       "legislation": []
     },
     {
@@ -3985,10 +6559,20 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tax Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce",
+        "Department of Labor",
+        "USTR"
+      ],
       "legislation": []
     },
     {
@@ -3999,10 +6583,20 @@
       "income": 47500.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "General: Consumer Issues Safety"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "HHS",
+        "FDA"
+      ],
       "legislation": []
     },
     {
@@ -4013,10 +6607,20 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tax Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce",
+        "Department of Labor",
+        "USTR"
+      ],
       "legislation": []
     },
     {
@@ -4027,10 +6631,20 @@
       "income": 40000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "Tax Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce",
+        "Department of Labor",
+        "USTR"
+      ],
       "legislation": []
     },
     {
@@ -4041,10 +6655,17 @@
       "income": 22500.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Government Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -4055,10 +6676,17 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Clean Air Water"
+      ],
+      "entities": [
+        "White House",
+        "DOJ"
+      ],
       "legislation": []
     },
     {
@@ -4069,11 +6697,47 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Industry and Business",
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Appropriations",
+        "Housing Policy",
+        "Rail Policy",
+        "Public Lands and Water Management",
+        "Carbon and Climate",
+        "Clean Air and Chemicals",
+        "Tax Policy"
+      ],
+      "entities": [
+        "House of Representatives",
+        "Senate",
+        "Department of the Interior",
+        "White House",
+        "FCC",
+        "SEC",
+        "FAA",
+        "FRA",
+        "DHS",
+        "Army Corps of Engineers"
+      ],
+      "legislation": [
+        "Section 106",
+        "Great American Outdoors Act",
+        "National Historic Preservation Act",
+        "National Environmental Policy Act",
+        "H.R. 5470",
+        "H.R. 3418",
+        "H.R. 5095",
+        "Section 134",
+        "Clean Air Act",
+        "Greenhouse Gas Reduction Fund Energy Permitting Reform Act of 2024",
+        "H.R. 2941",
+        "H.R. 1454"
+      ]
     },
     {
       "id": 431334,
@@ -4097,10 +6761,22 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Energy and Environment",
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Trucking Shipping",
+        "General: Clean Air Water",
+        "General: Law Enforcement"
+      ],
+      "entities": [
+        "White House",
+        "DOJ",
+        "EPA"
+      ],
       "legislation": []
     },
     {
@@ -4111,10 +6787,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Utilities"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -4125,10 +6808,17 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Government Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -4139,10 +6829,19 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "Department of Transportation"
+      ],
       "legislation": []
     },
     {
@@ -4153,10 +6852,18 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "FAA"
+      ],
       "legislation": []
     },
     {
@@ -4167,10 +6874,21 @@
       "income": 9000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Transportation"
+      ],
+      "topics": [
+        "General: Chemicals Toxics",
+        "General: Transportation"
+      ],
+      "entities": [
+        "White House",
+        "EPA",
+        "DOJ",
+        "Department of Transportation"
+      ],
       "legislation": []
     },
     {
@@ -4181,10 +6899,17 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
+      "topics": [
+        "Tariffs and Trade Enforcement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -4195,10 +6920,17 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
+      "topics": [
+        "Tariffs and Trade Enforcement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -4223,11 +6955,53 @@
       "income": 243780.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Healthcare",
+        "Labor and Immigration"
+      ],
+      "topics": [
+        "Tribal and Native Affairs",
+        "Appropriations",
+        "Immigration and Visas",
+        "Education and Student Aid",
+        "Medicare and Medicaid",
+        "Labor and Employment",
+        "Defense Authorization",
+        "Drug Pricing",
+        "Tariffs and Trade Enforcement",
+        "Artificial Intelligence",
+        "Cybersecurity",
+        "Veterans Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "CMS",
+        "Department of Commerce",
+        "FDA",
+        "Executive Office of the President",
+        "HHS",
+        "Department of Labor",
+        "Department of Defense",
+        "EPA",
+        "Department of Veterans Affairs"
+      ],
+      "legislation": [
+        "One Big Beautiful Bill Act of 2025",
+        "H.R. 2028",
+        "H.R. 3711",
+        "H.R. 3885",
+        "H.R. 4262",
+        "S. 942",
+        "S. 1948",
+        "Resident Education Deferred Interest Act",
+        "REDI Act",
+        "Debt Act",
+        "POST GRAD Act",
+        "Medical Students Act of 2025"
+      ]
     },
     {
       "id": 431323,
@@ -4237,11 +7011,32 @@
       "income": 30000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Defense and Security",
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "Housing Policy",
+        "Farm Policy",
+        "Maritime and Fisheries",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "USDA",
+        "Department of Commerce"
+      ],
+      "legislation": [
+        "Housing For All Act",
+        "Housing Act",
+        "Century Act",
+        "Fix Our Forests Act",
+        "America Act"
+      ]
     },
     {
       "id": 431322,
@@ -4251,11 +7046,31 @@
       "income": 20000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Defense and Security",
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Housing Policy",
+        "Farm Policy",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation",
+        "EPA",
+        "Department of the Interior",
+        "USDA",
+        "White House"
+      ],
+      "legislation": [
+        "Homelessness Legislation, Housing For All Act",
+        "Housing Act",
+        "Century Act"
+      ]
     },
     {
       "id": 431321,
@@ -4265,10 +7080,17 @@
       "income": 25000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "General: Welfare"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     },
     {
@@ -4279,11 +7101,22 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "General: Agriculture"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "USDA"
+      ],
+      "legislation": [
+        "Section 32"
+      ]
     },
     {
       "id": 431319,
@@ -4293,11 +7126,29 @@
       "income": 50000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Energy and Environment",
+        "Transportation"
+      ],
+      "topics": [
+        "Farm Policy",
+        "Housing Policy",
+        "Disaster Resilience and Recovery"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USDA"
+      ],
+      "legislation": [
+        "Fix Our Forests Act",
+        "Farm Bill Reauthorization, Farm Workforce Modernization Act",
+        "Housing For All Act",
+        "Housing Act",
+        "Century Act"
+      ]
     },
     {
       "id": 431318,
@@ -4307,10 +7158,16 @@
       "income": 0.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Environment"
+      ],
+      "entities": [
+        "EPA"
+      ],
       "legislation": []
     },
     {
@@ -4321,10 +7178,19 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Transportation"
+      ],
+      "topics": [
+        "General: Fuel Gas Oil",
+        "General: Marine Fishing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
       "legislation": []
     }
   ]

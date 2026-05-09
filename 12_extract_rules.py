@@ -116,21 +116,27 @@ ENTITY_PATTERNS = [
     ("department of state", "State Department"),
     ("state department", "State Department"),
     ("department of commerce", "Department of Commerce"),
+    ("commerce, dept of", "Department of Commerce"),
+    ("doc", "Department of Commerce"),
     ("department of justice", "DOJ"),
     ("doj", "DOJ"),
     ("department of treasury", "Treasury"),
+    ("treasury, dept of", "Treasury"),
     ("treasury", "Treasury"),
     ("internal revenue service", "IRS"),
     ("irs", "IRS"),
     ("department of health and human services", "HHS"),
+    ("health & human services", "HHS"),
     ("hhs", "HHS"),
     ("centers for medicare and medicaid services", "CMS"),
     ("cms", "CMS"),
     ("food and drug administration", "FDA"),
     ("fda", "FDA"),
     ("department of agriculture", "USDA"),
+    ("agriculture, dept of", "USDA"),
     ("usda", "USDA"),
     ("department of energy", "Department of Energy"),
+    ("energy, dept of", "Department of Energy"),
     ("doe", "Department of Energy"),
     ("environmental protection agency", "EPA"),
     ("epa", "EPA"),
@@ -149,8 +155,13 @@ ENTITY_PATTERNS = [
     ("cfpb", "CFPB"),
     ("federal aviation administration", "FAA"),
     ("faa", "FAA"),
+    ("transportation, dept of", "Department of Transportation"),
+    ("department of transportation", "Department of Transportation"),
+    ("dot", "Department of Transportation"),
     ("federal railroad administration", "FRA"),
     ("department of labor", "Department of Labor"),
+    ("labor, dept of", "Department of Labor"),
+    ("dol", "Department of Labor"),
     ("occupational safety and health administration", "OSHA"),
     ("osha", "OSHA"),
     ("department of homeland security", "DHS"),
@@ -162,6 +173,20 @@ ENTITY_PATTERNS = [
     ("ferc", "FERC"),
     ("nuclear regulatory commission", "NRC"),
     ("nrc", "NRC"),
+    ("executive office of the president", "Executive Office of the President"),
+    ("eop", "Executive Office of the President"),
+    ("interior, dept of", "Department of the Interior"),
+    ("department of the interior", "Department of the Interior"),
+    ("doi", "Department of the Interior"),
+    ("army, dept of", "Army Corps of Engineers"),
+    ("corps of engineers", "Army Corps of Engineers"),
+    ("u.s. trade representative", "USTR"),
+    ("ustr", "USTR"),
+    ("veterans affairs, dept of", "Department of Veterans Affairs"),
+    ("department of veterans affairs", "Department of Veterans Affairs"),
+    ("va", "Department of Veterans Affairs"),
+    ("national aeronautics and space administration", "NASA"),
+    ("nasa", "NASA"),
 ]
 
 
@@ -336,11 +361,15 @@ def extract_legislation(text: str) -> list[str]:
     return hits
 
 
-def extract_entities(text_lower: str) -> list[str]:
+def extract_entities(text_lower: str, agencies: str = "", houses_lobbied: str = "") -> list[str]:
+    source = " ".join(
+        part for part in (text_lower, agencies.lower(), houses_lobbied.lower())
+        if part
+    )
     found: list[str] = []
     seen: set[str] = set()
     for pattern, label in ENTITY_PATTERNS:
-        if pattern in text_lower and label not in seen:
+        if contains_phrase(source, pattern) and label not in seen:
             seen.add(label)
             found.append(label)
             if len(found) >= 8:
@@ -493,7 +522,7 @@ def process_batch(
 
     if refresh_existing:
         sql = f"""
-            SELECT a.id, a.issue_code, a.description
+            SELECT a.id, a.issue_code, a.description, a.agencies, a.houses_lobbied
             FROM activities a
             WHERE a.description IS NOT NULL
               AND LENGTH(a.description) > ?
@@ -506,7 +535,7 @@ def process_batch(
         params.append(batch_size)
     else:
         sql = f"""
-            SELECT a.id, a.issue_code, a.description
+            SELECT a.id, a.issue_code, a.description, a.agencies, a.houses_lobbied
             FROM activities a
             LEFT JOIN activity_extractions_rules r ON r.activity_id = a.id
             WHERE r.activity_id IS NULL
@@ -535,10 +564,12 @@ def process_batch(
         activity_id = int(row["id"])
         issue_code = (row["issue_code"] or "").strip()
         description = row["description"] or ""
+        agencies = row["agencies"] or ""
+        houses_lobbied = row["houses_lobbied"] or ""
 
         topics, topic_scores, topic_evidence = detect_topics(description, issue_code, rules)
         legislation = extract_legislation(description)
-        entities = extract_entities(description.lower())
+        entities = extract_entities(description.lower(), agencies, houses_lobbied)
         coarse_topic = get_coarse_topic(issue_code)
 
         conn.execute(

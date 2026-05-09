@@ -11,7 +11,7 @@ Updated daily via GitHub Actions.
 ## Features
 
 - **Real-time LDA ingestion**: Downloads and stores Senate lobbying disclosure filings via the LDA API
-- **LLM-powered extraction**: Uses Gemini via `google-genai` to extract topics, entities, and legislation from activity descriptions
+- **Deterministic extraction**: Uses versioned rules, LDA issue codes, regexes, and dictionaries to extract topics, entities, and legislation without model calls
 - **Trend detection**: Compares 30- and 90-day signal windows against prior-period and year-ago baselines
 - **Static signal browser**: Serves a two-panel dashboard for ranked signals, client examples, quarterly context, and recent filings
 - **Zero infrastructure cost**: Runs entirely on GitHub (Actions + Pages + Releases)
@@ -23,7 +23,7 @@ GitHub Actions (daily cron)
     │
     ├── Download DB from GitHub Release
     ├── Ingest new LDA filings
-    ├── Extract topics/entities/legislation via Gemini API
+    ├── Extract topics/entities/legislation with deterministic rules
     ├── Compute trends and alerts
     ├── Export JSON to docs/data/
     ├── Upload DB back to Release
@@ -49,16 +49,15 @@ GitHub Actions (daily cron)
 uv venv --python 3.12
 uv pip install --python .venv/bin/python -r requirements.txt
 
-# Set API keys
-export GEMINI_API_KEY=your_key
-export LDA_API_KEY=your_key  # optional, for higher rate limits
+# Optional: set LDA_API_KEY for higher Senate API rate limits
+export LDA_API_KEY=your_key
 
 # Run full refresh
 python 07_refresh.py
 
 # Or run individual steps
 python 01_ingest.py              # Download new filings
-python 06_extract.py extract 100 # Extract topics from 100 activities
+python 12_extract_rules.py extract --batch-size 2000000
 python 08_trends.py export       # Generate JSON exports
 ```
 
@@ -67,7 +66,7 @@ python 08_trends.py export       # Generate JSON exports
 | Script | Purpose |
 |--------|---------|
 | `01_ingest.py` | Download and store filings from the Senate LDA API |
-| `06_extract.py` | LLM extraction of topics/entities/legislation |
+| `06_extract.py` | Legacy optional Gemini extraction helper |
 | `12_extract_rules.py` | Deterministic no-LLM extraction + candidate mining + gap reports |
 | `07_refresh.py` | Orchestrate full refresh cycle |
 | `08_trends.py` | Compute trends and generate alerts |
@@ -120,7 +119,8 @@ SQLite database stored in GitHub Releases (not in repo due to size). Contains:
 - `registrants`: Lobbying firms
 - `clients`: Clients being represented
 - `activities`: Individual lobbying activities
-- `activity_extractions`: LLM-extracted topics/entities
+- `activity_extractions_rules`: deterministic topic/entity/legislation extraction used by the dashboard
+- `activity_extractions`: legacy LLM extraction table retained for historical comparison
 
 ## Preview the Dashboard Locally
 
