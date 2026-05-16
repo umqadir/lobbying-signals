@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T12:26:04.445134",
+  "generated_at": "2026-05-16T11:24:41.225714",
   "window": "90d",
   "status": "needs_attention",
   "severity_counts": {
@@ -8,26 +8,26 @@
     "low": 0
   },
   "metrics": {
-    "mentions_current_90d": 42858,
-    "mentions_prev_90d": 76494,
-    "mentions_yoy_90d": 64252,
-    "mentions_vs_prev_pct": -44.0,
-    "mentions_vs_yoy_pct": -33.3,
-    "filings_current_90d": 21028,
-    "filings_prev_90d": 20290,
-    "filings_yoy_90d": 19726,
-    "filings_vs_prev_pct": 3.6,
+    "mentions_current_90d": 42879,
+    "mentions_prev_90d": 76484,
+    "mentions_yoy_90d": 64219,
+    "mentions_vs_prev_pct": -43.9,
+    "mentions_vs_yoy_pct": -33.2,
+    "filings_current_90d": 21044,
+    "filings_prev_90d": 20285,
+    "filings_yoy_90d": 19735,
+    "filings_vs_prev_pct": 3.7,
     "filings_vs_yoy_pct": 6.6,
-    "due_vs_non_due_ratio_4y": 28.78,
+    "due_vs_non_due_ratio_4y": 28.77,
     "due_month_avg_filings": 10790.6,
-    "non_due_month_avg_filings": 375.0,
+    "non_due_month_avg_filings": 375.1,
     "quarter_due_month_share_pct": 93.5,
     "coverage_recent_90d_pct": 96.0,
     "coverage_all_time_pct": 95.8,
     "legislation_dropped_pct": 0.9,
     "legislation_normalized_pct": 23.4,
-    "top_topic_share_pct": 3.08,
-    "top5_topic_share_pct": 14.73,
+    "top_topic_share_pct": 3.07,
+    "top5_topic_share_pct": 14.72,
     "secular_change_pct": 38.0,
     "secular_cagr_pct": 6.66,
     "secular_start_year": 2020,
@@ -37,12 +37,12 @@
     {
       "severity": "medium",
       "title": "Large window-volume shift",
-      "detail": "90d extracted mentions are -33.3% vs year-ago (42,858 vs 64,252)."
+      "detail": "90d extracted mentions are -33.2% vs year-ago (42,879 vs 64,219)."
     },
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 28.78x filing volume vs other months."
+      "detail": "Due-cycle months average 28.77x filing volume vs other months."
     },
     {
       "severity": "medium",
