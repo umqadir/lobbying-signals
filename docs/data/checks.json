@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-18T14:10:35.112786",
+  "generated_at": "2026-05-19T13:03:14.907885",
   "window": "90d",
   "status": "needs_attention",
   "severity_counts": {
@@ -8,26 +8,26 @@
     "low": 0
   },
   "metrics": {
-    "mentions_current_90d": 43391,
-    "mentions_prev_90d": 77820,
-    "mentions_yoy_90d": 64185,
-    "mentions_vs_prev_pct": -44.2,
-    "mentions_vs_yoy_pct": -32.4,
-    "filings_current_90d": 21358,
-    "filings_prev_90d": 20979,
-    "filings_yoy_90d": 19742,
-    "filings_vs_prev_pct": 1.8,
-    "filings_vs_yoy_pct": 8.2,
-    "due_vs_non_due_ratio_4y": 27.38,
+    "mentions_current_90d": 43618,
+    "mentions_prev_90d": 77811,
+    "mentions_yoy_90d": 64156,
+    "mentions_vs_prev_pct": -43.9,
+    "mentions_vs_yoy_pct": -32.0,
+    "filings_current_90d": 21492,
+    "filings_prev_90d": 20989,
+    "filings_yoy_90d": 19741,
+    "filings_vs_prev_pct": 2.4,
+    "filings_vs_yoy_pct": 8.9,
+    "due_vs_non_due_ratio_4y": 27.22,
     "due_month_avg_filings": 10793.9,
-    "non_due_month_avg_filings": 394.2,
+    "non_due_month_avg_filings": 396.6,
     "quarter_due_month_share_pct": 93.2,
     "coverage_recent_90d_pct": 95.9,
     "coverage_all_time_pct": 95.8,
     "legislation_dropped_pct": 0.9,
     "legislation_normalized_pct": 23.4,
     "top_topic_share_pct": 3.06,
-    "top5_topic_share_pct": 14.65,
+    "top5_topic_share_pct": 13.17,
     "secular_change_pct": 39.8,
     "secular_cagr_pct": 6.93,
     "secular_start_year": 2020,
@@ -37,12 +37,12 @@
     {
       "severity": "medium",
       "title": "Large window-volume shift",
-      "detail": "90d extracted mentions are -32.4% vs year-ago (43,391 vs 64,185)."
+      "detail": "90d extracted mentions are -32.0% vs year-ago (43,618 vs 64,156)."
     },
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 27.38x filing volume vs other months."
+      "detail": "Due-cycle months average 27.22x filing volume vs other months."
     },
     {
       "severity": "medium",
