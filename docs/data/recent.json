@@ -1,6 +1,515 @@
 {
-  "generated_at": "2026-05-22T12:41:11.585636",
+  "generated_at": "2026-05-23T11:37:46.260489",
   "filings": [
+    {
+      "id": 433043,
+      "date": "2026-05-22T22:29:08-04:00",
+      "client": "DIRSHU INTERNATIONAL",
+      "registrant": "MERKAVA STRATEGIES CORPORATION",
+      "income": 100000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy",
+        "Other"
+      ],
+      "topics": [
+        "General: Education",
+        "General: Rel"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433042,
+      "date": "2026-05-22T21:02:15-04:00",
+      "client": "CEO WORKS",
+      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
+      "income": 45000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy",
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Welfare",
+        "General: Law Enforcement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "USDA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433041,
+      "date": "2026-05-22T20:57:15-04:00",
+      "client": "KAZI IG",
+      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
+      "income": 15000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Trade",
+      "domains": [
+        "Trade",
+        "Energy and Environment",
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Trade",
+        "General: Natural Resources",
+        "General: Defense"
+      ],
+      "entities": [
+        "White House"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433040,
+      "date": "2026-05-22T19:54:56-04:00",
+      "client": "WATERFRONT GLOBAL",
+      "registrant": "BBT STRATEGIES LLC",
+      "income": 5200.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433039,
+      "date": "2026-05-22T19:54:21-04:00",
+      "client": "SOUTHERN FOLGER CONTRACTING",
+      "registrant": "BBT STRATEGIES LLC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Law Enforcement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433038,
+      "date": "2026-05-22T19:53:45-04:00",
+      "client": "BEAVERFIT USA",
+      "registrant": "BBT STRATEGIES LLC",
+      "income": 7000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense",
+        "General: Homeland Security",
+        "General: Law Enforcement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DHS",
+        "Department of Defense",
+        "Army Corps of Engineers"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433037,
+      "date": "2026-05-22T16:21:32-04:00",
+      "client": "AED GLOBAL ENERGY",
+      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Trade"
+      ],
+      "topics": [
+        "General: Fuel Gas Oil",
+        "General: Foreign Relations"
+      ],
+      "entities": [
+        "House of Representatives",
+        "State Department"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433036,
+      "date": "2026-05-22T16:16:51-04:00",
+      "client": "SC EUROPEAN FOOD SA",
+      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
+      "income": 15000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Trade",
+      "domains": [
+        "Trade",
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Foreign Relations",
+        "General: Law Enforcement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Treasury",
+        "USTR"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433035,
+      "date": "2026-05-22T16:15:06-04:00",
+      "client": "CLASSWALLET",
+      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
+      "income": 60000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy",
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Education",
+        "General: Disaster Planning"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433034,
+      "date": "2026-05-22T16:10:14-04:00",
+      "client": "MYLAND",
+      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
+      "income": 45000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Trade"
+      ],
+      "topics": [
+        "General: Agriculture",
+        "General: Trade"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USDA",
+        "HHS",
+        "Executive Office of the President",
+        "USTR",
+        "White House"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433033,
+      "date": "2026-05-22T16:07:55-04:00",
+      "client": "BONUS",
+      "registrant": "LYCOS ADVISORY GROUP",
+      "income": 15000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development",
+        "Defense and Security",
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Housing",
+        "General: Veterans",
+        "General: Retirement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Veterans Affairs"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433032,
+      "date": "2026-05-22T12:58:03-04:00",
+      "client": "RAYMOND BASIN MANAGEMENT BOARD",
+      "registrant": "HICKS-RICHARDSON ASSOCIATES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "EPA",
+        "Army Corps of Engineers"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433031,
+      "date": "2026-05-22T12:54:40-04:00",
+      "client": "THE PRIVATE SUITE LLC",
+      "registrant": "ATLAS ADVOCACY",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DHS"
+      ],
+      "legislation": [
+        "H.R. 5371",
+        "Extensions Act"
+      ]
+    },
+    {
+      "id": 433030,
+      "date": "2026-05-22T12:53:54-04:00",
+      "client": "MARINE ENGINEERS' BENEFICIAL ASSOCIATION",
+      "registrant": "ATLAS ADVOCACY",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Marine Fishing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "America Act"
+      ]
+    },
+    {
+      "id": 433029,
+      "date": "2026-05-22T12:53:06-04:00",
+      "client": "KILROY REALTY",
+      "registrant": "ATLAS ADVOCACY",
+      "income": 60000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Tax Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Veterans Affairs",
+        "Department of Defense"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433028,
+      "date": "2026-05-22T12:52:11-04:00",
+      "client": "BRIOTECH INC",
+      "registrant": "ATLAS ADVOCACY",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433027,
+      "date": "2026-05-22T12:51:29-04:00",
+      "client": "UNITED MINE WORKERS OF AMERICA",
+      "registrant": "ATLAS ADVOCACY",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433026,
+      "date": "2026-05-22T12:26:38-04:00",
+      "client": "SAN GABRIEL VALLEY WATER ASSOCIATION",
+      "registrant": "HICKS-RICHARDSON ASSOCIATES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "Army Corps of Engineers"
+      ],
+      "legislation": [
+        "H.R. 4553"
+      ]
+    },
+    {
+      "id": 433025,
+      "date": "2026-05-22T09:15:17-04:00",
+      "client": "LWRC INTERNATIONAL, LLC",
+      "registrant": "ALPHA STRATEGIES, LLC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
+      "topics": [
+        "General: Trade"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433024,
+      "date": "2026-05-22T09:14:22-04:00",
+      "client": "TIGERSWAN",
+      "registrant": "ALPHA STRATEGIES, LLC",
+      "income": 5000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Government Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433023,
+      "date": "2026-05-22T09:13:22-04:00",
+      "client": "FRANKLIN ARMORY, INC.",
+      "registrant": "ALPHA STRATEGIES, LLC",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Real Estate"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433022,
+      "date": "2026-05-22T08:43:02-04:00",
+      "client": "RAPE ABUSE & INCEST NATIONAL NETWORK",
+      "registrant": "RAPE, ABUSE & INCEST NATIONAL NETWORK",
+      "income": 11750.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Healthcare",
+        "Government and Budget"
+      ],
+      "topics": [
+        "General: Law Enforcement",
+        "General: Health Issues",
+        "General: Budget Appropriations",
+        "General: Education"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "Report Act Guard Act",
+        "Justice Act",
+        "DEFIANCE, NO FAKES, STOP CSAM, CAPTA Chatbot Act",
+        "Carla Walker Act, ECHO Act"
+      ]
+    },
     {
       "id": 433021,
       "date": "2026-05-21T22:01:03-04:00",
@@ -6320,498 +6829,6 @@
       "legislation": [
         "Indian Gaming Regulatory Act"
       ]
-    },
-    {
-      "id": 431701,
-      "date": "2026-05-13T12:05:33-04:00",
-      "client": "NAPA VALLEY VINTNERS ASSOCIATION",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business",
-        "Agriculture and Food",
-        "Trade"
-      ],
-      "topics": [
-        "Tariffs and Trade Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431700,
-      "date": "2026-05-13T11:54:21-04:00",
-      "client": "BISHOP PAIUTE TRIBE",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431699,
-      "date": "2026-05-13T11:52:33-04:00",
-      "client": "COLUSA INDIAN COMMUNITY",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Industry and Business"
-      ],
-      "topics": [
-        "Renewable Energy",
-        "Tax Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431698,
-      "date": "2026-05-13T11:50:45-04:00",
-      "client": "CA STATE ASSEMBLY",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget"
-      ],
-      "topics": [
-        "General: Government Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431697,
-      "date": "2026-05-13T11:47:22-04:00",
-      "client": "SANTA YNEZ BAND OF CHUMASH INDIANS",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 60000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax",
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Taxation",
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431696,
-      "date": "2026-05-13T11:45:20-04:00",
-      "client": "SALT RIVER PIMA MARICOPA INDIAN COMMUNITY",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 65000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax",
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Taxation",
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431695,
-      "date": "2026-05-13T11:42:44-04:00",
-      "client": "SAN FRANCISCO BAR PILOTS ASSN",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation"
-      ],
-      "topics": [
-        "General: Transportation"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431694,
-      "date": "2026-05-13T11:42:00-04:00",
-      "client": "COLORADO RIVER INDIAN TRIBES",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 40000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Industry and Business"
-      ],
-      "topics": [
-        "Public Lands and Water Management"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431693,
-      "date": "2026-05-13T11:39:33-04:00",
-      "client": "ONEIDA TRIBE OF INDIANS OF WISCONSIN",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 40000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American",
-        "General: Gaming Gambling"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431692,
-      "date": "2026-05-13T11:30:00-04:00",
-      "client": "MORONGO BAND OF MISSION INDIANS",
-      "registrant": "PACE, LLP (FORMERLY PACE-CAPSTONE)",
-      "income": 70000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business",
-        "Finance and Tax"
-      ],
-      "topics": [
-        "General: Indian Native American",
-        "General: Taxation",
-        "General: Gaming Gambling"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Treasury"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431691,
-      "date": "2026-05-13T10:25:49-04:00",
-      "client": "CLEARINGHOUSE CDFI",
-      "registrant": "MONTICELLO ADVISORY GROUP",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax"
-      ],
-      "topics": [
-        "General: Financial Institutions"
-      ],
-      "entities": [
-        "Treasury"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431690,
-      "date": "2026-05-13T10:20:32-04:00",
-      "client": "AMERICAN COMPOSITES MANUFACTURERS ASSOCIATION",
-      "registrant": "AMERICAN COMPOSITES MANUFACTURERS ASSOCIATION",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation",
-        "Trade",
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Tariffs and Trade Enforcement",
-        "Clean Air and Chemicals"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Executive Office of the President"
-      ],
-      "legislation": [
-        "Toxic Substances Control Act"
-      ]
-    },
-    {
-      "id": 431689,
-      "date": "2026-05-13T08:57:56-04:00",
-      "client": "HOPFLYT INC",
-      "registrant": "HITHER CREEK STRATEGIES, LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business",
-        "Government and Budget",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431688,
-      "date": "2026-05-13T08:56:50-04:00",
-      "client": "LEONARDO DRS, INC",
-      "registrant": "HITHER CREEK STRATEGIES, LLC",
-      "income": 15000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431687,
-      "date": "2026-05-13T08:53:11-04:00",
-      "client": "SAVE GREATER DOWSES BEACH",
-      "registrant": "HITHER CREEK STRATEGIES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax",
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of the Interior",
-        "EPA",
-        "Department of Defense"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431686,
-      "date": "2026-05-13T08:50:08-04:00",
-      "client": "TOWN OF NANTUCKET, MA",
-      "registrant": "HITHER CREEK STRATEGIES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431685,
-      "date": "2026-05-13T08:48:48-04:00",
-      "client": "SL STRATEGIES OBO AANA",
-      "registrant": "HITHER CREEK STRATEGIES, LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Department of Defense",
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431684,
-      "date": "2026-05-13T08:47:46-04:00",
-      "client": "GENERAL ELECTRIC COMPANY",
-      "registrant": "HITHER CREEK STRATEGIES, LLC",
-      "income": 21000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431683,
-      "date": "2026-05-13T08:46:32-04:00",
-      "client": "AMERICAN RHEINMETALL VEHICLES, LLC",
-      "registrant": "HITHER CREEK STRATEGIES, LLC",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Defense"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense",
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431682,
-      "date": "2026-05-13T08:44:38-04:00",
-      "client": "EPIRUS INC",
-      "registrant": "HITHER CREEK STRATEGIES, LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense",
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 431681,
-      "date": "2026-05-12T16:09:09-04:00",
-      "client": "NATIONAL ASSOCIATION OF ASSISTANT UNITED STATES ATTORNEYS",
-      "registrant": "SHAW, BRANSFORD & ROTH, P.C. (FORMERLY SHAW, BRANSFORD, VEILLEUX & ROTH, P.C.)",
-      "income": 13600.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 431680,
-      "date": "2026-05-12T15:36:46-04:00",
-      "client": "CALUMET HERITAGE PARTNERSHIP",
-      "registrant": "METCALF FEDERAL RELATIONS",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Housing and Urban Development",
-      "domains": [
-        "Housing and Urban Development"
-      ],
-      "topics": [
-        "General: Real Estate"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
     }
   ]
 }
