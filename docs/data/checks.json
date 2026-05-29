@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T14:24:58.531686",
+  "generated_at": "2026-05-29T13:11:09.374758",
   "window": "90d",
   "status": "needs_attention",
   "severity_counts": {
@@ -8,19 +8,19 @@
     "low": 0
   },
   "metrics": {
-    "mentions_current_90d": 43665,
+    "mentions_current_90d": 43661,
     "mentions_prev_90d": 77773,
-    "mentions_yoy_90d": 63948,
+    "mentions_yoy_90d": 63826,
     "mentions_vs_prev_pct": -43.9,
-    "mentions_vs_yoy_pct": -31.7,
-    "filings_current_90d": 21500,
-    "filings_prev_90d": 21021,
-    "filings_yoy_90d": 19763,
-    "filings_vs_prev_pct": 2.3,
+    "mentions_vs_yoy_pct": -31.6,
+    "filings_current_90d": 21496,
+    "filings_prev_90d": 21023,
+    "filings_yoy_90d": 19754,
+    "filings_vs_prev_pct": 2.2,
     "filings_vs_yoy_pct": 8.8,
-    "due_vs_non_due_ratio_4y": 27.33,
+    "due_vs_non_due_ratio_4y": 27.35,
     "due_month_avg_filings": 10793.9,
-    "non_due_month_avg_filings": 394.9,
+    "non_due_month_avg_filings": 394.7,
     "quarter_due_month_share_pct": 93.2,
     "coverage_recent_90d_pct": 95.9,
     "coverage_all_time_pct": 95.7,
@@ -37,12 +37,12 @@
     {
       "severity": "medium",
       "title": "Large window-volume shift",
-      "detail": "90d extracted mentions are -31.7% vs year-ago (43,665 vs 63,948)."
+      "detail": "90d extracted mentions are -31.6% vs year-ago (43,661 vs 63,826)."
     },
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 27.33x filing volume vs other months."
+      "detail": "Due-cycle months average 27.35x filing volume vs other months."
     },
     {
       "severity": "medium",
