@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-30T11:42:13.682174",
+  "generated_at": "2026-05-31T12:05:52.381698",
   "window": "90d",
   "status": "needs_attention",
   "severity_counts": {
@@ -8,19 +8,19 @@
     "low": 0
   },
   "metrics": {
-    "mentions_current_90d": 43672,
-    "mentions_prev_90d": 77772,
+    "mentions_current_90d": 43648,
+    "mentions_prev_90d": 77787,
     "mentions_yoy_90d": 63836,
-    "mentions_vs_prev_pct": -43.8,
+    "mentions_vs_prev_pct": -43.9,
     "mentions_vs_yoy_pct": -31.6,
-    "filings_current_90d": 21501,
-    "filings_prev_90d": 21022,
-    "filings_yoy_90d": 19756,
+    "filings_current_90d": 21499,
+    "filings_prev_90d": 21017,
+    "filings_yoy_90d": 19757,
     "filings_vs_prev_pct": 2.3,
     "filings_vs_yoy_pct": 8.8,
     "due_vs_non_due_ratio_4y": 27.38,
     "due_month_avg_filings": 10793.9,
-    "non_due_month_avg_filings": 394.3,
+    "non_due_month_avg_filings": 394.2,
     "quarter_due_month_share_pct": 93.2,
     "coverage_recent_90d_pct": 95.9,
     "coverage_all_time_pct": 95.7,
@@ -37,7 +37,7 @@
     {
       "severity": "medium",
       "title": "Large window-volume shift",
-      "detail": "90d extracted mentions are -31.6% vs year-ago (43,672 vs 63,836)."
+      "detail": "90d extracted mentions are -31.6% vs year-ago (43,648 vs 63,836)."
     },
     {
       "severity": "high",
