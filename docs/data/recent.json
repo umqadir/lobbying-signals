@@ -1,6 +1,109 @@
 {
-  "generated_at": "2026-06-04T13:11:34.761831",
+  "generated_at": "2026-06-05T12:59:23.236095",
   "filings": [
+    {
+      "id": 433328,
+      "date": "2026-06-04T18:39:16-04:00",
+      "client": "SECURITY INDUSTRY ASSOCIATION",
+      "registrant": "SECURITY INDUSTRY ASSOCIATION",
+      "income": 34000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Technology",
+        "Transportation"
+      ],
+      "topics": [
+        "Data Privacy",
+        "Artificial Intelligence"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DHS",
+        "FCC"
+      ],
+      "legislation": [
+        "Stop School Violence Act of 2018"
+      ]
+    },
+    {
+      "id": 433327,
+      "date": "2026-06-04T15:41:34-04:00",
+      "client": "POWERUS",
+      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
+      "income": 17500.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "General: Defense"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "Army Corps of Engineers"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433326,
+      "date": "2026-06-04T15:29:40-04:00",
+      "client": "ASSOCIATION OF AMERICA RAILROADS",
+      "registrant": "THE CACTUS GROUP, LLC",
+      "income": 22500.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Railroads"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 2853",
+        "S. 1404",
+        "Combating Organized Retail Crime Act of 2025"
+      ]
+    },
+    {
+      "id": 433325,
+      "date": "2026-06-04T13:52:24-04:00",
+      "client": "YMCA OF THE USA",
+      "registrant": "YMCA OF THE USA",
+      "income": 110000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy",
+        "Healthcare",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Tax Policy",
+        "Nutrition Assistance"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "HHS",
+        "USDA"
+      ],
+      "legislation": []
+    },
     {
       "id": 433311,
       "date": "2026-06-04T04:33:00-04:00",
@@ -675,6 +778,20 @@
       "legislation": [
         "National Defense Authorization Act"
       ]
+    },
+    {
+      "id": 433324,
+      "date": "2026-06-02T14:10:55-04:00",
+      "client": "UTE INDIAN TRIBE ON BEHALF OF PATTERSON EARNHART LLP",
+      "registrant": "PATRICIA MARKS",
+      "income": 13000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
     },
     {
       "id": 433283,
@@ -1620,6 +1737,104 @@
       "legislation": []
     },
     {
+      "id": 433323,
+      "date": "2026-06-01T16:37:11-04:00",
+      "client": "CITY OF GREELEY",
+      "registrant": "KOGOVSEK & ASSOCIATES, INC.",
+      "income": 12000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433322,
+      "date": "2026-06-01T16:36:07-04:00",
+      "client": "COLORADO WATER RESOURCES AND POWER DEVELOPMENT AUTHORITY",
+      "registrant": "KOGOVSEK & ASSOCIATES, INC.",
+      "income": 6000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433321,
+      "date": "2026-06-01T16:35:09-04:00",
+      "client": "SOUTHEASTERN COLORADO WATER CONSERVANCY DISTRICT",
+      "registrant": "KOGOVSEK & ASSOCIATES, INC.",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433320,
+      "date": "2026-06-01T16:32:57-04:00",
+      "client": "UTE MOUNTAIN UTE TRIBE",
+      "registrant": "KOGOVSEK & ASSOCIATES, INC.",
+      "income": 29250.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433319,
+      "date": "2026-06-01T16:32:07-04:00",
+      "client": "SOUTHWESTERN COLORADO WATER CONSERVATION DISTRICT",
+      "registrant": "KOGOVSEK & ASSOCIATES, INC.",
+      "income": 12500.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433318,
+      "date": "2026-06-01T16:31:23-04:00",
+      "client": "RIO GRANDE WATER CONSERVATION DISTRICT",
+      "registrant": "KOGOVSEK & ASSOCIATES, INC.",
+      "income": 7500.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433317,
+      "date": "2026-06-01T16:26:35-04:00",
+      "client": "DOLORES WATER CONSERVANCY DISTRICT",
+      "registrant": "KOGOVSEK & ASSOCIATES, INC.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
       "id": 433237,
       "date": "2026-06-01T16:22:05-04:00",
       "client": "SOCIETY OF CHEMICAL MANUFACTURERS & AFFILIATES",
@@ -1941,6 +2156,95 @@
         "House of Representatives",
         "Department of Energy",
         "Department of the Interior"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433316,
+      "date": "2026-06-01T15:30:15-04:00",
+      "client": "MAMMOTH LAKES, CALIFORNIA",
+      "registrant": "MR. ROBERT K WEIDNER",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Natural Resources"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USDA",
+        "Department of the Interior"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433315,
+      "date": "2026-06-01T15:29:00-04:00",
+      "client": "AMERICAN CLEAN ENERGY RESOURCES TRUST (ACERT)",
+      "registrant": "MR. ROBERT K WEIDNER",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 433314,
+      "date": "2026-06-01T15:27:14-04:00",
+      "client": "RPLCC",
+      "registrant": "MR. ROBERT K WEIDNER",
+      "income": 15000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Transportation"
+      ],
+      "topics": [
+        "General: Natural Resources",
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior",
+        "USDA"
+      ],
+      "legislation": [
+        "Burros Act of 1971"
+      ]
+    },
+    {
+      "id": 433313,
+      "date": "2026-06-01T15:25:02-04:00",
+      "client": "ADVOCATES FOR MULTI-USE OF PUBLIC LANDS",
+      "registrant": "BIGHORN PUBLIC AFFAIRS GROUP",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development",
+        "Agriculture and Food"
+      ],
+      "topics": [
+        "General: Real Estate",
+        "General: Agriculture"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior",
+        "USDA"
       ],
       "legislation": []
     },
@@ -3643,6 +3947,20 @@
         "EPA",
         "Department of Transportation"
       ],
+      "legislation": []
+    },
+    {
+      "id": 433312,
+      "date": "2026-06-01T13:44:25-04:00",
+      "client": "MILWAUKEE METROPOLITAN SEWERAGE DISTRICT",
+      "registrant": "CAPITOL SOLUTIONS, LLC (DC)",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
       "legislation": []
     },
     {
@@ -6670,417 +6988,6 @@
         "Department of Veterans Affairs",
         "Department of Defense"
       ],
-      "legislation": []
-    },
-    {
-      "id": 433028,
-      "date": "2026-05-22T12:52:11-04:00",
-      "client": "BRIOTECH INC",
-      "registrant": "ATLAS ADVOCACY",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 433027,
-      "date": "2026-05-22T12:51:29-04:00",
-      "client": "UNITED MINE WORKERS OF AMERICA",
-      "registrant": "ATLAS ADVOCACY",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 433026,
-      "date": "2026-05-22T12:26:38-04:00",
-      "client": "SAN GABRIEL VALLEY WATER ASSOCIATION",
-      "registrant": "HICKS-RICHARDSON ASSOCIATES",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress",
-        "Army Corps of Engineers"
-      ],
-      "legislation": [
-        "H.R. 4553"
-      ]
-    },
-    {
-      "id": 433025,
-      "date": "2026-05-22T09:15:17-04:00",
-      "client": "LWRC INTERNATIONAL, LLC",
-      "registrant": "ALPHA STRATEGIES, LLC",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Trade",
-      "domains": [
-        "Trade"
-      ],
-      "topics": [
-        "General: Trade"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Commerce"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433024,
-      "date": "2026-05-22T09:14:22-04:00",
-      "client": "TIGERSWAN",
-      "registrant": "ALPHA STRATEGIES, LLC",
-      "income": 5000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget"
-      ],
-      "topics": [
-        "General: Government Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433023,
-      "date": "2026-05-22T09:13:22-04:00",
-      "client": "FRANKLIN ARMORY, INC.",
-      "registrant": "ALPHA STRATEGIES, LLC",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Housing and Urban Development",
-      "domains": [
-        "Housing and Urban Development"
-      ],
-      "topics": [
-        "General: Real Estate"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433022,
-      "date": "2026-05-22T08:43:02-04:00",
-      "client": "RAPE ABUSE & INCEST NATIONAL NETWORK",
-      "registrant": "RAPE, ABUSE & INCEST NATIONAL NETWORK",
-      "income": 11750.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Healthcare",
-        "Government and Budget"
-      ],
-      "topics": [
-        "General: Law Enforcement",
-        "General: Health Issues",
-        "General: Budget Appropriations",
-        "General: Education"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "Report Act Guard Act",
-        "Justice Act",
-        "DEFIANCE, NO FAKES, STOP CSAM, CAPTA Chatbot Act",
-        "Carla Walker Act, ECHO Act"
-      ]
-    },
-    {
-      "id": 433021,
-      "date": "2026-05-21T22:01:03-04:00",
-      "client": "DRUG POLICY ALLIANCE",
-      "registrant": "ENACT CONSULTING, LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Law Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "MORE Act"
-      ]
-    },
-    {
-      "id": 433020,
-      "date": "2026-05-21T16:24:25-04:00",
-      "client": "WATEREUSE",
-      "registrant": "WATEREUSE ASSOCIATION",
-      "income": 40000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Industry and Business",
-        "Finance and Tax"
-      ],
-      "topics": [
-        "Clean Water",
-        "Appropriations",
-        "Waste and Recycling Management",
-        "Renewable Energy",
-        "Tax Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "Clean Water Act",
-        "Safe Drinking Water Act",
-        "H.R. 2940",
-        "Advancing Water Reuse Act"
-      ]
-    },
-    {
-      "id": 433019,
-      "date": "2026-05-21T15:48:14-04:00",
-      "client": "CORRECTIONAL LEADERS ASSOCIATION",
-      "registrant": "THE PARZIVAL GROUP",
-      "income": 5000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Law Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 2350",
-        "H.R. 8028",
-        "S. 1137",
-        "S. 4477",
-        "Cellphone Jamming Reform Act of 2025",
-        "Second Chance Reauthorization Act of 2024"
-      ]
-    },
-    {
-      "id": 433018,
-      "date": "2026-05-21T15:47:33-04:00",
-      "client": "JUST DETENTION INTERNATIONAL",
-      "registrant": "THE PARZIVAL GROUP",
-      "income": 5000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "Detention Act",
-        "Prison Rape Elimination Act"
-      ]
-    },
-    {
-      "id": 433017,
-      "date": "2026-05-21T15:46:24-04:00",
-      "client": "AMERICAN CIVIL LIBERTIES UNION",
-      "registrant": "THE PARZIVAL GROUP",
-      "income": 5000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "Criminal Justice and Policing"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "Opportunity Act"
-      ]
-    },
-    {
-      "id": 433016,
-      "date": "2026-05-21T15:09:29-04:00",
-      "client": "ST. LUKE'S HOSPITAL & HEALTH NETWORK",
-      "registrant": "ST. LUKE'S HOSPITAL & HEALTH NETWORK",
-      "income": 13074.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433015,
-      "date": "2026-05-21T13:45:10-04:00",
-      "client": "SABRE GLBL INC",
-      "registrant": "SABRE GLBL INC.",
-      "income": 120000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business",
-        "Transportation",
-        "Finance and Tax"
-      ],
-      "topics": [
-        "Data Privacy",
-        "Artificial Intelligence"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Commerce",
-        "USTR"
-      ],
-      "legislation": [
-        "H.R. 1479",
-        "S. 314"
-      ]
-    },
-    {
-      "id": 433014,
-      "date": "2026-05-21T13:26:33-04:00",
-      "client": "TAXPAYERS FOR COMMON SENSE",
-      "registrant": "TAXPAYERS FOR COMMON SENSE",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Energy and Environment",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Appropriations",
-        "Defense Authorization",
-        "Carbon and Climate"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "IRS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433013,
-      "date": "2026-05-21T11:16:25-04:00",
-      "client": "NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE",
-      "registrant": "NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Healthcare",
-        "Labor and Immigration"
-      ],
-      "topics": [
-        "Medicare and Medicaid",
-        "Education and Student Aid",
-        "Family and Reproductive Policy",
-        "Housing Policy",
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "HHS",
-        "EPA",
-        "CMS",
-        "CFPB"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433012,
-      "date": "2026-05-21T10:39:51-04:00",
-      "client": "NEBRASKA RURAL GENERATION LLC",
-      "registrant": "JABAL COMPANIES LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Agriculture and Food"
-      ],
-      "topics": [
-        "General: Agriculture",
-        "General: Clean Air Water",
-        "General: Fuel Gas Oil",
-        "General: Energy Nuclear"
-      ],
-      "entities": [],
       "legislation": []
     }
   ]
