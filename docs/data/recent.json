@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T11:50:15.220099",
+  "generated_at": "2026-06-07T12:34:58.363402",
   "filings": [
     {
       "id": 433331,
@@ -60,6 +60,27 @@
       "income": 10000.0,
       "year": 2026,
       "quarter": 1,
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "General: Education"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 433339,
+      "date": "2026-06-05T14:49:13-04:00",
+      "client": "ALABAMA FAMILIES FOR GREAT SCHOOLS",
+      "registrant": "BRADLEY ARANT BOULT CUMMINGS LLP",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
       "domain": "Education and Social Policy",
       "domains": [
         "Education and Social Policy"
@@ -1123,6 +1144,32 @@
       "legislation": []
     },
     {
+      "id": 433338,
+      "date": "2026-06-02T10:05:01-04:00",
+      "client": "NATIONAL PSORIASIS FOUNDATION",
+      "registrant": "NATIONAL PSORIASIS FOUNDATION",
+      "income": 0.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "CMS"
+      ],
+      "legislation": [
+        "S. 864",
+        "HELP Copays Act",
+        "Safe Step Act"
+      ]
+    },
+    {
       "id": 433267,
       "date": "2026-06-02T10:02:14-04:00",
       "client": "NATIONAL PSORIASIS FOUNDATION",
@@ -1783,6 +1830,41 @@
       ]
     },
     {
+      "id": 433337,
+      "date": "2026-06-01T16:54:12-04:00",
+      "client": "FEDERATION OF AMERICAN SOCIETIES FOR EXPERIMENTAL BIOLOGY",
+      "registrant": "FEDERATION OF AMERICAN SOCIETIES FOR EXPERIMENTAL BIOLOGY",
+      "income": 90000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Technology",
+      "domains": [
+        "Technology",
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Appropriations",
+        "Veterans Policy",
+        "Science Research Funding",
+        "Clinical Research and Diagnostics"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "HHS"
+      ],
+      "legislation": [
+        "H.R. 4121",
+        "H.R. 5342",
+        "S. 2587",
+        "H.R. 3944",
+        "H.R. 4563",
+        "S. 2256"
+      ]
+    },
+    {
       "id": 433238,
       "date": "2026-06-01T16:49:17-04:00",
       "client": "NATIONAL COOPERATIVE BUSINESS ASSOCIATION",
@@ -2347,6 +2429,28 @@
         "H.R. 2269",
         "S. 1092"
       ]
+    },
+    {
+      "id": 433336,
+      "date": "2026-06-01T15:13:38-04:00",
+      "client": "ACUITY INTERNATIONAL",
+      "registrant": "FAHMY HUDOME INTERNATIONAL, INC",
+      "income": 60000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
+      "topics": [
+        "General: Foreign Relations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House"
+      ],
+      "legislation": []
     },
     {
       "id": 433223,
@@ -5617,6 +5721,28 @@
       "legislation": []
     },
     {
+      "id": 433335,
+      "date": "2026-05-29T10:34:42-04:00",
+      "client": "INTERCOMP COMPANY",
+      "registrant": "BROMELKAMP GOVERNMENT RELATIONS, LLC",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
       "id": 433087,
       "date": "2026-05-29T10:14:10-04:00",
       "client": "CONSUMER BANKERS ASSOCIATION",
@@ -6861,132 +6987,6 @@
       "entities": [
         "House of Representatives",
         "State Department"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433036,
-      "date": "2026-05-22T16:16:51-04:00",
-      "client": "SC EUROPEAN FOOD SA",
-      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
-      "income": 15000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Trade",
-      "domains": [
-        "Trade",
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Foreign Relations",
-        "General: Law Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Treasury",
-        "USTR"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433035,
-      "date": "2026-05-22T16:15:06-04:00",
-      "client": "CLASSWALLET",
-      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
-      "income": 60000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Education and Social Policy",
-      "domains": [
-        "Education and Social Policy",
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Education",
-        "General: Disaster Planning"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433034,
-      "date": "2026-05-22T16:10:14-04:00",
-      "client": "MYLAND",
-      "registrant": "SAUNDERS GLOBAL DIPLOMACY",
-      "income": 45000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Agriculture and Food",
-      "domains": [
-        "Agriculture and Food",
-        "Trade"
-      ],
-      "topics": [
-        "General: Agriculture",
-        "General: Trade"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "USDA",
-        "HHS",
-        "Executive Office of the President",
-        "USTR",
-        "White House"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433033,
-      "date": "2026-05-22T16:07:55-04:00",
-      "client": "BONUS",
-      "registrant": "LYCOS ADVISORY GROUP",
-      "income": 15000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Housing and Urban Development",
-      "domains": [
-        "Housing and Urban Development",
-        "Defense and Security",
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Housing",
-        "General: Veterans",
-        "General: Retirement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Veterans Affairs"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 433032,
-      "date": "2026-05-22T12:58:03-04:00",
-      "client": "RAYMOND BASIN MANAGEMENT BOARD",
-      "registrant": "HICKS-RICHARDSON ASSOCIATES",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress",
-        "EPA",
-        "Army Corps of Engineers"
       ],
       "legislation": []
     }
