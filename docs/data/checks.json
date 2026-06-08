@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T12:34:51.746151",
+  "generated_at": "2026-06-08T14:55:23.389423",
   "window": "90d",
   "status": "needs_attention",
   "severity_counts": {
@@ -8,26 +8,26 @@
     "low": 0
   },
   "metrics": {
-    "mentions_current_90d": 44007,
-    "mentions_prev_90d": 77778,
-    "mentions_yoy_90d": 63872,
+    "mentions_current_90d": 44041,
+    "mentions_prev_90d": 77763,
+    "mentions_yoy_90d": 63875,
     "mentions_vs_prev_pct": -43.4,
     "mentions_vs_yoy_pct": -31.1,
-    "filings_current_90d": 21725,
-    "filings_prev_90d": 21017,
-    "filings_yoy_90d": 19793,
+    "filings_current_90d": 21740,
+    "filings_prev_90d": 21020,
+    "filings_yoy_90d": 19809,
     "filings_vs_prev_pct": 3.4,
-    "filings_vs_yoy_pct": 9.8,
+    "filings_vs_yoy_pct": 9.7,
     "due_vs_non_due_ratio_4y": 27.43,
-    "due_month_avg_filings": 10793.9,
-    "non_due_month_avg_filings": 393.5,
+    "due_month_avg_filings": 10794.1,
+    "non_due_month_avg_filings": 393.6,
     "quarter_due_month_share_pct": 93.2,
     "coverage_recent_90d_pct": 95.9,
     "coverage_all_time_pct": 95.7,
     "legislation_dropped_pct": 0.9,
     "legislation_normalized_pct": 23.4,
     "top_topic_share_pct": 3.05,
-    "top5_topic_share_pct": 13.16,
+    "top5_topic_share_pct": 13.14,
     "secular_change_pct": 39.8,
     "secular_cagr_pct": 6.93,
     "secular_start_year": 2020,
@@ -37,7 +37,7 @@
     {
       "severity": "medium",
       "title": "Large window-volume shift",
-      "detail": "90d extracted mentions are -31.1% vs year-ago (44,007 vs 63,872)."
+      "detail": "90d extracted mentions are -31.1% vs year-ago (44,041 vs 63,875)."
     },
     {
       "severity": "high",

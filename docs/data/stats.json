@@ -1,15 +1,21 @@
 {
-  "generated_at": "2026-06-07T12:34:49.626390",
-  "total_filings": 433339,
-  "total_activities": 1609881,
-  "total_extracted": 1541408,
+  "generated_at": "2026-06-08T14:55:21.245448",
+  "total_filings": 433363,
+  "total_activities": 1609940,
+  "total_extracted": 1541463,
   "extracted_pct": 95.7,
   "extraction_source": "deterministic_rules",
   "date_range": {
     "start": "2020-01-06T13:56:54.507000-05:00",
-    "end": "2026-06-05T17:16:35-04:00"
+    "end": "2026-06-06T13:54:25-04:00"
   },
   "quarters": [
+    {
+      "year": 2026,
+      "quarter": 2,
+      "filings": 24,
+      "income": 390500.0
+    },
     {
       "year": 2026,
       "quarter": 1,
@@ -51,12 +57,6 @@
       "quarter": 3,
       "filings": 18878,
       "income": 1251046976.6
-    },
-    {
-      "year": 2024,
-      "quarter": 2,
-      "filings": 19001,
-      "income": 1274889853.35
     }
   ]
 }
