@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T12:21:03.216921",
+  "generated_at": "2026-06-15T16:10:21.899388",
   "window": "90d",
   "status": "needs_attention",
   "severity_counts": {
@@ -8,20 +8,20 @@
     "low": 1
   },
   "metrics": {
-    "mentions_current_90d": 43814,
+    "mentions_current_90d": 43821,
     "mentions_prev_90d": 64,
     "mentions_yoy_90d": 0,
-    "mentions_vs_prev_pct": 68359.4,
+    "mentions_vs_prev_pct": 68370.3,
     "mentions_vs_yoy_pct": null,
-    "filings_current_90d": 21615,
+    "filings_current_90d": 21619,
     "filings_prev_90d": 47,
     "filings_yoy_90d": 0,
-    "filings_vs_prev_pct": 45889.4,
+    "filings_vs_prev_pct": 45897.9,
     "filings_vs_yoy_pct": null,
-    "due_vs_non_due_ratio_4y": 29.51,
-    "due_month_avg_filings": 10143.5,
-    "non_due_month_avg_filings": 343.8,
-    "quarter_due_month_share_pct": 93.7,
+    "due_vs_non_due_ratio_4y": 29.47,
+    "due_month_avg_filings": 10144.5,
+    "non_due_month_avg_filings": 344.2,
+    "quarter_due_month_share_pct": 93.6,
     "coverage_recent_90d_pct": 95.9,
     "coverage_all_time_pct": 95.9,
     "legislation_dropped_pct": 0.9,
@@ -37,12 +37,12 @@
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 29.51x filing volume vs other months."
+      "detail": "Due-cycle months average 29.47x filing volume vs other months."
     },
     {
       "severity": "medium",
       "title": "Quarter-cycle concentration",
-      "detail": "93.7% of average monthly volume falls in Jan/Apr/Jul/Oct."
+      "detail": "93.6% of average monthly volume falls in Jan/Apr/Jul/Oct."
     },
     {
       "severity": "low",
