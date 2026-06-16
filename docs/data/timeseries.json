@@ -1,6 +1,14 @@
 {
-  "generated_at": "2026-06-15T16:10:22.269457",
+  "generated_at": "2026-06-16T15:54:36.763134",
   "quarters": [
+    {
+      "year": 2025,
+      "quarter": 4,
+      "label": "2025 Q4",
+      "short": "25Q4",
+      "filings": 20887,
+      "income": 1536456511.51
+    },
     {
       "year": 2026,
       "quarter": 1,
@@ -17,10 +25,10 @@
     "Housing Policy",
     "Tax Policy",
     "Tariffs and Trade Enforcement",
-    "Drug Pricing",
     "Data Privacy",
-    "Artificial Intelligence",
-    "Cybersecurity"
+    "Drug Pricing",
+    "Cybersecurity",
+    "Artificial Intelligence"
   ],
   "tracked_topics": [
     "Accounting and Auditing",
@@ -101,247 +109,326 @@
   ],
   "topic_series": {
     "Accounting and Auditing": [
+      17,
       16
     ],
     "Advertising and Marketing": [
+      13,
       13
     ],
     "Animal Welfare and Livestock": [
+      155,
       153
     ],
     "Antitrust and Competition": [
+      14,
       12
     ],
     "Appropriations": [
+      7080,
       7567
     ],
     "Artificial Intelligence": [
+      838,
       884
     ],
     "Arts and Humanities": [
+      34,
       38
     ],
     "Aviation Policy": [
+      383,
       368
     ],
     "Banking and Financial Regulation": [
+      527,
       518
     ],
     "Bankruptcy and Creditor Rights": [
+      3,
       4
     ],
     "Beverage and Alcohol Policy": [
+      21,
       21
     ],
     "Biofuels": [
+      209,
       203
     ],
     "Carbon and Climate": [
+      237,
       233
     ],
     "Clean Air and Chemicals": [
+      214,
       265
     ],
     "Clean Water": [
+      198,
       199
     ],
     "Clinical Research and Diagnostics": [
+      267,
       274
     ],
     "Commodity and Derivatives Markets": [
+      15,
       14
     ],
     "Constitutional and Civil Rights": [
+      112,
       105
     ],
     "Consumer Product Safety": [
+      45,
       41
     ],
     "Criminal Justice and Policing": [
+      97,
       107
     ],
     "Cybersecurity": [
+      894,
       877
     ],
     "Data Privacy": [
+      969,
       976
     ],
     "Defense Authorization": [
+      1877,
       1710
     ],
     "Defense Procurement": [
+      104,
       103
     ],
     "Digital Assets and Crypto": [
+      262,
       265
     ],
     "Disaster Resilience and Recovery": [
+      108,
       115
     ],
     "Drug Pricing": [
+      936,
       1004
     ],
     "Economic Development": [
+      388,
       405
     ],
     "Education and Student Aid": [
+      211,
       231
     ],
     "Electric Vehicles": [
+      178,
       160
     ],
     "Export Controls and Sanctions": [
+      138,
       137
     ],
     "FDA Regulation": [
+      254,
       274
     ],
     "Family and Reproductive Policy": [
+      96,
       96
     ],
     "Farm Policy": [
+      553,
       561
     ],
     "Firearms Policy": [
+      31,
       30
     ],
     "Foreign Relations and Diplomacy": [
+      68,
       68
     ],
     "Gaming and Betting": [
+      54,
       59
     ],
     "Housing Policy": [
+      1388,
       1461
     ],
     "Immigration and Visas": [
+      298,
       301
     ],
     "Infrastructure and Broadband": [
+      599,
       549
     ],
     "Insurance Policy": [
+      115,
       120
     ],
     "Intellectual Property": [
+      238,
       233
     ],
     "International Tax": [
+      78,
       70
     ],
     "Labor and Employment": [
+      343,
       347
     ],
     "Manufacturing and Supply Chains": [
+      575,
       575
     ],
     "Maritime and Fisheries": [
+      275,
       303
     ],
     "Media and Journalism": [
+      45,
       44
     ],
     "Medicare and Medicaid": [
+      1888,
       1854
     ],
     "Minimum Wage": [
+      18,
       19
     ],
     "Nuclear Policy": [
+      83,
       90
     ],
     "Nutrition Assistance": [
+      114,
       103
     ],
     "Oil and Gas": [
+      139,
       144
     ],
     "Postal Policy": [
+      30,
       34
     ],
     "Public Lands and Water Management": [
+      202,
       204
     ],
     "Rail Policy": [
+      113,
       109
     ],
     "Renewable Energy": [
+      787,
       698
     ],
     "Retirement and Pensions": [
+      262,
       265
     ],
     "Science Research Funding": [
+      512,
       536
     ],
     "Small Business": [
+      32,
       35
     ],
     "Space and Aerospace Policy": [
+      104,
       113
     ],
     "Sports Governance": [
+      64,
       64
     ],
     "Substance Use and Treatment": [
+      123,
       124
     ],
     "Tariffs and Trade Enforcement": [
+      1339,
       1339
     ],
     "Tax Policy": [
+      1467,
       1342
     ],
     "Telehealth": [
+      476,
       454
     ],
     "Tobacco and Nicotine": [
+      136,
       146
     ],
     "Tort and Liability": [
+      13,
       12
     ],
     "Tourism and Travel Promotion": [
+      32,
       31
     ],
     "Trade Agreements": [
+      347,
       382
     ],
     "Tribal and Native Affairs": [
+      118,
       126
     ],
     "Trucking and Freight": [
+      85,
       82
     ],
     "Unemployment Benefits": [
+      106,
       111
     ],
     "Unions and Collective Bargaining": [
+      121,
       109
     ],
     "Veterans Policy": [
+      179,
       188
     ],
     "Waste and Recycling Management": [
+      174,
       177
     ]
   },
   "context": {
-    "period_count": 1,
-    "start_label": "2026 Q1",
+    "period_count": 2,
+    "start_label": "2025 Q4",
     "end_label": "2026 Q1",
     "reporting_note": "Each point is a report quarter from filing metadata (year/quarter), not filing submission date.",
-    "quarterly_filings_min": 21666,
-    "quarterly_filings_median": 21666,
+    "quarterly_filings_min": 20887,
+    "quarterly_filings_median": 20887,
     "quarterly_filings_p90": 21666,
     "quarterly_filings_max": 21666,
-    "latest_4q_filings": 21666,
+    "latest_4q_filings": 42553,
     "prior_4q_filings": null,
     "latest_4q_change_pct": null,
     "top_report_quarters": [
       {
         "label": "2026 Q1",
         "filings": 21666
+      },
+      {
+        "label": "2025 Q4",
+        "filings": 20887
       }
     ]
   }
