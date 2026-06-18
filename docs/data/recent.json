@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-06-17T14:05:21.019929",
+  "generated_at": "2026-06-18T13:39:10.672055",
   "filings": [
+    {
+      "id": 42572,
+      "date": "2026-06-17T13:27:38-04:00",
+      "client": "CURIO",
+      "registrant": "CURIO",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Waste and Recycling Management",
+        "Nuclear Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy"
+      ],
+      "legislation": []
+    },
     {
       "id": 42559,
       "date": "2026-06-17T09:50:15-04:00",
@@ -13,6 +37,29 @@
       "domains": [],
       "topics": [],
       "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 42571,
+      "date": "2026-06-17T09:42:35-04:00",
+      "client": "THE AMERICAN PODIATRIC MEDICAL ASSOCIATION",
+      "registrant": "POWERS PYLES SUTTER & VERVILLE, P.C.",
+      "income": 10000.0,
+      "year": 2025,
+      "quarter": 4,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "CMS"
+      ],
       "legislation": []
     },
     {
@@ -6829,59 +6876,6 @@
         "H.R. 753",
         "H.R. 807",
         "H.R. 827"
-      ]
-    },
-    {
-      "id": 21369,
-      "date": "2026-05-27T14:12:17-04:00",
-      "client": "WELLHEAD ELECTRIC COMPANY",
-      "registrant": "THINK POLICY CONSULTING, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Renewable Energy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 21368,
-      "date": "2026-05-27T13:22:16-04:00",
-      "client": "BROAD INSTITUTE INC.",
-      "registrant": "BROAD INSTITUTE INC.",
-      "income": 70000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Technology",
-        "Healthcare"
-      ],
-      "topics": [
-        "Defense Authorization",
-        "Clinical Research and Diagnostics",
-        "Appropriations",
-        "Artificial Intelligence"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "OMB",
-        "Department of Defense",
-        "HHS"
-      ],
-      "legislation": [
-        "National Defense Authorization Act"
       ]
     }
   ]
