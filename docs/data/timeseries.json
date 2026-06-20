@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T13:59:19.418931",
+  "generated_at": "2026-06-20T12:44:31.939369",
   "quarters": [
     {
       "year": 2025,
@@ -16,6 +16,14 @@
       "short": "26Q1",
       "filings": 21677,
       "income": 1652538858.84
+    },
+    {
+      "year": 2026,
+      "quarter": 2,
+      "label": "2026 Q2",
+      "short": "26Q2",
+      "filings": 39,
+      "income": 1008500.0
     }
   ],
   "top_topics": [
@@ -110,315 +118,390 @@
   "topic_series": {
     "Accounting and Auditing": [
       17,
-      16
+      16,
+      0
     ],
     "Advertising and Marketing": [
       13,
-      13
+      13,
+      0
     ],
     "Animal Welfare and Livestock": [
       155,
-      153
+      153,
+      0
     ],
     "Antitrust and Competition": [
       14,
-      12
+      12,
+      0
     ],
     "Appropriations": [
       7085,
-      7568
+      7568,
+      10
     ],
     "Artificial Intelligence": [
       838,
-      884
+      884,
+      0
     ],
     "Arts and Humanities": [
       34,
-      38
+      38,
+      0
     ],
     "Aviation Policy": [
       383,
-      368
+      368,
+      0
     ],
     "Banking and Financial Regulation": [
       527,
-      518
+      518,
+      0
     ],
     "Bankruptcy and Creditor Rights": [
       3,
-      4
+      4,
+      0
     ],
     "Beverage and Alcohol Policy": [
       21,
-      21
+      21,
+      0
     ],
     "Biofuels": [
       209,
-      203
+      203,
+      0
     ],
     "Carbon and Climate": [
       237,
-      233
+      233,
+      0
     ],
     "Clean Air and Chemicals": [
       214,
-      265
+      265,
+      0
     ],
     "Clean Water": [
       198,
-      199
+      199,
+      0
     ],
     "Clinical Research and Diagnostics": [
       267,
-      274
+      274,
+      0
     ],
     "Commodity and Derivatives Markets": [
       15,
-      14
+      14,
+      0
     ],
     "Constitutional and Civil Rights": [
       112,
-      105
+      105,
+      0
     ],
     "Consumer Product Safety": [
       45,
-      41
+      41,
+      0
     ],
     "Criminal Justice and Policing": [
       97,
-      107
+      107,
+      2
     ],
     "Cybersecurity": [
       894,
-      877
+      877,
+      0
     ],
     "Data Privacy": [
       971,
-      976
+      976,
+      0
     ],
     "Defense Authorization": [
       1879,
-      1710
+      1710,
+      2
     ],
     "Defense Procurement": [
       104,
-      103
+      103,
+      0
     ],
     "Digital Assets and Crypto": [
       262,
-      265
+      265,
+      0
     ],
     "Disaster Resilience and Recovery": [
       108,
-      115
+      115,
+      1
     ],
     "Drug Pricing": [
       936,
-      1005
+      1005,
+      1
     ],
     "Economic Development": [
       388,
-      405
+      405,
+      2
     ],
     "Education and Student Aid": [
       211,
-      231
+      231,
+      0
     ],
     "Electric Vehicles": [
       178,
-      160
+      160,
+      0
     ],
     "Export Controls and Sanctions": [
       138,
-      137
+      137,
+      1
     ],
     "FDA Regulation": [
       255,
-      274
+      274,
+      0
     ],
     "Family and Reproductive Policy": [
       96,
-      96
+      96,
+      0
     ],
     "Farm Policy": [
       553,
-      561
+      561,
+      3
     ],
     "Firearms Policy": [
       31,
-      30
+      30,
+      0
     ],
     "Foreign Relations and Diplomacy": [
       68,
-      68
+      68,
+      0
     ],
     "Gaming and Betting": [
       54,
-      59
+      59,
+      0
     ],
     "Housing Policy": [
       1388,
-      1461
+      1461,
+      1
     ],
     "Immigration and Visas": [
       298,
-      302
+      302,
+      0
     ],
     "Infrastructure and Broadband": [
       599,
-      549
+      549,
+      0
     ],
     "Insurance Policy": [
       115,
-      120
+      120,
+      0
     ],
     "Intellectual Property": [
       238,
-      233
+      233,
+      0
     ],
     "International Tax": [
       78,
-      70
+      70,
+      0
     ],
     "Labor and Employment": [
       343,
-      348
+      348,
+      0
     ],
     "Manufacturing and Supply Chains": [
       575,
-      575
+      575,
+      0
     ],
     "Maritime and Fisheries": [
       276,
-      303
+      303,
+      0
     ],
     "Media and Journalism": [
       46,
-      44
+      44,
+      0
     ],
     "Medicare and Medicaid": [
       1888,
-      1854
+      1854,
+      2
     ],
     "Minimum Wage": [
       18,
-      19
+      19,
+      0
     ],
     "Nuclear Policy": [
       84,
-      92
+      92,
+      0
     ],
     "Nutrition Assistance": [
       114,
-      103
+      103,
+      1
     ],
     "Oil and Gas": [
       139,
-      144
+      144,
+      0
     ],
     "Postal Policy": [
       30,
-      34
+      34,
+      0
     ],
     "Public Lands and Water Management": [
       202,
-      204
+      204,
+      1
     ],
     "Rail Policy": [
       113,
-      109
+      109,
+      1
     ],
     "Renewable Energy": [
       787,
-      698
+      698,
+      0
     ],
     "Retirement and Pensions": [
       262,
-      265
+      265,
+      0
     ],
     "Science Research Funding": [
       512,
-      536
+      536,
+      1
     ],
     "Small Business": [
       32,
-      35
+      35,
+      0
     ],
     "Space and Aerospace Policy": [
       104,
-      113
+      113,
+      0
     ],
     "Sports Governance": [
       65,
-      64
+      64,
+      0
     ],
     "Substance Use and Treatment": [
       123,
-      124
+      124,
+      0
     ],
     "Tariffs and Trade Enforcement": [
       1339,
-      1339
+      1339,
+      1
     ],
     "Tax Policy": [
       1467,
-      1342
+      1342,
+      1
     ],
     "Telehealth": [
       476,
-      454
+      454,
+      0
     ],
     "Tobacco and Nicotine": [
       136,
-      146
+      146,
+      0
     ],
     "Tort and Liability": [
       13,
-      12
+      12,
+      0
     ],
     "Tourism and Travel Promotion": [
       32,
-      31
+      31,
+      0
     ],
     "Trade Agreements": [
       347,
-      382
+      382,
+      0
     ],
     "Tribal and Native Affairs": [
       118,
-      126
+      126,
+      0
     ],
     "Trucking and Freight": [
       85,
-      82
+      82,
+      0
     ],
     "Unemployment Benefits": [
       106,
-      111
+      111,
+      0
     ],
     "Unions and Collective Bargaining": [
       121,
-      109
+      109,
+      0
     ],
     "Veterans Policy": [
       179,
-      188
+      188,
+      0
     ],
     "Waste and Recycling Management": [
       175,
-      178
+      178,
+      0
     ]
   },
   "context": {
-    "period_count": 2,
+    "period_count": 3,
     "start_label": "2025 Q4",
-    "end_label": "2026 Q1",
+    "end_label": "2026 Q2",
     "reporting_note": "Each point is a report quarter from filing metadata (year/quarter), not filing submission date.",
-    "quarterly_filings_min": 20900,
+    "quarterly_filings_min": 39,
     "quarterly_filings_median": 20900,
     "quarterly_filings_p90": 21677,
     "quarterly_filings_max": 21677,
-    "latest_4q_filings": 42577,
+    "latest_4q_filings": 42616,
     "prior_4q_filings": null,
     "latest_4q_change_pct": null,
     "top_report_quarters": [
@@ -429,6 +512,10 @@
       {
         "label": "2025 Q4",
         "filings": 20900
+      },
+      {
+        "label": "2026 Q2",
+        "filings": 39
       }
     ]
   }
