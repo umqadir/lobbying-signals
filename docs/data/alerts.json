@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-02T12:07:54.859757",
+  "generated_at": "2026-07-03T12:07:31.597548",
   "alerts": [
     {
       "type": "signal",
       "category": "entity",
       "name": "House of Representatives",
-      "current_count": 39662,
-      "prev_count": 38555,
+      "current_count": 39765,
+      "prev_count": 38619,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 90.501,
-      "share_delta_prev_pp": 0.48,
+      "share_delta_yoy_pp": 90.552,
+      "share_delta_prev_pp": 0.573,
       "signal_confidence": "medium",
       "top_clients": [
         "MICROSOFT CORPORATION",
@@ -18,18 +18,18 @@
         "COMCAST CORPORATION",
         "ORACLE CORPORATION"
       ],
-      "total_income": 1512304375.2,
-      "headline": "House of Representatives attention up 90.50 pp vs year-ago period (39662 mentions)"
+      "total_income": 1515661335.2,
+      "headline": "House of Representatives attention up 90.55 pp vs year-ago period (39765 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Senate",
-      "current_count": 39103,
-      "prev_count": 38081,
+      "current_count": 39188,
+      "prev_count": 38160,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 89.225,
-      "share_delta_prev_pp": 0.311,
+      "share_delta_yoy_pp": 89.238,
+      "share_delta_prev_pp": 0.328,
       "signal_confidence": "medium",
       "top_clients": [
         "MICROSOFT CORPORATION",
@@ -38,18 +38,18 @@
         "ORACLE CORPORATION",
         "AMERICAN BANKERS ASSOCIATION"
       ],
-      "total_income": 1504401606.2,
-      "headline": "Senate attention up 89.22 pp vs year-ago period (39103 mentions)"
+      "total_income": 1507478566.2,
+      "headline": "Senate attention up 89.24 pp vs year-ago period (39188 mentions)"
     },
     {
       "type": "signal",
       "category": "topic",
       "name": "Appropriations",
-      "current_count": 7515,
-      "prev_count": 7100,
+      "current_count": 7549,
+      "prev_count": 7132,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 17.148,
-      "share_delta_prev_pp": 0.57,
+      "share_delta_yoy_pp": 17.19,
+      "share_delta_prev_pp": 0.573,
       "signal_confidence": "medium",
       "top_clients": [
         "GENERAL DYNAMICS",
@@ -58,38 +58,38 @@
         "MISSISSIPPI STATE UNIVERSITY",
         "UNIVERSITY OF ARIZONA"
       ],
-      "total_income": 603370070.85,
-      "headline": "'Appropriations' share up 17.15 pp vs year-ago period (7515 mentions)"
+      "total_income": 604322570.85,
+      "headline": "'Appropriations' share up 17.19 pp vs year-ago period (7549 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
       "name": "Government and Budget",
-      "current_count": 6306,
-      "prev_count": 5928,
+      "current_count": 6333,
+      "prev_count": 5954,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 14.389,
-      "share_delta_prev_pp": 0.548,
+      "share_delta_yoy_pp": 14.421,
+      "share_delta_prev_pp": 0.549,
       "signal_confidence": "medium",
       "top_clients": [
         "GENERAL DYNAMICS",
         "ACCENTURE FEDERAL SERVICES LLC",
         "DELOITTE LLP",
-        "WORKDAY, INC.",
-        "NATIONAL AIR TRAFFIC CONTROLLERS ASSOCIATION"
+        "NATIONAL ASSOCIATION OF POSTAL SUPERVISORS",
+        "WORKDAY, INC."
       ],
-      "total_income": 576522156.5200001,
-      "headline": "Government and Budget domain share up 14.39 pp vs year-ago period (6306 mentions)"
+      "total_income": 577304656.5200001,
+      "headline": "Government and Budget domain share up 14.42 pp vs year-ago period (6333 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
       "name": "Healthcare",
-      "current_count": 5487,
-      "prev_count": 5514,
+      "current_count": 5493,
+      "prev_count": 5516,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 12.52,
-      "share_delta_prev_pp": -0.354,
+      "share_delta_yoy_pp": 12.509,
+      "share_delta_prev_pp": -0.343,
       "signal_confidence": "medium",
       "top_clients": [
         "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
@@ -98,18 +98,18 @@
         "ELI LILLY AND COMPANY",
         "BRISTOL-MYERS SQUIBB COMPANY"
       ],
-      "total_income": 473100967.87,
-      "headline": "Healthcare domain share up 12.52 pp vs year-ago period (5487 mentions)"
+      "total_income": 473246967.87,
+      "headline": "Healthcare domain share up 12.51 pp vs year-ago period (5493 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
       "name": "Finance and Tax",
-      "current_count": 4690,
-      "prev_count": 4863,
+      "current_count": 4695,
+      "prev_count": 4871,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 10.702,
-      "share_delta_prev_pp": -0.653,
+      "share_delta_yoy_pp": 10.691,
+      "share_delta_prev_pp": -0.658,
       "signal_confidence": "medium",
       "top_clients": [
         "AMERICAN BANKERS ASSOCIATION",
@@ -118,18 +118,18 @@
         "AMERICAN PROPERTY CASUALTY INSURANCE ASSOCIATION",
         "NATIONAL ASSOCIATION OF MUTUAL INSURANCE COMPANIES"
       ],
-      "total_income": 715794834.77,
-      "headline": "Finance and Tax domain share up 10.70 pp vs year-ago period (4690 mentions)"
+      "total_income": 716196834.77,
+      "headline": "Finance and Tax domain share up 10.69 pp vs year-ago period (4695 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
       "name": "Energy and Environment",
-      "current_count": 4560,
-      "prev_count": 4418,
+      "current_count": 4571,
+      "prev_count": 4424,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 10.405,
-      "share_delta_prev_pp": 0.09,
+      "share_delta_yoy_pp": 10.409,
+      "share_delta_prev_pp": 0.101,
       "signal_confidence": "medium",
       "top_clients": [
         "OCCIDENTAL PETROLEUM CORPORATION",
@@ -138,18 +138,18 @@
         "AMERICAN CHEMISTRY COUNCIL",
         "NATIONAL MINING ASSOCIATION"
       ],
-      "total_income": 430490543.48,
-      "headline": "Energy and Environment domain share up 10.40 pp vs year-ago period (4560 mentions)"
+      "total_income": 431005543.48,
+      "headline": "Energy and Environment domain share up 10.41 pp vs year-ago period (4571 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
       "name": "Defense and Security",
-      "current_count": 4452,
-      "prev_count": 4272,
+      "current_count": 4468,
+      "prev_count": 4279,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 10.159,
-      "share_delta_prev_pp": 0.184,
+      "share_delta_yoy_pp": 10.174,
+      "share_delta_prev_pp": 0.205,
       "signal_confidence": "medium",
       "top_clients": [
         "ORACLE CORPORATION",
@@ -158,18 +158,18 @@
         "MICROSOFT CORPORATION",
         "REFORM ACTION FUND"
       ],
-      "total_income": 463596973.09000003,
-      "headline": "Defense and Security domain share up 10.16 pp vs year-ago period (4452 mentions)"
+      "total_income": 463926973.09000003,
+      "headline": "Defense and Security domain share up 10.17 pp vs year-ago period (4468 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
       "name": "Industry and Business",
-      "current_count": 3241,
-      "prev_count": 3111,
+      "current_count": 3249,
+      "prev_count": 3120,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 7.395,
-      "share_delta_prev_pp": 0.132,
+      "share_delta_yoy_pp": 7.399,
+      "share_delta_prev_pp": 0.129,
       "signal_confidence": "medium",
       "top_clients": [
         "ALTRIA CLIENT SERVICES LLC",
@@ -178,18 +178,18 @@
         "AMERICAN GAMING ASSOCIATION",
         "AMERICAN PROPERTY CASUALTY INSURANCE ASSOCIATION"
       ],
-      "total_income": 404669261.5,
-      "headline": "Industry and Business domain share up 7.39 pp vs year-ago period (3241 mentions)"
+      "total_income": 404997261.5,
+      "headline": "Industry and Business domain share up 7.40 pp vs year-ago period (3249 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "White House",
-      "current_count": 3160,
-      "prev_count": 3056,
+      "current_count": 3165,
+      "prev_count": 3063,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 7.21,
-      "share_delta_prev_pp": 0.075,
+      "share_delta_yoy_pp": 7.207,
+      "share_delta_prev_pp": 0.071,
       "signal_confidence": "medium",
       "top_clients": [
         "NATIONAL DISABILITY RIGHTS NETWORK",
@@ -198,18 +198,18 @@
         "AGRICULTURAL RETAILERS ASSOCIATION",
         "INFORMATION TECHNOLOGY INDUSTRY COUNCIL"
       ],
-      "total_income": 396528416.57,
-      "headline": "White House attention up 7.21 pp vs year-ago period (3160 mentions)"
+      "total_income": 396669376.57,
+      "headline": "White House attention up 7.21 pp vs year-ago period (3165 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
       "name": "Transportation",
-      "current_count": 3121,
-      "prev_count": 2998,
+      "current_count": 3130,
+      "prev_count": 3003,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 7.122,
-      "share_delta_prev_pp": 0.122,
+      "share_delta_yoy_pp": 7.128,
+      "share_delta_prev_pp": 0.131,
       "signal_confidence": "medium",
       "top_clients": [
         "FEDEX CORPORATION",
@@ -218,18 +218,18 @@
         "ENTERPRISE HOLDINGS, INC. DBA ENTERPRISE MOBILITY",
         "GATX CORPORATION"
       ],
-      "total_income": 347717697.52,
-      "headline": "Transportation domain share up 7.12 pp vs year-ago period (3121 mentions)"
+      "total_income": 348194657.52,
+      "headline": "Transportation domain share up 7.13 pp vs year-ago period (3130 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Department of Defense",
-      "current_count": 2978,
-      "prev_count": 2865,
+      "current_count": 2992,
+      "prev_count": 2868,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 6.795,
-      "share_delta_prev_pp": 0.106,
+      "share_delta_yoy_pp": 6.813,
+      "share_delta_prev_pp": 0.131,
       "signal_confidence": "medium",
       "top_clients": [
         "AMERICAN CRITICAL MINERALS ASSOCIATION",
@@ -238,38 +238,38 @@
         "CHAMBER OF COMMERCE OF THE U.S.A.",
         "UNIVERSITY OF IDAHO"
       ],
-      "total_income": 287558092.65,
-      "headline": "Department of Defense attention up 6.79 pp vs year-ago period (2978 mentions)"
+      "total_income": 287808092.65,
+      "headline": "Department of Defense attention up 6.81 pp vs year-ago period (2992 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
       "name": "Trade",
-      "current_count": 2757,
-      "prev_count": 2707,
+      "current_count": 2762,
+      "prev_count": 2713,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 6.291,
-      "share_delta_prev_pp": -0.03,
+      "share_delta_yoy_pp": 6.29,
+      "share_delta_prev_pp": -0.031,
       "signal_confidence": "medium",
       "top_clients": [
         "ATOLLETC LLC",
         "ALIBABA GROUP HOLDING LIMITED",
         "WALMART INC",
-        "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
-        "ELI LILLY AND COMPANY"
+        "THE FRIEDKIN GROUP, INC.",
+        "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA"
       ],
-      "total_income": 535032076.98999995,
-      "headline": "Trade domain share up 6.29 pp vs year-ago period (2757 mentions)"
+      "total_income": 535325815.98999995,
+      "headline": "Trade domain share up 6.29 pp vs year-ago period (2762 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
       "name": "Technology",
-      "current_count": 2728,
-      "prev_count": 2664,
+      "current_count": 2725,
+      "prev_count": 2673,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 6.225,
-      "share_delta_prev_pp": 0.005,
+      "share_delta_yoy_pp": 6.205,
+      "share_delta_prev_pp": -0.023,
       "signal_confidence": "medium",
       "top_clients": [
         "COMCAST CORPORATION",
@@ -278,18 +278,18 @@
         "META PLATFORMS, INC.",
         "NCTA - THE INTERNET & TELEVISION ASSOCIATION"
       ],
-      "total_income": 427227551.0,
-      "headline": "Technology domain share up 6.22 pp vs year-ago period (2728 mentions)"
+      "total_income": 428212551.0,
+      "headline": "Technology domain share up 6.21 pp vs year-ago period (2725 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "HHS",
-      "current_count": 2618,
+      "current_count": 2624,
       "prev_count": 2537,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 5.974,
-      "share_delta_prev_pp": 0.05,
+      "share_delta_yoy_pp": 5.975,
+      "share_delta_prev_pp": 0.064,
       "signal_confidence": "medium",
       "top_clients": [
         "NATIONAL DISABILITY RIGHTS NETWORK",
@@ -298,18 +298,18 @@
         "AARP",
         "HERBERT J. THOMAS MEMORIAL HOSPITAL ASSOCIATION (FKA THOMAS HEALTH)"
       ],
-      "total_income": 296255956.34000003,
-      "headline": "HHS attention up 5.97 pp vs year-ago period (2618 mentions)"
+      "total_income": 296383956.34000003,
+      "headline": "HHS attention up 5.97 pp vs year-ago period (2624 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Department of Commerce",
       "current_count": 2459,
-      "prev_count": 2358,
+      "prev_count": 2367,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 5.611,
-      "share_delta_prev_pp": 0.105,
+      "share_delta_yoy_pp": 5.6,
+      "share_delta_prev_pp": 0.085,
       "signal_confidence": "medium",
       "top_clients": [
         "CHAMBER OF COMMERCE OF THE U.S.A.",
@@ -318,17 +318,17 @@
         "INFORMATION TECHNOLOGY INDUSTRY COUNCIL",
         "NATIONAL ASSOCIATION OF HOME BUILDERS"
       ],
-      "total_income": 385568317.91999996,
-      "headline": "Department of Commerce attention up 5.61 pp vs year-ago period (2459 mentions)"
+      "total_income": 386888317.91999996,
+      "headline": "Department of Commerce attention up 5.60 pp vs year-ago period (2459 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Congress",
-      "current_count": 2199,
-      "prev_count": 2147,
+      "current_count": 2204,
+      "prev_count": 2152,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 5.018,
+      "share_delta_yoy_pp": 5.019,
       "share_delta_prev_pp": 0.005,
       "signal_confidence": "medium",
       "top_clients": [
@@ -338,18 +338,18 @@
         "AMERICAN APPAREL & FOOTWEAR ASSOCIATION",
         "CONFERENCE OF PROVINCIALS OF NORTH AMERICA"
       ],
-      "total_income": 232157385.05,
-      "headline": "Congress attention up 5.02 pp vs year-ago period (2199 mentions)"
+      "total_income": 232283385.05,
+      "headline": "Congress attention up 5.02 pp vs year-ago period (2204 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Treasury",
-      "current_count": 2156,
-      "prev_count": 1997,
+      "current_count": 2160,
+      "prev_count": 2000,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 4.92,
-      "share_delta_prev_pp": 0.257,
+      "share_delta_yoy_pp": 4.919,
+      "share_delta_prev_pp": 0.259,
       "signal_confidence": "medium",
       "top_clients": [
         "NATIONAL COUNCIL ON TEACHER RETIREMENT 9370 STUDIO COURT ELK GROVE CA 95758",
@@ -358,38 +358,18 @@
         "MORTGAGE BANKERS ASSOCIATION",
         "PHILANTHROPY ROUNDTABLE"
       ],
-      "total_income": 397279040.57,
-      "headline": "Treasury attention up 4.92 pp vs year-ago period (2156 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "entity",
-      "name": "USDA",
-      "current_count": 2055,
-      "prev_count": 1941,
-      "yoy_count": 0,
-      "share_delta_yoy_pp": 4.689,
-      "share_delta_prev_pp": 0.157,
-      "signal_confidence": "medium",
-      "top_clients": [
-        "AMERICAN SOYBEAN ASSOCIATION",
-        "FARMERS EDUCATIONAL COOPERATIVE UNION OF AMERICA",
-        "PENNSYLVANIA FARM BUREAU",
-        "R-CALF UNITED STOCKGROWERS OF AMERICA",
-        "NATIONAL OILSEED PROCESSORS ASSOCIATION"
-      ],
-      "total_income": 193116785.92000002,
-      "headline": "USDA attention up 4.69 pp vs year-ago period (2055 mentions)"
+      "total_income": 397599540.57,
+      "headline": "Treasury attention up 4.92 pp vs year-ago period (2160 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Department of Energy",
-      "current_count": 2050,
-      "prev_count": 1909,
+      "current_count": 2056,
+      "prev_count": 1910,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 4.678,
-      "share_delta_prev_pp": 0.22,
+      "share_delta_yoy_pp": 4.682,
+      "share_delta_prev_pp": 0.232,
       "signal_confidence": "medium",
       "top_clients": [
         "SCHNEIDER ELECTRIC",
@@ -398,8 +378,28 @@
         "PACIFIC GAS AND ELECTRIC COMPANY",
         "HUNTSMAN INTERNATIONAL LLC"
       ],
-      "total_income": 253767138.11,
-      "headline": "Department of Energy attention up 4.68 pp vs year-ago period (2050 mentions)"
+      "total_income": 253887138.11,
+      "headline": "Department of Energy attention up 4.68 pp vs year-ago period (2056 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "entity",
+      "name": "USDA",
+      "current_count": 2052,
+      "prev_count": 1954,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 4.673,
+      "share_delta_prev_pp": 0.12,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "AMERICAN SOYBEAN ASSOCIATION",
+        "FARMERS EDUCATIONAL COOPERATIVE UNION OF AMERICA",
+        "PENNSYLVANIA FARM BUREAU",
+        "R-CALF UNITED STOCKGROWERS OF AMERICA",
+        "NATIONAL OILSEED PROCESSORS ASSOCIATION"
+      ],
+      "total_income": 193110785.92000002,
+      "headline": "USDA attention up 4.67 pp vs year-ago period (2052 mentions)"
     }
   ]
 }
