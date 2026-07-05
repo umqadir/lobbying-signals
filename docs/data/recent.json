@@ -1,6 +1,643 @@
 {
-  "generated_at": "2026-07-04T11:24:12.471178",
+  "generated_at": "2026-07-05T11:28:21.028844",
   "filings": [
+    {
+      "id": 43073,
+      "date": "2026-07-05T06:31:31-04:00",
+      "client": "UNIVERSITY OF LOUISVILLE HEALTH",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 43072,
+      "date": "2026-07-05T06:25:58-04:00",
+      "client": "STEALTH BIOTHERAPEUTICS INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 60000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "FDA Regulation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President",
+        "FDA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43071,
+      "date": "2026-07-05T06:19:30-04:00",
+      "client": "SAVARA INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 60000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "FDA Regulation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President",
+        "FDA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43070,
+      "date": "2026-07-05T06:18:19-04:00",
+      "client": "REGENXBIO INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 60000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "FDA Regulation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President",
+        "FDA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43069,
+      "date": "2026-07-05T06:16:00-04:00",
+      "client": "PTC THERAPEUTICS, INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 50000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "FDA",
+        "Executive Office of the President"
+      ],
+      "legislation": [
+        "H.R. 1262",
+        "S. 932",
+        "Chance Act of 2025"
+      ]
+    },
+    {
+      "id": 43068,
+      "date": "2026-07-05T06:10:16-04:00",
+      "client": "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Trade"
+      ],
+      "topics": [
+        "Manufacturing and Supply Chains"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USTR"
+      ],
+      "legislation": [
+        "H.R. 2213",
+        "H.R. 1492",
+        "S. 832",
+        "Medical Supply Chain Resiliency Act",
+        "EPIC Act of 2025"
+      ]
+    },
+    {
+      "id": 43067,
+      "date": "2026-07-05T06:08:09-04:00",
+      "client": "NEUROPACE, INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43066,
+      "date": "2026-07-05T06:06:55-04:00",
+      "client": "NATERA, INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Medicare Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 5269",
+        "RESULTS Act"
+      ]
+    },
+    {
+      "id": 43065,
+      "date": "2026-07-05T06:05:53-04:00",
+      "client": "MIDSIZED BIOTECH ALLIANCE OF AMERICA (MBAA)",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 230000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43064,
+      "date": "2026-07-05T06:03:04-04:00",
+      "client": "MEDICAL DEVICE MANUFACTURERS ASSOCIATION",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Telehealth",
+        "FDA Regulation",
+        "Data Privacy",
+        "Artificial Intelligence",
+        "Cybersecurity"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "CMS",
+        "FDA"
+      ],
+      "legislation": [
+        "H.R. 1691",
+        "Critical Breakthrough Products Act"
+      ]
+    },
+    {
+      "id": 43063,
+      "date": "2026-07-05T06:00:19-04:00",
+      "client": "IONIS PHARMACEUTICALS, INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "H.R. 946",
+        "H.R. 1672",
+        "H.R. 1262",
+        "S. 1862",
+        "S. 932",
+        "ORPHAN Cures Act",
+        "Chance Act of 2025"
+      ]
+    },
+    {
+      "id": 43062,
+      "date": "2026-07-05T05:59:15-04:00",
+      "client": "INCYTE CORPORATION",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 50000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues",
+        "General: Pharmacy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43061,
+      "date": "2026-07-05T05:58:13-04:00",
+      "client": "HARMONY BIOSCIENCES",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 50000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43060,
+      "date": "2026-07-05T05:57:29-04:00",
+      "client": "GLAXOSMITHKLINE LLC",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 50000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "FDA Regulation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President",
+        "FDA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43059,
+      "date": "2026-07-05T05:56:00-04:00",
+      "client": "ERISA INDUSTRY COMMITTEE (ERIC)",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Labor and Employment"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "S. 2355",
+        "Lower Costs, More Transparency Act",
+        "Patients Deserve Price Tags Act"
+      ]
+    },
+    {
+      "id": 43058,
+      "date": "2026-07-05T05:55:08-04:00",
+      "client": "BICYCLE THERAPEUTICS",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 150000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "FDA Regulation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President",
+        "FDA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43057,
+      "date": "2026-07-05T05:53:43-04:00",
+      "client": "AVADEL PHARMACEUTICALS, PLC",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 60000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Veterans Affairs"
+      ],
+      "legislation": [
+        "H.R. 4692",
+        "S. 574",
+        "Increasing Prescription Drug Competition Act"
+      ]
+    },
+    {
+      "id": 43056,
+      "date": "2026-07-05T05:52:45-04:00",
+      "client": "ARDELYX, INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "FDA Regulation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President",
+        "FDA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43055,
+      "date": "2026-07-05T05:51:05-04:00",
+      "client": "ALNYLAM PHARMACEUTICALS, INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 50000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President"
+      ],
+      "legislation": [
+        "H.R. 1672",
+        "H.R. 946",
+        "S. 1862",
+        "ORPHAN Cures Act"
+      ]
+    },
+    {
+      "id": 43054,
+      "date": "2026-07-05T05:48:44-04:00",
+      "client": "ALKERMES, INC.",
+      "registrant": "LMH STRATEGIC SOLUTIONS",
+      "income": 60000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "Medicare and Medicaid",
+        "Substance Use and Treatment"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Executive Office of the President"
+      ],
+      "legislation": [
+        "H.R. 946",
+        "Inflation Reduction Act of 2022",
+        "ORPHAN Cures Act"
+      ]
+    },
+    {
+      "id": 43053,
+      "date": "2026-07-04T13:04:30-04:00",
+      "client": "AMERICAN BOARD OF PHYSICIAN SPECIALTIES",
+      "registrant": "SHADWELL GP LLC",
+      "income": 14000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Defense",
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43052,
+      "date": "2026-07-04T11:13:06-04:00",
+      "client": "FLORIDA CRYSTALS CORP.",
+      "registrant": "RYBERG AND SMITH, L.L.C.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
+      "topics": [
+        "Tariffs and Trade Enforcement"
+      ],
+      "entities": [
+        "USTR"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 43051,
+      "date": "2026-07-04T11:11:43-04:00",
+      "client": "CBI SUGAR GROUP",
+      "registrant": "RYBERG AND SMITH, L.L.C.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 43050,
+      "date": "2026-07-04T11:11:08-04:00",
+      "client": "INTERNATIONAL SUGAR TRADE COALITION",
+      "registrant": "RYBERG AND SMITH, L.L.C.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 43049,
+      "date": "2026-07-04T11:10:31-04:00",
+      "client": "MAURITIUS-U.S. BUSINESS ASSOCIATION, INC.",
+      "registrant": "RYBERG AND SMITH, L.L.C.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
+      "topics": [
+        "General: Trade"
+      ],
+      "entities": [],
+      "legislation": [
+        "Opportunity Act"
+      ]
+    },
+    {
+      "id": 43048,
+      "date": "2026-07-04T11:09:49-04:00",
+      "client": "MAURITIUS SUGAR SYNDICATE AND MAURITIUS CHAMBER OF AGRICULTURE",
+      "registrant": "RYBERG AND SMITH, L.L.C.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 43047,
+      "date": "2026-07-04T11:08:31-04:00",
+      "client": "AFRICAN COALITION FOR TRADE",
+      "registrant": "RYBERG AND SMITH, L.L.C.",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Trade",
+      "domains": [
+        "Trade"
+      ],
+      "topics": [
+        "General: Trade"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USTR"
+      ],
+      "legislation": [
+        "Opportunity Act"
+      ]
+    },
     {
       "id": 43046,
       "date": "2026-07-04T06:31:42-04:00",
@@ -6446,656 +7083,6 @@
         "Historic Preservation Fund Reauthorization Act",
         "H.R. 8870"
       ]
-    },
-    {
-      "id": 42773,
-      "date": "2026-07-01T10:44:49-04:00",
-      "client": "BROWNSTEIN HYATT FARBER SCHRECK, LLP OBO MEDEXPERT INTERNATIONAL, INC.",
-      "registrant": "NET CENTRIC ALLIANCE LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Veterans"
-      ],
-      "entities": [
-        "Department of Veterans Affairs"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42772,
-      "date": "2026-07-01T10:44:17-04:00",
-      "client": "STM",
-      "registrant": "WEINREICH STRATEGIC GROUP, INC.",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Technology"
-      ],
-      "topics": [
-        "Artificial Intelligence"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "OSTP",
-        "Department of Energy",
-        "Department of Defense",
-        "Department of Commerce",
-        "HHS",
-        "USDA"
-      ],
-      "legislation": [
-        "Administrative Procedure Act"
-      ]
-    },
-    {
-      "id": 42771,
-      "date": "2026-07-01T10:43:13-04:00",
-      "client": "BROWNSTEIN HYATT FARBER SCHRECK, LLP OBO INVACARE AMERICA",
-      "registrant": "NET CENTRIC ALLIANCE LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Veterans"
-      ],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 42770,
-      "date": "2026-07-01T10:41:49-04:00",
-      "client": "LEADING BUILDERS OF AMERICA",
-      "registrant": "LEADING BUILDERS OF AMERICA",
-      "income": 220000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Labor and Immigration",
-        "Other"
-      ],
-      "topics": [
-        "Housing Policy",
-        "Appropriations",
-        "Labor and Employment",
-        "Tax Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "USDA",
-        "Department of Energy",
-        "EPA",
-        "Congress",
-        "Treasury",
-        "SEC",
-        "Department of Labor"
-      ],
-      "legislation": [
-        "H.R. 990",
-        "H.R. 6644",
-        "S. 5027",
-        "Housing Act",
-        "S. 2417",
-        "Inclusion Act",
-        "H.R. 4167",
-        "S. 2431",
-        "H.R. 2840",
-        "S. 1688",
-        "Housing Act Housing Act",
-        "Housing Supply Frameworks Act"
-      ]
-    },
-    {
-      "id": 42769,
-      "date": "2026-07-01T10:41:47-04:00",
-      "client": "BROWNSTEIN HYATT FARBER SCHRECK, LLP OBO EPTURA, INC.",
-      "registrant": "NET CENTRIC ALLIANCE LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "Housing Policy",
-        "Veterans Policy"
-      ],
-      "entities": [],
-      "legislation": [
-        "S. 2988",
-        "VITAL Act of 2025"
-      ]
-    },
-    {
-      "id": 42768,
-      "date": "2026-07-01T10:41:23-04:00",
-      "client": "BERTRAND CHAFFEE HOSPITAL",
-      "registrant": "MANATT, PHELPS, AND PHILLIPS",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 42767,
-      "date": "2026-07-01T10:40:36-04:00",
-      "client": "CROUSE HEALTH",
-      "registrant": "MANATT, PHELPS, AND PHILLIPS",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 42766,
-      "date": "2026-07-01T10:40:02-04:00",
-      "client": "BROWNSTEIN HYATT FARBER SCHRECK, LLP OBO WELLHIVE",
-      "registrant": "NET CENTRIC ALLIANCE LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "Veterans Policy"
-      ],
-      "entities": [
-        "Department of Veterans Affairs"
-      ],
-      "legislation": [
-        "H.R. 3482",
-        "S. 654",
-        "Veterans Community Care Scheduling Improvement Act"
-      ]
-    },
-    {
-      "id": 42765,
-      "date": "2026-07-01T10:39:50-04:00",
-      "client": "THE WISTAR INSTITUTE",
-      "registrant": "MANATT, PHELPS, AND PHILLIPS",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42764,
-      "date": "2026-07-01T10:35:49-04:00",
-      "client": "BROWNSTEIN HYATT FARBER SCHRECK, LLP OBO BRUNO INDEPENDENT LIVING AIDS,INC",
-      "registrant": "NET CENTRIC ALLIANCE LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Veterans"
-      ],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 42763,
-      "date": "2026-07-01T10:31:20-04:00",
-      "client": "TUBA CITY REGIONAL HEALTH CARE CORPORATION",
-      "registrant": "THE TOMHAVE GROUP, INC.",
-      "income": 22500.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42762,
-      "date": "2026-07-01T10:25:39-04:00",
-      "client": "INT'L ASSNHEAT&FROST INSULATORS ALLIED WORKERSLABOR MANAGEMENT COOPERATIVE TRUST",
-      "registrant": "STATE FEDERAL STRATEGIES",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Finance and Tax"
-      ],
-      "topics": [
-        "General: Energy Nuclear",
-        "General: Environment",
-        "General: Taxation"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 3474",
-        "S. 4312"
-      ]
-    },
-    {
-      "id": 42761,
-      "date": "2026-07-01T10:24:08-04:00",
-      "client": "CAREFIRST BLUECROSS BLUESHIELD",
-      "registrant": "CAREFIRST BLUECROSS BLUESHIELD",
-      "income": 78000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax"
-      ],
-      "topics": [
-        "Drug Pricing"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42760,
-      "date": "2026-07-01T10:23:08-04:00",
-      "client": "PHYSICIANS ADVOCACY INSTITUTE",
-      "registrant": "STATE FEDERAL STRATEGIES",
-      "income": 35000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare",
-        "Industry and Business"
-      ],
-      "topics": [
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 3502",
-        "H.R. 3630",
-        "Surprise Medical Bills Act",
-        "No Surprises Act"
-      ]
-    },
-    {
-      "id": 42759,
-      "date": "2026-07-01T10:22:05-04:00",
-      "client": "MISSY EDWARDS STRATEGIES ON BEHALF OF TRUCKLOAD CARRIERS ASSOCIATION",
-      "registrant": "STATE FEDERAL STRATEGIES",
-      "income": 5000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation"
-      ],
-      "topics": [
-        "Trucking and Freight"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Transportation"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42758,
-      "date": "2026-07-01T10:21:02-04:00",
-      "client": "THE GEO GROUP, INC. (FORMERLY CAPITOL COUNSEL OF BEHALF OF THE GEO GROUP, INC.)",
-      "registrant": "STATE FEDERAL STRATEGIES",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "Criminal Justice and Policing"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42757,
-      "date": "2026-07-01T09:59:35-04:00",
-      "client": "HEALTH INDUSTRY DISTRIBUTORS ASSOCIATION",
-      "registrant": "MCDERMOTT+ LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42756,
-      "date": "2026-07-01T09:57:31-04:00",
-      "client": "TALENTBRIDGE",
-      "registrant": "THE WALTER GROUP",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax"
-      ],
-      "topics": [
-        "General: Taxation"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42755,
-      "date": "2026-07-01T09:56:45-04:00",
-      "client": "NATIONAL TRUCK EQUIPMENT ASSOCIATION",
-      "registrant": "NATIONAL TRUCK EQUIPMENT ASSOCIATION",
-      "income": 40000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax",
-        "Transportation"
-      ],
-      "topics": [
-        "General: Taxation",
-        "General: Automotive"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 2424",
-        "S. 4657",
-        "H.R. 5221",
-        "S. 2238",
-        "PART Act"
-      ]
-    },
-    {
-      "id": 42754,
-      "date": "2026-07-01T09:55:43-04:00",
-      "client": "ENDOMETRIOSIS FOUNDATION OF AMERICA",
-      "registrant": "THE WALTER GROUP",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Health Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "HHS"
-      ],
-      "legislation": [
-        "H.R. 6682",
-        "Endometriosis Care Act"
-      ]
-    },
-    {
-      "id": 42753,
-      "date": "2026-07-01T09:21:51-04:00",
-      "client": "AMERICAN PEANUT SHELLERS ASSOCIATION",
-      "registrant": "AMERICAN PEANUT SHELLERS ASSOCIATION",
-      "income": 46749.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Agriculture and Food",
-      "domains": [
-        "Agriculture and Food"
-      ],
-      "topics": [
-        "Farm Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "FDA",
-        "USDA",
-        "USTR"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42752,
-      "date": "2026-07-01T09:19:06-04:00",
-      "client": "TETRA PAK, INC.",
-      "registrant": "TETRA PAK, INC.",
-      "income": 90000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Trade"
-      ],
-      "topics": [
-        "Waste and Recycling Management",
-        "Tariffs and Trade Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "EPA",
-        "Department of Commerce",
-        "USDA",
-        "USTR"
-      ],
-      "legislation": [
-        "H.R. 2145",
-        "H.R. 4109",
-        "H.R. 4466",
-        "H.R. 6832",
-        "S. 351",
-        "STEWARD Act of 2025",
-        "Accessibility Act of 2025",
-        "Composting Accountability Act",
-        "CIRCLE Act",
-        "PACK Act",
-        "Section 232"
-      ]
-    },
-    {
-      "id": 42751,
-      "date": "2026-07-01T08:33:47-04:00",
-      "client": "ARTICHOKE JOE'S CASINO",
-      "registrant": "GALLANT GOVERNMENT & LAW GROUP, LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Gaming Gambling"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "S. 748"
-      ]
-    },
-    {
-      "id": 42750,
-      "date": "2026-07-01T08:30:29-04:00",
-      "client": "BLUEFORS INC.",
-      "registrant": "GALLANT GOVERNMENT & LAW GROUP, LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Technology",
-      "domains": [
-        "Technology"
-      ],
-      "topics": [
-        "Science Research Funding"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "S. 3597",
-        "National Quantum Initiative Reauthorization Act of 2026"
-      ]
-    },
-    {
-      "id": 42749,
-      "date": "2026-06-30T23:31:40-04:00",
-      "client": "MAYER BROWN LLP ON BEHALF OF 21ST CENTURY PRIVACY COLALITION",
-      "registrant": "RIVENDELL GROUP LLP",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Education and Social Policy",
-      "domains": [
-        "Education and Social Policy"
-      ],
-      "topics": [
-        "Data Privacy"
-      ],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 42748,
-      "date": "2026-06-30T22:07:44-04:00",
-      "client": "NATIONAL COUNCIL OF AGRICULTURAL EMPLOYERS",
-      "registrant": "NATIONAL COUNCIL OF AGRICULTURAL EMPLOYERS",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Labor and Immigration",
-      "domains": [
-        "Labor and Immigration",
-        "Agriculture and Food",
-        "Transportation"
-      ],
-      "topics": [
-        "Immigration and Visas"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "USDA",
-        "Department of Labor",
-        "DHS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 42747,
-      "date": "2026-06-30T18:37:46-04:00",
-      "client": "ADVANCED MEASUREMENT TECHNOLOGY",
-      "registrant": "EDENS ADVISORY, LLC",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "House of Representatives",
-        "Senate",
-        "Department of Defense",
-        "DHS",
-        "Department of Energy"
-      ],
-      "legislation": []
     }
   ]
 }
