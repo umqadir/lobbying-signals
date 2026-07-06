@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T11:28:20.464630",
+  "generated_at": "2026-07-06T13:42:31.753899",
   "window": "90d",
   "status": "needs_attention",
   "severity_counts": {
@@ -8,26 +8,26 @@
     "low": 1
   },
   "metrics": {
-    "mentions_current_90d": 43855,
-    "mentions_prev_90d": 42622,
+    "mentions_current_90d": 43488,
+    "mentions_prev_90d": 42790,
     "mentions_yoy_90d": 0,
-    "mentions_vs_prev_pct": 2.9,
+    "mentions_vs_prev_pct": 1.6,
     "mentions_vs_yoy_pct": null,
-    "filings_current_90d": 21541,
-    "filings_prev_90d": 20857,
+    "filings_current_90d": 21360,
+    "filings_prev_90d": 20885,
     "filings_yoy_90d": 0,
-    "filings_vs_prev_pct": 3.3,
+    "filings_vs_prev_pct": 2.3,
     "filings_vs_yoy_pct": null,
-    "due_vs_non_due_ratio_4y": 21.33,
-    "due_month_avg_filings": 5088.5,
+    "due_vs_non_due_ratio_4y": 21.42,
+    "due_month_avg_filings": 5109.5,
     "non_due_month_avg_filings": 238.6,
-    "quarter_due_month_share_pct": 93.4,
-    "coverage_recent_90d_pct": 95.9,
+    "quarter_due_month_share_pct": 93.5,
+    "coverage_recent_90d_pct": 96.0,
     "coverage_all_time_pct": 95.7,
     "legislation_dropped_pct": 0.9,
-    "legislation_normalized_pct": 23.4,
-    "top_topic_share_pct": 17.21,
-    "top5_topic_share_pct": 31.66,
+    "legislation_normalized_pct": 23.5,
+    "top_topic_share_pct": 17.16,
+    "top5_topic_share_pct": 31.65,
     "secular_change_pct": null,
     "secular_cagr_pct": null,
     "secular_start_year": null,
@@ -37,17 +37,17 @@
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 21.33x filing volume vs other months."
+      "detail": "Due-cycle months average 21.42x filing volume vs other months."
     },
     {
       "severity": "medium",
       "title": "Quarter-cycle concentration",
-      "detail": "93.4% of average monthly volume falls in Jan/Apr/Jul/Oct."
+      "detail": "93.5% of average monthly volume falls in Jan/Apr/Jul/Oct."
     },
     {
       "severity": "low",
       "title": "Top-topic concentration",
-      "detail": "Top topic accounts for 17.21% of 90d extracted mentions (top 5 = 31.66%)."
+      "detail": "Top topic accounts for 17.16% of 90d extracted mentions (top 5 = 31.65%)."
     }
   ]
 }
