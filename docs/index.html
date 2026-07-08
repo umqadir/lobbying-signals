@@ -4,59 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lobbying Signals</title>
-    <meta name="description" content="A static dashboard for tracking signals in federal lobbying disclosure filings from the Senate LDA data feed.">
+    <meta name="description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Lobbying Signals">
-    <meta property="og:description" content="Track emerging topics, agencies, clients, and legislation in federal lobbying disclosures.">
+    <meta property="og:description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
     <meta property="og:url" content="https://umqadir.github.io/lobbying-signals/">
     <meta property="og:image" content="https://umqadir.github.io/lobbying-signals/social-preview.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Lobbying Signals">
-    <meta name="twitter:description" content="Track emerging topics, agencies, clients, and legislation in federal lobbying disclosures.">
+    <meta name="twitter:description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
     <meta name="twitter:image" content="https://umqadir.github.io/lobbying-signals/social-preview.png">
-    <link rel="icon" href="data:,">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 13L6 7L9 10L14 3' stroke='%23b8420f' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="dash">
-        <header class="toolbar">
-            <div class="toolbar-brand">
-                <h1>Lobbying Signals</h1>
-                <span id="last-updated"></span>
-            </div>
-            <div class="toolbar-controls">
-                <select id="mode-select">
-                    <option value="topics">Topics</option>
-                    <option value="entities">Entities</option>
-                    <option value="domains">Domains</option>
-                    <option value="legislation">Legislation</option>
-                    <option value="recent">Recent Filings</option>
-                </select>
-                <div class="seg" id="window-toggle">
-                    <button class="seg-btn active" data-window="90d" type="button">90d</button>
-                    <button class="seg-btn" data-window="30d" type="button">30d</button>
+    <header class="topbar">
+        <a class="brand" href="#" aria-label="Lobbying Signals home">
+            <svg class="brand-mark" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M2 13L6 7L9 10L14 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Lobbying Signals</span>
+        </a>
+        <button class="search-trigger" id="search-trigger" type="button" aria-label="Open search">
+            <svg viewBox="0 0 16 16" aria-hidden="true" class="search-icon">
+                <circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="search-trigger-label">Search topics, agencies, clients, bills…</span>
+            <kbd class="search-trigger-kbd">⌘K</kbd>
+        </button>
+        <div class="topbar-meta" id="topbar-meta"></div>
+    </header>
+
+    <main class="page">
+        <section class="hero" id="hero">
+            <p class="hero-eyebrow">Federal lobbying disclosures · Senate LDA</p>
+            <h1 class="hero-headline" id="hero-headline">Loading the latest signals…</h1>
+            <ul class="hero-stats" id="hero-stats"></ul>
+        </section>
+
+        <section class="movers">
+            <div class="movers-head">
+                <div class="movers-title">
+                    <h2>Biggest movers</h2>
+                    <p class="movers-sub" id="movers-sub">Loading…</p>
                 </div>
-                <select id="compare-select">
-                    <option value="yoy">vs year-ago</option>
-                    <option value="prev">vs prior period</option>
-                </select>
-                <select id="volume-select">
-                    <option value="1">&ge; 1 mention</option>
-                    <option value="10">&ge; 10 mentions</option>
-                    <option value="25">&ge; 25 mentions</option>
-                    <option value="100">&ge; 100 mentions</option>
-                </select>
-                <input id="nav-search" placeholder="Filter…" autocomplete="off" />
+                <div class="movers-controls">
+                    <div class="seg" id="window-seg" role="tablist" aria-label="Time window">
+                        <button class="seg-btn active" data-window="90d" type="button">90 days</button>
+                        <button class="seg-btn" data-window="30d" type="button">30 days</button>
+                    </div>
+                    <div class="seg" id="compare-seg" role="tablist" aria-label="Comparison baseline">
+                        <button class="seg-btn active" data-compare="yoy" type="button">vs year ago</button>
+                        <button class="seg-btn" data-compare="prev" type="button">vs prior period</button>
+                    </div>
+                </div>
             </div>
-        </header>
-        <div class="panels">
-            <section class="list-panel" id="list-panel"></section>
-            <section class="detail-panel" id="detail-panel"></section>
+            <div class="cat-row" id="cat-row" role="tablist" aria-label="Categories">
+                <button class="cat-pill active" data-cat="all" type="button">Everything</button>
+                <button class="cat-pill" data-cat="topics" type="button">Topics</button>
+                <button class="cat-pill" data-cat="entities" type="button">Agencies</button>
+                <button class="cat-pill" data-cat="legislation" type="button">Bills</button>
+                <button class="cat-pill" data-cat="domains" type="button">Domains</button>
+                <span class="cat-row-sep"></span>
+                <button class="cat-pill ghost" data-cat="recent" type="button">Recent filings</button>
+            </div>
+            <ol class="mover-list" id="mover-list"></ol>
+        </section>
+
+        <footer class="footnote">
+            <p>Source: <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate Lobbying Disclosure</a>. Mentions are deterministic rule matches against activity descriptions; comparisons are directional signals, not causal claims about lobbying spend or policy outcomes. Filing volume is seasonal because quarterly reports cluster around statutory deadlines. <a href="https://github.com/umqadir/lobbying-signals" rel="noopener">Source on GitHub</a>.</p>
+        </footer>
+    </main>
+
+    <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Detail panel">
+        <div class="drawer-scrim" data-close-drawer></div>
+        <div class="drawer-card">
+            <header class="drawer-head">
+                <div class="drawer-trail" id="drawer-trail"></div>
+                <button class="drawer-close" type="button" data-close-drawer aria-label="Close detail panel">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+            </header>
+            <div class="drawer-body" id="drawer-body"></div>
+        </div>
+    </aside>
+
+    <div class="palette" id="palette" aria-hidden="true">
+        <div class="palette-scrim" data-close-palette></div>
+        <div class="palette-card" role="dialog" aria-label="Search">
+            <div class="palette-input-row">
+                <svg viewBox="0 0 16 16" aria-hidden="true" class="palette-icon">
+                    <circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <input id="palette-input" type="text" placeholder="Search topics, agencies, clients, bills…" autocomplete="off" spellcheck="false">
+                <kbd class="palette-kbd">esc</kbd>
+            </div>
+            <div class="palette-results" id="palette-results"></div>
+            <div class="palette-foot">
+                <span><kbd>↑↓</kbd> navigate</span>
+                <span><kbd>↵</kbd> open</span>
+                <span><kbd>esc</kbd> close</span>
+            </div>
         </div>
     </div>
-    <script src="app.js?v=20260215-3"></script>
+
+    <script src="app.js?v=20260509-rebuild"></script>
 </body>
 </html>
