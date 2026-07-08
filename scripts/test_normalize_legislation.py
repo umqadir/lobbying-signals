@@ -55,11 +55,17 @@ CASES = [
     ("P.L. 117-169", 2023, "Inflation Reduction Act"),
     ("Build Back Better Act", 2022, "Build Back Better Act"),
 
-    # CHIPS: name / truncation / P.L.
+    # CHIPS: name / truncation / year-suffixed truncation / P.L.
     ("CHIPS and Science Act", 2023, "CHIPS and Science Act"),
     ("Chips+Science Act", 2023, "CHIPS and Science Act"),
     ("Science Act", 2023, "CHIPS and Science Act"),
+    ("Science Act of 2022", 2025, "CHIPS and Science Act"),   # year-suffixed truncation
     ("P.L. 117-167", 2023, "CHIPS and Science Act"),
+
+    # For the People Act was H.R. 1 in both the 116th (2019) and 117th
+    ("H.R. 1", 2019, "For the People Act"),
+    ("H.R. 1", 2020, "For the People Act"),
+    ("For the People Act of 2019", 2020, "For the People Act"),
 
     # USICA truncation
     ("United States Innovation and Competition Act of 2021", 2021, "U.S. Innovation and Competition Act"),

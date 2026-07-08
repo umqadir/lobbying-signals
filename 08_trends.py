@@ -119,8 +119,9 @@ KNOWN_ACT_PATTERNS = [
     (re.compile(r'\bpatient protection and affordable care\b', re.I), 'Affordable Care Act'),
     # 115th
     (re.compile(r'\btax cuts (?:and|&) jobs act\b', re.I), 'Tax Cuts and Jobs Act'),
-    # Unambiguous short-form truncations (only one federal law each matches)
-    (re.compile(r'^science act$', re.I), 'CHIPS and Science Act'),
+    # Unambiguous short-form truncations (only one federal law each matches).
+    # Unanchored so year-suffixed variants fold too ("Science Act of 2022").
+    (re.compile(r'\bscience act\b', re.I), 'CHIPS and Science Act'),
     (re.compile(r'\binnovation and competition act of 2021\b', re.I), 'U.S. Innovation and Competition Act'),
     (re.compile(r'^competition act of 2021$', re.I), 'U.S. Innovation and Competition Act'),
     (re.compile(r'^competes act$', re.I), 'America COMPETES Act'),
@@ -151,6 +152,7 @@ LEGISLATION_ALIASES = {
     # Lower Energy Costs Act (118th) / For the People Act (117th) — H.R. 1 reuse
     'H.R. 1 (118th Congress)': 'Lower Energy Costs Act',
     'H.R. 1 (117th Congress)': 'For the People Act',
+    'H.R. 1 (116th Congress)': 'For the People Act',  # original 2019 version, same title
     # Fiscal Responsibility Act of 2023 (118th)
     'H.R. 3746 (118th Congress)': 'Fiscal Responsibility Act of 2023',
     'P.L. 118-5': 'Fiscal Responsibility Act of 2023',
@@ -198,7 +200,16 @@ def normalize_legislation(value: str, year: int | None = None) -> str:
 
     year: the filing's report year, used to scope bare bill numbers to a
     Congress. An explicit "of 20XX" / "(NNNth Congress)" qualifier in the tag
-    wins over the filing year (retrospective references are common).
+    wins over the filing year, and a recognized act NAME wins over any number.
+
+    Known limitation: a truly bare number with no name/year/Congress qualifier
+    and no accompanying name tag is scoped to the filing's Congress. A
+    retrospective reference (a 2026 filing citing "H.R. 3684" to mean the 2021
+    IIJA) therefore misbinds to a wrong-Congress number. Measured footprint is
+    ~40/month scattered across a few laws — well below the volume any bill needs
+    to surface on the dashboard — so it is left unresolved rather than fixed with
+    a fuzzy description parser that would risk mislinks on the common (correct)
+    case. The monthly alias audit flags any such number if it ever accumulates.
     """
     tag = normalize_tag(value)
     if not tag:
