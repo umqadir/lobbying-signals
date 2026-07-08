@@ -356,8 +356,13 @@ function renderHero() {
 
     const stats = state.stats || {};
     const quarters = state.timeseries?.quarters || [];
+    const partialN = partialTrailingCount(quarters);
     const latest = quarters[quarters.length - 1];
-    const prev = quarters[quarters.length - 2];
+    // Quarter-over-quarter change compares the two most recent COMPLETE quarters;
+    // a partial-vs-full comparison would read as a false collapse.
+    const complete = partialN > 0 ? quarters.slice(0, quarters.length - partialN) : quarters;
+    const cmpLatest = complete[complete.length - 1];
+    const cmpPrev = complete[complete.length - 2];
 
     // Compose a one-line synthesis: pick top movers from different categories,
     // with positive deltas, deduped by canonical name.
@@ -408,18 +413,21 @@ function renderHero() {
         label: "activity tags"
     });
     if (latest) {
+        const isPartial = partialN > 0 && latest === quarters[quarters.length - 1];
         statItems.push({
             value: `${latest.year} Q${latest.quarter}`,
-            label: `${fmt.num(latest.filings)} filings · ${fmt.money(latest.income)}`
+            label: isPartial
+                ? `${fmt.num(latest.filings)} filings so far · partial quarter`
+                : `${fmt.num(latest.filings)} filings · ${fmt.money(latest.income)}`
         });
     }
-    if (latest && prev) {
-        const change = ((latest.filings - prev.filings) / prev.filings) * 100;
+    if (cmpLatest && cmpPrev) {
+        const change = ((cmpLatest.filings - cmpPrev.filings) / cmpPrev.filings) * 100;
         const dir = change > 0 ? "up" : change < 0 ? "down" : "";
         const sign = change > 0 ? "↑ " : change < 0 ? "↓ " : "";
         statItems.push({
             value: `${sign}${Math.abs(change).toFixed(1)}%`,
-            label: `vs ${prev.year} Q${prev.quarter}`,
+            label: `${cmpLatest.year} Q${cmpLatest.quarter} vs ${cmpPrev.year} Q${cmpPrev.quarter}`,
             trend: dir
         });
     }
@@ -617,6 +625,27 @@ function makeSparkBars(values, color) {
 
 function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
 
+/* Count trailing report quarters that are still filling in. LDA filings for a
+   period keep arriving for weeks after it closes, so the newest quarter is
+   under-counted — comparing or charting it against full quarters reads as a
+   crash. A quarter counts as partial when its filing volume falls well below a
+   typical full quarter (median of the series). */
+function partialTrailingCount(quarters) {
+    if (!quarters || quarters.length < 2) return 0;
+    const ctx = state.timeseries?.context;
+    const full = ctx?.quarterly_filings_median
+        || [...quarters.map(q => toNum(q.filings))].sort((a, b) => a - b)[Math.floor(quarters.length / 2)]
+        || 0;
+    if (full <= 0) return 0;
+    const threshold = full * 0.5;
+    let count = 0;
+    for (let i = quarters.length - 1; i >= 0; i--) {
+        if (toNum(quarters[i].filings) < threshold) count++;
+        else break;
+    }
+    return Math.min(count, quarters.length - 1); // never flag every quarter
+}
+
 function buildTrendSeries(item, mode, windowKey) {
     const today = dataAsOfDate();
     const todayMs = today.getTime();
@@ -626,12 +655,18 @@ function buildTrendSeries(item, mode, windowKey) {
     if (mode === "topics" && state.timeseries?.topic_series?.[item.name]?.length && state.timeseries.quarters?.length) {
         const qs = state.timeseries.quarters;
         const vals = state.timeseries.topic_series[item.name];
-        // Last 8 quarters keeps both compared windows visible at meaningful scale
-        const start = Math.max(0, qs.length - 8);
-        return qs.slice(start).map((q, i) => ({
-            x: new Date(q.year, (q.quarter - 1) * 3 + 1, 15).getTime(),
-            y: toNum(vals[start + i])
-        }));
+        // Drop trailing partial quarters so the line ends on a complete quarter
+        // instead of cliff-diving into an under-reported one.
+        const end = qs.length - partialTrailingCount(qs);
+        if (end >= 2) {
+            // Last 8 quarters keeps both compared windows visible at meaningful scale
+            const start = Math.max(0, end - 8);
+            return qs.slice(start, end).map((q, i) => ({
+                x: new Date(q.year, (q.quarter - 1) * 3 + 1, 15).getTime(),
+                y: toNum(vals[start + i])
+            }));
+        }
+        // Too few complete quarters to chart — fall through to window trajectory.
     }
     // Universal fallback: 3-point trajectory across the full year of data we have
     const yoyMid = todayMs - 365 * DAY_MS - (days / 2) * DAY_MS;
@@ -754,12 +789,19 @@ function makeBarChart(values, periods, options = {}) {
     const barW = Math.max(2, Math.min(16, step * 0.72));
 
     const accent = getCSSVar("--accent", "#b8420f");
+    const partialFrom = n - Math.max(0, options.partialCount || 0);
 
     const bars = values.map((v, i) => {
         const x = pad.left + i * step + (step - barW) / 2;
         const y = plotTop + (1 - v / niceMax) * plotH;
         const h = Math.max(1, plotBottom - y);
-        return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="${i === values.length - 1 ? 1 : 0.55}" />`;
+        // Partial (still-reporting) quarters render hollow so a low bar doesn't
+        // read as a real drop; the newest complete quarter gets full weight.
+        if (i >= partialFrom) {
+            return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="0.12" stroke="${accent}" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2 1.5" />`;
+        }
+        const emphasis = i === partialFrom - 1 ? 1 : 0.55;
+        return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="${emphasis}" />`;
     }).join("");
 
     const xIdx = pickXIndices(n, 5);
@@ -953,11 +995,18 @@ function renderSignalDetail(body, view) {
             const sec = el("div", "detail-section");
             sec.appendChild(el("div", "detail-section-title", "Mentions by quarter"));
             const box = el("div", "detail-chart-box");
-            box.innerHTML = makeBarChart(series, quarters);
+            const partialCount = partialTrailingCount(quarters);
+            box.innerHTML = makeBarChart(series, quarters, { partialCount });
             sec.appendChild(box);
             const ctx = state.timeseries?.context;
-            if (ctx?.reporting_note) {
-                sec.appendChild(el("p", "detail-chart-note", ctx.reporting_note));
+            const notes = [];
+            if (partialCount > 0) {
+                const pq = quarters[quarters.length - 1];
+                notes.push(`${pq.year} Q${pq.quarter} is still being reported (shown dashed) and will keep rising.`);
+            }
+            if (ctx?.reporting_note) notes.push(ctx.reporting_note);
+            if (notes.length) {
+                sec.appendChild(el("p", "detail-chart-note", notes.join(" ")));
             }
             body.appendChild(sec);
         }
