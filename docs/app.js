@@ -42,9 +42,10 @@ const DISPLAY_OVERRIDES = {
         "CDC": "Centers for Disease Control"
     },
     legislation: {
-        "H.R. 1": "H.R. 1 / One Big Beautiful Bill Act",
-        "One Big Beautiful Bill Act": "H.R. 1 / One Big Beautiful Bill Act",
-        "P.L. 119-21": "H.R. 1 / One Big Beautiful Bill Act"
+        // The exporter canonicalizes bill numbers and P.L. references into act
+        // names (Congress-aware), so tags arrive as e.g. "One Big Beautiful
+        // Bill Act". This map only adds familiar-number context for display.
+        "One Big Beautiful Bill Act": "H.R. 1 / One Big Beautiful Bill Act"
     }
 };
 

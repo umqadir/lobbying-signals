@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T15:52:03.088705",
+  "generated_at": "2026-07-08T18:06:23.389942",
   "alerts": [
     {
       "type": "signal",
@@ -125,41 +125,21 @@
       "type": "signal",
       "category": "legislation",
       "name": "One Big Beautiful Bill Act",
-      "current_count": 1239,
-      "prev_count": 2984,
-      "yoy_count": 69,
-      "share_delta_yoy_pp": 2.858,
-      "share_delta_prev_pp": -1.071,
-      "signal_confidence": "medium",
-      "top_clients": [
-        "MICROSOFT CORPORATION",
-        "TRAVERE THERAPEUTICS",
-        "DUKE ENERGY BUSINESS SERVICES LLC",
-        "GENERAL MOTORS COMPANY",
-        "AICPA ASSOCIATION OF INTERNATIONAL CERTIFIED PROFESSIONAL ACCOUNTANTS"
-      ],
-      "total_income": 249778343.0,
-      "headline": "One Big Beautiful Bill Act share up 2.86 pp vs year-ago period (1239 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "legislation",
-      "name": "H.R. 1",
-      "current_count": 1302,
-      "prev_count": 3299,
-      "yoy_count": 167,
-      "share_delta_yoy_pp": 2.848,
-      "share_delta_prev_pp": -1.347,
+      "current_count": 2032,
+      "prev_count": 4824,
+      "yoy_count": 184,
+      "share_delta_yoy_pp": 4.571,
+      "share_delta_prev_pp": -1.662,
       "signal_confidence": "medium",
       "top_clients": [
         "NETWORK",
-        "TERRAPOWER, LLC",
         "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES",
-        "AMERICAN SOCIETY OF ADDICTION MEDICINE",
-        "NATIONAL ASSOCIATION OF SOCIAL WORKERS"
+        "MICROSOFT CORPORATION",
+        "CHAMBER OF COMMERCE OF THE U.S.A.",
+        "TERRAPOWER, LLC"
       ],
-      "total_income": 236515754.0,
-      "headline": "H.R. 1 share up 2.85 pp vs year-ago period (1302 mentions)"
+      "total_income": 376495146.0,
+      "headline": "One Big Beautiful Bill Act share up 4.57 pp vs year-ago period (2032 mentions)"
     },
     {
       "type": "signal",
@@ -180,26 +160,6 @@
       ],
       "total_income": 382664366.91999996,
       "headline": "Department of Commerce attention up 1.79 pp vs year-ago period (2369 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "legislation",
-      "name": "P.L. 119-21",
-      "current_count": 733,
-      "prev_count": 1674,
-      "yoy_count": 0,
-      "share_delta_yoy_pp": 1.758,
-      "share_delta_prev_pp": -0.51,
-      "signal_confidence": "medium",
-      "top_clients": [
-        "CHAMBER OF COMMERCE OF THE U.S.A.",
-        "MICROSOFT CORPORATION",
-        "UNITED STATES TOUR OPERATORS ASSOCIATION",
-        "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES",
-        "RIVIAN AUTOMOTIVE LLC"
-      ],
-      "total_income": 129785455.0,
-      "headline": "P.L. 119-21 share up 1.76 pp vs year-ago period (733 mentions)"
     },
     {
       "type": "signal",
@@ -224,7 +184,7 @@
     {
       "type": "signal",
       "category": "legislation",
-      "name": "H.R. 7148",
+      "name": "H.R. 7148 (119th Congress)",
       "current_count": 547,
       "prev_count": 32,
       "yoy_count": 0,
@@ -239,7 +199,7 @@
         "UNIVERSITY OF CALIFORNIA"
       ],
       "total_income": 117668627.0,
-      "headline": "H.R. 7148 share up 1.31 pp vs year-ago period (547 mentions)"
+      "headline": "H.R. 7148 (119th Congress) share up 1.31 pp vs year-ago period (547 mentions)"
     },
     {
       "type": "signal",
@@ -383,6 +343,26 @@
     },
     {
       "type": "signal",
+      "category": "legislation",
+      "name": "FY2027 National Defense Authorization Act",
+      "current_count": 274,
+      "prev_count": 39,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 0.657,
+      "share_delta_prev_pp": 0.604,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "METREA LLC",
+        "GENERAL ATOMICS AERONAUTICAL SYSTEMS",
+        "SHIELD AI, INC.",
+        "UNIVERSITY OF CONNECTICUT",
+        "SAP AMERICA, INC."
+      ],
+      "total_income": 25012718.0,
+      "headline": "FY2027 National Defense Authorization Act share up 0.66 pp vs year-ago period (274 mentions)"
+    },
+    {
+      "type": "signal",
       "category": "topic",
       "name": "Defense Authorization",
       "current_count": 1657,
@@ -400,6 +380,26 @@
       ],
       "total_income": 267867008.94,
       "headline": "'Defense Authorization' share up 0.66 pp vs year-ago period (1657 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "P.L. 119-75",
+      "current_count": 264,
+      "prev_count": 11,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 0.633,
+      "share_delta_prev_pp": 0.618,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "L3HARRIS TECHNOLOGIES INC",
+        "HAWKEYE 360 INC.",
+        "UNIVERSITY OF CALIFORNIA",
+        "INSTITUTE OF INTERNATIONAL EDUCATION (IIE)",
+        "GENERAL AVIATION MANUFACTURERS ASSOCIATION"
+      ],
+      "total_income": 65635000.0,
+      "headline": "P.L. 119-75 share up 0.63 pp vs year-ago period (264 mentions)"
     }
   ]
 }

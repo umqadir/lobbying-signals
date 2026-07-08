@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260708-bars">
+    <link rel="stylesheet" href="styles.css?v=20260708-billid">
 </head>
 <body>
     <header class="topbar">
@@ -92,7 +92,7 @@
             <div class="about-body">
                 <p><strong>What this is.</strong> A signal tracker over federal lobbying disclosures filed with the Senate under the Lobbying Disclosure Act (LDA). It shows which topics, agencies, bills, and policy domains are gaining or losing attention in lobbying activity.</p>
                 <p><strong>Where the data comes from.</strong> Quarterly activity reports from the official <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate LDA database</a>, refreshed daily. Coverage: <span id="about-coverage">several years of filings</span>. Every example filing links back to the official Senate record.</p>
-                <p><strong>What a “mention” is.</strong> Each filing describes its lobbying activities in free text. Versioned, deterministic rules (no AI model calls) tag those descriptions with topics, agencies, and legislation. One activity description that matches a tag = one mention. A single filing can produce many mentions.</p>
+                <p><strong>What a “mention” is.</strong> Each filing describes its lobbying activities in free text. Versioned, deterministic rules (no AI model calls) tag those descriptions with topics, agencies, and legislation. One activity description that matches a tag = one mention. A single filing can produce many mentions. Bill numbers are scoped to their Congress (an “H.R. 1” from 2017 and one from 2025 are different laws), and a law's number, short name, and public-law number are counted as one bill.</p>
                 <p><strong>How comparisons work.</strong> The last 30/90 days of filings are compared against the same window a year ago (the default — lobbying is seasonal, so like-for-like quarters matter) or the immediately prior window. “Share” is a tag's slice of all tagged mentions in the window, which controls for filing-volume swings.</p>
                 <p><strong>Confidence.</strong> A rule-based label reflecting how much volume sits behind a signal and how consistently it moved against both baselines — not a statistical test.</p>
                 <p><strong>Honest limitations.</strong> Directional signals, not causal claims. Filing income is reported per filing, not per issue, so income figures associate a filing's whole income with each of its tags. The newest quarter is always partially reported until well after the statutory deadline. Rule-based tagging misses paraphrases a human would catch.</p>
@@ -133,6 +133,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=20260708-bars"></script>
+    <script src="app.js?v=20260708-billid"></script>
 </body>
 </html>

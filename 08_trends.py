@@ -80,8 +80,63 @@ def normalize_tag(value: str) -> str:
     return ' '.join(str(value).split()).strip()
 
 
-def normalize_legislation(value: str) -> str:
-    """Normalize common legislation formatting variants."""
+# Bill numbers are only unique within a Congress ("H.R. 1" has been the Tax
+# Cuts and Jobs Act, the For the People Act, the Lower Energy Costs Act, and
+# the One Big Beautiful Bill Act in four consecutive Congresses), so a bare
+# number tag conflates unrelated laws across years. Numbers are therefore
+# scoped to a Congress, and well-known scoped numbers / public-law numbers are
+# folded into the act's name so one law isn't split across number, name, and
+# P.L. variants.
+
+# Named acts detected inside a tag string take priority over any number in the
+# same string ("H.R. 1 - Lower Energy Costs Act" is about that act, whatever
+# the filing year). Patterns are matched case-insensitively.
+KNOWN_ACT_PATTERNS = [
+    (re.compile(r'\b(?:one,?\s+big,?\s+)?beautiful\s+(?:bill\s+)?act\b', re.I), 'One Big Beautiful Bill Act'),
+    (re.compile(r'\btax cuts (?:and|&) jobs act\b', re.I), 'Tax Cuts and Jobs Act'),
+    (re.compile(r'\binflation reduction act\b', re.I), 'Inflation Reduction Act'),
+    (re.compile(r'\blower energy costs act\b', re.I), 'Lower Energy Costs Act'),
+    (re.compile(r'\bfor the people act\b', re.I), 'For the People Act'),
+    (re.compile(r'\binfrastructure investment and jobs act\b', re.I), 'Infrastructure Investment and Jobs Act'),
+    (re.compile(r'\bchips (?:and science )?act\b', re.I), 'CHIPS and Science Act'),
+]
+
+# Congress-scoped numbers and public-law numbers that are the same law as a
+# named act above.
+LEGISLATION_ALIASES = {
+    'H.R. 1 (119th Congress)': 'One Big Beautiful Bill Act',
+    'P.L. 119-21': 'One Big Beautiful Bill Act',
+    'H.R. 1 (118th Congress)': 'Lower Energy Costs Act',
+    'H.R. 1 (117th Congress)': 'For the People Act',
+    'H.R. 1 (115th Congress)': 'Tax Cuts and Jobs Act',
+    'P.L. 115-97': 'Tax Cuts and Jobs Act',
+    'P.L. 117-169': 'Inflation Reduction Act',
+    'H.R. 5376 (117th Congress)': 'Inflation Reduction Act',
+    'P.L. 117-58': 'Infrastructure Investment and Jobs Act',
+    'P.L. 117-167': 'CHIPS and Science Act',
+}
+
+
+def _ordinal(n: int) -> str:
+    if 10 <= n % 100 <= 20:
+        suffix = 'th'
+    else:
+        suffix = {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')
+    return f"{n}{suffix}"
+
+
+def _congress_for_year(year: int) -> int:
+    # The Nth Congress convenes in odd year 1789 + 2(N-1).
+    return (year - 1789) // 2 + 1
+
+
+def normalize_legislation(value: str, year: int | None = None) -> str:
+    """Normalize legislation tags to stable, non-colliding identities.
+
+    year: the filing's report year, used to scope bare bill numbers to a
+    Congress. An explicit "of 20XX" / "(NNNth Congress)" qualifier in the tag
+    wins over the filing year (retrospective references are common).
+    """
     tag = normalize_tag(value)
     if not tag:
         return ''
@@ -95,31 +150,53 @@ def normalize_legislation(value: str) -> str:
     if not tag:
         return ''
 
+    # 1) A recognized act NAME in the tag beats any number in the same tag.
+    for pattern, canonical in KNOWN_ACT_PATTERNS:
+        if pattern.search(tag):
+            return canonical
+
+    # Explicit qualifiers override the filing year for number scoping.
+    scope_year = year
+    year_qual = re.search(r'\bof\s+(19|20)(\d\d)\b', tag)
+    if year_qual:
+        scope_year = int(year_qual.group(1) + year_qual.group(2))
+    congress_qual = re.search(r'\b(\d{2,3})(?:st|nd|rd|th)\s+Congress\b', tag, flags=re.IGNORECASE)
+    congress = int(congress_qual.group(1)) if congress_qual else (
+        _congress_for_year(scope_year) if scope_year else None)
+
+    def scoped(prefix: str, number: str) -> str:
+        base = f"{prefix} {number}"
+        if congress:
+            base = f"{base} ({_ordinal(congress)} Congress)"
+        return LEGISLATION_ALIASES.get(base, base)
+
     hr_any = re.search(r'\bH\.?\s*R\.?\s*(\d{1,5})\b', tag, flags=re.IGNORECASE)
     if hr_any:
-        return f"H.R. {hr_any.group(1)}"
+        return scoped("H.R.", hr_any.group(1))
 
     senate_any = re.search(r'(?<![A-Za-z])S\.?\s*(\d{1,5})\b', tag, flags=re.IGNORECASE)
     if senate_any:
-        return f"S. {senate_any.group(1)}"
+        return scoped("S.", senate_any.group(1))
 
     pl_any = re.search(r'\bP\.?\s*L\.?\s*(\d{1,3}-\d{1,5})\b', tag, flags=re.IGNORECASE)
     if pl_any:
-        return f"P.L. {pl_any.group(1)}"
+        pl = f"P.L. {pl_any.group(1)}"
+        return LEGISLATION_ALIASES.get(pl, pl)
 
     compact = re.sub(r'[^A-Za-z0-9-]', '', tag).upper()
 
     hr_match = re.match(r'^HR(\d+)$', compact)
     if hr_match:
-        return f"H.R. {hr_match.group(1)}"
+        return scoped("H.R.", hr_match.group(1))
 
     senate_match = re.match(r'^S(\d+)$', compact)
     if senate_match:
-        return f"S. {senate_match.group(1)}"
+        return scoped("S.", senate_match.group(1))
 
     pl_match = re.match(r'^PL(\d+-\d+)$', compact)
     if pl_match:
-        return f"P.L. {pl_match.group(1)}"
+        pl = f"P.L. {pl_match.group(1)}"
+        return LEGISLATION_ALIASES.get(pl, pl)
 
     lower = tag.lower()
     if lower in LEGISLATION_NOISE_EXACT:
@@ -132,6 +209,10 @@ def normalize_legislation(value: str) -> str:
     words = re.findall(r"[A-Za-z0-9']+", tag)
     if len(words) == 1 and len(words[0]) <= 2:
         return ''
+
+    # Unify fiscal-year spellings so "FY27 NDAA" and "FY2027 NDAA" are one tag
+    tag = re.sub(r'\bFY\s*(\d{2})\b(?!\d)', lambda m: f"FY20{m.group(1)}", tag, flags=re.IGNORECASE)
+    tag = re.sub(r'\bFY\s*(20\d\d)\b', r'FY\1', tag, flags=re.IGNORECASE)
 
     return tag
 
@@ -173,7 +254,7 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
             date_filter = ""
 
         sql = f'''
-            SELECT f.id as filing_id, f.sopr_filing_id as filing_uuid,
+            SELECT f.id as filing_id, f.sopr_filing_id as filing_uuid, f.year as filing_year,
                    e.coarse_topic as domain, e.topics, e.entities, e.legislation,
                    f.filing_date, c.name as client_name, r.name as registrant_name, f.income
             FROM activity_extractions_rules e
@@ -262,10 +343,14 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
                 entities.income_seen_filing_ids[entity].add(filing_id)
             add_example(entity_examples, entity, filing_id, filing_date, client, registrant, income, filing_uuid)
 
+        seen_leg = set()
         for leg in json.loads(row['legislation'] or '[]'):
-            leg = normalize_legislation(leg)
-            if not leg:
+            leg = normalize_legislation(leg, row.get('filing_year'))
+            if not leg or leg in seen_leg:
+                # Aliases of one law (number, name, P.L.) collapse to a single
+                # canonical tag; count it once per activity.
                 continue
+            seen_leg.add(leg)
             legislation.counts[leg] += 1
             if client:
                 legislation.client_counts[leg][client] += 1
@@ -673,7 +758,7 @@ def get_recent_filings(limit: int = 300) -> list:
             if entity:
                 rec['entities'][entity] += 1
         for l in json.loads(row.get('legislation') or '[]'):
-            legislation = normalize_legislation(l)
+            legislation = normalize_legislation(l, row.get('year'))
             if legislation:
                 rec['legislation'][legislation] += 1
 
@@ -775,6 +860,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             '''
             SELECT
                 (f.year * 4 + f.quarter) AS q_index,
+                f.year AS filing_year,
                 e.coarse_topic, e.topics, e.entities, e.legislation
             FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
@@ -804,9 +890,11 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             entity = normalize_tag(entity)
             if entity:
                 entity_by_quarter[q_index][entity] += 1
+        seen_leg = set()
         for leg in json.loads(row.get('legislation') or '[]'):
-            leg = normalize_legislation(leg)
-            if leg:
+            leg = normalize_legislation(leg, row.get('filing_year'))
+            if leg and leg not in seen_leg:
+                seen_leg.add(leg)
                 legislation_by_quarter[q_index][leg] += 1
         domain = display_domain(row.get('coarse_topic'))
         if domain:
