@@ -10,10 +10,10 @@ Updated daily via GitHub Actions.
 
 ## Features
 
-- **Real-time LDA ingestion**: Downloads and stores Senate lobbying disclosure filings via the LDA API
+- **Real-time LDA ingestion**: Downloads and stores Senate lobbying disclosure filings via the LDA API; coverage runs from 2020 to the present
 - **Deterministic extraction**: Uses versioned rules, LDA issue codes, regexes, and dictionaries to extract topics, entities, and legislation without model calls
-- **Trend detection**: Compares 30- and 90-day signal windows against prior-period and year-ago baselines
-- **Static signal browser**: Serves a two-panel dashboard for ranked signals, client examples, quarterly context, and recent filings
+- **Trend detection**: Compares 30- and 90-day signal windows against prior-period and year-ago baselines, with seasonality-aware year-over-year as the default comparison
+- **Static signal browser**: An editorial dashboard — synthesized headline, ranked movers feed with period-comparison charts, detail drawer with quarterly history, command-palette search, and links to each filing's official Senate record
 - **Zero infrastructure cost**: Runs entirely on GitHub (Actions + Pages + Releases)
 
 ## Architecture
@@ -70,6 +70,7 @@ python 08_trends.py export       # Generate JSON exports
 | `12_extract_rules.py` | Deterministic no-LLM extraction + candidate mining + gap reports |
 | `07_refresh.py` | Orchestrate full refresh cycle |
 | `08_trends.py` | Compute trends and generate alerts |
+| `scripts/make_release_db.py` | Produce the slimmed DB copy uploaded to the GitHub Release for CI |
 
 ## Deterministic Topic Workflow (No LLM)
 
