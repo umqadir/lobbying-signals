@@ -513,8 +513,22 @@ function renderMovers() {
         return;
     }
 
-    for (const m of movers) {
+    // Lead with a scannable top set; the long tail expands on demand.
+    const VISIBLE = 20;
+    for (const m of movers.slice(0, VISIBLE)) {
         list.appendChild(buildMoverCard(m, cmp));
+    }
+    if (movers.length > VISIBLE) {
+        const more = el("button", "mover-more");
+        more.type = "button";
+        more.textContent = `Show all ${movers.length} movers`;
+        more.onclick = () => {
+            more.remove();
+            for (const m of movers.slice(VISIBLE)) {
+                list.appendChild(buildMoverCard(m, cmp));
+            }
+        };
+        list.appendChild(more);
     }
 }
 
@@ -687,40 +701,12 @@ function partialTrailingCount(quarters) {
     return Math.min(count, quarters.length - 1); // never flag every quarter
 }
 
-function buildTrendSeries(item, compareKey, bands) {
-    // Two points — one per shaded band: the baseline period on the left and the
-    // current window ("now") on the right, each anchored to its band's center so
-    // the line's endpoints line up exactly with the bands and their labels. The
-    // baseline follows the compare mode (year-ago vs prior window). A third
-    // mid-line point would float between the two bands with nothing under it, so
-    // the chart stays a clean two-period slope; quarter-level history lives in the
-    // detail drawer's bar chart.
-    const baseVal = compareKey === "yoy" ? toNum(item.yoy_count) : toNum(item.prev_count);
-    return [
-        { x: (bands.baseStart + bands.baseEnd) / 2, y: baseVal },
-        { x: (bands.currentStart + bands.currentEnd) / 2, y: toNum(item.count) }
-    ];
-}
-
-function periodBands(windowKey, compareKey) {
-    const today = dataAsOfDate();
-    const todayMs = today.getTime();
-    const DAY_MS = 86400000;
-    const days = windowKey === "30d" ? 30 : 90;
-    const currentEnd = todayMs;
-    const currentStart = currentEnd - days * DAY_MS;
-    let baseStart, baseEnd;
-    if (compareKey === "yoy") {
-        baseEnd = currentEnd - 365 * DAY_MS;
-        baseStart = currentStart - 365 * DAY_MS;
-    } else {
-        baseEnd = currentStart - 1;
-        baseStart = baseEnd - days * DAY_MS;
-    }
-    return { currentStart, currentEnd, baseStart, baseEnd };
-}
-
 function makeTrendChart(item, mode, windowKey, compareKey, options = {}) {
+    // A two-period comparison, not a time series: two adjacent half-width bands
+    // (baseline | now) with one value dot centered in each and a slope line
+    // between them. The x-axis is deliberately NOT time-true — in a 200px
+    // sparkline, spacing the bands a year apart just creates a dead gap that
+    // reads as a broken chart. Quarter-level history lives in the drawer.
     const W = 200, H = 48;
     const padL = 4, padR = 36, padT = 5, padB = 12;
 
@@ -729,58 +715,45 @@ function makeTrendChart(item, mode, windowKey, compareKey, options = {}) {
     const labelColor = getCSSVar("--ink-3", "#7a7565");
     const valueColor = getCSSVar("--ink-2", "#4a4a4a");
 
-    const period = periodBands(windowKey, compareKey);
-    const { currentStart, currentEnd, baseStart, baseEnd } = period;
-    const series = buildTrendSeries(item, compareKey, period);
+    const baseVal = compareKey === "yoy" ? toNum(item.yoy_count) : toNum(item.prev_count);
+    const nowVal = toNum(item.count);
 
-    const xMin = Math.min(series[0].x, baseStart);
-    const xMax = currentEnd;
-    const yMax = Math.max(...series.map(p => p.y), 1);
-    const xRange = Math.max(1, xMax - xMin);
     const plotW = W - padL - padR;
     const plotH = H - padT - padB;
-    const xS = x => padL + ((x - xMin) / xRange) * plotW;
+    const xMid = padL + plotW / 2;
+    const yMax = Math.max(baseVal, nowVal, 1);
     const yS = y => padT + (1 - y / yMax) * plotH;
 
-    // ─ Period bands (background)
+    // ─ Period bands: left half = baseline, right half = current window
     const bandTop = padT - 1;
     const bandH = plotH + 1;
-    const xLeft = padL, xRight = padL + plotW;
-    const baseX  = clamp(xS(baseStart),  xLeft, xRight);
-    const baseR  = clamp(xS(baseEnd),    xLeft, xRight);
-    const baseW  = Math.max(2, baseR - baseX);
-    const currX  = clamp(xS(currentStart), xLeft, xRight);
-    const currR  = clamp(xS(currentEnd),   xLeft, xRight);
-    const currW  = Math.max(2, currR - currX);
     const bands = `
-        <rect x="${baseX.toFixed(1)}" y="${bandTop}" width="${baseW.toFixed(1)}" height="${bandH}" fill="${muted}" fill-opacity="0.10"/>
-        <rect x="${currX.toFixed(1)}" y="${bandTop}" width="${currW.toFixed(1)}" height="${bandH}" fill="${accent}" fill-opacity="0.14"/>
+        <rect x="${padL}" y="${bandTop}" width="${(plotW / 2).toFixed(1)}" height="${bandH}" fill="${muted}" fill-opacity="0.10"/>
+        <rect x="${xMid.toFixed(1)}" y="${bandTop}" width="${(plotW / 2).toFixed(1)}" height="${bandH}" fill="${accent}" fill-opacity="0.14"/>
     `;
 
-    // ─ Line (no area fill: stacking a fill over the period bands produced a
-    // second, unexplained shade on one side of the endpoint dot)
-    const linePts = series.map(p => `${xS(p.x).toFixed(1)},${yS(p.y).toFixed(1)}`);
-    const line = `<polyline points="${linePts.join(" ")}" fill="none" stroke="${accent}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>`;
+    // ─ Slope line between the band centers (no area fill: stacking a fill over
+    // the bands produced a second, unexplained shade on one side of the dot)
+    const bx = padL + plotW / 4, nx = padL + (3 * plotW) / 4;
+    const by = yS(baseVal), ny = yS(nowVal);
+    const line = `<polyline points="${bx.toFixed(1)},${by.toFixed(1)} ${nx.toFixed(1)},${ny.toFixed(1)}" fill="none" stroke="${accent}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>`;
 
-    // ─ Latest point: halo + dot + value label
-    const last = series[series.length - 1];
-    const lx = xS(last.x), ly = yS(last.y);
-    const halo = `<circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="5.5" fill="${accent}" fill-opacity="0.18"/>`;
-    const dot  = `<circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="2.4" fill="${accent}"/>`;
-    const valY = clamp(ly + 3.5, padT + 8, padT + plotH - 1);
-    const valLabel = `<text x="${(W - 2).toFixed(1)}" y="${valY.toFixed(1)}" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600" fill="${valueColor}">${fmt.num(last.y)}</text>`;
+    // ─ Value dots: small on baseline, emphasized on now
+    const baseDot = `<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="1.8" fill="${muted}"/>`;
+    const halo = `<circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="5.5" fill="${accent}" fill-opacity="0.18"/>`;
+    const dot  = `<circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="2.4" fill="${accent}"/>`;
+    const valY = clamp(ny + 3.5, padT + 8, padT + plotH - 1);
+    const valLabel = `<text x="${(W - 2).toFixed(1)}" y="${valY.toFixed(1)}" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600" fill="${valueColor}">${fmt.num(nowVal)}</text>`;
 
-    // ─ Period labels
+    // ─ Period labels under each band center
     const labelY = H - 2;
-    const baseLabelX = (baseX + baseR) / 2;
-    const currLabelX = (currX + currR) / 2;
     const baseLabel = compareKey === "yoy" ? "yr ago" : "prior";
     const labels = `
-        <text x="${baseLabelX.toFixed(1)}" y="${labelY}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${labelColor}" letter-spacing="0.05em">${baseLabel}</text>
-        <text x="${currLabelX.toFixed(1)}" y="${labelY}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${accent}" font-weight="500" letter-spacing="0.05em">now</text>
+        <text x="${bx.toFixed(1)}" y="${labelY}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${labelColor}" letter-spacing="0.05em">${baseLabel}</text>
+        <text x="${nx.toFixed(1)}" y="${labelY}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${accent}" font-weight="500" letter-spacing="0.05em">now</text>
     `;
 
-    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="trend-svg">${bands}${line}${halo}${dot}${valLabel}${labels}</svg>`;
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="trend-svg">${bands}${line}${baseDot}${halo}${dot}${valLabel}${labels}</svg>`;
 }
 
 /* ─── Detail chart ─── */

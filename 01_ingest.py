@@ -277,34 +277,34 @@ def ingest_range(start_year: int, end_year: int):
 
 
 def ingest_latest():
-    """Ingest the most recent available quarter."""
+    """Sweep the two most recent report quarters for new filings.
+
+    Filings for a report period keep arriving for weeks after the statutory
+    deadline (amendments and late filers trail for months), so sweeping only
+    the newest quarter silently drops the prior quarter's stragglers.
+    ingest_quarter dedupes by sopr_filing_id, so re-sweeping is cheap in DB
+    terms and idempotent.
+    """
     init_db()
     now = datetime.now()
-    year = now.year
 
-    # Q4 filings are due Jan 20, Q1 due Apr 20, etc.
-    # So in Jan, Q4 of previous year should be available
-    # In Feb-Apr, Q1 data starts coming in
-    month = now.month
-
-    if month <= 3:
-        # Try Q4 of last year, then Q3
-        quarters_to_try = [(year - 1, 4), (year - 1, 3), (year, 1)]
-    elif month <= 6:
-        quarters_to_try = [(year, 1), (year - 1, 4), (year, 2)]
-    elif month <= 9:
-        quarters_to_try = [(year, 2), (year, 1), (year, 3)]
+    # Reports arriving now cover the most recently COMPLETED quarter (Q2
+    # reports are due Jul 20, etc.), so that quarter and the one before it
+    # are where new filings land.
+    cal_q = (now.month - 1) // 3 + 1
+    if cal_q == 1:
+        sweep = [(now.year - 1, 4), (now.year - 1, 3)]
+    elif cal_q == 2:
+        sweep = [(now.year, 1), (now.year - 1, 4)]
     else:
-        quarters_to_try = [(year, 3), (year, 2), (year, 4)]
+        sweep = [(now.year, cal_q - 1), (now.year, cal_q - 2)]
 
-    for y, q in quarters_to_try:
+    for y, qq in sweep:
         try:
-            count = ingest_quarter(y, q)
-            if count > 0:
-                print(f"Successfully ingested {y} Q{q}")
-                return
+            count = ingest_quarter(y, qq)
+            print(f"Swept {y} Q{qq}: {count} new filings")
         except Exception as e:
-            print(f"Could not ingest {y} Q{q}: {e}")
+            print(f"Could not ingest {y} Q{qq}: {e}")
             continue
 
 

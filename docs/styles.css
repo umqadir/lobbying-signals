@@ -644,6 +644,27 @@ input { font: inherit; color: inherit; }
     text-decoration: underline;
 }
 
+.mover-more {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 4px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    background: var(--paper);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: color 0.12s var(--ease), border-color 0.12s var(--ease);
+}
+
+.mover-more:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
 /* ─── Footnote ─── */
 
 .footnote {
@@ -1221,6 +1242,8 @@ input { font: inherit; color: inherit; }
         gap: 12px;
         padding: 16px;
     }
+    /* Single-column grid stretches items; keep the category pill its natural width */
+    .mover .cat-tag { justify-self: start; }
 
     .mover-spark { height: 32px; max-width: 100%; }
     .mover-arrow { display: none; }

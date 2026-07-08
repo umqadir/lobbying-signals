@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS signals (
 
 -- Indexes for common queries
 CREATE INDEX IF NOT EXISTS idx_filings_year_quarter ON filings(year, quarter);
+CREATE INDEX IF NOT EXISTS idx_filings_filing_date ON filings(filing_date);
 CREATE INDEX IF NOT EXISTS idx_filings_registrant ON filings(registrant_id);
 CREATE INDEX IF NOT EXISTS idx_filings_client ON filings(client_id);
 CREATE INDEX IF NOT EXISTS idx_activities_filing ON activities(filing_id);
