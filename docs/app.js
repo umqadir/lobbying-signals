@@ -263,7 +263,7 @@ function buildHeadline(item, compareKey) {
 
     if (baseline === 0 && current > 0) {
         return {
-            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-up-x">first time</span> in tracked ${baselineLabel}.`,
+            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-up-x">new</span>, none in the ${baselineLabel}.`,
             dir: "up"
         };
     }
@@ -607,9 +607,9 @@ function buildFilingCard(f) {
     const card = el("li", "mover filing-card");
     card.setAttribute("role", "button");
     card.tabIndex = 0;
-    card.onclick = () => openFiling(f.id);
+    card.onclick = () => openFiling(f.id, f);
     card.onkeydown = e => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFiling(f.id); }
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFiling(f.id, f); }
     };
 
     card.appendChild(el("span", "cat-tag filing", "Filing"));
@@ -880,8 +880,27 @@ function openClient(name) {
     pushDrawer({ kind: "client", name });
 }
 
-function openFiling(id) {
-    pushDrawer({ kind: "filing", id: Number(id) });
+function openFiling(id, ctx) {
+    // ctx carries what we already know about the filing (uuid, client, date…)
+    // so filings outside the recent sample still render a useful drawer.
+    pushDrawer({ kind: "filing", id: Number(id), ctx: ctx || null });
+}
+
+/* Official Senate LDA record for a filing — the primary source. */
+function ldaFilingURL(uuid) {
+    return uuid ? `https://lda.senate.gov/filings/public/filing/${uuid}/print/` : null;
+}
+
+function officialLink(uuid, cls = "official-link") {
+    const url = ldaFilingURL(uuid);
+    if (!url) return null;
+    const a = el("a", cls, "Official record ↗");
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.title = "Open this filing on the Senate Lobbying Disclosure site";
+    a.onclick = e => e.stopPropagation();
+    return a;
 }
 
 /* ─── Drawer rendering ─── */
@@ -945,7 +964,9 @@ function renderSignalDetail(body, view) {
     // Eyebrow
     const eyebrow = el("div", "detail-eyebrow");
     eyebrow.appendChild(el("span", `cat-tag ${meta.tagClass}`, meta.label));
-    eyebrow.appendChild(el("span", `detail-conf ${m.confidence}`, `${m.confidence} confidence`));
+    const confChip = el("span", `detail-conf ${m.confidence}`, `${m.confidence} confidence`);
+    confChip.title = "Rule-based signal strength: how much volume sits behind this and how consistently it moved against both the prior-period and year-ago baselines.";
+    eyebrow.appendChild(confChip);
     body.appendChild(eyebrow);
 
     // Name + sub
@@ -968,15 +989,22 @@ function renderSignalDetail(body, view) {
     const delta = state.view.compare === "yoy" ? m.share_delta_yoy_pp : m.share_delta_prev_pp;
     const deltaDir = delta > 0.01 ? "up" : delta < -0.01 ? "down" : "";
     const statCells = [
-        { value: fmt.int(m.count),                label: "Mentions" },
-        { value: fmt.pct(m.current_share_pct),    label: "Share" },
-        { value: fmt.pp(delta),                    label: "Δ Share", cls: deltaDir },
-        { value: fmt.int(baseline),                label: "Baseline" },
-        { value: fmt.pct(baselineShare),          label: "Base share" },
-        { value: m.income > 0 ? fmt.money(m.income) : "—", label: "Linked income" }
+        { value: fmt.int(m.count),                label: "Mentions",
+          tip: "Lobbying activity descriptions that reference this in the selected window. One filing can contribute several mentions." },
+        { value: fmt.pct(m.current_share_pct),    label: "Share",
+          tip: "Share of all tagged mentions in the selected window." },
+        { value: fmt.pp(delta),                    label: "Δ Share", cls: deltaDir,
+          tip: "Change in share versus the baseline period, in percentage points." },
+        { value: fmt.int(baseline),                label: "Baseline",
+          tip: "Mentions in the comparison period (year-ago or prior window)." },
+        { value: fmt.pct(baselineShare),          label: "Base share",
+          tip: "Share of all tagged mentions in the comparison period." },
+        { value: m.income > 0 ? fmt.money(m.income) : "—", label: "Assoc. filing income",
+          tip: "Combined reported income of filings whose activities mention this. Filings usually cover several issues, so this is NOT spend attributable to this item alone." }
     ];
     for (const s of statCells) {
         const stat = el("div", "detail-stat");
+        if (s.tip) stat.title = s.tip;
         stat.appendChild(el("span", `detail-stat-value ${s.cls || ""}`.trim(), s.value));
         stat.appendChild(el("span", "detail-stat-label", s.label));
         stats.appendChild(stat);
@@ -1040,13 +1068,17 @@ function renderSignalDetail(body, view) {
         for (const ex of m.examples.slice(0, 8)) {
             const li = el("div", "filing-row");
             li.tabIndex = 0;
-            li.onclick = () => openFiling(ex.id);
-            li.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFiling(ex.id); } };
+            li.onclick = () => openFiling(ex.id, ex);
+            li.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFiling(ex.id, ex); } };
             const left = el("div");
             left.appendChild(el("div", "filing-row-client", clientDisplay(ex.client) || "Unknown client"));
             if (ex.registrant) left.appendChild(el("div", "filing-row-registrant", clientDisplay(ex.registrant)));
             li.appendChild(left);
-            li.appendChild(el("div", "filing-row-date", fmt.dateShort(ex.date)));
+            const right = el("div", "filing-row-right");
+            right.appendChild(el("div", "filing-row-date", fmt.dateShort(ex.date)));
+            const link = officialLink(ex.uuid, "official-link small");
+            if (link) right.appendChild(link);
+            li.appendChild(right);
             list.appendChild(li);
         }
         sec.appendChild(list);
@@ -1166,11 +1198,32 @@ function renderClientDetail(body, view) {
 function renderFilingDetail(body, view) {
     const f = (state.filings || []).find(x => x.id === view.id);
     if (!f) {
+        // Not in the recent sample — render what the opener told us and always
+        // hand off to the primary source.
+        const ctx = view.ctx || {};
         const eyebrow = el("div", "detail-eyebrow");
         eyebrow.appendChild(el("span", "cat-tag filing", "Filing"));
         body.appendChild(eyebrow);
-        body.appendChild(el("h2", "detail-name", `Filing #${view.id}`));
-        body.appendChild(el("p", "detail-empty", "This filing isn't in the recent sample. Older filings live in the database release; the dashboard ships a rolling slice."));
+        body.appendChild(el("h2", "detail-name", clientDisplay(ctx.client) || `Filing #${view.id}`));
+        if (ctx.date || ctx.registrant) {
+            body.appendChild(el("div", "detail-sub",
+                `${ctx.date ? `Filed ${fmt.dateLong(ctx.date)}` : ""}${ctx.date && ctx.registrant ? " · " : ""}${clientDisplay(ctx.registrant) || ""}`));
+        }
+        if (ctx.income) {
+            const stats = el("div", "detail-stats");
+            const stat = el("div", "detail-stat");
+            stat.appendChild(el("span", "detail-stat-value", fmt.money(ctx.income)));
+            stat.appendChild(el("span", "detail-stat-label", "Income"));
+            stats.appendChild(stat);
+            body.appendChild(stats);
+        }
+        const link = officialLink(ctx.uuid, "official-link block");
+        if (link) {
+            const sec = el("div", "detail-section");
+            sec.appendChild(link);
+            body.appendChild(sec);
+        }
+        body.appendChild(el("p", "detail-empty", "Full tag detail is kept for the most recent filings; the official record above has the complete disclosure."));
         return;
     }
 
@@ -1180,6 +1233,9 @@ function renderFilingDetail(body, view) {
 
     body.appendChild(el("h2", "detail-name", clientDisplay(f.client) || "Filing"));
     body.appendChild(el("div", "detail-sub", `Filed ${fmt.dateLong(f.date)} · ${clientDisplay(f.registrant) || "Unknown registrant"}`));
+
+    const officialTop = officialLink(f.uuid || view.ctx?.uuid, "official-link block");
+    if (officialTop) body.appendChild(officialTop);
 
     const stats = el("div", "detail-stats");
     const tagsCount = (f.topics?.length || 0) + (f.entities?.length || 0) + (f.legislation?.length || 0);
@@ -1234,6 +1290,27 @@ function renderFilingDetail(body, view) {
     if (tagsCount === 0) {
         body.appendChild(el("p", "detail-empty", "No deterministic tags fired for this filing's activity descriptions."));
     }
+}
+
+/* ─── About-the-data modal ─── */
+
+function openAbout() {
+    const modal = document.getElementById("about");
+    if (!modal) return;
+    // Coverage line from live data, so it never goes stale
+    const covEl = document.getElementById("about-coverage");
+    const start = coverageStartDate();
+    const end = dataAsOfDate();
+    if (covEl && start) covEl.textContent = `${fmtMonthDayYear(start)} through ${fmtMonthDayYear(end)}`;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+}
+
+function closeAbout() {
+    const modal = document.getElementById("about");
+    if (!modal) return;
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
 }
 
 /* ─── Command palette ─── */
@@ -1414,6 +1491,14 @@ function executePalette() {
 /* ─── URL state ─── */
 
 function syncURL() {
+    // Query string carries the view (window/compare/category) so any state of
+    // the dashboard is a shareable link; the hash carries the open drawer.
+    const params = new URLSearchParams();
+    if (state.view.window !== "90d") params.set("w", state.view.window);
+    if (state.view.compare !== defaultCompare(state.view.window)) params.set("cmp", state.view.compare);
+    if (state.view.cat !== "all") params.set("cat", state.view.cat);
+    const query = params.toString() ? `?${params.toString()}` : "";
+
     let hash = "";
     if (state.drawer) {
         if (state.drawer.kind === "signal") {
@@ -1424,12 +1509,20 @@ function syncURL() {
             hash = `#filing/${state.drawer.id}`;
         }
     }
-    if (hash !== window.location.hash) {
-        history.replaceState(null, "", hash || window.location.pathname);
+    const url = `${window.location.pathname}${query}${hash}`;
+    if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
+        history.replaceState(null, "", url);
     }
 }
 
 function readURL() {
+    // View state from the query string
+    const q = new URLSearchParams(window.location.search);
+    if (["30d", "90d"].includes(q.get("w"))) state.view.window = q.get("w");
+    if (["yoy", "prev"].includes(q.get("cmp"))) state.view.compare = q.get("cmp");
+    if (q.get("cat") && (q.get("cat") === "recent" || SIGNAL_MODES.includes(q.get("cat")))) state.view.cat = q.get("cat");
+
+    // Drawer from the hash
     const hash = window.location.hash.replace(/^#/, "");
     if (!hash) return;
     const parts = hash.split("/").map(decodeURIComponent);
@@ -1443,6 +1536,17 @@ function readURL() {
     }
 }
 
+/* Reflect state.view in the three control groups (used after readURL restores
+   a shared link's view). */
+function syncControlsUI() {
+    document.querySelectorAll("#window-seg .seg-btn").forEach(x =>
+        x.classList.toggle("active", x.dataset.window === state.view.window));
+    document.querySelectorAll("#compare-seg .seg-btn").forEach(x =>
+        x.classList.toggle("active", x.dataset.compare === state.view.compare));
+    document.querySelectorAll("#cat-row .cat-pill").forEach(x =>
+        x.classList.toggle("active", x.dataset.cat === state.view.cat));
+}
+
 /* ─── Initialization ─── */
 
 function bindControls() {
@@ -1454,6 +1558,7 @@ function bindControls() {
             document.querySelectorAll("#window-seg .seg-btn").forEach(x =>
                 x.classList.toggle("active", x === b));
             resolveCompareMode(); // yoy support depends on the window length
+            syncURL();
             renderHero();
             renderMovers();
             paletteIndex = null;
@@ -1466,6 +1571,7 @@ function bindControls() {
             state.view.compare = b.dataset.compare;
             document.querySelectorAll("#compare-seg .seg-btn").forEach(x =>
                 x.classList.toggle("active", x === b));
+            syncURL();
             renderHero();
             renderMovers();
             if (state.drawer) renderDrawer();
@@ -1477,6 +1583,7 @@ function bindControls() {
             state.view.cat = b.dataset.cat;
             document.querySelectorAll("#cat-row .cat-pill").forEach(x =>
                 x.classList.toggle("active", x === b));
+            syncURL();
             renderMovers();
         };
     });
@@ -1486,6 +1593,11 @@ function bindControls() {
 
     document.querySelectorAll("[data-close-palette]").forEach(n =>
         n.onclick = () => closePalette());
+
+    document.querySelectorAll("[data-open-about]").forEach(n =>
+        n.onclick = () => openAbout());
+    document.querySelectorAll("[data-close-about]").forEach(n =>
+        n.onclick = () => closeAbout());
 
     const paletteInput = document.getElementById("palette-input");
     paletteInput.addEventListener("input", () => {
@@ -1514,6 +1626,7 @@ function bindControls() {
         // Esc closes overlays
         if (e.key === "Escape") {
             if (state.palette.open) { closePalette(); return; }
+            if (document.getElementById("about")?.getAttribute("aria-hidden") === "false") { closeAbout(); return; }
             if (state.drawer) { closeDrawer(); return; }
         }
         // Palette navigation
@@ -1591,12 +1704,12 @@ async function init() {
     }
 
     bindControls();
-    resolveCompareMode();
+    readURL();            // restore shared view + drawer state from URL
+    resolveCompareMode(); // may override compare if coverage can't back it
+    syncControlsUI();
     renderHero();
     renderMovers();
 
-    // Open drawer if URL has a deep link
-    readURL();
     if (state.drawer) {
         renderDrawer();
         showDrawer();

@@ -173,7 +173,8 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
             date_filter = ""
 
         sql = f'''
-            SELECT f.id as filing_id, e.coarse_topic as domain, e.topics, e.entities, e.legislation,
+            SELECT f.id as filing_id, f.sopr_filing_id as filing_uuid,
+                   e.coarse_topic as domain, e.topics, e.entities, e.legislation,
                    f.filing_date, c.name as client_name, r.name as registrant_name, f.income
             FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
@@ -203,13 +204,14 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
     domain_examples = defaultdict(dict)
     legislation_examples = defaultdict(dict)
 
-    def add_example(bucket: defaultdict, tag: str, filing_id: int, filing_date: str, client_name: str, registrant_name: str, income: float):
+    def add_example(bucket: defaultdict, tag: str, filing_id: int, filing_date: str, client_name: str, registrant_name: str, income: float, filing_uuid: str = None):
         if not tag or not filing_id:
             return
         if filing_id in bucket[tag]:
             return
         bucket[tag][filing_id] = {
             'id': filing_id,
+            'uuid': filing_uuid,  # official LDA filing UUID — links to the Senate record
             'date': filing_date,
             'client': client_name,
             'registrant': registrant_name,
@@ -218,6 +220,7 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
 
     for row in rows:
         filing_id = row.get('filing_id')
+        filing_uuid = row.get('filing_uuid')
         client = row.get('client_name')
         registrant = row.get('registrant_name')
         income = row.get('income') or 0
@@ -231,7 +234,7 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
             if filing_id and filing_id not in domains.income_seen_filing_ids[domain]:
                 domains.income[domain] += income
                 domains.income_seen_filing_ids[domain].add(filing_id)
-            add_example(domain_examples, domain, filing_id, filing_date, client, registrant, income)
+            add_example(domain_examples, domain, filing_id, filing_date, client, registrant, income, filing_uuid)
 
         for topic in json.loads(row['topics'] or '[]'):
             if is_general_topic(topic):
@@ -245,7 +248,7 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
             if filing_id and filing_id not in topics.income_seen_filing_ids[topic]:
                 topics.income[topic] += income
                 topics.income_seen_filing_ids[topic].add(filing_id)
-            add_example(topic_examples, topic, filing_id, filing_date, client, registrant, income)
+            add_example(topic_examples, topic, filing_id, filing_date, client, registrant, income, filing_uuid)
 
         for entity in json.loads(row['entities'] or '[]'):
             entity = normalize_tag(entity)
@@ -257,7 +260,7 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
             if filing_id and filing_id not in entities.income_seen_filing_ids[entity]:
                 entities.income[entity] += income
                 entities.income_seen_filing_ids[entity].add(filing_id)
-            add_example(entity_examples, entity, filing_id, filing_date, client, registrant, income)
+            add_example(entity_examples, entity, filing_id, filing_date, client, registrant, income, filing_uuid)
 
         for leg in json.loads(row['legislation'] or '[]'):
             leg = normalize_legislation(leg)
@@ -269,7 +272,7 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
             if filing_id and filing_id not in legislation.income_seen_filing_ids[leg]:
                 legislation.income[leg] += income
                 legislation.income_seen_filing_ids[leg].add(filing_id)
-            add_example(legislation_examples, leg, filing_id, filing_date, client, registrant, income)
+            add_example(legislation_examples, leg, filing_id, filing_date, client, registrant, income, filing_uuid)
 
     def top_clients(agg: _Agg, limit: int = 10) -> dict:
         return {k: [c for c, _ in v.most_common(limit)] for k, v in agg.client_counts.items()}
@@ -308,7 +311,19 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
 
 def compute_trends() -> dict:
     """Compute trend data with seasonality-aware and momentum-aware metrics."""
-    today = datetime.now()
+    # Anchor windows to the newest filing in the DB, not the wall clock. The
+    # dashboard labels its windows by max(filing_date) (stats.date_range.end),
+    # so anchoring here to date('now') makes the two disagree whenever
+    # ingestion lags — and silently empties the dashboard if it stalls.
+    with get_db() as conn:
+        max_date = conn.execute(
+            'SELECT MAX(filing_date) FROM filings WHERE filing_date IS NOT NULL'
+        ).fetchone()[0]
+    if max_date:
+        # +1 day so lexicographic BETWEEN covers the whole as-of day
+        today = datetime.strptime(max_date[:10], '%Y-%m-%d') + timedelta(days=1)
+    else:
+        today = datetime.now()
     window_days = {'30d': 30, '90d': 90}
 
     def range_for(days: int, offset_days: int = 0) -> tuple[str, str]:
@@ -603,14 +618,14 @@ def get_recent_filings(limit: int = 300) -> list:
     with get_db() as conn:
         sql = '''
             WITH recent AS (
-                SELECT id, filing_date, income, year, quarter, client_id, registrant_id
+                SELECT id, sopr_filing_id, filing_date, income, year, quarter, client_id, registrant_id
                 FROM filings
                 WHERE filing_date IS NOT NULL
                 ORDER BY filing_date DESC
                 LIMIT ?
             )
             SELECT
-                f.id, f.filing_date, f.income, f.year, f.quarter,
+                f.id, f.sopr_filing_id AS filing_uuid, f.filing_date, f.income, f.year, f.quarter,
                 c.name as client_name, r.name as registrant_name,
                 e.coarse_topic AS domain, e.topics, e.entities, e.legislation
             FROM recent f
@@ -627,6 +642,7 @@ def get_recent_filings(limit: int = 300) -> list:
         if fid not in by_filing:
             by_filing[fid] = {
                 'id': fid,
+                'uuid': row.get('filing_uuid'),
                 'date': row['filing_date'],
                 'client': row['client_name'],
                 'registrant': row['registrant_name'],
@@ -667,6 +683,7 @@ def get_recent_filings(limit: int = 300) -> list:
         topic_counts = rec['topics'] if rec['topics'] else rec['general_topics']
         filings.append({
             'id': rec['id'],
+            'uuid': rec.get('uuid'),
             'date': rec['date'],
             'client': rec['client'],
             'registrant': rec['registrant'],

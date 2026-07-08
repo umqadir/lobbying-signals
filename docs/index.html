@@ -76,9 +76,29 @@
         </section>
 
         <footer class="footnote">
-            <p>Source: <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate Lobbying Disclosure</a>. Mentions are deterministic rule matches against activity descriptions; comparisons are directional signals, not causal claims about lobbying spend or policy outcomes. Filing volume is seasonal because quarterly reports cluster around statutory deadlines. <a href="https://github.com/umqadir/lobbying-signals" rel="noopener">Source on GitHub</a>.</p>
+            <p>Source: <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate Lobbying Disclosure</a>. Mentions are deterministic rule matches against activity descriptions; comparisons are directional signals, not causal claims about lobbying spend or policy outcomes. Filing volume is seasonal because quarterly reports cluster around statutory deadlines. <button class="footnote-link" type="button" data-open-about>About the data</button> · <a href="https://github.com/umqadir/lobbying-signals" rel="noopener">Source on GitHub</a>.</p>
         </footer>
     </main>
+
+    <div class="about" id="about" aria-hidden="true">
+        <div class="about-scrim" data-close-about></div>
+        <div class="about-card" role="dialog" aria-modal="true" aria-label="About the data">
+            <header class="about-head">
+                <h2>About the data</h2>
+                <button class="drawer-close" type="button" data-close-about aria-label="Close">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+            </header>
+            <div class="about-body">
+                <p><strong>What this is.</strong> A signal tracker over federal lobbying disclosures filed with the Senate under the Lobbying Disclosure Act (LDA). It shows which topics, agencies, bills, and policy domains are gaining or losing attention in lobbying activity.</p>
+                <p><strong>Where the data comes from.</strong> Quarterly activity reports from the official <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate LDA database</a>, refreshed daily. Coverage: <span id="about-coverage">several years of filings</span>. Every example filing links back to the official Senate record.</p>
+                <p><strong>What a “mention” is.</strong> Each filing describes its lobbying activities in free text. Versioned, deterministic rules (no AI model calls) tag those descriptions with topics, agencies, and legislation. One activity description that matches a tag = one mention. A single filing can produce many mentions.</p>
+                <p><strong>How comparisons work.</strong> The last 30/90 days of filings are compared against the same window a year ago (the default — lobbying is seasonal, so like-for-like quarters matter) or the immediately prior window. “Share” is a tag's slice of all tagged mentions in the window, which controls for filing-volume swings.</p>
+                <p><strong>Confidence.</strong> A rule-based label reflecting how much volume sits behind a signal and how consistently it moved against both baselines — not a statistical test.</p>
+                <p><strong>Honest limitations.</strong> Directional signals, not causal claims. Filing income is reported per filing, not per issue, so income figures associate a filing's whole income with each of its tags. The newest quarter is always partially reported until well after the statutory deadline. Rule-based tagging misses paraphrases a human would catch.</p>
+            </div>
+        </div>
+    </div>
 
     <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Detail panel">
         <div class="drawer-scrim" data-close-drawer></div>
