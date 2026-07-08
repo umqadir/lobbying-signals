@@ -702,8 +702,13 @@ def get_recent_filings(limit: int = 300) -> list:
 
 
 
-def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = None) -> dict:
-    """Get report-quarter time series data for charts."""
+def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = None,
+                    track_names: dict | None = None) -> dict:
+    """Get report-quarter time series data for charts.
+
+    track_names: optional {'entities': set, 'legislation': set, 'domains': set}
+    of names to emit quarterly series for (in addition to topics).
+    """
     def percentile(values: list[int], q: float) -> int:
         if not values:
             return 0
@@ -752,6 +757,9 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             'top_topics': [],
             'tracked_topics': [],
             'topic_series': {},
+            'entity_series': {},
+            'legislation_series': {},
+            'domain_series': {},
             'context': {
                 'period_count': 0,
                 'reporting_note': 'Each point represents a report quarter from filing metadata.',
@@ -767,30 +775,42 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             '''
             SELECT
                 (f.year * 4 + f.quarter) AS q_index,
-                e.topics
+                e.coarse_topic, e.topics, e.entities, e.legislation
             FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
             JOIN filings f ON a.filing_id = f.id
             WHERE f.year IS NOT NULL
               AND f.quarter BETWEEN 1 AND 4
               AND (f.year * 4 + f.quarter) BETWEEN ? AND ?
-              AND e.topics IS NOT NULL
             ''',
             (min_q_index, max_q_index),
         )
 
     topic_by_quarter = defaultdict(Counter)
+    entity_by_quarter = defaultdict(Counter)
+    legislation_by_quarter = defaultdict(Counter)
+    domain_by_quarter = defaultdict(Counter)
     for row in topic_rows:
         q_index = int(row.get('q_index') or 0)
         if not q_index:
             continue
-        topics = json.loads(row['topics'] or '[]')
-        for topic in topics:
+        for topic in json.loads(row.get('topics') or '[]'):
             if is_general_topic(topic):
                 continue
             topic = display_topic(topic)
             if topic:
                 topic_by_quarter[q_index][topic] += 1
+        for entity in json.loads(row.get('entities') or '[]'):
+            entity = normalize_tag(entity)
+            if entity:
+                entity_by_quarter[q_index][entity] += 1
+        for leg in json.loads(row.get('legislation') or '[]'):
+            leg = normalize_legislation(leg)
+            if leg:
+                legislation_by_quarter[q_index][leg] += 1
+        domain = display_domain(row.get('coarse_topic'))
+        if domain:
+            domain_by_quarter[q_index][domain] += 1
 
     all_topics = Counter()
     for quarter_topics in topic_by_quarter.values():
@@ -825,6 +845,22 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
     for topic in tracked_topics:
         topic_series[topic] = [topic_by_quarter[q].get(topic, 0) for q in q_indexes]
 
+    # Quarterly series for the other categories, bounded to the names the
+    # trends windows actually surface (so every drawer gets history without
+    # exporting the long tail).
+    def build_series(by_quarter: defaultdict, names: set[str] | None) -> dict:
+        out = {}
+        for name in (names or set()):
+            series = [by_quarter[q].get(name, 0) for q in q_indexes]
+            if any(series):
+                out[name] = series
+        return out
+
+    track = track_names or {}
+    entity_series = build_series(entity_by_quarter, track.get('entities'))
+    legislation_series = build_series(legislation_by_quarter, track.get('legislation'))
+    domain_series = build_series(domain_by_quarter, track.get('domains'))
+
     quarterly_filings = [int(q.get('filings') or 0) for q in quarters]
     top_quarters = sorted(quarters, key=lambda x: x.get('filings', 0), reverse=True)[:3]
 
@@ -836,6 +872,9 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
         'top_topics': top_topics,
         'tracked_topics': tracked_topics,
         'topic_series': topic_series,
+        'entity_series': entity_series,
+        'legislation_series': legislation_series,
+        'domain_series': domain_series,
         'context': {
             'period_count': len(quarters),
             'start_label': quarters[0]['label'],
@@ -1146,13 +1185,19 @@ def export_json(output_dir: str = 'docs/data'):
     recent = get_recent_filings(300)
 
     print("Getting time series...")
-    tracked_topics = {
-        item.get('name')
-        for window in ('30d', '90d')
-        for item in trends.get('topics', {}).get(window, [])
-        if item.get('name')
-    }
-    timeseries = get_time_series(20, topics_to_track=tracked_topics)
+    def names_for(cat: str) -> set:
+        return {
+            item.get('name')
+            for window in ('30d', '90d')
+            for item in trends.get(cat, {}).get(window, [])
+            if item.get('name')
+        }
+    tracked_topics = names_for('topics')
+    timeseries = get_time_series(20, topics_to_track=tracked_topics, track_names={
+        'entities': names_for('entities'),
+        'legislation': names_for('legislation'),
+        'domains': names_for('domains'),
+    })
 
     # Write files
     with open(f'{output_dir}/trends.json', 'w') as f:

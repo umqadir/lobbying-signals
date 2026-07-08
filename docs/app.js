@@ -702,13 +702,14 @@ function partialTrailingCount(quarters) {
 }
 
 function makeTrendChart(item, mode, windowKey, compareKey, options = {}) {
-    // A two-period comparison, not a time series: two adjacent half-width bands
-    // (baseline | now) with one value dot centered in each and a slope line
-    // between them. The x-axis is deliberately NOT time-true — in a 200px
-    // sparkline, spacing the bands a year apart just creates a dead gap that
-    // reads as a broken chart. Quarter-level history lives in the drawer.
+    // Two periods, two numbers → two labeled bars. Both values are printed, so
+    // the chart carries its own axis; a line through two points implied a time
+    // axis that didn't exist. Quarter-level history lives in the drawer.
     const W = 200, H = 48;
-    const padL = 4, padR = 36, padT = 5, padB = 12;
+    const padT = 12;   // room for value labels above bars
+    const padB = 11;   // room for period labels below
+    const plotH = H - padT - padB;
+    const baseline = H - padB;
 
     const accent = options.accent || getCSSVar("--accent", "#b8420f");
     const muted  = getCSSVar("--ink-4", "#a39c87");
@@ -717,43 +718,30 @@ function makeTrendChart(item, mode, windowKey, compareKey, options = {}) {
 
     const baseVal = compareKey === "yoy" ? toNum(item.yoy_count) : toNum(item.prev_count);
     const nowVal = toNum(item.count);
-
-    const plotW = W - padL - padR;
-    const plotH = H - padT - padB;
-    const xMid = padL + plotW / 2;
     const yMax = Math.max(baseVal, nowVal, 1);
-    const yS = y => padT + (1 - y / yMax) * plotH;
-
-    // ─ Period bands: left half = baseline, right half = current window
-    const bandTop = padT - 1;
-    const bandH = plotH + 1;
-    const bands = `
-        <rect x="${padL}" y="${bandTop}" width="${(plotW / 2).toFixed(1)}" height="${bandH}" fill="${muted}" fill-opacity="0.10"/>
-        <rect x="${xMid.toFixed(1)}" y="${bandTop}" width="${(plotW / 2).toFixed(1)}" height="${bandH}" fill="${accent}" fill-opacity="0.14"/>
-    `;
-
-    // ─ Slope line between the band centers (no area fill: stacking a fill over
-    // the bands produced a second, unexplained shade on one side of the dot)
-    const bx = padL + plotW / 4, nx = padL + (3 * plotW) / 4;
-    const by = yS(baseVal), ny = yS(nowVal);
-    const line = `<polyline points="${bx.toFixed(1)},${by.toFixed(1)} ${nx.toFixed(1)},${ny.toFixed(1)}" fill="none" stroke="${accent}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>`;
-
-    // ─ Value dots: small on baseline, emphasized on now
-    const baseDot = `<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="1.8" fill="${muted}"/>`;
-    const halo = `<circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="5.5" fill="${accent}" fill-opacity="0.18"/>`;
-    const dot  = `<circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="2.4" fill="${accent}"/>`;
-    const valY = clamp(ny + 3.5, padT + 8, padT + plotH - 1);
-    const valLabel = `<text x="${(W - 2).toFixed(1)}" y="${valY.toFixed(1)}" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600" fill="${valueColor}">${fmt.num(nowVal)}</text>`;
-
-    // ─ Period labels under each band center
-    const labelY = H - 2;
+    const barW = 38;
+    const bx = W * 0.32, nx = W * 0.68; // bar centers
     const baseLabel = compareKey === "yoy" ? "yr ago" : "prior";
-    const labels = `
-        <text x="${bx.toFixed(1)}" y="${labelY}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${labelColor}" letter-spacing="0.05em">${baseLabel}</text>
-        <text x="${nx.toFixed(1)}" y="${labelY}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${accent}" font-weight="500" letter-spacing="0.05em">now</text>
-    `;
 
-    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="trend-svg">${bands}${line}${baseDot}${halo}${dot}${valLabel}${labels}</svg>`;
+    const bar = (cx, val, fill, opacity) => {
+        const h = Math.max(val > 0 ? 2 : 0, (val / yMax) * plotH);
+        const y = baseline - h;
+        return `<rect x="${(cx - barW / 2).toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${h.toFixed(1)}" rx="2" fill="${fill}" fill-opacity="${opacity}"/>`;
+    };
+    const valueText = (cx, val) =>
+        `<text x="${cx.toFixed(1)}" y="${(baseline - Math.max(val > 0 ? 2 : 0, (val / yMax) * plotH) - 3).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="600" fill="${valueColor}">${fmt.num(val)}</text>`;
+    const periodText = (cx, label, color, weight) =>
+        `<text x="${cx.toFixed(1)}" y="${H - 2}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${color}" font-weight="${weight}" letter-spacing="0.05em">${label}</text>`;
+
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="trend-svg" role="img" aria-label="${fmt.esc(baseLabel)}: ${fmt.int(baseVal)}, now: ${fmt.int(nowVal)}">
+        <line x1="12" y1="${baseline}" x2="${W - 12}" y2="${baseline}" stroke="${muted}" stroke-opacity="0.35" stroke-width="1"/>
+        ${bar(bx, baseVal, muted, 0.45)}
+        ${bar(nx, nowVal, accent, 0.9)}
+        ${valueText(bx, baseVal)}
+        ${valueText(nx, nowVal)}
+        ${periodText(bx, baseLabel, labelColor, 400)}
+        ${periodText(nx, "now", accent, 500)}
+    </svg>`;
 }
 
 /* ─── Detail chart ─── */
@@ -791,13 +779,15 @@ function makeBarChart(values, periods, options = {}) {
         const x = pad.left + i * step + (step - barW) / 2;
         const y = plotTop + (1 - v / niceMax) * plotH;
         const h = Math.max(1, plotBottom - y);
+        const label = periods[i]?.label || periods[i]?.short || "";
+        const hover = `<title>${fmt.esc(label)} · ${fmt.int(v)} mentions${i >= partialFrom ? " (still reporting)" : ""}</title>`;
         // Partial (still-reporting) quarters render hollow so a low bar doesn't
         // read as a real drop; the newest complete quarter gets full weight.
         if (i >= partialFrom) {
-            return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="0.12" stroke="${accent}" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2 1.5" />`;
+            return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="0.12" stroke="${accent}" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2 1.5">${hover}</rect>`;
         }
         const emphasis = i === partialFrom - 1 ? 1 : 0.55;
-        return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="${emphasis}" />`;
+        return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="${emphasis}">${hover}</rect>`;
     }).join("");
 
     const xIdx = pickXIndices(n, 5);
@@ -1011,9 +1001,15 @@ function renderSignalDetail(body, view) {
     }
     body.appendChild(stats);
 
-    // Quarterly chart (topics only)
-    if (m.mode === "topics") {
-        const series = state.timeseries?.topic_series?.[m.name];
+    // Quarterly history chart (every category)
+    {
+        const seriesKeyByMode = {
+            topics: "topic_series",
+            entities: "entity_series",
+            legislation: "legislation_series",
+            domains: "domain_series"
+        };
+        const series = state.timeseries?.[seriesKeyByMode[m.mode]]?.[m.name];
         const quarters = state.timeseries?.quarters || [];
         if (series?.length && quarters.length > 1) {
             const sec = el("div", "detail-section");

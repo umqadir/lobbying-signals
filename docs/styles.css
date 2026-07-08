@@ -254,28 +254,32 @@ input { font: inherit; color: inherit; }
 
 .hero-stats li {
     flex: 1;
-    min-width: 130px;
-    padding: 2px 18px 2px 0;
+    min-width: 150px;
+    padding: 6px 24px;
     border-right: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
 
-.hero-stats li:last-child { border-right: none; }
+.hero-stats li:first-child { padding-left: 0; }
+.hero-stats li:last-child { border-right: none; padding-right: 0; }
 
 .hero-stats .stat-value {
-    display: inline-block;
+    display: block;
     font-family: var(--sans);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--ink);
     letter-spacing: -0.005em;
-    margin-right: 8px;
+    line-height: 1.2;
 }
 
 .hero-stats .stat-label {
-    display: inline;
-    font-size: 0.78rem;
+    display: block;
+    font-size: 0.76rem;
     color: var(--ink-3);
-    margin-top: 0;
+    line-height: 1.45;
 }
 
 .hero-stats .stat-trend.up { color: var(--up); }
