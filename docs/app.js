@@ -647,28 +647,16 @@ function partialTrailingCount(quarters) {
 }
 
 function buildTrendSeries(item, mode, windowKey) {
-    const today = dataAsOfDate();
-    const todayMs = today.getTime();
+    // One 3-point trajectory for every category: year-ago → prior window → now.
+    // These points align with the current/baseline bands the chart draws, so the
+    // line always spans the full width and the dot lands in the "now" band at the
+    // real current-window value. (Topics used to use raw quarterly series here,
+    // but quarterly points don't map onto 90/30-day windows — that mismatch left
+    // the line ending mid-chart with a gap before "now". Quarter-level history
+    // still lives in the detail drawer's bar chart.)
+    const todayMs = dataAsOfDate().getTime();
     const days = windowKey === "30d" ? 30 : 90;
     const DAY_MS = 86400000;
-
-    if (mode === "topics" && state.timeseries?.topic_series?.[item.name]?.length && state.timeseries.quarters?.length) {
-        const qs = state.timeseries.quarters;
-        const vals = state.timeseries.topic_series[item.name];
-        // Drop trailing partial quarters so the line ends on a complete quarter
-        // instead of cliff-diving into an under-reported one.
-        const end = qs.length - partialTrailingCount(qs);
-        if (end >= 2) {
-            // Last 8 quarters keeps both compared windows visible at meaningful scale
-            const start = Math.max(0, end - 8);
-            return qs.slice(start, end).map((q, i) => ({
-                x: new Date(q.year, (q.quarter - 1) * 3 + 1, 15).getTime(),
-                y: toNum(vals[start + i])
-            }));
-        }
-        // Too few complete quarters to chart — fall through to window trajectory.
-    }
-    // Universal fallback: 3-point trajectory across the full year of data we have
     const yoyMid = todayMs - 365 * DAY_MS - (days / 2) * DAY_MS;
     const prevMid = todayMs - (days * 1.5) * DAY_MS;
     const nowMid = todayMs - (days / 2) * DAY_MS;
