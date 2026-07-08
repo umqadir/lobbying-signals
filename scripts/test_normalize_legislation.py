@@ -1,0 +1,103 @@
+"""Regression tests for legislation-tag normalization (08_trends.py).
+
+Covers the edge-case classes mined from the real data:
+  - name / number / public-law variants of one law folding together
+  - bill-number reuse across Congresses staying distinct
+  - unambiguous short-form truncations resolving to the full act
+  - ambiguous generic fragments dropping as noise
+  - retrospective references disambiguated by an explicit year/Congress
+
+Run: python scripts/test_normalize_legislation.py
+"""
+
+import importlib.util
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))  # so 08_trends.py can `from db import ...`
+
+spec = importlib.util.spec_from_file_location("trends", ROOT / "08_trends.py")
+trends = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(trends)
+norm = trends.normalize_legislation
+
+# (raw tag, filing year, expected normalized identity)
+CASES = [
+    # One Big Beautiful Bill Act — name / number / P.L. / spelling variants
+    ("H.R. 1", 2026, "One Big Beautiful Bill Act"),
+    ("One Big Beautiful Bill Act", 2026, "One Big Beautiful Bill Act"),
+    ("One, Big, Beautiful Bill Act", 2026, "One Big Beautiful Bill Act"),
+    ("P.L. 119-21", 2026, "One Big Beautiful Bill Act"),
+    ("H.R. 1: One Big Beautiful Bill Act (Public Law No. 119-21)", 2026, "One Big Beautiful Bill Act"),
+
+    # H.R. 1 reuse across Congresses stays distinct (the core collision)
+    ("H.R. 1", 2018, "Tax Cuts and Jobs Act"),
+    ("H.R. 1", 2021, "For the People Act"),
+    ("H.R. 1", 2023, "Lower Energy Costs Act"),
+    ("H.R. 1 - Lower Energy Costs Act", 2025, "Lower Energy Costs Act"),   # name beats year
+    ("H.R. 1 of 2017", 2026, "Tax Cuts and Jobs Act"),                    # explicit year beats filing year
+
+    # CARES Act: name / number / P.L.
+    ("CARES Act", 2020, "CARES Act"),
+    ("H.R. 748", 2020, "CARES Act"),
+    ("P.L. 116-136", 2021, "CARES Act"),
+
+    # IIJA: name / number / P.L. / "bipartisan infrastructure" nickname
+    ("Infrastructure Investment and Jobs Act", 2022, "Infrastructure Investment and Jobs Act"),
+    ("H.R. 3684", 2021, "Infrastructure Investment and Jobs Act"),
+    ("P.L. 117-58", 2022, "Infrastructure Investment and Jobs Act"),
+    ("Bipartisan Infrastructure Law", 2023, "Infrastructure Investment and Jobs Act"),
+
+    # IRA: name + enacted P.L. fold; bare number stays a number (BBB/IRA shared vehicle)
+    ("Inflation Reduction Act", 2023, "Inflation Reduction Act"),
+    ("Inflation Reduction Act of 2022 (Public Law No. 117-169)", 2026, "Inflation Reduction Act"),
+    ("P.L. 117-169", 2023, "Inflation Reduction Act"),
+    ("Build Back Better Act", 2022, "Build Back Better Act"),
+
+    # CHIPS: name / truncation / P.L.
+    ("CHIPS and Science Act", 2023, "CHIPS and Science Act"),
+    ("Chips+Science Act", 2023, "CHIPS and Science Act"),
+    ("Science Act", 2023, "CHIPS and Science Act"),
+    ("P.L. 117-167", 2023, "CHIPS and Science Act"),
+
+    # USICA truncation
+    ("United States Innovation and Competition Act of 2021", 2021, "U.S. Innovation and Competition Act"),
+    ("Competition Act of 2021", 2021, "U.S. Innovation and Competition Act"),
+    ("S. 1260", 2021, "U.S. Innovation and Competition Act"),
+
+    # Ambiguous generic fragments → dropped
+    ("Jobs Act", 2022, ""),
+    ("America Act", 2021, ""),
+    ("Act", 2022, ""),
+
+    # Fiscal-year spelling unification for recurring titles
+    ("FY27 National Defense Authorization Act", 2026, "FY2027 National Defense Authorization Act"),
+    ("FY2027 National Defense Authorization Act", 2026, "FY2027 National Defense Authorization Act"),
+
+    # A bare number with no known mapping keeps its Congress scope
+    ("H.R. 7148", 2026, "H.R. 7148 (119th Congress)"),
+    ("H.R. 2670 (118th Congress)", 2024, "H.R. 2670 (118th Congress)"),
+]
+
+
+def main() -> int:
+    failures = []
+    for raw, year, expected in CASES:
+        got = norm(raw, year)
+        status = "ok  " if got == expected else "FAIL"
+        if got != expected:
+            failures.append((raw, year, expected, got))
+        print(f"  {status}  [{year}] {raw[:46]:48s} -> {got!r}")
+    print()
+    if failures:
+        print(f"{len(failures)} FAILURE(S):")
+        for raw, year, exp, got in failures:
+            print(f"  [{year}] {raw!r}: expected {exp!r}, got {got!r}")
+        return 1
+    print(f"All {len(CASES)} cases passed.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

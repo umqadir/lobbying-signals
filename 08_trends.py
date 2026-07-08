@@ -90,30 +90,90 @@ def normalize_tag(value: str) -> str:
 
 # Named acts detected inside a tag string take priority over any number in the
 # same string ("H.R. 1 - Lower Energy Costs Act" is about that act, whatever
-# the filing year). Patterns are matched case-insensitively.
+# the filing year). Patterns are matched case-insensitively and tried in order,
+# so specific names precede short-form truncations that resolve unambiguously.
 KNOWN_ACT_PATTERNS = [
+    # 119th Congress
     (re.compile(r'\b(?:one,?\s+big,?\s+)?beautiful\s+(?:bill\s+)?act\b', re.I), 'One Big Beautiful Bill Act'),
-    (re.compile(r'\btax cuts (?:and|&) jobs act\b', re.I), 'Tax Cuts and Jobs Act'),
-    (re.compile(r'\binflation reduction act\b', re.I), 'Inflation Reduction Act'),
+    # 118th
+    (re.compile(r'\bfiscal responsibility act\b', re.I), 'Fiscal Responsibility Act of 2023'),
     (re.compile(r'\blower energy costs act\b', re.I), 'Lower Energy Costs Act'),
-    (re.compile(r'\bfor the people act\b', re.I), 'For the People Act'),
+    # 117th landmark laws
     (re.compile(r'\binfrastructure investment and jobs act\b', re.I), 'Infrastructure Investment and Jobs Act'),
-    (re.compile(r'\bchips (?:and science )?act\b', re.I), 'CHIPS and Science Act'),
+    (re.compile(r'\bbipartisan infrastructure (?:law|deal|framework)\b', re.I), 'Infrastructure Investment and Jobs Act'),
+    (re.compile(r'\binflation reduction act\b', re.I), 'Inflation Reduction Act'),
+    (re.compile(r'\bbuild back better\b', re.I), 'Build Back Better Act'),
+    (re.compile(r'\bchips\b[\s+&/.,-]{0,4}(?:and\s+|for\s+america\s+)?science\b', re.I), 'CHIPS and Science Act'),
+    (re.compile(r'\bchips act\b', re.I), 'CHIPS and Science Act'),
+    (re.compile(r'\bamerican rescue plan\b', re.I), 'American Rescue Plan Act'),
+    (re.compile(r'\bfamilies first coronavirus\b', re.I), 'Families First Coronavirus Response Act'),
+    (re.compile(r'\bheroes act\b', re.I), 'Heroes Act'),
+    (re.compile(r'\b(?:u\.?s\.?|united states) innovation and competition act\b', re.I), 'U.S. Innovation and Competition Act'),
+    (re.compile(r'\bamerica competes act\b', re.I), 'America COMPETES Act'),
+    (re.compile(r'\bfor the people act\b', re.I), 'For the People Act'),
+    # 116th
+    (re.compile(r'\bcoronavirus aid,? relief,? and economic security\b', re.I), 'CARES Act'),
+    (re.compile(r'\bcares act\b', re.I), 'CARES Act'),
+    # 115th
+    (re.compile(r'\btax cuts (?:and|&) jobs act\b', re.I), 'Tax Cuts and Jobs Act'),
+    # Unambiguous short-form truncations (only one federal law each matches)
+    (re.compile(r'^science act$', re.I), 'CHIPS and Science Act'),
+    (re.compile(r'\binnovation and competition act of 2021\b', re.I), 'U.S. Innovation and Competition Act'),
+    (re.compile(r'^competition act of 2021$', re.I), 'U.S. Innovation and Competition Act'),
+    (re.compile(r'^competes act$', re.I), 'America COMPETES Act'),
 ]
 
-# Congress-scoped numbers and public-law numbers that are the same law as a
-# named act above.
+# Generic truncations that map to several different laws depending on context
+# ("Jobs Act" = Tax Cuts and Jobs / IIJA / American Jobs / American Innovation
+# and Jobs; "America Act" = INVEST in America / Made in America / CHIPS for
+# America / …). They carry no identity on their own and, in the data, almost
+# always co-occur with the real bill number or full name on the same activity,
+# so they are dropped as noise rather than misattributed.
+LEGISLATION_DROP_FRAGMENTS = {
+    'jobs act', 'america act', 'competes', 'act', 'bill', 'legislation',
+    'appropriations', 'appropriations act', 'reconciliation', 'reconciliation act',
+    'tax act', 'energy act', 'health act', 'defense act', 'budget act',
+}
+
+# Congress-scoped bill numbers and public-law numbers that are the same law as
+# a named act above. Kept deliberately to landmark, unambiguous laws; recurring
+# titles (appropriations, NDAA) stay as scoped numbers since their bare names
+# are year-ambiguous. NOTE: H.R. 5376 (117th) is intentionally absent — it was
+# the vehicle for BOTH Build Back Better and the Inflation Reduction Act, so the
+# bare number is genuinely ambiguous; only the enacted P.L. 117-169 maps to IRA.
 LEGISLATION_ALIASES = {
+    # One Big Beautiful Bill Act (119th)
     'H.R. 1 (119th Congress)': 'One Big Beautiful Bill Act',
     'P.L. 119-21': 'One Big Beautiful Bill Act',
+    # Lower Energy Costs Act (118th) / For the People Act (117th) — H.R. 1 reuse
     'H.R. 1 (118th Congress)': 'Lower Energy Costs Act',
     'H.R. 1 (117th Congress)': 'For the People Act',
+    # Fiscal Responsibility Act of 2023 (118th)
+    'H.R. 3746 (118th Congress)': 'Fiscal Responsibility Act of 2023',
+    'P.L. 118-5': 'Fiscal Responsibility Act of 2023',
+    # Inflation Reduction Act (117th) — enacted P.L. only
+    'P.L. 117-169': 'Inflation Reduction Act',
+    # Infrastructure Investment and Jobs Act (117th)
+    'H.R. 3684 (117th Congress)': 'Infrastructure Investment and Jobs Act',
+    'P.L. 117-58': 'Infrastructure Investment and Jobs Act',
+    # CHIPS and Science Act (117th)
+    'H.R. 4346 (117th Congress)': 'CHIPS and Science Act',
+    'P.L. 117-167': 'CHIPS and Science Act',
+    # American Rescue Plan Act (117th)
+    'H.R. 1319 (117th Congress)': 'American Rescue Plan Act',
+    'P.L. 117-2': 'American Rescue Plan Act',
+    # U.S. Innovation and Competition Act / America COMPETES (117th)
+    'S. 1260 (117th Congress)': 'U.S. Innovation and Competition Act',
+    'H.R. 4521 (117th Congress)': 'America COMPETES Act',
+    # CARES Act & Families First (116th)
+    'H.R. 748 (116th Congress)': 'CARES Act',
+    'P.L. 116-136': 'CARES Act',
+    'H.R. 6201 (116th Congress)': 'Families First Coronavirus Response Act',
+    'P.L. 116-127': 'Families First Coronavirus Response Act',
+    'H.R. 6800 (116th Congress)': 'Heroes Act',
+    # Tax Cuts and Jobs Act (115th)
     'H.R. 1 (115th Congress)': 'Tax Cuts and Jobs Act',
     'P.L. 115-97': 'Tax Cuts and Jobs Act',
-    'P.L. 117-169': 'Inflation Reduction Act',
-    'H.R. 5376 (117th Congress)': 'Inflation Reduction Act',
-    'P.L. 117-58': 'Infrastructure Investment and Jobs Act',
-    'P.L. 117-167': 'CHIPS and Science Act',
 }
 
 
@@ -154,6 +214,10 @@ def normalize_legislation(value: str, year: int | None = None) -> str:
     for pattern, canonical in KNOWN_ACT_PATTERNS:
         if pattern.search(tag):
             return canonical
+
+    # 2) Generic truncation fragments carry no identity — drop as noise.
+    if tag.lower().strip(' .,;:') in LEGISLATION_DROP_FRAGMENTS:
+        return ''
 
     # Explicit qualifiers override the filing year for number scoping.
     scope_year = year
