@@ -23,6 +23,7 @@ jobs:
       contents: write        # create the branch/commit
       pull-requests: write   # open the PR
       issues: write
+      id-token: write        # claude-code-action mints its GitHub token via OIDC
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
