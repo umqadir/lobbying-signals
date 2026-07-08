@@ -646,24 +646,18 @@ function partialTrailingCount(quarters) {
     return Math.min(count, quarters.length - 1); // never flag every quarter
 }
 
-function buildTrendSeries(item, mode, windowKey) {
-    // One 3-point trajectory for every category: year-ago → prior window → now.
-    // These points align with the current/baseline bands the chart draws, so the
-    // line always spans the full width and the dot lands in the "now" band at the
-    // real current-window value. (Topics used to use raw quarterly series here,
-    // but quarterly points don't map onto 90/30-day windows — that mismatch left
-    // the line ending mid-chart with a gap before "now". Quarter-level history
-    // still lives in the detail drawer's bar chart.)
-    const todayMs = dataAsOfDate().getTime();
-    const days = windowKey === "30d" ? 30 : 90;
-    const DAY_MS = 86400000;
-    const yoyMid = todayMs - 365 * DAY_MS - (days / 2) * DAY_MS;
-    const prevMid = todayMs - (days * 1.5) * DAY_MS;
-    const nowMid = todayMs - (days / 2) * DAY_MS;
+function buildTrendSeries(item, compareKey, bands) {
+    // Two points — one per shaded band: the baseline period on the left and the
+    // current window ("now") on the right, each anchored to its band's center so
+    // the line's endpoints line up exactly with the bands and their labels. The
+    // baseline follows the compare mode (year-ago vs prior window). A third
+    // mid-line point would float between the two bands with nothing under it, so
+    // the chart stays a clean two-period slope; quarter-level history lives in the
+    // detail drawer's bar chart.
+    const baseVal = compareKey === "yoy" ? toNum(item.yoy_count) : toNum(item.prev_count);
     return [
-        { x: yoyMid,  y: toNum(item.yoy_count) },
-        { x: prevMid, y: toNum(item.prev_count) },
-        { x: nowMid,  y: toNum(item.count) }
+        { x: (bands.baseStart + bands.baseEnd) / 2, y: baseVal },
+        { x: (bands.currentStart + bands.currentEnd) / 2, y: toNum(item.count) }
     ];
 }
 
@@ -694,8 +688,9 @@ function makeTrendChart(item, mode, windowKey, compareKey, options = {}) {
     const labelColor = getCSSVar("--ink-3", "#7a7565");
     const valueColor = getCSSVar("--ink-2", "#4a4a4a");
 
-    const series = buildTrendSeries(item, mode, windowKey);
-    const { currentStart, currentEnd, baseStart, baseEnd } = periodBands(windowKey, compareKey);
+    const period = periodBands(windowKey, compareKey);
+    const { currentStart, currentEnd, baseStart, baseEnd } = period;
+    const series = buildTrendSeries(item, compareKey, period);
 
     const xMin = Math.min(series[0].x, baseStart);
     const xMax = currentEnd;
