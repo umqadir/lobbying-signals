@@ -113,6 +113,42 @@ Coverage levels:
   - `relaxed`: code-matched single-keyword evidence for broad-but-reasonable assignment
   - `fallback`: broad `general_*` label derived from LDA `issue_code` when no strict/relaxed topic is found
 
+## Monthly alias review (Claude)
+
+Legislation tags are normalized into stable identities by `normalize_legislation`
+in `08_trends.py` — folding a law's name, bill number, and public-law number into
+one entity and scoping bare bill numbers to their Congress. The landmark-law alias
+table is hand-maintained, so `.github/workflows/legislation-review.yml` runs a
+monthly audit and has Claude propose additions:
+
+1. `scripts/audit_legislation_aliases.py` scans every legislation tag and reports
+   the highest-volume identities left unmapped (and the largest tags dropped as
+   noise, to catch a real law being discarded).
+2. The Claude Code GitHub Action reviews that report, researches each candidate,
+   and opens a PR adding well-established mappings plus test cases — leaving
+   year-ambiguous titles (appropriations, NDAAs) and shared-vehicle bill numbers
+   unmapped on purpose.
+
+This runs through a **Claude Pro/Max subscription, not the metered API**. One-time
+setup (repo admin):
+
+```bash
+# 1. Install the Claude GitHub App on this repo
+open https://github.com/apps/claude
+
+# 2. Generate a subscription-scoped token (opens a browser auth flow)
+claude setup-token
+
+# 3. Add the printed token as a repository secret
+gh secret set CLAUDE_CODE_OAUTH_TOKEN --body '<token from step 2>'
+```
+
+Trigger a run manually with **Actions → Monthly Legislation Alias Review → Run
+workflow** once the secret is set. The audit script is also runnable locally:
+`python scripts/audit_legislation_aliases.py` (needs `data/filings.db`).
+
+Regression guard: `python scripts/test_normalize_legislation.py` (45 cases).
+
 ## Database
 
 SQLite database stored in GitHub Releases (not in repo due to size). Contains:

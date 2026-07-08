@@ -1,0 +1,94 @@
+name: Monthly Legislation Alias Review
+
+# Once a month, audit the legislation tag distribution and have Claude research
+# the highest-volume unmapped bills, then open a PR adding well-established
+# name/number/public-law mappings to the normalizer. Runs through a Claude
+# Pro/Max subscription (CLAUDE_CODE_OAUTH_TOKEN), NOT the metered API.
+#
+# One-time setup (see README "Monthly alias review"):
+#   1. Install the Claude GitHub App: https://github.com/apps/claude
+#   2. Generate a subscription token locally:  claude setup-token
+#   3. Add it as repo secret CLAUDE_CODE_OAUTH_TOKEN
+# Until the secret exists the Claude step fails; the audit step still runs.
+
+on:
+  schedule:
+    - cron: '0 12 1 * *'   # 12:00 UTC on the 1st of each month
+  workflow_dispatch:        # allow manual runs (use after adding the secret)
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # create the branch/commit
+      pull-requests: write   # open the PR
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          uv venv --python 3.12
+          uv pip install --python .venv/bin/python -r requirements.txt
+
+      - name: Download database from release
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          gh release download data --pattern 'filings.db' -D data/
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build alias audit report
+        run: |
+          uv run python scripts/audit_legislation_aliases.py \
+            --min-mentions 1500 --top 40 --out legislation_audit_report.md
+          echo '----- report -----'
+          cat legislation_audit_report.md
+
+      - name: Claude reviews the audit and proposes alias updates
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: '--max-turns 30 --model claude-opus-4-8'
+          prompt: |
+            You are doing this repo's monthly legislation-alias review.
+
+            Read `legislation_audit_report.md` (already generated in the repo root)
+            and `08_trends.py`. The report lists the highest-volume legislation
+            identities the normalizer currently leaves UNMAPPED (bills cited mostly
+            by number, or titled acts not yet canonicalized), plus the largest tags
+            dropped as noise.
+
+            For each high-volume unmapped identity, research whether it is a
+            well-established federal law with name / bill-number / public-law
+            variants that should fold into ONE identity. When — and ONLY when — you
+            are confident of the mapping (a landmark or clearly-named public law),
+            add it to `LEGISLATION_ALIASES` and/or `KNOWN_ACT_PATTERNS` in
+            `08_trends.py`, and add a matching assertion to
+            `scripts/test_normalize_legislation.py`.
+
+            Hard rules:
+            - Do NOT map recurring, year-ambiguous titles (appropriations acts,
+              NDAAs) from a bare name — leave those as scoped numbers.
+            - Do NOT fold a bill number that served two different laws (e.g.
+              H.R. 5376 in the 117th Congress was both Build Back Better and the
+              Inflation Reduction Act) — leave such numbers unmapped and say so.
+            - Scope every bill-number alias to its Congress, matching the existing
+              entries' exact format, e.g. `'H.R. 133 (116th Congress)'`.
+            - Confirm the "dropped as noise" list contains only genuinely ambiguous
+              fragments; if a real law is being dropped, fix the rule instead.
+
+            Then run `python scripts/test_normalize_legislation.py` and make sure all
+            cases pass. Open ONE pull request with the changes, titled
+            "Monthly legislation alias review", whose description lists each mapping
+            you added with a one-line justification and citation, and explicitly
+            names any high-volume identities you deliberately left unmapped and why.
+            If nothing meets the confidence bar, open no PR and say so.

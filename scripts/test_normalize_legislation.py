@@ -78,6 +78,22 @@ CASES = [
     # A bare number with no known mapping keeps its Congress scope
     ("H.R. 7148", 2026, "H.R. 7148 (119th Congress)"),
     ("H.R. 2670 (118th Congress)", 2024, "H.R. 2670 (118th Congress)"),
+
+    # CARES truncation + Affordable Care Act canonicalization (audit-surfaced)
+    ("Economic Security Act", 2020, "CARES Act"),
+    ("Coronavirus Aid, Response, and Economic Security Act", 2020, "CARES Act"),
+    ("Affordable Care Act", 2024, "Affordable Care Act"),
+    ("Patient Protection and Affordable Care Act", 2024, "Affordable Care Act"),
+
+    # A leading article must not drop a real titled act (was a bug)
+    ("the Equality Act", 2023, "Equality Act"),
+    ("The Safe Banking Act", 2022, "Safe Banking Act"),
+    ("the National Defense Authorization Act", 2024, "National Defense Authorization Act"),
+
+    # Bare articles / conjunctions still drop as noise
+    ("the", 2023, ""),
+    ("an act", 2023, ""),
+    ("and extensions", 2023, ""),
 ]
 
 

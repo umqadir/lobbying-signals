@@ -112,8 +112,11 @@ KNOWN_ACT_PATTERNS = [
     (re.compile(r'\bamerica competes act\b', re.I), 'America COMPETES Act'),
     (re.compile(r'\bfor the people act\b', re.I), 'For the People Act'),
     # 116th
-    (re.compile(r'\bcoronavirus aid,? relief,? and economic security\b', re.I), 'CARES Act'),
+    (re.compile(r'\bcoronavirus aid,? (?:relief|response),? and economic security\b', re.I), 'CARES Act'),
     (re.compile(r'\bcares act\b', re.I), 'CARES Act'),
+    (re.compile(r'^economic security act$', re.I), 'CARES Act'),  # common truncation
+    (re.compile(r'\baffordable care act\b', re.I), 'Affordable Care Act'),
+    (re.compile(r'\bpatient protection and affordable care\b', re.I), 'Affordable Care Act'),
     # 115th
     (re.compile(r'\btax cuts (?:and|&) jobs act\b', re.I), 'Tax Cuts and Jobs Act'),
     # Unambiguous short-form truncations (only one federal law each matches)
@@ -205,6 +208,9 @@ def normalize_legislation(value: str, year: int | None = None) -> str:
     tag = re.sub(r'\s+', ' ', tag).strip(' ,;:.()[]{}')
     tag = re.sub(r'^(?:issues?\s+related\s+to\s+)(?:the\s+)?', '', tag, flags=re.IGNORECASE).strip()
     tag = re.sub(r'^(?:related\s+to\s+)(?:the\s+)?', '', tag, flags=re.IGNORECASE).strip()
+    # Strip a leading article so "the Equality Act" folds with "Equality Act"
+    # rather than being dropped by the bare-article noise rule below.
+    tag = re.sub(r'^(?:the|an?)\s+', '', tag, flags=re.IGNORECASE).strip()
     tag = re.sub(r'^year\s+(continuing appropriations and extensions)$', r'\1', tag, flags=re.IGNORECASE)
     tag = tag.strip(' ,;:.()[]{}')
     if not tag:
@@ -265,7 +271,7 @@ def normalize_legislation(value: str, year: int | None = None) -> str:
     lower = tag.lower()
     if lower in LEGISLATION_NOISE_EXACT:
         return ''
-    if lower.startswith('and ') or lower.startswith('an ') or lower.startswith('the '):
+    if lower.startswith('and '):  # leftover conjunction fragment ("and extensions")
         return ''
     if lower.endswith(' and extensions') and 'appropriations' not in lower:
         return ''
