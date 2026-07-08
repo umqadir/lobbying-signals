@@ -135,6 +135,45 @@ function dataAsOfDate() {
     return parseDate(state.stats?.date_range?.end) || parseDate(state.stats?.generated_at) || new Date();
 }
 
+function coverageStartDate() {
+    return parseDate(state.stats?.date_range?.start);
+}
+
+/* "vs year ago" only means something when the year-ago baseline window falls
+   inside tracked coverage. If tracking started later than that window, every
+   yoy baseline is an artificial zero: every item reads "first time", the
+   share-delta ranking degrades to plain size, and every trend line is the same
+   0-to-now diagonal. This re-enables itself once a full year has accumulated. */
+function yoySupported(windowKey) {
+    const start = coverageStartDate();
+    if (!start) return true; // no coverage info — trust the data
+    const days = windowKey === "30d" ? 30 : 90;
+    const DAY_MS = 86400000;
+    const baseStart = dataAsOfDate().getTime() - (365 + days) * DAY_MS;
+    return start.getTime() <= baseStart;
+}
+
+function defaultCompare(windowKey) {
+    return yoySupported(windowKey) ? "yoy" : "prev";
+}
+
+/* Keep the compare toggle honest: disable "vs year ago" (with an explanation)
+   while coverage can't back it, and repair state if it points at it. */
+function resolveCompareMode() {
+    const seg = document.getElementById("compare-seg");
+    if (!seg) return;
+    const yoyBtn = seg.querySelector('[data-compare="yoy"]');
+    const ok = yoySupported(state.view.window);
+    if (!ok && state.view.compare === "yoy") state.view.compare = "prev";
+    if (yoyBtn) {
+        yoyBtn.disabled = !ok;
+        yoyBtn.title = ok ? "" :
+            `Needs a year of history — tracking started ${fmtMonthDayYear(coverageStartDate())}.`;
+    }
+    seg.querySelectorAll(".seg-btn").forEach(x =>
+        x.classList.toggle("active", x.dataset.compare === state.view.compare));
+}
+
 function dateMinusDays(date, days) {
     const d = new Date(date.getTime());
     d.setDate(d.getDate() - days);
@@ -366,8 +405,10 @@ function renderHero() {
 
     // Compose a one-line synthesis: pick top movers from different categories,
     // with positive deltas, deduped by canonical name.
-    const allMovers = buildMovers("all", "90d", "yoy")
-        .filter(m => m.share_delta_yoy_pp > 0 && m.count >= 100);
+    const heroCmp = defaultCompare("90d");
+    const heroDeltaKey = heroCmp === "yoy" ? "share_delta_yoy_pp" : "share_delta_prev_pp";
+    const allMovers = buildMovers("all", "90d", heroCmp)
+        .filter(m => m[heroDeltaKey] > 0 && m.count >= 100);
     const seenCats = new Set();
     const picks = [];
     for (const m of allMovers) {
@@ -716,10 +757,9 @@ function makeTrendChart(item, mode, windowKey, compareKey, options = {}) {
         <rect x="${currX.toFixed(1)}" y="${bandTop}" width="${currW.toFixed(1)}" height="${bandH}" fill="${accent}" fill-opacity="0.14"/>
     `;
 
-    // ─ Area + line
-    const ground = (padT + plotH).toFixed(1);
+    // ─ Line (no area fill: stacking a fill over the period bands produced a
+    // second, unexplained shade on one side of the endpoint dot)
     const linePts = series.map(p => `${xS(p.x).toFixed(1)},${yS(p.y).toFixed(1)}`);
-    const area = `<polygon points="${xS(series[0].x).toFixed(1)},${ground} ${linePts.join(" ")} ${xS(series[series.length-1].x).toFixed(1)},${ground}" fill="${accent}" fill-opacity="0.07"/>`;
     const line = `<polyline points="${linePts.join(" ")}" fill="none" stroke="${accent}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>`;
 
     // ─ Latest point: halo + dot + value label
@@ -740,7 +780,7 @@ function makeTrendChart(item, mode, windowKey, compareKey, options = {}) {
         <text x="${currLabelX.toFixed(1)}" y="${labelY}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${accent}" font-weight="500" letter-spacing="0.05em">now</text>
     `;
 
-    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="trend-svg">${bands}${area}${line}${halo}${dot}${valLabel}${labels}</svg>`;
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="trend-svg">${bands}${line}${halo}${dot}${valLabel}${labels}</svg>`;
 }
 
 /* ─── Detail chart ─── */
@@ -1440,6 +1480,7 @@ function bindControls() {
             state.view.window = b.dataset.window;
             document.querySelectorAll("#window-seg .seg-btn").forEach(x =>
                 x.classList.toggle("active", x === b));
+            resolveCompareMode(); // yoy support depends on the window length
             renderHero();
             renderMovers();
             paletteIndex = null;
@@ -1577,6 +1618,7 @@ async function init() {
     }
 
     bindControls();
+    resolveCompareMode();
     renderHero();
     renderMovers();
 

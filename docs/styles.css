@@ -353,6 +353,13 @@ input { font: inherit; color: inherit; }
     color: var(--bg);
 }
 
+.seg-btn:disabled {
+    color: var(--ink-4);
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+.seg-btn:disabled:hover { color: var(--ink-4); }
+
 @media (prefers-color-scheme: dark) {
     .seg-btn.active { background: var(--ink); color: var(--bg); }
 }
