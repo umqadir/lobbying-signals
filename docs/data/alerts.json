@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-14T11:55:23.406304",
+  "generated_at": "2026-07-15T11:35:49.599032",
   "alerts": [
     {
       "type": "signal",
       "category": "legislation",
       "name": "Consolidated Appropriations Act",
-      "current_count": 544,
-      "prev_count": 172,
-      "yoy_count": 169,
-      "share_delta_yoy_pp": 1.015,
-      "share_delta_prev_pp": 1.061,
+      "current_count": 524,
+      "prev_count": 186,
+      "yoy_count": 157,
+      "share_delta_yoy_pp": 0.998,
+      "share_delta_prev_pp": 1.001,
       "signal_confidence": "high",
       "top_clients": [
         "HERBERT J. THOMAS MEMORIAL HOSPITAL ASSOCIATION (FKA THOMAS HEALTH)",
@@ -18,118 +18,98 @@
         "CITY OF HILLSBORO",
         "NATIONAL ASSOCIATION OF CHAIN DRUG STORES"
       ],
-      "total_income": 79217422.07,
-      "headline": "Consolidated Appropriations Act share up 1.06 pp vs prior period (544 mentions)"
+      "total_income": 76994771.07,
+      "headline": "Consolidated Appropriations Act share up 1.00 pp vs prior period (524 mentions)"
     },
     {
       "type": "signal",
-      "category": "entity",
-      "name": "HHS",
-      "current_count": 2468,
-      "prev_count": 3818,
-      "yoy_count": 2794,
-      "share_delta_yoy_pp": 0.972,
-      "share_delta_prev_pp": 0.276,
+      "category": "topic",
+      "name": "Housing Policy",
+      "current_count": 1393,
+      "prev_count": 2022,
+      "yoy_count": 1580,
+      "share_delta_yoy_pp": 0.428,
+      "share_delta_prev_pp": 0.225,
       "signal_confidence": "high",
       "top_clients": [
-        "NATIONAL DISABILITY RIGHTS NETWORK",
-        "AMERICAN PHYSICAL THERAPY ASSOCIATION",
-        "NOVARTIS",
-        "GATEWAYS HOSPITAL & MENTAL HEALTH CENTER FOUNDATION",
-        "AARP"
+        "NATIONAL ASSOCIATION OF REALTORS",
+        "MORTGAGE BANKERS ASSOCIATION",
+        "REAL ESTATE ROUNDTABLE",
+        "YWCA USA",
+        "U.S. MORTGAGE INSURERS"
       ],
-      "total_income": 288208694.0,
-      "headline": "HHS attention up 0.97 pp vs year-ago period (2468 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "domain",
-      "name": "Industry and Business",
-      "current_count": 3013,
-      "prev_count": 4748,
-      "yoy_count": 3827,
-      "share_delta_yoy_pp": 0.441,
-      "share_delta_prev_pp": 0.207,
-      "signal_confidence": "high",
-      "top_clients": [
-        "ALTRIA CLIENT SERVICES LLC",
-        "WASHINGTON STATE UNIVERSITY",
-        "RAI SERVICES COMPANY",
-        "NATIONAL BEER WHOLESALERS ASSOCIATION",
-        "COW CREEK BAND OF UMPQUA TRIBE OF INDIANS"
-      ],
-      "total_income": 428669283.5,
-      "headline": "Industry and Business domain share up 0.44 pp vs year-ago period (3013 mentions)"
+      "total_income": 200993232.77,
+      "headline": "'Housing Policy' share up 0.43 pp vs year-ago period (1393 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "FDA",
-      "current_count": 1076,
-      "prev_count": 1571,
-      "yoy_count": 1229,
-      "share_delta_yoy_pp": 0.404,
+      "current_count": 1053,
+      "prev_count": 1472,
+      "yoy_count": 1167,
+      "share_delta_yoy_pp": 0.376,
       "share_delta_prev_pp": 0.26,
       "signal_confidence": "high",
       "top_clients": [
         "RAI SERVICES COMPANY",
         "NATIONAL FISHERIES INSTITUTE",
         "ALTRIA CLIENT SERVICES LLC",
-        "UNIVERSITY OF IDAHO",
-        "PMI US CORPORATE SERVICES INC."
+        "INSTITUTE OF FOOD TECHNOLOGISTS",
+        "UNIVERSITY OF IDAHO"
       ],
-      "total_income": 216538472.77,
-      "headline": "FDA attention up 0.40 pp vs year-ago period (1076 mentions)"
+      "total_income": 209685308.77,
+      "headline": "FDA attention up 0.38 pp vs year-ago period (1053 mentions)"
     },
     {
       "type": "signal",
       "category": "legislation",
       "name": "One Big Beautiful Bill Act",
-      "current_count": 1962,
-      "prev_count": 4511,
-      "yoy_count": 465,
-      "share_delta_yoy_pp": 3.921,
-      "share_delta_prev_pp": -1.985,
+      "current_count": 1913,
+      "prev_count": 4149,
+      "yoy_count": 551,
+      "share_delta_yoy_pp": 3.685,
+      "share_delta_prev_pp": -1.88,
       "signal_confidence": "medium",
       "top_clients": [
         "NETWORK",
         "THE UNIVERSITY OF FLORIDA BOARD OF TRUSTEES",
         "MICROSOFT CORPORATION",
         "CHAMBER OF COMMERCE OF THE U.S.A.",
-        "TRAVERE THERAPEUTICS"
+        "NATIONAL ASSOCIATION OF SOCIAL WORKERS"
       ],
-      "total_income": 369278871.0,
-      "headline": "One Big Beautiful Bill Act share up 3.92 pp vs year-ago period (1962 mentions)"
+      "total_income": 366140719.0,
+      "headline": "One Big Beautiful Bill Act share up 3.69 pp vs year-ago period (1913 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Executive Office of the President",
-      "current_count": 1812,
-      "prev_count": 2900,
-      "yoy_count": 1506,
-      "share_delta_yoy_pp": 1.691,
-      "share_delta_prev_pp": 0.058,
+      "current_count": 1814,
+      "prev_count": 2710,
+      "yoy_count": 1449,
+      "share_delta_yoy_pp": 1.722,
+      "share_delta_prev_pp": 0.17,
       "signal_confidence": "medium",
       "top_clients": [
         "NATIONAL DISABILITY RIGHTS NETWORK",
         "LARGE PUBLIC POWER COUNCIL",
         "CROPLIFE AMERICA",
         "MICROSOFT CORPORATION",
-        "INTERNATIONAL ASSOCIATION OF FIRE FIGHTERS"
+        "ALBEMARLE CORPORATION"
       ],
-      "total_income": 260552546.29,
-      "headline": "Executive Office of the President attention up 1.69 pp vs year-ago period (1812 mentions)"
+      "total_income": 252399739.29,
+      "headline": "Executive Office of the President attention up 1.72 pp vs year-ago period (1814 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Treasury",
-      "current_count": 2091,
-      "prev_count": 3319,
-      "yoy_count": 1906,
-      "share_delta_yoy_pp": 1.65,
-      "share_delta_prev_pp": 0.108,
+      "current_count": 2057,
+      "prev_count": 3181,
+      "yoy_count": 1805,
+      "share_delta_yoy_pp": 1.643,
+      "share_delta_prev_pp": 0.021,
       "signal_confidence": "medium",
       "top_clients": [
         "STATE OF LOC NATION GLOBAL PUBLIC BENEFIT CORPORATION",
@@ -138,18 +118,18 @@
         "MORTGAGE BANKERS ASSOCIATION",
         "PHILANTHROPY ROUNDTABLE"
       ],
-      "total_income": 423132798.10999995,
-      "headline": "Treasury attention up 1.65 pp vs year-ago period (2091 mentions)"
+      "total_income": 412213800.10999995,
+      "headline": "Treasury attention up 1.64 pp vs year-ago period (2057 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Department of Commerce",
-      "current_count": 2241,
-      "prev_count": 3882,
-      "yoy_count": 2210,
-      "share_delta_yoy_pp": 1.469,
-      "share_delta_prev_pp": -0.37,
+      "current_count": 2208,
+      "prev_count": 3667,
+      "yoy_count": 2112,
+      "share_delta_yoy_pp": 1.429,
+      "share_delta_prev_pp": -0.38,
       "signal_confidence": "medium",
       "top_clients": [
         "CHAMBER OF COMMERCE OF THE U.S.A.",
@@ -158,118 +138,98 @@
         "CROPLIFE AMERICA",
         "BLUEFORS INC."
       ],
-      "total_income": 413638676.59,
-      "headline": "Department of Commerce attention up 1.47 pp vs year-ago period (2241 mentions)"
+      "total_income": 404533569.59,
+      "headline": "Department of Commerce attention up 1.43 pp vs year-ago period (2208 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "White House",
-      "current_count": 2864,
-      "prev_count": 4910,
-      "yoy_count": 3087,
-      "share_delta_yoy_pp": 1.406,
-      "share_delta_prev_pp": -0.396,
+      "current_count": 2788,
+      "prev_count": 4710,
+      "yoy_count": 2876,
+      "share_delta_yoy_pp": 1.405,
+      "share_delta_prev_pp": -0.607,
       "signal_confidence": "medium",
       "top_clients": [
         "NATIONAL DISABILITY RIGHTS NETWORK",
+        "COALITION ON HUMAN NEEDS",
         "LEAGUE OF WOMEN VOTERS OF THE U.S.",
         "AGRICULTURAL RETAILERS ASSOCIATION",
-        "AMERICAN SOYBEAN ASSOCIATION",
-        "INFORMATION TECHNOLOGY INDUSTRY COUNCIL"
+        "AMERICAN SOYBEAN ASSOCIATION"
       ],
-      "total_income": 377990572.17999995,
-      "headline": "White House attention up 1.41 pp vs year-ago period (2864 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "legislation",
-      "name": "H.R. 7148 (119th Congress)",
-      "current_count": 491,
-      "prev_count": 115,
-      "yoy_count": 0,
-      "share_delta_yoy_pp": 1.19,
-      "share_delta_prev_pp": 1.018,
-      "signal_confidence": "medium",
-      "top_clients": [
-        "UNIVERSITY OF IDAHO",
-        "ZERO EMISSION TRANSPORTATION ASSOCIATION",
-        "NATIONAL ASSOCIATION OF GOVERNMENT GUARANTEED LENDERS INC",
-        "L3HARRIS TECHNOLOGIES INC",
-        "HAWKEYE 360 INC."
-      ],
-      "total_income": 114086232.0,
-      "headline": "H.R. 7148 (119th Congress) share up 1.19 pp vs year-ago period (491 mentions)"
+      "total_income": 372239695.17999995,
+      "headline": "White House attention up 1.41 pp vs year-ago period (2788 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "House of Representatives",
-      "current_count": 37571,
-      "prev_count": 60225,
-      "yoy_count": 51568,
-      "share_delta_yoy_pp": -1.4,
-      "share_delta_prev_pp": 1.062,
+      "current_count": 36761,
+      "prev_count": 56300,
+      "yoy_count": 48338,
+      "share_delta_yoy_pp": -1.407,
+      "share_delta_prev_pp": 1.25,
       "signal_confidence": "medium",
       "top_clients": [
         "MICROSOFT CORPORATION",
+        "COALITION ON HUMAN NEEDS",
         "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
         "GOOGLE CLIENT SERVICES LLC",
-        "WASHINGTON STATE UNIVERSITY",
-        "ALTRIA CLIENT SERVICES LLC"
+        "WASHINGTON STATE UNIVERSITY"
       ],
-      "total_income": 1483115185.7699997,
-      "headline": "House of Representatives attention down 1.40 pp vs year-ago period (37571 mentions)"
+      "total_income": 1443076844.77,
+      "headline": "House of Representatives attention down 1.41 pp vs year-ago period (36761 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "legislation",
+      "name": "H.R. 7148 (119th Congress)",
+      "current_count": 456,
+      "prev_count": 154,
+      "yoy_count": 0,
+      "share_delta_yoy_pp": 1.13,
+      "share_delta_prev_pp": 0.884,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "UNIVERSITY OF IDAHO",
+        "ZERO EMISSION TRANSPORTATION ASSOCIATION",
+        "L3HARRIS TECHNOLOGIES INC",
+        "HAWKEYE 360 INC.",
+        "UNIVERSITY OF CALIFORNIA"
+      ],
+      "total_income": 107186822.0,
+      "headline": "H.R. 7148 (119th Congress) share up 1.13 pp vs year-ago period (456 mentions)"
     },
     {
       "type": "signal",
       "category": "domain",
-      "name": "Trade",
-      "current_count": 2653,
-      "prev_count": 4333,
-      "yoy_count": 3030,
-      "share_delta_yoy_pp": 0.997,
-      "share_delta_prev_pp": -0.045,
+      "name": "Government and Budget",
+      "current_count": 5878,
+      "prev_count": 8493,
+      "yoy_count": 7664,
+      "share_delta_yoy_pp": -0.1,
+      "share_delta_prev_pp": 1.012,
       "signal_confidence": "medium",
       "top_clients": [
-        "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
-        "DIGITALEUROPE",
-        "THE FRIEDKIN GROUP, INC.",
-        "FEDEX CORPORATION",
-        "ALTRIA CLIENT SERVICES LLC"
+        "GENERAL DYNAMICS",
+        "COALITION ON HUMAN NEEDS",
+        "NATIONAL AIR TRAFFIC CONTROLLERS ASSOCIATION",
+        "NATIONAL BEER WHOLESALERS ASSOCIATION",
+        "ACCENTURE FEDERAL SERVICES LLC"
       ],
-      "total_income": 517094663.65999997,
-      "headline": "Trade domain share up 1.00 pp vs year-ago period (2653 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "entity",
-      "name": "Senate",
-      "current_count": 37083,
-      "prev_count": 59522,
-      "yoy_count": 50913,
-      "share_delta_yoy_pp": -1.408,
-      "share_delta_prev_pp": 0.93,
-      "signal_confidence": "medium",
-      "top_clients": [
-        "GOOGLE CLIENT SERVICES LLC",
-        "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
-        "MICROSOFT CORPORATION",
-        "WASHINGTON STATE UNIVERSITY",
-        "ALTRIA CLIENT SERVICES LLC"
-      ],
-      "total_income": 1476845228.7699997,
-      "headline": "Senate attention down 1.41 pp vs year-ago period (37083 mentions)"
+      "total_income": 581895411.6,
+      "headline": "Government and Budget domain share up 1.01 pp vs prior period (5878 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "USTR",
-      "current_count": 1245,
-      "prev_count": 2141,
-      "yoy_count": 1168,
-      "share_delta_yoy_pp": 0.923,
-      "share_delta_prev_pp": -0.182,
+      "current_count": 1233,
+      "prev_count": 2018,
+      "yoy_count": 1095,
+      "share_delta_yoy_pp": 0.96,
+      "share_delta_prev_pp": -0.165,
       "signal_confidence": "medium",
       "top_clients": [
         "SIERRA CLUB",
@@ -278,78 +238,158 @@
         "MEAT INSTITUTE",
         "DIGITALEUROPE"
       ],
-      "total_income": 298251889.59,
-      "headline": "USTR attention up 0.92 pp vs year-ago period (1245 mentions)"
+      "total_income": 288254454.59,
+      "headline": "USTR attention up 0.96 pp vs year-ago period (1233 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "entity",
+      "name": "Senate",
+      "current_count": 36252,
+      "prev_count": 55699,
+      "yoy_count": 47662,
+      "share_delta_yoy_pp": -1.375,
+      "share_delta_prev_pp": 0.948,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "COALITION ON HUMAN NEEDS",
+        "GOOGLE CLIENT SERVICES LLC",
+        "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
+        "WASHINGTON STATE UNIVERSITY",
+        "MICROSOFT CORPORATION"
+      ],
+      "total_income": 1435659887.77,
+      "headline": "Senate attention down 1.38 pp vs year-ago period (36252 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "domain",
+      "name": "Trade",
+      "current_count": 2598,
+      "prev_count": 4075,
+      "yoy_count": 2876,
+      "share_delta_yoy_pp": 0.934,
+      "share_delta_prev_pp": -0.065,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
+        "DIGITALEUROPE",
+        "FEDEX CORPORATION",
+        "ALTRIA CLIENT SERVICES LLC",
+        "ALIBABA GROUP HOLDING LIMITED"
+      ],
+      "total_income": 502991474.65999997,
+      "headline": "Trade domain share up 0.93 pp vs year-ago period (2598 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "entity",
+      "name": "HHS",
+      "current_count": 2360,
+      "prev_count": 3670,
+      "yoy_count": 2604,
+      "share_delta_yoy_pp": 0.865,
+      "share_delta_prev_pp": -0.008,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "NATIONAL DISABILITY RIGHTS NETWORK",
+        "CALIFORNIA LIFE SCIENCES",
+        "NOVARTIS",
+        "GATEWAYS HOSPITAL & MENTAL HEALTH CENTER FOUNDATION",
+        "AARP"
+      ],
+      "total_income": 278349128.0,
+      "headline": "HHS attention up 0.86 pp vs year-ago period (2360 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "OMB",
-      "current_count": 1049,
-      "prev_count": 1692,
-      "yoy_count": 932,
-      "share_delta_yoy_pp": 0.871,
-      "share_delta_prev_pp": 0.014,
+      "current_count": 1011,
+      "prev_count": 1565,
+      "yoy_count": 907,
+      "share_delta_yoy_pp": 0.769,
+      "share_delta_prev_pp": 0.008,
       "signal_confidence": "medium",
       "top_clients": [
         "VILLAGE OF BALD HEAD ISLAND",
-        "BRUNSWICK COUNTY",
-        "HERMEUS CORP.",
         "CROPLIFE AMERICA",
-        "TOWN OF HOLDEN BEACH"
+        "NATIONAL FISHERIES INSTITUTE",
+        "MICROSOFT CORPORATION",
+        "BRUNSWICK COUNTY"
       ],
-      "total_income": 161848828.59,
-      "headline": "OMB attention up 0.87 pp vs year-ago period (1049 mentions)"
+      "total_income": 158247621.59,
+      "headline": "OMB attention up 0.77 pp vs year-ago period (1011 mentions)"
     },
     {
       "type": "signal",
-      "category": "domain",
-      "name": "Government and Budget",
-      "current_count": 5920,
-      "prev_count": 9134,
-      "yoy_count": 8332,
-      "share_delta_yoy_pp": -0.591,
-      "share_delta_prev_pp": 0.699,
+      "category": "topic",
+      "name": "Defense Authorization",
+      "current_count": 1604,
+      "prev_count": 2782,
+      "yoy_count": 1688,
+      "share_delta_yoy_pp": 0.744,
+      "share_delta_prev_pp": -0.465,
       "signal_confidence": "medium",
       "top_clients": [
-        "ACCENTURE FEDERAL SERVICES LLC",
+        "CHAMBER OF COMMERCE OF THE U.S.A.",
+        "PERSISTENT SYSTEMS, LLC",
+        "LOCKHEED MARTIN CORPORATION",
         "GENERAL DYNAMICS",
-        "NATIONAL BEER WHOLESALERS ASSOCIATION",
-        "PMI US CORPORATE SERVICES INC.",
-        "DELOITTE LLP"
+        "HAWKEYE 360 INC."
       ],
-      "total_income": 591010943.6,
-      "headline": "Government and Budget domain share up 0.70 pp vs prior period (5920 mentions)"
+      "total_income": 260940025.94,
+      "headline": "'Defense Authorization' share up 0.74 pp vs year-ago period (1604 mentions)"
     },
     {
       "type": "signal",
       "category": "legislation",
       "name": "FY2027 National Defense Authorization Act",
-      "current_count": 279,
-      "prev_count": 76,
+      "current_count": 283,
+      "prev_count": 85,
       "yoy_count": 0,
-      "share_delta_yoy_pp": 0.676,
-      "share_delta_prev_pp": 0.563,
+      "share_delta_yoy_pp": 0.701,
+      "share_delta_prev_pp": 0.565,
       "signal_confidence": "medium",
       "top_clients": [
-        "MICROSOFT CORPORATION",
         "UNIVERSITY OF CONNECTICUT",
         "SAP AMERICA, INC.",
         "MINT INNOVATION",
+        "U.S. MERCHANT MARINE ACADEMY ALUMNI ASSOCIATION AND FOUNDATION",
         "BOOZ ALLEN HAMILTON"
       ],
-      "total_income": 25112110.0,
-      "headline": "FY2027 National Defense Authorization Act share up 0.68 pp vs year-ago period (279 mentions)"
+      "total_income": 24692110.0,
+      "headline": "FY2027 National Defense Authorization Act share up 0.70 pp vs year-ago period (283 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "topic",
+      "name": "Tariffs and Trade Enforcement",
+      "current_count": 1240,
+      "prev_count": 2002,
+      "yoy_count": 1265,
+      "share_delta_yoy_pp": 0.652,
+      "share_delta_prev_pp": -0.122,
+      "signal_confidence": "medium",
+      "top_clients": [
+        "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
+        "PACCAR INC",
+        "DIGITALEUROPE",
+        "CALIFORNIA LIFE SCIENCES",
+        "SNP INC."
+      ],
+      "total_income": 328725361.52,
+      "headline": "'Tariffs and Trade Enforcement' share up 0.65 pp vs year-ago period (1240 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "CMS",
-      "current_count": 1503,
-      "prev_count": 2381,
-      "yoy_count": 1665,
-      "share_delta_yoy_pp": 0.657,
-      "share_delta_prev_pp": 0.085,
+      "current_count": 1458,
+      "prev_count": 2264,
+      "yoy_count": 1561,
+      "share_delta_yoy_pp": 0.626,
+      "share_delta_prev_pp": 0,
       "signal_confidence": "medium",
       "top_clients": [
         "GATEWAYS HOSPITAL & MENTAL HEALTH CENTER FOUNDATION",
@@ -358,48 +398,8 @@
         "PIH HEALTH FOUNDATION",
         "HERBERT J. THOMAS MEMORIAL HOSPITAL ASSOCIATION (FKA THOMAS HEALTH)"
       ],
-      "total_income": 227441669.77,
-      "headline": "CMS attention up 0.66 pp vs year-ago period (1503 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "topic",
-      "name": "Tariffs and Trade Enforcement",
-      "current_count": 1261,
-      "prev_count": 2141,
-      "yoy_count": 1342,
-      "share_delta_yoy_pp": 0.65,
-      "share_delta_prev_pp": -0.143,
-      "signal_confidence": "medium",
-      "top_clients": [
-        "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA",
-        "PACCAR INC",
-        "DIGITALEUROPE",
-        "ROKU, INC.",
-        "ERAMET MARIETTA INC."
-      ],
-      "total_income": 336050681.52,
-      "headline": "'Tariffs and Trade Enforcement' share up 0.65 pp vs year-ago period (1261 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "entity",
-      "name": "DHS",
-      "current_count": 1162,
-      "prev_count": 1784,
-      "yoy_count": 1233,
-      "share_delta_yoy_pp": 0.605,
-      "share_delta_prev_pp": 0.15,
-      "signal_confidence": "medium",
-      "top_clients": [
-        "CROPLIFE AMERICA",
-        "PERSISTENT SYSTEMS, LLC",
-        "U.S. TRAVEL ASSOCIATION",
-        "PIH HEALTH FOUNDATION",
-        "AMERICAN FED OF GOVERNMENT EMPLOYEES AFL-CIO"
-      ],
-      "total_income": 211659645.0,
-      "headline": "DHS attention up 0.60 pp vs year-ago period (1162 mentions)"
+      "total_income": 217461696.77,
+      "headline": "CMS attention up 0.63 pp vs year-ago period (1458 mentions)"
     }
   ]
 }
