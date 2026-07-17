@@ -442,6 +442,23 @@ if __name__ == "__main__":
         with get_db() as conn:
             recompute_is_current(conn)
         print("Recomputed is_current for the entire filings table.")
+    elif len(sys.argv) >= 2 and sys.argv[1] == "full-sweep":
+        # Semiannual safety net: re-sweep EVERY quarter from start-year to
+        # now (all report types — originals, amendments, terminations) so
+        # changes outside the daily trailing window land eventually:
+        # amendments filed years after the fact, delinquent originals, and
+        # any records the LDA system republished. Idempotent via the
+        # sopr_filing_id dedupe; ends with a global supersede recompute.
+        start_year = 2020
+        if "--start-year" in sys.argv:
+            idx = sys.argv.index("--start-year")
+            start_year = int(sys.argv[idx + 1])
+        init_db()
+        for year in range(start_year, datetime.now().year + 1):
+            ingest_year(year)
+        with get_db() as conn:
+            recompute_is_current(conn)
+        print("Full sweep complete; is_current recomputed globally.")
     elif len(sys.argv) >= 2 and sys.argv[1] == "backfill-non-original":
         start_year = 2020
         if "--start-year" in sys.argv:
@@ -468,6 +485,5 @@ if __name__ == "__main__":
         print("       python 01_ingest.py recompute-current             # Recompute is_current for the whole table")
         print("       python 01_ingest.py backfill-non-original --start-year 2020")
         print("                                                          # Historical backfill of amendments/terminations")
-        print()
-        print("Ingesting 2024 by default...")
-        ingest_year(2024)
+        print("       python 01_ingest.py full-sweep --start-year 2020  # Re-sweep every quarter, all report types")
+        sys.exit(1)

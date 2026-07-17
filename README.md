@@ -6,7 +6,10 @@ Automated detection of directional signals in federal lobbying disclosure data. 
 
 **[View Dashboard](https://umqadir.github.io/lobbying-signals/)**
 
-Updated daily via GitHub Actions.
+Updated daily via GitHub Actions. The daily run sweeps the recent report
+quarters (including trailing amendments and terminations); a semiannual full
+sweep (Feb 1 / Aug 1) re-walks every quarter since 2020 to catch amendments
+filed years after the fact, delinquent originals, and republished records.
 
 ## Features
 

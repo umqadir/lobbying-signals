@@ -4,6 +4,11 @@ on:
   schedule:
     # Run daily at 10:00 UTC
     - cron: '0 10 * * *'
+    # Semiannual full historical sweep (Feb 1 / Aug 1, 06:00 UTC): re-sweep
+    # every quarter since 2020 so amendments filed years after the fact,
+    # delinquent originals, and republished records land eventually. The
+    # daily run only covers a ~6-quarter trailing window.
+    - cron: '0 6 1 2,8 *'
   workflow_dispatch:
     # Allow manual trigger
     inputs:
@@ -13,6 +18,10 @@ on:
         default: '2000000'
       backfill_non_original:
         description: 'One-time: backfill amendments/terminations for all historical quarters before refreshing'
+        required: false
+        default: 'false'
+      full_sweep:
+        description: 'Re-sweep every quarter since 2020 (all report types) before refreshing'
         required: false
         default: 'false'
 
@@ -80,6 +89,13 @@ jobs:
         if: github.event.inputs.backfill_non_original == 'true'
         run: |
           uv run python 01_ingest.py backfill-non-original --start-year 2020
+        env:
+          LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
+
+      - name: Full historical sweep (semiannual or manual)
+        if: github.event.schedule == '0 6 1 2,8 *' || github.event.inputs.full_sweep == 'true'
+        run: |
+          uv run python 01_ingest.py full-sweep --start-year 2020
         env:
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
 
