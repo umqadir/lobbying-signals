@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T08:24:20.334566+00:00",
+  "generated_at": "2026-07-17T12:05:51.087492+00:00",
   "frames": {
     "quarter": {
       "current_quarter": {
@@ -3393,12 +3393,12 @@
         "label": "Q2 2025"
       },
       "quarter_totals": {
-        "current_income": 330992587.09,
+        "current_income": 331200087.09,
         "baseline_income": 353874996.33,
-        "change_pct": -6.5,
-        "current_filings": 7071,
+        "change_pct": -6.4,
+        "current_filings": 7079,
         "baseline_filings": 7280,
-        "current_clients": 6320,
+        "current_clients": 6326,
         "baseline_clients": 6429
       },
       "risers": [
@@ -4570,6 +4570,59 @@
           ]
         },
         {
+          "key": "TP-LINK SYSTEMS",
+          "name": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
+          "current": 500000.0,
+          "baseline": 0.0,
+          "delta": 500000.0,
+          "ratio": null,
+          "filings_current": 2,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Ballard Partners",
+            "Mercury Public Affairs, LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            90000.0,
+            210000.0,
+            80000.0,
+            80000.0,
+            170000.0,
+            700000.0,
+            600000.0,
+            630000.0
+          ],
+          "examples": [
+            {
+              "uuid": "ed94aea4-fc17-4659-be44-784313b195cc",
+              "date": "2026-07-14T12:05:37-04:00",
+              "client": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
+              "registrant": "Ballard Partners",
+              "income": 300000.0
+            },
+            {
+              "uuid": "1199c155-5649-49ab-8d57-17df877806ed",
+              "date": "2026-07-16T13:01:18-04:00",
+              "client": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
+              "registrant": "Mercury Public Affairs, LLC",
+              "income": 200000.0
+            }
+          ]
+        },
+        {
           "key": "TYSON FOODS",
           "name": "Tyson Foods Inc",
           "current": 560000.0,
@@ -4624,59 +4677,6 @@
               "client": "Tyson Foods Inc",
               "registrant": "Brownstein Hyatt Farber Schreck, LLP",
               "income": 60000.0
-            }
-          ]
-        },
-        {
-          "key": "TP-LINK SYSTEMS",
-          "name": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
-          "current": 500000.0,
-          "baseline": 0.0,
-          "delta": 500000.0,
-          "ratio": null,
-          "filings_current": 2,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Ballard Partners",
-            "Mercury Public Affairs, LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            90000.0,
-            210000.0,
-            80000.0,
-            80000.0,
-            170000.0,
-            700000.0,
-            600000.0,
-            630000.0
-          ],
-          "examples": [
-            {
-              "uuid": "ed94aea4-fc17-4659-be44-784313b195cc",
-              "date": "2026-07-14T12:05:37-04:00",
-              "client": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
-              "registrant": "Ballard Partners",
-              "income": 300000.0
-            },
-            {
-              "uuid": "1199c155-5649-49ab-8d57-17df877806ed",
-              "date": "2026-07-16T13:01:18-04:00",
-              "client": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
-              "registrant": "Mercury Public Affairs, LLC",
-              "income": 200000.0
             }
           ]
         },
@@ -5613,51 +5613,6 @@
           ]
         },
         {
-          "key": "PHILLY PHARMACIES",
-          "name": "Philly Pharmacies",
-          "current": 500000.0,
-          "baseline": 0.0,
-          "delta": 500000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "MR. H.R. Bert Pena"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            500000.0
-          ],
-          "examples": [
-            {
-              "uuid": "0b8756d9-2840-43fa-ba85-fbae1e8470f4",
-              "date": "2026-07-13T12:22:30-04:00",
-              "client": "Philly Pharmacies",
-              "registrant": "MR. H.R. Bert Pena",
-              "income": 500000.0
-            }
-          ]
-        },
-        {
           "key": "CATURUS",
           "name": "Caturus",
           "current": 500000.0,
@@ -5698,6 +5653,51 @@
               "date": "2026-07-10T14:02:45-04:00",
               "client": "Caturus",
               "registrant": "Caturus",
+              "income": 500000.0
+            }
+          ]
+        },
+        {
+          "key": "PHILLY PHARMACIES",
+          "name": "Philly Pharmacies",
+          "current": 500000.0,
+          "baseline": 0.0,
+          "delta": 500000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "MR. H.R. Bert Pena"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            500000.0
+          ],
+          "examples": [
+            {
+              "uuid": "0b8756d9-2840-43fa-ba85-fbae1e8470f4",
+              "date": "2026-07-13T12:22:30-04:00",
+              "client": "Philly Pharmacies",
+              "registrant": "MR. H.R. Bert Pena",
               "income": 500000.0
             }
           ]
@@ -5885,19 +5885,17 @@
           ]
         },
         {
-          "key": "BITDEER TECHNOLOGIES GROUP",
-          "name": "Bitdeer Technologies Group",
+          "key": "POLAR LNG",
+          "name": "Polar LNG",
           "current": 380000.0,
           "baseline": 0.0,
           "delta": 380000.0,
           "ratio": null,
           "filings_current": 1,
           "filings_baseline": 0,
-          "topics": [
-            "Tariffs and Trade Enforcement"
-          ],
+          "topics": [],
           "registrants": [
-            "Bitdeer Technologies Group"
+            "Squire Patton Boggs"
           ],
           "series": [
             0.0,
@@ -5916,17 +5914,17 @@
             0.0,
             0.0,
             0.0,
-            280000.0,
-            210000.0,
-            400000.0,
-            525000.0
+            0.0,
+            0.0,
+            0.0,
+            0.0
           ],
           "examples": [
             {
-              "uuid": "27281d7d-6ee1-45be-aea4-4262f5e6dc73",
-              "date": "2026-07-15T20:31:48-04:00",
-              "client": "Bitdeer Technologies Group",
-              "registrant": "Bitdeer Technologies Group",
+              "uuid": "944b69a9-091e-4bbf-aaea-2a80074ccf28",
+              "date": "2026-07-14T14:35:46-04:00",
+              "client": "Polar LNG",
+              "registrant": "Squire Patton Boggs",
               "income": 380000.0
             }
           ]
