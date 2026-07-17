@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260708-billid2">
+    <link rel="stylesheet" href="styles.css?v=20260716-orgspend">
 </head>
 <body>
     <header class="topbar">
@@ -65,6 +65,7 @@
             </div>
             <div class="cat-row" id="cat-row" role="tablist" aria-label="Categories">
                 <button class="cat-pill active" data-cat="all" type="button">Everything</button>
+                <button class="cat-pill" data-cat="clients" type="button" id="cat-pill-clients">Organizations</button>
                 <button class="cat-pill" data-cat="topics" type="button">Topics</button>
                 <button class="cat-pill" data-cat="entities" type="button">Agencies</button>
                 <button class="cat-pill" data-cat="legislation" type="button">Bills</button>
@@ -96,6 +97,7 @@
                 <p><strong>How comparisons work.</strong> The last 30/90 days of filings are compared against the same window a year ago (the default — lobbying is seasonal, so like-for-like quarters matter) or the immediately prior window. “Share” is a tag's slice of all tagged mentions in the window, which controls for filing-volume swings.</p>
                 <p><strong>Confidence.</strong> A rule-based label reflecting how much volume sits behind a signal and how consistently it moved against both baselines — not a statistical test.</p>
                 <p><strong>Honest limitations.</strong> Directional signals, not causal claims. Filing income is reported per filing, not per issue, so income figures associate a filing's whole income with each of its tags. The newest quarter is always partially reported until well after the statutory deadline. Rule-based tagging misses paraphrases a human would catch.</p>
+                <p><strong>Organization spend.</strong> The Organizations view tracks reported dollars rather than mention counts: each client's filing income/expenses, summed per organization per report quarter, comparing the latest COMPLETE quarter to the same quarter a year earlier (a quarter counts as complete roughly six weeks past its statutory filing deadline, so late filers don't read as a false drop). Name variants for the same organization (legal-suffix differences, "on behalf of" filers, former names) are folded together. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.</p>
             </div>
         </div>
     </div>
@@ -133,6 +135,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=20260708-billid2"></script>
+    <script src="app.js?v=20260716-orgspend"></script>
 </body>
 </html>

@@ -6,12 +6,16 @@
 const DATA_PATH = "data";
 
 const CATEGORIES = {
+    clients:     { label: "Org",     plural: "Organizations", tagClass: "clients",   shortLabel: "Org" },
     topics:      { label: "Topic",   plural: "Topics",      tagClass: "topics",      shortLabel: "Topic" },
     entities:    { label: "Agency",  plural: "Agencies",    tagClass: "entities",    shortLabel: "Agency" },
     legislation: { label: "Bill",    plural: "Bills",       tagClass: "legislation", shortLabel: "Bill" },
     domains:     { label: "Domain",  plural: "Domains",     tagClass: "domains",     shortLabel: "Domain" }
 };
 
+// Tag-mention categories driven by trends.json's window/compare toggles.
+// Organizations ("clients") are a separate flagship view — fixed-quarter
+// dollar comparisons from clients.json, not part of this signal system.
 const SIGNAL_MODES = ["topics", "entities", "legislation", "domains"];
 
 const COMPARE = {
@@ -56,12 +60,13 @@ const state = {
     stats: null,
     filings: [],
     timeseries: null,
+    clients: null,       // clients.json — org spend movers; null if absent/failed to load
     clientIndex: new Map(),
 
     view: {
         window: "90d",
         compare: "yoy",
-        cat: "all"   // all | topics | entities | legislation | domains | recent
+        cat: "all"   // all | clients | topics | entities | legislation | domains | recent
     },
 
     drawer: null,        // current drawer view
@@ -70,6 +75,68 @@ const state = {
 };
 
 /* ─── Utilities ─── */
+
+/* Display-casing rules, mirroring clients_norm.py's display_client_name so
+   client/registrant names (and any other ALL-CAPS source string) render
+   readably instead of "Chamber OF Commerce OF The U.s.a."-style bugs:
+   small words lowercase mid-name, a short acronym allowlist plus a
+   no-vowel heuristic stay uppercase, and dotted tokens (U.S.A.) stay as-is. */
+const TITLECASE_SMALL_WORDS = new Set([
+    "of", "the", "and", "for", "on", "in", "at", "to", "by", "or", "a", "an", "d/b/a"
+]);
+const TITLECASE_ACRONYM_ALLOWLIST = new Set([
+    "USA", "US", "LLC", "LLP", "AARP", "AFLCIO", "AFL-CIO", "PG&E", "IBM",
+    "AT&T", "CTIA", "HCA", "NACDS", "AHIP"
+]);
+const TITLECASE_DOTTED_RE = /^[A-Za-z](\.[A-Za-z])+\.?$/;
+
+function hasVowel(s) { return /[AEIOU]/.test(s.toUpperCase()); }
+
+function titleCaseHyphenSegment(seg) {
+    if (!seg) return seg;
+    const bare = seg.replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g, "");
+    if (!bare) return seg;
+    const bareUpper = bare.toUpperCase();
+    if (TITLECASE_ACRONYM_ALLOWLIST.has(bareUpper)) return seg.toUpperCase();
+    if (bare.length <= 4 && /^[A-Za-z]+$/.test(bare) && !hasVowel(bare)) return seg.toUpperCase();
+    return seg.charAt(0).toUpperCase() + seg.slice(1).toLowerCase();
+}
+
+function titleCaseWord(word, isFirst) {
+    if (!word) return word;
+
+    const bare = word.replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9]+$/g, "");
+    if (!bare) return word;
+
+    // Check the dotted-acronym pattern against the bare token too, so a
+    // parenthesized acronym like "(N.A.C.H.)" is recognized, not just a
+    // bare "U.S.A."
+    if (TITLECASE_DOTTED_RE.test(word) || TITLECASE_DOTTED_RE.test(bare)) return word.toUpperCase();
+    const bareUpper = bare.toUpperCase();
+
+    if (TITLECASE_ACRONYM_ALLOWLIST.has(bareUpper)) return word.toUpperCase();
+
+    // Pragmatic heuristic: short, all-consonant tokens are almost always
+    // acronyms/initialisms ("PBC", "NV", "GMBH"), not ordinary words.
+    if (bare.length <= 4 && /^[A-Za-z]+$/.test(bare) && !hasVowel(bare)) return word.toUpperCase();
+
+    if (!isFirst && TITLECASE_SMALL_WORDS.has(bare.toLowerCase())) return word.toLowerCase();
+
+    // Hyphenated compounds ("CTIA-The Wireless Association") re-check each
+    // segment rather than blind-capitalizing.
+    if (word.includes("-")) {
+        return word.split("-").map(titleCaseHyphenSegment).join("-");
+    }
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+
+function titleCaseName(s) {
+    if (!s) return "";
+    return String(s).split(/\s+/).map((w, i) => {
+        if (w === "&") return "&";
+        return titleCaseWord(w, i === 0);
+    }).join(" ");
+}
 
 const fmt = {
     int: n => Math.round(Number(n) || 0).toLocaleString("en-US"),
@@ -108,13 +175,7 @@ const fmt = {
         if (m < 1440) return `${Math.floor(m / 60)}h ago`;
         return `${Math.floor(m / 1440)}d ago`;
     },
-    titleCase: s => {
-        if (!s) return "";
-        return String(s).split(/\s+/).map(w => {
-            if (w.length <= 2 && w === w.toUpperCase()) return w;
-            return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
-        }).join(" ");
-    },
+    titleCase: s => titleCaseName(s),
     esc: t => {
         const d = document.createElement("div");
         d.textContent = t == null ? "" : String(t);
@@ -310,6 +371,226 @@ function buildHeadline(item, compareKey) {
     };
 }
 
+// Secondary line under a tag mover's headline: how many distinct
+// organizations are actually behind the mention count, so a reader isn't
+// left thinking "1,303 mentions" came from one filer.
+function buildMobilizationLine(item, compareKey) {
+    const current = toNum(item.client_count);
+    if (!current) return null;
+    const baseline = compareKey === "yoy" ? toNum(item.yoy_client_count) : toNum(item.prev_client_count);
+    const baselineLabel = compareKey === "yoy" ? "a year ago" : "in the prior period";
+    const orgWord = current === 1 ? "organization" : "organizations";
+    return `${fmt.int(current)} ${orgWord} active (${fmt.int(baseline)} ${baselineLabel})`;
+}
+
+/* ─── Organization movers (clients.json) ───
+   A separate flagship view: dollar spend per organization, comparing the
+   latest COMPLETE report quarter to the same quarter a year ago. Fixed
+   quarter framing — the window/compare toggles don't apply here. */
+
+function orgMoversAvailable() {
+    const c = state.clients;
+    return !!(c && (c.risers?.length || c.fallers?.length || c.new_entrants?.length));
+}
+
+function tagOrgMover(m, kind) {
+    return {
+        ...m,
+        mode: "clients",
+        entrantKind: kind,
+        current: toNum(m.current),
+        baseline: toNum(m.baseline),
+        delta: toNum(m.delta),
+        _absDelta: Math.abs(toNum(m.delta))
+    };
+}
+
+function allOrgMovers() {
+    if (!orgMoversAvailable()) return [];
+    const c = state.clients;
+    return [
+        ...(c.risers || []).map(m => tagOrgMover(m, "riser")),
+        ...(c.fallers || []).map(m => tagOrgMover(m, "faller")),
+        ...(c.new_entrants || []).map(m => tagOrgMover(m, "new")),
+    ];
+}
+
+// Risers + new entrants only (no fallers), ranked by dollar delta — used for
+// both the hero headline synthesis and the "Everything" interleave, where
+// org movers should read as ramp-ups, not a mix of ups and downs.
+function topOrgRisersAndNewEntrants(limit) {
+    if (!orgMoversAvailable()) return [];
+    const c = state.clients;
+    const pool = [
+        ...(c.risers || []).map(m => tagOrgMover(m, "riser")),
+        ...(c.new_entrants || []).map(m => tagOrgMover(m, "new")),
+    ];
+    return pool.sort((a, b) => b.delta - a.delta).slice(0, limit);
+}
+
+function orgQuarterLabels() {
+    return {
+        cq: state.clients?.current_quarter?.label || "the latest quarter",
+        bq: state.clients?.baseline_quarter?.label || "the year-ago quarter"
+    };
+}
+
+// Last calendar day of a report quarter (quarter is 1-indexed).
+function quarterEndDate(year, quarter) {
+    return new Date(year, quarter * 3, 0);
+}
+
+// The statutory LDA filing deadline for a report quarter: the 20th of the
+// following month.
+function reportsDueDate(year, quarter) {
+    const end = quarterEndDate(year, quarter);
+    return new Date(end.getFullYear(), end.getMonth() + 1, 20);
+}
+
+// "reports due Apr 20" — only while that deadline is still relevant (up to
+// ~10 days past it); null once it's stale so the hero doesn't nag forever.
+function reportsDueLabel(year, quarter) {
+    const deadline = reportsDueDate(year, quarter);
+    const graceEnd = new Date(deadline.getTime() + 10 * 86400000);
+    if (new Date() >= graceEnd) return null;
+    return deadline.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+}
+
+function buildOrgHeadline(m) {
+    const { cq, bq } = orgQuarterLabels();
+    const current = toNum(m.current);
+    const baseline = toNum(m.baseline);
+
+    if (baseline === 0 && current > 0) {
+        return {
+            html: `<strong>${fmt.money(current)}</strong> in ${cq} — <span class="delta delta-up-x">new</span> — no lobbying in ${bq}.`,
+            dir: "up"
+        };
+    }
+    if (current === 0 && baseline > 0) {
+        return {
+            html: `Quiet in ${cq} — <strong>$0</strong> vs <strong>${fmt.money(baseline)}</strong> in ${bq}.`,
+            dir: "down"
+        };
+    }
+
+    const ratio = current / baseline;
+    const pctChange = (ratio - 1) * 100;
+    const intensity = deltaIntensity(ratio);
+
+    if (ratio >= 2) {
+        const xLabel = ratio >= 10 ? `${Math.round(ratio)}×` : `${ratio.toFixed(1)}×`;
+        return {
+            html: `<strong>${fmt.money(current)}</strong> in ${cq} — <span class="delta delta-up${intensity}">${xLabel}</span> ${bq} (${fmt.money(baseline)}).`,
+            dir: "up"
+        };
+    }
+    const sign = pctChange >= 0 ? "+" : "";
+    const dirCls = pctChange >= 0 ? `delta-up${intensity}` : `delta-down${intensity}`;
+    return {
+        html: `<strong>${fmt.money(current)}</strong> in ${cq} — <span class="delta ${dirCls}">${sign}${pctChange.toFixed(0)}%</span> vs ${bq} (${fmt.money(baseline)}).`,
+        dir: pctChange >= 0 ? "up" : "down"
+    };
+}
+
+function makeOrgTrendChart(current, baseline, dir) {
+    const W = 200, H = 48;
+    const padT = 12, padB = 11;
+    const plotH = H - padT - padB;
+    const baseLine = H - padB;
+
+    const accent = dir === "up"
+        ? getCSSVar("--up", "#1f7a4d")
+        : dir === "down"
+            ? getCSSVar("--down", "#b53a3a")
+            : getCSSVar("--accent", "#b8420f");
+    const muted = getCSSVar("--ink-4", "#a39c87");
+    const labelColor = getCSSVar("--ink-3", "#7a7565");
+    const valueColor = getCSSVar("--ink-2", "#4a4a4a");
+
+    const baseVal = toNum(baseline), nowVal = toNum(current);
+    const yMax = Math.max(baseVal, nowVal, 1);
+    const barW = 38;
+    const bx = W * 0.32, nx = W * 0.68;
+
+    const bar = (cx, val, fill, opacity) => {
+        const h = Math.max(val > 0 ? 2 : 0, (val / yMax) * plotH);
+        const y = baseLine - h;
+        return `<rect x="${(cx - barW / 2).toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${h.toFixed(1)}" rx="2" fill="${fill}" fill-opacity="${opacity}"/>`;
+    };
+    const valueText = (cx, val) =>
+        `<text x="${cx.toFixed(1)}" y="${(baseLine - Math.max(val > 0 ? 2 : 0, (val / yMax) * plotH) - 3).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="600" fill="${valueColor}">${fmt.money(val)}</text>`;
+    const periodText = (cx, label, color, weight) =>
+        `<text x="${cx.toFixed(1)}" y="${H - 2}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${color}" font-weight="${weight}" letter-spacing="0.05em">${label}</text>`;
+
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="trend-svg" role="img" aria-label="year ago: ${fmt.esc(fmt.money(baseVal))}, now: ${fmt.esc(fmt.money(nowVal))}">
+        <line x1="12" y1="${baseLine}" x2="${W - 12}" y2="${baseLine}" stroke="${muted}" stroke-opacity="0.35" stroke-width="1"/>
+        ${bar(bx, baseVal, muted, 0.45)}
+        ${bar(nx, nowVal, accent, 0.9)}
+        ${valueText(bx, baseVal)}
+        ${valueText(nx, nowVal)}
+        ${periodText(bx, "yr ago", labelColor, 400)}
+        ${periodText(nx, "now", accent, 500)}
+    </svg>`;
+}
+
+function openOrg(key, name) {
+    pushDrawer({ kind: "org", key, name });
+}
+
+function buildOrgMoverCard(m) {
+    const card = el("li", "mover");
+    card.setAttribute("role", "button");
+    card.tabIndex = 0;
+    card.setAttribute("aria-label", `Open organization ${m.name}`);
+    card.onclick = () => openOrg(m.key, m.name);
+    card.onkeydown = e => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openOrg(m.key, m.name); }
+    };
+
+    card.appendChild(el("span", "cat-tag clients", "Org"));
+
+    const main = el("div", "mover-main");
+    main.appendChild(el("div", "mover-name", m.name));
+
+    const head = buildOrgHeadline(m);
+    const headlineEl = el("div", "mover-headline");
+    headlineEl.innerHTML = head.html;
+    main.appendChild(headlineEl);
+
+    if (m.topics?.length) {
+        main.appendChild(el("div", "mover-clients", m.topics.slice(0, 3).join(" · ")));
+    }
+
+    card.appendChild(main);
+
+    const trendSlot = el("div", "mover-trend");
+    trendSlot.innerHTML = makeOrgTrendChart(m.current, m.baseline, head.dir);
+    card.appendChild(trendSlot);
+
+    card.appendChild(el("div", "mover-arrow", "→"));
+    return card;
+}
+
+function buildAnyMoverCard(m, compareKey) {
+    if (m.mode === "clients") return buildOrgMoverCard(m);
+    return buildMoverCard(m, compareKey);
+}
+
+function interleaveOrgMovers(tagMovers, orgMovers, everyN = 3) {
+    if (!orgMovers.length) return tagMovers;
+    const out = [];
+    let oi = 0;
+    for (let i = 0; i < tagMovers.length; i++) {
+        if (oi < orgMovers.length && i > 0 && i % everyN === 0) {
+            out.push(orgMovers[oi++]);
+        }
+        out.push(tagMovers[i]);
+    }
+    while (oi < orgMovers.length) out.push(orgMovers[oi++]);
+    return out;
+}
+
 /* ─── Mover items ─── */
 
 function getKeyMap(mode) {
@@ -345,7 +626,10 @@ function getCategoryItemsFixed(mode, windowKey) {
         confidence: item.confidence || "medium",
         topClients: clients[item.name] || [],
         examples: examples[item.name] || [],
-        income: toNum(income[item.name])
+        income: toNum(income[item.name]),
+        client_count: toNum(item.client_count),
+        prev_client_count: toNum(item.prev_client_count),
+        yoy_client_count: toNum(item.yoy_client_count)
     }));
 }
 
@@ -428,8 +712,23 @@ function renderHero() {
     }
     const moverNames = picks.map(m => `<em>${fmt.esc(displayName(m.mode, m.name))}</em>`);
 
+    // Organizations are the flagship story — lead with the biggest dollar
+    // ramp-ups when clients.json is available, falling back to the
+    // tag-mention synthesis above otherwise.
+    const orgPicks = topOrgRisersAndNewEntrants(3);
     let headline;
-    if (moverNames.length >= 2) {
+    if (orgPicks.length >= 2) {
+        const cq = state.clients?.current_quarter?.label || "this quarter";
+        const orgNames = orgPicks.map(m => `<em>${fmt.esc(m.name)}</em>`);
+        const last = orgNames.pop();
+        const head = orgNames.length === 1
+            ? `${orgNames[0]} and ${last}`
+            : `${orgNames.join(", ")}, and ${last}`;
+        headline = `${head} posted the biggest lobbying ramp-ups in ${cq}.`;
+    } else if (orgPicks.length === 1) {
+        const cq = state.clients?.current_quarter?.label || "this quarter";
+        headline = `<em>${fmt.esc(orgPicks[0].name)}</em> posted the biggest lobbying ramp-up in ${cq}.`;
+    } else if (moverNames.length >= 2) {
         const last = moverNames.pop();
         const head = moverNames.length === 1
             ? `${moverNames[0]} and ${last}`
@@ -456,14 +755,30 @@ function renderHero() {
     });
     if (latest) {
         const isPartial = partialN > 0 && latest === quarters[quarters.length - 1];
+        let partialLabel = `${fmt.num(latest.filings)} filings so far · partial quarter`;
+        if (isPartial) {
+            const due = reportsDueLabel(latest.year, latest.quarter);
+            if (due) partialLabel += ` · reports due ${due}`;
+        }
         statItems.push({
             value: `${latest.year} Q${latest.quarter}`,
-            label: isPartial
-                ? `${fmt.num(latest.filings)} filings so far · partial quarter`
-                : `${fmt.num(latest.filings)} filings · ${fmt.money(latest.income)}`
+            label: isPartial ? partialLabel : `${fmt.num(latest.filings)} filings · ${fmt.money(latest.income)}`
         });
     }
-    if (cmpLatest && cmpPrev) {
+
+    // Latest COMPLETE quarter, dollars, year-over-year — the real headline
+    // number ("$1.63B reported, +10.7% vs the same quarter last year").
+    const lcq = stats.latest_complete_quarter;
+    if (lcq && lcq.income_change_pct != null) {
+        const change = lcq.income_change_pct;
+        const dir = change > 0 ? "up" : change < 0 ? "down" : "";
+        const sign = change > 0 ? "↑ " : change < 0 ? "↓ " : "";
+        statItems.push({
+            value: `${sign}${Math.abs(change).toFixed(1)}%`,
+            label: `${lcq.label} vs Q${lcq.quarter} ${lcq.year - 1} · ${fmt.money(lcq.income)} reported`,
+            trend: dir
+        });
+    } else if (cmpLatest && cmpPrev) {
         const change = ((cmpLatest.filings - cmpPrev.filings) / cmpPrev.filings) * 100;
         const dir = change > 0 ? "up" : change < 0 ? "down" : "";
         const sign = change > 0 ? "↑ " : change < 0 ? "↓ " : "";
@@ -496,14 +811,27 @@ function renderMovers() {
     const win = state.view.window;
     const cmp = state.view.compare;
 
+    updateControlsForCat(cat);
+
     if (cat === "recent") {
         sub.textContent = `${state.filings.length} latest filings, most recent first`;
         renderRecentList(list);
         return;
     }
 
-    const movers = buildMovers(cat, win, cmp).slice(0, 50);
-    const catLabel = cat === "all" ? "across topics, agencies, bills, and domains" : `in ${CATEGORIES[cat].plural.toLowerCase()}`;
+    if (cat === "clients") {
+        renderOrgMovers(list, sub);
+        return;
+    }
+
+    let movers = buildMovers(cat, win, cmp).slice(0, 50);
+    if (cat === "all" && orgMoversAvailable()) {
+        // Org movers are the flagship story — surface a handful near the top
+        // of the combined feed, not just under their own pill.
+        movers = interleaveOrgMovers(movers, topOrgRisersAndNewEntrants(6));
+    }
+
+    const catLabel = cat === "all" ? "across organizations, topics, agencies, bills, and domains" : `in ${CATEGORIES[cat].plural.toLowerCase()}`;
     const winLabel = win === "90d" ? "last 90 days" : "last 30 days";
     sub.innerHTML = `Top movers ${fmt.esc(catLabel)} — <span class="window-range">${fmt.esc(winLabel)}</span> <span class="window-range-dates">(${fmt.esc(rangeLabel(win))})</span> ${fmt.esc(COMPARE[cmp].shortLabel)} <span class="window-range-dates">(${fmt.esc(baselineRangeLabel(win, cmp))})</span>`;
 
@@ -517,7 +845,7 @@ function renderMovers() {
     // Lead with a scannable top set; the long tail expands on demand.
     const VISIBLE = 20;
     for (const m of movers.slice(0, VISIBLE)) {
-        list.appendChild(buildMoverCard(m, cmp));
+        list.appendChild(buildAnyMoverCard(m, cmp));
     }
     if (movers.length > VISIBLE) {
         const more = el("button", "mover-more");
@@ -526,11 +854,56 @@ function renderMovers() {
         more.onclick = () => {
             more.remove();
             for (const m of movers.slice(VISIBLE)) {
-                list.appendChild(buildMoverCard(m, cmp));
+                list.appendChild(buildAnyMoverCard(m, cmp));
             }
         };
         list.appendChild(more);
     }
+}
+
+function renderOrgMovers(list, sub) {
+    if (!orgMoversAvailable()) {
+        sub.textContent = "Organization spend data isn't available right now.";
+        list.appendChild(el("div", "mover-empty", "Organization spend data isn't available in this build."));
+        return;
+    }
+
+    const { cq, bq } = orgQuarterLabels();
+    sub.textContent = `${cq} vs ${bq} · complete quarters`;
+
+    const movers = allOrgMovers().sort((a, b) => b._absDelta - a._absDelta);
+    if (!movers.length) {
+        list.appendChild(el("div", "mover-empty", "No organizations clear the reporting floor this quarter."));
+        return;
+    }
+
+    const VISIBLE = 20;
+    for (const m of movers.slice(0, VISIBLE)) {
+        list.appendChild(buildOrgMoverCard(m));
+    }
+    if (movers.length > VISIBLE) {
+        const more = el("button", "mover-more");
+        more.type = "button";
+        more.textContent = `Show all ${movers.length} organizations`;
+        more.onclick = () => {
+            more.remove();
+            for (const m of movers.slice(VISIBLE)) {
+                list.appendChild(buildOrgMoverCard(m));
+            }
+        };
+        list.appendChild(more);
+    }
+}
+
+// Organizations have a fixed quarter-vs-quarter framing (no rolling window),
+// so the window/compare segmented controls don't apply — hide them rather
+// than let them silently do nothing.
+function updateControlsForCat(cat) {
+    const windowSeg = document.getElementById("window-seg");
+    const compareSeg = document.getElementById("compare-seg");
+    const hide = cat === "clients";
+    if (windowSeg) windowSeg.classList.toggle("controls-hidden", hide);
+    if (compareSeg) compareSeg.classList.toggle("controls-hidden", hide);
 }
 
 function renderRecentList(list) {
@@ -568,6 +941,11 @@ function buildMoverCard(m, compareKey) {
     const headlineEl = el("div", "mover-headline");
     headlineEl.innerHTML = head.html;
     main.appendChild(headlineEl);
+
+    const mobLine = buildMobilizationLine(m, compareKey);
+    if (mobLine) {
+        main.appendChild(el("div", "mover-clients", mobLine));
+    }
 
     if (m.topClients?.length) {
         const cli = el("div", "mover-clients");
@@ -757,7 +1135,9 @@ function makeBarChart(values, periods, options = {}) {
     const plotTop = pad.top;
     const plotW = W - pad.left - pad.right;
     const plotH = plotBottom - plotTop;
-    const fmtY = options.percent ? v => `${v.toFixed(v >= 10 ? 0 : 1)}%` : v => fmt.num(v);
+    const fmtY = options.percent ? v => `${v.toFixed(v >= 10 ? 0 : 1)}%`
+        : options.money ? v => fmt.money(v)
+        : v => fmt.num(v);
 
     const grid = ticks.map(v => {
         const y = plotTop + (1 - v / niceMax) * plotH;
@@ -781,7 +1161,8 @@ function makeBarChart(values, periods, options = {}) {
         const y = plotTop + (1 - v / niceMax) * plotH;
         const h = Math.max(1, plotBottom - y);
         const label = periods[i]?.label || periods[i]?.short || "";
-        const hover = `<title>${fmt.esc(label)} · ${fmt.int(v)} mentions${i >= partialFrom ? " (still reporting)" : ""}</title>`;
+        const valueLabel = options.money ? fmt.money(v) : `${fmt.int(v)} mentions`;
+        const hover = `<title>${fmt.esc(label)} · ${valueLabel}${i >= partialFrom ? " (still reporting)" : ""}</title>`;
         // Partial (still-reporting) quarters render hollow so a low bar doesn't
         // read as a real drop; the newest complete quarter gets full weight.
         if (i >= partialFrom) {
@@ -922,6 +1303,8 @@ function renderDrawer() {
 
     if (state.drawer.kind === "signal") {
         renderSignalDetail(body, state.drawer);
+    } else if (state.drawer.kind === "org") {
+        renderOrgDetail(body, state.drawer);
     } else if (state.drawer.kind === "client") {
         renderClientDetail(body, state.drawer);
     } else if (state.drawer.kind === "filing") {
@@ -931,9 +1314,124 @@ function renderDrawer() {
 
 function drawerLabel(view) {
     if (view.kind === "signal") return `${CATEGORIES[view.mode].label}: ${displayName(view.mode, view.name)}`;
+    if (view.kind === "org") return `Org: ${view.name}`;
     if (view.kind === "client") return `Client: ${clientDisplay(view.name)}`;
     if (view.kind === "filing") return `Filing #${view.id}`;
     return "";
+}
+
+/* Organization detail (clients.json — dollar spend, fixed quarter framing) */
+
+function renderOrgDetail(body, view) {
+    const all = allOrgMovers();
+    const m = all.find(x => x.key === view.key);
+    const { cq, bq } = orgQuarterLabels();
+
+    const eyebrow = el("div", "detail-eyebrow");
+    eyebrow.appendChild(el("span", "cat-tag clients", "Org"));
+    body.appendChild(eyebrow);
+
+    body.appendChild(el("h2", "detail-name", (m && m.name) || view.name || "Organization"));
+
+    if (!m) {
+        body.appendChild(el("div", "detail-sub", `${cq} vs ${bq} · complete quarters`));
+        body.appendChild(el("p", "detail-empty",
+            "This organization doesn't clear the reporting floor for the movers list. It may still appear in recent filings or tag signals."));
+        return;
+    }
+
+    body.appendChild(el("div", "detail-sub", `${cq} vs ${bq} · complete quarters`));
+
+    const head = buildOrgHeadline(m);
+    const summary = el("div", "detail-summary");
+    summary.innerHTML = head.html;
+    body.appendChild(summary);
+
+    const stats = el("div", "detail-stats");
+    const statCells = [
+        { value: fmt.money(m.current), label: cq },
+        { value: fmt.money(m.baseline), label: bq },
+        { value: m.ratio != null ? `${m.ratio.toFixed(2)}×` : "—", label: "Ratio" },
+        { value: fmt.int(m.filings_current), label: `Filings, ${cq}` },
+    ];
+    for (const s of statCells) {
+        const stat = el("div", "detail-stat");
+        stat.appendChild(el("span", "detail-stat-value", s.value));
+        stat.appendChild(el("span", "detail-stat-label", s.label));
+        stats.appendChild(stat);
+    }
+    body.appendChild(stats);
+
+    // Quarterly spend chart, aligned to the shared quarters array.
+    const quarters = (state.clients?.quarters || []).map(label => {
+        const parts = label.match(/^(\d{4})\s+Q(\d)$/);
+        return { label, short: parts ? `${parts[1].slice(2)}Q${parts[2]}` : label };
+    });
+    if (m.series?.length && quarters.length > 1) {
+        const sec = el("div", "detail-section");
+        sec.appendChild(el("div", "detail-section-title", "Reported spend by quarter"));
+        const box = el("div", "detail-chart-box");
+        box.innerHTML = makeBarChart(m.series, quarters, { money: true });
+        sec.appendChild(box);
+        sec.appendChild(el("p", "detail-chart-note",
+            "Quarterly LDA filing income, not issue-allocated — the whole filing's income counts toward this organization's total."));
+        body.appendChild(sec);
+    }
+
+    // Top topics — pivot into the matching topic signal if it's tracked there.
+    if (m.topics?.length) {
+        const sec = el("div", "detail-section");
+        sec.appendChild(el("div", "detail-section-title", "Top topics"));
+        const tags = el("div", "detail-tags");
+        const tracked = new Set((state.trends?.topics?.["90d"] || []).map(t => t.name));
+        for (const topic of m.topics) {
+            const tag = el("button", "detail-tag", topic);
+            if (tracked.has(topic)) {
+                tag.onclick = () => openSignal("topics", topic);
+            } else {
+                tag.style.cursor = "default";
+                tag.title = "Not currently a tracked signal";
+            }
+            tags.appendChild(tag);
+        }
+        sec.appendChild(tags);
+        body.appendChild(sec);
+    }
+
+    // Registrants
+    if (m.registrants?.length) {
+        const sec = el("div", "detail-section");
+        sec.appendChild(el("div", "detail-section-title", "Registrants"));
+        const tags = el("div", "detail-tags");
+        for (const r of m.registrants) tags.appendChild(el("span", "detail-tag", r));
+        sec.appendChild(tags);
+        body.appendChild(sec);
+    }
+
+    // Example filings
+    if (m.examples?.length) {
+        const sec = el("div", "detail-section");
+        const title = el("div", "detail-section-title");
+        title.appendChild(el("span", "", "Example filings"));
+        title.appendChild(el("span", "count", `${m.examples.length} shown`));
+        sec.appendChild(title);
+        const list = el("ul", "detail-list");
+        for (const ex of m.examples) {
+            const li = el("div", "filing-row");
+            const left = el("div");
+            left.appendChild(el("div", "filing-row-client", ex.registrant || "Unknown registrant"));
+            left.appendChild(el("div", "filing-row-registrant", fmt.dateShort(ex.date)));
+            li.appendChild(left);
+            const right = el("div", "filing-row-right");
+            right.appendChild(el("div", "filing-row-income", fmt.money(ex.income)));
+            const link = officialLink(ex.uuid, "official-link small");
+            if (link) right.appendChild(link);
+            li.appendChild(right);
+            list.appendChild(li);
+        }
+        sec.appendChild(list);
+        body.appendChild(sec);
+    }
 }
 
 /* Signal detail */
@@ -947,7 +1445,8 @@ function renderSignalDetail(body, view) {
         current_share_pct: 0, prev_share_pct: 0, yoy_share_pct: 0,
         share_delta_prev_pp: 0, share_delta_yoy_pp: 0,
         score: 0, confidence: "low",
-        topClients: [], examples: [], income: 0
+        topClients: [], examples: [], income: 0,
+        client_count: 0, prev_client_count: 0, yoy_client_count: 0
     };
     const m = items.find(i => i.name === view.name) || fallback;
     const meta = CATEGORIES[m.mode];
@@ -991,7 +1490,9 @@ function renderSignalDetail(body, view) {
         { value: fmt.pct(baselineShare),          label: "Base share",
           tip: "Share of all tagged mentions in the comparison period." },
         { value: m.income > 0 ? fmt.money(m.income) : "—", label: "Assoc. filing income",
-          tip: "Combined reported income of filings whose activities mention this. Filings usually cover several issues, so this is NOT spend attributable to this item alone." }
+          tip: "Combined reported income of filings whose activities mention this. Filings usually cover several issues, so this is NOT spend attributable to this item alone." },
+        { value: m.client_count ? fmt.int(m.client_count) : "—", label: "Orgs active",
+          tip: "Distinct organizations (name variants folded) whose filings mention this in the selected window." }
     ];
     for (const s of statCells) {
         const stat = el("div", "detail-stat");
@@ -1500,6 +2001,8 @@ function syncURL() {
     if (state.drawer) {
         if (state.drawer.kind === "signal") {
             hash = `#${state.drawer.mode}/${encodeURIComponent(state.drawer.name)}`;
+        } else if (state.drawer.kind === "org") {
+            hash = `#org/${encodeURIComponent(state.drawer.key)}`;
         } else if (state.drawer.kind === "client") {
             hash = `#client/${encodeURIComponent(state.drawer.name)}`;
         } else if (state.drawer.kind === "filing") {
@@ -1517,7 +2020,7 @@ function readURL() {
     const q = new URLSearchParams(window.location.search);
     if (["30d", "90d"].includes(q.get("w"))) state.view.window = q.get("w");
     if (["yoy", "prev"].includes(q.get("cmp"))) state.view.compare = q.get("cmp");
-    if (q.get("cat") && (q.get("cat") === "recent" || SIGNAL_MODES.includes(q.get("cat")))) state.view.cat = q.get("cat");
+    if (q.get("cat") && (q.get("cat") === "recent" || q.get("cat") === "clients" || SIGNAL_MODES.includes(q.get("cat")))) state.view.cat = q.get("cat");
 
     // Drawer from the hash
     const hash = window.location.hash.replace(/^#/, "");
@@ -1526,6 +2029,9 @@ function readURL() {
     const [kind, ...rest] = parts;
     if (SIGNAL_MODES.includes(kind)) {
         state.drawer = { kind: "signal", mode: kind, name: rest.join("/") };
+    } else if (kind === "org") {
+        const key = rest.join("/");
+        state.drawer = { kind: "org", key, name: key };
     } else if (kind === "client") {
         state.drawer = { kind: "client", name: rest.join("/") };
     } else if (kind === "filing") {
@@ -1676,17 +2182,32 @@ async function loadJSON(file) {
 }
 
 async function init() {
-    const [stats, trends, recent, timeseries] = await Promise.all([
+    const [stats, trends, recent, timeseries, clients] = await Promise.all([
         loadJSON("stats.json"),
         loadJSON("trends.json"),
         loadJSON("recent.json"),
-        loadJSON("timeseries.json")
+        loadJSON("timeseries.json"),
+        loadJSON("clients.json")
     ]);
 
     state.stats = stats || null;
     state.trends = trends || null;
     state.filings = recent?.filings || [];
     state.timeseries = timeseries || null;
+    state.clients = clients || null;
+
+    // clients.json is new and may not exist yet on a live deploy mid-rollout
+    // (new app.js, old data). Hide the Organizations pill and skip it
+    // everywhere else rather than show a broken/empty view.
+    const clientsPill = document.getElementById("cat-pill-clients");
+    if (clientsPill) {
+        if (orgMoversAvailable()) {
+            clientsPill.style.display = "";
+        } else {
+            clientsPill.style.display = "none";
+            if (state.view.cat === "clients") state.view.cat = "all";
+        }
+    }
 
     // Top bar meta — show "data through {date} · refreshed Xh ago"
     const meta = document.getElementById("topbar-meta");

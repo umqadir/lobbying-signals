@@ -13,6 +13,7 @@ Updated daily via GitHub Actions.
 - **Real-time LDA ingestion**: Downloads and stores Senate lobbying disclosure filings via the LDA API; coverage runs from 2020 to the present
 - **Deterministic extraction**: Uses versioned rules, LDA issue codes, regexes, and dictionaries to extract topics, entities, and legislation without model calls
 - **Trend detection**: Compares 30- and 90-day signal windows against prior-period and year-ago baselines, with seasonality-aware year-over-year as the default comparison
+- **Organization spend movers**: Tracks which organizations raised or cut reported lobbying dollars, comparing the latest complete report quarter to the same quarter a year earlier, with name-variant folding so one organization's filings aren't split across spellings
 - **Static signal browser**: An editorial dashboard — synthesized headline, ranked movers feed with period-comparison charts, detail drawer with quarterly history, command-palette search, and links to each filing's official Senate record
 - **Zero infrastructure cost**: Runs entirely on GitHub (Actions + Pages + Releases)
 
@@ -41,6 +42,7 @@ GitHub Actions (daily cron)
 - Trend comparisons are directional signals for exploration, not causal claims about lobbying spend or policy outcomes.
 - Filing volume is seasonal because quarterly LDA reports cluster around statutory filing deadlines.
 - Associated income is filing income connected to matching activity tags; it should not be read as causal spend on a single topic.
+- **Organization spend**: the Organizations view (`compute_client_movers()` in `08_trends.py`, exported to `docs/data/clients.json`) sums each client's reported filing income/expenses per report quarter and compares the latest COMPLETE quarter to the same quarter a year earlier — a quarter counts as complete once ~40 days past its calendar end, well past the 20th-of-the-following-month statutory deadline, so late filers don't read as a false drop. Name variants for one organization (legal-suffix differences, "on behalf of" filers, former names) are folded together by `clients_norm.canonical_client_key`; see `scripts/test_canonicalize_client.py` for the regression cases. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.
 
 ## Local Development
 
@@ -69,7 +71,8 @@ python 08_trends.py export       # Generate JSON exports
 | `06_extract.py` | Legacy optional Gemini extraction helper |
 | `12_extract_rules.py` | Deterministic no-LLM extraction + candidate mining + gap reports |
 | `07_refresh.py` | Orchestrate full refresh cycle |
-| `08_trends.py` | Compute trends and generate alerts |
+| `08_trends.py` | Compute trends, organization spend movers, and generate alerts |
+| `clients_norm.py` | Client-name canonicalization and display-name rendering used by `08_trends.py` |
 | `scripts/make_release_db.py` | Produce the slimmed DB copy uploaded to the GitHub Release for CI |
 
 ## Deterministic Topic Workflow (No LLM)
@@ -147,7 +150,7 @@ Trigger a run manually with **Actions → Monthly Legislation Alias Review → R
 workflow** once the secret is set. The audit script is also runnable locally:
 `python scripts/audit_legislation_aliases.py` (needs `data/filings.db`).
 
-Regression guard: `python scripts/test_normalize_legislation.py` (45 cases).
+Regression guard: `python scripts/test_normalize_legislation.py` (49 cases). Client-name canonicalization has its own regression guard: `python scripts/test_canonicalize_client.py`.
 
 ## Database
 

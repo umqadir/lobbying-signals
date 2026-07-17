@@ -364,6 +364,10 @@ input { font: inherit; color: inherit; }
 }
 .seg-btn:disabled:hover { color: var(--ink-4); }
 
+/* Organizations has a fixed quarter-vs-quarter framing — the window/compare
+   controls don't apply there. */
+.controls-hidden { display: none !important; }
+
 @media (prefers-color-scheme: dark) {
     .seg-btn.active { background: var(--ink); color: var(--bg); }
 }
@@ -475,7 +479,8 @@ input { font: inherit; color: inherit; }
 .cat-tag.legislation  { color: var(--cat-bill);     background: var(--cat-bill-soft); }
 .cat-tag.domains      { color: var(--cat-domain);   background: var(--cat-domain-soft); }
 .cat-tag.filing       { color: var(--cat-filing);   background: var(--cat-filing-soft); }
-.cat-tag.client       { color: var(--accent);       background: var(--accent-soft); }
+.cat-tag.client,
+.cat-tag.clients      { color: var(--accent);       background: var(--accent-soft); }
 
 .cat-tag-label {
     /* Used for the "Topic" "Agency" etc. label inside the colored tag */
