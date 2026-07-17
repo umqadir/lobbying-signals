@@ -1,34 +1,34 @@
 {
-  "generated_at": "2026-07-17T03:56:29.782983",
+  "generated_at": "2026-07-17T06:37:20.587861+00:00",
   "frame": "quarter",
   "frame_label": "Q1 2026",
   "status": "needs_attention",
   "severity_counts": {
     "high": 1,
-    "medium": 2,
-    "low": 1
+    "medium": 3,
+    "low": 2
   },
   "metrics": {
-    "mentions_current_quarter": 44020,
-    "mentions_baseline_quarter": 63825,
-    "mentions_vs_yoy_pct": -31.0,
-    "filings_current_90d": 19750,
-    "filings_prev_90d": 21531,
-    "filings_yoy_90d": 18164,
-    "filings_vs_prev_pct": -8.3,
-    "filings_vs_yoy_pct": 8.7,
-    "due_vs_non_due_ratio_4y": 27.52,
-    "due_month_avg_filings": 11179.7,
-    "non_due_month_avg_filings": 406.3,
-    "quarter_due_month_share_pct": 93.2,
-    "coverage_recent_90d_pct": 96.1,
-    "coverage_all_time_pct": 95.8,
-    "legislation_dropped_pct": 1.6,
-    "legislation_normalized_pct": 27.5,
-    "top_topic_share_pct": 17.23,
-    "top5_topic_share_pct": 31.77,
-    "secular_change_pct": 38.0,
-    "secular_cagr_pct": 6.66,
+    "mentions_current_quarter": 41672,
+    "mentions_baseline_quarter": 61047,
+    "mentions_vs_yoy_pct": -31.7,
+    "filings_current_90d": 15276,
+    "filings_prev_90d": 23485,
+    "filings_yoy_90d": 19199,
+    "filings_vs_prev_pct": -35.0,
+    "filings_vs_yoy_pct": -20.4,
+    "due_vs_non_due_ratio_4y": 21.08,
+    "due_month_avg_filings": 10979.4,
+    "non_due_month_avg_filings": 520.9,
+    "quarter_due_month_share_pct": 91.3,
+    "coverage_recent_90d_pct": 88.5,
+    "coverage_all_time_pct": 91.8,
+    "legislation_dropped_pct": 1.5,
+    "legislation_normalized_pct": 26.9,
+    "top_topic_share_pct": 17.37,
+    "top5_topic_share_pct": 31.98,
+    "secular_change_pct": 36.7,
+    "secular_cagr_pct": 6.46,
     "secular_start_year": 2020,
     "secular_end_year": 2025
   },
@@ -36,22 +36,32 @@
     {
       "severity": "medium",
       "title": "Large quarter-volume shift",
-      "detail": "Q1 2026 extracted mentions are -31.0% vs Q1 2025 (44,020 vs 63,825)."
+      "detail": "Q1 2026 extracted mentions are -31.7% vs Q1 2025 (41,672 vs 61,047)."
+    },
+    {
+      "severity": "low",
+      "title": "Filing-volume baseline drift",
+      "detail": "90d filing count is -20.4% vs year-ago (15,276 vs 19,199)."
     },
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 27.52x filing volume vs other months."
+      "detail": "Due-cycle months average 21.08x filing volume vs other months."
     },
     {
       "severity": "medium",
       "title": "Quarter-cycle concentration",
-      "detail": "93.2% of average monthly volume falls in Jan/Apr/Jul/Oct."
+      "detail": "91.3% of average monthly volume falls in Jan/Apr/Jul/Oct."
+    },
+    {
+      "severity": "medium",
+      "title": "Extraction coverage dip",
+      "detail": "Recent 90d coverage is 88.5% vs 91.8% all-time."
     },
     {
       "severity": "low",
       "title": "Top-topic concentration",
-      "detail": "Top topic accounts for 17.23% of Q1 2026 extracted mentions (top 5 = 31.77%)."
+      "detail": "Top topic accounts for 17.37% of Q1 2026 extracted mentions (top 5 = 31.98%)."
     }
   ]
 }

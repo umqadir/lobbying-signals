@@ -41,6 +41,8 @@ CREATE TABLE IF NOT EXISTS filings (
     income REAL,
     expenses REAL,
     filing_date TEXT,
+    filing_type TEXT,
+    is_current INTEGER NOT NULL DEFAULT 1,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -89,6 +91,8 @@ CREATE INDEX IF NOT EXISTS idx_filings_year_quarter ON filings(year, quarter);
 CREATE INDEX IF NOT EXISTS idx_filings_filing_date ON filings(filing_date);
 CREATE INDEX IF NOT EXISTS idx_filings_registrant ON filings(registrant_id);
 CREATE INDEX IF NOT EXISTS idx_filings_client ON filings(client_id);
+CREATE INDEX IF NOT EXISTS idx_filings_reg_client_year_quarter
+    ON filings(registrant_id, client_id, year, quarter);
 CREATE INDEX IF NOT EXISTS idx_activities_filing ON activities(filing_id);
 CREATE INDEX IF NOT EXISTS idx_issues_activity ON issues(activity_id);
 CREATE INDEX IF NOT EXISTS idx_issues_label ON issues(issue_label);
@@ -108,10 +112,29 @@ def get_db():
         conn.close()
 
 
+def _migrate_schema(conn: sqlite3.Connection):
+    """Idempotent ALTER TABLEs for columns/indexes added after initial release.
+
+    Guarded by PRAGMA table_info so this is a no-op on a DB that already has
+    them (fresh DBs get the columns straight from SCHEMA above) and safe to
+    run on every init_db() call, including in CI.
+    """
+    cols = {row["name"] for row in conn.execute("PRAGMA table_info(filings)")}
+    if "filing_type" not in cols:
+        conn.execute("ALTER TABLE filings ADD COLUMN filing_type TEXT")
+    if "is_current" not in cols:
+        conn.execute("ALTER TABLE filings ADD COLUMN is_current INTEGER NOT NULL DEFAULT 1")
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_filings_reg_client_year_quarter "
+        "ON filings(registrant_id, client_id, year, quarter)"
+    )
+
+
 def init_db():
     """Initialize database with schema."""
     with get_db() as conn:
         conn.executescript(SCHEMA)
+        _migrate_schema(conn)
         conn.commit()
 
 
@@ -181,9 +204,15 @@ def insert_filing(
     quarter: int,
     income: float = None,
     expenses: float = None,
-    filing_date: str = None
+    filing_date: str = None,
+    filing_type: str = None
 ) -> int:
-    """Insert a filing, returning the id. Skips if already exists."""
+    """Insert a filing, returning the id. Skips if already exists.
+
+    New rows default is_current=1 (schema default); callers that ingest
+    amendment/termination filings must run recompute_is_current() afterward
+    so supersede semantics stay correct across the touched report period.
+    """
     cur = conn.execute("SELECT id FROM filings WHERE sopr_filing_id = ?", (sopr_filing_id,))
     row = cur.fetchone()
     if row:
@@ -191,12 +220,49 @@ def insert_filing(
 
     cur = conn.execute(
         """INSERT INTO filings
-           (sopr_filing_id, registrant_id, client_id, year, quarter, income, expenses, filing_date)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
-        (sopr_filing_id, registrant_id, client_id, year, quarter, income, expenses, filing_date)
+           (sopr_filing_id, registrant_id, client_id, year, quarter, income, expenses, filing_date, filing_type)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+        (sopr_filing_id, registrant_id, client_id, year, quarter, income, expenses, filing_date, filing_type)
     )
     conn.commit()
     return cur.lastrowid
+
+
+def recompute_is_current(conn: sqlite3.Connection, year: int = None, quarter: int = None):
+    """Recompute the is_current flag for every (registrant_id, client_id,
+    year, quarter) group: the group's latest filing (by filing_date, then id
+    as tiebreak) gets is_current=1, every other filing in the group gets 0.
+
+    Pass year/quarter to scope the recompute to a single touched report
+    period (cheap — the normal post-ingest path). Omit both to recompute the
+    entire table in one pass (used for historical backfill / one-off repair).
+    """
+    where = ""
+    params: tuple = ()
+    if year is not None and quarter is not None:
+        where = "WHERE year = ? AND quarter = ?"
+        params = (year, quarter)
+
+    conn.execute(f"UPDATE filings SET is_current = 0 {where}", params)
+    conn.execute(
+        f"""
+        UPDATE filings SET is_current = 1
+        WHERE id IN (
+            SELECT id FROM (
+                SELECT id,
+                       ROW_NUMBER() OVER (
+                           PARTITION BY registrant_id, client_id, year, quarter
+                           ORDER BY filing_date DESC, id DESC
+                       ) AS rn
+                FROM filings
+                {where}
+            )
+            WHERE rn = 1
+        )
+        """,
+        params,
+    )
+    conn.commit()
 
 
 def insert_activity(

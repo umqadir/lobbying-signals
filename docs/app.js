@@ -727,7 +727,20 @@ function renderHero() {
         value: fmt.num(stats.total_extracted || stats.total_activities || 0),
         label: "activity tags"
     });
-    if (latest) {
+    // The partial quarter comes from stats.current_partial_quarter (the
+    // calendar quarter after the latest complete one) — NOT the newest
+    // quarter carrying filings, which early termination reports filed for
+    // future periods would skew.
+    const partial = stats.current_partial_quarter;
+    if (partial) {
+        let partialLabel = `${fmt.num(partial.filings)} filings so far · partial quarter`;
+        const due = reportsDueLabel(partial.year, partial.quarter);
+        if (due) partialLabel += ` · reports due ${due}`;
+        statItems.push({
+            value: `${partial.year} Q${partial.quarter}`,
+            label: partialLabel
+        });
+    } else if (latest) {
         const isPartial = partialN > 0 && latest === quarters[quarters.length - 1];
         let partialLabel = `${fmt.num(latest.filings)} filings so far · partial quarter`;
         if (isPartial) {

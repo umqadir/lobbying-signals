@@ -44,6 +44,7 @@ GitHub Actions (daily cron)
 - Filing volume is seasonal because quarterly LDA reports cluster around statutory filing deadlines.
 - Associated income is filing income connected to matching activity tags; it should not be read as causal spend on a single topic.
 - **Organization spend**: the Organizations view (`compute_client_movers()` in `08_trends.py`, exported to `docs/data/clients.json`) sums each client's reported filing income/expenses per report quarter under both frames above. Name variants for one organization (legal-suffix differences, "on behalf of" filers, former names) are folded together by `clients_norm.canonical_client_key`; see `scripts/test_canonicalize_client.py` for the regression cases. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.
+- **Amendments and termination reports**: ingestion covers original quarterly reports (`Q1`-`Q4`), amendments (`1A`-`4A`, plus no-activity variants), termination reports (`1T`-`4T`), and termination amendments (`1@`-`4@`), all keyed to the same report period as the original. Every `filings` row carries an `is_current` flag; for each (registrant, client, report quarter) group, only the most recently filed row is current, and every metric in `08_trends.py` reads current rows only. An amendment is treated as a complete restatement — its figures replace the original's, including a zeroed-out income if a no-activity amendment supersedes a report that had reported income.
 
 ## Local Development
 

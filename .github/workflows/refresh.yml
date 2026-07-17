@@ -11,6 +11,10 @@ on:
         description: 'Max activities to classify with deterministic rules'
         required: false
         default: '2000000'
+      backfill_non_original:
+        description: 'One-time: backfill amendments/terminations for all historical quarters before refreshing'
+        required: false
+        default: 'false'
 
 jobs:
   refresh:
@@ -51,7 +55,13 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p data
-          if gh release view data --json assets -q '.assets[].name' | grep -qx 'filings.db'; then
+          # Compressed asset preferred (the raw DB was closing in on GitHub's
+          # 2GB release-asset limit); fall back to the legacy uncompressed one.
+          assets=$(gh release view data --json assets -q '.assets[].name')
+          if echo "$assets" | grep -qx 'filings.db.zst'; then
+            gh release download data --pattern 'filings.db.zst' -D data/
+            zstd -d --rm data/filings.db.zst -o data/filings.db
+          elif echo "$assets" | grep -qx 'filings.db'; then
             gh release download data --pattern 'filings.db' -D data/
           else
             echo "No existing database asset, starting fresh"
@@ -66,6 +76,13 @@ jobs:
             uv run python -c "from db import init_db; init_db()"
           fi
 
+      - name: Backfill amendments and terminations (manual one-time)
+        if: github.event.inputs.backfill_non_original == 'true'
+        run: |
+          uv run python 01_ingest.py backfill-non-original --start-year 2020
+        env:
+          LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
+
       - name: Run refresh
         run: |
           uv run python 07_refresh.py \
@@ -75,7 +92,15 @@ jobs:
 
       - name: Upload database to release
         run: |
-          gh release upload data data/filings.db --clobber
+          # zstd -9: ~3-4x smaller, keeps the asset far under GitHub's 2GB
+          # release-asset hard limit that the raw DB was approaching.
+          zstd -9 -T0 -f data/filings.db -o data/filings.db.zst
+          gh release upload data data/filings.db.zst --clobber
+          # Drop the legacy uncompressed asset once the compressed one is up,
+          # so the release never carries both (and the old 1.7GB blob).
+          if gh release view data --json assets -q '.assets[].name' | grep -qx 'filings.db'; then
+            gh release delete-asset data filings.db -y
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -85,4 +110,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/data/
           git diff --staged --quiet || git commit -m "Update data exports [skip ci]"
+          # The refresh takes ~35 min; rebase over anything that landed on
+          # main meanwhile so the exports commit isn't rejected at the end.
+          git pull --rebase origin main
           git push

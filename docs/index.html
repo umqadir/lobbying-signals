@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260716-ledger">
+    <link rel="stylesheet" href="styles.css?v=20260717-amend">
 </head>
 <body>
     <header class="topbar">
@@ -88,7 +88,7 @@
                 <p><strong>What a “mention” is.</strong> Each filing describes its lobbying activities in free text. Versioned, deterministic rules (no AI model calls) tag those descriptions with topics, agencies, and legislation. One activity description that matches a tag = one mention. A single filing can produce many mentions. Bill numbers are scoped to their Congress (an “H.R. 1” from 2017 and one from 2025 are different laws), and a law's number, short name, and public-law number are counted as one bill.</p>
                 <p><strong>How comparisons work.</strong> Every view uses the same two comparison frames, both year-over-year and both based on report quarters (LDA disclosure is a quarterly regime — rolling day-windows would mostly measure filing-clerk timing). The default frame compares the latest <em>complete</em> report quarter against the same quarter a year earlier — like-for-like, since lobbying is seasonal. The second frame is a freshness lens: the current, still-filling quarter's reports so far, against reports for the same quarter last year that had been posted by the same point in the filing cycle. Early in a cycle that sample is small — the filing counts are shown so you can judge. “Share” is a tag's slice of all tagged mentions in a frame, which controls for volume swings.</p>
                 <p><strong>Confidence.</strong> A rule-based label reflecting how much volume sits behind a signal and how far its share moved against the year-ago quarter — not a statistical test.</p>
-                <p><strong>Honest limitations.</strong> Directional signals, not causal claims. Filing income is reported per filing, not per issue, so income figures associate a filing's whole income with each of its tags. The newest quarter is always partially reported until well after the statutory deadline. Rule-based tagging misses paraphrases a human would catch.</p>
+                <p><strong>Honest limitations.</strong> Directional signals, not causal claims. Filing income is reported per filing, not per issue, so income figures associate a filing's whole income with each of its tags. The newest quarter is always partially reported until well after the statutory deadline. Rule-based tagging misses paraphrases a human would catch. Amendments and termination reports are ingested alongside original quarterly reports; when a filer amends or terminates a report, its latest filing supersedes the original for that filer's report period, so corrected figures (including a final terminating quarter) are what's shown here, not the as-originally-filed numbers. A very small number of filings verified by hand against the Senate record to report figures that are not U.S.-dollar lobbying spend (for example, amounts a filing itself denominates in a self-issued currency) are excluded, with the reason and evidence documented in the source code.</p>
                 <p><strong>Organization spend.</strong> The Organizations view tracks reported dollars rather than mention counts: each client's filing income/expenses, summed per organization per report quarter, under the same two frames as everything else (a quarter counts as complete roughly six weeks past its statutory filing deadline, so late filers don't read as a false drop). Name variants for the same organization (legal-suffix differences, "on behalf of" filers, former names) are folded together. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.</p>
             </div>
         </div>
@@ -127,6 +127,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=20260716-ledger"></script>
+    <script src="app.js?v=20260717-amend"></script>
 </body>
 </html>

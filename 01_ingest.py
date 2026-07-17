@@ -17,12 +17,42 @@ import httpx
 from config import DATA_DIR
 from db import (
     get_db, init_db, get_or_create_registrant, get_or_create_client,
-    insert_filing, insert_activity
+    insert_filing, insert_activity, recompute_is_current
 )
 
 API_BASE = "https://lda.senate.gov/api/v1"
 PAGE_SIZE = 25  # API caps at 25 results per page
 LDA_API_KEY = os.getenv("LDA_API_KEY", "")
+
+# LDA report-period filing types for quarter n (n = 1..4), verified against
+# https://lda.senate.gov/api/v1/constants/filing/filingtypes/:
+#   QnY   original quarterly report (activity / no-activity)
+#   nA/nAY    amendment — a COMPLETE restatement that supersedes the original
+#   nT/nTY    termination report — filer's final-period activity
+#   n@/n@Y    termination amendment — restatement of a termination
+# Registration types (RR/RA) are out of scope; they aren't period reports.
+# The API does not accept a comma-separated filing_type param (confirmed:
+# it 400s), so each type is swept as its own request series.
+def _report_types_for_quarter(quarter: int) -> list[str]:
+    n = quarter
+    return [f"Q{n}", f"{n}A", f"{n}AY", f"{n}T", f"{n}TY", f"{n}@", f"{n}@Y"]
+
+
+def _non_original_types_for_quarter(quarter: int) -> list[str]:
+    n = quarter
+    return [f"{n}A", f"{n}AY", f"{n}T", f"{n}TY", f"{n}@", f"{n}@Y"]
+
+
+def _prev_quarter(year: int, quarter: int) -> tuple[int, int]:
+    if quarter == 1:
+        return year - 1, 4
+    return year, quarter - 1
+
+
+def _next_quarter(year: int, quarter: int) -> tuple[int, int]:
+    if quarter == 4:
+        return year + 1, 1
+    return year, quarter + 1
 
 def get_headers() -> dict:
     """Get request headers, including auth if API key is set."""
@@ -35,11 +65,10 @@ def get_headers() -> dict:
 RATE_LIMIT_DELAY = 0.5 if LDA_API_KEY else 4.0
 
 
-def fetch_filings_page(year: int, quarter: int, page: int = 1, max_retries: int = 5) -> dict:
-    """Fetch a page of filings from the API with retry logic."""
-    # API uses Q1, Q2, Q3, Q4 as filing types for quarterly reports
-    filing_type = f"Q{quarter}"
-
+def fetch_filings_page(year: int, filing_type: str, page: int = 1, max_retries: int = 5) -> dict:
+    """Fetch a page of filings of one LDA filing_type from the API, with
+    retry logic. filing_type is one of the codes from
+    _report_types_for_quarter (e.g. "Q1", "1A", "1AY", "1T", ...)."""
     params = {
         "filing_year": year,
         "filing_type": filing_type,
@@ -117,6 +146,7 @@ def parse_api_filing(filing: dict) -> dict | None:
             })
 
     filing_date = filing.get("dt_posted") or filing.get("filing_date")
+    filing_type = filing.get("filing_type")
 
     return {
         "filing_id": str(filing_id),
@@ -124,6 +154,7 @@ def parse_api_filing(filing: dict) -> dict | None:
         "quarter": quarter,
         "income": income,
         "filing_date": filing_date,
+        "filing_type": filing_type,
         "registrant_id": str(registrant_id) if registrant_id else None,
         "registrant_name": registrant_name,
         "client_id": str(client_id) if client_id else None,
@@ -183,7 +214,8 @@ def load_filings_to_db(filings: list[dict]):
                     f["quarter"],
                     f.get("income"),
                     None,
-                    f.get("filing_date")
+                    f.get("filing_date"),
+                    f.get("filing_type")
                 )
 
                 for activity in f.get("activities", []):
@@ -205,10 +237,10 @@ def load_filings_to_db(filings: list[dict]):
     return loaded
 
 
-def ingest_quarter(year: int, quarter: int):
-    """Fetch and load all filings for a quarter, loading incrementally."""
-    print(f"Ingesting {year} Q{quarter}...")
-
+def _ingest_filing_type(year: int, filing_type: str) -> int:
+    """Fetch and load all filings of one filing_type for a year, loading
+    incrementally. Low-volume types (amendments/terminations) are a handful
+    of pages; the original Q{n} sweep is the bulk of the traffic."""
     total_loaded = 0
     page = 1
     batch = []
@@ -216,14 +248,14 @@ def ingest_quarter(year: int, quarter: int):
 
     while True:
         if page % 50 == 1:
-            print(f"  Page {page}... ({total_loaded} loaded)")
+            print(f"    [{filing_type}] page {page}... ({total_loaded} loaded)")
         try:
-            data = fetch_filings_page(year, quarter, page)
+            data = fetch_filings_page(year, filing_type, page)
         except httpx.HTTPStatusError as e:
-            print(f"  API error: {e}")
+            print(f"    [{filing_type}] API error: {e}")
             break
         except Exception as e:
-            print(f"  Error: {e}")
+            print(f"    [{filing_type}] Error: {e}")
             break
 
         results = data.get("results", [])
@@ -253,7 +285,39 @@ def ingest_quarter(year: int, quarter: int):
         loaded = load_filings_to_db(batch)
         total_loaded += loaded
 
-    print(f"  Loaded {total_loaded} filings to database")
+    return total_loaded
+
+
+def ingest_quarter(year: int, quarter: int, filing_types: list[str] = None) -> int:
+    """Fetch and load all report filings for a (year, quarter) report period,
+    then recompute is_current for that period.
+
+    filing_types defaults to the full sweep for the period — the original
+    Q{n} report plus amendments ({n}A/{n}AY), terminations ({n}T/{n}TY), and
+    termination amendments ({n}@/{n}@Y), all of which share the same
+    (year, quarter) report-period metadata even though they may be filed
+    months apart. Pass a narrower list (see _non_original_types_for_quarter)
+    to sweep only the non-original types, e.g. for trailing-amendment or
+    historical-backfill sweeps that skip the already-ingested originals.
+    """
+    types = filing_types if filing_types is not None else _report_types_for_quarter(quarter)
+    print(f"Ingesting {year} Q{quarter} ({', '.join(types)})...")
+
+    total_loaded = 0
+    counts_by_type = {}
+    for filing_type in types:
+        loaded = _ingest_filing_type(year, filing_type)
+        counts_by_type[filing_type] = loaded
+        total_loaded += loaded
+
+    # Supersede recomputation for exactly the report period just touched —
+    # cheap because it's scoped, and correct regardless of which types were
+    # actually swept (an amendment ingested now may supersede an original
+    # ingested in an earlier run).
+    with get_db() as conn:
+        recompute_is_current(conn, year, quarter)
+
+    print(f"  Loaded {total_loaded} filings to database {counts_by_type}")
     return total_loaded
 
 
@@ -277,13 +341,15 @@ def ingest_range(start_year: int, end_year: int):
 
 
 def ingest_latest():
-    """Sweep the two most recent report quarters for new filings.
+    """Sweep the two most recent report quarters for new filings (all report
+    types — originals, amendments, terminations, termination amendments),
+    plus a trailing-amendments sweep of the 4 quarters before that.
 
     Filings for a report period keep arriving for weeks after the statutory
-    deadline (amendments and late filers trail for months), so sweeping only
-    the newest quarter silently drops the prior quarter's stragglers.
-    ingest_quarter dedupes by sopr_filing_id, so re-sweeping is cheap in DB
-    terms and idempotent.
+    deadline (amendments and late filers trail for months, sometimes over a
+    year for terminations/amendments specifically), so sweeping only the
+    newest quarter silently drops stragglers. ingest_quarter dedupes by
+    sopr_filing_id, so re-sweeping is cheap in DB terms and idempotent.
     """
     init_db()
     now = datetime.now()
@@ -307,11 +373,82 @@ def ingest_latest():
             print(f"Could not ingest {y} Q{qq}: {e}")
             continue
 
+    # Trailing-amendments sweep: amendments/terminations for older periods
+    # keep trailing in for months after the period itself is "done", so also
+    # sweep non-original types for the 4 report quarters before the oldest
+    # quarter swept above (idempotent — dedupe makes re-sweeping cheap).
+    ty, tq = sweep[-1]
+    trailing = []
+    for _ in range(4):
+        ty, tq = _prev_quarter(ty, tq)
+        trailing.append((ty, tq))
+
+    for y, qq in trailing:
+        try:
+            types = _non_original_types_for_quarter(qq)
+            count = ingest_quarter(y, qq, filing_types=types)
+            print(f"Swept trailing amendments {y} Q{qq}: {count} new filings")
+        except Exception as e:
+            print(f"Could not sweep trailing amendments {y} Q{qq}: {e}")
+            continue
+
+
+def backfill_non_original(start_year: int):
+    """Historical backfill: sweep only the non-original report types
+    (amendments/terminations/termination amendments) for every quarter from
+    start_year through the current (in-progress) quarter, then run a single
+    global recompute of is_current across the whole table.
+
+    Intended as a one-time catch-up after this feature ships — originals
+    were already ingested by the existing pipeline, so only the previously
+    excluded types need a historical sweep.
+    """
+    init_db()
+    now = datetime.now()
+    end_year = now.year
+    end_quarter = (now.month - 1) // 3 + 1
+
+    y, q = start_year, 1
+    total = 0
+    per_quarter = []
+    while (y, q) <= (end_year, end_quarter):
+        types = _non_original_types_for_quarter(q)
+        try:
+            count = ingest_quarter(y, q, filing_types=types)
+        except Exception as e:
+            print(f"Failed to backfill {y} Q{q}: {e}")
+            count = 0
+        per_quarter.append((y, q, count))
+        total += count
+        y, q = _next_quarter(y, q)
+
+    print("\nBackfill per-quarter counts (non-original types):")
+    for y, q, count in per_quarter:
+        print(f"  {y} Q{q}: {count}")
+    print(f"Total non-original filings ingested: {total}")
+
+    print("\nRunning global is_current recompute...")
+    with get_db() as conn:
+        recompute_is_current(conn)
+    print("Global recompute complete.")
+    return total
+
 
 if __name__ == "__main__":
     import sys
 
-    if len(sys.argv) >= 3:
+    if len(sys.argv) >= 2 and sys.argv[1] == "recompute-current":
+        init_db()
+        with get_db() as conn:
+            recompute_is_current(conn)
+        print("Recomputed is_current for the entire filings table.")
+    elif len(sys.argv) >= 2 and sys.argv[1] == "backfill-non-original":
+        start_year = 2020
+        if "--start-year" in sys.argv:
+            idx = sys.argv.index("--start-year")
+            start_year = int(sys.argv[idx + 1])
+        backfill_non_original(start_year)
+    elif len(sys.argv) >= 3 and sys.argv[1].isdigit() and sys.argv[2].isdigit():
         year = int(sys.argv[1])
         quarter = int(sys.argv[2])
         init_db()
@@ -325,9 +462,12 @@ if __name__ == "__main__":
             ingest_year(year)
     else:
         print("Usage: python 01_ingest.py <year> [quarter]")
-        print("       python 01_ingest.py 2024 1     # Ingest Q1 2024")
-        print("       python 01_ingest.py 2024       # Ingest all of 2024")
-        print("       python 01_ingest.py latest     # Ingest most recent quarter")
+        print("       python 01_ingest.py 2024 1                        # Ingest Q1 2024 (all report types)")
+        print("       python 01_ingest.py 2024                          # Ingest all of 2024")
+        print("       python 01_ingest.py latest                        # Ingest most recent quarters + trailing amendments")
+        print("       python 01_ingest.py recompute-current             # Recompute is_current for the whole table")
+        print("       python 01_ingest.py backfill-non-original --start-year 2020")
+        print("                                                          # Historical backfill of amendments/terminations")
         print()
         print("Ingesting 2024 by default...")
         ingest_year(2024)

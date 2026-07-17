@@ -3,13 +3,13 @@
 import calendar
 import json
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
 from db import get_db, query_to_dicts
-from clients_norm import canonical_client_key, display_client_name
+from clients_norm import canonical_client_key, display_client_name, EXCLUDED_CLIENT_KEYS
 
 RULES_PATH = Path("rules/topic_rules.json")
 
@@ -377,6 +377,7 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
             JOIN clients c ON f.client_id = c.id
             JOIN registrants r ON f.registrant_id = r.id
             WHERE e.coarse_topic IS NOT NULL
+            AND f.is_current = 1
             {date_filter}
         '''
         rows = query_to_dicts(conn, sql, tuple(params))
@@ -439,6 +440,12 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
         registrant = row.get('registrant_name')
         income = row.get('income') or 0
         filing_date = row.get('filing_date')
+
+        # Verified-erroneous filers (see clients_norm.EXCLUDED_CLIENT_KEYS):
+        # their activities and non-dollar "income" would pollute every tag
+        # they brush against.
+        if client and canonical_client_key(client) in EXCLUDED_CLIENT_KEYS:
+            continue
 
         for topic in json.loads(row['topics'] or '[]'):
             if is_general_topic(topic):
@@ -644,14 +651,16 @@ def _frame_specs(conn) -> dict:
 
 
 def _filing_count(conn, year: int, quarter: int, through: str = None) -> int:
+    # is_current = 1: a superseded original shouldn't inflate the filing
+    # count for a period whose real latest-word filing is its amendment.
     if through:
         # Day-granularity comparison: filing_date is a full ISO timestamp.
         return conn.execute(
-            'SELECT COUNT(*) FROM filings WHERE year = ? AND quarter = ? AND substr(filing_date, 1, 10) <= ?',
+            'SELECT COUNT(*) FROM filings WHERE year = ? AND quarter = ? AND is_current = 1 AND substr(filing_date, 1, 10) <= ?',
             (year, quarter, through),
         ).fetchone()[0]
     return conn.execute(
-        'SELECT COUNT(*) FROM filings WHERE year = ? AND quarter = ?',
+        'SELECT COUNT(*) FROM filings WHERE year = ? AND quarter = ? AND is_current = 1',
         (year, quarter),
     ).fetchone()[0]
 
@@ -775,7 +784,7 @@ def compute_trends() -> dict:
         return {k: mapping[k] for k in names if k in mapping}
 
     result = {
-        'generated_at': datetime.now().isoformat(),
+        'generated_at': datetime.now(timezone.utc).isoformat(),
         'frames': frame_meta,
         'topics': {},
         'entities': {},
@@ -904,10 +913,12 @@ def get_stats() -> dict:
             WHERE filing_date IS NOT NULL
         ''').fetchone()
 
-        # Get quarter breakdown
+        # Get quarter breakdown (is_current=1 so a superseded original isn't
+        # double-counted alongside the amendment/termination that replaced it)
         quarters = conn.execute('''
             SELECT year, quarter, COUNT(*) as cnt, SUM(income) as total_income
             FROM filings
+            WHERE is_current = 1
             GROUP BY year, quarter
             ORDER BY year DESC, quarter DESC
             LIMIT 8
@@ -920,27 +931,42 @@ def get_stats() -> dict:
         anchor = _anchor_today(conn)
         complete_year, complete_quarter = _latest_complete_quarter(anchor)
         baseline_year = complete_year - 1
-        quarter_rows = query_to_dicts(
+        # The partial quarter is the one FOLLOWING the latest complete quarter
+        # by the calendar — not max(year, quarter) in the data, which a
+        # handful of legitimate early termination reports for future periods
+        # would skew (e.g. a 3T filed in April).
+        partial_year, partial_quarter = _next_quarter(complete_year, complete_quarter)
+        # Per-filing rows so supersede (is_current) and the verified-erroneous
+        # filer exclusions apply — these figures must agree with the
+        # organization-mover quarter totals in clients.json.
+        filing_rows = query_to_dicts(
             conn,
             '''
-            SELECT year, quarter, COUNT(*) as filings, SUM(income) as income
-            FROM filings
-            WHERE (year = ? AND quarter = ?) OR (year = ? AND quarter = ?)
-            GROUP BY year, quarter
+            SELECT f.year, f.quarter, f.income, c.name AS client_name
+            FROM filings f JOIN clients c ON f.client_id = c.id
+            WHERE f.is_current = 1
+              AND ((f.year = ? AND f.quarter = ?) OR (f.year = ? AND f.quarter = ?)
+                   OR (f.year = ? AND f.quarter = ?))
             ''',
-            (complete_year, complete_quarter, baseline_year, complete_quarter),
+            (complete_year, complete_quarter, baseline_year, complete_quarter,
+             partial_year, partial_quarter),
         )
 
-    by_year_quarter = {(r['year'], r['quarter']): r for r in quarter_rows}
-    current_row = by_year_quarter.get((complete_year, complete_quarter), {})
-    baseline_row = by_year_quarter.get((baseline_year, complete_quarter), {})
-    current_income = current_row.get('income') or 0
-    baseline_income = baseline_row.get('income') or 0
-    current_filings = current_row.get('filings') or 0
-    baseline_filings = baseline_row.get('filings') or 0
+    sums = defaultdict(float)
+    counts = defaultdict(int)
+    for r in filing_rows:
+        if canonical_client_key(r.get('client_name') or '') in EXCLUDED_CLIENT_KEYS:
+            continue
+        yq = (r['year'], r['quarter'])
+        sums[yq] += r.get('income') or 0
+        counts[yq] += 1
+    current_income = sums[(complete_year, complete_quarter)]
+    baseline_income = sums[(baseline_year, complete_quarter)]
+    current_filings = counts[(complete_year, complete_quarter)]
+    baseline_filings = counts[(baseline_year, complete_quarter)]
 
     return {
-        'generated_at': datetime.now().isoformat(),
+        'generated_at': datetime.now(timezone.utc).isoformat(),
         'total_filings': total_filings,
         'total_activities': total_activities,
         'total_extracted': total_extracted,
@@ -964,6 +990,12 @@ def get_stats() -> dict:
             'yoy_filings': baseline_filings,
             'income_change_pct': _pct_change(current_income, baseline_income),
         },
+        'current_partial_quarter': {
+            'year': partial_year,
+            'quarter': partial_quarter,
+            'label': f'Q{partial_quarter} {partial_year}',
+            'filings': counts[(partial_year, partial_quarter)],
+        },
     }
 
 
@@ -974,7 +1006,7 @@ def get_recent_filings(limit: int = 300) -> list:
             WITH recent AS (
                 SELECT id, sopr_filing_id, filing_date, income, year, quarter, client_id, registrant_id
                 FROM filings
-                WHERE filing_date IS NOT NULL
+                WHERE filing_date IS NOT NULL AND is_current = 1
                 ORDER BY filing_date DESC
                 LIMIT ?
             )
@@ -993,6 +1025,9 @@ def get_recent_filings(limit: int = 300) -> list:
     by_filing = {}
     for row in rows:
         fid = row['id']
+        client_name = row.get('client_name')
+        if client_name and canonical_client_key(client_name) in EXCLUDED_CLIENT_KEYS:
+            continue
         if fid not in by_filing:
             by_filing[fid] = {
                 'id': fid,
@@ -1090,6 +1125,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
                 FROM filings
                 WHERE year IS NOT NULL
                   AND quarter BETWEEN 1 AND 4
+                  AND is_current = 1
                 GROUP BY year, quarter
             ),
             latest AS (
@@ -1135,6 +1171,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             JOIN filings f ON a.filing_id = f.id
             WHERE f.year IS NOT NULL
               AND f.quarter BETWEEN 1 AND 4
+              AND f.is_current = 1
               AND (f.year * 4 + f.quarter) BETWEEN ? AND ?
             ''',
             (min_q_index, max_q_index),
@@ -1302,6 +1339,7 @@ def compute_client_movers(quarters_back: int = 20) -> dict:
             JOIN clients c ON f.client_id = c.id
             JOIN registrants r ON f.registrant_id = r.id
             WHERE (f.year * 4 + f.quarter) BETWEEN ? AND ?
+              AND f.is_current = 1
             ''',
             (min_index, max_index),
         )
@@ -1316,7 +1354,7 @@ def compute_client_movers(quarters_back: int = 20) -> dict:
                 JOIN activities a ON e.activity_id = a.id
                 JOIN filings f ON a.filing_id = f.id
                 JOIN clients c ON f.client_id = c.id
-                WHERE f.year = ? AND f.quarter = ?
+                WHERE f.year = ? AND f.quarter = ? AND f.is_current = 1
             '''
             params: list = [y, q]
             if through:
@@ -1357,7 +1395,7 @@ def compute_client_movers(quarters_back: int = 20) -> dict:
         if not client_name:
             continue
         key = canonical_client_key(client_name)
-        if not key:
+        if not key or key in EXCLUDED_CLIENT_KEYS:
             continue
         q_index = int(row['year']) * 4 + int(row['quarter'])
         income = row.get('income') or 0
@@ -1511,7 +1549,7 @@ def compute_client_movers(quarters_back: int = 20) -> dict:
         return frame
 
     return {
-        'generated_at': datetime.now().isoformat(),
+        'generated_at': datetime.now(timezone.utc).isoformat(),
         'frames': {fk: build_frame(fk) for fk in FRAME_KEYS},
         # Shared complete-quarter history for the per-org drawer chart —
         # identical under both frames.
@@ -1543,16 +1581,20 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
     yoy_end = (today - timedelta(days=365)).strftime('%Y-%m-%d')
 
     with get_db() as conn:
+        # is_current = 1 throughout: a superseded original was still received
+        # on its filing_date, but counting it alongside the amendment/
+        # termination that replaced it would double-count one report period's
+        # worth of real activity as two, inflating every volume metric below.
         current_filings = conn.execute(
-            "SELECT COUNT(*) FROM filings WHERE filing_date BETWEEN ? AND ?",
+            "SELECT COUNT(*) FROM filings WHERE filing_date BETWEEN ? AND ? AND is_current = 1",
             (current_start, current_end),
         ).fetchone()[0]
         prev_filings = conn.execute(
-            "SELECT COUNT(*) FROM filings WHERE filing_date BETWEEN ? AND ?",
+            "SELECT COUNT(*) FROM filings WHERE filing_date BETWEEN ? AND ? AND is_current = 1",
             (prev_start, prev_end),
         ).fetchone()[0]
         yoy_filings = conn.execute(
-            "SELECT COUNT(*) FROM filings WHERE filing_date BETWEEN ? AND ?",
+            "SELECT COUNT(*) FROM filings WHERE filing_date BETWEEN ? AND ? AND is_current = 1",
             (yoy_start, yoy_end),
         ).fetchone()[0]
 
@@ -1561,7 +1603,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
             """
             SELECT CAST(strftime('%Y', filing_date) AS INTEGER) AS year, COUNT(*) AS filings
             FROM filings
-            WHERE filing_date IS NOT NULL
+            WHERE filing_date IS NOT NULL AND is_current = 1
             GROUP BY year
             ORDER BY year
             """,
@@ -1577,6 +1619,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
             FROM filings
             WHERE filing_date IS NOT NULL
               AND filing_date >= date('now', '-4 years')
+              AND is_current = 1
             GROUP BY year, month
             ORDER BY year, month
             """,
@@ -1591,7 +1634,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
             FROM activities a
             JOIN filings f ON a.filing_id = f.id
             LEFT JOIN activity_extractions_rules e ON e.activity_id = a.id
-            WHERE f.filing_date BETWEEN ? AND ?
+            WHERE f.filing_date BETWEEN ? AND ? AND f.is_current = 1
             """,
             (current_start, current_end),
         )
@@ -1604,6 +1647,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
             JOIN filings f ON a.filing_id = f.id
             WHERE f.filing_date BETWEEN ? AND ?
               AND e.legislation IS NOT NULL
+              AND f.is_current = 1
             """,
             (current_start, current_end),
         )
@@ -1766,7 +1810,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
         status = 'ok'
 
     return {
-        'generated_at': datetime.now().isoformat(),
+        'generated_at': datetime.now(timezone.utc).isoformat(),
         'frame': 'quarter',
         'frame_label': frame_label,
         'status': status,
@@ -1849,7 +1893,7 @@ def export_json(output_dir: str = 'docs/data'):
 
     with open(f'{output_dir}/alerts.json', 'w') as f:
         json.dump({
-            'generated_at': datetime.now().isoformat(),
+            'generated_at': datetime.now(timezone.utc).isoformat(),
             'alerts': alerts
         }, f, indent=2)
 
@@ -1861,13 +1905,13 @@ def export_json(output_dir: str = 'docs/data'):
 
     with open(f'{output_dir}/recent.json', 'w') as f:
         json.dump({
-            'generated_at': datetime.now().isoformat(),
+            'generated_at': datetime.now(timezone.utc).isoformat(),
             'filings': recent
         }, f, indent=2)
 
     with open(f'{output_dir}/timeseries.json', 'w') as f:
         json.dump({
-            'generated_at': datetime.now().isoformat(),
+            'generated_at': datetime.now(timezone.utc).isoformat(),
             **timeseries
         }, f, indent=2)
 

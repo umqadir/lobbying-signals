@@ -1,72 +1,78 @@
 {
-  "generated_at": "2026-07-17T03:56:28.256699",
-  "total_filings": 457505,
-  "total_activities": 1661790,
-  "total_extracted": 1591255,
-  "extracted_pct": 95.8,
+  "generated_at": "2026-07-17T06:37:00.392897+00:00",
+  "total_filings": 497855,
+  "total_activities": 1721859,
+  "total_extracted": 1579918,
+  "extracted_pct": 91.8,
   "extraction_source": "deterministic_rules",
   "date_range": {
-    "start": "2020-01-06T13:56:54.507000-05:00",
-    "end": "2026-07-16T23:29:35-04:00"
+    "start": "2020-01-06T10:37:27.950000-05:00",
+    "end": "2026-07-16T22:42:21-04:00"
   },
   "quarters": [
     {
       "year": 2026,
+      "quarter": 3,
+      "filings": 4,
+      "income": 100000.0
+    },
+    {
+      "year": 2026,
       "quarter": 2,
-      "filings": 6515,
-      "income": 339494209.09
+      "filings": 1802,
+      "income": 54056671.56
     },
     {
       "year": 2026,
       "quarter": 1,
-      "filings": 21745,
-      "income": 1675768643.84
+      "filings": 22154,
+      "income": 1651168796.94
     },
     {
       "year": 2025,
       "quarter": 4,
-      "filings": 19847,
-      "income": 1504656812.27
+      "filings": 21242,
+      "income": 1528856344.52
     },
     {
       "year": 2025,
       "quarter": 3,
-      "filings": 21010,
-      "income": 1481326693.79
+      "filings": 22161,
+      "income": 1502347245.79
     },
     {
       "year": 2025,
       "quarter": 2,
-      "filings": 20878,
-      "income": 1531051700.89
+      "filings": 22001,
+      "income": 1553622730.83
     },
     {
       "year": 2025,
       "quarter": 1,
-      "filings": 19880,
-      "income": 1473336509.08
+      "filings": 21180,
+      "income": 1512199495.05
     },
     {
       "year": 2024,
       "quarter": 4,
-      "filings": 18619,
-      "income": 1282337254.27
-    },
-    {
-      "year": 2024,
-      "quarter": 3,
-      "filings": 18878,
-      "income": 1251046976.6
+      "filings": 19846,
+      "income": 1305568167.09
     }
   ],
   "latest_complete_quarter": {
     "year": 2026,
     "quarter": 1,
     "label": "Q1 2026",
-    "income": 1675768643.84,
-    "filings": 21745,
-    "yoy_income": 1473336509.08,
-    "yoy_filings": 19880,
-    "income_change_pct": 13.7
+    "income": 1651168796.9399998,
+    "filings": 22154,
+    "yoy_income": 1492199495.0500002,
+    "yoy_filings": 21179,
+    "income_change_pct": 10.7
+  },
+  "current_partial_quarter": {
+    "year": 2026,
+    "quarter": 2,
+    "label": "Q2 2026",
+    "filings": 1802
   }
 }

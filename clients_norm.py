@@ -15,6 +15,24 @@ organization-spend rollups don't fragment obvious duplicates or render
 
 import re
 
+# ─── verified-erroneous filers ───
+
+# Filings verified by hand against the Senate record to report figures that
+# are not U.S.-dollar lobbying spend. The LDA system accepts these as filed;
+# excluding them is editorial curation, so every entry needs a reason and the
+# evidence. Keys are canonical_client_key() outputs.
+#
+# "State of Loc Nation" (a self-described sovereign micronation; filings
+# 4d5b1cb0-0971-43b8-958b-d260e2be8af1, 892864a7-3824-416c-ad6b-413769e9de0c
+# et al.) reports a flat $20,000,000 per quarter that its own activity text
+# denominates in "Loc Nation Dollars (LND)", a self-issued currency — not
+# lobbying income. It would otherwise rank among the top five U.S. spenders.
+EXCLUDED_CLIENT_KEYS = {
+    'STATE OF LOC NATION GLOBAL PUBLIC BENEFIT',
+    'LOC COMMUNITY ASSOCIATION',
+    'QUEENDOM STATE OF LOC NATION GLOBAL PUBLIC BENEFIT CORPORATION AND TRUST',
+}
+
 # ─── canonical_client_key ───
 
 _ON_BEHALF_RE = re.compile(r'\s+ON\s+BEHALF\s+OF\s+|\s+OBO\s+', re.IGNORECASE)
