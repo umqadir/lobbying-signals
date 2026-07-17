@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T22:06:49.909498",
+  "generated_at": "2026-07-17T02:48:59.601336",
   "current_quarter": {
     "year": 2026,
     "quarter": 1,
@@ -11,12 +11,12 @@
     "label": "Q1 2025"
   },
   "quarter_totals": {
-    "current_income": 1631352632.09,
+    "current_income": 1675768643.84,
     "baseline_income": 1473336509.08,
-    "change_pct": 10.7,
-    "current_filings": 20956,
+    "change_pct": 13.7,
+    "current_filings": 21745,
     "baseline_filings": 19880,
-    "current_clients": 15292,
+    "current_clients": 15864,
     "baseline_clients": 14458
   },
   "quarters": [
@@ -1012,6 +1012,83 @@
       ]
     },
     {
+      "key": "TENCENT AMERICA",
+      "name": "Tencent America, LLC",
+      "current": 1565000.0,
+      "baseline": 200000.0,
+      "delta": 1365000.0,
+      "ratio": 7.825,
+      "filings_current": 5,
+      "filings_baseline": 1,
+      "topics": [
+        "Defense Authorization"
+      ],
+      "registrants": [
+        "Hogan Lovells US LLP",
+        "Mercury Public Affairs, LLC",
+        "Brownstein Hyatt Farber Schreck, LLP"
+      ],
+      "series": [
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        200000.0,
+        580000.0,
+        1515000.0,
+        1565000.0,
+        1565000.0
+      ],
+      "examples": [
+        {
+          "uuid": "823c4d10-1e17-4a69-b4e9-8ca0908d8ce6",
+          "date": "2026-04-23T17:25:33-04:00",
+          "client": "Tencent America, LLC",
+          "registrant": "Mo Strategies, Inc.",
+          "income": 530000.0
+        },
+        {
+          "uuid": "10c2b189-c624-4539-9810-8423ceccb7b8",
+          "date": "2026-04-15T12:13:27-04:00",
+          "client": "Tencent America, LLC",
+          "registrant": "Hogan Lovells US LLP",
+          "income": 410000.0
+        },
+        {
+          "uuid": "c9c843da-a509-47d4-8017-c80af0370200",
+          "date": "2026-05-19T21:32:15-04:00",
+          "client": "Tencent America, LLC",
+          "registrant": "John Mcentee",
+          "income": 225000.0
+        },
+        {
+          "uuid": "2dd31c4d-ec77-4753-b2cd-08c1d93a547b",
+          "date": "2026-04-16T11:25:46-04:00",
+          "client": "Tencent America, LLC",
+          "registrant": "Mercury Public Affairs, LLC",
+          "income": 200000.0
+        },
+        {
+          "uuid": "67dac82d-bbd1-4124-844f-657cc9aa79b4",
+          "date": "2026-04-17T14:02:04-04:00",
+          "client": "Tencent America, LLC",
+          "registrant": "Brownstein Hyatt Farber Schreck, LLP",
+          "income": 200000.0
+        }
+      ]
+    },
+    {
       "key": "PACIFIC GAS AND ELECTRIC",
       "name": "Pacific Gas and Electric Company",
       "current": 3020000.0,
@@ -1402,76 +1479,6 @@
           "client": "Walmart Inc",
           "registrant": "The Simmons & Russell Group, LLC",
           "income": 80000.0
-        }
-      ]
-    },
-    {
-      "key": "TENCENT AMERICA",
-      "name": "Tencent America, LLC",
-      "current": 1340000.0,
-      "baseline": 200000.0,
-      "delta": 1140000.0,
-      "ratio": 6.7,
-      "filings_current": 4,
-      "filings_baseline": 1,
-      "topics": [
-        "Defense Authorization"
-      ],
-      "registrants": [
-        "Hogan Lovells US LLP",
-        "Mercury Public Affairs, LLC",
-        "Brownstein Hyatt Farber Schreck, LLP"
-      ],
-      "series": [
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        200000.0,
-        580000.0,
-        1515000.0,
-        1565000.0,
-        1340000.0
-      ],
-      "examples": [
-        {
-          "uuid": "823c4d10-1e17-4a69-b4e9-8ca0908d8ce6",
-          "date": "2026-04-23T17:25:33-04:00",
-          "client": "Tencent America, LLC",
-          "registrant": "Mo Strategies, Inc.",
-          "income": 530000.0
-        },
-        {
-          "uuid": "10c2b189-c624-4539-9810-8423ceccb7b8",
-          "date": "2026-04-15T12:13:27-04:00",
-          "client": "Tencent America, LLC",
-          "registrant": "Hogan Lovells US LLP",
-          "income": 410000.0
-        },
-        {
-          "uuid": "2dd31c4d-ec77-4753-b2cd-08c1d93a547b",
-          "date": "2026-04-16T11:25:46-04:00",
-          "client": "Tencent America, LLC",
-          "registrant": "Mercury Public Affairs, LLC",
-          "income": 200000.0
-        },
-        {
-          "uuid": "67dac82d-bbd1-4124-844f-657cc9aa79b4",
-          "date": "2026-04-17T14:02:04-04:00",
-          "client": "Tencent America, LLC",
-          "registrant": "Brownstein Hyatt Farber Schreck, LLP",
-          "income": 200000.0
         }
       ]
     },
@@ -2312,61 +2319,6 @@
       ]
     },
     {
-      "key": "GROWTH ENERGY",
-      "name": "Growth Energy",
-      "current": 120000.0,
-      "baseline": 1590000.0,
-      "delta": -1470000.0,
-      "ratio": 0.075,
-      "filings_current": 2,
-      "filings_baseline": 3,
-      "topics": [
-        "Biofuels"
-      ],
-      "registrants": [
-        "The Russell Group, Inc.",
-        "Brownstein Hyatt Farber Schreck, LLP"
-      ],
-      "series": [
-        430000.0,
-        470000.0,
-        550000.0,
-        650000.0,
-        590000.0,
-        610000.0,
-        630000.0,
-        830000.0,
-        650000.0,
-        770000.0,
-        790000.0,
-        730000.0,
-        770000.0,
-        730000.0,
-        730000.0,
-        1590000.0,
-        580000.0,
-        720000.0,
-        780000.0,
-        120000.0
-      ],
-      "examples": [
-        {
-          "uuid": "04f4c7e2-d673-4ff9-aa8a-082da3fb4363",
-          "date": "2026-04-15T14:09:01-04:00",
-          "client": "Growth Energy",
-          "registrant": "The Russell Group, Inc.",
-          "income": 60000.0
-        },
-        {
-          "uuid": "da47c73e-8764-4cdf-9047-3b4cf54db52a",
-          "date": "2026-04-19T11:42:53-04:00",
-          "client": "Growth Energy",
-          "registrant": "Brownstein Hyatt Farber Schreck, LLP",
-          "income": 60000.0
-        }
-      ]
-    },
-    {
       "key": "HUNTINGTON INGALLS INDUSTRIES",
       "name": "Huntington Ingalls Industries Incorporated",
       "current": 338777.0,
@@ -2480,72 +2432,6 @@
         0.0
       ],
       "examples": []
-    },
-    {
-      "key": "ALLIANCE FOR AUTOMOTIVE INNOVATION",
-      "name": "Alliance for Automotive Innovation",
-      "current": 1499997.0,
-      "baseline": 2851010.0,
-      "delta": -1351013.0,
-      "ratio": 0.526,
-      "filings_current": 3,
-      "filings_baseline": 3,
-      "topics": [
-        "Clean Air and Chemicals",
-        "Electric Vehicles",
-        "Cybersecurity",
-        "Manufacturing and Supply Chains"
-      ],
-      "registrants": [
-        "Alliance for Automotive Innovation",
-        "Ferox Strategies",
-        "Akin Gump Strauss Hauer & Feld"
-      ],
-      "series": [
-        1395151.0,
-        1200250.0,
-        1153843.0,
-        1348835.0,
-        1319066.0,
-        1244369.0,
-        1181778.0,
-        1325661.0,
-        1427433.0,
-        1388319.0,
-        1519903.0,
-        1226240.0,
-        1351439.0,
-        1317345.0,
-        1151562.0,
-        2851010.0,
-        2533958.0,
-        1523164.0,
-        1383703.0,
-        1499997.0
-      ],
-      "examples": [
-        {
-          "uuid": "6212f82f-57bd-4f18-a81a-062a991a4075",
-          "date": "2026-04-17T09:41:58-04:00",
-          "client": "Alliance for Automotive Innovation",
-          "registrant": "Alliance for Automotive Innovation",
-          "income": 1369997.0
-        },
-        {
-          "uuid": "3f8cd178-d6c9-4f4c-80b3-92abc10a0742",
-          "date": "2026-04-20T10:23:06-04:00",
-          "client": "Alliance for Automotive Innovation",
-          "registrant": "Akin Gump Strauss Hauer & Feld",
-          "income": 80000.0
-        },
-        {
-          "uuid": "7bb2fdb7-b0dd-4f53-a348-24f0a3fe0313",
-          "date": "2026-04-17T18:33:02-04:00",
-          "client": "Alliance for Automotive Innovation",
-          "registrant": "Ferox Strategies",
-          "income": 50000.0
-        }
-      ]
     },
     {
       "key": "UNITED STATES STEEL",
@@ -2701,6 +2587,79 @@
       ]
     },
     {
+      "key": "ALLIANCE FOR AUTOMOTIVE INNOVATION",
+      "name": "Alliance for Automotive Innovation",
+      "current": 1529997.0,
+      "baseline": 2851010.0,
+      "delta": -1321013.0,
+      "ratio": 0.537,
+      "filings_current": 4,
+      "filings_baseline": 3,
+      "topics": [
+        "Electric Vehicles",
+        "Clean Air and Chemicals",
+        "Cybersecurity",
+        "Manufacturing and Supply Chains"
+      ],
+      "registrants": [
+        "Alliance for Automotive Innovation",
+        "Ferox Strategies",
+        "Akin Gump Strauss Hauer & Feld"
+      ],
+      "series": [
+        1395151.0,
+        1200250.0,
+        1153843.0,
+        1348835.0,
+        1319066.0,
+        1244369.0,
+        1181778.0,
+        1325661.0,
+        1427433.0,
+        1388319.0,
+        1519903.0,
+        1226240.0,
+        1351439.0,
+        1317345.0,
+        1151562.0,
+        2851010.0,
+        2533958.0,
+        1523164.0,
+        1383703.0,
+        1529997.0
+      ],
+      "examples": [
+        {
+          "uuid": "6212f82f-57bd-4f18-a81a-062a991a4075",
+          "date": "2026-04-17T09:41:58-04:00",
+          "client": "Alliance for Automotive Innovation",
+          "registrant": "Alliance for Automotive Innovation",
+          "income": 1369997.0
+        },
+        {
+          "uuid": "3f8cd178-d6c9-4f4c-80b3-92abc10a0742",
+          "date": "2026-04-20T10:23:06-04:00",
+          "client": "Alliance for Automotive Innovation",
+          "registrant": "Akin Gump Strauss Hauer & Feld",
+          "income": 80000.0
+        },
+        {
+          "uuid": "7bb2fdb7-b0dd-4f53-a348-24f0a3fe0313",
+          "date": "2026-04-17T18:33:02-04:00",
+          "client": "Alliance for Automotive Innovation",
+          "registrant": "Ferox Strategies",
+          "income": 50000.0
+        },
+        {
+          "uuid": "b664cae9-25b6-433e-99f3-831c35098575",
+          "date": "2026-06-08T20:08:42-04:00",
+          "client": "Alliance for Automotive Innovation",
+          "registrant": "Tim Yehl, LLC",
+          "income": 30000.0
+        }
+      ]
+    },
+    {
       "key": "INVENERGY",
       "name": "Invenergy LLC",
       "current": 880000.0,
@@ -2833,9 +2792,104 @@
           "income": 60000.0
         }
       ]
+    },
+    {
+      "key": "SHEIN TECHNOLOGY",
+      "name": "Shein Technology LLC",
+      "current": 280000.0,
+      "baseline": 1440000.0,
+      "delta": -1160000.0,
+      "ratio": 0.194,
+      "filings_current": 1,
+      "filings_baseline": 7,
+      "topics": [],
+      "registrants": [
+        "Shein Technology LLC"
+      ],
+      "series": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        50000.0,
+        230000.0,
+        230000.0,
+        860000.0,
+        1010000.0,
+        970000.0,
+        1495000.0,
+        1690000.0,
+        1520000.0,
+        1520000.0,
+        1440000.0,
+        860000.0,
+        280000.0,
+        250000.0,
+        280000.0
+      ],
+      "examples": [
+        {
+          "uuid": "19b9eb3b-bd0b-4c51-8da3-0571c37150ec",
+          "date": "2026-04-15T16:04:28-04:00",
+          "client": "Shein Technology LLC",
+          "registrant": "Shein Technology LLC",
+          "income": 280000.0
+        }
+      ]
     }
   ],
   "new_entrants": [
+    {
+      "key": "STATE OF LOC NATION GLOBAL PUBLIC BENEFIT",
+      "name": "State of Loc Nation Global Public Benefit Corporation",
+      "current": 20000000.0,
+      "baseline": 0.0,
+      "delta": 20000000.0,
+      "ratio": null,
+      "filings_current": 1,
+      "filings_baseline": 1,
+      "topics": [
+        "Constitutional and Civil Rights",
+        "Housing Policy",
+        "Appropriations",
+        "Labor and Employment"
+      ],
+      "registrants": [
+        "Loc Community Association"
+      ],
+      "series": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        20000000.0,
+        20000000.0,
+        20000000.0,
+        20000000.0
+      ],
+      "examples": [
+        {
+          "uuid": "1d624ae1-cb98-4219-9e2e-75ac71ea1617",
+          "date": "2026-07-13T17:10:38-04:00",
+          "client": "State of Loc Nation Global Public Benefit Corporation",
+          "registrant": "Loc Community Association",
+          "income": 20000000.0
+        }
+      ]
+    },
     {
       "key": "HANWHA AEROSPACE",
       "name": "Hanwha Aerospace Co., LTD.",
@@ -3379,53 +3433,6 @@
           "client": "Goodrx, Inc.",
           "registrant": "Capitol Hill Consulting Group",
           "income": 60000.0
-        }
-      ]
-    },
-    {
-      "key": "SABLE OFFFSHORE",
-      "name": "Sable Offfshore Corp.",
-      "current": 540000.0,
-      "baseline": 0.0,
-      "delta": 540000.0,
-      "ratio": null,
-      "filings_current": 1,
-      "filings_baseline": 0,
-      "topics": [
-        "Oil and Gas"
-      ],
-      "registrants": [
-        "Holland & Knight LLP"
-      ],
-      "series": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        20000.0,
-        540000.0
-      ],
-      "examples": [
-        {
-          "uuid": "b1c58d59-e9d1-4703-9f87-cd8857dad5e5",
-          "date": "2026-04-14T18:02:56-04:00",
-          "client": "Sable Offfshore Corp.",
-          "registrant": "Holland & Knight LLP",
-          "income": 540000.0
         }
       ]
     }
