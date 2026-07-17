@@ -157,6 +157,10 @@ LEGISLATION_DROP_FRAGMENTS = {
     'jobs act', 'america act', 'competes', 'act', 'bill', 'legislation',
     'appropriations', 'appropriations act', 'reconciliation', 'reconciliation act',
     'tax act', 'energy act', 'health act', 'defense act', 'budget act',
+    # Tail of "Full-Year Continuing Appropriations and Extensions Act, 20XX"
+    # (and successors) — co-occurs with the real H.R./P.L. number on the same
+    # activity, so the fragment carries no identity of its own.
+    'extensions act',
 }
 
 # Congress-scoped bill numbers and public-law numbers that are the same law as
@@ -253,7 +257,15 @@ def normalize_legislation(value: str, year: int | None = None) -> str:
             return canonical
 
     # 2) Generic truncation fragments carry no identity — drop as noise.
-    if tag.lower().strip(' .,;:') in LEGISLATION_DROP_FRAGMENTS:
+    # A trailing year qualifier doesn't rescue a fragment ("Extensions Act of
+    # 2025", "Appropriations Act, 2025" are as identity-free as the bare
+    # forms), so strip it before the lookup.
+    fragment_probe = tag.lower().strip(' .,;:')
+    fragment_probe_no_year = re.sub(
+        r'[,\s]+(?:of\s+)?(?:19|20)\d\d$', '', fragment_probe
+    ).strip(' .,;:')
+    if fragment_probe in LEGISLATION_DROP_FRAGMENTS or \
+            fragment_probe_no_year in LEGISLATION_DROP_FRAGMENTS:
         return ''
 
     # Explicit qualifiers override the filing year for number scoping.
@@ -340,23 +352,24 @@ def display_domain(value: str) -> str:
     return COARSE_TOPIC_LABELS.get(tag, _humanize_slug(tag))
 
 
-def get_extraction_counts(days_back: int = None, start_date: str = None, end_date: str = None) -> dict:
-    """Get counts of topics, entities, legislation from extractions."""
+def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
+    """Get counts of topics, entities, legislation from extractions for one
+    report quarter — the filings labeled (year, quarter), regardless of when
+    they were submitted. `through` optionally caps by filing_date (inclusive)
+    for quarter-to-date legs, so a partial quarter can be compared like-for-
+    like against the same point in the prior year's filing cycle."""
     with get_db() as conn:
-        # Build date filter
-        params: list = []
-        if days_back:
-            date_filter = "AND f.filing_date >= date('now', ?)"
-            params.append(f"-{days_back} days")
-        elif start_date and end_date:
-            date_filter = "AND f.filing_date BETWEEN ? AND ?"
-            params.extend([start_date, end_date])
-        else:
-            date_filter = ""
+        params: list = [year, quarter]
+        date_filter = "AND f.year = ? AND f.quarter = ?"
+        if through:
+            # filing_date is a full ISO timestamp; compare at day granularity
+            # so the through-date's filings are included on both legs.
+            date_filter += " AND substr(f.filing_date, 1, 10) <= ?"
+            params.append(through)
 
         sql = f'''
             SELECT f.id as filing_id, f.sopr_filing_id as filing_uuid, f.year as filing_year,
-                   e.coarse_topic as domain, e.topics, e.entities, e.legislation,
+                   e.topics, e.entities, e.legislation,
                    f.filing_date, c.name as client_name, r.name as registrant_name, f.income
             FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
@@ -380,13 +393,11 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
         )
 
     # Count occurrences (counts are "mentions"/activity-level, not filings)
-    domains = make_agg()
     topics = make_agg()
     entities = make_agg()
     legislation = make_agg()
     topic_examples = defaultdict(dict)
     entity_examples = defaultdict(dict)
-    domain_examples = defaultdict(dict)
     legislation_examples = defaultdict(dict)
 
     def add_example(bucket: defaultdict, tag: str, filing_id: int, filing_date: str, client_name: str, registrant_name: str, income: float, filing_uuid: str = None):
@@ -428,16 +439,6 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
         registrant = row.get('registrant_name')
         income = row.get('income') or 0
         filing_date = row.get('filing_date')
-
-        domain = display_domain(row.get('domain'))
-        if domain:
-            domains.counts[domain] += 1
-            if client:
-                record_client(domains, domain, client, filing_id, income)
-            if filing_id and filing_id not in domains.income_seen_filing_ids[domain]:
-                domains.income[domain] += income
-                domains.income_seen_filing_ids[domain].add(filing_id)
-            add_example(domain_examples, domain, filing_id, filing_date, client, registrant, income, filing_uuid)
 
         for topic in json.loads(row['topics'] or '[]'):
             if is_general_topic(topic):
@@ -514,7 +515,6 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
         return result
 
     return {
-        'domains': domains.counts,
         'topics': topics.counts,
         'entities': entities.counts,
         'legislation': legislation.counts,
@@ -524,15 +524,11 @@ def get_extraction_counts(days_back: int = None, start_date: str = None, end_dat
         'entity_clients': top_clients(entities),
         'entity_income': dict(entities.income),
         'entity_client_count': client_counts_by_tag(entities),
-        'domain_clients': top_clients(domains),
-        'domain_income': dict(domains.income),
-        'domain_client_count': client_counts_by_tag(domains),
         'legislation_clients': top_clients(legislation),
         'legislation_income': dict(legislation.income),
         'legislation_client_count': client_counts_by_tag(legislation),
         'topic_examples': finalize_examples(topic_examples),
         'entity_examples': finalize_examples(entity_examples),
-        'domain_examples': finalize_examples(domain_examples),
         'legislation_examples': finalize_examples(legislation_examples),
         'total_rows': len(rows)
     }
@@ -591,43 +587,112 @@ def _quarters_back_list(end_year: int, end_quarter: int, count: int) -> list[tup
     return out
 
 
+def _next_quarter(year: int, quarter: int) -> tuple[int, int]:
+    if quarter == 4:
+        return year + 1, 1
+    return year, quarter + 1
+
+
+# A quarter-to-date frame with fewer current filings than this is flagged
+# thin_data so the UI can note "early in the filing cycle". A full quarter
+# runs ~20k filings; the weeks right after a quarter closes see a few hundred
+# to a couple thousand early filers.
+THIN_DATA_MIN_FILINGS = 2000
+
+
+def _frame_specs(conn) -> dict:
+    """The two comparison frames every dashboard view shares. Both are
+    year-over-year and report-quarter based (never rolling filing-date
+    windows, which measure filing-clerk timing in a quarterly regime):
+
+    - quarter: latest COMPLETE report quarter vs the same quarter a year
+      earlier. The headline frame.
+    - qtd: the current PARTIAL report quarter so far (filings labeled with
+      that quarter, posted on or before the data-through date) vs the same
+      quarter last year capped at the same point in its filing cycle
+      (data-through minus 365 days — same month/day). Like-for-like even
+      mid-cycle, because both legs are equally early.
+
+    Each leg is a (year, quarter, through) triple consumable by
+    get_extraction_counts.
+    """
+    anchor = _anchor_today(conn)
+    through = anchor - timedelta(days=1)  # _anchor_today is max filing_date + 1
+    cy, cq = _latest_complete_quarter(anchor)
+    ny, nq = _next_quarter(cy, cq)
+    through_str = through.strftime('%Y-%m-%d')
+    baseline_through_str = (through - timedelta(days=365)).strftime('%Y-%m-%d')
+    return {
+        'quarter': {
+            'key': 'quarter',
+            'label': f'Q{cq} {cy}',
+            'baseline_label': f'Q{cq} {cy - 1}',
+            'complete': True,
+            'current': (cy, cq, None),
+            'baseline': (cy - 1, cq, None),
+        },
+        'qtd': {
+            'key': 'qtd',
+            'label': f'Q{nq} {ny} so far',
+            'baseline_label': f'same point in Q{nq} {ny - 1}',
+            'complete': False,
+            'through': through_str,
+            'current': (ny, nq, through_str),
+            'baseline': (ny - 1, nq, baseline_through_str),
+        },
+    }
+
+
+def _filing_count(conn, year: int, quarter: int, through: str = None) -> int:
+    if through:
+        # Day-granularity comparison: filing_date is a full ISO timestamp.
+        return conn.execute(
+            'SELECT COUNT(*) FROM filings WHERE year = ? AND quarter = ? AND substr(filing_date, 1, 10) <= ?',
+            (year, quarter, through),
+        ).fetchone()[0]
+    return conn.execute(
+        'SELECT COUNT(*) FROM filings WHERE year = ? AND quarter = ?',
+        (year, quarter),
+    ).fetchone()[0]
+
+
 def compute_trends() -> dict:
-    """Compute trend data with seasonality-aware and momentum-aware metrics."""
-    # Anchor windows to the newest filing in the DB, not the wall clock — see
-    # _anchor_today.
+    """Compute year-over-year trend data for the two report-quarter frames."""
     with get_db() as conn:
-        today = _anchor_today(conn)
-    window_days = {'30d': 30, '90d': 90}
+        specs = _frame_specs(conn)
+        frame_meta = {}
+        for frame_key, spec in specs.items():
+            frame_meta[frame_key] = {
+                'key': spec['key'],
+                'label': spec['label'],
+                'baseline_label': spec['baseline_label'],
+                'complete': spec['complete'],
+                'current_filings': _filing_count(conn, *spec['current']),
+                'baseline_filings': _filing_count(conn, *spec['baseline']),
+            }
+            if not spec['complete']:
+                frame_meta[frame_key]['through'] = spec['through']
+                frame_meta[frame_key]['thin_data'] = (
+                    frame_meta[frame_key]['current_filings'] < THIN_DATA_MIN_FILINGS
+                )
 
-    def range_for(days: int, offset_days: int = 0) -> tuple[str, str]:
-        end = (today - timedelta(days=offset_days)).strftime('%Y-%m-%d')
-        start = (today - timedelta(days=offset_days + days)).strftime('%Y-%m-%d')
-        return start, end
-
-    datasets = {}
-    for window_key, days in window_days.items():
-        current_start, current_end = range_for(days, 0)
-        prev_start, prev_end = range_for(days, days)
-        yoy_start, yoy_end = range_for(days, 365)
-        datasets[window_key] = {
-            'current': get_extraction_counts(start_date=current_start, end_date=current_end),
-            'prev': get_extraction_counts(start_date=prev_start, end_date=prev_end),
-            'yoy': get_extraction_counts(start_date=yoy_start, end_date=yoy_end),
+    datasets = {
+        frame_key: {
+            'current': get_extraction_counts(*spec['current']),
+            'baseline': get_extraction_counts(*spec['baseline']),
         }
+        for frame_key, spec in specs.items()
+    }
 
-    def confidence_label(
-        count: int,
-        prev_count: int,
-        yoy_count: int,
-        delta_prev_pp: float,
-        delta_yoy_pp: float
-    ) -> str:
-        if count >= 50 and prev_count >= 50 and yoy_count >= 50 and delta_prev_pp >= 0.20 and delta_yoy_pp >= 0.35:
+    def confidence_label(count: int, baseline_count: int, share_delta_pp: float) -> str:
+        # Wave-1 thresholds required agreement across two baselines (prior
+        # period + year-ago). With one YoY baseline the volume gates stay and
+        # the delta gate uses the yoy leg's old threshold. abs() because big
+        # decliners are now first-class stories, not noise.
+        if count >= 50 and baseline_count >= 50 and abs(share_delta_pp) >= 0.35:
             return 'high'
-        if count >= 25 and (delta_prev_pp >= 0.15 or delta_yoy_pp >= 0.15):
+        if count >= 25 and abs(share_delta_pp) >= 0.15:
             return 'medium'
-        if count >= 10 and (delta_prev_pp > 0 or delta_yoy_pp > 0):
-            return 'low'
         return 'low'
 
     # Maps a calc_change `key` to the get_extraction_counts dict key holding
@@ -635,30 +700,25 @@ def compute_trends() -> dict:
     # "topic_client_count", not "topics_client_count").
     client_count_keys = {
         'topics': 'topic_client_count',
-        'domains': 'domain_client_count',
         'entities': 'entity_client_count',
         'legislation': 'legislation_client_count',
     }
 
     def calc_change(
         current: dict,
-        previous: dict,
-        yoy: dict,
+        baseline: dict,
         key: str,
         min_count: int = 1,
         max_items: int = 500
     ) -> tuple[list, dict]:
         current_counts = current[key]
-        prev_counts = previous[key]
-        yoy_counts = yoy[key]
+        baseline_counts = baseline[key]
         current_total = current.get('total_rows', 0)
-        prev_total = previous.get('total_rows', 0)
-        yoy_total = yoy.get('total_rows', 0)
+        baseline_total = baseline.get('total_rows', 0)
 
         client_count_key = client_count_keys.get(key)
         current_client_counts = current.get(client_count_key, {}) or {} if client_count_key else {}
-        prev_client_counts = previous.get(client_count_key, {}) or {} if client_count_key else {}
-        yoy_client_counts = yoy.get(client_count_key, {}) or {} if client_count_key else {}
+        baseline_client_counts = baseline.get(client_count_key, {}) or {} if client_count_key else {}
 
         results = []
         dropped_min = 0
@@ -667,45 +727,36 @@ def compute_trends() -> dict:
                 dropped_min += 1
                 continue
 
-            prev_count = prev_counts.get(item, 0)
-            yoy_count = yoy_counts.get(item, 0)
-
+            baseline_count = baseline_counts.get(item, 0)
             current_share = (count / current_total * 100) if current_total else 0
-            prev_share = (prev_count / prev_total * 100) if prev_total else 0
-            yoy_share = (yoy_count / yoy_total * 100) if yoy_total else 0
+            baseline_share = (baseline_count / baseline_total * 100) if baseline_total else 0
+            share_delta_pp = current_share - baseline_share
+            ratio = (count / baseline_count) if baseline_count > 0 else None
+            confidence = confidence_label(count, baseline_count, share_delta_pp)
 
-            delta_prev_pp = current_share - prev_share
-            delta_yoy_pp = current_share - yoy_share
-
-            momentum_ratio = (count / prev_count) if prev_count > 0 else None
-            seasonal_ratio = (count / yoy_count) if yoy_count > 0 else None
-            confidence = confidence_label(count, prev_count, yoy_count, delta_prev_pp, delta_yoy_pp)
-
-            # Single exhaustive ranking: all tags above min_count are ranked by change + scale.
-            score = (delta_yoy_pp * 0.65) + (delta_prev_pp * 0.35) + min(count / 2000, 1) * 0.1
+            # Change + a small scale term so a big tag edges out a tiny one at
+            # equal delta. Ranking uses |score| so collapses surface alongside
+            # surges — a topic losing half its share is as much a story as one
+            # doubling.
+            score = share_delta_pp + min(count / 2000, 1) * 0.1
 
             results.append({
                 'name': item,
                 'count': count,
-                'prev_count': prev_count,
-                'yoy_count': yoy_count,
+                'baseline_count': baseline_count,
+                'client_count': current_client_counts.get(item, 0),
+                'baseline_client_count': baseline_client_counts.get(item, 0),
                 'current_share_pct': round(current_share, 3),
-                'prev_share_pct': round(prev_share, 3),
-                'yoy_share_pct': round(yoy_share, 3),
-                'share_delta_prev_pp': round(delta_prev_pp, 3),
-                'share_delta_yoy_pp': round(delta_yoy_pp, 3),
-                'momentum_ratio': round(momentum_ratio, 3) if momentum_ratio is not None else None,
-                'seasonal_ratio': round(seasonal_ratio, 3) if seasonal_ratio is not None else None,
+                'baseline_share_pct': round(baseline_share, 3),
+                'share_delta_pp': round(share_delta_pp, 3),
+                'ratio': round(ratio, 3) if ratio is not None else None,
                 'score': round(score, 4),
                 'confidence': confidence,
-                'client_count': current_client_counts.get(item, 0),
-                'prev_client_count': prev_client_counts.get(item, 0),
-                'yoy_client_count': yoy_client_counts.get(item, 0),
             })
 
         sorted_results = sorted(
             results,
-            key=lambda x: (-x['score'], -x['count'], x['name'])
+            key=lambda x: (-abs(x['score']), -x['count'], x['name'])
         )
         capped_results = sorted_results[:max_items]
         meta = {
@@ -725,9 +776,8 @@ def compute_trends() -> dict:
 
     result = {
         'generated_at': datetime.now().isoformat(),
-        'window_totals': {},
+        'frames': frame_meta,
         'topics': {},
-        'domains': {},
         'entities': {},
         'legislation': {},
         'topic_clients': {},
@@ -736,133 +786,110 @@ def compute_trends() -> dict:
         'entity_clients': {},
         'entity_income': {},
         'entity_examples': {},
-        'domain_clients': {},
-        'domain_income': {},
-        'domain_examples': {},
         'legislation_clients': {},
         'legislation_income': {},
         'legislation_examples': {},
         'selection_meta': {},
     }
 
-    for window_key, parts in datasets.items():
+    for frame_key, parts in datasets.items():
         current = parts['current']
-        previous = parts['prev']
-        yoy = parts['yoy']
+        baseline = parts['baseline']
 
-        topics, topics_meta = calc_change(current, previous, yoy, 'topics', min_count=1, max_items=500)
-        domains, domains_meta = calc_change(current, previous, yoy, 'domains')
-        entities, entities_meta = calc_change(current, previous, yoy, 'entities', min_count=1, max_items=500)
-        legislation, legislation_meta = calc_change(current, previous, yoy, 'legislation', min_count=5, max_items=500)
+        topics, topics_meta = calc_change(current, baseline, 'topics', min_count=1, max_items=500)
+        entities, entities_meta = calc_change(current, baseline, 'entities', min_count=1, max_items=500)
+        legislation, legislation_meta = calc_change(current, baseline, 'legislation', min_count=5, max_items=500)
 
-        result['window_totals'][window_key] = {
-            'current_total_mentions': current.get('total_rows', 0),
-            'prev_total_mentions': previous.get('total_rows', 0),
-            'yoy_total_mentions': yoy.get('total_rows', 0),
-        }
+        result['frames'][frame_key]['current_total_mentions'] = current.get('total_rows', 0)
+        result['frames'][frame_key]['baseline_total_mentions'] = baseline.get('total_rows', 0)
 
-        result['topics'][window_key] = topics
-        result['domains'][window_key] = domains
-        result['entities'][window_key] = entities
-        result['legislation'][window_key] = legislation
-        result['selection_meta'][window_key] = {
+        result['topics'][frame_key] = topics
+        result['entities'][frame_key] = entities
+        result['legislation'][frame_key] = legislation
+        result['selection_meta'][frame_key] = {
             'topics': topics_meta,
-            'domains': domains_meta,
             'entities': entities_meta,
             'legislation': legislation_meta,
         }
 
-        result['topic_clients'][window_key] = keep_for(topics, current.get('topic_clients', {}))
-        result['topic_income'][window_key] = keep_for(topics, current.get('topic_income', {}))
-        result['topic_examples'][window_key] = keep_for(topics, current.get('topic_examples', {}))
+        result['topic_clients'][frame_key] = keep_for(topics, current.get('topic_clients', {}))
+        result['topic_income'][frame_key] = keep_for(topics, current.get('topic_income', {}))
+        result['topic_examples'][frame_key] = keep_for(topics, current.get('topic_examples', {}))
 
-        result['entity_clients'][window_key] = keep_for(entities, current.get('entity_clients', {}))
-        result['entity_income'][window_key] = keep_for(entities, current.get('entity_income', {}))
-        result['entity_examples'][window_key] = keep_for(entities, current.get('entity_examples', {}))
+        result['entity_clients'][frame_key] = keep_for(entities, current.get('entity_clients', {}))
+        result['entity_income'][frame_key] = keep_for(entities, current.get('entity_income', {}))
+        result['entity_examples'][frame_key] = keep_for(entities, current.get('entity_examples', {}))
 
-        result['domain_clients'][window_key] = keep_for(domains, current.get('domain_clients', {}))
-        result['domain_income'][window_key] = keep_for(domains, current.get('domain_income', {}))
-        result['domain_examples'][window_key] = keep_for(domains, current.get('domain_examples', {}))
-
-        result['legislation_clients'][window_key] = keep_for(legislation, current.get('legislation_clients', {}))
-        result['legislation_income'][window_key] = keep_for(legislation, current.get('legislation_income', {}))
-        result['legislation_examples'][window_key] = keep_for(legislation, current.get('legislation_examples', {}))
+        result['legislation_clients'][frame_key] = keep_for(legislation, current.get('legislation_clients', {}))
+        result['legislation_income'][frame_key] = keep_for(legislation, current.get('legislation_income', {}))
+        result['legislation_examples'][frame_key] = keep_for(legislation, current.get('legislation_examples', {}))
 
     return result
 
 
 def generate_alerts(
     trends: dict,
-    window: str = '90d',
+    frame: str = 'quarter',
     min_share_delta_pp: float = 0.25,
     min_count: int = 25
 ) -> list:
-    """Generate seasonality-aware alerts based on share-of-mentions changes."""
+    """Generate alerts from the complete-quarter frame's YoY share changes."""
     alerts = []
     categories = [
         ('topics', 'topic', 'topic_clients', 'topic_income'),
         ('entities', 'entity', 'entity_clients', 'entity_income'),
-        ('domains', 'domain', 'domain_clients', 'domain_income'),
         ('legislation', 'legislation', 'legislation_clients', 'legislation_income'),
     ]
+    baseline_label = trends.get('frames', {}).get(frame, {}).get('baseline_label', 'same quarter last year')
 
     for trend_key, category, client_key, income_key in categories:
-        for item in trends.get(trend_key, {}).get(window, []):
+        for item in trends.get(trend_key, {}).get(frame, []):
             count = item.get('count', 0)
-            delta_yoy = item.get('share_delta_yoy_pp', 0) or 0
-            delta_prev = item.get('share_delta_prev_pp', 0) or 0
+            delta = item.get('share_delta_pp', 0) or 0
             if count < min_count:
                 continue
-            if delta_yoy < min_share_delta_pp and delta_prev < min_share_delta_pp:
+            if abs(delta) < min_share_delta_pp:
                 continue
 
-            clients = trends.get(client_key, {}).get(window, {}).get(item['name'], [])[:5]
-            income = trends.get(income_key, {}).get(window, {}).get(item['name'], 0)
+            clients = trends.get(client_key, {}).get(frame, {}).get(item['name'], [])[:5]
+            income = trends.get(income_key, {}).get(frame, {}).get(item['name'], 0)
             alerts.append({
                 'type': 'signal',
                 'category': category,
                 'name': item['name'],
                 'current_count': count,
-                'prev_count': item.get('prev_count', 0),
-                'yoy_count': item.get('yoy_count', 0),
-                'share_delta_yoy_pp': round(delta_yoy, 3),
-                'share_delta_prev_pp': round(delta_prev, 3),
+                'baseline_count': item.get('baseline_count', 0),
+                'share_delta_pp': round(delta, 3),
                 'signal_confidence': item.get('confidence', 'low'),
                 'top_clients': clients,
                 'total_income': income,
-                'headline': generate_headline(item, category),
+                'headline': generate_headline(item, category, baseline_label),
             })
 
     confidence_rank = {'high': 0, 'medium': 1, 'low': 2}
     alerts.sort(
         key=lambda x: (
             confidence_rank.get(x.get('signal_confidence', 'low'), 2),
-            -max(x.get('share_delta_yoy_pp', 0), x.get('share_delta_prev_pp', 0)),
+            -abs(x.get('share_delta_pp', 0)),
             -x.get('current_count', 0),
         )
     )
     return alerts[:20]
 
 
-def generate_headline(item: dict, category: str) -> str:
-    """Generate a readable headline for a seasonality-aware alert."""
+def generate_headline(item: dict, category: str, baseline_label: str) -> str:
+    """Generate a readable headline for a YoY quarter alert."""
     name = item['name']
-    delta_yoy = item.get('share_delta_yoy_pp', 0) or 0
-    delta_prev = item.get('share_delta_prev_pp', 0) or 0
-    use_yoy = abs(delta_yoy) >= abs(delta_prev)
-    delta = delta_yoy if use_yoy else delta_prev
-    baseline = 'year-ago period' if use_yoy else 'prior period'
+    delta = item.get('share_delta_pp', 0) or 0
     direction = 'up' if delta >= 0 else 'down'
     magnitude = abs(delta)
     count = item.get('count', 0)
 
     if category == 'topic':
-        return f"'{name}' share {direction} {magnitude:.2f} pp vs {baseline} ({count} mentions)"
+        return f"'{name}' share {direction} {magnitude:.2f} pp vs {baseline_label} ({count} mentions)"
     if category == 'entity':
-        return f"{name} attention {direction} {magnitude:.2f} pp vs {baseline} ({count} mentions)"
-    if category == 'domain':
-        return f"{name} domain share {direction} {magnitude:.2f} pp vs {baseline} ({count} mentions)"
-    return f"{name} share {direction} {magnitude:.2f} pp vs {baseline} ({count} mentions)"
+        return f"{name} attention {direction} {magnitude:.2f} pp vs {baseline_label} ({count} mentions)"
+    return f"{name} share {direction} {magnitude:.2f} pp vs {baseline_label} ({count} mentions)"
 
 
 def get_stats() -> dict:
@@ -1033,7 +1060,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
                     track_names: dict | None = None) -> dict:
     """Get report-quarter time series data for charts.
 
-    track_names: optional {'entities': set, 'legislation': set, 'domains': set}
+    track_names: optional {'entities': set, 'legislation': set}
     of names to emit quarterly series for (in addition to topics).
     """
     def percentile(values: list[int], q: float) -> int:
@@ -1086,7 +1113,6 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             'topic_series': {},
             'entity_series': {},
             'legislation_series': {},
-            'domain_series': {},
             'context': {
                 'period_count': 0,
                 'reporting_note': 'Each point represents a report quarter from filing metadata.',
@@ -1103,7 +1129,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             SELECT
                 (f.year * 4 + f.quarter) AS q_index,
                 f.year AS filing_year,
-                e.coarse_topic, e.topics, e.entities, e.legislation
+                e.topics, e.entities, e.legislation
             FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
             JOIN filings f ON a.filing_id = f.id
@@ -1117,7 +1143,6 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
     topic_by_quarter = defaultdict(Counter)
     entity_by_quarter = defaultdict(Counter)
     legislation_by_quarter = defaultdict(Counter)
-    domain_by_quarter = defaultdict(Counter)
     for row in topic_rows:
         q_index = int(row.get('q_index') or 0)
         if not q_index:
@@ -1138,9 +1163,6 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             if leg and leg not in seen_leg:
                 seen_leg.add(leg)
                 legislation_by_quarter[q_index][leg] += 1
-        domain = display_domain(row.get('coarse_topic'))
-        if domain:
-            domain_by_quarter[q_index][domain] += 1
 
     all_topics = Counter()
     for quarter_topics in topic_by_quarter.values():
@@ -1189,7 +1211,6 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
     track = track_names or {}
     entity_series = build_series(entity_by_quarter, track.get('entities'))
     legislation_series = build_series(legislation_by_quarter, track.get('legislation'))
-    domain_series = build_series(domain_by_quarter, track.get('domains'))
 
     quarterly_filings = [int(q.get('filings') or 0) for q in quarters]
     top_quarters = sorted(quarters, key=lambda x: x.get('filings', 0), reverse=True)[:3]
@@ -1204,7 +1225,6 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
         'topic_series': topic_series,
         'entity_series': entity_series,
         'legislation_series': legislation_series,
-        'domain_series': domain_series,
         'context': {
             'period_count': len(quarters),
             'start_label': quarters[0]['label'],
@@ -1230,8 +1250,10 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
 
 def compute_client_movers(quarters_back: int = 20) -> dict:
     """Organization-level spend movers: which clients ramped reported
-    lobbying income up or down in dollars, comparing the latest COMPLETE
-    report quarter to the same quarter a year earlier. This is the story tag
+    lobbying income up or down in dollars, under the same two YoY frames as
+    the tag views — the latest COMPLETE report quarter vs the same quarter a
+    year earlier ('quarter'), and the current partial quarter so far vs the
+    same point in last year's filing cycle ('qtd'). This is the story tag
     mention-counts can't tell — mentions are activity-level and don't say who
     is behind them or how much they spent.
 
@@ -1239,26 +1261,36 @@ def compute_client_movers(quarters_back: int = 20) -> dict:
     of filer) is folded via clients_norm.canonical_client_key before ranking.
     """
     with get_db() as conn:
-        anchor = _anchor_today(conn)
-        current_year, current_quarter = _latest_complete_quarter(anchor)
-        baseline_year, baseline_quarter = current_year - 1, current_quarter
+        specs = _frame_specs(conn)
+        cy, cq, _ = specs['quarter']['current']
+        ny, nq, qtd_through = specs['qtd']['current']
+        _, _, qtd_baseline_through = specs['qtd']['baseline']
 
-        window_quarters = _quarters_back_list(current_year, current_quarter, quarters_back)
+        window_quarters = _quarters_back_list(cy, cq, quarters_back)
 
-        pre_baseline_quarters = []
-        py, pq = baseline_year, baseline_quarter
-        for _ in range(4):
-            py, pq = _prev_quarter(py, pq)
-            pre_baseline_quarters.append((py, pq))
+        def pre_baseline_quarters(year: int, quarter: int) -> list[tuple[int, int]]:
+            """The four report quarters immediately before (year, quarter)."""
+            out = []
+            py, pq = year, quarter
+            for _ in range(4):
+                py, pq = _prev_quarter(py, pq)
+                out.append((py, pq))
+            return out
 
-        needed = set(window_quarters) | set(pre_baseline_quarters) | {
-            (baseline_year, baseline_quarter), (current_year, current_quarter)
+        # New-entrant screens look at the four FULL quarters before each
+        # frame's baseline quarter, so "new" means genuinely new, not
+        # cyclical.
+        frame_pre_baseline = {
+            'quarter': {y * 4 + q for y, q in pre_baseline_quarters(cy - 1, cq)},
+            'qtd': {y * 4 + q for y, q in pre_baseline_quarters(ny - 1, nq)},
         }
+
+        needed = set(window_quarters) | {
+            (cy, cq), (cy - 1, cq), (ny, nq), (ny - 1, nq)
+        }
+        needed |= set(pre_baseline_quarters(cy - 1, cq)) | set(pre_baseline_quarters(ny - 1, nq))
         q_indexes_needed = [y * 4 + q for y, q in needed]
         min_index, max_index = min(q_indexes_needed), max(q_indexes_needed)
-        current_q_index = current_year * 4 + current_quarter
-        baseline_q_index = baseline_year * 4 + baseline_quarter
-        pre_baseline_indexes = {y * 4 + q for y, q in pre_baseline_quarters}
 
         rows = query_to_dicts(
             conn,
@@ -1274,24 +1306,51 @@ def compute_client_movers(quarters_back: int = 20) -> dict:
             (min_index, max_index),
         )
 
-        topic_rows = query_to_dicts(
-            conn,
+        # Per-frame topic profiles, from each frame's CURRENT leg.
+        topic_rows_by_frame = {}
+        for frame_key, spec in specs.items():
+            y, q, through = spec['current']
+            sql = '''
+                SELECT c.name AS client_name, e.topics
+                FROM activity_extractions_rules e
+                JOIN activities a ON e.activity_id = a.id
+                JOIN filings f ON a.filing_id = f.id
+                JOIN clients c ON f.client_id = c.id
+                WHERE f.year = ? AND f.quarter = ?
             '''
-            SELECT c.name AS client_name, e.topics
-            FROM activity_extractions_rules e
-            JOIN activities a ON e.activity_id = a.id
-            JOIN filings f ON a.filing_id = f.id
-            JOIN clients c ON f.client_id = c.id
-            WHERE f.year = ? AND f.quarter = ?
-            ''',
-            (current_year, current_quarter),
-        )
+            params: list = [y, q]
+            if through:
+                sql += ' AND substr(f.filing_date, 1, 10) <= ?'
+                params.append(through)
+            topic_rows_by_frame[frame_key] = query_to_dicts(conn, sql, tuple(params))
+
+    FRAME_KEYS = ('quarter', 'qtd')
+    current_q_index = {'quarter': cy * 4 + cq, 'qtd': ny * 4 + nq}
+    baseline_q_index = {'quarter': (cy - 1) * 4 + cq, 'qtd': (ny - 1) * 4 + nq}
 
     income_by_key_q = defaultdict(lambda: defaultdict(float))
     filings_by_key_q = defaultdict(lambda: defaultdict(int))
-    raw_names = defaultdict(Counter)             # key -> Counter(raw client name)
-    registrants_current = defaultdict(Counter)   # key -> Counter(raw registrant name), current quarter only
-    examples_current = defaultdict(list)         # key -> [filing dict], current quarter only
+    raw_names = defaultdict(Counter)  # key -> Counter(raw client name)
+    # Per-frame leg aggregates. The quarter frame's legs are full-quarter
+    # sums; the qtd frame's legs are additionally capped by filing_date so
+    # both years are cut at the same point in the filing cycle.
+    leg_income = {fk: {'current': defaultdict(float), 'baseline': defaultdict(float)} for fk in FRAME_KEYS}
+    leg_filings = {fk: {'current': defaultdict(int), 'baseline': defaultdict(int)} for fk in FRAME_KEYS}
+    registrants_current = {fk: defaultdict(Counter) for fk in FRAME_KEYS}
+    examples_current = {fk: defaultdict(list) for fk in FRAME_KEYS}
+
+    def leg_membership(q_index: int, filing_date: str | None) -> list[tuple[str, str]]:
+        legs = []
+        if q_index == current_q_index['quarter']:
+            legs.append(('quarter', 'current'))
+        if q_index == baseline_q_index['quarter']:
+            legs.append(('quarter', 'baseline'))
+        # qtd legs need a verifiable filing_date at or before the cutoff
+        if q_index == current_q_index['qtd'] and filing_date and filing_date[:10] <= qtd_through:
+            legs.append(('qtd', 'current'))
+        if q_index == baseline_q_index['qtd'] and filing_date and filing_date[:10] <= qtd_baseline_through:
+            legs.append(('qtd', 'baseline'))
+        return legs
 
     for row in rows:
         client_name = row.get('client_name')
@@ -1302,150 +1361,161 @@ def compute_client_movers(quarters_back: int = 20) -> dict:
             continue
         q_index = int(row['year']) * 4 + int(row['quarter'])
         income = row.get('income') or 0
+        filing_date = row.get('filing_date')
 
         income_by_key_q[key][q_index] += income
         filings_by_key_q[key][q_index] += 1
         raw_names[key][client_name] += 1
 
-        if q_index == current_q_index:
-            registrant_name = row.get('registrant_name')
-            if registrant_name:
-                registrants_current[key][registrant_name] += 1
-            examples_current[key].append({
-                'uuid': row.get('filing_uuid'),
-                'date': row.get('filing_date'),
-                'client': client_name,
-                'registrant': registrant_name,
-                'income': income,
-            })
+        for frame_key, leg in leg_membership(q_index, filing_date):
+            leg_income[frame_key][leg][key] += income
+            leg_filings[frame_key][leg][key] += 1
+            if leg == 'current':
+                registrant_name = row.get('registrant_name')
+                if registrant_name:
+                    registrants_current[frame_key][key][registrant_name] += 1
+                examples_current[frame_key][key].append({
+                    'uuid': row.get('filing_uuid'),
+                    'date': filing_date,
+                    'client': client_name,
+                    'registrant': registrant_name,
+                    'income': income,
+                })
 
-    topics_by_key = defaultdict(Counter)
-    for row in topic_rows:
-        client_name = row.get('client_name')
-        if not client_name:
-            continue
-        key = canonical_client_key(client_name)
-        if not key:
-            continue
-        for topic in json.loads(row.get('topics') or '[]'):
-            if is_general_topic(topic):
+    topics_by_frame_key = {fk: defaultdict(Counter) for fk in FRAME_KEYS}
+    for frame_key, topic_rows in topic_rows_by_frame.items():
+        for row in topic_rows:
+            client_name = row.get('client_name')
+            if not client_name:
                 continue
-            label = display_topic(topic)
-            if label:
-                topics_by_key[key][label] += 1
-
-    # Quarter-level totals across ALL clients (not just the exported movers) —
-    # for the headline "$1.63B, +10.7% vs Q1 2025" framing.
-    quarter_total_income = defaultdict(float)
-    quarter_total_filings = defaultdict(int)
-    quarter_client_presence = defaultdict(set)
-    for key, by_q in income_by_key_q.items():
-        for q_index, income in by_q.items():
-            quarter_total_income[q_index] += income
-    for key, by_q in filings_by_key_q.items():
-        for q_index, count in by_q.items():
-            quarter_total_filings[q_index] += count
-            quarter_client_presence[q_index].add(key)
-
-    quarter_totals = {
-        'current_income': round(quarter_total_income.get(current_q_index, 0.0), 2),
-        'baseline_income': round(quarter_total_income.get(baseline_q_index, 0.0), 2),
-        'change_pct': _pct_change(
-            quarter_total_income.get(current_q_index, 0.0),
-            quarter_total_income.get(baseline_q_index, 0.0),
-        ),
-        'current_filings': quarter_total_filings.get(current_q_index, 0),
-        'baseline_filings': quarter_total_filings.get(baseline_q_index, 0),
-        'current_clients': len(quarter_client_presence.get(current_q_index, set())),
-        'baseline_clients': len(quarter_client_presence.get(baseline_q_index, set())),
-    }
-
-    # Per-client current / baseline / pre-baseline aggregates.
-    candidates = {}
-    for key, by_q in income_by_key_q.items():
-        current_income = by_q.get(current_q_index, 0.0)
-        baseline_income = by_q.get(baseline_q_index, 0.0)
-        if current_income == 0 and baseline_income == 0:
-            continue
-        pre_baseline_sum = sum(by_q.get(qi, 0.0) for qi in pre_baseline_indexes)
-        candidates[key] = {
-            'current': current_income,
-            'baseline': baseline_income,
-            'pre_baseline_sum': pre_baseline_sum,
-            'filings_current': filings_by_key_q[key].get(current_q_index, 0),
-            'filings_baseline': filings_by_key_q[key].get(baseline_q_index, 0),
-        }
-
-    def build_mover(key: str, m: dict) -> dict:
-        current_income = m['current']
-        baseline_income = m['baseline']
-        series = [round(income_by_key_q[key].get(y * 4 + q, 0.0), 2) for y, q in window_quarters]
-        registrant_names = [n for n, _ in registrants_current[key].most_common(3)]
-        examples = sorted(
-            examples_current.get(key, []),
-            key=lambda x: x.get('income') or 0,
-            reverse=True,
-        )[:5]
-        display_name = display_client_name(list(raw_names[key].elements()))
-        for ex in examples:
-            ex['client'] = display_name
-            if ex.get('registrant'):
-                ex['registrant'] = display_client_name([ex['registrant']])
-        return {
-            'key': key,
-            'name': display_name,
-            'current': round(current_income, 2),
-            'baseline': round(baseline_income, 2),
-            'delta': round(current_income - baseline_income, 2),
-            'ratio': round(current_income / baseline_income, 3) if baseline_income > 0 else None,
-            'filings_current': m['filings_current'],
-            'filings_baseline': m['filings_baseline'],
-            'topics': [t for t, _ in topics_by_key.get(key, Counter()).most_common(4)],
-            'registrants': [display_client_name([n]) for n in registrant_names],
-            'series': series,
-            'examples': examples,
-        }
+            key = canonical_client_key(client_name)
+            if not key:
+                continue
+            for topic in json.loads(row.get('topics') or '[]'):
+                if is_general_topic(topic):
+                    continue
+                label = display_topic(topic)
+                if label:
+                    topics_by_frame_key[frame_key][key][label] += 1
 
     FLOOR = 100_000
     NEW_ENTRANT_FLOOR = 250_000
 
-    new_entrant_keys = {
-        key for key, m in candidates.items()
-        if m['baseline'] == 0 and m['pre_baseline_sum'] == 0 and m['current'] >= NEW_ENTRANT_FLOOR
-    }
+    def build_frame(frame_key: str) -> dict:
+        cur_income = leg_income[frame_key]['current']
+        base_income = leg_income[frame_key]['baseline']
+        cur_filings = leg_filings[frame_key]['current']
+        base_filings = leg_filings[frame_key]['baseline']
+        pre_baseline_indexes = frame_pre_baseline[frame_key]
 
-    riser_candidates = [
-        (key, m) for key, m in candidates.items()
-        if key not in new_entrant_keys
-        and max(m['current'], m['baseline']) >= FLOOR
-        and (m['current'] - m['baseline']) > 0
-    ]
-    faller_candidates = [
-        (key, m) for key, m in candidates.items()
-        if max(m['current'], m['baseline']) >= FLOOR
-        and (m['current'] - m['baseline']) < 0
-    ]
-    new_entrant_candidates = [(key, candidates[key]) for key in new_entrant_keys]
+        # Frame-level totals across ALL clients (not just exported movers) —
+        # for the headline "$1.63B, +10.7% vs Q1 2025" framing.
+        quarter_totals = {
+            'current_income': round(sum(cur_income.values()), 2),
+            'baseline_income': round(sum(base_income.values()), 2),
+            'change_pct': _pct_change(sum(cur_income.values()), sum(base_income.values())),
+            'current_filings': sum(cur_filings.values()),
+            'baseline_filings': sum(base_filings.values()),
+            'current_clients': len(cur_filings),
+            'baseline_clients': len(base_filings),
+        }
 
-    riser_candidates.sort(key=lambda kv: kv[1]['current'] - kv[1]['baseline'], reverse=True)
-    faller_candidates.sort(key=lambda kv: kv[1]['current'] - kv[1]['baseline'])
-    new_entrant_candidates.sort(key=lambda kv: kv[1]['current'], reverse=True)
+        # Per-client current / baseline / pre-baseline aggregates.
+        candidates = {}
+        for key in set(cur_income) | set(base_income):
+            current_income = cur_income.get(key, 0.0)
+            baseline_income = base_income.get(key, 0.0)
+            if current_income == 0 and baseline_income == 0:
+                continue
+            pre_baseline_sum = sum(income_by_key_q[key].get(qi, 0.0) for qi in pre_baseline_indexes)
+            candidates[key] = {
+                'current': current_income,
+                'baseline': baseline_income,
+                'pre_baseline_sum': pre_baseline_sum,
+                'filings_current': cur_filings.get(key, 0),
+                'filings_baseline': base_filings.get(key, 0),
+            }
+
+        def build_mover(key: str, m: dict) -> dict:
+            current_income = m['current']
+            baseline_income = m['baseline']
+            series = [round(income_by_key_q[key].get(y * 4 + q, 0.0), 2) for y, q in window_quarters]
+            registrant_names = [n for n, _ in registrants_current[frame_key][key].most_common(3)]
+            examples = sorted(
+                examples_current[frame_key].get(key, []),
+                key=lambda x: x.get('income') or 0,
+                reverse=True,
+            )[:5]
+            display_name = display_client_name(list(raw_names[key].elements()))
+            examples = [dict(ex) for ex in examples]  # legs can share example dicts
+            for ex in examples:
+                ex['client'] = display_name
+                if ex.get('registrant'):
+                    ex['registrant'] = display_client_name([ex['registrant']])
+            return {
+                'key': key,
+                'name': display_name,
+                'current': round(current_income, 2),
+                'baseline': round(baseline_income, 2),
+                'delta': round(current_income - baseline_income, 2),
+                'ratio': round(current_income / baseline_income, 3) if baseline_income > 0 else None,
+                'filings_current': m['filings_current'],
+                'filings_baseline': m['filings_baseline'],
+                'topics': [t for t, _ in topics_by_frame_key[frame_key].get(key, Counter()).most_common(4)],
+                'registrants': [display_client_name([n]) for n in registrant_names],
+                'series': series,
+                'examples': examples,
+            }
+
+        new_entrant_keys = {
+            key for key, m in candidates.items()
+            if m['baseline'] == 0 and m['pre_baseline_sum'] == 0 and m['current'] >= NEW_ENTRANT_FLOOR
+        }
+
+        riser_candidates = [
+            (key, m) for key, m in candidates.items()
+            if key not in new_entrant_keys
+            and max(m['current'], m['baseline']) >= FLOOR
+            and (m['current'] - m['baseline']) > 0
+        ]
+        faller_candidates = [
+            (key, m) for key, m in candidates.items()
+            if max(m['current'], m['baseline']) >= FLOOR
+            and (m['current'] - m['baseline']) < 0
+        ]
+        new_entrant_candidates = [(key, candidates[key]) for key in new_entrant_keys]
+
+        riser_candidates.sort(key=lambda kv: kv[1]['current'] - kv[1]['baseline'], reverse=True)
+        faller_candidates.sort(key=lambda kv: kv[1]['current'] - kv[1]['baseline'])
+        new_entrant_candidates.sort(key=lambda kv: kv[1]['current'], reverse=True)
+
+        spec = specs[frame_key]
+        curr_y, curr_q, _ = spec['current']
+        base_y, base_q, _ = spec['baseline']
+        frame = {
+            'current_quarter': {
+                'year': curr_y, 'quarter': curr_q,
+                'label': f'Q{curr_q} {curr_y}',
+            },
+            'baseline_quarter': {
+                'year': base_y, 'quarter': base_q,
+                'label': f'Q{base_q} {base_y}',
+            },
+            'quarter_totals': quarter_totals,
+            'risers': [build_mover(k, m) for k, m in riser_candidates[:25]],
+            'fallers': [build_mover(k, m) for k, m in faller_candidates[:15]],
+            'new_entrants': [build_mover(k, m) for k, m in new_entrant_candidates[:10]],
+        }
+        if not spec['complete']:
+            frame['through'] = spec['through']
+        return frame
 
     return {
         'generated_at': datetime.now().isoformat(),
-        'current_quarter': {
-            'year': current_year, 'quarter': current_quarter,
-            'label': f'Q{current_quarter} {current_year}',
-        },
-        'baseline_quarter': {
-            'year': baseline_year, 'quarter': baseline_quarter,
-            'label': f'Q{baseline_quarter} {baseline_year}',
-        },
-        'quarter_totals': quarter_totals,
+        'frames': {fk: build_frame(fk) for fk in FRAME_KEYS},
+        # Shared complete-quarter history for the per-org drawer chart —
+        # identical under both frames.
         'quarters': [f'{y} Q{q}' for y, q in window_quarters],
-        'risers': [build_mover(k, m) for k, m in riser_candidates[:25]],
-        'fallers': [build_mover(k, m) for k, m in faller_candidates[:15]],
-        'new_entrants': [build_mover(k, m) for k, m in new_entrant_candidates[:10]],
     }
 
 
@@ -1456,7 +1526,14 @@ def _pct_change(current: float, baseline: float) -> float | None:
 
 
 def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
-    """Compute diagnostics to contextualize anomaly detection outputs."""
+    """Compute diagnostics to contextualize anomaly detection outputs.
+
+    Mention/share diagnostics read from the complete-quarter frame (the
+    dashboard's headline comparison). The rolling 90/180-day filing-date
+    windows below are deliberately kept: they measure INGEST health (is the
+    pipeline still receiving filings at the expected rate?), which is a
+    filing-date question, not a report-quarter comparison.
+    """
     today = datetime.now()
     current_end = today.strftime('%Y-%m-%d')
     current_start = (today - timedelta(days=90)).strftime('%Y-%m-%d')
@@ -1531,10 +1608,11 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
             (current_start, current_end),
         )
 
-    mention_totals = trends.get('window_totals', {}).get('90d', {})
-    current_mentions = mention_totals.get('current_total_mentions', 0) or 0
-    prev_mentions = mention_totals.get('prev_total_mentions', 0) or 0
-    yoy_mentions = mention_totals.get('yoy_total_mentions', 0) or 0
+    quarter_frame = trends.get('frames', {}).get('quarter', {})
+    frame_label = quarter_frame.get('label', 'latest complete quarter')
+    baseline_label = quarter_frame.get('baseline_label', 'same quarter last year')
+    current_mentions = quarter_frame.get('current_total_mentions', 0) or 0
+    baseline_mentions = quarter_frame.get('baseline_total_mentions', 0) or 0
 
     monthly_by_month = defaultdict(list)
     for row in monthly_rows:
@@ -1605,19 +1683,24 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
     dropped_leg_pct = round(dropped_leg_tags / total_leg_tags * 100, 1) if total_leg_tags else None
     normalized_leg_pct = round(normalized_leg_tags / total_leg_tags * 100, 1) if total_leg_tags else None
 
-    topics_90d = trends.get('topics', {}).get('90d', [])
-    top_topic_share = round(topics_90d[0].get('current_share_pct', 0), 2) if topics_90d else None
-    top5_topic_share = round(sum(x.get('current_share_pct', 0) for x in topics_90d[:5]), 2) if topics_90d else None
+    # Top-topic concentration in the complete-quarter frame. The exported
+    # list is ranked by |score| (decliners surface too), so take the max
+    # share rather than assuming the first item has it.
+    quarter_topics = trends.get('topics', {}).get('quarter', [])
+    top_topic_share = round(max((x.get('current_share_pct', 0) for x in quarter_topics), default=0), 2) if quarter_topics else None
+    top5_topic_share = round(
+        sum(sorted((x.get('current_share_pct', 0) for x in quarter_topics), reverse=True)[:5]), 2
+    ) if quarter_topics else None
 
     flags = []
 
-    mentions_yoy_change = _pct_change(current_mentions, yoy_mentions)
+    mentions_yoy_change = _pct_change(current_mentions, baseline_mentions)
     if mentions_yoy_change is not None and abs(mentions_yoy_change) >= 30:
         severity = 'high' if abs(mentions_yoy_change) >= 50 else 'medium'
         flags.append({
             'severity': severity,
-            'title': 'Large window-volume shift',
-            'detail': f"90d extracted mentions are {mentions_yoy_change:+.1f}% vs year-ago ({current_mentions:,} vs {yoy_mentions:,}).",
+            'title': 'Large quarter-volume shift',
+            'detail': f"{frame_label} extracted mentions are {mentions_yoy_change:+.1f}% vs {baseline_label} ({current_mentions:,} vs {baseline_mentions:,}).",
         })
 
     filings_yoy_change = _pct_change(current_filings, yoy_filings)
@@ -1667,7 +1750,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
         flags.append({
             'severity': 'low',
             'title': 'Top-topic concentration',
-            'detail': f"Top topic accounts for {top_topic_share:.2f}% of 90d extracted mentions (top 5 = {top5_topic_share:.2f}%).",
+            'detail': f"Top topic accounts for {top_topic_share:.2f}% of {frame_label} extracted mentions (top 5 = {top5_topic_share:.2f}%).",
         })
 
     severity_counts = {
@@ -1684,14 +1767,13 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
 
     return {
         'generated_at': datetime.now().isoformat(),
-        'window': '90d',
+        'frame': 'quarter',
+        'frame_label': frame_label,
         'status': status,
         'severity_counts': severity_counts,
         'metrics': {
-            'mentions_current_90d': current_mentions,
-            'mentions_prev_90d': prev_mentions,
-            'mentions_yoy_90d': yoy_mentions,
-            'mentions_vs_prev_pct': _pct_change(current_mentions, prev_mentions),
+            'mentions_current_quarter': current_mentions,
+            'mentions_baseline_quarter': baseline_mentions,
             'mentions_vs_yoy_pct': mentions_yoy_change,
             'filings_current_90d': current_filings,
             'filings_prev_90d': prev_filings,
@@ -1741,15 +1823,14 @@ def export_json(output_dir: str = 'docs/data'):
     def names_for(cat: str) -> set:
         return {
             item.get('name')
-            for window in ('30d', '90d')
-            for item in trends.get(cat, {}).get(window, [])
+            for frame in ('quarter', 'qtd')
+            for item in trends.get(cat, {}).get(frame, [])
             if item.get('name')
         }
     tracked_topics = names_for('topics')
     timeseries = get_time_series(20, topics_to_track=tracked_topics, track_names={
         'entities': names_for('entities'),
         'legislation': names_for('legislation'),
-        'domains': names_for('domains'),
     })
 
     print("Computing organization spend movers...")
@@ -1796,13 +1877,19 @@ def export_json(output_dir: str = 'docs/data'):
 
     print(f"Exported JSON files to {output_dir}/")
     print(f"  - {len(alerts)} alerts")
-    print(f"  - {len(trends['topics']['30d'])} trending topics")
+    for frame_key in ('quarter', 'qtd'):
+        meta = trends['frames'][frame_key]
+        print(f"  - {frame_key}: {meta['label']} vs {meta['baseline_label']} — "
+              f"{len(trends['topics'][frame_key])} topics, "
+              f"{meta['current_filings']:,} filings vs {meta['baseline_filings']:,}")
     print(f"  - {len(recent)} recent filings")
     print(f"  - {len(timeseries['quarters'])} quarters of time series")
     if clients_data is not None:
-        print(f"  - {len(clients_data['risers'])} risers, {len(clients_data['fallers'])} fallers, "
-              f"{len(clients_data['new_entrants'])} new entrants ({clients_data['current_quarter']['label']} "
-              f"vs {clients_data['baseline_quarter']['label']})")
+        for frame_key in ('quarter', 'qtd'):
+            frame = clients_data['frames'][frame_key]
+            print(f"  - orgs [{frame_key}]: {len(frame['risers'])} risers, {len(frame['fallers'])} fallers, "
+                  f"{len(frame['new_entrants'])} new entrants ({frame['current_quarter']['label']} "
+                  f"vs {frame['baseline_quarter']['label']})")
 
 
 if __name__ == "__main__":
@@ -1819,11 +1906,11 @@ if __name__ == "__main__":
                 print(f"[{a['type']}] {a['headline']}")
         elif cmd == "trends":
             trends = compute_trends()
-            print("\nTop Trending Topics (90d):")
-            for t in trends['topics']['90d'][:15]:
-                yoy = t.get('share_delta_yoy_pp', 0)
-                prev = t.get('share_delta_prev_pp', 0)
-                print(f"  {yoy:+6.2f}pp yoy  {prev:+6.2f}pp prev  {t['count']:4d}  {t['name']}")
+            meta = trends['frames']['quarter']
+            print(f"\nTop Moving Topics ({meta['label']} vs {meta['baseline_label']}):")
+            for t in trends['topics']['quarter'][:15]:
+                delta = t.get('share_delta_pp', 0)
+                print(f"  {delta:+6.2f}pp yoy  {t['count']:5d} mentions  {t['client_count']:5d} orgs  {t['name']}")
     else:
         print("Usage:")
         print("  python 08_trends.py export  - Export JSON for dashboard")

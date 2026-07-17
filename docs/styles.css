@@ -6,52 +6,52 @@
 
 :root {
     /* Surfaces */
-    --bg:        #f7f4ee;
-    --paper:    #ffffff;
-    --paper-2:   #fbf9f4;
-    --line:     #e6e1d5;
-    --line-2:   #d8d2c2;
+    --bg:        #f6f3ea;
+    --paper:    #fffdf7;
+    --paper-2:   #faf7ef;
+    --line:     #ded7c6;
+    --line-2:   #c9c1ab;
 
     /* Ink */
-    --ink:        #1a1a1a;
-    --ink-2:     #4a4a4a;
-    --ink-3:     #7a7565;
-    --ink-4:     #a39c87;
+    --ink:        #1b2433;
+    --ink-2:     #44506b;
+    --ink-3:     #6e6a5a;
+    --ink-4:     #a29a84;
 
     /* Accents */
-    --accent:        #b8420f;          /* deep orange — primary signal */
-    --accent-soft:    rgba(184,66,15,0.08);
-    --accent-line:    rgba(184,66,15,0.20);
+    --accent:        #1e3a5f;          /* federal navy — primary signal */
+    --accent-soft:    rgba(30,58,95,0.07);
+    --accent-line:    rgba(30,58,95,0.22);
 
-    --up:           #1f7a4d;
-    --up-soft:      rgba(31,122,77,0.10);
-    --down:         #b53a3a;
-    --down-soft:    rgba(181,58,58,0.08);
+    --up:           #23664a;
+    --up-soft:      rgba(35,102,74,0.10);
+    --down:         #8f2a2a;
+    --down-soft:    rgba(143,42,42,0.08);
 
     /* Category hues */
     --cat-topic:        #1f3a5f;
     --cat-topic-soft:    rgba(31,58,95,0.07);
-    --cat-entity:        #6b4f1d;
-    --cat-entity-soft:    rgba(107,79,29,0.08);
-    --cat-bill:        #573a6b;
-    --cat-bill-soft:    rgba(87,58,107,0.07);
-    --cat-domain:        #2d5a45;
-    --cat-domain-soft:    rgba(45,90,69,0.07);
+    --cat-entity:        #4a5568;
+    --cat-entity-soft:    rgba(74,85,104,0.08);
+    --cat-bill:        #6e2536;
+    --cat-bill-soft:    rgba(110,37,54,0.07);
+    --cat-org:        #6b5426;
+    --cat-org-soft:    rgba(107,84,38,0.08);
     --cat-filing:        #4a4a4a;
     --cat-filing-soft:   rgba(74,74,74,0.06);
 
     /* Type */
-    --serif:    'Fraunces', 'Iowan Old Style', 'Charter', Georgia, serif;
-    --sans:    'Inter', -apple-system, system-ui, 'Segoe UI', sans-serif;
-    --mono:    'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+    --serif:    'Source Serif 4', 'Iowan Old Style', 'Charter', Georgia, serif;
+    --sans:    'Public Sans', -apple-system, system-ui, 'Segoe UI', sans-serif;
+    --mono:    'IBM Plex Mono', 'SF Mono', ui-monospace, monospace;
 
-    --radius:    8px;
-    --radius-lg:    14px;
+    --radius:    4px;
+    --radius-lg:    8px;
     --radius-pill:    999px;
 
-    --shadow-sm:    0 1px 2px rgba(20,20,20,0.04);
-    --shadow:    0 4px 16px rgba(20,20,20,0.06), 0 1px 2px rgba(20,20,20,0.04);
-    --shadow-lg:    0 24px 60px rgba(20,20,20,0.16), 0 4px 16px rgba(20,20,20,0.08);
+    --shadow-sm:    0 1px 2px rgba(20,20,20,0.03);
+    --shadow:    0 4px 16px rgba(20,20,20,0.04), 0 1px 2px rgba(20,20,20,0.03);
+    --shadow-lg:    0 24px 60px rgba(20,20,20,0.11), 0 4px 16px rgba(20,20,20,0.06);
 
     --ease:    cubic-bezier(0.22, 0.1, 0.25, 1);
     --max-w:    1080px;
@@ -59,46 +59,47 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg:        #14130f;
-        --paper:    #1c1b16;
-        --paper-2:    #232118;
-        --line:        #2c2a22;
-        --line-2:        #3a382e;
+        --bg:        #12151c;
+        --paper:    #191d27;
+        --paper-2:    #1f2430;
+        --line:        #2a3040;
+        --line-2:        #39415a;
 
-        --ink:        #f1ede1;
-        --ink-2:    #c2bda9;
-        --ink-3:    #8a8472;
-        --ink-4:    #5e5946;
+        --ink:        #e9e5d8;
+        --ink-2:    #b8b2a0;
+        --ink-3:    #8d8875;
+        --ink-4:    #5f5c4e;
 
-        --accent:        #e87a3f;
-        --accent-soft:    rgba(232,122,63,0.10);
-        --accent-line:    rgba(232,122,63,0.28);
+        --accent:        #8fb0d6;
+        --accent-soft:    rgba(143,176,214,0.10);
+        --accent-line:    rgba(143,176,214,0.28);
 
-        --up:        #5cc78a;
-        --up-soft:    rgba(92,199,138,0.10);
-        --down:        #e87171;
-        --down-soft:    rgba(232,113,113,0.10);
+        --up:        #5fae85;
+        --up-soft:    rgba(95,174,133,0.10);
+        --down:        #cf7a72;
+        --down-soft:    rgba(207,122,114,0.10);
 
         --cat-topic:        #93b8e0;
         --cat-topic-soft:    rgba(147,184,224,0.10);
-        --cat-entity:        #d6b066;
-        --cat-entity-soft:    rgba(214,176,102,0.10);
-        --cat-bill:        #b89bd1;
-        --cat-bill-soft:    rgba(184,155,209,0.10);
-        --cat-domain:        #7fc8a4;
-        --cat-domain-soft:    rgba(127,200,164,0.10);
-        --cat-filing:        #c2bda9;
-        --cat-filing-soft:    rgba(194,189,169,0.08);
+        --cat-entity:        #a9b4c7;
+        --cat-entity-soft:    rgba(169,180,199,0.10);
+        --cat-bill:        #c48a93;
+        --cat-bill-soft:    rgba(196,138,147,0.10);
+        --cat-org:        #d6b066;
+        --cat-org-soft:    rgba(214,176,102,0.10);
+        --cat-filing:        #b8b2a0;
+        --cat-filing-soft:    rgba(184,178,160,0.08);
 
-        --shadow-sm:    0 1px 2px rgba(0,0,0,0.30);
-        --shadow:    0 4px 16px rgba(0,0,0,0.30), 0 1px 2px rgba(0,0,0,0.20);
-        --shadow-lg:    0 24px 60px rgba(0,0,0,0.50), 0 4px 16px rgba(0,0,0,0.30);
+        --shadow-sm:    0 1px 2px rgba(0,0,0,0.21);
+        --shadow:    0 4px 16px rgba(0,0,0,0.21), 0 1px 2px rgba(0,0,0,0.14);
+        --shadow-lg:    0 24px 60px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.21);
     }
 }
 
 html { color-scheme: light dark; }
 
 body {
+    position: relative;
     background: var(--bg);
     color: var(--ink);
     font-family: var(--sans);
@@ -107,6 +108,23 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+}
+
+/* Paper grain — a faint fixed noise overlay for the archival-paper light
+   theme. Off in dark mode, where the ink surfaces don't read as paper. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.022;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+}
+
+@media (prefers-color-scheme: dark) {
+    body::before { display: none; }
 }
 
 a { color: var(--accent); text-decoration: none; }
@@ -125,15 +143,15 @@ input { font: inherit; color: inherit; }
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 24px;
-    padding: 14px 24px;
-    background: rgba(247,244,238,0.85);
+    padding: 14px 24px 12px;
+    background: rgba(246,243,234,0.88);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
+    border-bottom: 3px double var(--line-2);
 }
 
 @media (prefers-color-scheme: dark) {
-    .topbar { background: rgba(20,19,15,0.85); }
+    .topbar { background: rgba(18,21,28,0.88); }
 }
 
 .brand {
@@ -249,14 +267,14 @@ input { font: inherit; color: inherit; }
     gap: 0;
     margin-top: 14px;
     padding-top: 12px;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--line-2);
 }
 
 .hero-stats li {
     flex: 1;
     min-width: 150px;
     padding: 6px 24px;
-    border-right: 1px solid var(--line);
+    border-right: 1px solid var(--line-2);
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -298,32 +316,23 @@ input { font: inherit; color: inherit; }
     gap: 16px;
     flex-wrap: wrap;
     margin-bottom: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-2);
 }
 
 .movers-title h2 {
-    font-family: var(--serif);
-    font-size: 1.2rem;
+    font-family: var(--mono);
+    font-size: 0.82rem;
     font-weight: 500;
-    letter-spacing: -0.008em;
-    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--ink-2);
 }
 
 .movers-sub {
     font-size: 0.78rem;
     color: var(--ink-3);
     margin-top: 2px;
-}
-
-.window-range-dates,
-.detail-sub-dates {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--ink-4);
-    white-space: nowrap;
-}
-
-.detail-sub-dates {
-    font-size: 0.7rem;
 }
 
 .movers-controls {
@@ -364,9 +373,12 @@ input { font: inherit; color: inherit; }
 }
 .seg-btn:disabled:hover { color: var(--ink-4); }
 
-/* Organizations has a fixed quarter-vs-quarter framing — the window/compare
-   controls don't apply there. */
-.controls-hidden { display: none !important; }
+/* On Recent filings the frame toggle doesn't apply — it stays in place,
+   dimmed, so controls never move or vanish between tabs. */
+.seg.seg-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
 
 @media (prefers-color-scheme: dark) {
     .seg-btn.active { background: var(--ink); color: var(--bg); }
@@ -435,6 +447,33 @@ input { font: inherit; color: inherit; }
     overflow: hidden;
 }
 
+/* Section headers inside the "Everything" digest */
+.mover-section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 16px 18px 8px;
+    background: var(--bg);
+    border-top: 1px solid var(--line-2);
+}
+
+.mover-section-title {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--ink-3);
+}
+
+.mover-see-all {
+    font-size: 0.78rem;
+    color: var(--ink-3);
+    transition: color 0.12s var(--ease);
+}
+
+.mover-see-all:hover { color: var(--accent); }
+
 .mover {
     background: var(--paper);
     padding: 12px 18px;
@@ -477,10 +516,9 @@ input { font: inherit; color: inherit; }
 .cat-tag.topics       { color: var(--cat-topic);    background: var(--cat-topic-soft); }
 .cat-tag.entities     { color: var(--cat-entity);   background: var(--cat-entity-soft); }
 .cat-tag.legislation  { color: var(--cat-bill);     background: var(--cat-bill-soft); }
-.cat-tag.domains      { color: var(--cat-domain);   background: var(--cat-domain-soft); }
 .cat-tag.filing       { color: var(--cat-filing);   background: var(--cat-filing-soft); }
 .cat-tag.client,
-.cat-tag.clients      { color: var(--accent);       background: var(--accent-soft); }
+.cat-tag.clients      { color: var(--cat-org);       background: var(--cat-org-soft); }
 
 .cat-tag-label {
     /* Used for the "Topic" "Agency" etc. label inside the colored tag */
@@ -996,7 +1034,7 @@ input { font: inherit; color: inherit; }
     font-size: 0.66rem;
     color: var(--ink-3);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     margin-top: 2px;
 }
 
@@ -1341,7 +1379,7 @@ input { font: inherit; color: inherit; }
         min-width: 0;
         padding: 8px 16px 8px 0;
         border-right: none;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid var(--line-2);
     }
     .hero-stats li:nth-last-child(-n+2) { border-bottom: none; }
 

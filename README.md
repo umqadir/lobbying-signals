@@ -1,6 +1,6 @@
 # Lobbying Signals
 
-Automated detection of directional signals in federal lobbying disclosure data. Tracks emerging topics, agencies, domains, legislation, and recent filings from Senate LDA disclosures.
+Automated detection of directional signals in federal lobbying disclosure data. Tracks organizations, topics, agencies, legislation, and recent filings from Senate LDA disclosures.
 
 ## Live Dashboard
 
@@ -12,8 +12,8 @@ Updated daily via GitHub Actions.
 
 - **Real-time LDA ingestion**: Downloads and stores Senate lobbying disclosure filings via the LDA API; coverage runs from 2020 to the present
 - **Deterministic extraction**: Uses versioned rules, LDA issue codes, regexes, and dictionaries to extract topics, entities, and legislation without model calls
-- **Trend detection**: Compares 30- and 90-day signal windows against prior-period and year-ago baselines, with seasonality-aware year-over-year as the default comparison
-- **Organization spend movers**: Tracks which organizations raised or cut reported lobbying dollars, comparing the latest complete report quarter to the same quarter a year earlier, with name-variant folding so one organization's filings aren't split across spellings
+- **Trend detection**: Every view shares the same two year-over-year, report-quarter comparison frames — the latest complete quarter vs the same quarter a year earlier (default), and the current partial quarter so far vs the same point in last year's filing cycle (a freshness lens). There are no rolling day-windows: LDA disclosure is quarterly, so rolling windows would mostly measure filing-clerk timing
+- **Organization spend movers**: Tracks which organizations raised or cut reported lobbying dollars under the same two frames, with name-variant folding so one organization's filings aren't split across spellings
 - **Static signal browser**: An editorial dashboard — synthesized headline, ranked movers feed with period-comparison charts, detail drawer with quarterly history, command-palette search, and links to each filing's official Senate record
 - **Zero infrastructure cost**: Runs entirely on GitHub (Actions + Pages + Releases)
 
@@ -40,9 +40,10 @@ GitHub Actions (daily cron)
 
 - Mentions are activity-level tags extracted from lobbying activity descriptions, not unique filing counts.
 - Trend comparisons are directional signals for exploration, not causal claims about lobbying spend or policy outcomes.
+- **Comparison frames**: every view uses the same two year-over-year frames, both defined on report quarters (the filing's year/quarter metadata, not its submission date). `quarter` compares the latest COMPLETE report quarter to the same quarter a year earlier — a quarter counts as complete once ~40 days past its calendar end, well past the 20th-of-the-following-month statutory deadline, so late filers don't read as a false drop. `qtd` compares the current partial quarter's filings posted through the data-through date against last year's same-quarter filings posted by the same point in the cycle — like-for-like even mid-cycle, flagged as a small sample early on. Rolling 30/90-day filing-date windows were removed: LDA is a quarterly regime, so they measured filing-clerk timing rather than lobbying activity.
 - Filing volume is seasonal because quarterly LDA reports cluster around statutory filing deadlines.
 - Associated income is filing income connected to matching activity tags; it should not be read as causal spend on a single topic.
-- **Organization spend**: the Organizations view (`compute_client_movers()` in `08_trends.py`, exported to `docs/data/clients.json`) sums each client's reported filing income/expenses per report quarter and compares the latest COMPLETE quarter to the same quarter a year earlier — a quarter counts as complete once ~40 days past its calendar end, well past the 20th-of-the-following-month statutory deadline, so late filers don't read as a false drop. Name variants for one organization (legal-suffix differences, "on behalf of" filers, former names) are folded together by `clients_norm.canonical_client_key`; see `scripts/test_canonicalize_client.py` for the regression cases. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.
+- **Organization spend**: the Organizations view (`compute_client_movers()` in `08_trends.py`, exported to `docs/data/clients.json`) sums each client's reported filing income/expenses per report quarter under both frames above. Name variants for one organization (legal-suffix differences, "on behalf of" filers, former names) are folded together by `clients_norm.canonical_client_key`; see `scripts/test_canonicalize_client.py` for the regression cases. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.
 
 ## Local Development
 

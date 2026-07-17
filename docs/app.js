@@ -9,19 +9,18 @@ const CATEGORIES = {
     clients:     { label: "Org",     plural: "Organizations", tagClass: "clients",   shortLabel: "Org" },
     topics:      { label: "Topic",   plural: "Topics",      tagClass: "topics",      shortLabel: "Topic" },
     entities:    { label: "Agency",  plural: "Agencies",    tagClass: "entities",    shortLabel: "Agency" },
-    legislation: { label: "Bill",    plural: "Bills",       tagClass: "legislation", shortLabel: "Bill" },
-    domains:     { label: "Domain",  plural: "Domains",     tagClass: "domains",     shortLabel: "Domain" }
+    legislation: { label: "Bill",    plural: "Bills",       tagClass: "legislation", shortLabel: "Bill" }
 };
 
-// Tag-mention categories driven by trends.json's window/compare toggles.
-// Organizations ("clients") are a separate flagship view — fixed-quarter
-// dollar comparisons from clients.json, not part of this signal system.
-const SIGNAL_MODES = ["topics", "entities", "legislation", "domains"];
+// Tag-mention categories exported per comparison frame in trends.json.
+// Organizations ("clients") come from clients.json but share the SAME two
+// frames, so one toggle drives every view.
+const SIGNAL_MODES = ["topics", "entities", "legislation"];
 
-const COMPARE = {
-    yoy:  { baselineCountKey: "yoy_count",  baselineLabel: "year-ago period",  shortLabel: "vs year ago" },
-    prev: { baselineCountKey: "prev_count", baselineLabel: "prior period",      shortLabel: "vs prior period" }
-};
+// Both comparison frames are year-over-year and report-quarter based:
+// "quarter" = latest complete report quarter vs the same quarter last year;
+// "qtd" = the current partial quarter so far vs the same point last year.
+const FRAME_KEYS = ["quarter", "qtd"];
 
 const DISPLAY_OVERRIDES = {
     entities: {
@@ -61,12 +60,10 @@ const state = {
     filings: [],
     timeseries: null,
     clients: null,       // clients.json — org spend movers; null if absent/failed to load
-    clientIndex: new Map(),
 
     view: {
-        window: "90d",
-        compare: "yoy",
-        cat: "all"   // all | clients | topics | entities | legislation | domains | recent
+        frame: "quarter",   // quarter | qtd — the shared comparison frame
+        cat: "all"          // all | clients | topics | entities | legislation | recent
     },
 
     drawer: null,        // current drawer view
@@ -201,47 +198,6 @@ function coverageStartDate() {
     return parseDate(state.stats?.date_range?.start);
 }
 
-/* "vs year ago" only means something when the year-ago baseline window falls
-   inside tracked coverage. If tracking started later than that window, every
-   yoy baseline is an artificial zero: every item reads "first time", the
-   share-delta ranking degrades to plain size, and every trend line is the same
-   0-to-now diagonal. This re-enables itself once a full year has accumulated. */
-function yoySupported(windowKey) {
-    const start = coverageStartDate();
-    if (!start) return true; // no coverage info — trust the data
-    const days = windowKey === "30d" ? 30 : 90;
-    const DAY_MS = 86400000;
-    const baseStart = dataAsOfDate().getTime() - (365 + days) * DAY_MS;
-    return start.getTime() <= baseStart;
-}
-
-function defaultCompare(windowKey) {
-    return yoySupported(windowKey) ? "yoy" : "prev";
-}
-
-/* Keep the compare toggle honest: disable "vs year ago" (with an explanation)
-   while coverage can't back it, and repair state if it points at it. */
-function resolveCompareMode() {
-    const seg = document.getElementById("compare-seg");
-    if (!seg) return;
-    const yoyBtn = seg.querySelector('[data-compare="yoy"]');
-    const ok = yoySupported(state.view.window);
-    if (!ok && state.view.compare === "yoy") state.view.compare = "prev";
-    if (yoyBtn) {
-        yoyBtn.disabled = !ok;
-        yoyBtn.title = ok ? "" :
-            `Needs a year of history — tracking started ${fmtMonthDayYear(coverageStartDate())}.`;
-    }
-    seg.querySelectorAll(".seg-btn").forEach(x =>
-        x.classList.toggle("active", x.dataset.compare === state.view.compare));
-}
-
-function dateMinusDays(date, days) {
-    const d = new Date(date.getTime());
-    d.setDate(d.getDate() - days);
-    return d;
-}
-
 function fmtMonthDay(d) {
     if (!d) return "—";
     return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
@@ -249,37 +205,47 @@ function fmtMonthDay(d) {
 
 function fmtMonthDayYear(d) {
     if (!d) return "—";
-    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 }
 
-function windowDates(windowKey) {
-    const days = windowKey === "30d" ? 30 : 90;
-    const end = dataAsOfDate();
-    const start = dateMinusDays(end, days);
-    return { start, end, days };
+/* ─── Comparison frames ───
+   Both frames come from trends.json and drive every view through one toggle. */
+
+function frameInfo(frameKey) {
+    return state.trends?.frames?.[frameKey] || null;
 }
 
-function baselineDates(windowKey, compareKey) {
-    const { start, end, days } = windowDates(windowKey);
-    if (compareKey === "yoy") {
-        const yEnd = new Date(end.getTime()); yEnd.setFullYear(yEnd.getFullYear() - 1);
-        const yStart = new Date(start.getTime()); yStart.setFullYear(yStart.getFullYear() - 1);
-        return { start: yStart, end: yEnd, days };
+function activeFrameKey() {
+    return state.view.frame;
+}
+
+// Toggle-button label, e.g. "Q1 2026 vs Q1 2025" / "Q2 2026 so far".
+function frameToggleLabel(frameKey) {
+    const f = frameInfo(frameKey);
+    if (!f) return frameKey === "qtd" ? "This quarter so far" : "Latest complete quarter";
+    return frameKey === "quarter" ? `${f.label} vs ${f.baseline_label}` : f.label;
+}
+
+// Long plain-words description for the movers subtitle.
+function frameSubtitle(frameKey) {
+    const f = frameInfo(frameKey);
+    if (!f) return "";
+    if (frameKey === "quarter") {
+        return `Latest complete quarter · filings for ${f.label} vs ${f.baseline_label}`;
     }
-    // prev: the days immediately before the current window
-    const pEnd = new Date(start.getTime() - 1);
-    const pStart = dateMinusDays(pEnd, days - 1);
-    return { start: pStart, end: pEnd, days };
+    const through = fmtMonthDay(parseDate(f.through));
+    const base = f.label.replace(/\s+so far$/i, "");
+    let text = `${base} reports filed through ${through} vs the same point last year`;
+    if (f.thin_data) text += " — early in the filing cycle, small sample";
+    return text;
 }
 
-function rangeLabel(windowKey) {
-    const { start, end } = windowDates(windowKey);
-    return `${fmtMonthDay(start)} – ${fmtMonthDayYear(end)}`;
-}
-
-function baselineRangeLabel(windowKey, compareKey) {
-    const { start, end } = baselineDates(windowKey, compareKey);
-    return `${fmtMonthDay(start)} – ${fmtMonthDayYear(end)}`;
+// Short baseline phrase used inside card headlines, e.g. "Q1 2025" /
+// "the same point in Q2 2025".
+function frameBaselinePhrase(frameKey) {
+    const f = frameInfo(frameKey);
+    if (!f) return "a year earlier";
+    return frameKey === "quarter" ? f.baseline_label : `the ${f.baseline_label}`;
 }
 
 function toNum(v) { const x = Number(v); return Number.isFinite(x) ? x : 0; }
@@ -315,81 +281,112 @@ function deltaIntensity(ratio) {
     return "-mild";                  // small (<25% change)
 }
 
-function buildHeadline(item, compareKey) {
-    const baselineKey = COMPARE[compareKey].baselineCountKey;
-    const current = toNum(item.count);
-    const baseline = toNum(item[baselineKey]);
-    const baselineLabel = COMPARE[compareKey].baselineLabel;
+/* Tag mover headline: organizations first, mentions second. "1,211
+   organizations lobbied on this" answers the reader's real question (how
+   broad is this?) better than a raw mention count does. Falls back to
+   mention phrasing when org counts are missing. */
+function buildHeadline(item, frameKey) {
+    const orgs = toNum(item.client_count);
+    if (!orgs) return buildMentionsHeadline(item, frameKey);
 
+    const baseOrgs = toNum(item.baseline_client_count);
+    const basePhrase = frameBaselinePhrase(frameKey);
+    // "in Q1 2025" vs "at the same point in Q2 2025"
+    const baseIn = frameKey === "qtd" ? `at ${basePhrase}` : `in ${basePhrase}`;
+    const soFar = frameKey === "qtd" ? " so far this quarter" : "";
+
+    if (baseOrgs === 0) {
+        return {
+            html: `<strong>${fmt.int(orgs)}</strong> organizations lobbied on this${soFar} — <span class="delta delta-up-x">new</span>, none ${baseIn}.`,
+            dir: "up"
+        };
+    }
+
+    const ratio = orgs / baseOrgs;
+    const intensity = deltaIntensity(ratio);
+    let deltaHtml, dir;
+    if (ratio >= 1.02) {
+        deltaHtml = `<span class="delta delta-up${intensity}">up from ${fmt.int(baseOrgs)}</span>`;
+        dir = "up";
+    } else if (ratio <= 0.98) {
+        deltaHtml = `<span class="delta delta-down${intensity}">down from ${fmt.int(baseOrgs)}</span>`;
+        dir = "down";
+    } else {
+        deltaHtml = `<span class="delta delta-flat">about even with ${fmt.int(baseOrgs)}</span>`;
+        dir = "flat";
+    }
+    const orgWord = orgs === 1 ? "organization" : "organizations";
+    return {
+        html: `<strong>${fmt.int(orgs)}</strong> ${orgWord} lobbied on this${soFar} — ${deltaHtml} ${baseIn}.`,
+        dir
+    };
+}
+
+// Mentions-only fallback for tags with no organization counts.
+function buildMentionsHeadline(item, frameKey) {
+    const current = toNum(item.count);
+    const baseline = toNum(item.baseline_count);
+    const basePhrase = frameBaselinePhrase(frameKey);
+    const baseIn = frameKey === "qtd" ? `at ${basePhrase}` : `in ${basePhrase}`;
     const noun = current === 1 ? "mention" : "mentions";
 
     if (baseline === 0 && current > 0) {
         return {
-            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-up-x">new</span>, none in the ${baselineLabel}.`,
+            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-up-x">new</span>, none ${baseIn}.`,
             dir: "up"
         };
     }
     if (current === 0 && baseline > 0) {
         return {
-            html: `Quiet — <strong>0</strong> mentions vs <strong>${fmt.int(baseline)}</strong> in ${baselineLabel}.`,
+            html: `Quiet — <strong>0</strong> mentions vs <strong>${fmt.int(baseline)}</strong> ${baseIn}.`,
             dir: "down"
         };
     }
     if (baseline === 0 && current === 0) {
-        return { html: `No activity in this window.`, dir: "flat" };
+        return { html: `No activity in this frame.`, dir: "flat" };
     }
-
     const ratio = current / baseline;
     const pctChange = (ratio - 1) * 100;
     const intensity = deltaIntensity(ratio);
-
-    if (ratio >= 2) {
-        const xLabel = ratio >= 10 ? `${Math.round(ratio)}×` : `${ratio.toFixed(1)}×`;
-        return {
-            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-up${intensity}">${xLabel}</span> the ${baselineLabel} (${fmt.int(baseline)}).`,
-            dir: "up"
-        };
-    }
-    if (ratio <= 0.5) {
-        const halfLabel = `${Math.round((1 - ratio) * 100)}% lower`;
-        return {
-            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-down${intensity}">${halfLabel}</span> than ${baselineLabel} (${fmt.int(baseline)}).`,
-            dir: "down"
-        };
-    }
     if (Math.abs(pctChange) >= 5) {
         const sign = pctChange > 0 ? "+" : "";
         const dirCls = pctChange > 0 ? `delta-up${intensity}` : `delta-down${intensity}`;
         return {
-            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta ${dirCls}">${sign}${pctChange.toFixed(0)}%</span> vs ${baselineLabel} (${fmt.int(baseline)}).`,
+            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta ${dirCls}">${sign}${pctChange.toFixed(0)}%</span> vs ${basePhrase} (${fmt.int(baseline)}).`,
             dir: pctChange > 0 ? "up" : "down"
         };
     }
     return {
-        html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-flat">steady</span> vs ${baselineLabel} (${fmt.int(baseline)}).`,
+        html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-flat">steady</span> vs ${basePhrase} (${fmt.int(baseline)}).`,
         dir: "flat"
     };
 }
 
-// Secondary line under a tag mover's headline: how many distinct
-// organizations are actually behind the mention count, so a reader isn't
-// left thinking "1,303 mentions" came from one filer.
-function buildMobilizationLine(item, compareKey) {
-    const current = toNum(item.client_count);
-    if (!current) return null;
-    const baseline = compareKey === "yoy" ? toNum(item.yoy_client_count) : toNum(item.prev_client_count);
-    const baselineLabel = compareKey === "yoy" ? "a year ago" : "in the prior period";
-    const orgWord = current === 1 ? "organization" : "organizations";
-    return `${fmt.int(current)} ${orgWord} active (${fmt.int(baseline)} ${baselineLabel})`;
+// Secondary line under the org-count headline: mention volume (with its
+// baseline in parens) and share of all tagged activity.
+function buildSecondaryLine(item) {
+    if (!toNum(item.client_count)) return null; // headline already covers mentions
+    const parts = [`${fmt.int(item.count)} mentions (${fmt.int(item.baseline_count)})`];
+    const share = toNum(item.current_share_pct);
+    if (share > 0) {
+        const pp = toNum(item.share_delta_pp);
+        const sign = pp > 0 ? "+" : "";
+        parts.push(`${share.toFixed(1)}% share of activity (${sign}${pp.toFixed(1)}pp)`);
+    }
+    return parts.join(" · ");
 }
 
 /* ─── Organization movers (clients.json) ───
-   A separate flagship view: dollar spend per organization, comparing the
-   latest COMPLETE report quarter to the same quarter a year ago. Fixed
-   quarter framing — the window/compare toggles don't apply here. */
+   Dollar spend per organization under the SAME two frames as the tag views:
+   latest complete quarter vs the same quarter a year ago, or the current
+   partial quarter so far vs the same point last year. */
 
-function orgMoversAvailable() {
-    const c = state.clients;
+function clientFrame(frameKey) {
+    return state.clients?.frames?.[frameKey || activeFrameKey()] || null;
+}
+
+function orgMoversAvailable(frameKey) {
+    const c = clientFrame(frameKey);
     return !!(c && (c.risers?.length || c.fallers?.length || c.new_entrants?.length));
 }
 
@@ -405,9 +402,9 @@ function tagOrgMover(m, kind) {
     };
 }
 
-function allOrgMovers() {
-    if (!orgMoversAvailable()) return [];
-    const c = state.clients;
+function allOrgMovers(frameKey) {
+    const c = clientFrame(frameKey);
+    if (!c) return [];
     return [
         ...(c.risers || []).map(m => tagOrgMover(m, "riser")),
         ...(c.fallers || []).map(m => tagOrgMover(m, "faller")),
@@ -415,12 +412,11 @@ function allOrgMovers() {
     ];
 }
 
-// Risers + new entrants only (no fallers), ranked by dollar delta — used for
-// both the hero headline synthesis and the "Everything" interleave, where
-// org movers should read as ramp-ups, not a mix of ups and downs.
-function topOrgRisersAndNewEntrants(limit) {
-    if (!orgMoversAvailable()) return [];
-    const c = state.clients;
+// Risers + new entrants only (no fallers), ranked by dollar delta — the
+// ramp-up story used by the hero headline.
+function topOrgRisersAndNewEntrants(limit, frameKey) {
+    const c = clientFrame(frameKey);
+    if (!c) return [];
     const pool = [
         ...(c.risers || []).map(m => tagOrgMover(m, "riser")),
         ...(c.new_entrants || []).map(m => tagOrgMover(m, "new")),
@@ -428,11 +424,16 @@ function topOrgRisersAndNewEntrants(limit) {
     return pool.sort((a, b) => b.delta - a.delta).slice(0, limit);
 }
 
-function orgQuarterLabels() {
-    return {
-        cq: state.clients?.current_quarter?.label || "the latest quarter",
-        bq: state.clients?.baseline_quarter?.label || "the year-ago quarter"
-    };
+function orgQuarterLabels(frameKey) {
+    const fk = frameKey || activeFrameKey();
+    const c = clientFrame(fk);
+    const cqRaw = c?.current_quarter?.label || "the latest quarter";
+    const bqRaw = c?.baseline_quarter?.label || "the year-ago quarter";
+    if (fk === "qtd") {
+        const bq = `the same point in ${bqRaw}`;
+        return { cq: `${cqRaw} so far`, bq, inBq: `at ${bq}` };
+    }
+    return { cq: cqRaw, bq: bqRaw, inBq: `in ${bqRaw}` };
 }
 
 // Last calendar day of a report quarter (quarter is 1-indexed).
@@ -456,20 +457,20 @@ function reportsDueLabel(year, quarter) {
     return deadline.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
-function buildOrgHeadline(m) {
-    const { cq, bq } = orgQuarterLabels();
+function buildOrgHeadline(m, frameKey) {
+    const { cq, bq, inBq } = orgQuarterLabels(frameKey);
     const current = toNum(m.current);
     const baseline = toNum(m.baseline);
 
     if (baseline === 0 && current > 0) {
         return {
-            html: `<strong>${fmt.money(current)}</strong> in ${cq} — <span class="delta delta-up-x">new</span> — no lobbying in ${bq}.`,
+            html: `<strong>${fmt.money(current)}</strong> in ${cq} — <span class="delta delta-up-x">new</span> — no lobbying ${inBq}.`,
             dir: "up"
         };
     }
     if (current === 0 && baseline > 0) {
         return {
-            html: `Quiet in ${cq} — <strong>$0</strong> vs <strong>${fmt.money(baseline)}</strong> in ${bq}.`,
+            html: `Quiet in ${cq} — <strong>$0</strong> vs <strong>${fmt.money(baseline)}</strong> ${inBq}.`,
             dir: "down"
         };
     }
@@ -500,13 +501,13 @@ function makeOrgTrendChart(current, baseline, dir) {
     const baseLine = H - padB;
 
     const accent = dir === "up"
-        ? getCSSVar("--up", "#1f7a4d")
+        ? getCSSVar("--up", "#23664a")
         : dir === "down"
-            ? getCSSVar("--down", "#b53a3a")
-            : getCSSVar("--accent", "#b8420f");
-    const muted = getCSSVar("--ink-4", "#a39c87");
-    const labelColor = getCSSVar("--ink-3", "#7a7565");
-    const valueColor = getCSSVar("--ink-2", "#4a4a4a");
+            ? getCSSVar("--down", "#8f2a2a")
+            : getCSSVar("--accent", "#1e3a5f");
+    const muted = getCSSVar("--ink-4", "#a29a84");
+    const labelColor = getCSSVar("--ink-3", "#6e6a5a");
+    const valueColor = getCSSVar("--ink-2", "#44506b");
 
     const baseVal = toNum(baseline), nowVal = toNum(current);
     const yMax = Math.max(baseVal, nowVal, 1);
@@ -519,9 +520,9 @@ function makeOrgTrendChart(current, baseline, dir) {
         return `<rect x="${(cx - barW / 2).toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${h.toFixed(1)}" rx="2" fill="${fill}" fill-opacity="${opacity}"/>`;
     };
     const valueText = (cx, val) =>
-        `<text x="${cx.toFixed(1)}" y="${(baseLine - Math.max(val > 0 ? 2 : 0, (val / yMax) * plotH) - 3).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="600" fill="${valueColor}">${fmt.money(val)}</text>`;
+        `<text x="${cx.toFixed(1)}" y="${(baseLine - Math.max(val > 0 ? 2 : 0, (val / yMax) * plotH) - 3).toFixed(1)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="${valueColor}">${fmt.money(val)}</text>`;
     const periodText = (cx, label, color, weight) =>
-        `<text x="${cx.toFixed(1)}" y="${H - 2}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${color}" font-weight="${weight}" letter-spacing="0.05em">${label}</text>`;
+        `<text x="${cx.toFixed(1)}" y="${H - 2}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="${color}" font-weight="${weight}" letter-spacing="0.05em">${label}</text>`;
 
     return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="trend-svg" role="img" aria-label="year ago: ${fmt.esc(fmt.money(baseVal))}, now: ${fmt.esc(fmt.money(nowVal))}">
         <line x1="12" y1="${baseLine}" x2="${W - 12}" y2="${baseLine}" stroke="${muted}" stroke-opacity="0.35" stroke-width="1"/>
@@ -553,7 +554,7 @@ function buildOrgMoverCard(m) {
     const main = el("div", "mover-main");
     main.appendChild(el("div", "mover-name", m.name));
 
-    const head = buildOrgHeadline(m);
+    const head = buildOrgHeadline(m, activeFrameKey());
     const headlineEl = el("div", "mover-headline");
     headlineEl.innerHTML = head.html;
     main.appendChild(headlineEl);
@@ -572,64 +573,46 @@ function buildOrgMoverCard(m) {
     return card;
 }
 
-function buildAnyMoverCard(m, compareKey) {
+function buildAnyMoverCard(m, frameKey) {
     if (m.mode === "clients") return buildOrgMoverCard(m);
-    return buildMoverCard(m, compareKey);
-}
-
-function interleaveOrgMovers(tagMovers, orgMovers, everyN = 3) {
-    if (!orgMovers.length) return tagMovers;
-    const out = [];
-    let oi = 0;
-    for (let i = 0; i < tagMovers.length; i++) {
-        if (oi < orgMovers.length && i > 0 && i % everyN === 0) {
-            out.push(orgMovers[oi++]);
-        }
-        out.push(tagMovers[i]);
-    }
-    while (oi < orgMovers.length) out.push(orgMovers[oi++]);
-    return out;
+    return buildMoverCard(m, frameKey);
 }
 
 /* ─── Mover items ─── */
 
 function getKeyMap(mode) {
-    // trends.json key names: topic_*, entity_*, domain_*, legislation_*
+    // trends.json key names: topic_*, entity_*, legislation_*
     if (mode === "topics") return { c: "topic_clients", e: "topic_examples", i: "topic_income" };
     if (mode === "entities") return { c: "entity_clients", e: "entity_examples", i: "entity_income" };
     if (mode === "legislation") return { c: "legislation_clients", e: "legislation_examples", i: "legislation_income" };
-    if (mode === "domains") return { c: "domain_clients", e: "domain_examples", i: "domain_income" };
     return null;
 }
 
-function getCategoryItemsFixed(mode, windowKey) {
+function getCategoryItemsFixed(mode, frameKey) {
     const meta = CATEGORIES[mode];
     const keys = getKeyMap(mode);
     if (!meta || !keys) return [];
-    const items = state.trends?.[mode]?.[windowKey] || [];
-    const clients = state.trends?.[keys.c]?.[windowKey] || {};
-    const examples = state.trends?.[keys.e]?.[windowKey] || {};
-    const income = state.trends?.[keys.i]?.[windowKey] || {};
+    const items = state.trends?.[mode]?.[frameKey] || [];
+    const clients = state.trends?.[keys.c]?.[frameKey] || {};
+    const examples = state.trends?.[keys.e]?.[frameKey] || {};
+    const income = state.trends?.[keys.i]?.[frameKey] || {};
 
     return items.map(item => ({
         mode,
         name: item.name,
         count: toNum(item.count),
-        prev_count: toNum(item.prev_count),
-        yoy_count: toNum(item.yoy_count),
+        baseline_count: toNum(item.baseline_count),
+        client_count: toNum(item.client_count),
+        baseline_client_count: toNum(item.baseline_client_count),
         current_share_pct: toNum(item.current_share_pct),
-        prev_share_pct: toNum(item.prev_share_pct),
-        yoy_share_pct: toNum(item.yoy_share_pct),
-        share_delta_prev_pp: toNum(item.share_delta_prev_pp),
-        share_delta_yoy_pp: toNum(item.share_delta_yoy_pp),
+        baseline_share_pct: toNum(item.baseline_share_pct),
+        share_delta_pp: toNum(item.share_delta_pp),
+        ratio: item.ratio == null ? null : toNum(item.ratio),
         score: toNum(item.score),
         confidence: item.confidence || "medium",
         topClients: clients[item.name] || [],
         examples: examples[item.name] || [],
-        income: toNum(income[item.name]),
-        client_count: toNum(item.client_count),
-        prev_client_count: toNum(item.prev_client_count),
-        yoy_client_count: toNum(item.yoy_client_count)
+        income: toNum(income[item.name])
     }));
 }
 
@@ -640,34 +623,27 @@ function canonicalKey(mode, name) {
     return `${mode}::${display}`;
 }
 
-function buildMovers(catFilter, windowKey, compareKey) {
+function buildMovers(catFilter, frameKey) {
     const modes = (catFilter === "all" || !catFilter) ? SIGNAL_MODES : [catFilter];
     const all = [];
     const seen = new Map();
     for (const mode of modes) {
-        for (const it of getCategoryItemsFixed(mode, windowKey)) {
-            const baselineKey = COMPARE[compareKey].baselineCountKey;
-            const baseline = toNum(it[baselineKey]);
-            const ratio = baseline === 0 ? (it.count > 0 ? 999 : 0) : it.count / baseline;
-            const enriched = { ...it, _ratio: ratio, _baseline: baseline };
-
+        for (const it of getCategoryItemsFixed(mode, frameKey)) {
             // Dedupe by canonical display name; keep the higher-count entry
             const key = canonicalKey(mode, it.name);
             const existing = seen.get(key);
             if (!existing) {
-                seen.set(key, enriched);
-                all.push(enriched);
-            } else if (enriched.count > existing.count) {
-                // Replace existing with this one
+                seen.set(key, it);
+                all.push(it);
+            } else if (it.count > existing.count) {
                 const idx = all.indexOf(existing);
-                if (idx >= 0) all[idx] = enriched;
-                seen.set(key, enriched);
+                if (idx >= 0) all[idx] = it;
+                seen.set(key, it);
             }
         }
     }
-    // Sort by absolute share-delta (impact) — same idea as 'impact' before
-    const deltaKey = compareKey === "yoy" ? "share_delta_yoy_pp" : "share_delta_prev_pp";
-    all.sort((a, b) => Math.abs(b[deltaKey]) - Math.abs(a[deltaKey]));
+    // Rank by |score| — big decliners are stories too, not just gainers.
+    all.sort((a, b) => Math.abs(b.score) - Math.abs(a.score));
     return all;
 }
 
@@ -689,11 +665,10 @@ function renderHero() {
     const cmpPrev = complete[complete.length - 2];
 
     // Compose a one-line synthesis: pick top movers from different categories,
-    // with positive deltas, deduped by canonical name.
-    const heroCmp = defaultCompare("90d");
-    const heroDeltaKey = heroCmp === "yoy" ? "share_delta_yoy_pp" : "share_delta_prev_pp";
-    const allMovers = buildMovers("all", "90d", heroCmp)
-        .filter(m => m[heroDeltaKey] > 0 && m.count >= 100);
+    // with positive deltas, deduped by canonical name. The hero always reads
+    // from the complete-quarter frame — the headline comparison.
+    const allMovers = buildMovers("all", "quarter")
+        .filter(m => m.share_delta_pp > 0 && m.count >= 100);
     const seenCats = new Set();
     const picks = [];
     for (const m of allMovers) {
@@ -714,20 +689,19 @@ function renderHero() {
 
     // Organizations are the flagship story — lead with the biggest dollar
     // ramp-ups when clients.json is available, falling back to the
-    // tag-mention synthesis above otherwise.
-    const orgPicks = topOrgRisersAndNewEntrants(3);
+    // tag-mention synthesis above otherwise. Always the complete quarter.
+    const orgPicks = topOrgRisersAndNewEntrants(3, "quarter");
+    const heroCq = clientFrame("quarter")?.current_quarter?.label || "this quarter";
     let headline;
     if (orgPicks.length >= 2) {
-        const cq = state.clients?.current_quarter?.label || "this quarter";
         const orgNames = orgPicks.map(m => `<em>${fmt.esc(m.name)}</em>`);
         const last = orgNames.pop();
         const head = orgNames.length === 1
             ? `${orgNames[0]} and ${last}`
             : `${orgNames.join(", ")}, and ${last}`;
-        headline = `${head} posted the biggest lobbying ramp-ups in ${cq}.`;
+        headline = `${head} posted the biggest lobbying ramp-ups in ${heroCq}.`;
     } else if (orgPicks.length === 1) {
-        const cq = state.clients?.current_quarter?.label || "this quarter";
-        headline = `<em>${fmt.esc(orgPicks[0].name)}</em> posted the biggest lobbying ramp-up in ${cq}.`;
+        headline = `<em>${fmt.esc(orgPicks[0].name)}</em> posted the biggest lobbying ramp-up in ${heroCq}.`;
     } else if (moverNames.length >= 2) {
         const last = moverNames.pop();
         const head = moverNames.length === 1
@@ -808,8 +782,7 @@ function renderMovers() {
     list.replaceChildren();
 
     const cat = state.view.cat;
-    const win = state.view.window;
-    const cmp = state.view.compare;
+    const frame = state.view.frame;
 
     updateControlsForCat(cat);
 
@@ -819,25 +792,22 @@ function renderMovers() {
         return;
     }
 
-    if (cat === "clients") {
-        renderOrgMovers(list, sub);
+    sub.textContent = frameSubtitle(frame);
+
+    if (cat === "all") {
+        renderEverythingDigest(list, frame);
         return;
     }
 
-    let movers = buildMovers(cat, win, cmp).slice(0, 50);
-    if (cat === "all" && orgMoversAvailable()) {
-        // Org movers are the flagship story — surface a handful near the top
-        // of the combined feed, not just under their own pill.
-        movers = interleaveOrgMovers(movers, topOrgRisersAndNewEntrants(6));
+    if (cat === "clients") {
+        renderOrgMovers(list, frame);
+        return;
     }
 
-    const catLabel = cat === "all" ? "across organizations, topics, agencies, bills, and domains" : `in ${CATEGORIES[cat].plural.toLowerCase()}`;
-    const winLabel = win === "90d" ? "last 90 days" : "last 30 days";
-    sub.innerHTML = `Top movers ${fmt.esc(catLabel)} — <span class="window-range">${fmt.esc(winLabel)}</span> <span class="window-range-dates">(${fmt.esc(rangeLabel(win))})</span> ${fmt.esc(COMPARE[cmp].shortLabel)} <span class="window-range-dates">(${fmt.esc(baselineRangeLabel(win, cmp))})</span>`;
-
+    const movers = buildMovers(cat, frame).slice(0, 50);
     if (!movers.length) {
         const empty = el("div", "mover-empty");
-        empty.textContent = "No signals match this window.";
+        empty.textContent = "No signals match this frame.";
         list.appendChild(empty);
         return;
     }
@@ -845,7 +815,7 @@ function renderMovers() {
     // Lead with a scannable top set; the long tail expands on demand.
     const VISIBLE = 20;
     for (const m of movers.slice(0, VISIBLE)) {
-        list.appendChild(buildAnyMoverCard(m, cmp));
+        list.appendChild(buildMoverCard(m, frame));
     }
     if (movers.length > VISIBLE) {
         const more = el("button", "mover-more");
@@ -854,24 +824,71 @@ function renderMovers() {
         more.onclick = () => {
             more.remove();
             for (const m of movers.slice(VISIBLE)) {
-                list.appendChild(buildAnyMoverCard(m, cmp));
+                list.appendChild(buildMoverCard(m, frame));
             }
         };
         list.appendChild(more);
     }
 }
 
-function renderOrgMovers(list, sub) {
-    if (!orgMoversAvailable()) {
-        sub.textContent = "Organization spend data isn't available right now.";
+/* "Everything" is a sectioned digest, not an interleaved ranked list: the
+   top few movers from each category under their own header, using the same
+   cards as the category's own tab. */
+function renderEverythingDigest(list, frame) {
+    const sections = [];
+
+    if (orgMoversAvailable(frame)) {
+        const ups = topOrgRisersAndNewEntrants(50, frame)
+            .sort((a, b) => b._absDelta - a._absDelta)
+            .slice(0, 5);
+        const downs = (clientFrame(frame)?.fallers || [])
+            .map(m => tagOrgMover(m, "faller"))
+            .sort((a, b) => b._absDelta - a._absDelta)
+            .slice(0, 2);
+        sections.push({ cat: "clients", label: "Organizations", movers: [...ups, ...downs] });
+    }
+
+    sections.push({ cat: "topics", label: "Topics", movers: buildMovers("topics", frame).slice(0, 4) });
+    sections.push({ cat: "legislation", label: "Bills", movers: buildMovers("legislation", frame).slice(0, 4) });
+    sections.push({ cat: "entities", label: "Agencies", movers: buildMovers("entities", frame).slice(0, 3) });
+
+    let rendered = 0;
+    for (const sec of sections) {
+        if (!sec.movers.length) continue;
+        const head = el("li", "mover-section-head");
+        head.appendChild(el("span", "mover-section-title", sec.label));
+        const seeAll = el("button", "mover-see-all", "See all →");
+        seeAll.type = "button";
+        seeAll.onclick = () => switchCat(sec.cat);
+        head.appendChild(seeAll);
+        list.appendChild(head);
+        for (const m of sec.movers) {
+            list.appendChild(buildAnyMoverCard(m, frame));
+        }
+        rendered += sec.movers.length;
+    }
+
+    if (!rendered) {
+        list.appendChild(el("div", "mover-empty", "No signals match this frame."));
+    }
+}
+
+function switchCat(cat) {
+    state.view.cat = cat;
+    document.querySelectorAll("#cat-row .cat-pill").forEach(x =>
+        x.classList.toggle("active", x.dataset.cat === cat));
+    syncURL();
+    renderMovers();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function renderOrgMovers(list, frame) {
+    if (!orgMoversAvailable(frame)) {
         list.appendChild(el("div", "mover-empty", "Organization spend data isn't available in this build."));
         return;
     }
 
-    const { cq, bq } = orgQuarterLabels();
-    sub.textContent = `${cq} vs ${bq} · complete quarters`;
-
-    const movers = allOrgMovers().sort((a, b) => b._absDelta - a._absDelta);
+    const movers = allOrgMovers(frame).sort((a, b) => b._absDelta - a._absDelta);
     if (!movers.length) {
         list.appendChild(el("div", "mover-empty", "No organizations clear the reporting floor this quarter."));
         return;
@@ -895,15 +912,16 @@ function renderOrgMovers(list, sub) {
     }
 }
 
-// Organizations have a fixed quarter-vs-quarter framing (no rolling window),
-// so the window/compare segmented controls don't apply — hide them rather
-// than let them silently do nothing.
+// The frame toggle applies to every comparison view. On Recent filings —
+// a plain chronological list with nothing to compare — it renders disabled
+// but stays put, so the controls never move or vanish between tabs.
 function updateControlsForCat(cat) {
-    const windowSeg = document.getElementById("window-seg");
-    const compareSeg = document.getElementById("compare-seg");
-    const hide = cat === "clients";
-    if (windowSeg) windowSeg.classList.toggle("controls-hidden", hide);
-    if (compareSeg) compareSeg.classList.toggle("controls-hidden", hide);
+    const frameSeg = document.getElementById("frame-seg");
+    if (!frameSeg) return;
+    const off = cat === "recent";
+    frameSeg.classList.toggle("seg-disabled", off);
+    frameSeg.setAttribute("aria-disabled", off ? "true" : "false");
+    frameSeg.querySelectorAll(".seg-btn").forEach(b => { b.disabled = off; });
 }
 
 function renderRecentList(list) {
@@ -918,7 +936,31 @@ function renderRecentList(list) {
     }
 }
 
-function buildMoverCard(m, compareKey) {
+/* congress.gov link for Congress-scoped bill numbers. Only tags shaped like
+   "H.R. 7148 (119th Congress)" / "S. 1260 (117th Congress)" qualify — named
+   acts carry no scoped number to link. */
+const BILL_LINK_RE = /^(H\.R\.|S\.)\s*(\d{1,5})\s*\((\d{1,3}(?:st|nd|rd|th))\s+Congress\)$/i;
+
+function congressGovURL(name) {
+    const m = BILL_LINK_RE.exec(String(name || "").trim());
+    if (!m) return null;
+    const chamber = m[1].toUpperCase() === "S." ? "senate-bill" : "house-bill";
+    return `https://www.congress.gov/bill/${m[3].toLowerCase()}-congress/${chamber}/${m[2]}`;
+}
+
+function congressGovLink(name, cls = "official-link small") {
+    const url = congressGovURL(name);
+    if (!url) return null;
+    const a = el("a", cls, "congress.gov →");
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.title = "Open this bill on congress.gov";
+    a.onclick = e => e.stopPropagation();
+    return a;
+}
+
+function buildMoverCard(m, frameKey) {
     const card = el("li", "mover");
     card.setAttribute("role", "button");
     card.tabIndex = 0;
@@ -937,14 +979,23 @@ function buildMoverCard(m, compareKey) {
     const main = el("div", "mover-main");
     main.appendChild(el("div", "mover-name", displayName(m.mode, m.name)));
 
-    const head = buildHeadline(m, compareKey);
+    const head = buildHeadline(m, frameKey);
     const headlineEl = el("div", "mover-headline");
     headlineEl.innerHTML = head.html;
     main.appendChild(headlineEl);
 
-    const mobLine = buildMobilizationLine(m, compareKey);
-    if (mobLine) {
-        main.appendChild(el("div", "mover-clients", mobLine));
+    const secondary = buildSecondaryLine(m);
+    if (secondary) {
+        main.appendChild(el("div", "mover-clients", secondary));
+    }
+
+    if (m.mode === "legislation") {
+        const link = congressGovLink(m.name);
+        if (link) {
+            const row = el("div", "mover-clients");
+            row.appendChild(link);
+            main.appendChild(row);
+        }
     }
 
     if (m.topClients?.length) {
@@ -965,15 +1016,15 @@ function buildMoverCard(m, compareKey) {
 
     card.appendChild(main);
 
-    // Universal trajectory chart: line of values over time with the
-    // current period and baseline period highlighted as colored bands.
+    // Baseline-vs-now bar pair: organization counts when available (the
+    // headline metric), mentions otherwise.
     const trendSlot = el("div", "mover-trend");
     const accent = head.dir === "up"
-        ? getCSSVar("--up", "#1f7a4d")
+        ? getCSSVar("--up", "#23664a")
         : head.dir === "down"
-            ? getCSSVar("--down", "#b53a3a")
-            : getCSSVar("--accent", "#b8420f");
-    trendSlot.innerHTML = makeTrendChart(m, m.mode, state.view.window, compareKey, { accent });
+            ? getCSSVar("--down", "#8f2a2a")
+            : getCSSVar("--accent", "#1e3a5f");
+    trendSlot.innerHTML = makeTrendChart(m, { accent });
     card.appendChild(trendSlot);
 
     const arrow = el("div", "mover-arrow", "→");
@@ -1080,27 +1131,30 @@ function partialTrailingCount(quarters) {
     return Math.min(count, quarters.length - 1); // never flag every quarter
 }
 
-function makeTrendChart(item, mode, windowKey, compareKey, options = {}) {
+function makeTrendChart(item, options = {}) {
     // Two periods, two numbers → two labeled bars. Both values are printed, so
     // the chart carries its own axis; a line through two points implied a time
     // axis that didn't exist. Quarter-level history lives in the drawer.
+    // Bars plot organization counts (the headline metric); mentions only when
+    // org counts are missing.
     const W = 200, H = 48;
     const padT = 12;   // room for value labels above bars
     const padB = 11;   // room for period labels below
     const plotH = H - padT - padB;
     const baseline = H - padB;
 
-    const accent = options.accent || getCSSVar("--accent", "#b8420f");
-    const muted  = getCSSVar("--ink-4", "#a39c87");
-    const labelColor = getCSSVar("--ink-3", "#7a7565");
-    const valueColor = getCSSVar("--ink-2", "#4a4a4a");
+    const accent = options.accent || getCSSVar("--accent", "#1e3a5f");
+    const muted  = getCSSVar("--ink-4", "#a29a84");
+    const labelColor = getCSSVar("--ink-3", "#6e6a5a");
+    const valueColor = getCSSVar("--ink-2", "#44506b");
 
-    const baseVal = compareKey === "yoy" ? toNum(item.yoy_count) : toNum(item.prev_count);
-    const nowVal = toNum(item.count);
+    const useOrgs = toNum(item.client_count) > 0;
+    const baseVal = useOrgs ? toNum(item.baseline_client_count) : toNum(item.baseline_count);
+    const nowVal = useOrgs ? toNum(item.client_count) : toNum(item.count);
     const yMax = Math.max(baseVal, nowVal, 1);
     const barW = 38;
     const bx = W * 0.32, nx = W * 0.68; // bar centers
-    const baseLabel = compareKey === "yoy" ? "yr ago" : "prior";
+    const baseLabel = "yr ago";
 
     const bar = (cx, val, fill, opacity) => {
         const h = Math.max(val > 0 ? 2 : 0, (val / yMax) * plotH);
@@ -1108,9 +1162,9 @@ function makeTrendChart(item, mode, windowKey, compareKey, options = {}) {
         return `<rect x="${(cx - barW / 2).toFixed(1)}" y="${y.toFixed(1)}" width="${barW}" height="${h.toFixed(1)}" rx="2" fill="${fill}" fill-opacity="${opacity}"/>`;
     };
     const valueText = (cx, val) =>
-        `<text x="${cx.toFixed(1)}" y="${(baseline - Math.max(val > 0 ? 2 : 0, (val / yMax) * plotH) - 3).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="600" fill="${valueColor}">${fmt.num(val)}</text>`;
+        `<text x="${cx.toFixed(1)}" y="${(baseline - Math.max(val > 0 ? 2 : 0, (val / yMax) * plotH) - 3).toFixed(1)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" fill="${valueColor}">${fmt.num(val)}</text>`;
     const periodText = (cx, label, color, weight) =>
-        `<text x="${cx.toFixed(1)}" y="${H - 2}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="${color}" font-weight="${weight}" letter-spacing="0.05em">${label}</text>`;
+        `<text x="${cx.toFixed(1)}" y="${H - 2}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" fill="${color}" font-weight="${weight}" letter-spacing="0.05em">${label}</text>`;
 
     return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" class="trend-svg" role="img" aria-label="${fmt.esc(baseLabel)}: ${fmt.int(baseVal)}, now: ${fmt.int(nowVal)}">
         <line x1="12" y1="${baseline}" x2="${W - 12}" y2="${baseline}" stroke="${muted}" stroke-opacity="0.35" stroke-width="1"/>
@@ -1146,14 +1200,14 @@ function makeBarChart(values, periods, options = {}) {
 
     const yLabels = ticks.map(v => {
         const y = plotTop + (1 - v / niceMax) * plotH;
-        return `<text x="${pad.left - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="9" fill="currentColor" fill-opacity="0.55">${fmtY(v)}</text>`;
+        return `<text x="${pad.left - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="9" fill="currentColor" fill-opacity="0.55">${fmtY(v)}</text>`;
     }).join("");
 
     const n = values.length;
     const step = n > 0 ? plotW / n : plotW;
     const barW = Math.max(2, Math.min(16, step * 0.72));
 
-    const accent = getCSSVar("--accent", "#b8420f");
+    const accent = getCSSVar("--accent", "#1e3a5f");
     const partialFrom = n - Math.max(0, options.partialCount || 0);
 
     const bars = values.map((v, i) => {
@@ -1176,7 +1230,7 @@ function makeBarChart(values, periods, options = {}) {
     const xLabels = xIdx.map(idx => {
         const x = pad.left + idx * step + step / 2;
         const label = periods[idx]?.short || periods[idx]?.label || "";
-        return `<text x="${x.toFixed(1)}" y="${(plotBottom + 14).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="currentColor" fill-opacity="0.55">${label}</text>`;
+        return `<text x="${x.toFixed(1)}" y="${(plotBottom + 14).toFixed(1)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="currentColor" fill-opacity="0.55">${label}</text>`;
     }).join("");
 
     return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" style="color: var(--ink-3);">${grid}${yLabels}${bars}${xLabels}</svg>`;
@@ -1320,12 +1374,22 @@ function drawerLabel(view) {
     return "";
 }
 
-/* Organization detail (clients.json — dollar spend, fixed quarter framing) */
+/* Organization detail (clients.json — dollar spend under the active frame) */
 
 function renderOrgDetail(body, view) {
-    const all = allOrgMovers();
-    const m = all.find(x => x.key === view.key);
-    const { cq, bq } = orgQuarterLabels();
+    // Look in the active frame first; an org may only clear the floors in
+    // one frame (e.g. a palette hit), so fall back to the other.
+    let frameKey = activeFrameKey();
+    let m = allOrgMovers(frameKey).find(x => x.key === view.key);
+    if (!m) {
+        const other = frameKey === "quarter" ? "qtd" : "quarter";
+        const found = allOrgMovers(other).find(x => x.key === view.key);
+        if (found) { m = found; frameKey = other; }
+    }
+    const { cq, bq } = orgQuarterLabels(frameKey);
+    const subLabel = frameKey === "quarter"
+        ? `${cq} vs ${bq} · complete quarters`
+        : `${cq} vs ${bq}`;
 
     const eyebrow = el("div", "detail-eyebrow");
     eyebrow.appendChild(el("span", "cat-tag clients", "Org"));
@@ -1334,15 +1398,15 @@ function renderOrgDetail(body, view) {
     body.appendChild(el("h2", "detail-name", (m && m.name) || view.name || "Organization"));
 
     if (!m) {
-        body.appendChild(el("div", "detail-sub", `${cq} vs ${bq} · complete quarters`));
+        body.appendChild(el("div", "detail-sub", subLabel));
         body.appendChild(el("p", "detail-empty",
             "This organization doesn't clear the reporting floor for the movers list. It may still appear in recent filings or tag signals."));
         return;
     }
 
-    body.appendChild(el("div", "detail-sub", `${cq} vs ${bq} · complete quarters`));
+    body.appendChild(el("div", "detail-sub", subLabel));
 
-    const head = buildOrgHeadline(m);
+    const head = buildOrgHeadline(m, frameKey);
     const summary = el("div", "detail-summary");
     summary.innerHTML = head.html;
     body.appendChild(summary);
@@ -1383,7 +1447,7 @@ function renderOrgDetail(body, view) {
         const sec = el("div", "detail-section");
         sec.appendChild(el("div", "detail-section-title", "Top topics"));
         const tags = el("div", "detail-tags");
-        const tracked = new Set((state.trends?.topics?.["90d"] || []).map(t => t.name));
+        const tracked = new Set((state.trends?.topics?.[activeFrameKey()] || []).map(t => t.name));
         for (const topic of m.topics) {
             const tag = el("button", "detail-tag", topic);
             if (tracked.has(topic)) {
@@ -1437,16 +1501,17 @@ function renderOrgDetail(body, view) {
 /* Signal detail */
 
 function renderSignalDetail(body, view) {
-    const items = getCategoryItemsFixed(view.mode, state.view.window);
+    const frameKey = activeFrameKey();
+    const items = getCategoryItemsFixed(view.mode, frameKey);
     const fallback = {
         mode: view.mode,
         name: view.name,
-        count: 0, prev_count: 0, yoy_count: 0,
-        current_share_pct: 0, prev_share_pct: 0, yoy_share_pct: 0,
-        share_delta_prev_pp: 0, share_delta_yoy_pp: 0,
+        count: 0, baseline_count: 0,
+        client_count: 0, baseline_client_count: 0,
+        current_share_pct: 0, baseline_share_pct: 0,
+        share_delta_pp: 0, ratio: null,
         score: 0, confidence: "low",
-        topClients: [], examples: [], income: 0,
-        client_count: 0, prev_client_count: 0, yoy_client_count: 0
+        topClients: [], examples: [], income: 0
     };
     const m = items.find(i => i.name === view.name) || fallback;
     const meta = CATEGORIES[m.mode];
@@ -1455,44 +1520,44 @@ function renderSignalDetail(body, view) {
     const eyebrow = el("div", "detail-eyebrow");
     eyebrow.appendChild(el("span", `cat-tag ${meta.tagClass}`, meta.label));
     const confChip = el("span", `detail-conf ${m.confidence}`, `${m.confidence} confidence`);
-    confChip.title = "Rule-based signal strength: how much volume sits behind this and how consistently it moved against both the prior-period and year-ago baselines.";
+    confChip.title = "Rule-based signal strength: how much volume sits behind this and how far its share moved against the same quarter last year.";
     eyebrow.appendChild(confChip);
     body.appendChild(eyebrow);
 
     // Name + sub
     body.appendChild(el("h2", "detail-name", displayName(m.mode, m.name)));
-    const subEl = el("div", "detail-sub");
-    const winName = state.view.window === "90d" ? "Last 90 days" : "Last 30 days";
-    subEl.innerHTML = `${winName} <span class="detail-sub-dates">(${fmt.esc(rangeLabel(state.view.window))})</span> · ${fmt.esc(COMPARE[state.view.compare].shortLabel)} <span class="detail-sub-dates">(${fmt.esc(baselineRangeLabel(state.view.window, state.view.compare))})</span>`;
-    body.appendChild(subEl);
+    body.appendChild(el("div", "detail-sub", frameSubtitle(frameKey)));
+
+    if (m.mode === "legislation") {
+        const link = congressGovLink(m.name, "official-link block");
+        if (link) body.appendChild(link);
+    }
 
     // Plain-English summary
-    const head = buildHeadline(m, state.view.compare);
+    const head = buildHeadline(m, frameKey);
     const summary = el("div", "detail-summary");
     summary.innerHTML = head.html;
     body.appendChild(summary);
 
     // Stats grid
     const stats = el("div", "detail-stats");
-    const baseline = COMPARE[state.view.compare].baselineCountKey === "yoy_count" ? m.yoy_count : m.prev_count;
-    const baselineShare = COMPARE[state.view.compare].baselineCountKey === "yoy_count" ? m.yoy_share_pct : m.prev_share_pct;
-    const delta = state.view.compare === "yoy" ? m.share_delta_yoy_pp : m.share_delta_prev_pp;
+    const delta = m.share_delta_pp;
     const deltaDir = delta > 0.01 ? "up" : delta < -0.01 ? "down" : "";
     const statCells = [
-        { value: fmt.int(m.count),                label: "Mentions",
-          tip: "Lobbying activity descriptions that reference this in the selected window. One filing can contribute several mentions." },
-        { value: fmt.pct(m.current_share_pct),    label: "Share",
-          tip: "Share of all tagged mentions in the selected window." },
-        { value: fmt.pp(delta),                    label: "Δ Share", cls: deltaDir,
-          tip: "Change in share versus the baseline period, in percentage points." },
-        { value: fmt.int(baseline),                label: "Baseline",
-          tip: "Mentions in the comparison period (year-ago or prior window)." },
-        { value: fmt.pct(baselineShare),          label: "Base share",
-          tip: "Share of all tagged mentions in the comparison period." },
-        { value: m.income > 0 ? fmt.money(m.income) : "—", label: "Assoc. filing income",
-          tip: "Combined reported income of filings whose activities mention this. Filings usually cover several issues, so this is NOT spend attributable to this item alone." },
         { value: m.client_count ? fmt.int(m.client_count) : "—", label: "Orgs active",
-          tip: "Distinct organizations (name variants folded) whose filings mention this in the selected window." }
+          tip: "Distinct organizations (name variants folded) whose filings mention this in the selected frame." },
+        { value: m.baseline_client_count ? fmt.int(m.baseline_client_count) : "—", label: "Orgs, year ago",
+          tip: "Distinct organizations in the baseline quarter." },
+        { value: fmt.int(m.count),                label: "Mentions",
+          tip: "Lobbying activity descriptions that reference this in the selected frame. One filing can contribute several mentions." },
+        { value: fmt.int(m.baseline_count),        label: "Mentions, year ago",
+          tip: "Mentions in the baseline quarter (same quarter last year)." },
+        { value: fmt.pct(m.current_share_pct),    label: "Share",
+          tip: "Share of all tagged mentions in the selected frame." },
+        { value: fmt.pp(delta),                    label: "Δ Share", cls: deltaDir,
+          tip: "Change in share versus the same quarter last year, in percentage points." },
+        { value: m.income > 0 ? fmt.money(m.income) : "—", label: "Assoc. filing income",
+          tip: "Combined reported income of filings whose activities mention this. Filings usually cover several issues, so this is NOT spend attributable to this item alone." }
     ];
     for (const s of statCells) {
         const stat = el("div", "detail-stat");
@@ -1508,8 +1573,7 @@ function renderSignalDetail(body, view) {
         const seriesKeyByMode = {
             topics: "topic_series",
             entities: "entity_series",
-            legislation: "legislation_series",
-            domains: "domain_series"
+            legislation: "legislation_series"
         };
         const series = state.timeseries?.[seriesKeyByMode[m.mode]]?.[m.name];
         const quarters = state.timeseries?.quarters || [];
@@ -1598,7 +1662,7 @@ function renderClientDetail(body, view) {
     const appearances = []; // {mode, name, position}
     for (const mode of SIGNAL_MODES) {
         const keys = getKeyMap(mode);
-        const clientsByName = state.trends?.[keys.c]?.[state.view.window] || {};
+        const clientsByName = state.trends?.[keys.c]?.[state.view.frame] || {};
         for (const sigName of Object.keys(clientsByName)) {
             const list = clientsByName[sigName] || [];
             const idx = list.findIndex(c => c.toUpperCase() === name.toUpperCase());
@@ -1619,7 +1683,8 @@ function renderClientDetail(body, view) {
 
     // Name
     body.appendChild(el("h2", "detail-name", clientDisplay(name)));
-    body.appendChild(el("div", "detail-sub", `${state.view.window === "90d" ? "Last 90 days" : "Last 30 days"} · activity across ${appearances.length} tracked signals`));
+    const clientFrameLabel = frameInfo(state.view.frame)?.label || "current frame";
+    body.appendChild(el("div", "detail-sub", `${clientFrameLabel} · activity across ${appearances.length} tracked signals`));
 
     if (!filings.length && !appearances.length) {
         const empty = el("p", "detail-empty");
@@ -1765,8 +1830,7 @@ function renderFilingDetail(body, view) {
     const tagGroups = [
         { mode: "topics", label: "Topics", values: f.topics || [] },
         { mode: "entities", label: "Agencies mentioned", values: f.entities || [] },
-        { mode: "legislation", label: "Legislation", values: f.legislation || [] },
-        { mode: "domains", label: "Domains", values: f.domains || [] }
+        { mode: "legislation", label: "Legislation", values: f.legislation || [] }
     ];
     for (const g of tagGroups) {
         if (!g.values.length) continue;
@@ -1818,17 +1882,28 @@ let paletteIndex = null;
 function buildPaletteIndex() {
     const idx = [];
     const seen = new Set();
-    const add = (kind, mode, name, meta) => {
-        const key = `${kind}:${mode || ""}:${name}`.toUpperCase();
+    const add = (kind, mode, name, meta, extra) => {
+        const key = `${kind}:${mode || ""}:${extra?.orgKey || name}`.toUpperCase();
         if (seen.has(key)) return;
         seen.add(key);
-        idx.push({ kind, mode, name, meta, search: name.toLowerCase() });
+        idx.push({ kind, mode, name, meta, search: name.toLowerCase(), ...(extra || {}) });
     };
 
+    // Tag signals from both frames, deduped by name (complete-quarter first).
     for (const mode of SIGNAL_MODES) {
-        const items = state.trends?.[mode]?.["90d"] || [];
-        for (const it of items) {
-            add("signal", mode, it.name, `${CATEGORIES[mode].label} · ${fmt.int(it.count)} mentions`);
+        for (const frameKey of FRAME_KEYS) {
+            const items = state.trends?.[mode]?.[frameKey] || [];
+            for (const it of items) {
+                add("signal", mode, it.name, `${CATEGORIES[mode].label} · ${fmt.int(it.count)} mentions`);
+            }
+        }
+    }
+
+    // Organization movers from both frames, deduped by canonical key —
+    // selecting one opens the org drawer.
+    for (const frameKey of FRAME_KEYS) {
+        for (const m of allOrgMovers(frameKey)) {
+            add("org", null, m.name, `Org · ${fmt.money(m.current)} in ${clientFrame(frameKey)?.current_quarter?.label || "latest quarter"}`, { orgKey: m.key });
         }
     }
 
@@ -1839,9 +1914,11 @@ function buildPaletteIndex() {
     }
     for (const mode of SIGNAL_MODES) {
         const keys = getKeyMap(mode);
-        const map = state.trends?.[keys.c]?.["90d"] || {};
-        for (const list of Object.values(map)) {
-            for (const c of list) clientCounts.set(c, clientCounts.get(c) || 0);
+        for (const frameKey of FRAME_KEYS) {
+            const map = state.trends?.[keys.c]?.[frameKey] || {};
+            for (const list of Object.values(map)) {
+                for (const c of list) clientCounts.set(c, clientCounts.get(c) || 0);
+            }
         }
     }
     for (const [c, n] of clientCounts.entries()) {
@@ -1856,7 +1933,7 @@ function searchPalette(query) {
     const q = query.trim().toLowerCase();
     if (!q) {
         // Default suggestions: top movers
-        const top = buildMovers("all", state.view.window, state.view.compare).slice(0, 8);
+        const top = buildMovers("all", state.view.frame).slice(0, 8);
         return top.map(m => ({
             kind: "signal",
             mode: m.mode,
@@ -1895,9 +1972,10 @@ function renderPalette() {
     }
 
     // Group by kind
-    const groups = { signal: { topics: [], entities: [], legislation: [], domains: [] }, client: [] };
+    const groups = { signal: { topics: [], entities: [], legislation: [] }, org: [], client: [] };
     for (const r of results) {
         if (r.kind === "signal") groups.signal[r.mode].push(r);
+        else if (r.kind === "org") groups.org.push(r);
         else if (r.kind === "client") groups.client.push(r);
     }
 
@@ -1927,10 +2005,10 @@ function renderPalette() {
         }
     };
 
+    renderGroup("Organizations", groups.org);
     renderGroup("Topics", groups.signal.topics);
     renderGroup("Agencies", groups.signal.entities);
     renderGroup("Bills", groups.signal.legislation);
-    renderGroup("Domains", groups.signal.domains);
     renderGroup("Clients", groups.client);
 }
 
@@ -1967,33 +2045,34 @@ function closePalette() {
 function executePalette() {
     const flatList = state.palette.results;
     // Need to walk in same group order as renderPalette
-    const groups = { signal: { topics: [], entities: [], legislation: [], domains: [] }, client: [] };
+    const groups = { signal: { topics: [], entities: [], legislation: [] }, org: [], client: [] };
     for (const r of flatList) {
         if (r.kind === "signal") groups.signal[r.mode].push(r);
+        else if (r.kind === "org") groups.org.push(r);
         else if (r.kind === "client") groups.client.push(r);
     }
     const ordered = [
+        ...groups.org,
         ...groups.signal.topics,
         ...groups.signal.entities,
         ...groups.signal.legislation,
-        ...groups.signal.domains,
         ...groups.client
     ];
     const choice = ordered[state.palette.focusIdx];
     if (!choice) return;
     closePalette();
     if (choice.kind === "signal") openSignal(choice.mode, choice.name);
+    else if (choice.kind === "org") openOrg(choice.orgKey, choice.name);
     else if (choice.kind === "client") openClient(choice.name);
 }
 
 /* ─── URL state ─── */
 
 function syncURL() {
-    // Query string carries the view (window/compare/category) so any state of
-    // the dashboard is a shareable link; the hash carries the open drawer.
+    // Query string carries the view (frame/category) so any state of the
+    // dashboard is a shareable link; the hash carries the open drawer.
     const params = new URLSearchParams();
-    if (state.view.window !== "90d") params.set("w", state.view.window);
-    if (state.view.compare !== defaultCompare(state.view.window)) params.set("cmp", state.view.compare);
+    if (state.view.frame !== "quarter") params.set("f", state.view.frame);
     if (state.view.cat !== "all") params.set("cat", state.view.cat);
     const query = params.toString() ? `?${params.toString()}` : "";
 
@@ -2018,8 +2097,7 @@ function syncURL() {
 function readURL() {
     // View state from the query string
     const q = new URLSearchParams(window.location.search);
-    if (["30d", "90d"].includes(q.get("w"))) state.view.window = q.get("w");
-    if (["yoy", "prev"].includes(q.get("cmp"))) state.view.compare = q.get("cmp");
+    if (FRAME_KEYS.includes(q.get("f"))) state.view.frame = q.get("f");
     if (q.get("cat") && (q.get("cat") === "recent" || q.get("cat") === "clients" || SIGNAL_MODES.includes(q.get("cat")))) state.view.cat = q.get("cat");
 
     // Drawer from the hash
@@ -2039,47 +2117,50 @@ function readURL() {
     }
 }
 
-/* Reflect state.view in the three control groups (used after readURL restores
+/* Reflect state.view in the control groups (used after readURL restores
    a shared link's view). */
 function syncControlsUI() {
-    document.querySelectorAll("#window-seg .seg-btn").forEach(x =>
-        x.classList.toggle("active", x.dataset.window === state.view.window));
-    document.querySelectorAll("#compare-seg .seg-btn").forEach(x =>
-        x.classList.toggle("active", x.dataset.compare === state.view.compare));
+    document.querySelectorAll("#frame-seg .seg-btn").forEach(x =>
+        x.classList.toggle("active", x.dataset.frame === state.view.frame));
     document.querySelectorAll("#cat-row .cat-pill").forEach(x =>
         x.classList.toggle("active", x.dataset.cat === state.view.cat));
 }
 
 /* ─── Initialization ─── */
 
+/* The one comparison-frame toggle, built from trends.json's frame labels so
+   the buttons read "Q1 2026 vs Q1 2025" / "Q2 2026 so far". Same spot on
+   every tab. */
+function buildFrameToggle() {
+    const seg = document.getElementById("frame-seg");
+    if (!seg) return;
+    seg.replaceChildren();
+    for (const frameKey of FRAME_KEYS) {
+        const b = el("button", "seg-btn", frameToggleLabel(frameKey));
+        b.type = "button";
+        b.dataset.frame = frameKey;
+        if (frameKey === state.view.frame) b.classList.add("active");
+        const f = frameInfo(frameKey);
+        if (f) {
+            b.title = frameKey === "quarter"
+                ? "Latest complete report quarter vs the same quarter a year earlier"
+                : `Filings for the current quarter posted through ${fmtMonthDay(parseDate(f.through))}, vs the same point last year`;
+        }
+        b.onclick = () => {
+            if (state.view.frame === frameKey) return;
+            state.view.frame = frameKey;
+            seg.querySelectorAll(".seg-btn").forEach(x =>
+                x.classList.toggle("active", x === b));
+            syncURL();
+            renderMovers();
+            if (state.drawer) renderDrawer();
+        };
+        seg.appendChild(b);
+    }
+}
+
 function bindControls() {
     document.getElementById("search-trigger").onclick = openPalette;
-
-    document.querySelectorAll("#window-seg .seg-btn").forEach(b => {
-        b.onclick = () => {
-            state.view.window = b.dataset.window;
-            document.querySelectorAll("#window-seg .seg-btn").forEach(x =>
-                x.classList.toggle("active", x === b));
-            resolveCompareMode(); // yoy support depends on the window length
-            syncURL();
-            renderHero();
-            renderMovers();
-            paletteIndex = null;
-            if (state.drawer) renderDrawer();
-        };
-    });
-
-    document.querySelectorAll("#compare-seg .seg-btn").forEach(b => {
-        b.onclick = () => {
-            state.view.compare = b.dataset.compare;
-            document.querySelectorAll("#compare-seg .seg-btn").forEach(x =>
-                x.classList.toggle("active", x === b));
-            syncURL();
-            renderHero();
-            renderMovers();
-            if (state.drawer) renderDrawer();
-        };
-    });
 
     document.querySelectorAll("#cat-row .cat-pill").forEach(b => {
         b.onclick = () => {
@@ -2196,12 +2277,12 @@ async function init() {
     state.timeseries = timeseries || null;
     state.clients = clients || null;
 
-    // clients.json is new and may not exist yet on a live deploy mid-rollout
-    // (new app.js, old data). Hide the Organizations pill and skip it
-    // everywhere else rather than show a broken/empty view.
+    // clients.json may be missing on a live deploy mid-rollout (new app.js,
+    // old data). Hide the Organizations pill and skip it everywhere else
+    // rather than show a broken/empty view.
     const clientsPill = document.getElementById("cat-pill-clients");
     if (clientsPill) {
-        if (orgMoversAvailable()) {
+        if (orgMoversAvailable("quarter") || orgMoversAvailable("qtd")) {
             clientsPill.style.display = "";
         } else {
             clientsPill.style.display = "none";
@@ -2223,7 +2304,7 @@ async function init() {
 
     bindControls();
     readURL();            // restore shared view + drawer state from URL
-    resolveCompareMode(); // may override compare if coverage can't back it
+    buildFrameToggle();   // labels come from trends.json's frames
     syncControlsUI();
     renderHero();
     renderMovers();

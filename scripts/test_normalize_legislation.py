@@ -100,6 +100,17 @@ CASES = [
     ("the", 2023, ""),
     ("an act", 2023, ""),
     ("and extensions", 2023, ""),
+
+    # Truncation tail of "Full-Year Continuing Appropriations and Extensions
+    # Act" — the real identity (H.R. 1968 / P.L. 119-4) rides on the same
+    # activity, so the bare fragment drops as noise.
+    ("Extensions Act", 2025, ""),
+    ("the Extensions Act", 2025, ""),
+    ("Extensions Act of 2025", 2025, ""),
+    ("Appropriations Act, 2025", 2025, ""),
+    # The full title keeps its identity (year-ambiguous, so not aliased)
+    ("Full-Year Continuing Appropriations and Extensions Act, 2025", 2025,
+     "Full-Year Continuing Appropriations and Extensions Act, 2025"),
 ]
 
 

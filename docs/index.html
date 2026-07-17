@@ -14,11 +14,11 @@
     <meta name="twitter:title" content="Lobbying Signals">
     <meta name="twitter:description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
     <meta name="twitter:image" content="https://umqadir.github.io/lobbying-signals/social-preview.png">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 13L6 7L9 10L14 3' stroke='%23b8420f' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 13L6 7L9 10L14 3' stroke='%231e3a5f' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260716-orgspend">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260716-ledger">
 </head>
 <body>
     <header class="topbar">
@@ -53,14 +53,7 @@
                     <p class="movers-sub" id="movers-sub">Loading…</p>
                 </div>
                 <div class="movers-controls">
-                    <div class="seg" id="window-seg" role="tablist" aria-label="Time window">
-                        <button class="seg-btn active" data-window="90d" type="button">90 days</button>
-                        <button class="seg-btn" data-window="30d" type="button">30 days</button>
-                    </div>
-                    <div class="seg" id="compare-seg" role="tablist" aria-label="Comparison baseline">
-                        <button class="seg-btn active" data-compare="yoy" type="button">vs year ago</button>
-                        <button class="seg-btn" data-compare="prev" type="button">vs prior period</button>
-                    </div>
+                    <div class="seg" id="frame-seg" role="tablist" aria-label="Comparison frame"></div>
                 </div>
             </div>
             <div class="cat-row" id="cat-row" role="tablist" aria-label="Categories">
@@ -69,7 +62,6 @@
                 <button class="cat-pill" data-cat="topics" type="button">Topics</button>
                 <button class="cat-pill" data-cat="entities" type="button">Agencies</button>
                 <button class="cat-pill" data-cat="legislation" type="button">Bills</button>
-                <button class="cat-pill" data-cat="domains" type="button">Domains</button>
                 <span class="cat-row-sep"></span>
                 <button class="cat-pill ghost" data-cat="recent" type="button">Recent filings</button>
             </div>
@@ -91,13 +83,13 @@
                 </button>
             </header>
             <div class="about-body">
-                <p><strong>What this is.</strong> A signal tracker over federal lobbying disclosures filed with the Senate under the Lobbying Disclosure Act (LDA). It shows which topics, agencies, bills, and policy domains are gaining or losing attention in lobbying activity.</p>
+                <p><strong>What this is.</strong> A signal tracker over federal lobbying disclosures filed with the Senate under the Lobbying Disclosure Act (LDA). It shows which organizations, topics, agencies, and bills are gaining or losing lobbying attention.</p>
                 <p><strong>Where the data comes from.</strong> Quarterly activity reports from the official <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate LDA database</a>, refreshed daily. Coverage: <span id="about-coverage">several years of filings</span>. Every example filing links back to the official Senate record.</p>
                 <p><strong>What a “mention” is.</strong> Each filing describes its lobbying activities in free text. Versioned, deterministic rules (no AI model calls) tag those descriptions with topics, agencies, and legislation. One activity description that matches a tag = one mention. A single filing can produce many mentions. Bill numbers are scoped to their Congress (an “H.R. 1” from 2017 and one from 2025 are different laws), and a law's number, short name, and public-law number are counted as one bill.</p>
-                <p><strong>How comparisons work.</strong> The last 30/90 days of filings are compared against the same window a year ago (the default — lobbying is seasonal, so like-for-like quarters matter) or the immediately prior window. “Share” is a tag's slice of all tagged mentions in the window, which controls for filing-volume swings.</p>
-                <p><strong>Confidence.</strong> A rule-based label reflecting how much volume sits behind a signal and how consistently it moved against both baselines — not a statistical test.</p>
+                <p><strong>How comparisons work.</strong> Every view uses the same two comparison frames, both year-over-year and both based on report quarters (LDA disclosure is a quarterly regime — rolling day-windows would mostly measure filing-clerk timing). The default frame compares the latest <em>complete</em> report quarter against the same quarter a year earlier — like-for-like, since lobbying is seasonal. The second frame is a freshness lens: the current, still-filling quarter's reports so far, against reports for the same quarter last year that had been posted by the same point in the filing cycle. Early in a cycle that sample is small — the filing counts are shown so you can judge. “Share” is a tag's slice of all tagged mentions in a frame, which controls for volume swings.</p>
+                <p><strong>Confidence.</strong> A rule-based label reflecting how much volume sits behind a signal and how far its share moved against the year-ago quarter — not a statistical test.</p>
                 <p><strong>Honest limitations.</strong> Directional signals, not causal claims. Filing income is reported per filing, not per issue, so income figures associate a filing's whole income with each of its tags. The newest quarter is always partially reported until well after the statutory deadline. Rule-based tagging misses paraphrases a human would catch.</p>
-                <p><strong>Organization spend.</strong> The Organizations view tracks reported dollars rather than mention counts: each client's filing income/expenses, summed per organization per report quarter, comparing the latest COMPLETE quarter to the same quarter a year earlier (a quarter counts as complete roughly six weeks past its statutory filing deadline, so late filers don't read as a false drop). Name variants for the same organization (legal-suffix differences, "on behalf of" filers, former names) are folded together. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.</p>
+                <p><strong>Organization spend.</strong> The Organizations view tracks reported dollars rather than mention counts: each client's filing income/expenses, summed per organization per report quarter, under the same two frames as everything else (a quarter counts as complete roughly six weeks past its statutory filing deadline, so late filers don't read as a false drop). Name variants for the same organization (legal-suffix differences, "on behalf of" filers, former names) are folded together. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.</p>
             </div>
         </div>
     </div>
@@ -135,6 +127,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=20260716-orgspend"></script>
+    <script src="app.js?v=20260716-ledger"></script>
 </body>
 </html>
