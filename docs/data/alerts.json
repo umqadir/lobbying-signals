@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T11:48:43.517310+00:00",
+  "generated_at": "2026-07-18T19:04:06.445322+00:00",
   "alerts": [
     {
       "type": "signal",
@@ -25,7 +25,7 @@
       "name": "H.R. 1968 (119th Congress)",
       "current_count": 91,
       "baseline_count": 1578,
-      "share_delta_pp": -2.268,
+      "share_delta_pp": -2.267,
       "signal_confidence": "high",
       "top_clients": [
         "American Medical Association",
@@ -43,7 +43,7 @@
       "name": "Executive Office of the President",
       "current_count": 1975,
       "baseline_count": 1632,
-      "share_delta_pp": 1.849,
+      "share_delta_pp": 1.85,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -60,7 +60,7 @@
       "category": "entity",
       "name": "Department of Commerce",
       "current_count": 2514,
-      "baseline_count": 2401,
+      "baseline_count": 2402,
       "share_delta_pp": 1.847,
       "signal_confidence": "high",
       "top_clients": [
@@ -79,7 +79,7 @@
       "name": "Inflation Reduction Act",
       "current_count": 585,
       "baseline_count": 2012,
-      "share_delta_pp": -1.845,
+      "share_delta_pp": -1.844,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -97,7 +97,7 @@
       "name": "White House",
       "current_count": 3224,
       "baseline_count": 3428,
-      "share_delta_pp": 1.823,
+      "share_delta_pp": 1.825,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -115,7 +115,7 @@
       "name": "Treasury",
       "current_count": 2180,
       "baseline_count": 2044,
-      "share_delta_pp": 1.662,
+      "share_delta_pp": 1.663,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -133,7 +133,7 @@
       "name": "Renewable Energy",
       "current_count": 714,
       "baseline_count": 1820,
-      "share_delta_pp": -1.257,
+      "share_delta_pp": -1.256,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -169,7 +169,7 @@
       "name": "Tax Policy",
       "current_count": 1360,
       "baseline_count": 2647,
-      "share_delta_pp": -1.111,
+      "share_delta_pp": -1.11,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -204,8 +204,8 @@
       "category": "entity",
       "name": "HHS",
       "current_count": 2726,
-      "baseline_count": 3275,
-      "share_delta_pp": 0.952,
+      "baseline_count": 3279,
+      "share_delta_pp": 0.947,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -223,7 +223,7 @@
       "name": "Tariffs and Trade Enforcement",
       "current_count": 1372,
       "baseline_count": 1452,
-      "share_delta_pp": 0.786,
+      "share_delta_pp": 0.787,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -241,7 +241,7 @@
       "name": "Department of Energy",
       "current_count": 2073,
       "baseline_count": 2481,
-      "share_delta_pp": 0.739,
+      "share_delta_pp": 0.74,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -255,29 +255,11 @@
     },
     {
       "type": "signal",
-      "category": "legislation",
-      "name": "P.L. 119-4",
-      "current_count": 50,
-      "baseline_count": 541,
-      "share_delta_pp": -0.736,
-      "signal_confidence": "high",
-      "top_clients": [
-        "Chamber of Commerce of the U.S.A.",
-        "Leidos Inc",
-        "National Alliance for Care at Home (formerly Natl Assn for Home Care & Hospice)",
-        "Electronic Payments Coalition (\"epc\")",
-        "Electronic Payments Coalition"
-      ],
-      "total_income": 23135000.0,
-      "headline": "P.L. 119-4 share down 0.74 pp vs Q1 2025 (50 mentions)"
-    },
-    {
-      "type": "signal",
       "category": "entity",
       "name": "OMB",
       "current_count": 1100,
       "baseline_count": 1098,
-      "share_delta_pp": 0.734,
+      "share_delta_pp": 0.735,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -291,11 +273,29 @@
     },
     {
       "type": "signal",
+      "category": "legislation",
+      "name": "P.L. 119-4",
+      "current_count": 50,
+      "baseline_count": 541,
+      "share_delta_pp": -0.735,
+      "signal_confidence": "high",
+      "top_clients": [
+        "Chamber of Commerce of the U.S.A.",
+        "Leidos Inc",
+        "National Alliance for Care at Home (formerly Natl Assn for Home Care & Hospice)",
+        "Electronic Payments Coalition (\"epc\")",
+        "Electronic Payments Coalition"
+      ],
+      "total_income": 23135000.0,
+      "headline": "P.L. 119-4 share down 0.73 pp vs Q1 2025 (50 mentions)"
+    },
+    {
+      "type": "signal",
       "category": "entity",
       "name": "CMS",
       "current_count": 1637,
-      "baseline_count": 1870,
-      "share_delta_pp": 0.723,
+      "baseline_count": 1874,
+      "share_delta_pp": 0.718,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -304,7 +304,7 @@
         "American Hospital Association",
         "America's Health Insurance Plans Inc (AHIP)"
       ],
-      "total_income": 236676459.63,
+      "total_income": 236646459.63,
       "headline": "CMS attention up 0.72 pp vs Q1 2025 (1637 mentions)"
     },
     {
@@ -313,7 +313,7 @@
       "name": "Defense Authorization",
       "current_count": 1745,
       "baseline_count": 2089,
-      "share_delta_pp": 0.621,
+      "share_delta_pp": 0.622,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -349,7 +349,7 @@
       "name": "Infrastructure and Broadband",
       "current_count": 557,
       "baseline_count": 1174,
-      "share_delta_pp": -0.596,
+      "share_delta_pp": -0.595,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -359,7 +359,7 @@
         "AARP"
       ],
       "total_income": 118729445.65,
-      "headline": "'Infrastructure and Broadband' share down 0.60 pp vs Q1 2025 (557 mentions)"
+      "headline": "'Infrastructure and Broadband' share down 0.59 pp vs Q1 2025 (557 mentions)"
     }
   ]
 }

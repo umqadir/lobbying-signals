@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T11:47:47.663623+00:00",
+  "generated_at": "2026-07-18T19:03:09.209326+00:00",
   "frame": "quarter",
   "frame_label": "Q1 2026",
   "status": "needs_attention",
@@ -9,26 +9,26 @@
     "low": 2
   },
   "metrics": {
-    "mentions_current_quarter": 44840,
-    "mentions_baseline_quarter": 63871,
+    "mentions_current_quarter": 44839,
+    "mentions_baseline_quarter": 63892,
     "mentions_vs_yoy_pct": -29.8,
-    "filings_current_90d": 22975,
-    "filings_prev_90d": 23613,
-    "filings_yoy_90d": 18724,
-    "filings_vs_prev_pct": -2.7,
-    "filings_vs_yoy_pct": 22.7,
-    "due_vs_non_due_ratio_4y": 21.04,
-    "due_month_avg_filings": 11249.3,
-    "non_due_month_avg_filings": 534.6,
-    "quarter_due_month_share_pct": 91.3,
-    "coverage_recent_90d_pct": 96.0,
+    "filings_current_90d": 25540,
+    "filings_prev_90d": 27314,
+    "filings_yoy_90d": 19521,
+    "filings_vs_prev_pct": -6.5,
+    "filings_vs_yoy_pct": 30.8,
+    "due_vs_non_due_ratio_4y": 20.04,
+    "due_month_avg_filings": 11621.2,
+    "non_due_month_avg_filings": 580.0,
+    "quarter_due_month_share_pct": 90.9,
+    "coverage_recent_90d_pct": 95.9,
     "coverage_all_time_pct": 95.7,
     "legislation_dropped_pct": 1.6,
     "legislation_normalized_pct": 27.6,
     "top_topic_share_pct": 17.25,
     "top5_topic_share_pct": 31.76,
-    "secular_change_pct": 36.7,
-    "secular_cagr_pct": 6.46,
+    "secular_change_pct": 50.2,
+    "secular_cagr_pct": 8.48,
     "secular_start_year": 2020,
     "secular_end_year": 2025
   },
@@ -36,17 +36,17 @@
     {
       "severity": "low",
       "title": "Filing-volume baseline drift",
-      "detail": "90d filing count is +22.7% vs year-ago (22,975 vs 18,724)."
+      "detail": "90d filing count is +30.8% vs year-ago (25,540 vs 19,521)."
     },
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 21.04x filing volume vs other months."
+      "detail": "Due-cycle months average 20.04x filing volume vs other months."
     },
     {
       "severity": "medium",
       "title": "Quarter-cycle concentration",
-      "detail": "91.3% of average monthly volume falls in Jan/Apr/Jul/Oct."
+      "detail": "90.9% of average monthly volume falls in Jan/Apr/Jul/Oct."
     },
     {
       "severity": "low",
