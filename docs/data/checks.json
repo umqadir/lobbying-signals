@@ -1,32 +1,32 @@
 {
-  "generated_at": "2026-07-17T12:04:52.094934+00:00",
+  "generated_at": "2026-07-18T11:47:47.663623+00:00",
   "frame": "quarter",
   "frame_label": "Q1 2026",
   "status": "needs_attention",
   "severity_counts": {
     "high": 1,
     "medium": 1,
-    "low": 1
+    "low": 2
   },
   "metrics": {
-    "mentions_current_quarter": 44818,
+    "mentions_current_quarter": 44840,
     "mentions_baseline_quarter": 63871,
     "mentions_vs_yoy_pct": -29.8,
-    "filings_current_90d": 21297,
-    "filings_prev_90d": 23486,
-    "filings_yoy_90d": 19199,
-    "filings_vs_prev_pct": -9.3,
-    "filings_vs_yoy_pct": 10.9,
-    "due_vs_non_due_ratio_4y": 20.89,
-    "due_month_avg_filings": 11169.9,
+    "filings_current_90d": 22975,
+    "filings_prev_90d": 23613,
+    "filings_yoy_90d": 18724,
+    "filings_vs_prev_pct": -2.7,
+    "filings_vs_yoy_pct": 22.7,
+    "due_vs_non_due_ratio_4y": 21.04,
+    "due_month_avg_filings": 11249.3,
     "non_due_month_avg_filings": 534.6,
     "quarter_due_month_share_pct": 91.3,
-    "coverage_recent_90d_pct": 96.1,
+    "coverage_recent_90d_pct": 96.0,
     "coverage_all_time_pct": 95.7,
     "legislation_dropped_pct": 1.6,
     "legislation_normalized_pct": 27.6,
-    "top_topic_share_pct": 17.24,
-    "top5_topic_share_pct": 31.74,
+    "top_topic_share_pct": 17.25,
+    "top5_topic_share_pct": 31.76,
     "secular_change_pct": 36.7,
     "secular_cagr_pct": 6.46,
     "secular_start_year": 2020,
@@ -34,9 +34,14 @@
   },
   "flags": [
     {
+      "severity": "low",
+      "title": "Filing-volume baseline drift",
+      "detail": "90d filing count is +22.7% vs year-ago (22,975 vs 18,724)."
+    },
+    {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 20.89x filing volume vs other months."
+      "detail": "Due-cycle months average 21.04x filing volume vs other months."
     },
     {
       "severity": "medium",
@@ -46,7 +51,7 @@
     {
       "severity": "low",
       "title": "Top-topic concentration",
-      "detail": "Top topic accounts for 17.24% of Q1 2026 extracted mentions (top 5 = 31.74%)."
+      "detail": "Top topic accounts for 17.25% of Q1 2026 extracted mentions (top 5 = 31.76%)."
     }
   ]
 }
