@@ -415,56 +415,155 @@ def ingest_range(start_year: int, end_year: int):
 
 
 def ingest_latest():
-    """Sweep the two most recent report quarters for new filings (all report
-    types — originals, amendments, terminations, termination amendments),
-    plus a trailing-amendments sweep of the 4 quarters before that.
+    """Daily sweep: everything POSTED to the LDA system in the last 7 days,
+    against ANY report period since 2020, all report types.
 
-    Filings for a report period keep arriving for weeks after the statutory
-    deadline (amendments and late filers trail for months, sometimes over a
-    year for terminations/amendments specifically), so sweeping only the
-    newest quarter silently drops stragglers. ingest_quarter dedupes by
-    sopr_filing_id, so re-sweeping is cheap in DB terms and idempotent.
+    The API filters server-side by posted date (filing_dt_posted_after), so
+    this catches the deadline surge, stragglers, and amendments to years-old
+    periods in one pass — off-peak it's a couple of pages; in deadline week
+    it's the same volume the old per-quarter re-walks fetched, without
+    re-paginating whole quarters to find them. The 7-day window overlaps
+    daily runs generously (UUID dedupe makes overlap free), so a few missed
+    days of CI cannot drop filings, and the cutoff extends automatically
+    when the newest stored filing shows a deeper gap (see below). A MONTHLY
+    drift audit (audit_sample) measures whether stored records ever diverge
+    from the live API — the cases a posted-date filter can't see (in-place
+    edits, deletions). No such divergence has been observed; scheduled
+    re-walks are deliberately absent unless the audit starts reporting drift.
     """
     init_db()
-    now = datetime.now()
+    # Outage-resilient cutoff: normally 7 days, but if the newest stored
+    # filing is older than that (CI was down, or the DB was restored from an
+    # older snapshot), extend the window back to just before it so the gap is
+    # re-covered automatically. Capped at 120 days — a gap deeper than that
+    # means real disaster recovery: run full-sweep / a historical backfill.
+    with get_db() as conn:
+        row = conn.execute(
+            'SELECT MAX(substr(filing_date,1,10)) FROM filings WHERE filing_date IS NOT NULL'
+        ).fetchone()
+    max_posted = row[0] if row else None
+    cutoff_dt = datetime.now() - timedelta(days=7)
+    if max_posted:
+        stale_dt = datetime.strptime(max_posted, '%Y-%m-%d') - timedelta(days=3)
+        cutoff_dt = min(cutoff_dt, stale_dt)
+    floor_dt = datetime.now() - timedelta(days=120)
+    if cutoff_dt < floor_dt:
+        print(f"WARNING: computed sweep window start {cutoff_dt:%Y-%m-%d} capped at "
+              f"{floor_dt:%Y-%m-%d}; the DB looks >120 days stale — run "
+              f"'01_ingest.py full-sweep' or a historical backfill to recover fully.")
+        cutoff_dt = floor_dt
+    ingest_posted_after(cutoff_dt.strftime('%Y-%m-%d'), start_year=2020)
 
-    # Reports arriving now cover the most recently COMPLETED quarter (Q2
-    # reports are due Jul 20, etc.), so that quarter and the one before it
-    # are where new filings land.
-    cal_q = (now.month - 1) // 3 + 1
-    if cal_q == 1:
-        sweep = [(now.year - 1, 4), (now.year - 1, 3)]
-    elif cal_q == 2:
-        sweep = [(now.year, 1), (now.year - 1, 4)]
-    else:
-        sweep = [(now.year, cal_q - 1), (now.year, cal_q - 2)]
 
-    for y, qq in sweep:
+def audit_sample(n: int = 100, max_minutes: float = None) -> dict:
+    """Drift audit: re-fetch a random sample of stored current filings by
+    UUID and compare against the live API.
+
+    Detects the failure modes incremental posted-date ingestion cannot see:
+    a filing edited in place, or expunged from the Senate system entirely
+    (which is how the occasional junk filing actually disappears). Drift is
+    so far entirely hypothetical, so this runs as a broad MONTHLY check
+    sized to the CI window (max_minutes caps wall-clock; ~30K filings fit in
+    ~4.5h at the keyed rate limit, ~6-7% of the corpus per month). Results
+    accumulate in the audit_log table (persisted via the release DB) and are
+    surfaced by compute_data_checks. If drift is ever actually observed,
+    redesign the approach around the observed behavior.
+    """
+    init_db()
+    deadline = (time.monotonic() + max_minutes * 60) if max_minutes else None
+    with get_db() as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS audit_log (
+                id INTEGER PRIMARY KEY,
+                ts TEXT NOT NULL,
+                sampled INTEGER NOT NULL,
+                missing INTEGER NOT NULL,
+                income_mismatch INTEGER NOT NULL,
+                activity_mismatch INTEGER NOT NULL DEFAULT 0,
+                errors INTEGER NOT NULL DEFAULT 0,
+                details TEXT
+            )
+        """)
+        cols = {r[1] for r in conn.execute('PRAGMA table_info(audit_log)')}
+        if 'activity_mismatch' not in cols:
+            conn.execute('ALTER TABLE audit_log ADD COLUMN activity_mismatch INTEGER NOT NULL DEFAULT 0')
+        if 'errors' not in cols:
+            conn.execute('ALTER TABLE audit_log ADD COLUMN errors INTEGER NOT NULL DEFAULT 0')
+        conn.commit()
+        rows = conn.execute("""
+            SELECT f.sopr_filing_id, f.income,
+                   (SELECT COUNT(*) FROM activities a WHERE a.filing_id = f.id) AS n_activities
+            FROM filings f
+            WHERE f.is_current = 1 AND f.sopr_filing_id IS NOT NULL
+            ORDER BY RANDOM() LIMIT ?
+        """, (n,)).fetchall()
+
+    missing, mismatched, act_mismatched, errors, checked, details = 0, 0, 0, 0, 0, []
+    for uuid, stored_income, stored_n_activities in rows:
+        if deadline and time.monotonic() > deadline:
+            print(f"  Time budget reached after {checked} of {len(rows)} sampled filings.")
+            break
         try:
-            count = ingest_quarter(y, qq)
-            print(f"Swept {y} Q{qq}: {count} new filings")
+            resp = httpx.get(f"{API_BASE}/filings/{uuid}/", headers=get_headers(),
+                             timeout=60, follow_redirects=True)
+            if resp.status_code == 429:
+                time.sleep(30)
+                resp = httpx.get(f"{API_BASE}/filings/{uuid}/", headers=get_headers(),
+                                 timeout=60, follow_redirects=True)
+            if resp.status_code == 404:
+                checked += 1
+                missing += 1
+                details.append({'uuid': uuid, 'problem': 'missing_from_api'})
+                continue
+            resp.raise_for_status()
+            live = resp.json()
         except Exception as e:
-            print(f"Could not ingest {y} Q{qq}: {e}")
+            # Transient API trouble is not drift — and not a successful check
+            # either. Counted separately so "N sampled, 0 mismatches" can't
+            # mean "N requests failed".
+            errors += 1
+            details.append({'uuid': uuid, 'problem': f'fetch_error: {e}'})
+            time.sleep(RATE_LIMIT_DELAY)
             continue
 
-    # Trailing-amendments sweep: amendments/terminations for older periods
-    # keep trailing in for months after the period itself is "done", so also
-    # sweep non-original types for the 4 report quarters before the oldest
-    # quarter swept above (idempotent — dedupe makes re-sweeping cheap).
-    ty, tq = sweep[-1]
-    trailing = []
-    for _ in range(4):
-        ty, tq = _prev_quarter(ty, tq)
-        trailing.append((ty, tq))
+        checked += 1
+        live_income = live.get('income') or live.get('expenses') or 0
+        if isinstance(live_income, str):
+            live_income = float(live_income.replace(',', '').replace('$', '')) if live_income else 0
+        if abs((stored_income or 0) - (live_income or 0)) > 0.01:
+            mismatched += 1
+            details.append({'uuid': uuid, 'problem': 'income_mismatch',
+                            'stored': stored_income, 'live': live_income})
+        # Activity-count comparison mirrors parse_api_filing, which only
+        # stores activities with a non-empty description.
+        live_n_activities = sum(
+            1 for a in (live.get('lobbying_activities') or [])
+            if (a.get('description') or a.get('specific_issues') or '')
+        )
+        if live_n_activities != (stored_n_activities or 0):
+            act_mismatched += 1
+            details.append({'uuid': uuid, 'problem': 'activity_count_mismatch',
+                            'stored': stored_n_activities, 'live': live_n_activities})
+        time.sleep(RATE_LIMIT_DELAY)
 
-    for y, qq in trailing:
-        try:
-            types = _non_original_types_for_quarter(qq)
-            count = ingest_quarter(y, qq, filing_types=types)
-            print(f"Swept trailing amendments {y} Q{qq}: {count} new filings")
-        except Exception as e:
-            print(f"Could not sweep trailing amendments {y} Q{qq}: {e}")
-            continue
+    import json as _json
+    with get_db() as conn:
+        conn.execute(
+            "INSERT INTO audit_log (ts, sampled, missing, income_mismatch, activity_mismatch, errors, details) "
+            "VALUES (?,?,?,?,?,?,?)",
+            (datetime.now().isoformat(), checked, missing, mismatched, act_mismatched, errors,
+             _json.dumps(details[:50])),
+        )
+        conn.commit()  # get_db() closes without committing; without this the row rolls back
+
+    print(f"Drift audit: {checked} checked, {missing} missing from API, "
+          f"{mismatched} income mismatches, {act_mismatched} activity-count mismatches, "
+          f"{errors} fetch errors.")
+    if details:
+        for d in details[:10]:
+            print(f"  {d}")
+    return {'sampled': checked, 'missing': missing, 'income_mismatch': mismatched,
+            'activity_mismatch': act_mismatched, 'errors': errors}
 
 
 def backfill_non_original(start_year: int):
@@ -516,6 +615,14 @@ if __name__ == "__main__":
         with get_db() as conn:
             recompute_is_current(conn)
         print("Recomputed is_current for the entire filings table.")
+    elif len(sys.argv) >= 2 and sys.argv[1] == "audit-sample":
+        n = 100
+        max_minutes = None
+        if "--n" in sys.argv:
+            n = int(sys.argv[sys.argv.index("--n") + 1])
+        if "--max-minutes" in sys.argv:
+            max_minutes = float(sys.argv[sys.argv.index("--max-minutes") + 1])
+        audit_sample(n, max_minutes)
     elif len(sys.argv) >= 2 and sys.argv[1] == "full-sweep":
         # Semiannual safety net (see ingest_posted_after). Default cutoff of
         # 400 days comfortably overlaps the semiannual cadence; --posted-after
@@ -552,9 +659,10 @@ if __name__ == "__main__":
         print("Usage: python 01_ingest.py <year> [quarter]")
         print("       python 01_ingest.py 2024 1                        # Ingest Q1 2024 (all report types)")
         print("       python 01_ingest.py 2024                          # Ingest all of 2024")
-        print("       python 01_ingest.py latest                        # Ingest most recent quarters + trailing amendments")
+        print("       python 01_ingest.py latest                        # Daily sweep: everything posted in the last 7 days")
         print("       python 01_ingest.py recompute-current             # Recompute is_current for the whole table")
         print("       python 01_ingest.py backfill-non-original --start-year 2020")
         print("                                                          # Historical backfill of amendments/terminations")
-        print("       python 01_ingest.py full-sweep --start-year 2020  # Re-sweep every quarter, all report types")
+        print("       python 01_ingest.py full-sweep --start-year 2020  # Posted-after sweep over ~13 months")
+        print("       python 01_ingest.py audit-sample --n 100 [--max-minutes M]  # Drift audit vs live API")
         sys.exit(1)

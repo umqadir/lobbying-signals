@@ -129,6 +129,50 @@ def _migrate_schema(conn: sqlite3.Connection):
         "ON filings(registrant_id, client_id, year, quarter)"
     )
 
+    # One-time data repairs, tracked in a migrations table so each runs
+    # exactly once per database (including the CI copy on its next run).
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS migrations (name TEXT PRIMARY KEY, applied_at TEXT)"
+    )
+    applied = {row["name"] for row in conn.execute("SELECT name FROM migrations")}
+
+    if "dedupe_activities_v1" not in applied:
+        # The 2020-2025 historical loads inserted some filings' activities
+        # more than once (~600K excess rows; none from 2026 on, so the
+        # current ingest path is clean). Duplicates inflated every
+        # activity-level mention count, and unevenly by year — biasing
+        # year-over-year comparisons whose baseline leg was duplicate-heavy.
+        # Found by the drift audit's activity-count comparison vs the live
+        # API. Keep the lowest-id row per (filing, description, issue_code,
+        # houses, agencies); drop the rest and their extraction rows.
+        conn.execute("""
+            CREATE TEMP TABLE _dup_activity_ids AS
+            SELECT a.id FROM activities a
+            WHERE a.id NOT IN (
+                SELECT MIN(a2.id) FROM activities a2
+                GROUP BY a2.filing_id, a2.description, a2.issue_code,
+                         COALESCE(a2.houses_lobbied,''), COALESCE(a2.agencies,'')
+            )
+        """)
+        n = conn.execute("SELECT COUNT(*) FROM _dup_activity_ids").fetchone()[0]
+        for table in ("activity_extractions_rules", "activity_extractions"):
+            exists = conn.execute(
+                "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)
+            ).fetchone()
+            if exists:
+                conn.execute(
+                    f"DELETE FROM {table} WHERE activity_id IN (SELECT id FROM _dup_activity_ids)"
+                )
+        conn.execute("DELETE FROM activities WHERE id IN (SELECT id FROM _dup_activity_ids)")
+        conn.execute("DROP TABLE _dup_activity_ids")
+        conn.execute(
+            "INSERT INTO migrations (name, applied_at) VALUES (?, datetime('now'))",
+            ("dedupe_activities_v1",),
+        )
+        print(f"Migration dedupe_activities_v1: removed {n} duplicate activity rows.")
+
+    conn.commit()
+
 
 def init_db():
     """Initialize database with schema."""

@@ -1736,7 +1736,49 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
         sum(sorted((x.get('current_share_pct', 0) for x in quarter_topics), reverse=True)[:5]), 2
     ) if quarter_topics else None
 
+    # Latest drift-audit result (01_ingest.py audit-sample): random stored
+    # filings re-fetched from the live API. Nonzero missing/mismatch counts
+    # are the evidence that would justify building re-verification sweeps;
+    # so far none has been observed.
+    audit_last = None
+    with get_db() as conn:
+        try:
+            row = conn.execute(
+                "SELECT ts, sampled, missing, income_mismatch, activity_mismatch, errors "
+                "FROM audit_log ORDER BY id DESC LIMIT 1"
+            ).fetchone()
+            if row:
+                audit_last = {
+                    'ts': row[0], 'sampled': row[1], 'missing': row[2],
+                    'income_mismatch': row[3], 'activity_mismatch': row[4],
+                    'errors': row[5],
+                }
+        except Exception:
+            pass  # table absent until the first audit runs
+
     flags = []
+
+    if audit_last and (audit_last['missing'] > 0 or audit_last['income_mismatch'] > 0
+                       or audit_last['activity_mismatch'] > 0):
+        flags.append({
+            'severity': 'high',
+            'title': 'Drift between stored filings and live API',
+            'detail': (
+                f"Audit checked {audit_last['sampled']}: "
+                f"{audit_last['missing']} missing from the API, "
+                f"{audit_last['income_mismatch']} income mismatches, "
+                f"{audit_last['activity_mismatch']} activity-count mismatches."
+            ),
+        })
+    if audit_last and audit_last['errors'] > max(audit_last['sampled'], 1) * 0.1:
+        flags.append({
+            'severity': 'medium',
+            'title': 'Drift audit inconclusive',
+            'detail': (
+                f"{audit_last['errors']} fetch errors vs {audit_last['sampled']} "
+                f"successful checks — the sample may not be trustworthy."
+            ),
+        })
 
     mentions_yoy_change = _pct_change(current_mentions, baseline_mentions)
     if mentions_yoy_change is not None and abs(mentions_yoy_change) >= 30:
@@ -1815,6 +1857,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
         'frame_label': frame_label,
         'status': status,
         'severity_counts': severity_counts,
+        'audit_last': audit_last,
         'metrics': {
             'mentions_current_quarter': current_mentions,
             'mentions_baseline_quarter': baseline_mentions,

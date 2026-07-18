@@ -6,10 +6,14 @@ Automated detection of directional signals in federal lobbying disclosure data. 
 
 **[View Dashboard](https://umqadir.github.io/lobbying-signals/)**
 
-Updated daily via GitHub Actions. The daily run sweeps the recent report
-quarters (including trailing amendments and terminations); a semiannual full
-sweep (Feb 1 / Aug 1) re-walks every quarter since 2020 to catch amendments
-filed years after the fact, delinquent originals, and republished records.
+Updated daily via GitHub Actions. The daily run ingests everything posted to
+the LDA system in the last 7 days — originals, amendments, and terminations
+against any report period since 2020 — via the API's posted-date filter, so
+even a correction to a years-old quarter lands within a day (the window
+extends automatically if a CI gap left the database stale). A monthly drift
+audit re-fetches a large random sample of stored filings (~30K, sized to the
+CI window) and compares them against the live API, flagging any in-place
+edits or deletions a posted-date filter can't see; none has been observed.
 
 ## Features
 

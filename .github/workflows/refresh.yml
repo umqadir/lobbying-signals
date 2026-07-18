@@ -4,11 +4,12 @@ on:
   schedule:
     # Run daily at 10:00 UTC
     - cron: '0 10 * * *'
-    # Semiannual long-tail sweep (Feb 1 / Aug 1, 06:00 UTC): ingest filings
-    # POSTED in the last ~13 months against ANY report period since 2020, so
-    # late amendments and delinquent originals land eventually. The
-    # daily run only covers a ~6-quarter trailing window.
-    - cron: '0 6 1 2,8 *'
+    # Monthly drift audit (3rd of the month, 06:00 UTC): re-fetch as large a
+    # random sample of stored filings as fits the CI window and compare
+    # against the live API. Drift (in-place edits, expunged filings) is so
+    # far entirely hypothetical — this is the broad check that would surface
+    # it; if it ever does, redesign around the observed behavior.
+    - cron: '0 6 3 * *'
   workflow_dispatch:
     # Allow manual trigger
     inputs:
@@ -16,12 +17,8 @@ on:
         description: 'Max activities to classify with deterministic rules'
         required: false
         default: '2000000'
-      backfill_non_original:
-        description: 'One-time: backfill amendments/terminations for all historical quarters before refreshing'
-        required: false
-        default: 'false'
       full_sweep:
-        description: 'Re-sweep every quarter since 2020 (all report types) before refreshing'
+        description: 'Posted-after sweep over the last ~13 months (all report periods) before refreshing'
         required: false
         default: 'false'
 
@@ -85,15 +82,15 @@ jobs:
             uv run python -c "from db import init_db; init_db()"
           fi
 
-      - name: Backfill amendments and terminations (manual one-time)
-        if: github.event.inputs.backfill_non_original == 'true'
+      - name: Monthly drift audit (large random sample vs live API)
+        if: github.event.schedule == '0 6 3 * *'
         run: |
-          uv run python 01_ingest.py backfill-non-original --start-year 2020
+          uv run python 01_ingest.py audit-sample --n 40000 --max-minutes 270
         env:
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
 
-      - name: Full historical sweep (semiannual or manual)
-        if: github.event.schedule == '0 6 1 2,8 *' || github.event.inputs.full_sweep == 'true'
+      - name: Deep posted-after sweep (manual)
+        if: github.event.inputs.full_sweep == 'true'
         run: |
           uv run python 01_ingest.py full-sweep --start-year 2020
         env:
