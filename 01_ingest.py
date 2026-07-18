@@ -10,7 +10,7 @@ Set LDA_API_KEY env var for faster ingestion.
 
 import os
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import httpx
 
@@ -65,16 +65,25 @@ def get_headers() -> dict:
 RATE_LIMIT_DELAY = 0.5 if LDA_API_KEY else 4.0
 
 
-def fetch_filings_page(year: int, filing_type: str, page: int = 1, max_retries: int = 5) -> dict:
-    """Fetch a page of filings of one LDA filing_type from the API, with
-    retry logic. filing_type is one of the codes from
-    _report_types_for_quarter (e.g. "Q1", "1A", "1AY", "1T", ...)."""
+def fetch_filings_page(year: int, filing_type: str, page: int = 1, max_retries: int = 5,
+                       posted_after: str = None) -> dict:
+    """Fetch a page of filings from the API with retry logic.
+
+    filing_type is one of the codes from _report_types_for_quarter (e.g.
+    "Q1", "1A", "1AY", "1T", ...), or None to fetch every type for the year.
+    posted_after (YYYY-MM-DD) filters server-side to filings POSTED on or
+    after that date — the cheap way to sweep for late arrivals against old
+    report periods without re-paginating the entire year.
+    """
     params = {
         "filing_year": year,
-        "filing_type": filing_type,
         "page": page,
         "page_size": PAGE_SIZE,
     }
+    if filing_type is not None:
+        params["filing_type"] = filing_type
+    if posted_after is not None:
+        params["filing_dt_posted_after"] = posted_after
 
     for attempt in range(max_retries):
         try:
@@ -321,6 +330,71 @@ def ingest_quarter(year: int, quarter: int, filing_types: list[str] = None) -> i
     return total_loaded
 
 
+def ingest_posted_after(posted_after: str, start_year: int = 2020) -> int:
+    """Sweep for filings POSTED since a cutoff date against ANY report period
+    from start_year on — the long-tail safety net.
+
+    The daily refresh only watches a ~6-quarter trailing window, but the LDA
+    record keeps changing outside it: amendments arrive years after the fact
+    and delinquent originals surface (measured May-Jul 2026: ~100 filings
+    posted against 2021-2024 report periods in ten weeks). Filtering
+    server-side by filing_dt_posted_after makes this sweep a few dozen pages
+    instead of re-paginating ~500K records, which exceeds the 6-hour CI job
+    limit at the API's 25-per-page cap.
+
+    Registrations (RR/RA) are skipped — they carry no quarterly report
+    period. Ends with a global is_current recompute so late amendments
+    supersede whatever they correct.
+    """
+    init_db()
+    current_year = datetime.now().year
+    total_loaded = 0
+    BATCH_SIZE = 100
+
+    for year in range(start_year, current_year + 1):
+        page = 1
+        batch = []
+        year_loaded = 0
+        year_seen = 0
+        while True:
+            try:
+                data = fetch_filings_page(year, None, page, posted_after=posted_after)
+            except Exception as e:
+                print(f"  [{year}] API error on page {page}: {e}")
+                break
+
+            results = data.get("results", [])
+            if not results:
+                break
+
+            for filing_data in results:
+                year_seen += 1
+                if (filing_data.get("filing_type") or "").upper() in ("RR", "RA"):
+                    continue
+                filing = parse_api_filing(filing_data)
+                if filing:
+                    batch.append(filing)
+
+            if len(batch) >= BATCH_SIZE:
+                year_loaded += load_filings_to_db(batch)
+                batch = []
+
+            if not data.get("next"):
+                break
+            page += 1
+            time.sleep(RATE_LIMIT_DELAY)
+
+        if batch:
+            year_loaded += load_filings_to_db(batch)
+        total_loaded += year_loaded
+        print(f"  {year}: {year_seen} filings posted since {posted_after}, {year_loaded} new")
+
+    with get_db() as conn:
+        recompute_is_current(conn)
+    print(f"Posted-after sweep complete: {total_loaded} new filings; is_current recomputed globally.")
+    return total_loaded
+
+
 def ingest_year(year: int):
     """Ingest all quarters for a year."""
     init_db()
@@ -443,22 +517,19 @@ if __name__ == "__main__":
             recompute_is_current(conn)
         print("Recomputed is_current for the entire filings table.")
     elif len(sys.argv) >= 2 and sys.argv[1] == "full-sweep":
-        # Semiannual safety net: re-sweep EVERY quarter from start-year to
-        # now (all report types — originals, amendments, terminations) so
-        # changes outside the daily trailing window land eventually:
-        # amendments filed years after the fact, delinquent originals, and
-        # any records the LDA system republished. Idempotent via the
-        # sopr_filing_id dedupe; ends with a global supersede recompute.
+        # Semiannual safety net (see ingest_posted_after). Default cutoff of
+        # 400 days comfortably overlaps the semiannual cadence; --posted-after
+        # overrides for a deeper or shallower sweep.
         start_year = 2020
         if "--start-year" in sys.argv:
             idx = sys.argv.index("--start-year")
             start_year = int(sys.argv[idx + 1])
-        init_db()
-        for year in range(start_year, datetime.now().year + 1):
-            ingest_year(year)
-        with get_db() as conn:
-            recompute_is_current(conn)
-        print("Full sweep complete; is_current recomputed globally.")
+        if "--posted-after" in sys.argv:
+            idx = sys.argv.index("--posted-after")
+            posted_after = sys.argv[idx + 1]
+        else:
+            posted_after = (datetime.now() - timedelta(days=400)).strftime('%Y-%m-%d')
+        ingest_posted_after(posted_after, start_year)
     elif len(sys.argv) >= 2 and sys.argv[1] == "backfill-non-original":
         start_year = 2020
         if "--start-year" in sys.argv:

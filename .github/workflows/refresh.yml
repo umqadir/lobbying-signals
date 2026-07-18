@@ -4,9 +4,9 @@ on:
   schedule:
     # Run daily at 10:00 UTC
     - cron: '0 10 * * *'
-    # Semiannual full historical sweep (Feb 1 / Aug 1, 06:00 UTC): re-sweep
-    # every quarter since 2020 so amendments filed years after the fact,
-    # delinquent originals, and republished records land eventually. The
+    # Semiannual long-tail sweep (Feb 1 / Aug 1, 06:00 UTC): ingest filings
+    # POSTED in the last ~13 months against ANY report period since 2020, so
+    # late amendments and delinquent originals land eventually. The
     # daily run only covers a ~6-quarter trailing window.
     - cron: '0 6 1 2,8 *'
   workflow_dispatch:
