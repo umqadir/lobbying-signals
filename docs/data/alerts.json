@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-18T19:04:06.445322+00:00",
+  "generated_at": "2026-07-18T19:18:08.223834+00:00",
   "alerts": [
     {
       "type": "signal",
       "category": "legislation",
       "name": "One Big Beautiful Bill Act",
       "current_count": 2130,
-      "baseline_count": 64,
-      "share_delta_pp": 4.65,
+      "baseline_count": 51,
+      "share_delta_pp": 4.628,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -17,15 +17,15 @@
         "American Medical Association"
       ],
       "total_income": 382013924.65,
-      "headline": "One Big Beautiful Bill Act share up 4.65 pp vs Q1 2025 (2130 mentions)"
+      "headline": "One Big Beautiful Bill Act share up 4.63 pp vs Q1 2025 (2130 mentions)"
     },
     {
       "type": "signal",
       "category": "legislation",
       "name": "H.R. 1968 (119th Congress)",
       "current_count": 91,
-      "baseline_count": 1578,
-      "share_delta_pp": -2.267,
+      "baseline_count": 1011,
+      "share_delta_pp": -2.228,
       "signal_confidence": "high",
       "top_clients": [
         "American Medical Association",
@@ -35,51 +35,15 @@
         "Friends Committee on National Legislation"
       ],
       "total_income": 25664926.0,
-      "headline": "H.R. 1968 (119th Congress) share down 2.27 pp vs Q1 2025 (91 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "entity",
-      "name": "Executive Office of the President",
-      "current_count": 1975,
-      "baseline_count": 1632,
-      "share_delta_pp": 1.85,
-      "signal_confidence": "high",
-      "top_clients": [
-        "Chamber of Commerce of the U.S.A.",
-        "General Motors Company",
-        "Business Roundtable Inc",
-        "RTX Corporation and Affiliates",
-        "Amazon.com Services LLC"
-      ],
-      "total_income": 266276425.0,
-      "headline": "Executive Office of the President attention up 1.85 pp vs Q1 2025 (1975 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "entity",
-      "name": "Department of Commerce",
-      "current_count": 2514,
-      "baseline_count": 2402,
-      "share_delta_pp": 1.847,
-      "signal_confidence": "high",
-      "top_clients": [
-        "Chamber of Commerce of the U.S.A.",
-        "General Motors Company",
-        "American Medical Association",
-        "Business Roundtable Inc",
-        "Meta Platforms, Inc. and Various Subsidiaries"
-      ],
-      "total_income": 387319160.91999996,
-      "headline": "Department of Commerce attention up 1.85 pp vs Q1 2025 (2514 mentions)"
+      "headline": "H.R. 1968 (119th Congress) share down 2.23 pp vs Q1 2025 (91 mentions)"
     },
     {
       "type": "signal",
       "category": "legislation",
       "name": "Inflation Reduction Act",
       "current_count": 585,
-      "baseline_count": 2012,
-      "share_delta_pp": -1.844,
+      "baseline_count": 1341,
+      "share_delta_pp": -1.92,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -89,15 +53,15 @@
         "Merck & Co Inc"
       ],
       "total_income": 146653580.51999998,
-      "headline": "Inflation Reduction Act share down 1.84 pp vs Q1 2025 (585 mentions)"
+      "headline": "Inflation Reduction Act share down 1.92 pp vs Q1 2025 (585 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "White House",
       "current_count": 3224,
-      "baseline_count": 3428,
-      "share_delta_pp": 1.825,
+      "baseline_count": 2303,
+      "share_delta_pp": 1.652,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -107,15 +71,51 @@
         "American Hospital Association"
       ],
       "total_income": 396504549.57,
-      "headline": "White House attention up 1.82 pp vs Q1 2025 (3224 mentions)"
+      "headline": "White House attention up 1.65 pp vs Q1 2025 (3224 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "entity",
+      "name": "Department of Commerce",
+      "current_count": 2514,
+      "baseline_count": 1650,
+      "share_delta_pp": 1.639,
+      "signal_confidence": "high",
+      "top_clients": [
+        "Chamber of Commerce of the U.S.A.",
+        "General Motors Company",
+        "American Medical Association",
+        "Business Roundtable Inc",
+        "Meta Platforms, Inc. and Various Subsidiaries"
+      ],
+      "total_income": 387319160.91999996,
+      "headline": "Department of Commerce attention up 1.64 pp vs Q1 2025 (2514 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "entity",
+      "name": "Executive Office of the President",
+      "current_count": 1975,
+      "baseline_count": 1154,
+      "share_delta_pp": 1.63,
+      "signal_confidence": "high",
+      "top_clients": [
+        "Chamber of Commerce of the U.S.A.",
+        "General Motors Company",
+        "Business Roundtable Inc",
+        "RTX Corporation and Affiliates",
+        "Amazon.com Services LLC"
+      ],
+      "total_income": 266276425.0,
+      "headline": "Executive Office of the President attention up 1.63 pp vs Q1 2025 (1975 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Treasury",
       "current_count": 2180,
-      "baseline_count": 2044,
-      "share_delta_pp": 1.663,
+      "baseline_count": 1420,
+      "share_delta_pp": 1.447,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -125,15 +125,15 @@
         "Meta Platforms, Inc. and Various Subsidiaries"
       ],
       "total_income": 405453900.57,
-      "headline": "Treasury attention up 1.66 pp vs Q1 2025 (2180 mentions)"
+      "headline": "Treasury attention up 1.45 pp vs Q1 2025 (2180 mentions)"
     },
     {
       "type": "signal",
       "category": "topic",
       "name": "Renewable Energy",
       "current_count": 714,
-      "baseline_count": 1820,
-      "share_delta_pp": -1.256,
+      "baseline_count": 1221,
+      "share_delta_pp": -1.344,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -143,33 +143,15 @@
         "Exxon Mobil Corp"
       ],
       "total_income": 152469347.17000002,
-      "headline": "'Renewable Energy' share down 1.26 pp vs Q1 2025 (714 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "entity",
-      "name": "USTR",
-      "current_count": 1381,
-      "baseline_count": 1252,
-      "share_delta_pp": 1.12,
-      "signal_confidence": "high",
-      "top_clients": [
-        "Chamber of Commerce of the U.S.A.",
-        "General Motors Company",
-        "The Business Roundtable",
-        "Meta Platforms, Inc. and Various Subsidiaries",
-        "Pfizer Inc."
-      ],
-      "total_income": 309842185.77,
-      "headline": "USTR attention up 1.12 pp vs Q1 2025 (1381 mentions)"
+      "headline": "'Renewable Energy' share down 1.34 pp vs Q1 2025 (714 mentions)"
     },
     {
       "type": "signal",
       "category": "topic",
       "name": "Tax Policy",
       "current_count": 1360,
-      "baseline_count": 2647,
-      "share_delta_pp": -1.11,
+      "baseline_count": 1752,
+      "share_delta_pp": -1.18,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -179,15 +161,15 @@
         "American Hospital Association"
       ],
       "total_income": 372938725.02,
-      "headline": "'Tax Policy' share down 1.11 pp vs Q1 2025 (1360 mentions)"
+      "headline": "'Tax Policy' share down 1.18 pp vs Q1 2025 (1360 mentions)"
     },
     {
       "type": "signal",
       "category": "legislation",
       "name": "Consolidated Appropriations Act",
       "current_count": 593,
-      "baseline_count": 177,
-      "share_delta_pp": 1.045,
+      "baseline_count": 117,
+      "share_delta_pp": 1.041,
       "signal_confidence": "high",
       "top_clients": [
         "American Medical Association",
@@ -202,10 +184,28 @@
     {
       "type": "signal",
       "category": "entity",
+      "name": "USTR",
+      "current_count": 1381,
+      "baseline_count": 873,
+      "share_delta_pp": 0.981,
+      "signal_confidence": "high",
+      "top_clients": [
+        "Chamber of Commerce of the U.S.A.",
+        "General Motors Company",
+        "The Business Roundtable",
+        "Meta Platforms, Inc. and Various Subsidiaries",
+        "Pfizer Inc."
+      ],
+      "total_income": 309842185.77,
+      "headline": "USTR attention up 0.98 pp vs Q1 2025 (1381 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "entity",
       "name": "HHS",
       "current_count": 2726,
-      "baseline_count": 3279,
-      "share_delta_pp": 0.947,
+      "baseline_count": 2150,
+      "share_delta_pp": 0.909,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -215,15 +215,15 @@
         "America's Health Insurance Plans Inc (AHIP)"
       ],
       "total_income": 305041422.19000006,
-      "headline": "HHS attention up 0.95 pp vs Q1 2025 (2726 mentions)"
+      "headline": "HHS attention up 0.91 pp vs Q1 2025 (2726 mentions)"
     },
     {
       "type": "signal",
       "category": "topic",
       "name": "Tariffs and Trade Enforcement",
       "current_count": 1372,
-      "baseline_count": 1452,
-      "share_delta_pp": 0.787,
+      "baseline_count": 982,
+      "share_delta_pp": 0.698,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -233,33 +233,33 @@
         "Pfizer Inc."
       ],
       "total_income": 346572308.91999996,
-      "headline": "'Tariffs and Trade Enforcement' share up 0.79 pp vs Q1 2025 (1372 mentions)"
+      "headline": "'Tariffs and Trade Enforcement' share up 0.70 pp vs Q1 2025 (1372 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
-      "name": "Department of Energy",
-      "current_count": 2073,
-      "baseline_count": 2481,
-      "share_delta_pp": 0.74,
+      "name": "Department of Defense",
+      "current_count": 3078,
+      "baseline_count": 2566,
+      "share_delta_pp": 0.694,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
         "General Motors Company",
+        "American Medical Association",
         "Meta Platforms, Inc. and Various Subsidiaries",
-        "RTX Corporation",
-        "Amazon.com Services LLC"
+        "RTX Corporation and Affiliates"
       ],
-      "total_income": 256267361.11,
-      "headline": "Department of Energy attention up 0.74 pp vs Q1 2025 (2073 mentions)"
+      "total_income": 288874074.65,
+      "headline": "Department of Defense attention up 0.69 pp vs Q1 2025 (3078 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "OMB",
       "current_count": 1100,
-      "baseline_count": 1098,
-      "share_delta_pp": 0.735,
+      "baseline_count": 735,
+      "share_delta_pp": 0.686,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -269,15 +269,15 @@
         "General Dynamics Corp"
       ],
       "total_income": 167932940.59,
-      "headline": "OMB attention up 0.73 pp vs Q1 2025 (1100 mentions)"
+      "headline": "OMB attention up 0.69 pp vs Q1 2025 (1100 mentions)"
     },
     {
       "type": "signal",
       "category": "legislation",
       "name": "P.L. 119-4",
       "current_count": 50,
-      "baseline_count": 541,
-      "share_delta_pp": -0.735,
+      "baseline_count": 331,
+      "share_delta_pp": -0.684,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -287,33 +287,15 @@
         "Electronic Payments Coalition"
       ],
       "total_income": 23135000.0,
-      "headline": "P.L. 119-4 share down 0.73 pp vs Q1 2025 (50 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "entity",
-      "name": "CMS",
-      "current_count": 1637,
-      "baseline_count": 1874,
-      "share_delta_pp": 0.718,
-      "signal_confidence": "high",
-      "top_clients": [
-        "Chamber of Commerce of the U.S.A.",
-        "Pharmaceutical Research and Manufacturers of America",
-        "American Medical Association",
-        "American Hospital Association",
-        "America's Health Insurance Plans Inc (AHIP)"
-      ],
-      "total_income": 236646459.63,
-      "headline": "CMS attention up 0.72 pp vs Q1 2025 (1637 mentions)"
+      "headline": "P.L. 119-4 share down 0.68 pp vs Q1 2025 (50 mentions)"
     },
     {
       "type": "signal",
       "category": "topic",
       "name": "Defense Authorization",
       "current_count": 1745,
-      "baseline_count": 2089,
-      "share_delta_pp": 0.622,
+      "baseline_count": 1342,
+      "share_delta_pp": 0.665,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -323,33 +305,15 @@
         "Lockheed Martin Corporation"
       ],
       "total_income": 271508088.94,
-      "headline": "'Defense Authorization' share up 0.62 pp vs Q1 2025 (1745 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "entity",
-      "name": "Department of the Interior",
-      "current_count": 1259,
-      "baseline_count": 1397,
-      "share_delta_pp": 0.621,
-      "signal_confidence": "high",
-      "top_clients": [
-        "Chamber of Commerce of the U.S.A.",
-        "National Association of Realtors",
-        "Amazon.com Services LLC",
-        "Lockheed Martin Corporation",
-        "General Dynamics"
-      ],
-      "total_income": 144279911.0,
-      "headline": "Department of the Interior attention up 0.62 pp vs Q1 2025 (1259 mentions)"
+      "headline": "'Defense Authorization' share up 0.67 pp vs Q1 2025 (1745 mentions)"
     },
     {
       "type": "signal",
       "category": "topic",
       "name": "Infrastructure and Broadband",
       "current_count": 557,
-      "baseline_count": 1174,
-      "share_delta_pp": -0.595,
+      "baseline_count": 788,
+      "share_delta_pp": -0.653,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -359,7 +323,43 @@
         "AARP"
       ],
       "total_income": 118729445.65,
-      "headline": "'Infrastructure and Broadband' share down 0.59 pp vs Q1 2025 (557 mentions)"
+      "headline": "'Infrastructure and Broadband' share down 0.65 pp vs Q1 2025 (557 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "entity",
+      "name": "CMS",
+      "current_count": 1637,
+      "baseline_count": 1260,
+      "share_delta_pp": 0.621,
+      "signal_confidence": "high",
+      "top_clients": [
+        "Chamber of Commerce of the U.S.A.",
+        "Pharmaceutical Research and Manufacturers of America",
+        "American Medical Association",
+        "American Hospital Association",
+        "America's Health Insurance Plans Inc (AHIP)"
+      ],
+      "total_income": 236646459.63,
+      "headline": "CMS attention up 0.62 pp vs Q1 2025 (1637 mentions)"
+    },
+    {
+      "type": "signal",
+      "category": "entity",
+      "name": "Department of the Interior",
+      "current_count": 1259,
+      "baseline_count": 922,
+      "share_delta_pp": 0.591,
+      "signal_confidence": "high",
+      "top_clients": [
+        "Chamber of Commerce of the U.S.A.",
+        "National Association of Realtors",
+        "Amazon.com Services LLC",
+        "Lockheed Martin Corporation",
+        "General Dynamics"
+      ],
+      "total_income": 144279911.0,
+      "headline": "Department of the Interior attention up 0.59 pp vs Q1 2025 (1259 mentions)"
     }
   ]
 }

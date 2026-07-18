@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T19:04:06.031860+00:00",
+  "generated_at": "2026-07-18T19:18:07.833339+00:00",
   "frames": {
     "quarter": {
       "current_quarter": {
@@ -869,53 +869,6 @@
           ]
         },
         {
-          "key": "TENCENT HOLDINGS",
-          "name": "Tencent Holdings Limited",
-          "current": 1610000.0,
-          "baseline": 250000.0,
-          "delta": 1360000.0,
-          "ratio": 6.44,
-          "filings_current": 1,
-          "filings_baseline": 1,
-          "topics": [
-            "Defense Authorization"
-          ],
-          "registrants": [
-            "Tencent Holdings Limited"
-          ],
-          "series": [
-            340000.0,
-            350000.0,
-            300000.0,
-            300000.0,
-            300000.0,
-            340000.0,
-            300000.0,
-            290000.0,
-            290000.0,
-            350000.0,
-            290000.0,
-            290000.0,
-            340000.0,
-            240000.0,
-            250000.0,
-            250000.0,
-            870000.0,
-            1560000.0,
-            1560000.0,
-            1610000.0
-          ],
-          "examples": [
-            {
-              "uuid": "18ad2c71-ae83-4a11-b8ef-9da4b6664fcd",
-              "date": "2026-04-20T13:26:26-04:00",
-              "client": "Tencent Holdings Limited",
-              "registrant": "Tencent Holdings Limited",
-              "income": 1610000.0
-            }
-          ]
-        },
-        {
           "key": "PACIFIC GAS AND ELECTRIC",
           "name": "Pacific Gas and Electric Company",
           "current": 3020000.0,
@@ -992,6 +945,53 @@
               "client": "Pacific Gas and Electric Company",
               "registrant": "D&p Creative Strategies, LLC",
               "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "TENCENT HOLDINGS",
+          "name": "Tencent Holdings Limited",
+          "current": 1610000.0,
+          "baseline": 250000.0,
+          "delta": 1360000.0,
+          "ratio": 6.44,
+          "filings_current": 1,
+          "filings_baseline": 1,
+          "topics": [
+            "Defense Authorization"
+          ],
+          "registrants": [
+            "Tencent Holdings Limited"
+          ],
+          "series": [
+            340000.0,
+            350000.0,
+            300000.0,
+            300000.0,
+            300000.0,
+            340000.0,
+            300000.0,
+            290000.0,
+            290000.0,
+            350000.0,
+            290000.0,
+            290000.0,
+            340000.0,
+            240000.0,
+            250000.0,
+            250000.0,
+            870000.0,
+            1560000.0,
+            1560000.0,
+            1610000.0
+          ],
+          "examples": [
+            {
+              "uuid": "18ad2c71-ae83-4a11-b8ef-9da4b6664fcd",
+              "date": "2026-04-20T13:26:26-04:00",
+              "client": "Tencent Holdings Limited",
+              "registrant": "Tencent Holdings Limited",
+              "income": 1610000.0
             }
           ]
         },
@@ -3368,32 +3368,30 @@
           ]
         },
         {
-          "key": "GOODRX",
-          "name": "Goodrx, Inc.",
+          "key": "VICTIMS OF TERRORISM - EAST AFRICA",
+          "name": "Victims of Terrorism - East Africa",
           "current": 580000.0,
           "baseline": 0.0,
           "delta": 580000.0,
           "ratio": null,
-          "filings_current": 4,
-          "filings_baseline": 0,
-          "topics": [
-            "Drug Pricing",
-            "Telehealth"
-          ],
+          "filings_current": 6,
+          "filings_baseline": 4,
+          "topics": [],
           "registrants": [
-            "S-3 Group",
-            "Continental Strategy, LLC",
-            "Goodrx, Inc."
+            "FJD Strategies LLC",
+            "Kamins Consulting",
+            "Mcguirewoods Consulting (a Subsidiary of Mcguirewoods LLP)"
           ],
           "series": [
-            150000.0,
-            150000.0,
-            150000.0,
-            160000.0,
-            160000.0,
-            160000.0,
+            0.0,
+            10000.0,
+            0.0,
+            1210000.0,
+            1055000.0,
+            0.0,
+            0.0,
             50000.0,
-            100000.0,
+            1570000.0,
             0.0,
             0.0,
             0.0,
@@ -3401,40 +3399,46 @@
             0.0,
             0.0,
             0.0,
+            125000.0,
             0.0,
-            456452.0,
-            520000.0,
-            510000.0,
+            0.0,
             580000.0
           ],
           "examples": [
             {
-              "uuid": "30f69624-a4bb-4490-9959-63c68ca392e0",
-              "date": "2026-04-20T13:56:59-04:00",
-              "client": "Goodrx, Inc.",
-              "registrant": "Goodrx, Inc.",
-              "income": 370000.0
+              "uuid": "9d269067-a9e9-4263-8f86-6ec92176e61c",
+              "date": "2026-04-20T15:41:19-04:00",
+              "client": "Victims of Terrorism - East Africa",
+              "registrant": "Monument Advocacy",
+              "income": 230000.0
             },
             {
-              "uuid": "779413b2-8b25-4473-a251-16f4d7517f88",
-              "date": "2026-04-17T16:35:10-04:00",
-              "client": "Goodrx, Inc.",
-              "registrant": "Continental Strategy, LLC",
-              "income": 90000.0
+              "uuid": "1fa4a62a-46a5-4e86-82f3-b55f9678eb85",
+              "date": "2026-04-29T17:25:48-04:00",
+              "client": "Victims of Terrorism - East Africa",
+              "registrant": "Morris J. Amitay, PC",
+              "income": 230000.0
             },
             {
-              "uuid": "3fa53740-56f8-42f2-bfd1-a95eee4e7906",
-              "date": "2026-04-17T10:53:19-04:00",
-              "client": "Goodrx, Inc.",
-              "registrant": "S-3 Group",
-              "income": 60000.0
+              "uuid": "b5839e0c-fcca-4d3c-969c-ce66648583c1",
+              "date": "2026-04-07T09:36:31-04:00",
+              "client": "Victims of Terrorism - East Africa",
+              "registrant": "FJD Strategies LLC",
+              "income": 120000.0
             },
             {
-              "uuid": "07bd9f10-fa8c-4a66-be24-440b1aabded6",
-              "date": "2026-04-21T12:14:00-04:00",
-              "client": "Goodrx, Inc.",
-              "registrant": "Capitol Hill Consulting Group",
-              "income": 60000.0
+              "uuid": "1c09ac72-bc58-4e03-98e1-a7a8427d2990",
+              "date": "2026-04-19T11:42:27-04:00",
+              "client": "Victims of Terrorism - East Africa",
+              "registrant": "Kamins Consulting",
+              "income": 0
+            },
+            {
+              "uuid": "6ee33548-7240-4aa9-b3c7-7b6c843db55c",
+              "date": "2026-04-20T09:57:10-04:00",
+              "client": "Victims of Terrorism - East Africa",
+              "registrant": "Mcguirewoods Consulting (a Subsidiary of Mcguirewoods LLP)",
+              "income": 0
             }
           ]
         }
@@ -3452,12 +3456,12 @@
         "label": "Q2 2025"
       },
       "quarter_totals": {
-        "current_income": 523387724.97,
+        "current_income": 527467724.97,
         "baseline_income": 567952674.11,
-        "change_pct": -7.8,
-        "current_filings": 11020,
+        "change_pct": -7.1,
+        "current_filings": 11097,
         "baseline_filings": 11374,
-        "current_clients": 9345,
+        "current_clients": 9405,
         "baseline_clients": 9557
       },
       "risers": [
@@ -3884,11 +3888,11 @@
         {
           "key": "VERTEX PHARMACEUTICALS",
           "name": "Vertex Pharmaceuticals Incorporated",
-          "current": 1510000.0,
+          "current": 1570000.0,
           "baseline": 90000.0,
-          "delta": 1420000.0,
-          "ratio": 16.778,
-          "filings_current": 7,
+          "delta": 1480000.0,
+          "ratio": 17.444,
+          "filings_current": 8,
           "filings_baseline": 3,
           "topics": [
             "Drug Pricing",
@@ -3946,17 +3950,17 @@
               "income": 60000.0
             },
             {
+              "uuid": "8f9fc860-2043-4abc-9471-ea681d9eb2de",
+              "date": "2026-07-18T15:04:03-04:00",
+              "client": "Vertex Pharmaceuticals Incorporated",
+              "registrant": "Tiber Creek Group",
+              "income": 60000.0
+            },
+            {
               "uuid": "44864fae-f30b-49a6-875e-6a858706a068",
               "date": "2026-07-16T12:25:36-04:00",
               "client": "Vertex Pharmaceuticals Incorporated",
               "registrant": "Empire Consulting Group",
-              "income": 50000.0
-            },
-            {
-              "uuid": "573d5614-d2fd-470f-b0fa-12d662ab8b75",
-              "date": "2026-07-16T12:58:47-04:00",
-              "client": "Vertex Pharmaceuticals Incorporated",
-              "registrant": "Alb Solutions",
               "income": 50000.0
             }
           ]
@@ -5570,11 +5574,11 @@
         {
           "key": "FRESENIUS MEDICAL CARE NORTH AMERICA",
           "name": "Fresenius Medical Care North America",
-          "current": 80000.0,
+          "current": 120000.0,
           "baseline": 1470000.0,
-          "delta": -1390000.0,
-          "ratio": 0.054,
-          "filings_current": 2,
+          "delta": -1350000.0,
+          "ratio": 0.082,
+          "filings_current": 3,
           "filings_baseline": 3,
           "topics": [
             "Telehealth",
@@ -5582,7 +5586,8 @@
           ],
           "registrants": [
             "The Gibson Group, LLC",
-            "Tiber Creek Health Strategies, Inc."
+            "Tiber Creek Health Strategies, Inc.",
+            "Cozen O'connor Public Strategies"
           ],
           "series": [
             1985000.0,
@@ -5613,6 +5618,13 @@
               "client": "Fresenius Medical Care North America",
               "registrant": "Tiber Creek Health Strategies, Inc.",
               "income": 60000.0
+            },
+            {
+              "uuid": "6e13dd76-77c7-4008-bb4c-969dc368bf0e",
+              "date": "2026-07-18T14:32:01-04:00",
+              "client": "Fresenius Medical Care North America",
+              "registrant": "Cozen O'connor Public Strategies",
+              "income": 40000.0
             },
             {
               "uuid": "7ec6bd3a-4091-4531-ada8-7a79140275e5",
@@ -5733,8 +5745,8 @@
       ],
       "new_entrants": [
         {
-          "key": "NOOSHEEN HASHEMI",
-          "name": "Noosheen Hashemi",
+          "key": "NEROBREEZE",
+          "name": "Nerobreeze Limited",
           "current": 750000.0,
           "baseline": 0.0,
           "delta": 750000.0,
@@ -5743,7 +5755,7 @@
           "filings_baseline": 0,
           "topics": [],
           "registrants": [
-            "Checkmate Government Relations"
+            "Ballard Partners"
           ],
           "series": [
             0.0,
@@ -5764,15 +5776,15 @@
             0.0,
             0.0,
             0.0,
-            0.0,
-            0.0
+            500000.0,
+            750000.0
           ],
           "examples": [
             {
-              "uuid": "9ab86c80-c70a-45c7-954d-1e6170d470b5",
-              "date": "2026-07-17T18:59:52-04:00",
-              "client": "Noosheen Hashemi",
-              "registrant": "Checkmate Government Relations",
+              "uuid": "82350d97-9130-4419-bcaa-e8e4298bdfea",
+              "date": "2026-07-15T16:41:39-04:00",
+              "client": "Nerobreeze Limited",
+              "registrant": "Ballard Partners",
               "income": 750000.0
             }
           ]
@@ -5823,8 +5835,8 @@
           ]
         },
         {
-          "key": "NEROBREEZE",
-          "name": "Nerobreeze Limited",
+          "key": "NOOSHEEN HASHEMI",
+          "name": "Noosheen Hashemi",
           "current": 750000.0,
           "baseline": 0.0,
           "delta": 750000.0,
@@ -5833,7 +5845,7 @@
           "filings_baseline": 0,
           "topics": [],
           "registrants": [
-            "Ballard Partners"
+            "Checkmate Government Relations"
           ],
           "series": [
             0.0,
@@ -5854,15 +5866,15 @@
             0.0,
             0.0,
             0.0,
-            500000.0,
-            750000.0
+            0.0,
+            0.0
           ],
           "examples": [
             {
-              "uuid": "82350d97-9130-4419-bcaa-e8e4298bdfea",
-              "date": "2026-07-15T16:41:39-04:00",
-              "client": "Nerobreeze Limited",
-              "registrant": "Ballard Partners",
+              "uuid": "9ab86c80-c70a-45c7-954d-1e6170d470b5",
+              "date": "2026-07-17T18:59:52-04:00",
+              "client": "Noosheen Hashemi",
+              "registrant": "Checkmate Government Relations",
               "income": 750000.0
             }
           ]
@@ -6003,51 +6015,6 @@
           ]
         },
         {
-          "key": "PHILLY PHARMACIES",
-          "name": "Philly Pharmacies",
-          "current": 500000.0,
-          "baseline": 0.0,
-          "delta": 500000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "MR. H.R. Bert Pena"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            500000.0
-          ],
-          "examples": [
-            {
-              "uuid": "0b8756d9-2840-43fa-ba85-fbae1e8470f4",
-              "date": "2026-07-13T12:22:30-04:00",
-              "client": "Philly Pharmacies",
-              "registrant": "MR. H.R. Bert Pena",
-              "income": 500000.0
-            }
-          ]
-        },
-        {
           "key": "CATURUS",
           "name": "Caturus",
           "current": 500000.0,
@@ -6088,6 +6055,51 @@
               "date": "2026-07-10T14:02:45-04:00",
               "client": "Caturus",
               "registrant": "Caturus",
+              "income": 500000.0
+            }
+          ]
+        },
+        {
+          "key": "PHILLY PHARMACIES",
+          "name": "Philly Pharmacies",
+          "current": 500000.0,
+          "baseline": 0.0,
+          "delta": 500000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "MR. H.R. Bert Pena"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            500000.0
+          ],
+          "examples": [
+            {
+              "uuid": "0b8756d9-2840-43fa-ba85-fbae1e8470f4",
+              "date": "2026-07-13T12:22:30-04:00",
+              "client": "Philly Pharmacies",
+              "registrant": "MR. H.R. Bert Pena",
               "income": 500000.0
             }
           ]
