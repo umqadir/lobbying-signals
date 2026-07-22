@@ -1,38 +1,38 @@
 {
-  "generated_at": "2026-07-21T12:07:21.164544+00:00",
-  "total_filings": 531599,
-  "total_activities": 1120988,
-  "total_extracted": 1072284,
+  "generated_at": "2026-07-22T12:04:54.363446+00:00",
+  "total_filings": 532046,
+  "total_activities": 1121884,
+  "total_extracted": 1073144,
   "extracted_pct": 95.7,
   "extraction_source": "deterministic_rules",
   "date_range": {
     "start": "2020-01-06T10:37:27.950000-05:00",
-    "end": "2026-07-21T07:58:18-04:00"
+    "end": "2026-07-22T08:02:22-04:00"
   },
   "quarters": [
     {
       "year": 2026,
       "quarter": 3,
-      "filings": 13,
+      "filings": 14,
       "income": 180000.0
     },
     {
       "year": 2026,
       "quarter": 2,
-      "filings": 22825,
-      "income": 1562127020.74
+      "filings": 23222,
+      "income": 1583220715.74
     },
     {
       "year": 2026,
       "quarter": 1,
-      "filings": 25364,
-      "income": 1720454835.69
+      "filings": 25368,
+      "income": 1720054178.69
     },
     {
       "year": 2025,
       "quarter": 4,
       "filings": 24890,
-      "income": 1592220595.72
+      "income": 1592250595.72
     },
     {
       "year": 2025,
@@ -63,8 +63,8 @@
     "year": 2026,
     "quarter": 1,
     "label": "Q1 2026",
-    "income": 1700454835.6899998,
-    "filings": 25363,
+    "income": 1700054178.6899998,
+    "filings": 25367,
     "yoy_income": 1493847495.0500002,
     "yoy_filings": 21252,
     "income_change_pct": 13.8
@@ -73,6 +73,6 @@
     "year": 2026,
     "quarter": 2,
     "label": "Q2 2026",
-    "filings": 22824
+    "filings": 23221
   }
 }
