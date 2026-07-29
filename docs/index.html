@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobbying Signals</title>
+    <meta name="description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lobbying Signals">
+    <meta property="og:description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
+    <meta property="og:url" content="https://umqadir.github.io/lobbying-signals/">
+    <meta property="og:image" content="https://umqadir.github.io/lobbying-signals/social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lobbying Signals">
+    <meta name="twitter:description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
+    <meta name="twitter:image" content="https://umqadir.github.io/lobbying-signals/social-preview.png">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 13L6 7L9 10L14 3' stroke='%231e3a5f' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260717-amend">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#" aria-label="Lobbying Signals home">
+            <svg class="brand-mark" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M2 13L6 7L9 10L14 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Lobbying Signals</span>
+        </a>
+        <button class="search-trigger" id="search-trigger" type="button" aria-label="Open search">
+            <svg viewBox="0 0 16 16" aria-hidden="true" class="search-icon">
+                <circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="search-trigger-label">Search topics, agencies, clients, bills…</span>
+            <kbd class="search-trigger-kbd">⌘K</kbd>
+        </button>
+        <div class="topbar-meta" id="topbar-meta"></div>
+    </header>
+
+    <main class="page">
+        <section class="hero" id="hero">
+            <p class="hero-eyebrow">Federal lobbying disclosures · Senate LDA</p>
+            <h1 class="hero-headline" id="hero-headline">Loading the latest signals…</h1>
+            <ul class="hero-stats" id="hero-stats"></ul>
+        </section>
+
+        <section class="movers">
+            <div class="movers-head">
+                <div class="movers-title">
+                    <h2>Biggest movers</h2>
+                    <p class="movers-sub" id="movers-sub">Loading…</p>
+                </div>
+                <div class="movers-controls">
+                    <div class="seg" id="frame-seg" role="tablist" aria-label="Comparison frame"></div>
+                </div>
+            </div>
+            <div class="cat-row" id="cat-row" role="tablist" aria-label="Categories">
+                <button class="cat-pill active" data-cat="all" type="button">Everything</button>
+                <button class="cat-pill" data-cat="clients" type="button" id="cat-pill-clients">Organizations</button>
+                <button class="cat-pill" data-cat="topics" type="button">Topics</button>
+                <button class="cat-pill" data-cat="entities" type="button">Agencies</button>
+                <button class="cat-pill" data-cat="legislation" type="button">Bills</button>
+                <span class="cat-row-sep"></span>
+                <button class="cat-pill ghost" data-cat="recent" type="button">Recent filings</button>
+            </div>
+            <ol class="mover-list" id="mover-list"></ol>
+        </section>
+
+        <footer class="footnote">
+            <p>Source: <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate Lobbying Disclosure</a>. Mentions are deterministic rule matches against activity descriptions; comparisons are directional signals, not causal claims about lobbying spend or policy outcomes. Filing volume is seasonal because quarterly reports cluster around statutory deadlines. <button class="footnote-link" type="button" data-open-about>About the data</button> · <a href="https://github.com/umqadir/lobbying-signals" rel="noopener">Source on GitHub</a>.</p>
+        </footer>
+    </main>
+
+    <div class="about" id="about" aria-hidden="true">
+        <div class="about-scrim" data-close-about></div>
+        <div class="about-card" role="dialog" aria-modal="true" aria-label="About the data">
+            <header class="about-head">
+                <h2>About the data</h2>
+                <button class="drawer-close" type="button" data-close-about aria-label="Close">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+            </header>
+            <div class="about-body">
+                <p><strong>What this is.</strong> A signal tracker over federal lobbying disclosures filed with the Senate under the Lobbying Disclosure Act (LDA). It shows which organizations, topics, agencies, and bills are gaining or losing lobbying attention.</p>
+                <p><strong>Where the data comes from.</strong> Quarterly activity reports from the official <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate LDA database</a>, refreshed daily. Coverage: <span id="about-coverage">several years of filings</span>. Every example filing links back to the official Senate record.</p>
+                <p><strong>What a “mention” is.</strong> Each filing describes its lobbying activities in free text. Versioned, deterministic rules (no AI model calls) tag those descriptions with topics, agencies, and legislation. One activity description that matches a tag = one mention. A single filing can produce many mentions. Bill numbers are scoped to their Congress (an “H.R. 1” from 2017 and one from 2025 are different laws), and a law's number, short name, and public-law number are counted as one bill.</p>
+                <p><strong>How comparisons work.</strong> Every view uses the same two comparison frames, both year-over-year and both based on report quarters (LDA disclosure is a quarterly regime — rolling day-windows would mostly measure filing-clerk timing). The default frame compares the latest <em>complete</em> report quarter against the same quarter a year earlier — like-for-like, since lobbying is seasonal. The second frame is a freshness lens: the current, still-filling quarter's reports so far, against reports for the same quarter last year that had been posted by the same point in the filing cycle. Early in a cycle that sample is small — the filing counts are shown so you can judge. “Share” is a tag's slice of all tagged mentions in a frame, which controls for volume swings.</p>
+                <p><strong>Confidence.</strong> A rule-based label reflecting how much volume sits behind a signal and how far its share moved against the year-ago quarter — not a statistical test.</p>
+                <p><strong>Honest limitations.</strong> Directional signals, not causal claims. Filing income is reported per filing, not per issue, so income figures associate a filing's whole income with each of its tags. The newest quarter is always partially reported until well after the statutory deadline. Rule-based tagging misses paraphrases a human would catch. Amendments and termination reports are ingested alongside original quarterly reports; when a filer amends or terminates a report, its latest filing supersedes the original for that filer's report period, so corrected figures (including a final terminating quarter) are what's shown here, not the as-originally-filed numbers. A very small number of filings verified by hand against the Senate record to report figures that are not U.S.-dollar lobbying spend (for example, amounts a filing itself denominates in a self-issued currency) are excluded, with the reason and evidence documented in the source code.</p>
+                <p><strong>Organization spend.</strong> The Organizations view tracks reported dollars rather than mention counts: each client's filing income/expenses, summed per organization per report quarter, under the same two frames as everything else (a quarter counts as complete roughly six weeks past its statutory filing deadline, so late filers don't read as a false drop). Name variants for the same organization (legal-suffix differences, "on behalf of" filers, former names) are folded together. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.</p>
+            </div>
+        </div>
+    </div>
+
+    <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Detail panel">
+        <div class="drawer-scrim" data-close-drawer></div>
+        <div class="drawer-card">
+            <header class="drawer-head">
+                <div class="drawer-trail" id="drawer-trail"></div>
+                <button class="drawer-close" type="button" data-close-drawer aria-label="Close detail panel">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+            </header>
+            <div class="drawer-body" id="drawer-body"></div>
+        </div>
+    </aside>
+
+    <div class="palette" id="palette" aria-hidden="true">
+        <div class="palette-scrim" data-close-palette></div>
+        <div class="palette-card" role="dialog" aria-label="Search">
+            <div class="palette-input-row">
+                <svg viewBox="0 0 16 16" aria-hidden="true" class="palette-icon">
+                    <circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <input id="palette-input" type="text" placeholder="Search topics, agencies, clients, bills…" autocomplete="off" spellcheck="false">
+                <kbd class="palette-kbd">esc</kbd>
+            </div>
+            <div class="palette-results" id="palette-results"></div>
+            <div class="palette-foot">
+                <span><kbd>↑↓</kbd> navigate</span>
+                <span><kbd>↵</kbd> open</span>
+                <span><kbd>esc</kbd> close</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=20260717-amend"></script>
+</body>
+</html>

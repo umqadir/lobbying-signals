@@ -1,0 +1,129 @@
+name: Refresh Data
+
+on:
+  schedule:
+    # Run daily at 10:00 UTC
+    - cron: '0 10 * * *'
+    # Monthly drift audit (3rd of the month, 06:00 UTC): re-fetch as large a
+    # random sample of stored filings as fits the CI window and compare
+    # against the live API. Drift (in-place edits, expunged filings) is so
+    # far entirely hypothetical — this is the broad check that would surface
+    # it; if it ever does, redesign around the observed behavior.
+    - cron: '0 6 3 * *'
+  workflow_dispatch:
+    # Allow manual trigger
+    inputs:
+      rules_batch_size:
+        description: 'Max activities to classify with deterministic rules'
+        required: false
+        default: '2000000'
+      full_sweep:
+        description: 'Posted-after sweep over the last ~13 months (all report periods) before refreshing'
+        required: false
+        default: 'false'
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: refresh-data
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          uv venv --python 3.12
+          uv pip install --python .venv/bin/python -r requirements.txt
+
+      - name: Ensure data release exists
+        run: |
+          gh release view data || gh release create data --title "Data Storage" --notes "SQLite database storage for the lobbying signals dashboard"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download database from release (if present)
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          # Compressed asset preferred (the raw DB was closing in on GitHub's
+          # 2GB release-asset limit); fall back to the legacy uncompressed one.
+          assets=$(gh release view data --json assets -q '.assets[].name')
+          if echo "$assets" | grep -qx 'filings.db.zst'; then
+            gh release download data --pattern 'filings.db.zst' -D data/
+            zstd -d --rm data/filings.db.zst -o data/filings.db
+          elif echo "$assets" | grep -qx 'filings.db'; then
+            gh release download data --pattern 'filings.db' -D data/
+          else
+            echo "No existing database asset, starting fresh"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Initialize database if needed
+        run: |
+          if [ ! -f data/filings.db ]; then
+            echo "Creating fresh database..."
+            uv run python -c "from db import init_db; init_db()"
+          fi
+
+      - name: Monthly drift audit (large random sample vs live API)
+        if: github.event.schedule == '0 6 3 * *'
+        run: |
+          uv run python 01_ingest.py audit-sample --n 40000 --max-minutes 270
+        env:
+          LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
+
+      - name: Deep posted-after sweep (manual)
+        if: github.event.inputs.full_sweep == 'true'
+        run: |
+          uv run python 01_ingest.py full-sweep --start-year 2020
+        env:
+          LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
+
+      - name: Run refresh
+        run: |
+          uv run python 07_refresh.py \
+            --rules-batch-size ${{ github.event.inputs.rules_batch_size || '2000000' }}
+        env:
+          LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
+
+      - name: Upload database to release
+        run: |
+          # zstd -9: ~3-4x smaller, keeps the asset far under GitHub's 2GB
+          # release-asset hard limit that the raw DB was approaching.
+          zstd -9 -T0 -f data/filings.db -o data/filings.db.zst
+          gh release upload data data/filings.db.zst --clobber
+          # Drop the legacy uncompressed asset once the compressed one is up,
+          # so the release never carries both (and the old 1.7GB blob).
+          if gh release view data --json assets -q '.assets[].name' | grep -qx 'filings.db'; then
+            gh release delete-asset data filings.db -y
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit JSON exports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/
+          git diff --staged --quiet || git commit -m "Update data exports [skip ci]"
+          # The refresh takes ~35 min; rebase over anything that landed on
+          # main meanwhile so the exports commit isn't rejected at the end.
+          git pull --rebase origin main
+          git push
