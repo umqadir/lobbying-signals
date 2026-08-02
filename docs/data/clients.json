@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T11:15:07.810476+00:00",
+  "generated_at": "2026-08-02T11:14:57.445991+00:00",
   "frames": {
     "quarter": {
       "current_quarter": {
@@ -1725,6 +1725,71 @@
           ]
         },
         {
+          "key": "COCA-COLA",
+          "name": "The Coca-Cola Company",
+          "current": 2110000.0,
+          "baseline": 1260000.0,
+          "delta": 850000.0,
+          "ratio": 1.675,
+          "filings_current": 3,
+          "filings_baseline": 3,
+          "topics": [
+            "Nutrition Assistance",
+            "Trade Agreements",
+            "International Tax"
+          ],
+          "registrants": [
+            "Kountoupes Denham Carr & Reid, LLC",
+            "The Coca-Cola Company",
+            "Empire Consulting Group"
+          ],
+          "series": [
+            1970000.0,
+            1020000.0,
+            1670000.0,
+            1290000.0,
+            1270000.0,
+            1050000.0,
+            1440000.0,
+            1020000.0,
+            960000.0,
+            920000.0,
+            1610000.0,
+            1260000.0,
+            1550000.0,
+            770000.0,
+            1840000.0,
+            1260000.0,
+            1400000.0,
+            1120000.0,
+            1640000.0,
+            2110000.0
+          ],
+          "examples": [
+            {
+              "uuid": "370857bb-bd42-4974-add5-1ee5e57e681e",
+              "date": "2026-04-17T14:28:31-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "The Coca-Cola Company",
+              "income": 2010000.0
+            },
+            {
+              "uuid": "e34e16b5-f662-42b5-bd21-6ef963ee82a0",
+              "date": "2026-04-13T12:15:22-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "Kountoupes Denham Carr & Reid, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "d89d6f89-f6bc-4987-a288-29ff3cb719d3",
+              "date": "2026-04-18T09:21:09-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "Empire Consulting Group",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "TP-LINK SYSTEMS",
           "name": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
           "current": 930000.0,
@@ -1791,71 +1856,6 @@
               "client": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
               "registrant": "Vernonburg Group",
               "income": 30000.0
-            }
-          ]
-        },
-        {
-          "key": "COCA-COLA",
-          "name": "The Coca-Cola Company",
-          "current": 2110000.0,
-          "baseline": 1260000.0,
-          "delta": 850000.0,
-          "ratio": 1.675,
-          "filings_current": 3,
-          "filings_baseline": 3,
-          "topics": [
-            "Nutrition Assistance",
-            "Trade Agreements",
-            "International Tax"
-          ],
-          "registrants": [
-            "Kountoupes Denham Carr & Reid, LLC",
-            "The Coca-Cola Company",
-            "Empire Consulting Group"
-          ],
-          "series": [
-            1970000.0,
-            1020000.0,
-            1670000.0,
-            1290000.0,
-            1270000.0,
-            1050000.0,
-            1440000.0,
-            1020000.0,
-            960000.0,
-            920000.0,
-            1610000.0,
-            1260000.0,
-            1550000.0,
-            770000.0,
-            1840000.0,
-            1260000.0,
-            1400000.0,
-            1120000.0,
-            1640000.0,
-            2110000.0
-          ],
-          "examples": [
-            {
-              "uuid": "370857bb-bd42-4974-add5-1ee5e57e681e",
-              "date": "2026-04-17T14:28:31-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "The Coca-Cola Company",
-              "income": 2010000.0
-            },
-            {
-              "uuid": "e34e16b5-f662-42b5-bd21-6ef963ee82a0",
-              "date": "2026-04-13T12:15:22-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "Kountoupes Denham Carr & Reid, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "d89d6f89-f6bc-4987-a288-29ff3cb719d3",
-              "date": "2026-04-18T09:21:09-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "Empire Consulting Group",
-              "income": 50000.0
             }
           ]
         }
@@ -2245,79 +2245,6 @@
           ]
         },
         {
-          "key": "CONOCOPHILLIPS",
-          "name": "Conocophillips",
-          "current": 2160000.0,
-          "baseline": 3490000.0,
-          "delta": -1330000.0,
-          "ratio": 0.619,
-          "filings_current": 4,
-          "filings_baseline": 3,
-          "topics": [
-            "Oil and Gas",
-            "Public Lands and Water Management",
-            "Appropriations",
-            "Clean Water"
-          ],
-          "registrants": [
-            "S-3 Group",
-            "Greenberg Traurig, LLP",
-            "Conocophillips"
-          ],
-          "series": [
-            900000.0,
-            750000.0,
-            1890000.0,
-            4790000.0,
-            1460000.0,
-            750000.0,
-            2460000.0,
-            3550000.0,
-            970000.0,
-            1110000.0,
-            2990000.0,
-            3350000.0,
-            820000.0,
-            790000.0,
-            4090000.0,
-            3490000.0,
-            1075000.0,
-            955000.0,
-            2910000.0,
-            2160000.0
-          ],
-          "examples": [
-            {
-              "uuid": "00b5e045-eb74-407f-8bb9-6a5bd3c87135",
-              "date": "2026-04-20T16:17:44-04:00",
-              "client": "Conocophillips",
-              "registrant": "Conocophillips",
-              "income": 1950000.0
-            },
-            {
-              "uuid": "49545e81-d5c0-4141-9b40-35a01056a283",
-              "date": "2026-04-20T20:18:45-04:00",
-              "client": "Conocophillips",
-              "registrant": "The Bernhardt Group LLC",
-              "income": 90000.0
-            },
-            {
-              "uuid": "6201fd53-f316-42ee-80ec-0ab273f030a5",
-              "date": "2026-04-17T10:57:28-04:00",
-              "client": "Conocophillips",
-              "registrant": "S-3 Group",
-              "income": 60000.0
-            },
-            {
-              "uuid": "d6a71e7b-ea66-424b-9e90-9238c36b27e1",
-              "date": "2026-04-20T09:48:35-04:00",
-              "client": "Conocophillips",
-              "registrant": "Greenberg Traurig, LLP",
-              "income": 60000.0
-            }
-          ]
-        },
-        {
           "key": "UNITEDHEALTH GROUP",
           "name": "Unitedhealth Group, Inc.",
           "current": 3450000.0,
@@ -2394,6 +2321,79 @@
               "client": "Unitedhealth Group, Inc.",
               "registrant": "Guidepoststrategies, LLC",
               "income": 90000.0
+            }
+          ]
+        },
+        {
+          "key": "CONOCOPHILLIPS",
+          "name": "Conocophillips",
+          "current": 2160000.0,
+          "baseline": 3490000.0,
+          "delta": -1330000.0,
+          "ratio": 0.619,
+          "filings_current": 4,
+          "filings_baseline": 3,
+          "topics": [
+            "Oil and Gas",
+            "Public Lands and Water Management",
+            "Appropriations",
+            "Clean Water"
+          ],
+          "registrants": [
+            "S-3 Group",
+            "Greenberg Traurig, LLP",
+            "Conocophillips"
+          ],
+          "series": [
+            900000.0,
+            750000.0,
+            1890000.0,
+            4790000.0,
+            1460000.0,
+            750000.0,
+            2460000.0,
+            3550000.0,
+            970000.0,
+            1110000.0,
+            2990000.0,
+            3350000.0,
+            820000.0,
+            790000.0,
+            4090000.0,
+            3490000.0,
+            1075000.0,
+            955000.0,
+            2910000.0,
+            2160000.0
+          ],
+          "examples": [
+            {
+              "uuid": "00b5e045-eb74-407f-8bb9-6a5bd3c87135",
+              "date": "2026-04-20T16:17:44-04:00",
+              "client": "Conocophillips",
+              "registrant": "Conocophillips",
+              "income": 1950000.0
+            },
+            {
+              "uuid": "49545e81-d5c0-4141-9b40-35a01056a283",
+              "date": "2026-04-20T20:18:45-04:00",
+              "client": "Conocophillips",
+              "registrant": "The Bernhardt Group LLC",
+              "income": 90000.0
+            },
+            {
+              "uuid": "6201fd53-f316-42ee-80ec-0ab273f030a5",
+              "date": "2026-04-17T10:57:28-04:00",
+              "client": "Conocophillips",
+              "registrant": "S-3 Group",
+              "income": 60000.0
+            },
+            {
+              "uuid": "d6a71e7b-ea66-424b-9e90-9238c36b27e1",
+              "date": "2026-04-20T09:48:35-04:00",
+              "client": "Conocophillips",
+              "registrant": "Greenberg Traurig, LLP",
+              "income": 60000.0
             }
           ]
         },
@@ -5313,82 +5313,52 @@
           ]
         },
         {
-          "key": "UBER TECHNOLOGIES",
-          "name": "Uber Technologies, Inc.",
-          "current": 1825000.0,
-          "baseline": 535000.0,
+          "key": "CONSUMER BRANDS ASSOCIATION (PKA: GROCERY MANUFACTURERS ASSOCIATION)",
+          "name": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
+          "current": 1290000.0,
+          "baseline": 0.0,
           "delta": 1290000.0,
-          "ratio": 3.411,
-          "filings_current": 11,
-          "filings_baseline": 9,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
           "topics": [
-            "Data Privacy",
-            "Artificial Intelligence",
-            "Infrastructure and Broadband",
-            "Labor and Employment"
+            "Waste and Recycling Management",
+            "Farm Policy",
+            "Nutrition Assistance",
+            "Tariffs and Trade Enforcement"
           ],
           "registrants": [
-            "Summit Strategies Government Affairs LLC",
-            "Axadvocacy Government Relations",
-            "Miller Strategies, LLC"
+            "Consumer Brands Association (pka: Grocery Manufacturers Association)"
           ],
           "series": [
-            860000.0,
-            1000000.0,
-            960000.0,
-            610000.0,
-            920000.0,
-            970000.0,
-            740000.0,
-            860000.0,
-            1000000.0,
-            920000.0,
-            980000.0,
-            950000.0,
-            950000.0,
-            980000.0,
-            1230000.0,
-            1255000.0,
-            1385000.0,
-            1545000.0,
-            1325000.0,
-            1515000.0
+            518508.0,
+            268959.0,
+            380824.0,
+            372777.0,
+            413719.0,
+            396301.0,
+            761134.0,
+            560000.0,
+            445257.0,
+            550000.0,
+            810000.0,
+            680000.0,
+            450000.0,
+            480000.0,
+            670000.0,
+            715000.0,
+            1421000.0,
+            1555000.0,
+            3240000.0,
+            1120000.0
           ],
           "examples": [
             {
-              "uuid": "055800ac-6b44-4d6a-b72a-1679df04a32c",
-              "date": "2026-07-20T17:01:35-04:00",
-              "client": "Uber Technologies, Inc.",
-              "registrant": "Uber Technologies, Inc.",
-              "income": 1230000.0
-            },
-            {
-              "uuid": "d3049772-7541-4c6b-8809-de7271790a09",
-              "date": "2026-07-20T15:38:46-04:00",
-              "client": "Uber Technologies, Inc.",
-              "registrant": "Miller Strategies, LLC",
-              "income": 150000.0
-            },
-            {
-              "uuid": "aff15502-07b0-40a9-97af-0c3d4c5e1dd4",
-              "date": "2026-07-20T15:48:58-04:00",
-              "client": "Uber Technologies, Inc.",
-              "registrant": "Thegroup DC, LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "a71a17d5-0ebd-4719-9c9a-af58a5e42f04",
-              "date": "2026-07-20T18:58:07-04:00",
-              "client": "Uber Technologies, Inc.",
-              "registrant": "Forbes-Tate",
-              "income": 80000.0
-            },
-            {
-              "uuid": "1ca26dba-1afd-46b2-868f-433ed057f813",
-              "date": "2026-07-20T22:40:00-04:00",
-              "client": "Uber Technologies, Inc.",
-              "registrant": "The Doerrer Group LLC",
-              "income": 80000.0
+              "uuid": "8f7ebcc1-e9e9-4510-a92e-33235c5c6187",
+              "date": "2026-07-17T18:00:12-04:00",
+              "client": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
+              "registrant": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
+              "income": 1290000.0
             }
           ]
         }
@@ -5758,6 +5728,83 @@
           ]
         },
         {
+          "key": "ASSOCIATION OF AMERICAN RAILROADS",
+          "name": "Association of American Railroads",
+          "current": 270000.0,
+          "baseline": 1770000.0,
+          "delta": -1500000.0,
+          "ratio": 0.153,
+          "filings_current": 6,
+          "filings_baseline": 7,
+          "topics": [
+            "Infrastructure and Broadband"
+          ],
+          "registrants": [
+            "The Jerry Costello Group, LLC",
+            "Arentfox Schiff LLP",
+            "Polaris-Hutton Group, LLC"
+          ],
+          "series": [
+            1398964.0,
+            1535259.0,
+            1394560.0,
+            1466562.0,
+            1435009.0,
+            1382568.0,
+            1340434.0,
+            1394046.0,
+            1295630.0,
+            1232092.0,
+            1223541.0,
+            1460376.0,
+            1533369.0,
+            1390398.0,
+            1334715.0,
+            1696079.0,
+            1770000.0,
+            1500000.0,
+            1490000.0,
+            1683000.0
+          ],
+          "examples": [
+            {
+              "uuid": "7ca8ae18-d89f-4165-b7b6-9853fa14b5b8",
+              "date": "2026-07-20T21:19:37-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "Black Diamond Strategies LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "eb97bcb4-1410-4a05-b8c9-6811282d81d3",
+              "date": "2026-07-20T19:31:50-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "Forbes-Tate",
+              "income": 60000.0
+            },
+            {
+              "uuid": "e8e0698f-9345-4662-8d8a-a510a1b18b49",
+              "date": "2026-07-20T11:36:18-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "Polaris-Hutton Group, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "138cb7c9-f41e-4827-8b5c-8e6ec3527480",
+              "date": "2026-07-20T15:47:40-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "SBL Strategies, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "1098ec36-c764-4033-ab1b-832af55c271e",
+              "date": "2026-07-14T22:16:28-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "The Jerry Costello Group, LLC",
+              "income": 30000.0
+            }
+          ]
+        },
+        {
           "key": "NATIONAL ASSOCIATION OF REALTORS",
           "name": "National Association of Realtors",
           "current": 14880000.0,
@@ -5834,83 +5881,6 @@
               "client": "National Association of Realtors",
               "registrant": "Crossroads Strategies, LLC",
               "income": 50000.0
-            }
-          ]
-        },
-        {
-          "key": "ASSOCIATION OF AMERICAN RAILROADS",
-          "name": "Association of American Railroads",
-          "current": 270000.0,
-          "baseline": 1770000.0,
-          "delta": -1500000.0,
-          "ratio": 0.153,
-          "filings_current": 6,
-          "filings_baseline": 7,
-          "topics": [
-            "Infrastructure and Broadband"
-          ],
-          "registrants": [
-            "The Jerry Costello Group, LLC",
-            "Arentfox Schiff LLP",
-            "Polaris-Hutton Group, LLC"
-          ],
-          "series": [
-            1398964.0,
-            1535259.0,
-            1394560.0,
-            1466562.0,
-            1435009.0,
-            1382568.0,
-            1340434.0,
-            1394046.0,
-            1295630.0,
-            1232092.0,
-            1223541.0,
-            1460376.0,
-            1533369.0,
-            1390398.0,
-            1334715.0,
-            1696079.0,
-            1770000.0,
-            1500000.0,
-            1490000.0,
-            1683000.0
-          ],
-          "examples": [
-            {
-              "uuid": "7ca8ae18-d89f-4165-b7b6-9853fa14b5b8",
-              "date": "2026-07-20T21:19:37-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "Black Diamond Strategies LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "eb97bcb4-1410-4a05-b8c9-6811282d81d3",
-              "date": "2026-07-20T19:31:50-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "Forbes-Tate",
-              "income": 60000.0
-            },
-            {
-              "uuid": "e8e0698f-9345-4662-8d8a-a510a1b18b49",
-              "date": "2026-07-20T11:36:18-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "Polaris-Hutton Group, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "138cb7c9-f41e-4827-8b5c-8e6ec3527480",
-              "date": "2026-07-20T15:47:40-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "SBL Strategies, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "1098ec36-c764-4033-ab1b-832af55c271e",
-              "date": "2026-07-14T22:16:28-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "The Jerry Costello Group, LLC",
-              "income": 30000.0
             }
           ]
         },
@@ -6862,51 +6832,6 @@
           ]
         },
         {
-          "key": "BANCREDITO HOLDING",
-          "name": "Chris Kise & Associates, P.A. on Behalf of Bancredito Holding Corporation",
-          "current": 630000.0,
-          "baseline": 0.0,
-          "delta": 630000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Ballard Partners"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            630000.0,
-            630000.0
-          ],
-          "examples": [
-            {
-              "uuid": "ffc73c3f-7cfb-46d2-82b8-1b1def2a1eb1",
-              "date": "2026-07-14T18:44:47-04:00",
-              "client": "Chris Kise & Associates, P.A. on Behalf of Bancredito Holding Corporation",
-              "registrant": "Ballard Partners",
-              "income": 630000.0
-            }
-          ]
-        },
-        {
           "key": "CATURUS",
           "name": "Caturus",
           "current": 630000.0,
@@ -6956,6 +6881,51 @@
               "client": "Caturus",
               "registrant": "Guidepoststrategies, LLC",
               "income": 130000.0
+            }
+          ]
+        },
+        {
+          "key": "BANCREDITO HOLDING",
+          "name": "Chris Kise & Associates, P.A. on Behalf of Bancredito Holding Corporation",
+          "current": 630000.0,
+          "baseline": 0.0,
+          "delta": 630000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Ballard Partners"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            630000.0,
+            630000.0
+          ],
+          "examples": [
+            {
+              "uuid": "ffc73c3f-7cfb-46d2-82b8-1b1def2a1eb1",
+              "date": "2026-07-14T18:44:47-04:00",
+              "client": "Chris Kise & Associates, P.A. on Behalf of Bancredito Holding Corporation",
+              "registrant": "Ballard Partners",
+              "income": 630000.0
             }
           ]
         },
