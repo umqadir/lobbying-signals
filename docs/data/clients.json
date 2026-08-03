@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T11:14:57.445991+00:00",
+  "generated_at": "2026-08-03T14:25:20.519206+00:00",
   "frames": {
     "quarter": {
       "current_quarter": {
@@ -13,8 +13,8 @@
         "label": "Q1 2025"
       },
       "quarter_totals": {
-        "current_income": 1701062978.69,
-        "baseline_income": 1493817495.05,
+        "current_income": 1701147978.69,
+        "baseline_income": 1493897495.05,
         "change_pct": 13.9,
         "current_filings": 25379,
         "baseline_filings": 21252,
@@ -3368,30 +3368,32 @@
           ]
         },
         {
-          "key": "VICTIMS OF TERRORISM - EAST AFRICA",
-          "name": "Victims of Terrorism - East Africa",
+          "key": "GOODRX",
+          "name": "Goodrx, Inc.",
           "current": 580000.0,
           "baseline": 0.0,
           "delta": 580000.0,
           "ratio": null,
-          "filings_current": 6,
-          "filings_baseline": 4,
-          "topics": [],
+          "filings_current": 4,
+          "filings_baseline": 0,
+          "topics": [
+            "Drug Pricing",
+            "Telehealth"
+          ],
           "registrants": [
-            "FJD Strategies LLC",
-            "Kamins Consulting",
-            "Mcguirewoods Consulting (a Subsidiary of Mcguirewoods LLP)"
+            "S-3 Group",
+            "Continental Strategy, LLC",
+            "Goodrx, Inc."
           ],
           "series": [
-            0.0,
-            10000.0,
-            0.0,
-            1210000.0,
-            1055000.0,
-            0.0,
-            0.0,
+            150000.0,
+            150000.0,
+            150000.0,
+            160000.0,
+            160000.0,
+            160000.0,
             50000.0,
-            1570000.0,
+            100000.0,
             0.0,
             0.0,
             0.0,
@@ -3399,46 +3401,40 @@
             0.0,
             0.0,
             0.0,
-            125000.0,
             0.0,
-            0.0,
+            456452.0,
+            520000.0,
+            510000.0,
             580000.0
           ],
           "examples": [
             {
-              "uuid": "9d269067-a9e9-4263-8f86-6ec92176e61c",
-              "date": "2026-04-20T15:41:19-04:00",
-              "client": "Victims of Terrorism - East Africa",
-              "registrant": "Monument Advocacy",
-              "income": 230000.0
+              "uuid": "30f69624-a4bb-4490-9959-63c68ca392e0",
+              "date": "2026-04-20T13:56:59-04:00",
+              "client": "Goodrx, Inc.",
+              "registrant": "Goodrx, Inc.",
+              "income": 370000.0
             },
             {
-              "uuid": "1fa4a62a-46a5-4e86-82f3-b55f9678eb85",
-              "date": "2026-04-29T17:25:48-04:00",
-              "client": "Victims of Terrorism - East Africa",
-              "registrant": "Morris J. Amitay, PC",
-              "income": 230000.0
+              "uuid": "779413b2-8b25-4473-a251-16f4d7517f88",
+              "date": "2026-04-17T16:35:10-04:00",
+              "client": "Goodrx, Inc.",
+              "registrant": "Continental Strategy, LLC",
+              "income": 90000.0
             },
             {
-              "uuid": "b5839e0c-fcca-4d3c-969c-ce66648583c1",
-              "date": "2026-04-07T09:36:31-04:00",
-              "client": "Victims of Terrorism - East Africa",
-              "registrant": "FJD Strategies LLC",
-              "income": 120000.0
+              "uuid": "3fa53740-56f8-42f2-bfd1-a95eee4e7906",
+              "date": "2026-04-17T10:53:19-04:00",
+              "client": "Goodrx, Inc.",
+              "registrant": "S-3 Group",
+              "income": 60000.0
             },
             {
-              "uuid": "1c09ac72-bc58-4e03-98e1-a7a8427d2990",
-              "date": "2026-04-19T11:42:27-04:00",
-              "client": "Victims of Terrorism - East Africa",
-              "registrant": "Kamins Consulting",
-              "income": 0
-            },
-            {
-              "uuid": "6ee33548-7240-4aa9-b3c7-7b6c843db55c",
-              "date": "2026-04-20T09:57:10-04:00",
-              "client": "Victims of Terrorism - East Africa",
-              "registrant": "Mcguirewoods Consulting (a Subsidiary of Mcguirewoods LLP)",
-              "income": 0
+              "uuid": "07bd9f10-fa8c-4a66-be24-440b1aabded6",
+              "date": "2026-04-21T12:14:00-04:00",
+              "client": "Goodrx, Inc.",
+              "registrant": "Capitol Hill Consulting Group",
+              "income": 60000.0
             }
           ]
         }
@@ -3456,95 +3452,15 @@
         "label": "Q2 2025"
       },
       "quarter_totals": {
-        "current_income": 1597023522.74,
-        "baseline_income": 1422210805.37,
-        "change_pct": 12.3,
-        "current_filings": 24138,
-        "baseline_filings": 22252,
-        "current_clients": 17635,
-        "baseline_clients": 16229
+        "current_income": 1599074347.74,
+        "baseline_income": 1433791132.37,
+        "change_pct": 11.5,
+        "current_filings": 24209,
+        "baseline_filings": 22302,
+        "current_clients": 17682,
+        "baseline_clients": 16255
       },
       "risers": [
-        {
-          "key": "BUSINESS ROUNDTABLE",
-          "name": "Business Roundtable",
-          "current": 7870000.0,
-          "baseline": 910000.0,
-          "delta": 6960000.0,
-          "ratio": 8.648,
-          "filings_current": 17,
-          "filings_baseline": 15,
-          "topics": [
-            "Cybersecurity",
-            "Artificial Intelligence",
-            "Defense Authorization",
-            "Appropriations"
-          ],
-          "registrants": [
-            "Ballard Partners",
-            "Invariant LLC",
-            "S-3 Group"
-          ],
-          "series": [
-            5775000.0,
-            12590000.0,
-            9190000.0,
-            5585000.0,
-            5120000.0,
-            6690000.0,
-            6060000.0,
-            5740000.0,
-            6010000.0,
-            4360000.0,
-            7070000.0,
-            6830000.0,
-            5860000.0,
-            5200000.0,
-            9110000.0,
-            7780000.0,
-            10090000.0,
-            8470000.0,
-            10910000.0,
-            8510000.0
-          ],
-          "examples": [
-            {
-              "uuid": "966e5941-2ffd-495a-a4e6-fab3a94b003e",
-              "date": "2026-07-20T19:44:54-04:00",
-              "client": "Business Roundtable",
-              "registrant": "The Business Roundtable, Inc.",
-              "income": 6950000.0
-            },
-            {
-              "uuid": "5c4588bd-ab9c-46e7-8615-5e9c40d6c04b",
-              "date": "2026-07-20T15:13:55-04:00",
-              "client": "Business Roundtable",
-              "registrant": "Pricewaterhousecoopers",
-              "income": 120000.0
-            },
-            {
-              "uuid": "29a77092-7f6c-4eed-8829-a3f67e79975d",
-              "date": "2026-07-20T10:02:02-04:00",
-              "client": "Business Roundtable",
-              "registrant": "Akin Gump Strauss Hauer & Feld",
-              "income": 110000.0
-            },
-            {
-              "uuid": "35b02de2-d785-40c4-95b6-de8bbea07044",
-              "date": "2026-07-16T22:44:28-04:00",
-              "client": "Business Roundtable",
-              "registrant": "Ballard Partners",
-              "income": 60000.0
-            },
-            {
-              "uuid": "286bea5a-807a-4807-9aec-25eca8b14858",
-              "date": "2026-07-17T09:51:57-04:00",
-              "client": "Business Roundtable",
-              "registrant": "Invariant LLC",
-              "income": 60000.0
-            }
-          ]
-        },
         {
           "key": "META PLATFORMS INC AND VARIOUS SUBSIDIARIES",
           "name": "Meta Platforms, Inc. and Various Subsidiaries",
@@ -3920,86 +3836,6 @@
               "client": "Apple Inc.",
               "registrant": "Capitol Tax Partners, LLP",
               "income": 90000.0
-            }
-          ]
-        },
-        {
-          "key": "ANTHROPIC",
-          "name": "Anthropic, PBC",
-          "current": 2890000.0,
-          "baseline": 170000.0,
-          "delta": 2720000.0,
-          "ratio": 17.0,
-          "filings_current": 10,
-          "filings_baseline": 3,
-          "topics": [
-            "Artificial Intelligence",
-            "Defense Procurement",
-            "Cybersecurity",
-            "Defense Authorization"
-          ],
-          "registrants": [
-            "Ballard Partners",
-            "Kountoupes Denham Carr & Reid, LLC",
-            "Continental Strategy, LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            70000.0,
-            70000.0,
-            70000.0,
-            70000.0,
-            180000.0,
-            230000.0,
-            300000.0,
-            330000.0,
-            440000.0,
-            1090000.0,
-            1180000.0,
-            1100000.0,
-            2180000.0
-          ],
-          "examples": [
-            {
-              "uuid": "812e5787-90df-48ef-a801-500468d63047",
-              "date": "2026-07-20T20:52:04-04:00",
-              "client": "Anthropic, PBC",
-              "registrant": "Anthropic",
-              "income": 1970000.0
-            },
-            {
-              "uuid": "8db3955e-600c-4e0a-8944-91a7878ae110",
-              "date": "2026-07-14T12:47:00-04:00",
-              "client": "Anthropic, PBC",
-              "registrant": "Ballard Partners",
-              "income": 380000.0
-            },
-            {
-              "uuid": "94ed28d3-d272-40ba-994d-34045d92c6da",
-              "date": "2026-07-19T13:17:29-04:00",
-              "client": "Anthropic, PBC",
-              "registrant": "Continental Strategy, LLC",
-              "income": 150000.0
-            },
-            {
-              "uuid": "9389667a-a5ea-4572-bf77-a71207627990",
-              "date": "2026-07-20T12:07:40-04:00",
-              "client": "Anthropic, PBC",
-              "registrant": "Fierce Government Relations",
-              "income": 80000.0
-            },
-            {
-              "uuid": "038ace8c-a981-4a85-91b2-a1bc556ab8dd",
-              "date": "2026-07-17T17:10:21-04:00",
-              "client": "Anthropic, PBC",
-              "registrant": "Kountoupes Denham Carr & Reid, LLC",
-              "income": 60000.0
             }
           ]
         },
@@ -4553,6 +4389,86 @@
               "client": "Alzheimer's Association",
               "registrant": "Alston & Bird LLP",
               "income": 50000.0
+            }
+          ]
+        },
+        {
+          "key": "ANTHROPIC",
+          "name": "Anthropic, PBC",
+          "current": 2890000.0,
+          "baseline": 1090000.0,
+          "delta": 1800000.0,
+          "ratio": 2.651,
+          "filings_current": 10,
+          "filings_baseline": 4,
+          "topics": [
+            "Artificial Intelligence",
+            "Defense Procurement",
+            "Cybersecurity",
+            "Defense Authorization"
+          ],
+          "registrants": [
+            "Ballard Partners",
+            "Kountoupes Denham Carr & Reid, LLC",
+            "Continental Strategy, LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            70000.0,
+            70000.0,
+            70000.0,
+            70000.0,
+            180000.0,
+            230000.0,
+            300000.0,
+            330000.0,
+            440000.0,
+            1090000.0,
+            1180000.0,
+            1100000.0,
+            2180000.0
+          ],
+          "examples": [
+            {
+              "uuid": "812e5787-90df-48ef-a801-500468d63047",
+              "date": "2026-07-20T20:52:04-04:00",
+              "client": "Anthropic, PBC",
+              "registrant": "Anthropic",
+              "income": 1970000.0
+            },
+            {
+              "uuid": "8db3955e-600c-4e0a-8944-91a7878ae110",
+              "date": "2026-07-14T12:47:00-04:00",
+              "client": "Anthropic, PBC",
+              "registrant": "Ballard Partners",
+              "income": 380000.0
+            },
+            {
+              "uuid": "94ed28d3-d272-40ba-994d-34045d92c6da",
+              "date": "2026-07-19T13:17:29-04:00",
+              "client": "Anthropic, PBC",
+              "registrant": "Continental Strategy, LLC",
+              "income": 150000.0
+            },
+            {
+              "uuid": "9389667a-a5ea-4572-bf77-a71207627990",
+              "date": "2026-07-20T12:07:40-04:00",
+              "client": "Anthropic, PBC",
+              "registrant": "Fierce Government Relations",
+              "income": 80000.0
+            },
+            {
+              "uuid": "038ace8c-a981-4a85-91b2-a1bc556ab8dd",
+              "date": "2026-07-17T17:10:21-04:00",
+              "client": "Anthropic, PBC",
+              "registrant": "Kountoupes Denham Carr & Reid, LLC",
+              "income": 60000.0
             }
           ]
         },
@@ -5313,6 +5229,86 @@
           ]
         },
         {
+          "key": "UBER TECHNOLOGIES",
+          "name": "Uber Technologies, Inc.",
+          "current": 1825000.0,
+          "baseline": 535000.0,
+          "delta": 1290000.0,
+          "ratio": 3.411,
+          "filings_current": 11,
+          "filings_baseline": 9,
+          "topics": [
+            "Data Privacy",
+            "Artificial Intelligence",
+            "Infrastructure and Broadband",
+            "Labor and Employment"
+          ],
+          "registrants": [
+            "Summit Strategies Government Affairs LLC",
+            "Axadvocacy Government Relations",
+            "Miller Strategies, LLC"
+          ],
+          "series": [
+            860000.0,
+            1000000.0,
+            960000.0,
+            610000.0,
+            920000.0,
+            970000.0,
+            740000.0,
+            860000.0,
+            1000000.0,
+            920000.0,
+            980000.0,
+            950000.0,
+            950000.0,
+            980000.0,
+            1230000.0,
+            1255000.0,
+            1385000.0,
+            1545000.0,
+            1325000.0,
+            1515000.0
+          ],
+          "examples": [
+            {
+              "uuid": "055800ac-6b44-4d6a-b72a-1679df04a32c",
+              "date": "2026-07-20T17:01:35-04:00",
+              "client": "Uber Technologies, Inc.",
+              "registrant": "Uber Technologies, Inc.",
+              "income": 1230000.0
+            },
+            {
+              "uuid": "d3049772-7541-4c6b-8809-de7271790a09",
+              "date": "2026-07-20T15:38:46-04:00",
+              "client": "Uber Technologies, Inc.",
+              "registrant": "Miller Strategies, LLC",
+              "income": 150000.0
+            },
+            {
+              "uuid": "aff15502-07b0-40a9-97af-0c3d4c5e1dd4",
+              "date": "2026-07-20T15:48:58-04:00",
+              "client": "Uber Technologies, Inc.",
+              "registrant": "Thegroup DC, LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "a71a17d5-0ebd-4719-9c9a-af58a5e42f04",
+              "date": "2026-07-20T18:58:07-04:00",
+              "client": "Uber Technologies, Inc.",
+              "registrant": "Forbes-Tate",
+              "income": 80000.0
+            },
+            {
+              "uuid": "1ca26dba-1afd-46b2-868f-433ed057f813",
+              "date": "2026-07-20T22:40:00-04:00",
+              "client": "Uber Technologies, Inc.",
+              "registrant": "The Doerrer Group LLC",
+              "income": 80000.0
+            }
+          ]
+        },
+        {
           "key": "CONSUMER BRANDS ASSOCIATION (PKA: GROCERY MANUFACTURERS ASSOCIATION)",
           "name": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
           "current": 1290000.0,
@@ -5484,6 +5480,86 @@
               "client": "Chamber of Commerce of the U.S.A.",
               "registrant": "Chamber of Commerce of the U.S.A.",
               "income": 16950000.0
+            }
+          ]
+        },
+        {
+          "key": "BUSINESS ROUNDTABLE",
+          "name": "Business Roundtable",
+          "current": 7870000.0,
+          "baseline": 10090000.0,
+          "delta": -2220000.0,
+          "ratio": 0.78,
+          "filings_current": 17,
+          "filings_baseline": 16,
+          "topics": [
+            "Cybersecurity",
+            "Artificial Intelligence",
+            "Defense Authorization",
+            "Appropriations"
+          ],
+          "registrants": [
+            "Ballard Partners",
+            "Invariant LLC",
+            "S-3 Group"
+          ],
+          "series": [
+            5775000.0,
+            12590000.0,
+            9190000.0,
+            5585000.0,
+            5120000.0,
+            6690000.0,
+            6060000.0,
+            5740000.0,
+            6010000.0,
+            4360000.0,
+            7070000.0,
+            6830000.0,
+            5860000.0,
+            5200000.0,
+            9110000.0,
+            7780000.0,
+            10090000.0,
+            8470000.0,
+            10910000.0,
+            8510000.0
+          ],
+          "examples": [
+            {
+              "uuid": "966e5941-2ffd-495a-a4e6-fab3a94b003e",
+              "date": "2026-07-20T19:44:54-04:00",
+              "client": "Business Roundtable",
+              "registrant": "The Business Roundtable, Inc.",
+              "income": 6950000.0
+            },
+            {
+              "uuid": "5c4588bd-ab9c-46e7-8615-5e9c40d6c04b",
+              "date": "2026-07-20T15:13:55-04:00",
+              "client": "Business Roundtable",
+              "registrant": "Pricewaterhousecoopers",
+              "income": 120000.0
+            },
+            {
+              "uuid": "29a77092-7f6c-4eed-8829-a3f67e79975d",
+              "date": "2026-07-20T10:02:02-04:00",
+              "client": "Business Roundtable",
+              "registrant": "Akin Gump Strauss Hauer & Feld",
+              "income": 110000.0
+            },
+            {
+              "uuid": "35b02de2-d785-40c4-95b6-de8bbea07044",
+              "date": "2026-07-16T22:44:28-04:00",
+              "client": "Business Roundtable",
+              "registrant": "Ballard Partners",
+              "income": 60000.0
+            },
+            {
+              "uuid": "286bea5a-807a-4807-9aec-25eca8b14858",
+              "date": "2026-07-17T09:51:57-04:00",
+              "client": "Business Roundtable",
+              "registrant": "Invariant LLC",
+              "income": 60000.0
             }
           ]
         },
@@ -5728,83 +5804,6 @@
           ]
         },
         {
-          "key": "ASSOCIATION OF AMERICAN RAILROADS",
-          "name": "Association of American Railroads",
-          "current": 270000.0,
-          "baseline": 1770000.0,
-          "delta": -1500000.0,
-          "ratio": 0.153,
-          "filings_current": 6,
-          "filings_baseline": 7,
-          "topics": [
-            "Infrastructure and Broadband"
-          ],
-          "registrants": [
-            "The Jerry Costello Group, LLC",
-            "Arentfox Schiff LLP",
-            "Polaris-Hutton Group, LLC"
-          ],
-          "series": [
-            1398964.0,
-            1535259.0,
-            1394560.0,
-            1466562.0,
-            1435009.0,
-            1382568.0,
-            1340434.0,
-            1394046.0,
-            1295630.0,
-            1232092.0,
-            1223541.0,
-            1460376.0,
-            1533369.0,
-            1390398.0,
-            1334715.0,
-            1696079.0,
-            1770000.0,
-            1500000.0,
-            1490000.0,
-            1683000.0
-          ],
-          "examples": [
-            {
-              "uuid": "7ca8ae18-d89f-4165-b7b6-9853fa14b5b8",
-              "date": "2026-07-20T21:19:37-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "Black Diamond Strategies LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "eb97bcb4-1410-4a05-b8c9-6811282d81d3",
-              "date": "2026-07-20T19:31:50-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "Forbes-Tate",
-              "income": 60000.0
-            },
-            {
-              "uuid": "e8e0698f-9345-4662-8d8a-a510a1b18b49",
-              "date": "2026-07-20T11:36:18-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "Polaris-Hutton Group, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "138cb7c9-f41e-4827-8b5c-8e6ec3527480",
-              "date": "2026-07-20T15:47:40-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "SBL Strategies, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "1098ec36-c764-4033-ab1b-832af55c271e",
-              "date": "2026-07-14T22:16:28-04:00",
-              "client": "Association of American Railroads",
-              "registrant": "The Jerry Costello Group, LLC",
-              "income": 30000.0
-            }
-          ]
-        },
-        {
           "key": "NATIONAL ASSOCIATION OF REALTORS",
           "name": "National Association of Realtors",
           "current": 14880000.0,
@@ -5881,6 +5880,83 @@
               "client": "National Association of Realtors",
               "registrant": "Crossroads Strategies, LLC",
               "income": 50000.0
+            }
+          ]
+        },
+        {
+          "key": "ASSOCIATION OF AMERICAN RAILROADS",
+          "name": "Association of American Railroads",
+          "current": 270000.0,
+          "baseline": 1770000.0,
+          "delta": -1500000.0,
+          "ratio": 0.153,
+          "filings_current": 6,
+          "filings_baseline": 7,
+          "topics": [
+            "Infrastructure and Broadband"
+          ],
+          "registrants": [
+            "The Jerry Costello Group, LLC",
+            "Arentfox Schiff LLP",
+            "Polaris-Hutton Group, LLC"
+          ],
+          "series": [
+            1398964.0,
+            1535259.0,
+            1394560.0,
+            1466562.0,
+            1435009.0,
+            1382568.0,
+            1340434.0,
+            1394046.0,
+            1295630.0,
+            1232092.0,
+            1223541.0,
+            1460376.0,
+            1533369.0,
+            1390398.0,
+            1334715.0,
+            1696079.0,
+            1770000.0,
+            1500000.0,
+            1490000.0,
+            1683000.0
+          ],
+          "examples": [
+            {
+              "uuid": "7ca8ae18-d89f-4165-b7b6-9853fa14b5b8",
+              "date": "2026-07-20T21:19:37-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "Black Diamond Strategies LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "eb97bcb4-1410-4a05-b8c9-6811282d81d3",
+              "date": "2026-07-20T19:31:50-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "Forbes-Tate",
+              "income": 60000.0
+            },
+            {
+              "uuid": "e8e0698f-9345-4662-8d8a-a510a1b18b49",
+              "date": "2026-07-20T11:36:18-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "Polaris-Hutton Group, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "138cb7c9-f41e-4827-8b5c-8e6ec3527480",
+              "date": "2026-07-20T15:47:40-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "SBL Strategies, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "1098ec36-c764-4033-ab1b-832af55c271e",
+              "date": "2026-07-14T22:16:28-04:00",
+              "client": "Association of American Railroads",
+              "registrant": "The Jerry Costello Group, LLC",
+              "income": 30000.0
             }
           ]
         },
@@ -6403,51 +6479,6 @@
               "date": "2026-07-17T10:31:52-04:00",
               "client": "National Retail Federation",
               "registrant": "Invariant LLC",
-              "income": 0
-            }
-          ]
-        },
-        {
-          "key": "BARRICK MINING",
-          "name": "Barrick Mining Corporation",
-          "current": 0.0,
-          "baseline": 1300000.0,
-          "delta": -1300000.0,
-          "ratio": 0.0,
-          "filings_current": 1,
-          "filings_baseline": 2,
-          "topics": [],
-          "registrants": [
-            "Barrick Mining Corporation"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            410000.0,
-            1960000.0,
-            190000.0,
-            0.0,
-            0.0
-          ],
-          "examples": [
-            {
-              "uuid": "24fb4931-e6ca-432f-b9ef-b2c091858cd2",
-              "date": "2026-07-13T12:52:46-04:00",
-              "client": "Barrick Mining Corporation",
-              "registrant": "Barrick Mining Corporation",
               "income": 0
             }
           ]
@@ -6975,7 +7006,7 @@
           ]
         }
       ],
-      "through": "2026-07-31"
+      "through": "2026-08-03"
     }
   },
   "quarters": [
