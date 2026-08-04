@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T14:25:20.519206+00:00",
+  "generated_at": "2026-08-04T12:02:06.100008+00:00",
   "frames": {
     "quarter": {
       "current_quarter": {
@@ -16,9 +16,9 @@
         "current_income": 1701147978.69,
         "baseline_income": 1493897495.05,
         "change_pct": 13.9,
-        "current_filings": 25379,
+        "current_filings": 25380,
         "baseline_filings": 21252,
-        "current_clients": 18474,
+        "current_clients": 18475,
         "baseline_clients": 15367
       },
       "risers": [
@@ -1222,86 +1222,6 @@
           ]
         },
         {
-          "key": "NETFLIX",
-          "name": "Netflix, Inc.",
-          "current": 2000000.0,
-          "baseline": 900000.0,
-          "delta": 1100000.0,
-          "ratio": 2.222,
-          "filings_current": 10,
-          "filings_baseline": 5,
-          "topics": [
-            "Data Privacy",
-            "Tax Policy",
-            "Artificial Intelligence",
-            "Trade Agreements"
-          ],
-          "registrants": [
-            "Bloom Strategic Counsel",
-            "The Gibson Group, LLC",
-            "Miller & Chevalier Chartered"
-          ],
-          "series": [
-            140000.0,
-            180000.0,
-            520000.0,
-            500000.0,
-            460000.0,
-            530000.0,
-            400000.0,
-            420000.0,
-            550000.0,
-            520000.0,
-            520000.0,
-            530000.0,
-            600000.0,
-            600000.0,
-            750000.0,
-            900000.0,
-            1000000.0,
-            950000.0,
-            1050000.0,
-            2000000.0
-          ],
-          "examples": [
-            {
-              "uuid": "43f19f49-be63-450a-b462-9f102cc4a82f",
-              "date": "2026-04-20T17:15:14-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Netflix, Inc.",
-              "income": 1280000.0
-            },
-            {
-              "uuid": "9b438bc9-faf9-4ca5-a12e-6c7bd0d02890",
-              "date": "2026-04-16T15:09:11-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Ballard Partners",
-              "income": 150000.0
-            },
-            {
-              "uuid": "93441682-a7d9-40b7-bb09-7fa453147fff",
-              "date": "2026-04-20T10:20:15-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Kressin Powers LLC",
-              "income": 150000.0
-            },
-            {
-              "uuid": "adaab50c-57ce-48c1-918f-56e82dd2e388",
-              "date": "2026-04-20T13:55:09-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Monument Advocacy",
-              "income": 130000.0
-            },
-            {
-              "uuid": "1223419b-d7f1-47a5-a743-4a7f8d751b65",
-              "date": "2026-04-20T19:40:46-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Avoq, LLC",
-              "income": 90000.0
-            }
-          ]
-        },
-        {
           "key": "TEVA PHARMACEUTICALS USA",
           "name": "Teva Pharmaceuticals USA, Inc.",
           "current": 1530000.0,
@@ -1378,6 +1298,86 @@
               "client": "Teva Pharmaceuticals USA, Inc.",
               "registrant": "Talley Strategies LLC",
               "income": 60000.0
+            }
+          ]
+        },
+        {
+          "key": "NETFLIX",
+          "name": "Netflix, Inc.",
+          "current": 2000000.0,
+          "baseline": 900000.0,
+          "delta": 1100000.0,
+          "ratio": 2.222,
+          "filings_current": 10,
+          "filings_baseline": 5,
+          "topics": [
+            "Data Privacy",
+            "Tax Policy",
+            "Artificial Intelligence",
+            "Trade Agreements"
+          ],
+          "registrants": [
+            "Bloom Strategic Counsel",
+            "The Gibson Group, LLC",
+            "Miller & Chevalier Chartered"
+          ],
+          "series": [
+            140000.0,
+            180000.0,
+            520000.0,
+            500000.0,
+            460000.0,
+            530000.0,
+            400000.0,
+            420000.0,
+            550000.0,
+            520000.0,
+            520000.0,
+            530000.0,
+            600000.0,
+            600000.0,
+            750000.0,
+            900000.0,
+            1000000.0,
+            950000.0,
+            1050000.0,
+            2000000.0
+          ],
+          "examples": [
+            {
+              "uuid": "43f19f49-be63-450a-b462-9f102cc4a82f",
+              "date": "2026-04-20T17:15:14-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Netflix, Inc.",
+              "income": 1280000.0
+            },
+            {
+              "uuid": "9b438bc9-faf9-4ca5-a12e-6c7bd0d02890",
+              "date": "2026-04-16T15:09:11-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Ballard Partners",
+              "income": 150000.0
+            },
+            {
+              "uuid": "93441682-a7d9-40b7-bb09-7fa453147fff",
+              "date": "2026-04-20T10:20:15-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Kressin Powers LLC",
+              "income": 150000.0
+            },
+            {
+              "uuid": "adaab50c-57ce-48c1-918f-56e82dd2e388",
+              "date": "2026-04-20T13:55:09-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Monument Advocacy",
+              "income": 130000.0
+            },
+            {
+              "uuid": "1223419b-d7f1-47a5-a743-4a7f8d751b65",
+              "date": "2026-04-20T19:40:46-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Avoq, LLC",
+              "income": 90000.0
             }
           ]
         },
@@ -1725,71 +1725,6 @@
           ]
         },
         {
-          "key": "COCA-COLA",
-          "name": "The Coca-Cola Company",
-          "current": 2110000.0,
-          "baseline": 1260000.0,
-          "delta": 850000.0,
-          "ratio": 1.675,
-          "filings_current": 3,
-          "filings_baseline": 3,
-          "topics": [
-            "Nutrition Assistance",
-            "Trade Agreements",
-            "International Tax"
-          ],
-          "registrants": [
-            "Kountoupes Denham Carr & Reid, LLC",
-            "The Coca-Cola Company",
-            "Empire Consulting Group"
-          ],
-          "series": [
-            1970000.0,
-            1020000.0,
-            1670000.0,
-            1290000.0,
-            1270000.0,
-            1050000.0,
-            1440000.0,
-            1020000.0,
-            960000.0,
-            920000.0,
-            1610000.0,
-            1260000.0,
-            1550000.0,
-            770000.0,
-            1840000.0,
-            1260000.0,
-            1400000.0,
-            1120000.0,
-            1640000.0,
-            2110000.0
-          ],
-          "examples": [
-            {
-              "uuid": "370857bb-bd42-4974-add5-1ee5e57e681e",
-              "date": "2026-04-17T14:28:31-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "The Coca-Cola Company",
-              "income": 2010000.0
-            },
-            {
-              "uuid": "e34e16b5-f662-42b5-bd21-6ef963ee82a0",
-              "date": "2026-04-13T12:15:22-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "Kountoupes Denham Carr & Reid, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "d89d6f89-f6bc-4987-a288-29ff3cb719d3",
-              "date": "2026-04-18T09:21:09-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "Empire Consulting Group",
-              "income": 50000.0
-            }
-          ]
-        },
-        {
           "key": "TP-LINK SYSTEMS",
           "name": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
           "current": 930000.0,
@@ -1856,6 +1791,71 @@
               "client": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
               "registrant": "Vernonburg Group",
               "income": 30000.0
+            }
+          ]
+        },
+        {
+          "key": "COCA-COLA",
+          "name": "The Coca-Cola Company",
+          "current": 2110000.0,
+          "baseline": 1260000.0,
+          "delta": 850000.0,
+          "ratio": 1.675,
+          "filings_current": 3,
+          "filings_baseline": 3,
+          "topics": [
+            "Nutrition Assistance",
+            "Trade Agreements",
+            "International Tax"
+          ],
+          "registrants": [
+            "Kountoupes Denham Carr & Reid, LLC",
+            "The Coca-Cola Company",
+            "Empire Consulting Group"
+          ],
+          "series": [
+            1970000.0,
+            1020000.0,
+            1670000.0,
+            1290000.0,
+            1270000.0,
+            1050000.0,
+            1440000.0,
+            1020000.0,
+            960000.0,
+            920000.0,
+            1610000.0,
+            1260000.0,
+            1550000.0,
+            770000.0,
+            1840000.0,
+            1260000.0,
+            1400000.0,
+            1120000.0,
+            1640000.0,
+            2110000.0
+          ],
+          "examples": [
+            {
+              "uuid": "370857bb-bd42-4974-add5-1ee5e57e681e",
+              "date": "2026-04-17T14:28:31-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "The Coca-Cola Company",
+              "income": 2010000.0
+            },
+            {
+              "uuid": "e34e16b5-f662-42b5-bd21-6ef963ee82a0",
+              "date": "2026-04-13T12:15:22-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "Kountoupes Denham Carr & Reid, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "d89d6f89-f6bc-4987-a288-29ff3cb719d3",
+              "date": "2026-04-18T09:21:09-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "Empire Consulting Group",
+              "income": 50000.0
             }
           ]
         }
@@ -3452,13 +3452,13 @@
         "label": "Q2 2025"
       },
       "quarter_totals": {
-        "current_income": 1599074347.74,
-        "baseline_income": 1433791132.37,
-        "change_pct": 11.5,
-        "current_filings": 24209,
-        "baseline_filings": 22302,
-        "current_clients": 17682,
-        "baseline_clients": 16255
+        "current_income": 1604796200.89,
+        "baseline_income": 1434729132.37,
+        "change_pct": 11.9,
+        "current_filings": 24496,
+        "baseline_filings": 22341,
+        "current_clients": 17890,
+        "baseline_clients": 16280
       },
       "risers": [
         {
@@ -4198,7 +4198,7 @@
             4730000.0,
             4280000.0,
             3500000.0,
-            2430000.0,
+            2440000.0,
             5150000.0
           ],
           "examples": [
@@ -5229,6 +5229,56 @@
           ]
         },
         {
+          "key": "CONSUMER BRANDS ASSOCIATION (PKA: GROCERY MANUFACTURERS ASSOCIATION)",
+          "name": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
+          "current": 1290000.0,
+          "baseline": 0.0,
+          "delta": 1290000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Waste and Recycling Management",
+            "Farm Policy",
+            "Nutrition Assistance",
+            "Tariffs and Trade Enforcement"
+          ],
+          "registrants": [
+            "Consumer Brands Association (pka: Grocery Manufacturers Association)"
+          ],
+          "series": [
+            518508.0,
+            268959.0,
+            380824.0,
+            372777.0,
+            413719.0,
+            396301.0,
+            761134.0,
+            560000.0,
+            445257.0,
+            550000.0,
+            810000.0,
+            680000.0,
+            450000.0,
+            480000.0,
+            670000.0,
+            715000.0,
+            1421000.0,
+            1555000.0,
+            3240000.0,
+            1120000.0
+          ],
+          "examples": [
+            {
+              "uuid": "8f7ebcc1-e9e9-4510-a92e-33235c5c6187",
+              "date": "2026-07-17T18:00:12-04:00",
+              "client": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
+              "registrant": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
+              "income": 1290000.0
+            }
+          ]
+        },
+        {
           "key": "UBER TECHNOLOGIES",
           "name": "Uber Technologies, Inc.",
           "current": 1825000.0,
@@ -5305,56 +5355,6 @@
               "client": "Uber Technologies, Inc.",
               "registrant": "The Doerrer Group LLC",
               "income": 80000.0
-            }
-          ]
-        },
-        {
-          "key": "CONSUMER BRANDS ASSOCIATION (PKA: GROCERY MANUFACTURERS ASSOCIATION)",
-          "name": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
-          "current": 1290000.0,
-          "baseline": 0.0,
-          "delta": 1290000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Waste and Recycling Management",
-            "Farm Policy",
-            "Nutrition Assistance",
-            "Tariffs and Trade Enforcement"
-          ],
-          "registrants": [
-            "Consumer Brands Association (pka: Grocery Manufacturers Association)"
-          ],
-          "series": [
-            518508.0,
-            268959.0,
-            380824.0,
-            372777.0,
-            413719.0,
-            396301.0,
-            761134.0,
-            560000.0,
-            445257.0,
-            550000.0,
-            810000.0,
-            680000.0,
-            450000.0,
-            480000.0,
-            670000.0,
-            715000.0,
-            1421000.0,
-            1555000.0,
-            3240000.0,
-            1120000.0
-          ],
-          "examples": [
-            {
-              "uuid": "8f7ebcc1-e9e9-4510-a92e-33235c5c6187",
-              "date": "2026-07-17T18:00:12-04:00",
-              "client": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
-              "registrant": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
-              "income": 1290000.0
             }
           ]
         }
@@ -6558,14 +6558,15 @@
           "baseline": 0.0,
           "delta": 1150000.0,
           "ratio": null,
-          "filings_current": 2,
+          "filings_current": 3,
           "filings_baseline": 0,
           "topics": [
             "Cybersecurity"
           ],
           "registrants": [
             "Continental Strategy, LLC",
-            "Valcour LLC"
+            "Valcour LLC",
+            "Interlink Capital Strategies"
           ],
           "series": [
             0.0,
@@ -6603,6 +6604,13 @@
               "client": "Telekom Srbija",
               "registrant": "Continental Strategy, LLC",
               "income": 300000.0
+            },
+            {
+              "uuid": "bed2cfa2-2cee-447d-868b-e51134aa4719",
+              "date": "2026-08-03T13:28:46-04:00",
+              "client": "Telekom Srbija",
+              "registrant": "Interlink Capital Strategies",
+              "income": 0
             }
           ]
         },
@@ -7006,7 +7014,7 @@
           ]
         }
       ],
-      "through": "2026-08-03"
+      "through": "2026-08-04"
     }
   },
   "quarters": [
