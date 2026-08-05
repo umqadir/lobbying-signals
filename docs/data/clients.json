@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T12:02:06.100008+00:00",
+  "generated_at": "2026-08-05T11:59:37.725597+00:00",
   "frames": {
     "quarter": {
       "current_quarter": {
@@ -13,12 +13,12 @@
         "label": "Q1 2025"
       },
       "quarter_totals": {
-        "current_income": 1701147978.69,
+        "current_income": 1701178470.69,
         "baseline_income": 1493897495.05,
         "change_pct": 13.9,
-        "current_filings": 25380,
+        "current_filings": 25381,
         "baseline_filings": 21252,
-        "current_clients": 18475,
+        "current_clients": 18476,
         "baseline_clients": 15367
       },
       "risers": [
@@ -1222,86 +1222,6 @@
           ]
         },
         {
-          "key": "TEVA PHARMACEUTICALS USA",
-          "name": "Teva Pharmaceuticals USA, Inc.",
-          "current": 1530000.0,
-          "baseline": 430000.0,
-          "delta": 1100000.0,
-          "ratio": 3.558,
-          "filings_current": 5,
-          "filings_baseline": 3,
-          "topics": [
-            "Drug Pricing",
-            "FDA Regulation",
-            "Tariffs and Trade Enforcement",
-            "Intellectual Property"
-          ],
-          "registrants": [
-            "Faegre Drinker Biddle & Reath LLP",
-            "Teva Pharmaceuticals USA, Inc.",
-            "MR. David Friedman"
-          ],
-          "series": [
-            910000.0,
-            1030000.0,
-            820000.0,
-            2270000.0,
-            770000.0,
-            1050000.0,
-            700000.0,
-            310000.0,
-            1390000.0,
-            360000.0,
-            310000.0,
-            1390000.0,
-            320000.0,
-            410000.0,
-            490000.0,
-            430000.0,
-            1510000.0,
-            620000.0,
-            740000.0,
-            1530000.0
-          ],
-          "examples": [
-            {
-              "uuid": "829c774b-69a8-4371-99ec-dcc703aca293",
-              "date": "2026-04-20T10:31:20-04:00",
-              "client": "Teva Pharmaceuticals USA, Inc.",
-              "registrant": "Teva Pharmaceuticals USA, Inc.",
-              "income": 1100000.0
-            },
-            {
-              "uuid": "25cb76c6-3f73-4a82-94f4-4ee38c0203bc",
-              "date": "2026-04-20T13:32:13-04:00",
-              "client": "Teva Pharmaceuticals USA, Inc.",
-              "registrant": "MR. David Friedman",
-              "income": 250000.0
-            },
-            {
-              "uuid": "77a79326-9a2a-4706-a605-5f6a701b335b",
-              "date": "2026-04-16T13:36:32-04:00",
-              "client": "Teva Pharmaceuticals USA, Inc.",
-              "registrant": "Faegre Drinker Biddle & Reath LLP",
-              "income": 60000.0
-            },
-            {
-              "uuid": "f7d6e672-8b54-4556-9935-9f85ae25db1c",
-              "date": "2026-04-21T10:30:50-04:00",
-              "client": "Teva Pharmaceuticals USA, Inc.",
-              "registrant": "Capitol Hill Consulting Group",
-              "income": 60000.0
-            },
-            {
-              "uuid": "07f7e1db-76cd-4ec2-a6ed-2644e1fb44ff",
-              "date": "2026-04-21T00:10:23-04:00",
-              "client": "Teva Pharmaceuticals USA, Inc.",
-              "registrant": "Talley Strategies LLC",
-              "income": 60000.0
-            }
-          ]
-        },
-        {
           "key": "NETFLIX",
           "name": "Netflix, Inc.",
           "current": 2000000.0,
@@ -1378,6 +1298,86 @@
               "client": "Netflix, Inc.",
               "registrant": "Avoq, LLC",
               "income": 90000.0
+            }
+          ]
+        },
+        {
+          "key": "TEVA PHARMACEUTICALS USA",
+          "name": "Teva Pharmaceuticals USA, Inc.",
+          "current": 1530000.0,
+          "baseline": 430000.0,
+          "delta": 1100000.0,
+          "ratio": 3.558,
+          "filings_current": 5,
+          "filings_baseline": 3,
+          "topics": [
+            "Drug Pricing",
+            "FDA Regulation",
+            "Tariffs and Trade Enforcement",
+            "Intellectual Property"
+          ],
+          "registrants": [
+            "Faegre Drinker Biddle & Reath LLP",
+            "Teva Pharmaceuticals USA, Inc.",
+            "MR. David Friedman"
+          ],
+          "series": [
+            910000.0,
+            1030000.0,
+            820000.0,
+            2270000.0,
+            770000.0,
+            1050000.0,
+            700000.0,
+            310000.0,
+            1390000.0,
+            360000.0,
+            310000.0,
+            1390000.0,
+            320000.0,
+            410000.0,
+            490000.0,
+            430000.0,
+            1510000.0,
+            620000.0,
+            740000.0,
+            1530000.0
+          ],
+          "examples": [
+            {
+              "uuid": "829c774b-69a8-4371-99ec-dcc703aca293",
+              "date": "2026-04-20T10:31:20-04:00",
+              "client": "Teva Pharmaceuticals USA, Inc.",
+              "registrant": "Teva Pharmaceuticals USA, Inc.",
+              "income": 1100000.0
+            },
+            {
+              "uuid": "25cb76c6-3f73-4a82-94f4-4ee38c0203bc",
+              "date": "2026-04-20T13:32:13-04:00",
+              "client": "Teva Pharmaceuticals USA, Inc.",
+              "registrant": "MR. David Friedman",
+              "income": 250000.0
+            },
+            {
+              "uuid": "77a79326-9a2a-4706-a605-5f6a701b335b",
+              "date": "2026-04-16T13:36:32-04:00",
+              "client": "Teva Pharmaceuticals USA, Inc.",
+              "registrant": "Faegre Drinker Biddle & Reath LLP",
+              "income": 60000.0
+            },
+            {
+              "uuid": "f7d6e672-8b54-4556-9935-9f85ae25db1c",
+              "date": "2026-04-21T10:30:50-04:00",
+              "client": "Teva Pharmaceuticals USA, Inc.",
+              "registrant": "Capitol Hill Consulting Group",
+              "income": 60000.0
+            },
+            {
+              "uuid": "07f7e1db-76cd-4ec2-a6ed-2644e1fb44ff",
+              "date": "2026-04-21T00:10:23-04:00",
+              "client": "Teva Pharmaceuticals USA, Inc.",
+              "registrant": "Talley Strategies LLC",
+              "income": 60000.0
             }
           ]
         },
@@ -1725,6 +1725,71 @@
           ]
         },
         {
+          "key": "COCA-COLA",
+          "name": "The Coca-Cola Company",
+          "current": 2110000.0,
+          "baseline": 1260000.0,
+          "delta": 850000.0,
+          "ratio": 1.675,
+          "filings_current": 3,
+          "filings_baseline": 3,
+          "topics": [
+            "Nutrition Assistance",
+            "Trade Agreements",
+            "International Tax"
+          ],
+          "registrants": [
+            "Kountoupes Denham Carr & Reid, LLC",
+            "The Coca-Cola Company",
+            "Empire Consulting Group"
+          ],
+          "series": [
+            1970000.0,
+            1020000.0,
+            1670000.0,
+            1290000.0,
+            1270000.0,
+            1050000.0,
+            1440000.0,
+            1020000.0,
+            960000.0,
+            920000.0,
+            1610000.0,
+            1260000.0,
+            1550000.0,
+            770000.0,
+            1840000.0,
+            1260000.0,
+            1400000.0,
+            1120000.0,
+            1640000.0,
+            2110000.0
+          ],
+          "examples": [
+            {
+              "uuid": "370857bb-bd42-4974-add5-1ee5e57e681e",
+              "date": "2026-04-17T14:28:31-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "The Coca-Cola Company",
+              "income": 2010000.0
+            },
+            {
+              "uuid": "e34e16b5-f662-42b5-bd21-6ef963ee82a0",
+              "date": "2026-04-13T12:15:22-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "Kountoupes Denham Carr & Reid, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "d89d6f89-f6bc-4987-a288-29ff3cb719d3",
+              "date": "2026-04-18T09:21:09-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "Empire Consulting Group",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "TP-LINK SYSTEMS",
           "name": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
           "current": 930000.0,
@@ -1791,71 +1856,6 @@
               "client": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
               "registrant": "Vernonburg Group",
               "income": 30000.0
-            }
-          ]
-        },
-        {
-          "key": "COCA-COLA",
-          "name": "The Coca-Cola Company",
-          "current": 2110000.0,
-          "baseline": 1260000.0,
-          "delta": 850000.0,
-          "ratio": 1.675,
-          "filings_current": 3,
-          "filings_baseline": 3,
-          "topics": [
-            "Nutrition Assistance",
-            "Trade Agreements",
-            "International Tax"
-          ],
-          "registrants": [
-            "Kountoupes Denham Carr & Reid, LLC",
-            "The Coca-Cola Company",
-            "Empire Consulting Group"
-          ],
-          "series": [
-            1970000.0,
-            1020000.0,
-            1670000.0,
-            1290000.0,
-            1270000.0,
-            1050000.0,
-            1440000.0,
-            1020000.0,
-            960000.0,
-            920000.0,
-            1610000.0,
-            1260000.0,
-            1550000.0,
-            770000.0,
-            1840000.0,
-            1260000.0,
-            1400000.0,
-            1120000.0,
-            1640000.0,
-            2110000.0
-          ],
-          "examples": [
-            {
-              "uuid": "370857bb-bd42-4974-add5-1ee5e57e681e",
-              "date": "2026-04-17T14:28:31-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "The Coca-Cola Company",
-              "income": 2010000.0
-            },
-            {
-              "uuid": "e34e16b5-f662-42b5-bd21-6ef963ee82a0",
-              "date": "2026-04-13T12:15:22-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "Kountoupes Denham Carr & Reid, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "d89d6f89-f6bc-4987-a288-29ff3cb719d3",
-              "date": "2026-04-18T09:21:09-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "Empire Consulting Group",
-              "income": 50000.0
             }
           ]
         }
@@ -3452,13 +3452,13 @@
         "label": "Q2 2025"
       },
       "quarter_totals": {
-        "current_income": 1604796200.89,
-        "baseline_income": 1434729132.37,
-        "change_pct": 11.9,
-        "current_filings": 24496,
-        "baseline_filings": 22341,
-        "current_clients": 17890,
-        "baseline_clients": 16280
+        "current_income": 1607186334.89,
+        "baseline_income": 1443550851.37,
+        "change_pct": 11.3,
+        "current_filings": 24604,
+        "baseline_filings": 22862,
+        "current_clients": 17974,
+        "baseline_clients": 16667
       },
       "risers": [
         {
@@ -5229,56 +5229,6 @@
           ]
         },
         {
-          "key": "CONSUMER BRANDS ASSOCIATION (PKA: GROCERY MANUFACTURERS ASSOCIATION)",
-          "name": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
-          "current": 1290000.0,
-          "baseline": 0.0,
-          "delta": 1290000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Waste and Recycling Management",
-            "Farm Policy",
-            "Nutrition Assistance",
-            "Tariffs and Trade Enforcement"
-          ],
-          "registrants": [
-            "Consumer Brands Association (pka: Grocery Manufacturers Association)"
-          ],
-          "series": [
-            518508.0,
-            268959.0,
-            380824.0,
-            372777.0,
-            413719.0,
-            396301.0,
-            761134.0,
-            560000.0,
-            445257.0,
-            550000.0,
-            810000.0,
-            680000.0,
-            450000.0,
-            480000.0,
-            670000.0,
-            715000.0,
-            1421000.0,
-            1555000.0,
-            3240000.0,
-            1120000.0
-          ],
-          "examples": [
-            {
-              "uuid": "8f7ebcc1-e9e9-4510-a92e-33235c5c6187",
-              "date": "2026-07-17T18:00:12-04:00",
-              "client": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
-              "registrant": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
-              "income": 1290000.0
-            }
-          ]
-        },
-        {
           "key": "UBER TECHNOLOGIES",
           "name": "Uber Technologies, Inc.",
           "current": 1825000.0,
@@ -5355,6 +5305,56 @@
               "client": "Uber Technologies, Inc.",
               "registrant": "The Doerrer Group LLC",
               "income": 80000.0
+            }
+          ]
+        },
+        {
+          "key": "CONSUMER BRANDS ASSOCIATION (PKA: GROCERY MANUFACTURERS ASSOCIATION)",
+          "name": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
+          "current": 1290000.0,
+          "baseline": 0.0,
+          "delta": 1290000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Waste and Recycling Management",
+            "Farm Policy",
+            "Nutrition Assistance",
+            "Tariffs and Trade Enforcement"
+          ],
+          "registrants": [
+            "Consumer Brands Association (pka: Grocery Manufacturers Association)"
+          ],
+          "series": [
+            518508.0,
+            268959.0,
+            380824.0,
+            372777.0,
+            413719.0,
+            396301.0,
+            761134.0,
+            560000.0,
+            445257.0,
+            550000.0,
+            810000.0,
+            680000.0,
+            450000.0,
+            480000.0,
+            670000.0,
+            715000.0,
+            1421000.0,
+            1555000.0,
+            3240000.0,
+            1120000.0
+          ],
+          "examples": [
+            {
+              "uuid": "8f7ebcc1-e9e9-4510-a92e-33235c5c6187",
+              "date": "2026-07-17T18:00:12-04:00",
+              "client": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
+              "registrant": "Consumer Brands Association (pka: Grocery Manufacturers Association)",
+              "income": 1290000.0
             }
           ]
         }
@@ -6324,86 +6324,6 @@
           ]
         },
         {
-          "key": "NATURE CONSERVANCY",
-          "name": "The Nature Conservancy",
-          "current": 1045000.0,
-          "baseline": 2396285.0,
-          "delta": -1351285.0,
-          "ratio": 0.436,
-          "filings_current": 8,
-          "filings_baseline": 8,
-          "topics": [
-            "Appropriations",
-            "Farm Policy",
-            "Public Lands and Water Management",
-            "Renewable Energy"
-          ],
-          "registrants": [
-            "Agvantage LLC",
-            "American Capitol Group",
-            "Abner Cooper, P.A."
-          ],
-          "series": [
-            815000.0,
-            400000.0,
-            1490000.0,
-            620000.0,
-            1080000.0,
-            840000.0,
-            570000.0,
-            620000.0,
-            730000.0,
-            650000.0,
-            1240000.0,
-            729572.0,
-            950000.0,
-            550000.0,
-            720000.0,
-            790000.0,
-            2416285.0,
-            905000.0,
-            1545000.0,
-            905000.0
-          ],
-          "examples": [
-            {
-              "uuid": "47b73a3f-9001-4510-9b60-9571e3396108",
-              "date": "2026-07-20T14:34:02-04:00",
-              "client": "The Nature Conservancy",
-              "registrant": "The Nature Conservancy",
-              "income": 900000.0
-            },
-            {
-              "uuid": "839e249a-f206-4d79-bec7-fed4e9a50507",
-              "date": "2026-07-20T17:22:07-04:00",
-              "client": "The Nature Conservancy",
-              "registrant": "Boundary Stone Partners",
-              "income": 60000.0
-            },
-            {
-              "uuid": "f5918baf-4642-4c6f-87a9-225d785d0d79",
-              "date": "2026-07-29T09:45:17-04:00",
-              "client": "The Nature Conservancy",
-              "registrant": "Natural Resource Results LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "925731b0-fe18-4a2a-afd0-666fd11d89f8",
-              "date": "2026-07-20T10:16:07-04:00",
-              "client": "The Nature Conservancy",
-              "registrant": "Policy Integration Partners, LLC",
-              "income": 20000.0
-            },
-            {
-              "uuid": "8736a0ac-9a0a-46b5-9cf8-798534d841df",
-              "date": "2026-07-16T10:15:35-04:00",
-              "client": "The Nature Conservancy",
-              "registrant": "American Capitol Group",
-              "income": 15000.0
-            }
-          ]
-        },
-        {
           "key": "NATIONAL RETAIL FEDERATION",
           "name": "National Retail Federation",
           "current": 2346000.0,
@@ -6480,6 +6400,86 @@
               "client": "National Retail Federation",
               "registrant": "Invariant LLC",
               "income": 0
+            }
+          ]
+        },
+        {
+          "key": "NATURE CONSERVANCY",
+          "name": "The Nature Conservancy",
+          "current": 1065000.0,
+          "baseline": 2396285.0,
+          "delta": -1331285.0,
+          "ratio": 0.444,
+          "filings_current": 9,
+          "filings_baseline": 8,
+          "topics": [
+            "Appropriations",
+            "Farm Policy",
+            "Public Lands and Water Management",
+            "Renewable Energy"
+          ],
+          "registrants": [
+            "Agvantage LLC",
+            "American Capitol Group",
+            "Abner Cooper, P.A."
+          ],
+          "series": [
+            815000.0,
+            400000.0,
+            1490000.0,
+            620000.0,
+            1080000.0,
+            840000.0,
+            570000.0,
+            620000.0,
+            730000.0,
+            650000.0,
+            1240000.0,
+            729572.0,
+            950000.0,
+            550000.0,
+            720000.0,
+            790000.0,
+            2416285.0,
+            905000.0,
+            1545000.0,
+            905000.0
+          ],
+          "examples": [
+            {
+              "uuid": "47b73a3f-9001-4510-9b60-9571e3396108",
+              "date": "2026-07-20T14:34:02-04:00",
+              "client": "The Nature Conservancy",
+              "registrant": "The Nature Conservancy",
+              "income": 900000.0
+            },
+            {
+              "uuid": "839e249a-f206-4d79-bec7-fed4e9a50507",
+              "date": "2026-07-20T17:22:07-04:00",
+              "client": "The Nature Conservancy",
+              "registrant": "Boundary Stone Partners",
+              "income": 60000.0
+            },
+            {
+              "uuid": "f5918baf-4642-4c6f-87a9-225d785d0d79",
+              "date": "2026-07-29T09:45:17-04:00",
+              "client": "The Nature Conservancy",
+              "registrant": "Natural Resource Results LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "925731b0-fe18-4a2a-afd0-666fd11d89f8",
+              "date": "2026-07-20T10:16:07-04:00",
+              "client": "The Nature Conservancy",
+              "registrant": "Policy Integration Partners, LLC",
+              "income": 20000.0
+            },
+            {
+              "uuid": "eac1aa5d-43be-4d8a-9cbf-64832cd30203",
+              "date": "2026-08-04T10:11:24-04:00",
+              "client": "The Nature Conservancy",
+              "registrant": "Bluewater Strategies",
+              "income": 20000.0
             }
           ]
         }
@@ -7014,7 +7014,7 @@
           ]
         }
       ],
-      "through": "2026-08-04"
+      "through": "2026-08-05"
     }
   },
   "quarters": [
