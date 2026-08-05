@@ -1,0 +1,104 @@
+name: Weekly Automation PR Review
+
+# The monthly Claude review workflows (legislation-review, identity-review)
+# open PRs. This is the second, INDEPENDENT pass that replaces the human in
+# the loop: once a week, a fresh Claude run adversarially verifies each
+# open automation PR, fixes problems directly on the PR branch, and merges
+# — or closes it with an explanation if the change is unsound. Generation
+# and review stay separate runs on purpose: a fresh context with a
+# skeptical prompt is what catches a bad alias before it permanently
+# corrupts an identity. Runs on the same subscription token
+# (CLAUDE_CODE_OAUTH_TOKEN), not the metered API.
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'   # Mondays 13:00 UTC — catches the 1st/5th monthly PRs within a week
+  workflow_dispatch:        # manual trial runs
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # push fixes to PR branches, merge
+      pull-requests: write   # comment, merge, close
+      issues: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # reviewer checks out PR branches
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          uv venv --python 3.12
+          uv pip install --python .venv/bin/python -r requirements.txt
+
+      - name: List open automation PRs
+        id: prs
+        run: |
+          count=$(gh pr list --state open --json author -q '[.[] | select(.author.login == "app/claude")] | length')
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Open automation PRs: $count"
+          gh pr list --state open || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Claude reviews, fixes, and merges
+        if: steps.prs.outputs.count != '0'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --max-turns 60
+            --model claude-opus-4-8
+            --allowedTools "Edit,Write,MultiEdit,WebSearch,WebFetch,Bash(python:*),Bash(uv:*),Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git add:*),Bash(git commit:*),Bash(git checkout:*),Bash(git switch:*),Bash(git fetch:*),Bash(git pull:*),Bash(git push:*),Bash(gh pr list:*),Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr checkout:*),Bash(gh pr merge:*),Bash(gh pr comment:*),Bash(gh pr close:*)"
+          prompt: |
+            You are the independent reviewer for this repo's automation PRs.
+            Another Claude run generated them; your job is to be the skeptic
+            that would otherwise be a human reviewer. You have full authority
+            to fix and merge — no human will look at these.
+
+            For EACH open PR authored by app/claude (`gh pr list`):
+
+            1. Read the PR description and full diff. These PRs may only
+               touch the curated maps (`_FORMER_NAME_ALIASES` /
+               `EXCLUDED_CLIENT_KEYS` in clients_norm.py, or
+               `LEGISLATION_ALIASES` / `KNOWN_ACT_PATTERNS` in 08_trends.py)
+               and their test files. Any other change is out of scope —
+               remove it or close the PR.
+            2. Adversarially verify the claims, hardest first. For client
+               aliases: research whether each fold is a rename/rebrand of
+               ONE continuing organization — NOT an acquisition or spin-off
+               where both sides lobbied separately pre-deal, and NOT
+               distinct sister subsidiaries. For legislation aliases:
+               verify the mapping is a well-established single law and the
+               bill number never served a different bill. Spend your
+               research effort on the entries whose justification is
+               thinnest; spot-checking every citation is expected.
+            3. Check mechanics: aliases must point at the CURRENT canonical
+               key (flatten chains); no entry may reverse direction (parent
+               folded into a minor subsidiary when the parent key is the
+               live one); no duplicate keys; tests cover each new entry.
+            4. `gh pr checkout` the branch and run the relevant test file
+               (`python scripts/test_canonicalize_client.py` and/or
+               `python scripts/test_normalize_legislation.py`). All cases
+               must pass.
+            5. Verdict per PR:
+               - Sound (possibly after your fixes): commit any fixes to the
+                 PR branch with clear messages, then
+                 `gh pr merge <n> --squash --delete-branch`, leaving a
+                 comment summarizing what you verified, what you fixed, and
+                 any entries you removed and why.
+               - Unsound at its core: `gh pr close <n>` with a comment
+                 explaining precisely why, so next month's generator run
+                 can do better.
+            When in doubt about a single entry, remove that entry (and its
+            test) and merge the rest — a missing alias costs little; a
+            wrong one silently corrupts an organization's history.
