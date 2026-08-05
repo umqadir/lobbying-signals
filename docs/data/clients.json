@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T22:45:45.994502+00:00",
+  "generated_at": "2026-08-05T23:26:29.955080+00:00",
   "frames": {
     "quarter": {
       "current_quarter": {
@@ -18,8 +18,8 @@
         "change_pct": 13.9,
         "current_filings": 25381,
         "baseline_filings": 21253,
-        "current_clients": 18129,
-        "baseline_clients": 15073
+        "current_clients": 18108,
+        "baseline_clients": 15053
       },
       "risers": [
         {
@@ -1114,25 +1114,25 @@
             "Corcoran & Associates, Inc. Dba Corcoran Partners"
           ],
           "series": [
-            1870000.0,
-            1750000.0,
-            2400000.0,
-            2010000.0,
-            2010000.0,
-            2780000.0,
-            2850000.0,
-            3440000.0,
-            1890000.0,
-            2020000.0,
+            2155000.0,
+            1880000.0,
+            2680000.0,
+            2290000.0,
+            2280000.0,
+            2900000.0,
+            3120000.0,
+            3750000.0,
+            2190000.0,
+            2300000.0,
+            1790000.0,
+            1650000.0,
             1690000.0,
-            1550000.0,
-            1660000.0,
-            1820000.0,
-            1500000.0,
-            1560000.0,
+            1850000.0,
+            1530000.0,
+            1590000.0,
             1690000.0,
-            1800000.0,
-            2010000.0,
+            1900000.0,
+            2080000.0,
             2150000.0,
             1690000.0,
             2330000.0,
@@ -1250,91 +1250,6 @@
           ]
         },
         {
-          "key": "NETFLIX",
-          "name": "Netflix, Inc.",
-          "current": 2000000.0,
-          "baseline": 900000.0,
-          "delta": 1100000.0,
-          "ratio": 2.222,
-          "filings_current": 10,
-          "filings_baseline": 5,
-          "topics": [
-            "Data Privacy",
-            "Tax Policy",
-            "Artificial Intelligence",
-            "Trade Agreements"
-          ],
-          "registrants": [
-            "Bloom Strategic Counsel",
-            "The Gibson Group, LLC",
-            "Miller & Chevalier Chartered"
-          ],
-          "series": [
-            340000.0,
-            340000.0,
-            140000.0,
-            110000.0,
-            120000.0,
-            140000.0,
-            180000.0,
-            520000.0,
-            500000.0,
-            460000.0,
-            530000.0,
-            400000.0,
-            420000.0,
-            550000.0,
-            520000.0,
-            520000.0,
-            530000.0,
-            600000.0,
-            600000.0,
-            750000.0,
-            900000.0,
-            1000000.0,
-            950000.0,
-            1050000.0,
-            2000000.0
-          ],
-          "examples": [
-            {
-              "uuid": "43f19f49-be63-450a-b462-9f102cc4a82f",
-              "date": "2026-04-20T17:15:14-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Netflix, Inc.",
-              "income": 1280000.0
-            },
-            {
-              "uuid": "9b438bc9-faf9-4ca5-a12e-6c7bd0d02890",
-              "date": "2026-04-16T15:09:11-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Ballard Partners",
-              "income": 150000.0
-            },
-            {
-              "uuid": "93441682-a7d9-40b7-bb09-7fa453147fff",
-              "date": "2026-04-20T10:20:15-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Kressin Powers LLC",
-              "income": 150000.0
-            },
-            {
-              "uuid": "adaab50c-57ce-48c1-918f-56e82dd2e388",
-              "date": "2026-04-20T13:55:09-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Monument Advocacy",
-              "income": 130000.0
-            },
-            {
-              "uuid": "1223419b-d7f1-47a5-a743-4a7f8d751b65",
-              "date": "2026-04-20T19:40:46-04:00",
-              "client": "Netflix, Inc.",
-              "registrant": "Avoq, LLC",
-              "income": 90000.0
-            }
-          ]
-        },
-        {
           "key": "TEVA PHARMACEUTICALS",
           "name": "Teva Pharmaceuticals USA, Inc.",
           "current": 1530000.0,
@@ -1416,6 +1331,91 @@
               "client": "Teva Pharmaceuticals USA, Inc.",
               "registrant": "Talley Strategies LLC",
               "income": 60000.0
+            }
+          ]
+        },
+        {
+          "key": "NETFLIX",
+          "name": "Netflix, Inc.",
+          "current": 2000000.0,
+          "baseline": 900000.0,
+          "delta": 1100000.0,
+          "ratio": 2.222,
+          "filings_current": 10,
+          "filings_baseline": 5,
+          "topics": [
+            "Data Privacy",
+            "Tax Policy",
+            "Artificial Intelligence",
+            "Trade Agreements"
+          ],
+          "registrants": [
+            "Bloom Strategic Counsel",
+            "The Gibson Group, LLC",
+            "Miller & Chevalier Chartered"
+          ],
+          "series": [
+            340000.0,
+            340000.0,
+            140000.0,
+            110000.0,
+            120000.0,
+            140000.0,
+            180000.0,
+            520000.0,
+            500000.0,
+            460000.0,
+            530000.0,
+            400000.0,
+            420000.0,
+            550000.0,
+            520000.0,
+            520000.0,
+            530000.0,
+            600000.0,
+            600000.0,
+            750000.0,
+            900000.0,
+            1000000.0,
+            950000.0,
+            1050000.0,
+            2000000.0
+          ],
+          "examples": [
+            {
+              "uuid": "43f19f49-be63-450a-b462-9f102cc4a82f",
+              "date": "2026-04-20T17:15:14-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Netflix, Inc.",
+              "income": 1280000.0
+            },
+            {
+              "uuid": "9b438bc9-faf9-4ca5-a12e-6c7bd0d02890",
+              "date": "2026-04-16T15:09:11-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Ballard Partners",
+              "income": 150000.0
+            },
+            {
+              "uuid": "93441682-a7d9-40b7-bb09-7fa453147fff",
+              "date": "2026-04-20T10:20:15-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Kressin Powers LLC",
+              "income": 150000.0
+            },
+            {
+              "uuid": "adaab50c-57ce-48c1-918f-56e82dd2e388",
+              "date": "2026-04-20T13:55:09-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Monument Advocacy",
+              "income": 130000.0
+            },
+            {
+              "uuid": "1223419b-d7f1-47a5-a743-4a7f8d751b65",
+              "date": "2026-04-20T19:40:46-04:00",
+              "client": "Netflix, Inc.",
+              "registrant": "Avoq, LLC",
+              "income": 90000.0
             }
           ]
         },
@@ -1725,139 +1725,6 @@
           ]
         },
         {
-          "key": "GSK",
-          "name": "GSK (fka Glaxosmithkline Inc.)",
-          "current": 1700000.0,
-          "baseline": 830000.0,
-          "delta": 870000.0,
-          "ratio": 2.048,
-          "filings_current": 2,
-          "filings_baseline": 2,
-          "topics": [
-            "Defense Authorization",
-            "Drug Pricing",
-            "Intellectual Property",
-            "Retirement and Pensions"
-          ],
-          "registrants": [
-            "Checkmate Government Relations",
-            "GSK (fka Glaxosmithkline Inc.)"
-          ],
-          "series": [
-            940000.0,
-            870000.0,
-            1210000.0,
-            750000.0,
-            1800000.0,
-            1300000.0,
-            1200000.0,
-            1000000.0,
-            1100000.0,
-            1110000.0,
-            1390000.0,
-            860000.0,
-            1700000.0,
-            900000.0,
-            1030000.0,
-            1500000.0,
-            820000.0,
-            1510000.0,
-            1540000.0,
-            920000.0,
-            830000.0,
-            1560000.0,
-            1750000.0,
-            860000.0,
-            1700000.0
-          ],
-          "examples": [
-            {
-              "uuid": "2c5d0123-1385-41b5-aa02-7303db5efcbf",
-              "date": "2026-04-20T21:36:54-04:00",
-              "client": "GSK (fka Glaxosmithkline Inc.)",
-              "registrant": "GSK (fka Glaxosmithkline Inc.)",
-              "income": 1640000.0
-            },
-            {
-              "uuid": "33562fd9-9c0d-4cac-89df-fa52437cc670",
-              "date": "2026-04-15T15:49:30-04:00",
-              "client": "GSK (fka Glaxosmithkline Inc.)",
-              "registrant": "Checkmate Government Relations",
-              "income": 60000.0
-            }
-          ]
-        },
-        {
-          "key": "COCA-COLA",
-          "name": "The Coca-Cola Company",
-          "current": 2110000.0,
-          "baseline": 1260000.0,
-          "delta": 850000.0,
-          "ratio": 1.675,
-          "filings_current": 3,
-          "filings_baseline": 3,
-          "topics": [
-            "Nutrition Assistance",
-            "Trade Agreements",
-            "International Tax"
-          ],
-          "registrants": [
-            "Kountoupes Denham Carr & Reid, LLC",
-            "The Coca-Cola Company",
-            "Empire Consulting Group"
-          ],
-          "series": [
-            2300000.0,
-            910000.0,
-            1590000.0,
-            1200000.0,
-            1330000.0,
-            1970000.0,
-            1020000.0,
-            1670000.0,
-            1290000.0,
-            1270000.0,
-            1050000.0,
-            1440000.0,
-            1020000.0,
-            960000.0,
-            920000.0,
-            1610000.0,
-            1260000.0,
-            1550000.0,
-            770000.0,
-            1840000.0,
-            1260000.0,
-            1400000.0,
-            1120000.0,
-            1640000.0,
-            2110000.0
-          ],
-          "examples": [
-            {
-              "uuid": "370857bb-bd42-4974-add5-1ee5e57e681e",
-              "date": "2026-04-17T14:28:31-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "The Coca-Cola Company",
-              "income": 2010000.0
-            },
-            {
-              "uuid": "e34e16b5-f662-42b5-bd21-6ef963ee82a0",
-              "date": "2026-04-13T12:15:22-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "Kountoupes Denham Carr & Reid, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "d89d6f89-f6bc-4987-a288-29ff3cb719d3",
-              "date": "2026-04-18T09:21:09-04:00",
-              "client": "The Coca-Cola Company",
-              "registrant": "Empire Consulting Group",
-              "income": 50000.0
-            }
-          ]
-        },
-        {
           "key": "TP-LINK SYSTEMS",
           "name": "TP-Link Systems Inc. (fka TP-Link Global Inc.)",
           "current": 930000.0,
@@ -1933,6 +1800,76 @@
           ]
         },
         {
+          "key": "COCA-COLA",
+          "name": "The Coca-Cola Company",
+          "current": 2110000.0,
+          "baseline": 1260000.0,
+          "delta": 850000.0,
+          "ratio": 1.675,
+          "filings_current": 3,
+          "filings_baseline": 3,
+          "topics": [
+            "Nutrition Assistance",
+            "Trade Agreements",
+            "International Tax"
+          ],
+          "registrants": [
+            "Kountoupes Denham Carr & Reid, LLC",
+            "The Coca-Cola Company",
+            "Empire Consulting Group"
+          ],
+          "series": [
+            2300000.0,
+            910000.0,
+            1590000.0,
+            1200000.0,
+            1330000.0,
+            1970000.0,
+            1020000.0,
+            1670000.0,
+            1290000.0,
+            1270000.0,
+            1050000.0,
+            1440000.0,
+            1020000.0,
+            960000.0,
+            920000.0,
+            1610000.0,
+            1260000.0,
+            1550000.0,
+            770000.0,
+            1840000.0,
+            1260000.0,
+            1400000.0,
+            1120000.0,
+            1640000.0,
+            2110000.0
+          ],
+          "examples": [
+            {
+              "uuid": "370857bb-bd42-4974-add5-1ee5e57e681e",
+              "date": "2026-04-17T14:28:31-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "The Coca-Cola Company",
+              "income": 2010000.0
+            },
+            {
+              "uuid": "e34e16b5-f662-42b5-bd21-6ef963ee82a0",
+              "date": "2026-04-13T12:15:22-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "Kountoupes Denham Carr & Reid, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "d89d6f89-f6bc-4987-a288-29ff3cb719d3",
+              "date": "2026-04-18T09:21:09-04:00",
+              "client": "The Coca-Cola Company",
+              "registrant": "Empire Consulting Group",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "NATIONAL MULTIFAMILY HOUSING COUNCIL",
           "name": "National Multifamily Housing Council Inc",
           "current": 2710000.0,
@@ -1992,6 +1929,84 @@
               "client": "National Multifamily Housing Council Inc",
               "registrant": "Brownstein Hyatt Farber Schreck, LLP",
               "income": 60000.0
+            }
+          ]
+        },
+        {
+          "key": "MORGAN STANLEY",
+          "name": "Morgan Stanley & Co LLC",
+          "current": 1620000.0,
+          "baseline": 810000.0,
+          "delta": 810000.0,
+          "ratio": 2.0,
+          "filings_current": 4,
+          "filings_baseline": 3,
+          "topics": [
+            "Banking and Financial Regulation",
+            "Retirement and Pensions",
+            "Tariffs and Trade Enforcement",
+            "Digital Assets and Crypto"
+          ],
+          "registrants": [
+            "Morgan Stanley & Co. LLC",
+            "Crossroads Strategies, LLC",
+            "Miller Strategies, LLC"
+          ],
+          "series": [
+            640000.0,
+            620000.0,
+            550000.0,
+            580000.0,
+            620000.0,
+            590000.0,
+            520000.0,
+            910000.0,
+            610000.0,
+            580000.0,
+            730000.0,
+            860000.0,
+            610000.0,
+            630000.0,
+            690000.0,
+            1230000.0,
+            1940000.0,
+            570000.0,
+            1210000.0,
+            1650000.0,
+            810000.0,
+            980000.0,
+            720000.0,
+            2610000.0,
+            1620000.0
+          ],
+          "examples": [
+            {
+              "uuid": "6c99e222-bd80-486c-829d-dbd872b4b203",
+              "date": "2026-04-19T09:34:55-04:00",
+              "client": "Morgan Stanley & Co LLC",
+              "registrant": "Morgan Stanley & Co. LLC",
+              "income": 1230000.0
+            },
+            {
+              "uuid": "517e35e1-ad59-4776-b088-a25a9c0c55a3",
+              "date": "2026-04-20T17:10:14-04:00",
+              "client": "Morgan Stanley & Co LLC",
+              "registrant": "Miller Strategies, LLC",
+              "income": 300000.0
+            },
+            {
+              "uuid": "7ec3f4d5-adab-4bb0-bff6-a81e7bd9f43d",
+              "date": "2026-04-19T18:30:30-04:00",
+              "client": "Morgan Stanley & Co LLC",
+              "registrant": "Crossroads Strategies, LLC",
+              "income": 60000.0
+            },
+            {
+              "uuid": "bc58f40c-4bb2-46a3-9ed8-0f048ff063a5",
+              "date": "2026-04-20T19:43:43-04:00",
+              "client": "Morgan Stanley & Co LLC",
+              "registrant": "Forethought Advisors, LLC",
+              "income": 30000.0
             }
           ]
         }
@@ -6656,91 +6671,6 @@
           ]
         },
         {
-          "key": "QUALCOMM",
-          "name": "Qualcomm Incorporated",
-          "current": 3120000.0,
-          "baseline": 3140000.0,
-          "delta": -20000.0,
-          "ratio": 0.994,
-          "filings_current": 10,
-          "filings_baseline": 10,
-          "topics": [
-            "Intellectual Property",
-            "Artificial Intelligence",
-            "Defense Authorization",
-            "Appropriations"
-          ],
-          "registrants": [
-            "Acg Advocacy",
-            "Brownstein Hyatt Farber Schreck, LLP",
-            "Mercury Public Affairs, LLC"
-          ],
-          "series": [
-            4080000.0,
-            3670000.0,
-            3260000.0,
-            3230000.0,
-            4440000.0,
-            4040000.0,
-            3960000.0,
-            4440000.0,
-            4630000.0,
-            4240000.0,
-            3480000.0,
-            4330000.0,
-            3070000.0,
-            3340000.0,
-            2960000.0,
-            4110000.0,
-            3500000.0,
-            3040000.0,
-            3340000.0,
-            3200000.0,
-            3140000.0,
-            2740000.0,
-            2950000.0,
-            3030000.0,
-            3120000.0
-          ],
-          "examples": [
-            {
-              "uuid": "5594dadc-ff89-483f-9444-21a5bc3bc96f",
-              "date": "2026-04-20T19:18:37-04:00",
-              "client": "Qualcomm Incorporated",
-              "registrant": "Qualcomm, Incorporated",
-              "income": 1680000.0
-            },
-            {
-              "uuid": "de4bc999-36ad-469c-80e4-b33b37105e72",
-              "date": "2026-04-20T18:47:24-04:00",
-              "client": "Qualcomm Incorporated",
-              "registrant": "Covington & Burling LLP",
-              "income": 740000.0
-            },
-            {
-              "uuid": "85ea1d6a-1d24-4196-90f5-6bcc7a05feb1",
-              "date": "2026-04-20T14:21:24-04:00",
-              "client": "Qualcomm Incorporated",
-              "registrant": "BGR Government Affairs",
-              "income": 240000.0
-            },
-            {
-              "uuid": "7d51a504-e73a-4989-bd4b-99dcabafe98d",
-              "date": "2026-04-20T10:39:31-04:00",
-              "client": "Qualcomm Incorporated",
-              "registrant": "Akin Gump Strauss Hauer & Feld",
-              "income": 140000.0
-            },
-            {
-              "uuid": "fa9e3a74-a2ad-4799-abd7-6bbc0b471045",
-              "date": "2026-04-16T11:58:41-04:00",
-              "client": "Qualcomm Incorporated",
-              "registrant": "Mercury Public Affairs, LLC",
-              "income": 90000.0
-            }
-          ]
-        },
-        {
           "key": "VISA",
           "name": "Visa, Inc.",
           "current": 3120000.0,
@@ -6822,6 +6752,91 @@
               "client": "Visa, Inc.",
               "registrant": "Phronesisdc, LLC",
               "income": 60000.0
+            }
+          ]
+        },
+        {
+          "key": "QUALCOMM",
+          "name": "Qualcomm Incorporated",
+          "current": 3120000.0,
+          "baseline": 3140000.0,
+          "delta": -20000.0,
+          "ratio": 0.994,
+          "filings_current": 10,
+          "filings_baseline": 10,
+          "topics": [
+            "Intellectual Property",
+            "Artificial Intelligence",
+            "Defense Authorization",
+            "Appropriations"
+          ],
+          "registrants": [
+            "Acg Advocacy",
+            "Brownstein Hyatt Farber Schreck, LLP",
+            "Mercury Public Affairs, LLC"
+          ],
+          "series": [
+            4080000.0,
+            3670000.0,
+            3260000.0,
+            3230000.0,
+            4440000.0,
+            4040000.0,
+            3960000.0,
+            4440000.0,
+            4630000.0,
+            4240000.0,
+            3480000.0,
+            4330000.0,
+            3070000.0,
+            3340000.0,
+            2960000.0,
+            4110000.0,
+            3500000.0,
+            3040000.0,
+            3340000.0,
+            3200000.0,
+            3140000.0,
+            2740000.0,
+            2950000.0,
+            3030000.0,
+            3120000.0
+          ],
+          "examples": [
+            {
+              "uuid": "5594dadc-ff89-483f-9444-21a5bc3bc96f",
+              "date": "2026-04-20T19:18:37-04:00",
+              "client": "Qualcomm Incorporated",
+              "registrant": "Qualcomm, Incorporated",
+              "income": 1680000.0
+            },
+            {
+              "uuid": "de4bc999-36ad-469c-80e4-b33b37105e72",
+              "date": "2026-04-20T18:47:24-04:00",
+              "client": "Qualcomm Incorporated",
+              "registrant": "Covington & Burling LLP",
+              "income": 740000.0
+            },
+            {
+              "uuid": "85ea1d6a-1d24-4196-90f5-6bcc7a05feb1",
+              "date": "2026-04-20T14:21:24-04:00",
+              "client": "Qualcomm Incorporated",
+              "registrant": "BGR Government Affairs",
+              "income": 240000.0
+            },
+            {
+              "uuid": "7d51a504-e73a-4989-bd4b-99dcabafe98d",
+              "date": "2026-04-20T10:39:31-04:00",
+              "client": "Qualcomm Incorporated",
+              "registrant": "Akin Gump Strauss Hauer & Feld",
+              "income": 140000.0
+            },
+            {
+              "uuid": "fa9e3a74-a2ad-4799-abd7-6bbc0b471045",
+              "date": "2026-04-16T11:58:41-04:00",
+              "client": "Qualcomm Incorporated",
+              "registrant": "Mercury Public Affairs, LLC",
+              "income": 90000.0
             }
           ]
         },
@@ -8817,6 +8832,91 @@
           ]
         },
         {
+          "key": "BIOTECHNOLOGY INNOVATION ORGANIZATION",
+          "name": "Biotechnology Innovation Organization",
+          "current": 2217500.0,
+          "baseline": 1460000.0,
+          "delta": 757500.0,
+          "ratio": 1.519,
+          "filings_current": 12,
+          "filings_baseline": 10,
+          "topics": [
+            "Drug Pricing",
+            "Medicare and Medicaid",
+            "Appropriations",
+            "Retirement and Pensions"
+          ],
+          "registrants": [
+            "Hillnorth LLC",
+            "Capitol Counsel LLC",
+            "Dla Piper LLP (US)"
+          ],
+          "series": [
+            3590000.0,
+            4020000.0,
+            3850000.0,
+            3870000.0,
+            3730000.0,
+            4140000.0,
+            3920000.0,
+            4050000.0,
+            3840000.0,
+            3790000.0,
+            3900000.0,
+            4430000.0,
+            3090000.0,
+            2860000.0,
+            2880000.0,
+            2880000.0,
+            2380000.0,
+            2420000.0,
+            2300000.0,
+            2170000.0,
+            1460000.0,
+            2417500.0,
+            1887500.0,
+            2047500.0,
+            2217500.0
+          ],
+          "examples": [
+            {
+              "uuid": "aa3a50d4-e002-4373-a5cf-812a7ace6757",
+              "date": "2026-04-20T14:19:45-04:00",
+              "client": "Biotechnology Innovation Organization",
+              "registrant": "Biotechnology Innovation Organization",
+              "income": 1620000.0
+            },
+            {
+              "uuid": "9da6006e-b1e8-423d-adfd-ae402cd60fcf",
+              "date": "2026-04-20T15:13:58-04:00",
+              "client": "Biotechnology Innovation Organization",
+              "registrant": "Tarplin, Downs & Young, LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "359fd63a-d341-4138-8a0b-3033571f0072",
+              "date": "2026-04-20T18:39:21-04:00",
+              "client": "Biotechnology Innovation Organization",
+              "registrant": "Avoq, LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "1d374959-7ae3-4071-963f-31e5e0e3ffaf",
+              "date": "2026-04-20T10:06:10-04:00",
+              "client": "Biotechnology Innovation Organization",
+              "registrant": "Dla Piper LLP (US)",
+              "income": 60000.0
+            },
+            {
+              "uuid": "7cb6263a-dab4-4d73-9c22-ad518aafe158",
+              "date": "2026-04-20T10:34:46-04:00",
+              "client": "Biotechnology Innovation Organization",
+              "registrant": "Akin Gump Strauss Hauer & Feld",
+              "income": 60000.0
+            }
+          ]
+        },
+        {
           "key": "DELTA AIR LINES",
           "name": "Delta Air Lines",
           "current": 2180000.0,
@@ -9131,91 +9231,6 @@
               "client": "American Petroleum Institute",
               "registrant": "Brownstein Hyatt Farber Schreck, LLP",
               "income": 50000.0
-            }
-          ]
-        },
-        {
-          "key": "BIOTECHNOLOGY INNOVATION ORGANIZATION",
-          "name": "Biotechnology Innovation Organization",
-          "current": 2137500.0,
-          "baseline": 1380000.0,
-          "delta": 757500.0,
-          "ratio": 1.549,
-          "filings_current": 11,
-          "filings_baseline": 9,
-          "topics": [
-            "Drug Pricing",
-            "Medicare and Medicaid",
-            "Appropriations",
-            "Retirement and Pensions"
-          ],
-          "registrants": [
-            "Hillnorth LLC",
-            "Capitol Counsel LLC",
-            "Dla Piper LLP (US)"
-          ],
-          "series": [
-            3450000.0,
-            3880000.0,
-            3710000.0,
-            3730000.0,
-            3590000.0,
-            4000000.0,
-            3780000.0,
-            3910000.0,
-            3700000.0,
-            3650000.0,
-            3760000.0,
-            4290000.0,
-            2950000.0,
-            2720000.0,
-            2740000.0,
-            2740000.0,
-            2240000.0,
-            2280000.0,
-            2160000.0,
-            2030000.0,
-            1380000.0,
-            2337500.0,
-            1807500.0,
-            1967500.0,
-            2137500.0
-          ],
-          "examples": [
-            {
-              "uuid": "aa3a50d4-e002-4373-a5cf-812a7ace6757",
-              "date": "2026-04-20T14:19:45-04:00",
-              "client": "Biotechnology Innovation Organization",
-              "registrant": "Biotechnology Innovation Organization",
-              "income": 1620000.0
-            },
-            {
-              "uuid": "359fd63a-d341-4138-8a0b-3033571f0072",
-              "date": "2026-04-20T18:39:21-04:00",
-              "client": "Biotechnology Innovation Organization",
-              "registrant": "Avoq, LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "1d374959-7ae3-4071-963f-31e5e0e3ffaf",
-              "date": "2026-04-20T10:06:10-04:00",
-              "client": "Biotechnology Innovation Organization",
-              "registrant": "Dla Piper LLP (US)",
-              "income": 60000.0
-            },
-            {
-              "uuid": "7cb6263a-dab4-4d73-9c22-ad518aafe158",
-              "date": "2026-04-20T10:34:46-04:00",
-              "client": "Biotechnology Innovation Organization",
-              "registrant": "Akin Gump Strauss Hauer & Feld",
-              "income": 60000.0
-            },
-            {
-              "uuid": "fbb6d78f-05de-4507-b5ef-0eb7007a3ed3",
-              "date": "2026-04-20T11:58:38-04:00",
-              "client": "Biotechnology Innovation Organization",
-              "registrant": "The Nickles Group, LLC",
-              "income": 60000.0
             }
           ]
         },
@@ -9722,6 +9737,91 @@
           ]
         },
         {
+          "key": "GSK",
+          "name": "Glaxosmithkline LLC",
+          "current": 2050000.0,
+          "baseline": 1290000.0,
+          "delta": 760000.0,
+          "ratio": 1.589,
+          "filings_current": 10,
+          "filings_baseline": 12,
+          "topics": [
+            "Drug Pricing",
+            "Medicare and Medicaid",
+            "Defense Authorization",
+            "FDA Regulation"
+          ],
+          "registrants": [
+            "Checkmate Government Relations",
+            "Capitol Counsel LLC",
+            "Marshall & Popp, LLC"
+          ],
+          "series": [
+            1350000.0,
+            1280000.0,
+            1640000.0,
+            1220000.0,
+            2270000.0,
+            1770000.0,
+            1670000.0,
+            1470000.0,
+            1490000.0,
+            1520000.0,
+            1800000.0,
+            1270000.0,
+            2070000.0,
+            1310000.0,
+            1440000.0,
+            1910000.0,
+            1210000.0,
+            1940000.0,
+            1970000.0,
+            1350000.0,
+            1290000.0,
+            2020000.0,
+            2100000.0,
+            1210000.0,
+            2050000.0
+          ],
+          "examples": [
+            {
+              "uuid": "2c5d0123-1385-41b5-aa02-7303db5efcbf",
+              "date": "2026-04-20T21:36:54-04:00",
+              "client": "Glaxosmithkline LLC",
+              "registrant": "GSK (fka Glaxosmithkline Inc.)",
+              "income": 1640000.0
+            },
+            {
+              "uuid": "33562fd9-9c0d-4cac-89df-fa52437cc670",
+              "date": "2026-04-15T15:49:30-04:00",
+              "client": "Glaxosmithkline LLC",
+              "registrant": "Checkmate Government Relations",
+              "income": 60000.0
+            },
+            {
+              "uuid": "d60f4f4b-b875-4875-97be-b62813a5d25a",
+              "date": "2026-04-20T11:58:01-04:00",
+              "client": "Glaxosmithkline LLC",
+              "registrant": "BGR Government Affairs",
+              "income": 60000.0
+            },
+            {
+              "uuid": "c14cd98d-716f-4d2f-8c74-4c657de5efae",
+              "date": "2026-04-20T16:02:34-04:00",
+              "client": "Glaxosmithkline LLC",
+              "registrant": "Todd Strategy Group",
+              "income": 60000.0
+            },
+            {
+              "uuid": "b7bd3a11-3f95-4a84-916b-c5686aa4d292",
+              "date": "2026-04-16T15:57:00-04:00",
+              "client": "Glaxosmithkline LLC",
+              "registrant": "Capitol Counsel LLC",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "NATIONAL RETAIL FEDERATION",
           "name": "National Retail Federation",
           "current": 2036000.0,
@@ -9866,6 +9966,91 @@
               "client": "Ups (united Parcel Service)",
               "registrant": "Fierce Government Relations",
               "income": 50000.0
+            }
+          ]
+        },
+        {
+          "key": "HUNTINGTON INGALLS INDUSTRIES",
+          "name": "Huntington Ingalls Incorporated",
+          "current": 1956000.0,
+          "baseline": 1876000.0,
+          "delta": 80000.0,
+          "ratio": 1.043,
+          "filings_current": 8,
+          "filings_baseline": 9,
+          "topics": [
+            "Appropriations",
+            "Defense Authorization",
+            "Unemployment Benefits",
+            "Labor and Employment"
+          ],
+          "registrants": [
+            "Dahlberg Strategic",
+            "Brian Glackin & Associates LLC",
+            "Crossroads Strategies, LLC"
+          ],
+          "series": [
+            1196000.0,
+            1676023.0,
+            1638245.0,
+            1747047.0,
+            1801000.0,
+            1591000.0,
+            1566000.0,
+            1542000.0,
+            1826000.0,
+            1496000.0,
+            1411000.0,
+            1422938.0,
+            1757575.0,
+            1504286.0,
+            1451468.0,
+            1445165.0,
+            2090294.0,
+            1446000.0,
+            1406000.0,
+            1456000.0,
+            1876000.0,
+            1346000.0,
+            1386000.0,
+            1396000.0,
+            1956000.0
+          ],
+          "examples": [
+            {
+              "uuid": "e6864715-220e-45dd-8d1e-7190b2590f63",
+              "date": "2026-05-12T14:19:40-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "Huntington Ingalls Industries Incorporated",
+              "income": 1700000.0
+            },
+            {
+              "uuid": "d3923569-369b-4f05-a380-862d5c27141b",
+              "date": "2026-04-20T12:30:42-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "BGR Government Affairs",
+              "income": 60000.0
+            },
+            {
+              "uuid": "a867ec2b-7448-4dfc-80ae-3252236d67f8",
+              "date": "2026-04-19T18:33:45-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "Crossroads Strategies, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "2c2060ba-d893-4d7a-aebd-b8db67e88b86",
+              "date": "2026-04-20T12:18:14-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "Gephardt Group Government Affairs",
+              "income": 50000.0
+            },
+            {
+              "uuid": "36f86f67-8aa2-40bc-9be5-916269eccc3b",
+              "date": "2026-04-17T20:42:13-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "Brian Glackin & Associates LLC",
+              "income": 40000.0
             }
           ]
         },
@@ -10266,84 +10451,6 @@
           ]
         },
         {
-          "key": "CATERPILLAR",
-          "name": "Caterpillar Inc",
-          "current": 1880000.0,
-          "baseline": 1549800.0,
-          "delta": 330200.0,
-          "ratio": 1.213,
-          "filings_current": 4,
-          "filings_baseline": 2,
-          "topics": [
-            "International Tax",
-            "Intellectual Property",
-            "Criminal Justice and Policing",
-            "Tax Policy"
-          ],
-          "registrants": [
-            "The Duberstein Group Inc.",
-            "Austin Legal and Public Affairs PLLC",
-            "The Washington Tax & Public Policy Group"
-          ],
-          "series": [
-            1800000.0,
-            660000.0,
-            530000.0,
-            630000.0,
-            1430000.0,
-            770000.0,
-            730000.0,
-            960000.0,
-            1150000.0,
-            1170000.0,
-            760000.0,
-            985000.0,
-            1300000.0,
-            980000.0,
-            970000.0,
-            920000.0,
-            1160000.0,
-            1020000.0,
-            890000.0,
-            1810000.0,
-            1549800.0,
-            1387000.0,
-            1840000.0,
-            1190000.0,
-            1880000.0
-          ],
-          "examples": [
-            {
-              "uuid": "3c49c78e-2a7d-4b10-b059-ab086ffbd7aa",
-              "date": "2026-04-20T15:29:43-04:00",
-              "client": "Caterpillar Inc",
-              "registrant": "Caterpillar Inc.",
-              "income": 1680000.0
-            },
-            {
-              "uuid": "d0eb8191-6242-4e18-90a8-5e2be1478b90",
-              "date": "2026-04-20T13:47:54-04:00",
-              "client": "Caterpillar Inc",
-              "registrant": "The Duberstein Group Inc.",
-              "income": 100000.0
-            },
-            {
-              "uuid": "38414ee9-ec60-4cf4-9d1d-8b7cb5dfbd2b",
-              "date": "2026-04-20T14:07:44-04:00",
-              "client": "Caterpillar Inc",
-              "registrant": "Austin Legal and Public Affairs PLLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "c5061b2b-e06a-4bf5-90be-465190502c98",
-              "date": "2026-04-20T15:26:30-04:00",
-              "client": "Caterpillar Inc",
-              "registrant": "The Washington Tax & Public Policy Group",
-              "income": 50000.0
-            }
-          ]
-        },
-        {
           "key": "CITIGROUP WASHINGTON",
           "name": "Citigroup Washington, Inc.",
           "current": 1880000.0,
@@ -10429,87 +10536,80 @@
           ]
         },
         {
-          "key": "HUNTINGTON INGALLS INDUSTRIES",
-          "name": "Huntington Ingalls Industries Incorporated",
-          "current": 1861000.0,
-          "baseline": 1771000.0,
-          "delta": 90000.0,
-          "ratio": 1.051,
-          "filings_current": 5,
-          "filings_baseline": 6,
+          "key": "CATERPILLAR",
+          "name": "Caterpillar Inc",
+          "current": 1880000.0,
+          "baseline": 1549800.0,
+          "delta": 330200.0,
+          "ratio": 1.213,
+          "filings_current": 4,
+          "filings_baseline": 2,
           "topics": [
-            "Appropriations",
-            "Defense Authorization",
-            "Unemployment Benefits",
-            "Labor and Employment"
+            "International Tax",
+            "Intellectual Property",
+            "Criminal Justice and Policing",
+            "Tax Policy"
           ],
           "registrants": [
-            "Dahlberg Strategic",
-            "Gephardt Group Government Affairs",
-            "BGR Government Affairs"
+            "The Duberstein Group Inc.",
+            "Austin Legal and Public Affairs PLLC",
+            "The Washington Tax & Public Policy Group"
           ],
           "series": [
-            1021000.0,
-            1471023.0,
-            1408245.0,
-            1537047.0,
-            1601000.0,
-            1391000.0,
-            1411000.0,
-            1371000.0,
-            1671000.0,
-            1341000.0,
-            1256000.0,
-            1267938.0,
-            1752575.0,
-            1369286.0,
-            1316468.0,
-            1310165.0,
-            1975294.0,
-            1331000.0,
-            1301000.0,
-            1351000.0,
-            1771000.0,
-            1241000.0,
-            1291000.0,
-            1301000.0,
-            1861000.0
+            1800000.0,
+            660000.0,
+            530000.0,
+            630000.0,
+            1430000.0,
+            770000.0,
+            730000.0,
+            960000.0,
+            1150000.0,
+            1170000.0,
+            760000.0,
+            985000.0,
+            1300000.0,
+            980000.0,
+            970000.0,
+            920000.0,
+            1160000.0,
+            1020000.0,
+            890000.0,
+            1810000.0,
+            1549800.0,
+            1387000.0,
+            1840000.0,
+            1190000.0,
+            1880000.0
           ],
           "examples": [
             {
-              "uuid": "e6864715-220e-45dd-8d1e-7190b2590f63",
-              "date": "2026-05-12T14:19:40-04:00",
-              "client": "Huntington Ingalls Industries Incorporated",
-              "registrant": "Huntington Ingalls Industries Incorporated",
-              "income": 1700000.0
+              "uuid": "3c49c78e-2a7d-4b10-b059-ab086ffbd7aa",
+              "date": "2026-04-20T15:29:43-04:00",
+              "client": "Caterpillar Inc",
+              "registrant": "Caterpillar Inc.",
+              "income": 1680000.0
             },
             {
-              "uuid": "d3923569-369b-4f05-a380-862d5c27141b",
-              "date": "2026-04-20T12:30:42-04:00",
-              "client": "Huntington Ingalls Industries Incorporated",
-              "registrant": "BGR Government Affairs",
-              "income": 60000.0
+              "uuid": "d0eb8191-6242-4e18-90a8-5e2be1478b90",
+              "date": "2026-04-20T13:47:54-04:00",
+              "client": "Caterpillar Inc",
+              "registrant": "The Duberstein Group Inc.",
+              "income": 100000.0
             },
             {
-              "uuid": "2c2060ba-d893-4d7a-aebd-b8db67e88b86",
-              "date": "2026-04-20T12:18:14-04:00",
-              "client": "Huntington Ingalls Industries Incorporated",
-              "registrant": "Gephardt Group Government Affairs",
+              "uuid": "38414ee9-ec60-4cf4-9d1d-8b7cb5dfbd2b",
+              "date": "2026-04-20T14:07:44-04:00",
+              "client": "Caterpillar Inc",
+              "registrant": "Austin Legal and Public Affairs PLLC",
               "income": 50000.0
             },
             {
-              "uuid": "e70e76b7-b80b-4606-9c4b-7154272df06d",
-              "date": "2026-04-20T19:08:15-04:00",
-              "client": "Huntington Ingalls Industries Incorporated",
-              "registrant": "Ked Strategies, LLC",
-              "income": 30000.0
-            },
-            {
-              "uuid": "69fd26e3-4aeb-42f8-9b67-c1d1920ad1e3",
-              "date": "2026-04-09T17:49:02-04:00",
-              "client": "Huntington Ingalls Industries Incorporated",
-              "registrant": "Dahlberg Strategic",
-              "income": 21000.0
+              "uuid": "c5061b2b-e06a-4bf5-90be-465190502c98",
+              "date": "2026-04-20T15:26:30-04:00",
+              "client": "Caterpillar Inc",
+              "registrant": "The Washington Tax & Public Policy Group",
+              "income": 50000.0
             }
           ]
         },
@@ -10895,6 +10995,91 @@
           ]
         },
         {
+          "key": "PARAMOUNT SKYDANCE",
+          "name": "Paramount Skydance Corporation (fka Paramount Global)",
+          "current": 1770000.0,
+          "baseline": 1850000.0,
+          "delta": -80000.0,
+          "ratio": 0.957,
+          "filings_current": 9,
+          "filings_baseline": 7,
+          "topics": [
+            "Tax Policy",
+            "Data Privacy",
+            "Renewable Energy",
+            "Artificial Intelligence"
+          ],
+          "registrants": [
+            "Acg Advocacy",
+            "Telemedia Policy Corp.",
+            "Capitol Tax Partners, LLP"
+          ],
+          "series": [
+            818000.0,
+            1220000.0,
+            1060000.0,
+            960000.0,
+            910000.0,
+            1680000.0,
+            1020000.0,
+            1707000.0,
+            1117000.0,
+            1640000.0,
+            929850.0,
+            1440950.0,
+            1440000.0,
+            1560000.0,
+            1340000.0,
+            1680000.0,
+            1620000.0,
+            1560000.0,
+            1490000.0,
+            2060000.0,
+            1850000.0,
+            1920000.0,
+            1620000.0,
+            2240000.0,
+            1770000.0
+          ],
+          "examples": [
+            {
+              "uuid": "f6a40d63-8332-44c9-9778-e7b0835b7e92",
+              "date": "2026-04-20T20:10:55-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Paramount Skydance Corporation (fka Paramount Global)",
+              "income": 1340000.0
+            },
+            {
+              "uuid": "8417fb95-faa7-4305-915a-13bf270260ad",
+              "date": "2026-04-20T18:44:56-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
+              "income": 120000.0
+            },
+            {
+              "uuid": "b49d21a7-48a8-4635-82da-dc5417151a81",
+              "date": "2026-04-16T17:48:00-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Ballard Partners",
+              "income": 90000.0
+            },
+            {
+              "uuid": "1817c897-b8c2-40df-9f45-69c82cd964ba",
+              "date": "2026-04-16T14:25:54-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Telemedia Policy Corp.",
+              "income": 60000.0
+            },
+            {
+              "uuid": "f6c44547-3531-4b14-8d76-fda9393178a5",
+              "date": "2026-04-15T14:00:04-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Acg Advocacy",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "BRISTOL-MYERS SQUIBB",
           "name": "Bristol-Myers Squibb Company",
           "current": 1760000.0,
@@ -11065,81 +11250,6 @@
           ]
         },
         {
-          "key": "MASTERCARD WORLDWIDE",
-          "name": "Mastercard Worldwide",
-          "current": 1740000.0,
-          "baseline": 1760000.0,
-          "delta": -20000.0,
-          "ratio": 0.989,
-          "filings_current": 4,
-          "filings_baseline": 4,
-          "topics": [
-            "Cybersecurity"
-          ],
-          "registrants": [
-            "9th Street Strategies",
-            "Mastercard Worldwide",
-            "CGCN Group, LLC"
-          ],
-          "series": [
-            998750.0,
-            948750.0,
-            668750.0,
-            568750.0,
-            1198750.0,
-            758750.0,
-            968750.0,
-            828750.0,
-            1198750.0,
-            1208750.0,
-            1128750.0,
-            1008750.0,
-            1248750.0,
-            1048750.0,
-            1058000.0,
-            1028000.0,
-            1388000.0,
-            1208000.0,
-            960000.0,
-            1760000.0,
-            1760000.0,
-            1680000.0,
-            1260000.0,
-            1420000.0,
-            1740000.0
-          ],
-          "examples": [
-            {
-              "uuid": "ac9f9d72-bbbb-4215-b0ca-3795a50f0e1d",
-              "date": "2026-04-20T15:30:21-04:00",
-              "client": "Mastercard Worldwide",
-              "registrant": "Mastercard Worldwide",
-              "income": 1570000.0
-            },
-            {
-              "uuid": "0bd29eaf-37f0-41a8-81d2-d6ad12dc92d7",
-              "date": "2026-04-20T20:21:18-04:00",
-              "client": "Mastercard Worldwide",
-              "registrant": "CGCN Group, LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "3a4935eb-053a-4420-965f-8ff3e324266b",
-              "date": "2026-04-20T14:52:39-04:00",
-              "client": "Mastercard Worldwide",
-              "registrant": "Resolution Public Affairs, LLC",
-              "income": 60000.0
-            },
-            {
-              "uuid": "f6bd1d8a-9dee-4a68-a7c0-8ccee7e81983",
-              "date": "2026-04-20T15:05:09-04:00",
-              "client": "Mastercard Worldwide",
-              "registrant": "9th Street Strategies",
-              "income": 30000.0
-            }
-          ]
-        },
-        {
           "key": "CISCO SYSTEMS",
           "name": "Cisco Systems, Inc.",
           "current": 1740000.0,
@@ -11221,6 +11331,81 @@
               "client": "Cisco Systems, Inc.",
               "registrant": "Klein/johnson Group",
               "income": 50000.0
+            }
+          ]
+        },
+        {
+          "key": "MASTERCARD WORLDWIDE",
+          "name": "Mastercard Worldwide",
+          "current": 1740000.0,
+          "baseline": 1760000.0,
+          "delta": -20000.0,
+          "ratio": 0.989,
+          "filings_current": 4,
+          "filings_baseline": 4,
+          "topics": [
+            "Cybersecurity"
+          ],
+          "registrants": [
+            "9th Street Strategies",
+            "Mastercard Worldwide",
+            "CGCN Group, LLC"
+          ],
+          "series": [
+            998750.0,
+            948750.0,
+            668750.0,
+            568750.0,
+            1198750.0,
+            758750.0,
+            968750.0,
+            828750.0,
+            1198750.0,
+            1208750.0,
+            1128750.0,
+            1008750.0,
+            1248750.0,
+            1048750.0,
+            1058000.0,
+            1028000.0,
+            1388000.0,
+            1208000.0,
+            960000.0,
+            1760000.0,
+            1760000.0,
+            1680000.0,
+            1260000.0,
+            1420000.0,
+            1740000.0
+          ],
+          "examples": [
+            {
+              "uuid": "ac9f9d72-bbbb-4215-b0ca-3795a50f0e1d",
+              "date": "2026-04-20T15:30:21-04:00",
+              "client": "Mastercard Worldwide",
+              "registrant": "Mastercard Worldwide",
+              "income": 1570000.0
+            },
+            {
+              "uuid": "0bd29eaf-37f0-41a8-81d2-d6ad12dc92d7",
+              "date": "2026-04-20T20:21:18-04:00",
+              "client": "Mastercard Worldwide",
+              "registrant": "CGCN Group, LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "3a4935eb-053a-4420-965f-8ff3e324266b",
+              "date": "2026-04-20T14:52:39-04:00",
+              "client": "Mastercard Worldwide",
+              "registrant": "Resolution Public Affairs, LLC",
+              "income": 60000.0
+            },
+            {
+              "uuid": "f6bd1d8a-9dee-4a68-a7c0-8ccee7e81983",
+              "date": "2026-04-20T15:05:09-04:00",
+              "client": "Mastercard Worldwide",
+              "registrant": "9th Street Strategies",
+              "income": 30000.0
             }
           ]
         },
@@ -11650,91 +11835,6 @@
           ]
         },
         {
-          "key": "CHENIERE ENERGY",
-          "name": "Cheniere Energy, Inc.",
-          "current": 1705000.0,
-          "baseline": 1330000.0,
-          "delta": 375000.0,
-          "ratio": 1.282,
-          "filings_current": 6,
-          "filings_baseline": 4,
-          "topics": [
-            "Oil and Gas",
-            "Maritime and Fisheries",
-            "Defense Authorization",
-            "Tariffs and Trade Enforcement"
-          ],
-          "registrants": [
-            "Cheniere Energy, Inc.",
-            "Venture Government Strategies, LLC (fka Hobart Hallaway & Quayle Ventures, LLC)",
-            "Blank Rome Government Relations"
-          ],
-          "series": [
-            710000.0,
-            480000.0,
-            510000.0,
-            470000.0,
-            700000.0,
-            430000.0,
-            370000.0,
-            510000.0,
-            1160000.0,
-            410000.0,
-            410000.0,
-            420000.0,
-            1230000.0,
-            510000.0,
-            520000.0,
-            540000.0,
-            1450000.0,
-            670000.0,
-            510000.0,
-            1130000.0,
-            1330000.0,
-            690000.0,
-            540000.0,
-            605000.0,
-            1705000.0
-          ],
-          "examples": [
-            {
-              "uuid": "4666c8fb-87d2-4ee9-8b8d-568dcc8a04ed",
-              "date": "2026-04-17T17:06:54-04:00",
-              "client": "Cheniere Energy, Inc.",
-              "registrant": "Cheniere Energy, Inc.",
-              "income": 1550000.0
-            },
-            {
-              "uuid": "88fd1485-1845-44b4-b6f2-909a1bbd33dd",
-              "date": "2026-04-20T11:59:33-04:00",
-              "client": "Cheniere Energy, Inc.",
-              "registrant": "Venture Government Strategies, LLC (fka Hobart Hallaway & Quayle Ventures, LLC)",
-              "income": 60000.0
-            },
-            {
-              "uuid": "7c26a726-8a85-4a45-a17c-437f61138532",
-              "date": "2026-04-20T13:07:01-04:00",
-              "client": "Cheniere Energy, Inc.",
-              "registrant": "Blank Rome Government Relations",
-              "income": 50000.0
-            },
-            {
-              "uuid": "a0093f23-86d9-4d85-993e-05dac535427d",
-              "date": "2026-04-20T16:47:26-04:00",
-              "client": "Cheniere Energy, Inc.",
-              "registrant": "The Duberstein Group Inc.",
-              "income": 45000.0
-            },
-            {
-              "uuid": "82d16405-6507-4061-a55c-70f83aef70b4",
-              "date": "2026-04-15T15:57:20-04:00",
-              "client": "Cheniere Energy, Inc.",
-              "registrant": "Van Ness Feldman, LLP",
-              "income": 0
-            }
-          ]
-        },
-        {
           "key": "AMERICAN ASSOCIATION FOR JUSTICE",
           "name": "American Association for Justice",
           "current": 1705000.0,
@@ -11816,6 +11916,91 @@
               "client": "American Association for Justice",
               "registrant": "Epplin Strategic Planning",
               "income": 30000.0
+            }
+          ]
+        },
+        {
+          "key": "CHENIERE ENERGY",
+          "name": "Cheniere Energy, Inc.",
+          "current": 1705000.0,
+          "baseline": 1330000.0,
+          "delta": 375000.0,
+          "ratio": 1.282,
+          "filings_current": 6,
+          "filings_baseline": 4,
+          "topics": [
+            "Oil and Gas",
+            "Maritime and Fisheries",
+            "Defense Authorization",
+            "Tariffs and Trade Enforcement"
+          ],
+          "registrants": [
+            "Cheniere Energy, Inc.",
+            "Venture Government Strategies, LLC (fka Hobart Hallaway & Quayle Ventures, LLC)",
+            "Blank Rome Government Relations"
+          ],
+          "series": [
+            710000.0,
+            480000.0,
+            510000.0,
+            470000.0,
+            700000.0,
+            430000.0,
+            370000.0,
+            510000.0,
+            1160000.0,
+            410000.0,
+            410000.0,
+            420000.0,
+            1230000.0,
+            510000.0,
+            520000.0,
+            540000.0,
+            1450000.0,
+            670000.0,
+            510000.0,
+            1130000.0,
+            1330000.0,
+            690000.0,
+            540000.0,
+            605000.0,
+            1705000.0
+          ],
+          "examples": [
+            {
+              "uuid": "4666c8fb-87d2-4ee9-8b8d-568dcc8a04ed",
+              "date": "2026-04-17T17:06:54-04:00",
+              "client": "Cheniere Energy, Inc.",
+              "registrant": "Cheniere Energy, Inc.",
+              "income": 1550000.0
+            },
+            {
+              "uuid": "88fd1485-1845-44b4-b6f2-909a1bbd33dd",
+              "date": "2026-04-20T11:59:33-04:00",
+              "client": "Cheniere Energy, Inc.",
+              "registrant": "Venture Government Strategies, LLC (fka Hobart Hallaway & Quayle Ventures, LLC)",
+              "income": 60000.0
+            },
+            {
+              "uuid": "7c26a726-8a85-4a45-a17c-437f61138532",
+              "date": "2026-04-20T13:07:01-04:00",
+              "client": "Cheniere Energy, Inc.",
+              "registrant": "Blank Rome Government Relations",
+              "income": 50000.0
+            },
+            {
+              "uuid": "a0093f23-86d9-4d85-993e-05dac535427d",
+              "date": "2026-04-20T16:47:26-04:00",
+              "client": "Cheniere Energy, Inc.",
+              "registrant": "The Duberstein Group Inc.",
+              "income": 45000.0
+            },
+            {
+              "uuid": "82d16405-6507-4061-a55c-70f83aef70b4",
+              "date": "2026-04-15T15:57:20-04:00",
+              "client": "Cheniere Energy, Inc.",
+              "registrant": "Van Ness Feldman, LLP",
+              "income": 0
             }
           ]
         },
@@ -12454,6 +12639,91 @@
           ]
         },
         {
+          "key": "SHELL",
+          "name": "Shell Oil Company",
+          "current": 1650000.0,
+          "baseline": 1710000.0,
+          "delta": -60000.0,
+          "ratio": 0.965,
+          "filings_current": 6,
+          "filings_baseline": 6,
+          "topics": [
+            "Oil and Gas",
+            "Renewable Energy",
+            "Maritime and Fisheries",
+            "Tariffs and Trade Enforcement"
+          ],
+          "registrants": [
+            "The Harple Group, LLC",
+            "Acorn Consulting",
+            "Alpine Group Partners, LLC."
+          ],
+          "series": [
+            2130000.0,
+            1890000.0,
+            2210000.0,
+            1940000.0,
+            2200000.0,
+            2000000.0,
+            1790000.0,
+            2130000.0,
+            1590000.0,
+            2330000.0,
+            1830000.0,
+            1940000.0,
+            2250000.0,
+            1990000.0,
+            1970000.0,
+            1980000.0,
+            1900000.0,
+            2370000.0,
+            2010000.0,
+            1940000.0,
+            1710000.0,
+            2300000.0,
+            1610000.0,
+            1590000.0,
+            1650000.0
+          ],
+          "examples": [
+            {
+              "uuid": "aa43e788-303b-4199-9aee-db420cda2ff0",
+              "date": "2026-04-20T16:52:11-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Shell USA, Inc. (fka Shell Oil Company)",
+              "income": 1350000.0
+            },
+            {
+              "uuid": "06dedfeb-8e83-45be-84b8-27bd56ba1ef4",
+              "date": "2026-04-20T11:45:23-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Mindset Advocacy, LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "7d359c3a-317a-4746-a3d3-76c37cc200ea",
+              "date": "2026-04-20T19:22:18-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Monument Advocacy",
+              "income": 80000.0
+            },
+            {
+              "uuid": "9ac67f53-316f-4c05-a317-f37d13ef3a6b",
+              "date": "2026-04-15T21:21:15-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Acorn Consulting",
+              "income": 70000.0
+            },
+            {
+              "uuid": "a3ed5800-47b0-4238-b86b-98830df93887",
+              "date": "2026-04-19T22:56:33-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Alpine Group Partners, LLC.",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "NATIONAL AUTOMOBILE DEALERS ASSOCIATION",
           "name": "National Automobile Dealers Association",
           "current": 1645000.0,
@@ -12695,84 +12965,6 @@
           ]
         },
         {
-          "key": "MORGAN STANLEY",
-          "name": "Morgan Stanley & Co LLC",
-          "current": 1620000.0,
-          "baseline": 810000.0,
-          "delta": 810000.0,
-          "ratio": 2.0,
-          "filings_current": 4,
-          "filings_baseline": 3,
-          "topics": [
-            "Banking and Financial Regulation",
-            "Retirement and Pensions",
-            "Tariffs and Trade Enforcement",
-            "Digital Assets and Crypto"
-          ],
-          "registrants": [
-            "Morgan Stanley & Co. LLC",
-            "Crossroads Strategies, LLC",
-            "Miller Strategies, LLC"
-          ],
-          "series": [
-            640000.0,
-            620000.0,
-            550000.0,
-            580000.0,
-            620000.0,
-            590000.0,
-            520000.0,
-            910000.0,
-            610000.0,
-            580000.0,
-            730000.0,
-            860000.0,
-            610000.0,
-            630000.0,
-            690000.0,
-            1230000.0,
-            1940000.0,
-            570000.0,
-            1210000.0,
-            1650000.0,
-            810000.0,
-            980000.0,
-            720000.0,
-            2610000.0,
-            1620000.0
-          ],
-          "examples": [
-            {
-              "uuid": "6c99e222-bd80-486c-829d-dbd872b4b203",
-              "date": "2026-04-19T09:34:55-04:00",
-              "client": "Morgan Stanley & Co LLC",
-              "registrant": "Morgan Stanley & Co. LLC",
-              "income": 1230000.0
-            },
-            {
-              "uuid": "517e35e1-ad59-4776-b088-a25a9c0c55a3",
-              "date": "2026-04-20T17:10:14-04:00",
-              "client": "Morgan Stanley & Co LLC",
-              "registrant": "Miller Strategies, LLC",
-              "income": 300000.0
-            },
-            {
-              "uuid": "7ec3f4d5-adab-4bb0-bff6-a81e7bd9f43d",
-              "date": "2026-04-19T18:30:30-04:00",
-              "client": "Morgan Stanley & Co LLC",
-              "registrant": "Crossroads Strategies, LLC",
-              "income": 60000.0
-            },
-            {
-              "uuid": "bc58f40c-4bb2-46a3-9ed8-0f048ff063a5",
-              "date": "2026-04-20T19:43:43-04:00",
-              "client": "Morgan Stanley & Co LLC",
-              "registrant": "Forethought Advisors, LLC",
-              "income": 30000.0
-            }
-          ]
-        },
-        {
           "key": "FOX",
           "name": "Fox Corporation",
           "current": 1615000.0,
@@ -12858,6 +13050,77 @@
           ]
         },
         {
+          "key": "BLUE CROSS AND BLUE SHIELD ASSOCIATION",
+          "name": "Blue Cross and Blue Shield Association",
+          "current": 1610000.0,
+          "baseline": 1280000.0,
+          "delta": 330000.0,
+          "ratio": 1.258,
+          "filings_current": 3,
+          "filings_baseline": 3,
+          "topics": [
+            "Drug Pricing",
+            "Substance Use and Treatment",
+            "Medicare and Medicaid",
+            "FDA Regulation"
+          ],
+          "registrants": [
+            "Alb Solutions",
+            "Blue Cross and Blue Shield Association",
+            "Atrio Consulting Group, LLC"
+          ],
+          "series": [
+            1960000.0,
+            1770000.0,
+            1380000.0,
+            1500000.0,
+            1440000.0,
+            1720000.0,
+            1420000.0,
+            1570000.0,
+            1520000.0,
+            1670000.0,
+            1570000.0,
+            1440000.0,
+            1240000.0,
+            1650000.0,
+            1760000.0,
+            1870000.0,
+            2010000.0,
+            1510000.0,
+            1990000.0,
+            1840000.0,
+            1280000.0,
+            1290000.0,
+            1230000.0,
+            1520000.0,
+            1610000.0
+          ],
+          "examples": [
+            {
+              "uuid": "f688dc52-44fa-43c7-be1a-9f66d5ca326d",
+              "date": "2026-04-20T13:05:28-04:00",
+              "client": "Blue Cross and Blue Shield Association",
+              "registrant": "Blue Cross and Blue Shield Association",
+              "income": 1520000.0
+            },
+            {
+              "uuid": "06ee3bb1-82b7-4822-b3f1-b0d091dcaf3e",
+              "date": "2026-04-15T12:54:04-04:00",
+              "client": "Blue Cross and Blue Shield Association",
+              "registrant": "Alb Solutions",
+              "income": 60000.0
+            },
+            {
+              "uuid": "778c4bd3-7a4d-40b3-8c22-e346452314bb",
+              "date": "2026-04-20T23:32:10-04:00",
+              "client": "Blue Cross and Blue Shield Association",
+              "registrant": "Atrio Consulting Group, LLC",
+              "income": 30000.0
+            }
+          ]
+        },
+        {
           "key": "GOLDMAN SACHS",
           "name": "Goldman Sachs Group Inc",
           "current": 1610000.0,
@@ -12939,77 +13202,6 @@
               "client": "Goldman Sachs Group Inc",
               "registrant": "Capitol Tax Partners, LLP",
               "income": 60000.0
-            }
-          ]
-        },
-        {
-          "key": "BLUE CROSS AND BLUE SHIELD ASSOCIATION",
-          "name": "Blue Cross and Blue Shield Association",
-          "current": 1610000.0,
-          "baseline": 1280000.0,
-          "delta": 330000.0,
-          "ratio": 1.258,
-          "filings_current": 3,
-          "filings_baseline": 3,
-          "topics": [
-            "Drug Pricing",
-            "Substance Use and Treatment",
-            "Medicare and Medicaid",
-            "FDA Regulation"
-          ],
-          "registrants": [
-            "Alb Solutions",
-            "Blue Cross and Blue Shield Association",
-            "Atrio Consulting Group, LLC"
-          ],
-          "series": [
-            1960000.0,
-            1770000.0,
-            1380000.0,
-            1500000.0,
-            1440000.0,
-            1720000.0,
-            1420000.0,
-            1570000.0,
-            1520000.0,
-            1670000.0,
-            1570000.0,
-            1440000.0,
-            1240000.0,
-            1650000.0,
-            1760000.0,
-            1870000.0,
-            2010000.0,
-            1510000.0,
-            1990000.0,
-            1840000.0,
-            1280000.0,
-            1290000.0,
-            1230000.0,
-            1520000.0,
-            1610000.0
-          ],
-          "examples": [
-            {
-              "uuid": "f688dc52-44fa-43c7-be1a-9f66d5ca326d",
-              "date": "2026-04-20T13:05:28-04:00",
-              "client": "Blue Cross and Blue Shield Association",
-              "registrant": "Blue Cross and Blue Shield Association",
-              "income": 1520000.0
-            },
-            {
-              "uuid": "06ee3bb1-82b7-4822-b3f1-b0d091dcaf3e",
-              "date": "2026-04-15T12:54:04-04:00",
-              "client": "Blue Cross and Blue Shield Association",
-              "registrant": "Alb Solutions",
-              "income": 60000.0
-            },
-            {
-              "uuid": "778c4bd3-7a4d-40b3-8c22-e346452314bb",
-              "date": "2026-04-20T23:32:10-04:00",
-              "client": "Blue Cross and Blue Shield Association",
-              "registrant": "Atrio Consulting Group, LLC",
-              "income": 30000.0
             }
           ]
         },
@@ -13260,84 +13452,6 @@
           ]
         },
         {
-          "key": "SHELL",
-          "name": "Shell USA, Inc.",
-          "current": 1550000.0,
-          "baseline": 1610000.0,
-          "delta": -60000.0,
-          "ratio": 0.963,
-          "filings_current": 4,
-          "filings_baseline": 4,
-          "topics": [
-            "Oil and Gas",
-            "Renewable Energy",
-            "Maritime and Fisheries",
-            "Clean Air and Chemicals"
-          ],
-          "registrants": [
-            "Acorn Consulting",
-            "Alpine Group Partners, LLC.",
-            "Mindset Advocacy, LLC"
-          ],
-          "series": [
-            2030000.0,
-            1790000.0,
-            2120000.0,
-            1850000.0,
-            2110000.0,
-            1900000.0,
-            1690000.0,
-            2020000.0,
-            1500000.0,
-            2240000.0,
-            1740000.0,
-            1850000.0,
-            2150000.0,
-            1890000.0,
-            1870000.0,
-            1880000.0,
-            1800000.0,
-            2270000.0,
-            1890000.0,
-            1820000.0,
-            1610000.0,
-            2200000.0,
-            1510000.0,
-            1490000.0,
-            1550000.0
-          ],
-          "examples": [
-            {
-              "uuid": "aa43e788-303b-4199-9aee-db420cda2ff0",
-              "date": "2026-04-20T16:52:11-04:00",
-              "client": "Shell USA, Inc.",
-              "registrant": "Shell USA, Inc. (fka Shell Oil Company)",
-              "income": 1350000.0
-            },
-            {
-              "uuid": "06dedfeb-8e83-45be-84b8-27bd56ba1ef4",
-              "date": "2026-04-20T11:45:23-04:00",
-              "client": "Shell USA, Inc.",
-              "registrant": "Mindset Advocacy, LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "9ac67f53-316f-4c05-a317-f37d13ef3a6b",
-              "date": "2026-04-15T21:21:15-04:00",
-              "client": "Shell USA, Inc.",
-              "registrant": "Acorn Consulting",
-              "income": 70000.0
-            },
-            {
-              "uuid": "a3ed5800-47b0-4238-b86b-98830df93887",
-              "date": "2026-04-19T22:56:33-04:00",
-              "client": "Shell USA, Inc.",
-              "registrant": "Alpine Group Partners, LLC.",
-              "income": 50000.0
-            }
-          ]
-        },
-        {
           "key": "CENCORA",
           "name": "Cencora, Inc.",
           "current": 1545000.0,
@@ -13358,17 +13472,17 @@
             "TCH Group, LLC"
           ],
           "series": [
-            790000.0,
-            710000.0,
-            700000.0,
-            1430000.0,
-            730000.0,
-            870000.0,
-            780000.0,
-            720000.0,
+            955000.0,
+            895000.0,
+            880000.0,
+            1610000.0,
+            910000.0,
             1070000.0,
-            720000.0,
-            890000.0,
+            960000.0,
+            900000.0,
+            1220000.0,
+            830000.0,
+            970000.0,
             775000.0,
             830000.0,
             765000.0,
@@ -13418,84 +13532,6 @@
               "date": "2026-04-20T19:54:34-04:00",
               "client": "Cencora, Inc.",
               "registrant": "Harbinger Strategies, LLC",
-              "income": 60000.0
-            }
-          ]
-        },
-        {
-          "key": "PHILLIPS 66",
-          "name": "Phillips 66",
-          "current": 1540000.0,
-          "baseline": 1900000.0,
-          "delta": -360000.0,
-          "ratio": 0.811,
-          "filings_current": 4,
-          "filings_baseline": 6,
-          "topics": [
-            "Clean Air and Chemicals",
-            "Carbon and Climate",
-            "Maritime and Fisheries",
-            "Trade Agreements"
-          ],
-          "registrants": [
-            "Ridgeline Advocacy Group LLC",
-            "Cornerstone Government Affairs, Inc.",
-            "Phillips 66"
-          ],
-          "series": [
-            1440000.0,
-            660000.0,
-            580000.0,
-            730000.0,
-            1070000.0,
-            530000.0,
-            540000.0,
-            750000.0,
-            1250000.0,
-            1110000.0,
-            700000.0,
-            940000.0,
-            2050000.0,
-            940000.0,
-            830000.0,
-            2660000.0,
-            2610000.0,
-            940000.0,
-            510000.0,
-            1080000.0,
-            1900000.0,
-            1420000.0,
-            1380000.0,
-            3950000.0,
-            1540000.0
-          ],
-          "examples": [
-            {
-              "uuid": "840ae1bd-c4b1-4a06-afbe-1ec3a62b8037",
-              "date": "2026-04-20T11:06:40-04:00",
-              "client": "Phillips 66",
-              "registrant": "Phillips 66",
-              "income": 1320000.0
-            },
-            {
-              "uuid": "4035ed90-be7b-4b5d-bb88-bfe8c2706a82",
-              "date": "2026-04-16T14:41:19-04:00",
-              "client": "Phillips 66",
-              "registrant": "Ridgeline Advocacy Group LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "04ec7ab6-ad13-471b-a22d-b23f77007c64",
-              "date": "2026-04-20T09:36:13-04:00",
-              "client": "Phillips 66",
-              "registrant": "Cornerstone Government Affairs, Inc.",
-              "income": 80000.0
-            },
-            {
-              "uuid": "c6c4eac8-2ab7-4fad-834c-105eafaf7a4f",
-              "date": "2026-04-20T12:19:17-04:00",
-              "client": "Phillips 66",
-              "registrant": "Crossroads Strategies, LLC",
               "income": 60000.0
             }
           ]
@@ -13581,6 +13617,84 @@
               "date": "2026-04-20T18:42:34-04:00",
               "client": "BP America, Inc.",
               "registrant": "Avoq, LLC",
+              "income": 60000.0
+            }
+          ]
+        },
+        {
+          "key": "PHILLIPS 66",
+          "name": "Phillips 66",
+          "current": 1540000.0,
+          "baseline": 1900000.0,
+          "delta": -360000.0,
+          "ratio": 0.811,
+          "filings_current": 4,
+          "filings_baseline": 6,
+          "topics": [
+            "Clean Air and Chemicals",
+            "Carbon and Climate",
+            "Maritime and Fisheries",
+            "Trade Agreements"
+          ],
+          "registrants": [
+            "Ridgeline Advocacy Group LLC",
+            "Cornerstone Government Affairs, Inc.",
+            "Phillips 66"
+          ],
+          "series": [
+            1440000.0,
+            660000.0,
+            580000.0,
+            730000.0,
+            1070000.0,
+            530000.0,
+            540000.0,
+            750000.0,
+            1250000.0,
+            1110000.0,
+            700000.0,
+            940000.0,
+            2050000.0,
+            940000.0,
+            830000.0,
+            2660000.0,
+            2610000.0,
+            940000.0,
+            510000.0,
+            1080000.0,
+            1900000.0,
+            1420000.0,
+            1380000.0,
+            3950000.0,
+            1540000.0
+          ],
+          "examples": [
+            {
+              "uuid": "840ae1bd-c4b1-4a06-afbe-1ec3a62b8037",
+              "date": "2026-04-20T11:06:40-04:00",
+              "client": "Phillips 66",
+              "registrant": "Phillips 66",
+              "income": 1320000.0
+            },
+            {
+              "uuid": "4035ed90-be7b-4b5d-bb88-bfe8c2706a82",
+              "date": "2026-04-16T14:41:19-04:00",
+              "client": "Phillips 66",
+              "registrant": "Ridgeline Advocacy Group LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "04ec7ab6-ad13-471b-a22d-b23f77007c64",
+              "date": "2026-04-20T09:36:13-04:00",
+              "client": "Phillips 66",
+              "registrant": "Cornerstone Government Affairs, Inc.",
+              "income": 80000.0
+            },
+            {
+              "uuid": "c6c4eac8-2ab7-4fad-834c-105eafaf7a4f",
+              "date": "2026-04-20T12:19:17-04:00",
+              "client": "Phillips 66",
+              "registrant": "Crossroads Strategies, LLC",
               "income": 60000.0
             }
           ]
@@ -13689,8 +13803,8 @@
         "change_pct": 5.4,
         "current_filings": 24680,
         "baseline_filings": 23270,
-        "current_clients": 17704,
-        "baseline_clients": 16565
+        "current_clients": 17682,
+        "baseline_clients": 16543
       },
       "risers": [
         {
@@ -14355,6 +14469,69 @@
           ]
         },
         {
+          "key": "SYLVAMO",
+          "name": "Sylvamo North America LLC",
+          "current": 1100000.0,
+          "baseline": 160000.0,
+          "delta": 940000.0,
+          "ratio": 6.875,
+          "filings_current": 2,
+          "filings_baseline": 1,
+          "topics": [
+            "Tariffs and Trade Enforcement",
+            "Postal Policy",
+            "Biofuels",
+            "Waste and Recycling Management"
+          ],
+          "registrants": [
+            "Sylvamo North America, LLC",
+            "Akin Gump Strauss Hauer & Feld"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            120000.0,
+            150000.0,
+            120000.0,
+            110000.0,
+            90000.0,
+            320000.0,
+            130000.0,
+            100000.0,
+            100000.0,
+            220000.0,
+            150000.0,
+            110000.0,
+            100000.0,
+            1480000.0,
+            160000.0,
+            240000.0,
+            400000.0,
+            2940000.0
+          ],
+          "examples": [
+            {
+              "uuid": "9027407d-4324-4171-a143-39606f8e1da2",
+              "date": "2026-07-20T11:19:29-04:00",
+              "client": "Sylvamo North America LLC",
+              "registrant": "Sylvamo North America, LLC",
+              "income": 1000000.0
+            },
+            {
+              "uuid": "f372f4c1-fe79-41af-9dd5-c49ac54d6e61",
+              "date": "2026-07-20T11:24:39-04:00",
+              "client": "Sylvamo North America LLC",
+              "registrant": "Akin Gump Strauss Hauer & Feld",
+              "income": 100000.0
+            }
+          ]
+        },
+        {
           "key": "IMPULSE SPACE",
           "name": "Impulse Space",
           "current": 960000.0,
@@ -14428,69 +14605,6 @@
               "client": "Impulse Space",
               "registrant": "American Defense International, Inc.",
               "income": 0
-            }
-          ]
-        },
-        {
-          "key": "SYLVAMO",
-          "name": "Sylvamo North America LLC",
-          "current": 1100000.0,
-          "baseline": 160000.0,
-          "delta": 940000.0,
-          "ratio": 6.875,
-          "filings_current": 2,
-          "filings_baseline": 1,
-          "topics": [
-            "Tariffs and Trade Enforcement",
-            "Postal Policy",
-            "Biofuels",
-            "Waste and Recycling Management"
-          ],
-          "registrants": [
-            "Sylvamo North America, LLC",
-            "Akin Gump Strauss Hauer & Feld"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            120000.0,
-            150000.0,
-            120000.0,
-            110000.0,
-            90000.0,
-            320000.0,
-            130000.0,
-            100000.0,
-            100000.0,
-            220000.0,
-            150000.0,
-            110000.0,
-            100000.0,
-            1480000.0,
-            160000.0,
-            240000.0,
-            400000.0,
-            2940000.0
-          ],
-          "examples": [
-            {
-              "uuid": "9027407d-4324-4171-a143-39606f8e1da2",
-              "date": "2026-07-20T11:19:29-04:00",
-              "client": "Sylvamo North America LLC",
-              "registrant": "Sylvamo North America, LLC",
-              "income": 1000000.0
-            },
-            {
-              "uuid": "f372f4c1-fe79-41af-9dd5-c49ac54d6e61",
-              "date": "2026-07-20T11:24:39-04:00",
-              "client": "Sylvamo North America LLC",
-              "registrant": "Akin Gump Strauss Hauer & Feld",
-              "income": 100000.0
             }
           ]
         },
@@ -20099,16 +20213,16 @@
         {
           "key": "BIOTECHNOLOGY INNOVATION ORGANIZATION",
           "name": "Biotechnology Innovation Organization",
-          "current": 2877500.0,
-          "baseline": 2337500.0,
+          "current": 2957500.0,
+          "baseline": 2417500.0,
           "delta": 540000.0,
-          "ratio": 1.231,
-          "filings_current": 11,
-          "filings_baseline": 13,
+          "ratio": 1.223,
+          "filings_current": 12,
+          "filings_baseline": 14,
           "topics": [
             "Drug Pricing",
-            "Appropriations",
             "Medicare and Medicaid",
+            "Appropriations",
             "Defense Authorization"
           ],
           "registrants": [
@@ -20117,31 +20231,31 @@
             "Capitol Counsel LLC"
           ],
           "series": [
-            3450000.0,
-            3880000.0,
-            3710000.0,
-            3730000.0,
             3590000.0,
-            4000000.0,
-            3780000.0,
-            3910000.0,
-            3700000.0,
-            3650000.0,
-            3760000.0,
-            4290000.0,
-            2950000.0,
-            2720000.0,
-            2740000.0,
-            2740000.0,
-            2240000.0,
-            2280000.0,
-            2160000.0,
-            2030000.0,
-            1380000.0,
-            2337500.0,
-            1807500.0,
-            1967500.0,
-            2137500.0
+            4020000.0,
+            3850000.0,
+            3870000.0,
+            3730000.0,
+            4140000.0,
+            3920000.0,
+            4050000.0,
+            3840000.0,
+            3790000.0,
+            3900000.0,
+            4430000.0,
+            3090000.0,
+            2860000.0,
+            2880000.0,
+            2880000.0,
+            2380000.0,
+            2420000.0,
+            2300000.0,
+            2170000.0,
+            1460000.0,
+            2417500.0,
+            1887500.0,
+            2047500.0,
+            2217500.0
           ],
           "examples": [
             {
@@ -20159,6 +20273,13 @@
               "income": 80000.0
             },
             {
+              "uuid": "38337b2c-f244-496c-b4ba-7754a17d6b93",
+              "date": "2026-07-20T22:22:34-04:00",
+              "client": "Biotechnology Innovation Organization",
+              "registrant": "Tarplin, Downs & Young, LLC",
+              "income": 80000.0
+            },
+            {
               "uuid": "8ec773a4-e287-458b-8887-3d5bda65039c",
               "date": "2026-07-16T15:41:03-04:00",
               "client": "Biotechnology Innovation Organization",
@@ -20170,13 +20291,6 @@
               "date": "2026-07-17T14:14:39-04:00",
               "client": "Biotechnology Innovation Organization",
               "registrant": "Dla Piper LLP (US)",
-              "income": 60000.0
-            },
-            {
-              "uuid": "68974659-b5c4-49fd-9cf7-0d1ae2d9c791",
-              "date": "2026-07-20T09:46:50-04:00",
-              "client": "Biotechnology Innovation Organization",
-              "registrant": "Akin Gump Strauss Hauer & Feld",
               "income": 60000.0
             }
           ]
@@ -20357,7 +20471,7 @@
           "delta": 500000.0,
           "ratio": 1.215,
           "filings_current": 7,
-          "filings_baseline": 8,
+          "filings_baseline": 9,
           "topics": [
             "Tobacco and Nicotine",
             "Appropriations",
@@ -20370,25 +20484,25 @@
             "Ogr"
           ],
           "series": [
-            1870000.0,
-            1750000.0,
-            2400000.0,
-            2010000.0,
-            2010000.0,
-            2780000.0,
-            2850000.0,
-            3440000.0,
-            1890000.0,
-            2020000.0,
+            2155000.0,
+            1880000.0,
+            2680000.0,
+            2290000.0,
+            2280000.0,
+            2900000.0,
+            3120000.0,
+            3750000.0,
+            2190000.0,
+            2300000.0,
+            1790000.0,
+            1650000.0,
             1690000.0,
-            1550000.0,
-            1660000.0,
-            1820000.0,
-            1500000.0,
-            1560000.0,
+            1850000.0,
+            1530000.0,
+            1590000.0,
             1690000.0,
-            1800000.0,
-            2010000.0,
+            1900000.0,
+            2080000.0,
             2150000.0,
             1690000.0,
             2330000.0,
@@ -20774,91 +20888,6 @@
           ]
         },
         {
-          "key": "CIGNA",
-          "name": "Cigna Corporation",
-          "current": 2660000.0,
-          "baseline": 2380000.0,
-          "delta": 280000.0,
-          "ratio": 1.118,
-          "filings_current": 10,
-          "filings_baseline": 9,
-          "topics": [
-            "Drug Pricing",
-            "Defense Authorization",
-            "Medicare and Medicaid",
-            "Telehealth"
-          ],
-          "registrants": [
-            "Red+blue Strategies",
-            "Wilmer Cutler Pickering Hale and Dorr LLP",
-            "Bellwether Government Affairs LLC"
-          ],
-          "series": [
-            1920000.0,
-            2940000.0,
-            2080000.0,
-            1935000.0,
-            2375000.0,
-            2775000.0,
-            1830000.0,
-            3700000.0,
-            3980000.0,
-            1330000.0,
-            3290000.0,
-            1380000.0,
-            5610000.0,
-            2060000.0,
-            2030000.0,
-            2330000.0,
-            3310000.0,
-            2600000.0,
-            2120000.0,
-            1820000.0,
-            3890000.0,
-            2420000.0,
-            1860000.0,
-            2180000.0,
-            3950000.0
-          ],
-          "examples": [
-            {
-              "uuid": "960dfc23-83b5-4a7c-9c10-5504c089ad34",
-              "date": "2026-07-20T16:03:11-04:00",
-              "client": "Cigna Corporation",
-              "registrant": "The Cigna Group and Subsidiaries (formerly Cigna Corporation and Subsidiaries)",
-              "income": 2120000.0
-            },
-            {
-              "uuid": "2ffd7816-a2f5-43cf-af05-5862f796ba2b",
-              "date": "2026-07-19T16:40:58-04:00",
-              "client": "Cigna Corporation",
-              "registrant": "Tiber Creek Group",
-              "income": 90000.0
-            },
-            {
-              "uuid": "ff0d7ab1-0edc-4110-adc0-558978045b95",
-              "date": "2026-07-19T16:58:45-04:00",
-              "client": "Cigna Corporation",
-              "registrant": "Invariant LLC",
-              "income": 90000.0
-            },
-            {
-              "uuid": "caeab211-9eab-427f-b106-e0adef0f9330",
-              "date": "2026-07-19T20:29:56-04:00",
-              "client": "Cigna Corporation",
-              "registrant": "Polaris Government Relations, LLC",
-              "income": 90000.0
-            },
-            {
-              "uuid": "ade43965-e146-4d85-ae29-3da06d66c292",
-              "date": "2026-07-17T16:21:52-04:00",
-              "client": "Cigna Corporation",
-              "registrant": "Red+blue Strategies",
-              "income": 80000.0
-            }
-          ]
-        },
-        {
           "key": "DUKE ENERGY",
           "name": "Duke Energy Corporation",
           "current": 2660000.0,
@@ -20940,6 +20969,91 @@
               "client": "Duke Energy Corporation",
               "registrant": "Brownstein Hyatt Farber Schreck, LLP",
               "income": 60000.0
+            }
+          ]
+        },
+        {
+          "key": "CIGNA",
+          "name": "Cigna Corporation",
+          "current": 2660000.0,
+          "baseline": 2380000.0,
+          "delta": 280000.0,
+          "ratio": 1.118,
+          "filings_current": 10,
+          "filings_baseline": 9,
+          "topics": [
+            "Drug Pricing",
+            "Defense Authorization",
+            "Medicare and Medicaid",
+            "Telehealth"
+          ],
+          "registrants": [
+            "Red+blue Strategies",
+            "Wilmer Cutler Pickering Hale and Dorr LLP",
+            "Bellwether Government Affairs LLC"
+          ],
+          "series": [
+            1920000.0,
+            2940000.0,
+            2080000.0,
+            1935000.0,
+            2375000.0,
+            2775000.0,
+            1830000.0,
+            3700000.0,
+            3980000.0,
+            1330000.0,
+            3290000.0,
+            1380000.0,
+            5610000.0,
+            2060000.0,
+            2030000.0,
+            2330000.0,
+            3310000.0,
+            2600000.0,
+            2120000.0,
+            1820000.0,
+            3890000.0,
+            2420000.0,
+            1860000.0,
+            2180000.0,
+            3950000.0
+          ],
+          "examples": [
+            {
+              "uuid": "960dfc23-83b5-4a7c-9c10-5504c089ad34",
+              "date": "2026-07-20T16:03:11-04:00",
+              "client": "Cigna Corporation",
+              "registrant": "The Cigna Group and Subsidiaries (formerly Cigna Corporation and Subsidiaries)",
+              "income": 2120000.0
+            },
+            {
+              "uuid": "2ffd7816-a2f5-43cf-af05-5862f796ba2b",
+              "date": "2026-07-19T16:40:58-04:00",
+              "client": "Cigna Corporation",
+              "registrant": "Tiber Creek Group",
+              "income": 90000.0
+            },
+            {
+              "uuid": "ff0d7ab1-0edc-4110-adc0-558978045b95",
+              "date": "2026-07-19T16:58:45-04:00",
+              "client": "Cigna Corporation",
+              "registrant": "Invariant LLC",
+              "income": 90000.0
+            },
+            {
+              "uuid": "caeab211-9eab-427f-b106-e0adef0f9330",
+              "date": "2026-07-19T20:29:56-04:00",
+              "client": "Cigna Corporation",
+              "registrant": "Polaris Government Relations, LLC",
+              "income": 90000.0
+            },
+            {
+              "uuid": "ade43965-e146-4d85-ae29-3da06d66c292",
+              "date": "2026-07-17T16:21:52-04:00",
+              "client": "Cigna Corporation",
+              "registrant": "Red+blue Strategies",
+              "income": 80000.0
             }
           ]
         },
@@ -22484,6 +22598,91 @@
           ]
         },
         {
+          "key": "PARAMOUNT SKYDANCE",
+          "name": "Paramount Skydance Corporation (fka Paramount Global)",
+          "current": 2010000.0,
+          "baseline": 1920000.0,
+          "delta": 90000.0,
+          "ratio": 1.047,
+          "filings_current": 9,
+          "filings_baseline": 7,
+          "topics": [
+            "Artificial Intelligence",
+            "Data Privacy",
+            "Tax Policy",
+            "Intellectual Property"
+          ],
+          "registrants": [
+            "Telemedia Policy Corp.",
+            "Acg Advocacy",
+            "Becker & Poliakoff, P.A."
+          ],
+          "series": [
+            818000.0,
+            1220000.0,
+            1060000.0,
+            960000.0,
+            910000.0,
+            1680000.0,
+            1020000.0,
+            1707000.0,
+            1117000.0,
+            1640000.0,
+            929850.0,
+            1440950.0,
+            1440000.0,
+            1560000.0,
+            1340000.0,
+            1680000.0,
+            1620000.0,
+            1560000.0,
+            1490000.0,
+            2060000.0,
+            1850000.0,
+            1920000.0,
+            1620000.0,
+            2240000.0,
+            1770000.0
+          ],
+          "examples": [
+            {
+              "uuid": "6bf9067d-c841-44b3-a644-524a2c45bc55",
+              "date": "2026-07-20T22:03:10-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Paramount Skydance Corporation (fka Paramount Global)",
+              "income": 1520000.0
+            },
+            {
+              "uuid": "2796ce0d-5acc-4f21-b168-52151589333b",
+              "date": "2026-07-20T12:47:43-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
+              "income": 120000.0
+            },
+            {
+              "uuid": "f044c38e-d67b-4db4-9827-be59ecd8cedb",
+              "date": "2026-07-16T11:05:41-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Ballard Partners",
+              "income": 90000.0
+            },
+            {
+              "uuid": "fc209f5f-9088-4b92-9fd4-4aa22c5f183d",
+              "date": "2026-07-16T18:08:19-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Telemedia Policy Corp.",
+              "income": 60000.0
+            },
+            {
+              "uuid": "f3c9da6a-793e-4ca9-8c78-8b9e3fc0b688",
+              "date": "2026-07-17T08:16:53-04:00",
+              "client": "Paramount Skydance Corporation (fka Paramount Global)",
+              "registrant": "Acg Advocacy",
+              "income": 60000.0
+            }
+          ]
+        },
+        {
           "key": "NOVO NORDISK",
           "name": "Novo Nordisk Inc.",
           "current": 2000000.0,
@@ -23645,81 +23844,6 @@
           ]
         },
         {
-          "key": "MASTERCARD WORLDWIDE",
-          "name": "Mastercard Worldwide",
-          "current": 1780000.0,
-          "baseline": 1680000.0,
-          "delta": 100000.0,
-          "ratio": 1.06,
-          "filings_current": 4,
-          "filings_baseline": 4,
-          "topics": [
-            "Cybersecurity"
-          ],
-          "registrants": [
-            "Resolution Public Affairs, LLC",
-            "CGCN Group, LLC",
-            "9th Street Strategies"
-          ],
-          "series": [
-            998750.0,
-            948750.0,
-            668750.0,
-            568750.0,
-            1198750.0,
-            758750.0,
-            968750.0,
-            828750.0,
-            1198750.0,
-            1208750.0,
-            1128750.0,
-            1008750.0,
-            1248750.0,
-            1048750.0,
-            1058000.0,
-            1028000.0,
-            1388000.0,
-            1208000.0,
-            960000.0,
-            1760000.0,
-            1760000.0,
-            1680000.0,
-            1260000.0,
-            1420000.0,
-            1740000.0
-          ],
-          "examples": [
-            {
-              "uuid": "4e81be76-944a-40f0-936d-10e9c5103f13",
-              "date": "2026-07-20T16:38:58-04:00",
-              "client": "Mastercard Worldwide",
-              "registrant": "Mastercard Worldwide",
-              "income": 1610000.0
-            },
-            {
-              "uuid": "fd97b092-a27d-4aa8-b166-5b9b4a520797",
-              "date": "2026-07-20T13:19:13-04:00",
-              "client": "Mastercard Worldwide",
-              "registrant": "CGCN Group, LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "f2b63919-1ba2-447b-ac0e-0b821e950cb3",
-              "date": "2026-07-19T13:32:23-04:00",
-              "client": "Mastercard Worldwide",
-              "registrant": "Resolution Public Affairs, LLC",
-              "income": 60000.0
-            },
-            {
-              "uuid": "c1329191-22b8-4065-9013-25297a8c8d26",
-              "date": "2026-07-20T16:34:39-04:00",
-              "client": "Mastercard Worldwide",
-              "registrant": "9th Street Strategies",
-              "income": 30000.0
-            }
-          ]
-        },
-        {
           "key": "VERTEX PHARMACEUTICALS",
           "name": "Vertex Pharmaceuticals Incorporated",
           "current": 1780000.0,
@@ -23805,85 +23929,77 @@
           ]
         },
         {
-          "key": "CENTENE",
-          "name": "Centene Corporation",
-          "current": 1775000.0,
-          "baseline": 1825000.0,
-          "delta": -50000.0,
-          "ratio": 0.973,
-          "filings_current": 5,
-          "filings_baseline": 6,
+          "key": "MASTERCARD WORLDWIDE",
+          "name": "Mastercard Worldwide",
+          "current": 1780000.0,
+          "baseline": 1680000.0,
+          "delta": 100000.0,
+          "ratio": 1.06,
+          "filings_current": 4,
+          "filings_baseline": 4,
           "topics": [
-            "Medicare and Medicaid",
-            "Artificial Intelligence"
+            "Cybersecurity"
           ],
           "registrants": [
-            "Brownstein Hyatt Farber Schreck, LLP",
-            "Continental Strategy, LLC",
-            "Centene Corporation"
+            "Resolution Public Affairs, LLC",
+            "CGCN Group, LLC",
+            "9th Street Strategies"
           ],
           "series": [
-            1165000.0,
-            1255000.0,
-            1460000.0,
-            1282500.0,
-            1832500.0,
-            1472500.0,
-            1218000.0,
-            1869000.0,
-            1425000.0,
-            1415000.0,
-            1475000.0,
-            1865000.0,
-            1985000.0,
-            1555000.0,
-            1515000.0,
-            1355000.0,
-            1715000.0,
-            1665000.0,
-            1215000.0,
-            875000.0,
-            1175000.0,
-            1825000.0,
-            1025000.0,
-            1405000.0,
-            1345000.0
+            998750.0,
+            948750.0,
+            668750.0,
+            568750.0,
+            1198750.0,
+            758750.0,
+            968750.0,
+            828750.0,
+            1198750.0,
+            1208750.0,
+            1128750.0,
+            1008750.0,
+            1248750.0,
+            1048750.0,
+            1058000.0,
+            1028000.0,
+            1388000.0,
+            1208000.0,
+            960000.0,
+            1760000.0,
+            1760000.0,
+            1680000.0,
+            1260000.0,
+            1420000.0,
+            1740000.0
           ],
           "examples": [
             {
-              "uuid": "3e6c5f38-2bd0-4493-beea-51efe239e79b",
-              "date": "2026-07-20T11:35:37-04:00",
-              "client": "Centene Corporation",
-              "registrant": "Centene Corporation",
-              "income": 1460000.0
+              "uuid": "4e81be76-944a-40f0-936d-10e9c5103f13",
+              "date": "2026-07-20T16:38:58-04:00",
+              "client": "Mastercard Worldwide",
+              "registrant": "Mastercard Worldwide",
+              "income": 1610000.0
             },
             {
-              "uuid": "0243e7bd-01f2-4d92-a109-e3c3000c2ecc",
-              "date": "2026-07-19T10:35:50-04:00",
-              "client": "Centene Corporation",
-              "registrant": "Continental Strategy, LLC",
-              "income": 105000.0
+              "uuid": "fd97b092-a27d-4aa8-b166-5b9b4a520797",
+              "date": "2026-07-20T13:19:13-04:00",
+              "client": "Mastercard Worldwide",
+              "registrant": "CGCN Group, LLC",
+              "income": 80000.0
             },
             {
-              "uuid": "bbab4a73-debc-4343-afcf-614f1828fd61",
-              "date": "2026-07-20T14:54:26-04:00",
-              "client": "Centene Corporation",
-              "registrant": "BGR Government Affairs",
-              "income": 90000.0
-            },
-            {
-              "uuid": "3a48b3d5-8dca-4ae8-9d35-6c5a6ca7048c",
-              "date": "2026-07-16T11:38:14-04:00",
-              "client": "Centene Corporation",
-              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
+              "uuid": "f2b63919-1ba2-447b-ac0e-0b821e950cb3",
+              "date": "2026-07-19T13:32:23-04:00",
+              "client": "Mastercard Worldwide",
+              "registrant": "Resolution Public Affairs, LLC",
               "income": 60000.0
             },
             {
-              "uuid": "88f36d98-3c9e-4b59-8cbc-8a8d4b754a2c",
-              "date": "2026-07-20T12:39:19-04:00",
-              "client": "Centene Corporation",
-              "registrant": "Williams and Jensen, PLLC",
-              "income": 60000.0
+              "uuid": "c1329191-22b8-4065-9013-25297a8c8d26",
+              "date": "2026-07-20T16:34:39-04:00",
+              "client": "Mastercard Worldwide",
+              "registrant": "9th Street Strategies",
+              "income": 30000.0
             }
           ]
         },
@@ -23973,6 +24089,89 @@
           ]
         },
         {
+          "key": "CENTENE",
+          "name": "Centene Corporation",
+          "current": 1775000.0,
+          "baseline": 1825000.0,
+          "delta": -50000.0,
+          "ratio": 0.973,
+          "filings_current": 5,
+          "filings_baseline": 6,
+          "topics": [
+            "Medicare and Medicaid",
+            "Artificial Intelligence"
+          ],
+          "registrants": [
+            "Brownstein Hyatt Farber Schreck, LLP",
+            "Continental Strategy, LLC",
+            "Centene Corporation"
+          ],
+          "series": [
+            1165000.0,
+            1255000.0,
+            1460000.0,
+            1282500.0,
+            1832500.0,
+            1472500.0,
+            1218000.0,
+            1869000.0,
+            1425000.0,
+            1415000.0,
+            1475000.0,
+            1865000.0,
+            1985000.0,
+            1555000.0,
+            1515000.0,
+            1355000.0,
+            1715000.0,
+            1665000.0,
+            1215000.0,
+            875000.0,
+            1175000.0,
+            1825000.0,
+            1025000.0,
+            1405000.0,
+            1345000.0
+          ],
+          "examples": [
+            {
+              "uuid": "3e6c5f38-2bd0-4493-beea-51efe239e79b",
+              "date": "2026-07-20T11:35:37-04:00",
+              "client": "Centene Corporation",
+              "registrant": "Centene Corporation",
+              "income": 1460000.0
+            },
+            {
+              "uuid": "0243e7bd-01f2-4d92-a109-e3c3000c2ecc",
+              "date": "2026-07-19T10:35:50-04:00",
+              "client": "Centene Corporation",
+              "registrant": "Continental Strategy, LLC",
+              "income": 105000.0
+            },
+            {
+              "uuid": "bbab4a73-debc-4343-afcf-614f1828fd61",
+              "date": "2026-07-20T14:54:26-04:00",
+              "client": "Centene Corporation",
+              "registrant": "BGR Government Affairs",
+              "income": 90000.0
+            },
+            {
+              "uuid": "3a48b3d5-8dca-4ae8-9d35-6c5a6ca7048c",
+              "date": "2026-07-16T11:38:14-04:00",
+              "client": "Centene Corporation",
+              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
+              "income": 60000.0
+            },
+            {
+              "uuid": "88f36d98-3c9e-4b59-8cbc-8a8d4b754a2c",
+              "date": "2026-07-20T12:39:19-04:00",
+              "client": "Centene Corporation",
+              "registrant": "Williams and Jensen, PLLC",
+              "income": 60000.0
+            }
+          ]
+        },
+        {
           "key": "AMERICAN FUEL AND PETROCHEMICAL MANUFACTURERS",
           "name": "American Fuel and Petrochemical Manufacturers",
           "current": 1760000.0,
@@ -24058,79 +24257,86 @@
           ]
         },
         {
-          "key": "PARAMOUNT SKYDANCE",
-          "name": "Paramount Skydance Corporation (fka Paramount Global)",
+          "key": "SHELL",
+          "name": "Shell Oil Company",
           "current": 1750000.0,
-          "baseline": 1650000.0,
-          "delta": 100000.0,
-          "ratio": 1.061,
-          "filings_current": 4,
-          "filings_baseline": 2,
+          "baseline": 2300000.0,
+          "delta": -550000.0,
+          "ratio": 0.761,
+          "filings_current": 6,
+          "filings_baseline": 6,
           "topics": [
-            "Artificial Intelligence",
-            "Intellectual Property",
-            "Data Privacy",
-            "Antitrust and Competition"
+            "Oil and Gas",
+            "Maritime and Fisheries",
+            "Renewable Energy",
+            "Tariffs and Trade Enforcement"
           ],
           "registrants": [
-            "Acg Advocacy",
-            "Brownstein Hyatt Farber Schreck, LLP",
-            "Paramount Skydance Corporation (fka Paramount Global)"
+            "The Harple Group, LLC",
+            "Acorn Consulting",
+            "Alpine Group Partners, LLC."
           ],
           "series": [
-            788000.0,
-            1200000.0,
-            1040000.0,
-            940000.0,
-            890000.0,
-            1660000.0,
-            1000000.0,
-            1657000.0,
-            1047000.0,
-            1570000.0,
-            859850.0,
-            1370950.0,
-            1320000.0,
-            1440000.0,
-            1220000.0,
-            1560000.0,
-            1500000.0,
-            1440000.0,
-            1390000.0,
+            2130000.0,
+            1890000.0,
+            2210000.0,
             1940000.0,
-            1610000.0,
-            1650000.0,
-            1350000.0,
+            2200000.0,
+            2000000.0,
+            1790000.0,
+            2130000.0,
+            1590000.0,
+            2330000.0,
+            1830000.0,
+            1940000.0,
+            2250000.0,
+            1990000.0,
             1970000.0,
-            1510000.0
+            1980000.0,
+            1900000.0,
+            2370000.0,
+            2010000.0,
+            1940000.0,
+            1710000.0,
+            2300000.0,
+            1610000.0,
+            1590000.0,
+            1650000.0
           ],
           "examples": [
             {
-              "uuid": "6bf9067d-c841-44b3-a644-524a2c45bc55",
-              "date": "2026-07-20T22:03:10-04:00",
-              "client": "Paramount Skydance Corporation (fka Paramount Global)",
-              "registrant": "Paramount Skydance Corporation (fka Paramount Global)",
-              "income": 1520000.0
+              "uuid": "9ce5b0cf-f121-455b-83d0-1d9b3cabd3b6",
+              "date": "2026-07-20T12:01:25-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Shell USA, Inc. (fka Shell Oil Company)",
+              "income": 1450000.0
             },
             {
-              "uuid": "2796ce0d-5acc-4f21-b168-52151589333b",
-              "date": "2026-07-20T12:47:43-04:00",
-              "client": "Paramount Skydance Corporation (fka Paramount Global)",
-              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
-              "income": 120000.0
+              "uuid": "2750a96a-dc66-44ee-8ef2-d10670e0b8cf",
+              "date": "2026-07-20T09:35:05-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Mindset Advocacy, LLC",
+              "income": 80000.0
             },
             {
-              "uuid": "f3c9da6a-793e-4ca9-8c78-8b9e3fc0b688",
-              "date": "2026-07-17T08:16:53-04:00",
-              "client": "Paramount Skydance Corporation (fka Paramount Global)",
-              "registrant": "Acg Advocacy",
-              "income": 60000.0
+              "uuid": "e94a54e2-11d9-43df-9c51-6fdcb73c683b",
+              "date": "2026-07-20T14:33:07-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Monument Advocacy",
+              "income": 80000.0
             },
             {
-              "uuid": "3726fa67-7d43-4143-b2f8-501e74f0b539",
-              "date": "2026-07-23T10:34:34-04:00",
-              "client": "Paramount Skydance Corporation (fka Paramount Global)",
-              "registrant": "Innovative Policy, PLLC",
+              "uuid": "701e3dd7-0423-4fb6-9615-5816760a96f3",
+              "date": "2026-07-17T09:20:51-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Acorn Consulting",
+              "income": 70000.0
+            },
+            {
+              "uuid": "b9789c25-278f-47d2-9bcd-896e45c721b7",
+              "date": "2026-07-18T19:02:05-04:00",
+              "client": "Shell Oil Company",
+              "registrant": "Alpine Group Partners, LLC.",
               "income": 50000.0
             }
           ]
@@ -24306,90 +24512,6 @@
           ]
         },
         {
-          "key": "EDWARD D JONES",
-          "name": "Edward D. Jones & Co., L.P.",
-          "current": 1710000.0,
-          "baseline": 1650000.0,
-          "delta": 60000.0,
-          "ratio": 1.036,
-          "filings_current": 5,
-          "filings_baseline": 6,
-          "topics": [
-            "Retirement and Pensions",
-            "Tax Policy",
-            "Banking and Financial Regulation"
-          ],
-          "registrants": [
-            "Capitol Tax Partners, LLP",
-            "Resolution Public Affairs, LLC",
-            "Fierce Government Relations"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            470000.0,
-            370000.0,
-            360000.0,
-            780000.0,
-            480000.0,
-            780000.0,
-            1060000.0,
-            1160000.0,
-            790000.0,
-            1240000.0,
-            840000.0,
-            1250000.0,
-            1490000.0,
-            840000.0,
-            920000.0,
-            1340000.0,
-            950000.0,
-            1650000.0,
-            860000.0,
-            1920000.0,
-            1170000.0
-          ],
-          "examples": [
-            {
-              "uuid": "a8cbc802-86ef-4ef7-82a7-79391cadbcd4",
-              "date": "2026-07-20T17:48:05-04:00",
-              "client": "Edward D. Jones & Co., L.P.",
-              "registrant": "Edward D. Jones & Co., L.P.",
-              "income": 1480000.0
-            },
-            {
-              "uuid": "697612f4-0f3d-4954-a3c5-b0e141de2a32",
-              "date": "2026-07-16T11:05:31-04:00",
-              "client": "Edward D. Jones & Co., L.P.",
-              "registrant": "Capitol Tax Partners, LLP",
-              "income": 80000.0
-            },
-            {
-              "uuid": "3ee4d15f-7c16-4456-bc0e-59925aeeb0ba",
-              "date": "2026-07-19T13:18:00-04:00",
-              "client": "Edward D. Jones & Co., L.P.",
-              "registrant": "Resolution Public Affairs, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "eae0aa3f-d7c0-4b0d-9e14-940b646bbe16",
-              "date": "2026-07-20T11:15:30-04:00",
-              "client": "Edward D. Jones & Co., L.P.",
-              "registrant": "Fierce Government Relations",
-              "income": 50000.0
-            },
-            {
-              "uuid": "fba68f72-bb54-47af-9d3f-933728204ee9",
-              "date": "2026-07-20T17:40:53-04:00",
-              "client": "Edward D. Jones & Co., L.P.",
-              "registrant": "Forbes-Tate",
-              "income": 50000.0
-            }
-          ]
-        },
-        {
           "key": "JPMORGAN CHASE",
           "name": "Jpmorgan Chase Holdings LLC",
           "current": 1710000.0,
@@ -24475,6 +24597,90 @@
           ]
         },
         {
+          "key": "EDWARD D JONES",
+          "name": "Edward D. Jones & Co., L.P.",
+          "current": 1710000.0,
+          "baseline": 1650000.0,
+          "delta": 60000.0,
+          "ratio": 1.036,
+          "filings_current": 5,
+          "filings_baseline": 6,
+          "topics": [
+            "Retirement and Pensions",
+            "Tax Policy",
+            "Banking and Financial Regulation"
+          ],
+          "registrants": [
+            "Capitol Tax Partners, LLP",
+            "Resolution Public Affairs, LLC",
+            "Fierce Government Relations"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            470000.0,
+            370000.0,
+            360000.0,
+            780000.0,
+            480000.0,
+            780000.0,
+            1060000.0,
+            1160000.0,
+            790000.0,
+            1240000.0,
+            840000.0,
+            1250000.0,
+            1490000.0,
+            840000.0,
+            920000.0,
+            1340000.0,
+            950000.0,
+            1650000.0,
+            860000.0,
+            1920000.0,
+            1170000.0
+          ],
+          "examples": [
+            {
+              "uuid": "a8cbc802-86ef-4ef7-82a7-79391cadbcd4",
+              "date": "2026-07-20T17:48:05-04:00",
+              "client": "Edward D. Jones & Co., L.P.",
+              "registrant": "Edward D. Jones & Co., L.P.",
+              "income": 1480000.0
+            },
+            {
+              "uuid": "697612f4-0f3d-4954-a3c5-b0e141de2a32",
+              "date": "2026-07-16T11:05:31-04:00",
+              "client": "Edward D. Jones & Co., L.P.",
+              "registrant": "Capitol Tax Partners, LLP",
+              "income": 80000.0
+            },
+            {
+              "uuid": "3ee4d15f-7c16-4456-bc0e-59925aeeb0ba",
+              "date": "2026-07-19T13:18:00-04:00",
+              "client": "Edward D. Jones & Co., L.P.",
+              "registrant": "Resolution Public Affairs, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "eae0aa3f-d7c0-4b0d-9e14-940b646bbe16",
+              "date": "2026-07-20T11:15:30-04:00",
+              "client": "Edward D. Jones & Co., L.P.",
+              "registrant": "Fierce Government Relations",
+              "income": 50000.0
+            },
+            {
+              "uuid": "fba68f72-bb54-47af-9d3f-933728204ee9",
+              "date": "2026-07-20T17:40:53-04:00",
+              "client": "Edward D. Jones & Co., L.P.",
+              "registrant": "Forbes-Tate",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "AICPA ASSOCIATION OF INTERNATIONAL CERTIFIED PROFESSIONAL ACCOUNTANTS",
           "name": "Aicpa Association of International Certified Professional Accountants",
           "current": 1690000.0,
@@ -24549,77 +24755,6 @@
               "client": "Aicpa Association of International Certified Professional Accountants",
               "registrant": "Crossroads Strategies, LLC",
               "income": 40000.0
-            }
-          ]
-        },
-        {
-          "key": "ARCHER DANIELS MIDLAND",
-          "name": "Archer Daniels Midland Company",
-          "current": 1670000.0,
-          "baseline": 2050000.0,
-          "delta": -380000.0,
-          "ratio": 0.815,
-          "filings_current": 3,
-          "filings_baseline": 2,
-          "topics": [
-            "Biofuels",
-            "Carbon and Climate",
-            "Defense Authorization",
-            "Renewable Energy"
-          ],
-          "registrants": [
-            "BGR Government Affairs",
-            "Mehlman Consulting, Inc.",
-            "Archer Daniels Midland Company"
-          ],
-          "series": [
-            630000.0,
-            310000.0,
-            390000.0,
-            610000.0,
-            480000.0,
-            300000.0,
-            390000.0,
-            400000.0,
-            520000.0,
-            510000.0,
-            370000.0,
-            580000.0,
-            570000.0,
-            640000.0,
-            660000.0,
-            910000.0,
-            950000.0,
-            980000.0,
-            860000.0,
-            1290000.0,
-            2100000.0,
-            2050000.0,
-            1720000.0,
-            1490000.0,
-            2220000.0
-          ],
-          "examples": [
-            {
-              "uuid": "fd6d82c2-65d7-4452-b14a-eea2744e86cb",
-              "date": "2026-07-20T19:58:41-04:00",
-              "client": "Archer Daniels Midland Company",
-              "registrant": "Archer Daniels Midland Company",
-              "income": 1500000.0
-            },
-            {
-              "uuid": "370f71d5-3481-47c4-b892-6a3fc1c72605",
-              "date": "2026-07-20T12:50:51-04:00",
-              "client": "Archer Daniels Midland Company",
-              "registrant": "BGR Government Affairs",
-              "income": 90000.0
-            },
-            {
-              "uuid": "d901a41d-c015-467c-81e6-4ca2f3998d0a",
-              "date": "2026-07-20T14:54:24-04:00",
-              "client": "Archer Daniels Midland Company",
-              "registrant": "Mehlman Consulting, Inc.",
-              "income": 80000.0
             }
           ]
         },
@@ -24705,6 +24840,77 @@
               "client": "Sap America, Inc.",
               "registrant": "Ballard Spahr LLP",
               "income": 60000.0
+            }
+          ]
+        },
+        {
+          "key": "ARCHER DANIELS MIDLAND",
+          "name": "Archer Daniels Midland Company",
+          "current": 1670000.0,
+          "baseline": 2050000.0,
+          "delta": -380000.0,
+          "ratio": 0.815,
+          "filings_current": 3,
+          "filings_baseline": 2,
+          "topics": [
+            "Biofuels",
+            "Carbon and Climate",
+            "Defense Authorization",
+            "Renewable Energy"
+          ],
+          "registrants": [
+            "BGR Government Affairs",
+            "Mehlman Consulting, Inc.",
+            "Archer Daniels Midland Company"
+          ],
+          "series": [
+            630000.0,
+            310000.0,
+            390000.0,
+            610000.0,
+            480000.0,
+            300000.0,
+            390000.0,
+            400000.0,
+            520000.0,
+            510000.0,
+            370000.0,
+            580000.0,
+            570000.0,
+            640000.0,
+            660000.0,
+            910000.0,
+            950000.0,
+            980000.0,
+            860000.0,
+            1290000.0,
+            2100000.0,
+            2050000.0,
+            1720000.0,
+            1490000.0,
+            2220000.0
+          ],
+          "examples": [
+            {
+              "uuid": "fd6d82c2-65d7-4452-b14a-eea2744e86cb",
+              "date": "2026-07-20T19:58:41-04:00",
+              "client": "Archer Daniels Midland Company",
+              "registrant": "Archer Daniels Midland Company",
+              "income": 1500000.0
+            },
+            {
+              "uuid": "370f71d5-3481-47c4-b892-6a3fc1c72605",
+              "date": "2026-07-20T12:50:51-04:00",
+              "client": "Archer Daniels Midland Company",
+              "registrant": "BGR Government Affairs",
+              "income": 90000.0
+            },
+            {
+              "uuid": "d901a41d-c015-467c-81e6-4ca2f3998d0a",
+              "date": "2026-07-20T14:54:24-04:00",
+              "client": "Archer Daniels Midland Company",
+              "registrant": "Mehlman Consulting, Inc.",
+              "income": 80000.0
             }
           ]
         },
@@ -24837,84 +25043,6 @@
               "client": "Alliance for Automotive Innovation",
               "registrant": "Tim Yehl, LLC",
               "income": 30000.0
-            }
-          ]
-        },
-        {
-          "key": "SHELL",
-          "name": "Shell USA, Inc.",
-          "current": 1650000.0,
-          "baseline": 2200000.0,
-          "delta": -550000.0,
-          "ratio": 0.75,
-          "filings_current": 4,
-          "filings_baseline": 4,
-          "topics": [
-            "Oil and Gas",
-            "Maritime and Fisheries",
-            "Renewable Energy",
-            "Clean Air and Chemicals"
-          ],
-          "registrants": [
-            "Acorn Consulting",
-            "Alpine Group Partners, LLC.",
-            "Mindset Advocacy, LLC"
-          ],
-          "series": [
-            2030000.0,
-            1790000.0,
-            2120000.0,
-            1850000.0,
-            2110000.0,
-            1900000.0,
-            1690000.0,
-            2020000.0,
-            1500000.0,
-            2240000.0,
-            1740000.0,
-            1850000.0,
-            2150000.0,
-            1890000.0,
-            1870000.0,
-            1880000.0,
-            1800000.0,
-            2270000.0,
-            1890000.0,
-            1820000.0,
-            1610000.0,
-            2200000.0,
-            1510000.0,
-            1490000.0,
-            1550000.0
-          ],
-          "examples": [
-            {
-              "uuid": "9ce5b0cf-f121-455b-83d0-1d9b3cabd3b6",
-              "date": "2026-07-20T12:01:25-04:00",
-              "client": "Shell USA, Inc.",
-              "registrant": "Shell USA, Inc. (fka Shell Oil Company)",
-              "income": 1450000.0
-            },
-            {
-              "uuid": "2750a96a-dc66-44ee-8ef2-d10670e0b8cf",
-              "date": "2026-07-20T09:35:05-04:00",
-              "client": "Shell USA, Inc.",
-              "registrant": "Mindset Advocacy, LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "701e3dd7-0423-4fb6-9615-5816760a96f3",
-              "date": "2026-07-17T09:20:51-04:00",
-              "client": "Shell USA, Inc.",
-              "registrant": "Acorn Consulting",
-              "income": 70000.0
-            },
-            {
-              "uuid": "b9789c25-278f-47d2-9bcd-896e45c721b7",
-              "date": "2026-07-18T19:02:05-04:00",
-              "client": "Shell USA, Inc.",
-              "registrant": "Alpine Group Partners, LLC.",
-              "income": 50000.0
             }
           ]
         },
@@ -25082,82 +25210,6 @@
           ]
         },
         {
-          "key": "ENTERPRISE HOLDINGS INC DBA ENTERPRISE MOBILITY",
-          "name": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-          "current": 1590000.0,
-          "baseline": 1520000.0,
-          "delta": 70000.0,
-          "ratio": 1.046,
-          "filings_current": 4,
-          "filings_baseline": 4,
-          "topics": [
-            "Data Privacy",
-            "Electric Vehicles"
-          ],
-          "registrants": [
-            "Venable LLP",
-            "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-            "HB Strategies"
-          ],
-          "series": [
-            300000.0,
-            206000.0,
-            240000.0,
-            250000.0,
-            360000.0,
-            250000.0,
-            220000.0,
-            285000.0,
-            240000.0,
-            840000.0,
-            290000.0,
-            400000.0,
-            290000.0,
-            570000.0,
-            420000.0,
-            350000.0,
-            560000.0,
-            735000.0,
-            610000.0,
-            610000.0,
-            1435000.0,
-            1520000.0,
-            1260000.0,
-            1800000.0,
-            2100000.0
-          ],
-          "examples": [
-            {
-              "uuid": "6f9c5742-9f85-476a-94ae-dd0947599d75",
-              "date": "2026-07-17T15:27:29-04:00",
-              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "registrant": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "income": 1250000.0
-            },
-            {
-              "uuid": "408034b8-a719-47d8-945d-f6e0770973c7",
-              "date": "2026-07-18T11:02:56-04:00",
-              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "registrant": "HB Strategies",
-              "income": 200000.0
-            },
-            {
-              "uuid": "448b3740-de0a-4ab2-bfe7-388c5bca49f3",
-              "date": "2026-07-16T09:20:34-04:00",
-              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "registrant": "Venable LLP",
-              "income": 110000.0
-            },
-            {
-              "uuid": "8a6fe819-e67f-4b61-ae44-a9c49e842317",
-              "date": "2026-07-20T12:27:57-04:00",
-              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "registrant": "Gephardt Group Government Affairs",
-              "income": 30000.0
-            }
-          ]
-        },
-        {
           "key": "ENTERTAINMENT SOFTWARE ASSOCIATION",
           "name": "Entertainment Software Association",
           "current": 1590000.0,
@@ -25239,6 +25291,82 @@
               "client": "Entertainment Software Association",
               "registrant": "Elevate Government Affairs, LLC",
               "income": 50000.0
+            }
+          ]
+        },
+        {
+          "key": "ENTERPRISE HOLDINGS INC DBA ENTERPRISE MOBILITY",
+          "name": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+          "current": 1590000.0,
+          "baseline": 1520000.0,
+          "delta": 70000.0,
+          "ratio": 1.046,
+          "filings_current": 4,
+          "filings_baseline": 4,
+          "topics": [
+            "Data Privacy",
+            "Electric Vehicles"
+          ],
+          "registrants": [
+            "Venable LLP",
+            "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+            "HB Strategies"
+          ],
+          "series": [
+            300000.0,
+            206000.0,
+            240000.0,
+            250000.0,
+            360000.0,
+            250000.0,
+            220000.0,
+            285000.0,
+            240000.0,
+            840000.0,
+            290000.0,
+            400000.0,
+            290000.0,
+            570000.0,
+            420000.0,
+            350000.0,
+            560000.0,
+            735000.0,
+            610000.0,
+            610000.0,
+            1435000.0,
+            1520000.0,
+            1260000.0,
+            1800000.0,
+            2100000.0
+          ],
+          "examples": [
+            {
+              "uuid": "6f9c5742-9f85-476a-94ae-dd0947599d75",
+              "date": "2026-07-17T15:27:29-04:00",
+              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "registrant": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "income": 1250000.0
+            },
+            {
+              "uuid": "408034b8-a719-47d8-945d-f6e0770973c7",
+              "date": "2026-07-18T11:02:56-04:00",
+              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "registrant": "HB Strategies",
+              "income": 200000.0
+            },
+            {
+              "uuid": "448b3740-de0a-4ab2-bfe7-388c5bca49f3",
+              "date": "2026-07-16T09:20:34-04:00",
+              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "registrant": "Venable LLP",
+              "income": 110000.0
+            },
+            {
+              "uuid": "8a6fe819-e67f-4b61-ae44-a9c49e842317",
+              "date": "2026-07-20T12:27:57-04:00",
+              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "registrant": "Gephardt Group Government Affairs",
+              "income": 30000.0
             }
           ]
         },
@@ -25495,91 +25623,6 @@
           ]
         },
         {
-          "key": "CONSUMER TECHNOLOGY ASSOCIATION",
-          "name": "Consumer Technology Association",
-          "current": 1560000.0,
-          "baseline": 1650000.0,
-          "delta": -90000.0,
-          "ratio": 0.945,
-          "filings_current": 6,
-          "filings_baseline": 6,
-          "topics": [
-            "Artificial Intelligence",
-            "Cybersecurity",
-            "Telehealth",
-            "Data Privacy"
-          ],
-          "registrants": [
-            "Mcdermott+ LLC",
-            "S-3 Group",
-            "Mercury Public Affairs, LLC"
-          ],
-          "series": [
-            1348000.0,
-            1665000.0,
-            1120000.0,
-            780000.0,
-            720000.0,
-            1330000.0,
-            850000.0,
-            960000.0,
-            890000.0,
-            1340000.0,
-            880000.0,
-            1020000.0,
-            748000.0,
-            1564000.0,
-            1100000.0,
-            1120000.0,
-            1190000.0,
-            1990000.0,
-            1280000.0,
-            1240000.0,
-            890000.0,
-            1650000.0,
-            1000000.0,
-            1250000.0,
-            1000000.0
-          ],
-          "examples": [
-            {
-              "uuid": "7a4905c3-c68b-4a28-9a9b-c43a7d5f873d",
-              "date": "2026-07-20T11:06:34-04:00",
-              "client": "Consumer Technology Association",
-              "registrant": "Consumer Technology Association",
-              "income": 1370000.0
-            },
-            {
-              "uuid": "cfa0f6d5-4013-4b9c-b6c4-05f5121da1e7",
-              "date": "2026-07-17T12:08:59-04:00",
-              "client": "Consumer Technology Association",
-              "registrant": "S-3 Group",
-              "income": 50000.0
-            },
-            {
-              "uuid": "b1184c76-3877-49c2-a0d4-58c9204bbc7d",
-              "date": "2026-07-18T14:17:54-04:00",
-              "client": "Consumer Technology Association",
-              "registrant": "Mercury Public Affairs, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "ac84d6c8-b502-40c8-a757-bb33bae4676a",
-              "date": "2026-07-19T18:26:39-04:00",
-              "client": "Consumer Technology Association",
-              "registrant": "K&l Gates, LLP",
-              "income": 50000.0
-            },
-            {
-              "uuid": "636df201-3a90-4a2c-82c7-8d79852a7c9b",
-              "date": "2026-07-20T19:46:16-04:00",
-              "client": "Consumer Technology Association",
-              "registrant": "Ridgeline Advocacy Group LLC",
-              "income": 40000.0
-            }
-          ]
-        },
-        {
           "key": "ALKERMES",
           "name": "Alkermes, Inc.",
           "current": 1560000.0,
@@ -25665,6 +25708,154 @@
           ]
         },
         {
+          "key": "CONSUMER TECHNOLOGY ASSOCIATION",
+          "name": "Consumer Technology Association",
+          "current": 1560000.0,
+          "baseline": 1650000.0,
+          "delta": -90000.0,
+          "ratio": 0.945,
+          "filings_current": 6,
+          "filings_baseline": 6,
+          "topics": [
+            "Artificial Intelligence",
+            "Cybersecurity",
+            "Telehealth",
+            "Data Privacy"
+          ],
+          "registrants": [
+            "Mcdermott+ LLC",
+            "S-3 Group",
+            "Mercury Public Affairs, LLC"
+          ],
+          "series": [
+            1348000.0,
+            1665000.0,
+            1120000.0,
+            780000.0,
+            720000.0,
+            1330000.0,
+            850000.0,
+            960000.0,
+            890000.0,
+            1340000.0,
+            880000.0,
+            1020000.0,
+            748000.0,
+            1564000.0,
+            1100000.0,
+            1120000.0,
+            1190000.0,
+            1990000.0,
+            1280000.0,
+            1240000.0,
+            890000.0,
+            1650000.0,
+            1000000.0,
+            1250000.0,
+            1000000.0
+          ],
+          "examples": [
+            {
+              "uuid": "7a4905c3-c68b-4a28-9a9b-c43a7d5f873d",
+              "date": "2026-07-20T11:06:34-04:00",
+              "client": "Consumer Technology Association",
+              "registrant": "Consumer Technology Association",
+              "income": 1370000.0
+            },
+            {
+              "uuid": "cfa0f6d5-4013-4b9c-b6c4-05f5121da1e7",
+              "date": "2026-07-17T12:08:59-04:00",
+              "client": "Consumer Technology Association",
+              "registrant": "S-3 Group",
+              "income": 50000.0
+            },
+            {
+              "uuid": "b1184c76-3877-49c2-a0d4-58c9204bbc7d",
+              "date": "2026-07-18T14:17:54-04:00",
+              "client": "Consumer Technology Association",
+              "registrant": "Mercury Public Affairs, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "ac84d6c8-b502-40c8-a757-bb33bae4676a",
+              "date": "2026-07-19T18:26:39-04:00",
+              "client": "Consumer Technology Association",
+              "registrant": "K&l Gates, LLP",
+              "income": 50000.0
+            },
+            {
+              "uuid": "636df201-3a90-4a2c-82c7-8d79852a7c9b",
+              "date": "2026-07-20T19:46:16-04:00",
+              "client": "Consumer Technology Association",
+              "registrant": "Ridgeline Advocacy Group LLC",
+              "income": 40000.0
+            }
+          ]
+        },
+        {
+          "key": "UPS (UNITED PARCEL SERVICE)",
+          "name": "Ups (united Parcel Service)",
+          "current": 1550000.0,
+          "baseline": 1520000.0,
+          "delta": 30000.0,
+          "ratio": 1.02,
+          "filings_current": 2,
+          "filings_baseline": 2,
+          "topics": [
+            "Criminal Justice and Policing",
+            "Aviation Policy",
+            "Appropriations",
+            "Renewable Energy"
+          ],
+          "registrants": [
+            "Fierce Government Relations",
+            "Ups (united Parcel Service)"
+          ],
+          "series": [
+            3860000.0,
+            2000000.0,
+            1360000.0,
+            1521000.0,
+            4031000.0,
+            1410000.0,
+            1730434.0,
+            1270000.0,
+            4370000.0,
+            1320000.0,
+            1690000.0,
+            1510000.0,
+            3820000.0,
+            1920000.0,
+            1600000.0,
+            1450000.0,
+            2820000.0,
+            1110000.0,
+            1250000.0,
+            1130000.0,
+            2390000.0,
+            1520000.0,
+            1350000.0,
+            1260000.0,
+            1960000.0
+          ],
+          "examples": [
+            {
+              "uuid": "c7960ddf-d0ce-4f6d-aa70-e8218f67fc01",
+              "date": "2026-07-20T16:23:56-04:00",
+              "client": "Ups (united Parcel Service)",
+              "registrant": "Ups (united Parcel Service)",
+              "income": 1500000.0
+            },
+            {
+              "uuid": "7aad3eeb-0e4a-4e2d-88b2-4bcdbe95a495",
+              "date": "2026-07-20T12:59:26-04:00",
+              "client": "Ups (united Parcel Service)",
+              "registrant": "Fierce Government Relations",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "COCA-COLA",
           "name": "The Coca-Cola Company",
           "current": 1550000.0,
@@ -25736,65 +25927,87 @@
           ]
         },
         {
-          "key": "UPS (UNITED PARCEL SERVICE)",
-          "name": "Ups (united Parcel Service)",
-          "current": 1550000.0,
-          "baseline": 1520000.0,
-          "delta": 30000.0,
-          "ratio": 1.02,
-          "filings_current": 2,
-          "filings_baseline": 2,
+          "key": "ABBOTT LABORATORIES",
+          "name": "Abbott Laboratories",
+          "current": 1540000.0,
+          "baseline": 1163507.0,
+          "delta": 376493.0,
+          "ratio": 1.324,
+          "filings_current": 10,
+          "filings_baseline": 9,
           "topics": [
-            "Criminal Justice and Policing",
-            "Aviation Policy",
+            "FDA Regulation",
+            "Medicare and Medicaid",
             "Appropriations",
-            "Renewable Energy"
+            "Trade Agreements"
           ],
           "registrants": [
-            "Fierce Government Relations",
-            "Ups (united Parcel Service)"
+            "Kountoupes Denham Carr & Reid, LLC",
+            "Marshall & Popp, LLC",
+            "S-3 Group"
           ],
           "series": [
-            3860000.0,
-            2000000.0,
-            1360000.0,
-            1521000.0,
-            4031000.0,
-            1410000.0,
-            1730434.0,
-            1270000.0,
-            4370000.0,
-            1320000.0,
-            1690000.0,
-            1510000.0,
-            3820000.0,
-            1920000.0,
-            1600000.0,
-            1450000.0,
-            2820000.0,
-            1110000.0,
-            1250000.0,
-            1130000.0,
-            2390000.0,
-            1520000.0,
+            1080000.0,
             1350000.0,
             1260000.0,
-            1960000.0
+            1390000.0,
+            1220000.0,
+            1420000.0,
+            1570000.0,
+            1380000.0,
+            1250000.0,
+            1130000.0,
+            1460000.0,
+            1600000.0,
+            1390000.0,
+            1150000.0,
+            1450000.0,
+            1110000.0,
+            1690000.0,
+            1210000.0,
+            1350000.0,
+            1380000.0,
+            2040000.0,
+            1163507.0,
+            1468989.0,
+            1240000.0,
+            1750000.0
           ],
           "examples": [
             {
-              "uuid": "c7960ddf-d0ce-4f6d-aa70-e8218f67fc01",
-              "date": "2026-07-20T16:23:56-04:00",
-              "client": "Ups (united Parcel Service)",
-              "registrant": "Ups (united Parcel Service)",
-              "income": 1500000.0
+              "uuid": "3e857be5-28c1-436f-93c8-35af921c0fa5",
+              "date": "2026-07-20T16:41:41-04:00",
+              "client": "Abbott Laboratories",
+              "registrant": "Abbott Laboratories",
+              "income": 1150000.0
             },
             {
-              "uuid": "7aad3eeb-0e4a-4e2d-88b2-4bcdbe95a495",
-              "date": "2026-07-20T12:59:26-04:00",
-              "client": "Ups (united Parcel Service)",
-              "registrant": "Fierce Government Relations",
-              "income": 50000.0
+              "uuid": "fb3cce7f-613e-416d-af8d-3afd1692d359",
+              "date": "2026-07-08T13:44:09-04:00",
+              "client": "Abbott Laboratories",
+              "registrant": "Kountoupes Denham Carr & Reid, LLC",
+              "income": 60000.0
+            },
+            {
+              "uuid": "146ad32b-2bca-4861-9edf-c9f71780e040",
+              "date": "2026-07-09T06:18:55-04:00",
+              "client": "Abbott Laboratories",
+              "registrant": "Marshall & Popp, LLC",
+              "income": 60000.0
+            },
+            {
+              "uuid": "4c9427fe-6003-4bdf-9f87-66958ba76f83",
+              "date": "2026-07-17T12:34:33-04:00",
+              "client": "Abbott Laboratories",
+              "registrant": "S-3 Group",
+              "income": 60000.0
+            },
+            {
+              "uuid": "6bd01315-c605-4ff2-a462-75edb9453de6",
+              "date": "2026-07-20T13:17:47-04:00",
+              "client": "Abbott Laboratories",
+              "registrant": "Akin Gump Strauss Hauer & Feld",
+              "income": 60000.0
             }
           ]
         },
@@ -25957,91 +26170,6 @@
               "date": "2026-07-20T00:20:18-04:00",
               "client": "Phillips 66",
               "registrant": "Crossroads Strategies, LLC",
-              "income": 60000.0
-            }
-          ]
-        },
-        {
-          "key": "ABBOTT LABORATORIES",
-          "name": "Abbott Laboratories",
-          "current": 1540000.0,
-          "baseline": 1163507.0,
-          "delta": 376493.0,
-          "ratio": 1.324,
-          "filings_current": 10,
-          "filings_baseline": 9,
-          "topics": [
-            "FDA Regulation",
-            "Medicare and Medicaid",
-            "Appropriations",
-            "Trade Agreements"
-          ],
-          "registrants": [
-            "Kountoupes Denham Carr & Reid, LLC",
-            "Marshall & Popp, LLC",
-            "S-3 Group"
-          ],
-          "series": [
-            1080000.0,
-            1350000.0,
-            1260000.0,
-            1390000.0,
-            1220000.0,
-            1420000.0,
-            1570000.0,
-            1380000.0,
-            1250000.0,
-            1130000.0,
-            1460000.0,
-            1600000.0,
-            1390000.0,
-            1150000.0,
-            1450000.0,
-            1110000.0,
-            1690000.0,
-            1210000.0,
-            1350000.0,
-            1380000.0,
-            2040000.0,
-            1163507.0,
-            1468989.0,
-            1240000.0,
-            1750000.0
-          ],
-          "examples": [
-            {
-              "uuid": "3e857be5-28c1-436f-93c8-35af921c0fa5",
-              "date": "2026-07-20T16:41:41-04:00",
-              "client": "Abbott Laboratories",
-              "registrant": "Abbott Laboratories",
-              "income": 1150000.0
-            },
-            {
-              "uuid": "fb3cce7f-613e-416d-af8d-3afd1692d359",
-              "date": "2026-07-08T13:44:09-04:00",
-              "client": "Abbott Laboratories",
-              "registrant": "Kountoupes Denham Carr & Reid, LLC",
-              "income": 60000.0
-            },
-            {
-              "uuid": "146ad32b-2bca-4861-9edf-c9f71780e040",
-              "date": "2026-07-09T06:18:55-04:00",
-              "client": "Abbott Laboratories",
-              "registrant": "Marshall & Popp, LLC",
-              "income": 60000.0
-            },
-            {
-              "uuid": "4c9427fe-6003-4bdf-9f87-66958ba76f83",
-              "date": "2026-07-17T12:34:33-04:00",
-              "client": "Abbott Laboratories",
-              "registrant": "S-3 Group",
-              "income": 60000.0
-            },
-            {
-              "uuid": "6bd01315-c605-4ff2-a462-75edb9453de6",
-              "date": "2026-07-20T13:17:47-04:00",
-              "client": "Abbott Laboratories",
-              "registrant": "Akin Gump Strauss Hauer & Feld",
               "income": 60000.0
             }
           ]
@@ -26789,89 +26917,6 @@
           ]
         },
         {
-          "key": "BAE SYSTEMS",
-          "name": "Bae Systems Inc",
-          "current": 1440000.0,
-          "baseline": 1180000.0,
-          "delta": 260000.0,
-          "ratio": 1.22,
-          "filings_current": 5,
-          "filings_baseline": 5,
-          "topics": [
-            "Appropriations",
-            "Defense Authorization"
-          ],
-          "registrants": [
-            "Cassidy & Associates, Inc.",
-            "Brownstein Hyatt Farber Schreck, LLP",
-            "Prasam"
-          ],
-          "series": [
-            1095000.0,
-            955000.0,
-            855000.0,
-            899000.0,
-            845000.0,
-            1075000.0,
-            965000.0,
-            1225000.0,
-            1065000.0,
-            980000.0,
-            1070000.0,
-            1150000.0,
-            190000.0,
-            1050000.0,
-            1170000.0,
-            1210000.0,
-            1420000.0,
-            1130000.0,
-            1260000.0,
-            1280000.0,
-            1250000.0,
-            1180000.0,
-            1280000.0,
-            1290000.0,
-            1600000.0
-          ],
-          "examples": [
-            {
-              "uuid": "32467520-49ed-44eb-98d8-f267a342cd9c",
-              "date": "2026-07-20T10:16:32-04:00",
-              "client": "Bae Systems Inc",
-              "registrant": "Bae Systems, Inc.",
-              "income": 1260000.0
-            },
-            {
-              "uuid": "ba0588c7-de92-4a8c-bccb-502eb5dcf94d",
-              "date": "2026-07-08T13:18:30-04:00",
-              "client": "Bae Systems Inc",
-              "registrant": "Cassidy & Associates, Inc.",
-              "income": 80000.0
-            },
-            {
-              "uuid": "5770d2b9-7f69-4f53-b5e1-48a8d58b0d96",
-              "date": "2026-07-16T13:29:29-04:00",
-              "client": "Bae Systems Inc",
-              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
-              "income": 60000.0
-            },
-            {
-              "uuid": "e751bdc0-9c1f-413c-a944-413925d57aae",
-              "date": "2026-07-20T10:29:12-04:00",
-              "client": "Bae Systems Inc",
-              "registrant": "Holly Strategies Incorporated",
-              "income": 40000.0
-            },
-            {
-              "uuid": "78ec5e06-5425-4608-9fcd-452adf4d9e85",
-              "date": "2026-07-17T13:36:40-04:00",
-              "client": "Bae Systems Inc",
-              "registrant": "Prasam",
-              "income": 0
-            }
-          ]
-        },
-        {
           "key": "DAVITA",
           "name": "Davita, Inc.",
           "current": 1440000.0,
@@ -26956,6 +27001,89 @@
           ]
         },
         {
+          "key": "BAE SYSTEMS",
+          "name": "Bae Systems Inc",
+          "current": 1440000.0,
+          "baseline": 1180000.0,
+          "delta": 260000.0,
+          "ratio": 1.22,
+          "filings_current": 5,
+          "filings_baseline": 5,
+          "topics": [
+            "Appropriations",
+            "Defense Authorization"
+          ],
+          "registrants": [
+            "Cassidy & Associates, Inc.",
+            "Brownstein Hyatt Farber Schreck, LLP",
+            "Prasam"
+          ],
+          "series": [
+            1095000.0,
+            955000.0,
+            855000.0,
+            899000.0,
+            845000.0,
+            1075000.0,
+            965000.0,
+            1225000.0,
+            1065000.0,
+            980000.0,
+            1070000.0,
+            1150000.0,
+            190000.0,
+            1050000.0,
+            1170000.0,
+            1210000.0,
+            1420000.0,
+            1130000.0,
+            1260000.0,
+            1280000.0,
+            1250000.0,
+            1180000.0,
+            1280000.0,
+            1290000.0,
+            1600000.0
+          ],
+          "examples": [
+            {
+              "uuid": "32467520-49ed-44eb-98d8-f267a342cd9c",
+              "date": "2026-07-20T10:16:32-04:00",
+              "client": "Bae Systems Inc",
+              "registrant": "Bae Systems, Inc.",
+              "income": 1260000.0
+            },
+            {
+              "uuid": "ba0588c7-de92-4a8c-bccb-502eb5dcf94d",
+              "date": "2026-07-08T13:18:30-04:00",
+              "client": "Bae Systems Inc",
+              "registrant": "Cassidy & Associates, Inc.",
+              "income": 80000.0
+            },
+            {
+              "uuid": "5770d2b9-7f69-4f53-b5e1-48a8d58b0d96",
+              "date": "2026-07-16T13:29:29-04:00",
+              "client": "Bae Systems Inc",
+              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
+              "income": 60000.0
+            },
+            {
+              "uuid": "e751bdc0-9c1f-413c-a944-413925d57aae",
+              "date": "2026-07-20T10:29:12-04:00",
+              "client": "Bae Systems Inc",
+              "registrant": "Holly Strategies Incorporated",
+              "income": 40000.0
+            },
+            {
+              "uuid": "78ec5e06-5425-4608-9fcd-452adf4d9e85",
+              "date": "2026-07-17T13:36:40-04:00",
+              "client": "Bae Systems Inc",
+              "registrant": "Prasam",
+              "income": 0
+            }
+          ]
+        },
+        {
           "key": "MORGAN STANLEY",
           "name": "Morgan Stanley & Co LLC",
           "current": 1430000.0,
@@ -27023,91 +27151,6 @@
               "client": "Morgan Stanley & Co LLC",
               "registrant": "Crossroads Strategies, LLC",
               "income": 60000.0
-            }
-          ]
-        },
-        {
-          "key": "MANAGED FUNDS ASSOCIATION",
-          "name": "Managed Funds Association",
-          "current": 1420000.0,
-          "baseline": 1650000.0,
-          "delta": -230000.0,
-          "ratio": 0.861,
-          "filings_current": 10,
-          "filings_baseline": 10,
-          "topics": [
-            "Defense Authorization",
-            "Artificial Intelligence",
-            "Data Privacy",
-            "Digital Assets and Crypto"
-          ],
-          "registrants": [
-            "RMP Strategies, LLC",
-            "Invariant LLC",
-            "T Cap Solutions, LLC"
-          ],
-          "series": [
-            1172500.0,
-            1337500.0,
-            752500.0,
-            1052500.0,
-            1445000.0,
-            2357500.0,
-            2612500.0,
-            2010500.0,
-            1780000.0,
-            1655000.0,
-            1415000.0,
-            1275000.0,
-            1195000.0,
-            1225000.0,
-            1255000.0,
-            1335000.0,
-            1340000.0,
-            1475000.0,
-            1555000.0,
-            1425000.0,
-            1560000.0,
-            1650000.0,
-            1500000.0,
-            1590000.0,
-            1950000.0
-          ],
-          "examples": [
-            {
-              "uuid": "3ac34a38-655a-47eb-9bba-156915420ade",
-              "date": "2026-07-20T14:34:18-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Managed Funds Association",
-              "income": 1100000.0
-            },
-            {
-              "uuid": "fbc5d161-520a-478d-9803-ed17d107cb99",
-              "date": "2026-07-16T16:27:41-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Invariant LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "bc9cd21e-7c71-40a2-a155-366f962ed7ef",
-              "date": "2026-07-20T14:00:55-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Porterfield, Fettig & Sears, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "6a06d28c-1bac-4873-a78a-92530f28ef49",
-              "date": "2026-07-20T15:09:33-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Sternhell Group",
-              "income": 50000.0
-            },
-            {
-              "uuid": "36a93f57-c047-49ad-9cd9-3f84baf54ab2",
-              "date": "2026-07-20T17:06:34-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Federal Hall Policy Advisors, LLC",
-              "income": 50000.0
             }
           ]
         },
@@ -27360,6 +27403,91 @@
           ]
         },
         {
+          "key": "MANAGED FUNDS ASSOCIATION",
+          "name": "Managed Funds Association",
+          "current": 1420000.0,
+          "baseline": 1650000.0,
+          "delta": -230000.0,
+          "ratio": 0.861,
+          "filings_current": 10,
+          "filings_baseline": 10,
+          "topics": [
+            "Defense Authorization",
+            "Artificial Intelligence",
+            "Data Privacy",
+            "Digital Assets and Crypto"
+          ],
+          "registrants": [
+            "RMP Strategies, LLC",
+            "Invariant LLC",
+            "T Cap Solutions, LLC"
+          ],
+          "series": [
+            1172500.0,
+            1337500.0,
+            752500.0,
+            1052500.0,
+            1445000.0,
+            2357500.0,
+            2612500.0,
+            2010500.0,
+            1780000.0,
+            1655000.0,
+            1415000.0,
+            1275000.0,
+            1195000.0,
+            1225000.0,
+            1255000.0,
+            1335000.0,
+            1340000.0,
+            1475000.0,
+            1555000.0,
+            1425000.0,
+            1560000.0,
+            1650000.0,
+            1500000.0,
+            1590000.0,
+            1950000.0
+          ],
+          "examples": [
+            {
+              "uuid": "3ac34a38-655a-47eb-9bba-156915420ade",
+              "date": "2026-07-20T14:34:18-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Managed Funds Association",
+              "income": 1100000.0
+            },
+            {
+              "uuid": "fbc5d161-520a-478d-9803-ed17d107cb99",
+              "date": "2026-07-16T16:27:41-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Invariant LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "bc9cd21e-7c71-40a2-a155-366f962ed7ef",
+              "date": "2026-07-20T14:00:55-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Porterfield, Fettig & Sears, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "6a06d28c-1bac-4873-a78a-92530f28ef49",
+              "date": "2026-07-20T15:09:33-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Sternhell Group",
+              "income": 50000.0
+            },
+            {
+              "uuid": "36a93f57-c047-49ad-9cd9-3f84baf54ab2",
+              "date": "2026-07-20T17:06:34-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Federal Hall Policy Advisors, LLC",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "AMERICAN OPTOMETRIC ASSOCIATION",
           "name": "American Optometric Association",
           "current": 1415000.0,
@@ -27561,6 +27689,91 @@
           ]
         },
         {
+          "key": "HUNTINGTON INGALLS INDUSTRIES",
+          "name": "Huntington Ingalls Incorporated",
+          "current": 1394000.0,
+          "baseline": 1426000.0,
+          "delta": -32000.0,
+          "ratio": 0.978,
+          "filings_current": 7,
+          "filings_baseline": 8,
+          "topics": [
+            "Appropriations",
+            "Defense Authorization",
+            "Unemployment Benefits",
+            "Labor and Employment"
+          ],
+          "registrants": [
+            "Brian Glackin & Associates LLC",
+            "Crossroads Strategies, LLC",
+            "Huntington Ingalls Industries Incorporated"
+          ],
+          "series": [
+            1196000.0,
+            1676023.0,
+            1638245.0,
+            1747047.0,
+            1801000.0,
+            1591000.0,
+            1566000.0,
+            1542000.0,
+            1826000.0,
+            1496000.0,
+            1411000.0,
+            1422938.0,
+            1757575.0,
+            1504286.0,
+            1451468.0,
+            1445165.0,
+            2090294.0,
+            1446000.0,
+            1406000.0,
+            1456000.0,
+            1876000.0,
+            1346000.0,
+            1386000.0,
+            1396000.0,
+            1956000.0
+          ],
+          "examples": [
+            {
+              "uuid": "49d06213-3adb-4167-a6d2-774d08a0d1dc",
+              "date": "2026-07-20T10:06:29-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "Huntington Ingalls Industries Incorporated",
+              "income": 1143000.0
+            },
+            {
+              "uuid": "dfffa73c-2765-4036-bc0c-9504b18e8394",
+              "date": "2026-07-20T13:40:39-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "BGR Government Affairs",
+              "income": 60000.0
+            },
+            {
+              "uuid": "31d9549a-11e3-4e8c-8336-aec386c3332a",
+              "date": "2026-07-19T19:30:23-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "Crossroads Strategies, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "0f3b96ca-4ae0-4ef2-a2ff-ff98a0e0db92",
+              "date": "2026-07-20T12:28:43-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "Gephardt Group Government Affairs",
+              "income": 50000.0
+            },
+            {
+              "uuid": "5d3e9c8f-2a62-442a-a355-db09bd17d29b",
+              "date": "2026-07-17T16:29:43-04:00",
+              "client": "Huntington Ingalls Incorporated",
+              "registrant": "Brian Glackin & Associates LLC",
+              "income": 40000.0
+            }
+          ]
+        },
+        {
           "key": "TEXTRON",
           "name": "Textron Inc.",
           "current": 1392452.0,
@@ -27642,91 +27855,6 @@
               "client": "Textron Inc.",
               "registrant": "American Defense International, Inc.",
               "income": 30000.0
-            }
-          ]
-        },
-        {
-          "key": "IHEARTMEDIA",
-          "name": "Iheartmedia Inc",
-          "current": 1390457.0,
-          "baseline": 1572500.0,
-          "delta": -182043.0,
-          "ratio": 0.884,
-          "filings_current": 11,
-          "filings_baseline": 12,
-          "topics": [
-            "Data Privacy",
-            "Cybersecurity",
-            "Intellectual Property",
-            "Media and Journalism"
-          ],
-          "registrants": [
-            "Cornerstone Government Affairs, Inc.",
-            "The Gibson Group, LLC",
-            "Mattoon & Associates, LLC"
-          ],
-          "series": [
-            1370534.0,
-            1290000.0,
-            1240000.0,
-            1060000.0,
-            1340000.0,
-            1390000.0,
-            1560000.0,
-            1400000.0,
-            1650000.0,
-            1280000.0,
-            1440000.0,
-            1327000.0,
-            1270000.0,
-            1305000.0,
-            1255000.0,
-            1282500.0,
-            1655000.0,
-            1601250.0,
-            1462500.0,
-            1342500.0,
-            1492500.0,
-            1572500.0,
-            1385510.0,
-            1402500.0,
-            1429400.0
-          ],
-          "examples": [
-            {
-              "uuid": "1d48fbed-8290-40c1-baf6-9127b9f99935",
-              "date": "2026-07-20T21:51:28-04:00",
-              "client": "Iheartmedia Inc",
-              "registrant": "Iheartmedia, Inc.",
-              "income": 1037957.0
-            },
-            {
-              "uuid": "ae6f82e8-beb0-4561-8f89-2fbadf925c97",
-              "date": "2026-07-18T09:31:03-04:00",
-              "client": "Iheartmedia Inc",
-              "registrant": "Traction Strategic",
-              "income": 52500.0
-            },
-            {
-              "uuid": "1934700f-e3b5-49da-80ae-6ce60eabc824",
-              "date": "2026-07-09T14:19:02-04:00",
-              "client": "Iheartmedia Inc",
-              "registrant": "Cornerstone Government Affairs, Inc.",
-              "income": 50000.0
-            },
-            {
-              "uuid": "02548491-8d25-42ab-b6fa-29f2de871736",
-              "date": "2026-07-17T14:16:58-04:00",
-              "client": "Iheartmedia Inc",
-              "registrant": "Mehlman Consulting, Inc.",
-              "income": 50000.0
-            },
-            {
-              "uuid": "b2ddd15e-961b-4ffc-8650-c1c9df240da9",
-              "date": "2026-07-14T12:58:55-04:00",
-              "client": "Iheartmedia Inc",
-              "registrant": "Mattoon & Associates, LLC",
-              "income": 40000.0
             }
           ]
         }
