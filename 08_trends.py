@@ -1091,6 +1091,62 @@ def get_recent_filings(limit: int = 300) -> list:
 
 
 
+# CPI-U (all urban consumers, SA) monthly index from FRED's public CSV
+# endpoint — no API key. Used to offer constant-dollar figures in the UI.
+CPI_CSV_URL = 'https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL'
+
+
+def fetch_cpi_deflators(quarters: list[dict], prior: dict | None = None) -> dict | None:
+    """Constant-dollar multipliers for the exported quarters:
+    {'base_year': 2025, 'factors': {'2020 Q1': 1.27, ...}}.
+
+    Base = the latest calendar year with a full 12 months of CPI prints, so
+    the "constant N dollars" label advances by itself each year. A quarter
+    with no CPI print yet (the one still being reported) carries the latest
+    monthly value forward. On any fetch/parse failure the previous export's
+    deflators are reused so the dashboard feature never flickers off."""
+    import urllib.request
+    try:
+        with urllib.request.urlopen(CPI_CSV_URL, timeout=30) as resp:
+            text = resp.read().decode('utf-8')
+        monthly = {}
+        for line in text.splitlines()[1:]:
+            date_s, _, val = line.partition(',')
+            val = val.strip()
+            if not val or val == '.':
+                continue
+            y, m, _ = date_s.split('-')
+            monthly[(int(y), int(m))] = float(val)
+        if not monthly:
+            raise ValueError('empty CPI series')
+
+        base_year = max(y for (y, m) in monthly if m == 12)
+        # Average over the months that exist: CPI months can genuinely be
+        # missing (October 2025 was never published due to the government
+        # shutdown), and that must not disable the whole feature.
+        base_vals = [monthly[(base_year, m)] for m in range(1, 13) if (base_year, m) in monthly]
+        base = sum(base_vals) / len(base_vals)
+        latest_print = monthly[max(monthly)]
+
+        def quarter_cpi(year: int, quarter: int) -> float:
+            vals = [monthly.get((year, m)) for m in range(quarter * 3 - 2, quarter * 3 + 1)]
+            vals = [v for v in vals if v]
+            return sum(vals) / len(vals) if vals else latest_print
+
+        return {
+            'base_year': base_year,
+            'series': 'CPIAUCSL',
+            'factors': {
+                q['label']: round(base / quarter_cpi(q['year'], q['quarter']), 4)
+                for q in quarters
+            },
+        }
+    except Exception as e:
+        print(f'  Warning: CPI fetch failed ({e}); '
+              f'{"carrying forward prior deflators" if prior else "no deflators exported"}')
+        return prior
+
+
 def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = None,
                     track_names: dict | None = None) -> dict:
     """Get report-quarter time series data for charts.
@@ -1177,6 +1233,27 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             (min_q_index, max_q_index),
         )
 
+        # Tagged-activity totals per quarter — the same denominator the
+        # frame "share" stat uses (coarse_topic IS NOT NULL), so the UI can
+        # render any mention series as a share of its quarter's volume.
+        tagged_rows = query_to_dicts(
+            conn,
+            '''
+            SELECT (f.year * 4 + f.quarter) AS q_index, COUNT(*) AS n
+            FROM activity_extractions_rules e
+            JOIN activities a ON e.activity_id = a.id
+            JOIN filings f ON a.filing_id = f.id
+            WHERE e.coarse_topic IS NOT NULL
+              AND f.is_current = 1
+              AND f.year IS NOT NULL
+              AND f.quarter BETWEEN 1 AND 4
+              AND (f.year * 4 + f.quarter) BETWEEN ? AND ?
+            GROUP BY 1
+            ''',
+            (min_q_index, max_q_index),
+        )
+    tagged_by_quarter = {int(r['q_index']): int(r['n']) for r in tagged_rows}
+
     topic_by_quarter = defaultdict(Counter)
     entity_by_quarter = defaultdict(Counter)
     legislation_by_quarter = defaultdict(Counter)
@@ -1228,6 +1305,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             'short': f'{str(year)[-2:]}Q{quarter}',
             'filings': int(row.get('filings') or 0),
             'income': float(row.get('income') or 0),
+            'mentions': tagged_by_quarter.get(int(row.get('q_index') or 0), 0),
         })
 
     topic_series = {}
@@ -1933,6 +2011,15 @@ def export_json(output_dir: str = 'docs/data'):
         'entities': names_for('entities'),
         'legislation': names_for('legislation'),
     })
+
+    print("Fetching CPI deflators...")
+    prior_deflators = None
+    try:
+        with open(f'{output_dir}/timeseries.json') as f:
+            prior_deflators = json.load(f).get('deflators')
+    except Exception:
+        pass
+    timeseries['deflators'] = fetch_cpi_deflators(timeseries['quarters'], prior=prior_deflators)
 
     print("Computing organization spend movers...")
     clients_data = None

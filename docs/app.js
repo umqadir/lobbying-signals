@@ -63,7 +63,8 @@ const state = {
 
     view: {
         frame: "quarter",   // quarter | qtd — the shared comparison frame
-        cat: "all"          // all | clients | topics | entities | legislation | recent
+        cat: "all",         // all | clients | topics | entities | legislation | recent
+        normalized: false   // constant-dollar money + share-of-quarter mentions
     },
 
     drawer: null,        // current drawer view
@@ -219,6 +220,63 @@ function activeFrameKey() {
     return state.view.frame;
 }
 
+/* ─── Normalization ───
+   One switch, two effects, both aimed at "what shifted relatively":
+   dollars become constant base-year dollars (CPI-U deflators shipped in
+   timeseries.json), and mention histories become each quarter's share of
+   tagged activity instead of raw counts. Individual filing records stay
+   as filed — only aggregates and comparisons are adjusted. */
+
+function deflatorMeta() {
+    const d = state.timeseries?.deflators;
+    return d && d.factors ? d : null;
+}
+
+function normalizedOn() {
+    return state.view.normalized && !!deflatorMeta();
+}
+
+// Accepts "2026 Q1", "Q1 2026", or "Q1 2026 so far"; 1 when off or unknown.
+function deflatorFor(label) {
+    if (!normalizedOn() || !label) return 1;
+    const s = String(label);
+    let year, quarter;
+    let m = s.match(/(\d{4})\s+Q([1-4])/);
+    if (m) { year = m[1]; quarter = m[2]; }
+    else {
+        m = s.match(/Q([1-4])\s+(\d{4})/);
+        if (m) { year = m[2]; quarter = m[1]; }
+    }
+    if (!year) return 1;
+    return deflatorMeta().factors[`${year} Q${quarter}`] || 1;
+}
+
+function normBaseYear() {
+    return deflatorMeta()?.base_year || null;
+}
+
+function buildNormToggle() {
+    const btn = document.getElementById("norm-toggle");
+    if (!btn) return;
+    const meta = deflatorMeta();
+    if (!meta) { btn.hidden = true; return; }
+    btn.hidden = false;
+    btn.querySelector(".norm-label").textContent = "Normalized";
+    btn.title = `Show dollars in constant ${meta.base_year} dollars (CPI-U) and mention histories as each quarter's share of tagged activity — what shifted relatively, not just what grew with overall volume.`;
+    btn.classList.toggle("active", state.view.normalized);
+    btn.setAttribute("aria-pressed", state.view.normalized ? "true" : "false");
+    btn.onclick = () => {
+        state.view.normalized = !state.view.normalized;
+        try { localStorage.setItem("lsNormalized", state.view.normalized ? "1" : "0"); } catch (e) {}
+        btn.classList.toggle("active", state.view.normalized);
+        btn.setAttribute("aria-pressed", state.view.normalized ? "true" : "false");
+        syncURL();
+        renderHero();
+        renderMovers();
+        if (state.drawer) renderDrawer();
+    };
+}
+
 // Toggle-button label, e.g. "Q1 2026 vs Q1 2025" / "Q2 2026 so far".
 function frameToggleLabel(frameKey) {
     const f = frameInfo(frameKey);
@@ -230,14 +288,15 @@ function frameToggleLabel(frameKey) {
 function frameSubtitle(frameKey) {
     const f = frameInfo(frameKey);
     if (!f) return "";
+    const normTag = normalizedOn() ? ` · constant ${normBaseYear()} $` : "";
     if (frameKey === "quarter") {
-        return `Latest complete quarter · filings for ${f.label} vs ${f.baseline_label}`;
+        return `Latest complete quarter · filings for ${f.label} vs ${f.baseline_label}${normTag}`;
     }
     const through = fmtMonthDay(parseDate(f.through));
     const base = f.label.replace(/\s+so far$/i, "");
     let text = `${base} reports filed through ${through} vs the same point last year`;
     if (f.thin_data) text += " — early in the filing cycle, small sample";
-    return text;
+    return text + normTag;
 }
 
 // Short baseline phrase used inside card headlines, e.g. "Q1 2025" /
@@ -457,10 +516,19 @@ function reportsDueLabel(year, quarter) {
     return deadline.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
+// Frame-leg dollar values for an org mover, deflated when normalization is
+// on (each leg by its own quarter's factor, so YoY deltas become real).
+function orgFrameValues(m, frameKey) {
+    const c = clientFrame(frameKey || activeFrameKey());
+    return {
+        current: toNum(m.current) * deflatorFor(c?.current_quarter?.label),
+        baseline: toNum(m.baseline) * deflatorFor(c?.baseline_quarter?.label)
+    };
+}
+
 function buildOrgHeadline(m, frameKey) {
     const { cq, bq, inBq } = orgQuarterLabels(frameKey);
-    const current = toNum(m.current);
-    const baseline = toNum(m.baseline);
+    const { current, baseline } = orgFrameValues(m, frameKey);
 
     if (baseline === 0 && current > 0) {
         return {
@@ -566,7 +634,8 @@ function buildOrgMoverCard(m) {
     card.appendChild(main);
 
     const trendSlot = el("div", "mover-trend");
-    trendSlot.innerHTML = makeOrgTrendChart(m.current, m.baseline, head.dir);
+    const vals = orgFrameValues(m, activeFrameKey());
+    trendSlot.innerHTML = makeOrgTrendChart(vals.current, vals.baseline, head.dir);
     card.appendChild(trendSlot);
 
     card.appendChild(el("div", "mover-arrow", "→"));
@@ -749,20 +818,28 @@ function renderHero() {
         }
         statItems.push({
             value: `${latest.year} Q${latest.quarter}`,
-            label: isPartial ? partialLabel : `${fmt.num(latest.filings)} filings · ${fmt.money(latest.income)}`
+            label: isPartial ? partialLabel : `${fmt.num(latest.filings)} filings · ${fmt.money(latest.income * deflatorFor(`${latest.year} Q${latest.quarter}`))}`
         });
     }
 
     // Latest COMPLETE quarter, dollars, year-over-year — the real headline
     // number ("$1.63B reported, +10.7% vs the same quarter last year").
+    // Normalized mode deflates each leg by its own quarter and recomputes
+    // the change, so the arrow reflects real-dollar movement.
     const lcq = stats.latest_complete_quarter;
     if (lcq && lcq.income_change_pct != null) {
-        const change = lcq.income_change_pct;
+        const dCur = deflatorFor(lcq.label);
+        const dBase = deflatorFor(`Q${lcq.quarter} ${lcq.year - 1}`);
+        const income = lcq.income * dCur;
+        const baseIncome = (lcq.yoy_income || 0) * dBase;
+        const change = normalizedOn() && baseIncome > 0
+            ? (income / baseIncome - 1) * 100
+            : lcq.income_change_pct;
         const dir = change > 0 ? "up" : change < 0 ? "down" : "";
         const sign = change > 0 ? "↑ " : change < 0 ? "↓ " : "";
         statItems.push({
             value: `${sign}${Math.abs(change).toFixed(1)}%`,
-            label: `${lcq.label} vs Q${lcq.quarter} ${lcq.year - 1} · ${fmt.money(lcq.income)} reported`,
+            label: `${lcq.label} vs Q${lcq.quarter} ${lcq.year - 1} · ${fmt.money(income)} reported${normalizedOn() ? ` · ${normBaseYear()} $` : ""}`,
             trend: dir
         });
     } else if (cmpLatest && cmpPrev) {
@@ -1228,7 +1305,9 @@ function makeBarChart(values, periods, options = {}) {
         const y = plotTop + (1 - v / niceMax) * plotH;
         const h = Math.max(1, plotBottom - y);
         const label = periods[i]?.label || periods[i]?.short || "";
-        const valueLabel = options.money ? fmt.money(v) : `${fmt.int(v)} mentions`;
+        const valueLabel = options.money ? fmt.money(v)
+            : options.percent ? `${v.toFixed(2)}% of tagged activity`
+            : `${fmt.int(v)} mentions`;
         const hover = `<title>${fmt.esc(label)} · ${valueLabel}${i >= partialFrom ? " (still reporting)" : ""}</title>`;
         // Partial (still-reporting) quarters render hollow so a low bar doesn't
         // read as a real drop; the newest complete quarter gets full weight.
@@ -1264,7 +1343,7 @@ function periodYearQuarter(p) {
    value; the two years the headline comparison uses get full weight and
    earlier context years sit lighter. */
 function makeSeasonalChart(values, periods, options = {}) {
-    const { money = false, partialCount = 0, frameQuarter, currentYear, currentPartial = false } = options;
+    const { money = false, percent = false, partialCount = 0, frameQuarter, currentYear, currentPartial = false } = options;
     const n = values.length;
     const pts = [];
     for (let i = 0; i < n; i++) {
@@ -1287,7 +1366,9 @@ function makeSeasonalChart(values, periods, options = {}) {
     const plotTop = pad.top;
     const plotW = W - pad.left - pad.right;
     const plotH = plotBottom - plotTop;
-    const fmtVal = money ? v => fmt.money(v) : v => fmt.num(v);
+    const fmtVal = money ? v => fmt.money(v)
+        : percent ? v => `${v.toFixed(v >= 10 ? 1 : 2)}%`
+        : v => fmt.num(v);
 
     const grid = ticks.map(v => {
         const y = plotTop + (1 - v / niceMax) * plotH;
@@ -1336,6 +1417,20 @@ function appendHistorySection(body, opts) {
             currentPartial = false, extraNote, reportingNote } = opts;
     if (!series?.length || !quarters || quarters.length < 2) return;
 
+    // Normalization: constant dollars for money series, share-of-quarter
+    // for mention series (skipped when the export lacks denominators).
+    let displaySeries = series;
+    let percent = false;
+    if (money && normalizedOn()) {
+        displaySeries = series.map((v, i) => toNum(v) * deflatorFor(quarters[i]?.label));
+    } else if (!money && normalizedOn() && quarters.some(q => toNum(q.mentions) > 0)) {
+        displaySeries = series.map((v, i) => {
+            const d = toNum(quarters[i]?.mentions);
+            return d > 0 ? (toNum(v) / d) * 100 : 0;
+        });
+        percent = true;
+    }
+
     const sliceYears = quarters
         .map(periodYearQuarter)
         .filter(yq => yq && yq.quarter === frameQuarter)
@@ -1379,8 +1474,8 @@ function appendHistorySection(body, opts) {
         }
         const notes = [];
         if (mode === "yoy") {
-            box.innerHTML = makeSeasonalChart(series, quarters, {
-                money, partialCount, frameQuarter, currentYear, currentPartial
+            box.innerHTML = makeSeasonalChart(displaySeries, quarters, {
+                money, percent, partialCount, frameQuarter, currentYear, currentPartial
             });
             if (hasCurrentYear && hasBaselineYear) {
                 notes.push(`Q${frameQuarter} totals for every year on record — the two darker bars are the years compared above.`);
@@ -1391,7 +1486,7 @@ function appendHistorySection(body, opts) {
                 notes.push(`${currentYear} is still being reported (shown dashed) and will keep rising.`);
             }
         } else {
-            box.innerHTML = makeBarChart(series, quarters, { partialCount, money });
+            box.innerHTML = makeBarChart(displaySeries, quarters, { partialCount, money, percent });
             if (partialCount > 0) {
                 const pq = quarters[quarters.length - 1];
                 const yq = periodYearQuarter(pq);
@@ -1399,6 +1494,8 @@ function appendHistorySection(body, opts) {
             }
             if (reportingNote) notes.push(reportingNote);
         }
+        if (money && normalizedOn()) notes.push(`Constant ${normBaseYear()} dollars (CPI-U).`);
+        if (percent) notes.push("Shown as each quarter's share of all tagged activity, so eras with different filing volumes compare cleanly.");
         if (extraNote) notes.push(extraNote);
         noteEl.textContent = notes.join(" ");
         noteEl.style.display = notes.length ? "" : "none";
@@ -1582,10 +1679,14 @@ function renderOrgDetail(body, view) {
     body.appendChild(summary);
 
     const stats = el("div", "detail-stats");
+    const vals = orgFrameValues(m, frameKey);
+    const ratio = normalizedOn()
+        ? (vals.baseline > 0 ? vals.current / vals.baseline : null)
+        : m.ratio;
     const statCells = [
-        { value: fmt.money(m.current), label: cq },
-        { value: fmt.money(m.baseline), label: bq },
-        { value: m.ratio != null ? `${m.ratio.toFixed(2)}×` : "—", label: "Ratio" },
+        { value: fmt.money(vals.current), label: cq },
+        { value: fmt.money(vals.baseline), label: bq },
+        { value: ratio != null ? `${ratio.toFixed(2)}×` : "—", label: "Ratio" },
         { value: fmt.int(m.filings_current), label: `Filings, ${cq}` },
     ];
     for (const s of statCells) {
@@ -1733,7 +1834,7 @@ function renderSignalDetail(body, view) {
           tip: "Share of all tagged mentions in the selected frame." },
         { value: fmt.pp(delta),                    label: "Δ Share", cls: deltaDir,
           tip: "Change in share versus the same quarter last year, in percentage points." },
-        { value: m.income > 0 ? fmt.money(m.income) : "—", label: "Assoc. filing income",
+        { value: m.income > 0 ? fmt.money(m.income * deflatorFor(frameInfo(frameKey)?.label)) : "—", label: "Assoc. filing income",
           tip: "Combined reported income of filings whose activities mention this. Filings usually cover several issues, so this is NOT spend attributable to this item alone." }
     ];
     for (const s of statCells) {
@@ -2073,7 +2174,7 @@ function buildPaletteIndex() {
     // selecting one opens the org drawer.
     for (const frameKey of FRAME_KEYS) {
         for (const m of allOrgMovers(frameKey)) {
-            add("org", null, m.name, `Org · ${fmt.money(m.current)} in ${clientFrame(frameKey)?.current_quarter?.label || "latest quarter"}`, { orgKey: m.key });
+            add("org", null, m.name, `Org · ${fmt.money(orgFrameValues(m, frameKey).current)} in ${clientFrame(frameKey)?.current_quarter?.label || "latest quarter"}`, { orgKey: m.key });
         }
     }
 
@@ -2244,6 +2345,7 @@ function syncURL() {
     const params = new URLSearchParams();
     if (state.view.frame !== "quarter") params.set("f", state.view.frame);
     if (state.view.cat !== "all") params.set("cat", state.view.cat);
+    if (state.view.normalized) params.set("n", "1");
     const query = params.toString() ? `?${params.toString()}` : "";
 
     let hash = "";
@@ -2269,6 +2371,12 @@ function readURL() {
     const q = new URLSearchParams(window.location.search);
     if (FRAME_KEYS.includes(q.get("f"))) state.view.frame = q.get("f");
     if (q.get("cat") && (q.get("cat") === "recent" || q.get("cat") === "clients" || SIGNAL_MODES.includes(q.get("cat")))) state.view.cat = q.get("cat");
+    // Normalization: URL wins, then the sticky per-browser preference.
+    if (q.get("n") === "1") state.view.normalized = true;
+    else if (q.get("n") === "0") state.view.normalized = false;
+    else {
+        try { state.view.normalized = localStorage.getItem("lsNormalized") === "1"; } catch (e) {}
+    }
 
     // Drawer from the hash
     const hash = window.location.hash.replace(/^#/, "");
@@ -2475,6 +2583,7 @@ async function init() {
     bindControls();
     readURL();            // restore shared view + drawer state from URL
     buildFrameToggle();   // labels come from trends.json's frames
+    buildNormToggle();    // hidden until the export ships CPI deflators
     syncControlsUI();
     renderHero();
     renderMovers();

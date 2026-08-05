@@ -373,6 +373,53 @@ input { font: inherit; color: inherit; }
 }
 .seg-btn:disabled:hover { color: var(--ink-4); }
 
+/* Normalization tickbox — sits beside the frame toggle; the explanation
+   lives in its title tooltip, not on-screen. */
+.norm-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink-3);
+    transition: all 0.12s var(--ease);
+    white-space: nowrap;
+}
+
+.norm-toggle:hover { color: var(--ink); }
+
+.norm-toggle .norm-box {
+    width: 13px;
+    height: 13px;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+}
+
+.norm-toggle .norm-box svg { width: 9px; height: 9px; opacity: 0; }
+
+.norm-toggle.active {
+    color: var(--ink);
+    border-color: var(--ink);
+}
+
+.norm-toggle.active .norm-box {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+}
+
+.norm-toggle.active .norm-box svg { opacity: 1; }
+
+.norm-toggle[hidden] { display: none; }
+
 /* On Recent filings the frame toggle doesn't apply — it stays in place,
    dimmed, so controls never move or vanish between tabs. */
 .seg.seg-disabled {
