@@ -352,6 +352,30 @@ def display_domain(value: str) -> str:
     return COARSE_TOPIC_LABELS.get(tag, _humanize_slug(tag))
 
 
+def _as_of_filter(alias: str = 'f') -> str:
+    """SQL predicate selecting the filing that was CURRENT AS OF a cutoff
+    date: the latest filing (filing_date, then id — mirroring
+    recompute_is_current's ordering) within its (registrant, client, year,
+    quarter) supersession group among filings posted on or before the
+    cutoff. Bind the cutoff date TWICE.
+
+    Plain `is_current = 1 AND filing_date <= cutoff` is wrong for dated
+    legs: a filing amended AFTER the cutoff has is_current=0 (dropped)
+    while its amendment fails the date cap — so organizations whose
+    filings were later amended vanish from the leg entirely (Meta's $5.8M
+    Q2 2025 filing, amended that October, read as ~$40K)."""
+    return f'''substr({alias}.filing_date, 1, 10) <= ?
+            AND NOT EXISTS (
+                SELECT 1 FROM filings f2
+                WHERE f2.registrant_id = {alias}.registrant_id
+                  AND f2.client_id = {alias}.client_id
+                  AND f2.year = {alias}.year AND f2.quarter = {alias}.quarter
+                  AND substr(f2.filing_date, 1, 10) <= ?
+                  AND (f2.filing_date > {alias}.filing_date
+                       OR (f2.filing_date = {alias}.filing_date AND f2.id > {alias}.id))
+            )'''
+
+
 def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
     """Get counts of topics, entities, legislation from extractions for one
     report quarter — the filings labeled (year, quarter), regardless of when
@@ -360,12 +384,15 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
     like against the same point in the prior year's filing cycle."""
     with get_db() as conn:
         params: list = [year, quarter]
-        date_filter = "AND f.year = ? AND f.quarter = ?"
         if through:
-            # filing_date is a full ISO timestamp; compare at day granularity
-            # so the through-date's filings are included on both legs.
-            date_filter += " AND substr(f.filing_date, 1, 10) <= ?"
-            params.append(through)
+            # Dated leg: reconstruct the state AS OF the cutoff (day
+            # granularity — the through-date's filings are included on both
+            # legs) rather than filtering today's is_current by date, which
+            # drops any filing amended after the cutoff.
+            current_filter = _as_of_filter('f')
+            params.extend([through, through])
+        else:
+            current_filter = 'f.is_current = 1'
 
         sql = f'''
             SELECT f.id as filing_id, f.sopr_filing_id as filing_uuid, f.year as filing_year,
@@ -377,8 +404,8 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
             JOIN clients c ON f.client_id = c.id
             JOIN registrants r ON f.registrant_id = r.id
             WHERE e.coarse_topic IS NOT NULL
-            AND f.is_current = 1
-            {date_filter}
+            AND f.year = ? AND f.quarter = ?
+            AND {current_filter}
         '''
         rows = query_to_dicts(conn, sql, tuple(params))
 
@@ -654,10 +681,10 @@ def _filing_count(conn, year: int, quarter: int, through: str = None) -> int:
     # is_current = 1: a superseded original shouldn't inflate the filing
     # count for a period whose real latest-word filing is its amendment.
     if through:
-        # Day-granularity comparison: filing_date is a full ISO timestamp.
+        # Day-granularity, as-of-cutoff reconstruction (see _as_of_filter).
         return conn.execute(
-            'SELECT COUNT(*) FROM filings WHERE year = ? AND quarter = ? AND is_current = 1 AND substr(filing_date, 1, 10) <= ?',
-            (year, quarter, through),
+            f'SELECT COUNT(*) FROM filings f WHERE f.year = ? AND f.quarter = ? AND {_as_of_filter("f")}',
+            (year, quarter, through, through),
         ).fetchone()[0]
     return conn.execute(
         'SELECT COUNT(*) FROM filings WHERE year = ? AND quarter = ? AND is_current = 1',
@@ -1418,17 +1445,21 @@ def compute_client_movers(quarters_back: int = 200) -> dict:
         q_indexes_needed = [y * 4 + q for y, q in needed]
         min_index, max_index = min(q_indexes_needed), max(q_indexes_needed)
 
+        # Superseded filings included: the qtd legs reconstruct which filing
+        # was current AS OF their cutoff dates, which may be a filing that
+        # has since been amended (is_current = 0 today). Full-quarter
+        # aggregates below still use only is_current rows.
         rows = query_to_dicts(
             conn,
             '''
-            SELECT f.sopr_filing_id AS filing_uuid, f.year, f.quarter,
-                   f.income, f.filing_date,
+            SELECT f.id AS filing_id, f.sopr_filing_id AS filing_uuid,
+                   f.year, f.quarter, f.income, f.filing_date, f.is_current,
+                   f.registrant_id, f.client_id,
                    c.name AS client_name, r.name AS registrant_name
             FROM filings f
             JOIN clients c ON f.client_id = c.id
             JOIN registrants r ON f.registrant_id = r.id
             WHERE (f.year * 4 + f.quarter) BETWEEN ? AND ?
-              AND f.is_current = 1
             ''',
             (min_index, max_index),
         )
@@ -1437,18 +1468,20 @@ def compute_client_movers(quarters_back: int = 200) -> dict:
         topic_rows_by_frame = {}
         for frame_key, spec in specs.items():
             y, q, through = spec['current']
-            sql = '''
+            params: list = [y, q]
+            if through:
+                current_filter = _as_of_filter('f')
+                params.extend([through, through])
+            else:
+                current_filter = 'f.is_current = 1'
+            sql = f'''
                 SELECT c.name AS client_name, e.topics
                 FROM activity_extractions_rules e
                 JOIN activities a ON e.activity_id = a.id
                 JOIN filings f ON a.filing_id = f.id
                 JOIN clients c ON f.client_id = c.id
-                WHERE f.year = ? AND f.quarter = ? AND f.is_current = 1
+                WHERE f.year = ? AND f.quarter = ? AND {current_filter}
             '''
-            params: list = [y, q]
-            if through:
-                sql += ' AND substr(f.filing_date, 1, 10) <= ?'
-                params.append(through)
             topic_rows_by_frame[frame_key] = query_to_dicts(conn, sql, tuple(params))
 
     FRAME_KEYS = ('quarter', 'qtd')
@@ -1466,16 +1499,38 @@ def compute_client_movers(quarters_back: int = 200) -> dict:
     registrants_current = {fk: defaultdict(Counter) for fk in FRAME_KEYS}
     examples_current = {fk: defaultdict(list) for fk in FRAME_KEYS}
 
-    def leg_membership(q_index: int, filing_date: str | None) -> list[tuple[str, str]]:
+    # As-of winners for the qtd legs: within each (registrant, client)
+    # supersession group of the leg's quarter, the latest filing posted on
+    # or before the leg's cutoff — the filing that was current at that
+    # point in the cycle, even if it has since been amended.
+    def as_of_winner_ids(q_index: int, cutoff: str) -> set:
+        best = {}
+        for row in rows:
+            if int(row['year']) * 4 + int(row['quarter']) != q_index:
+                continue
+            fd = row.get('filing_date')
+            if not fd or fd[:10] > cutoff:
+                continue
+            group = (row['registrant_id'], row['client_id'])
+            rank = (fd, int(row['filing_id']))
+            if group not in best or rank > best[group][0]:
+                best[group] = (rank, int(row['filing_id']))
+        return {fid for _, fid in best.values()}
+
+    qtd_current_ids = as_of_winner_ids(current_q_index['qtd'], qtd_through)
+    qtd_baseline_ids = as_of_winner_ids(baseline_q_index['qtd'], qtd_baseline_through)
+
+    def leg_membership(row, q_index: int) -> list[tuple[str, str]]:
         legs = []
-        if q_index == current_q_index['quarter']:
-            legs.append(('quarter', 'current'))
-        if q_index == baseline_q_index['quarter']:
-            legs.append(('quarter', 'baseline'))
-        # qtd legs need a verifiable filing_date at or before the cutoff
-        if q_index == current_q_index['qtd'] and filing_date and filing_date[:10] <= qtd_through:
+        if row['is_current']:
+            if q_index == current_q_index['quarter']:
+                legs.append(('quarter', 'current'))
+            if q_index == baseline_q_index['quarter']:
+                legs.append(('quarter', 'baseline'))
+        fid = int(row['filing_id'])
+        if fid in qtd_current_ids:
             legs.append(('qtd', 'current'))
-        if q_index == baseline_q_index['qtd'] and filing_date and filing_date[:10] <= qtd_baseline_through:
+        if fid in qtd_baseline_ids:
             legs.append(('qtd', 'baseline'))
         return legs
 
@@ -1490,11 +1545,13 @@ def compute_client_movers(quarters_back: int = 200) -> dict:
         income = row.get('income') or 0
         filing_date = row.get('filing_date')
 
-        income_by_key_q[key][q_index] += income
-        filings_by_key_q[key][q_index] += 1
-        raw_names[key][client_name] += 1
+        # History series and shared aggregates stay latest-word only.
+        if row['is_current']:
+            income_by_key_q[key][q_index] += income
+            filings_by_key_q[key][q_index] += 1
+            raw_names[key][client_name] += 1
 
-        for frame_key, leg in leg_membership(q_index, filing_date):
+        for frame_key, leg in leg_membership(row, q_index):
             leg_income[frame_key][leg][key] += income
             leg_filings[frame_key][leg][key] += 1
             if leg == 'current':
@@ -1633,6 +1690,18 @@ def compute_client_movers(quarters_back: int = 200) -> dict:
             'fallers': [build_mover(k, m) for k, m in faller_candidates[:15]],
             'new_entrants': [build_mover(k, m) for k, m in new_entrant_candidates[:10]],
         }
+        # Top spenders by the frame's current leg regardless of movement,
+        # minus orgs already exported above — so household names always have
+        # drawer data and search hits, mover or not.
+        exported_keys = (
+            {k for k, _ in riser_candidates[:25]}
+            | {k for k, _ in faller_candidates[:15]}
+            | {k for k, _ in new_entrant_candidates[:10]}
+        )
+        major_candidates = sorted(candidates.items(), key=lambda kv: kv[1]['current'], reverse=True)
+        frame['majors'] = [
+            build_mover(k, m) for k, m in major_candidates[:150] if k not in exported_keys
+        ]
         if not spec['complete']:
             frame['through'] = spec['through']
         return frame

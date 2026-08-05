@@ -31,6 +31,20 @@ KEY_CASES = [
     ("UNITEDHEALTH GROUP", "UNITEDHEALTH GROUP"),
     ("UNITEDHEALTH GROUP, INC.", "UNITEDHEALTH GROUP"),
 
+    # Meta — every raw variant seen in the data folds to one identity:
+    # "and various subsidiaries", truncated former-name parenthetical
+    # (no closing paren), and the pre-rename FACEBOOK filings via the
+    # former-name alias map.
+    ("META PLATFORMS, INC. AND VARIOUS SUBSIDIARIES", "META PLATFORMS"),
+    ("META PLATFORMS, INC.", "META PLATFORMS"),
+    ("META PLATFORMS INC (FORMERLY FACEBOOK INC AND VARIOUS SUBSIDIARIES", "META PLATFORMS"),
+    ("META PLATFORMS INC (FKA FACEBOOK)", "META PLATFORMS"),
+    ("FACEBOOK, INC.", "META PLATFORMS"),
+
+    # RTX — Raytheon renames fold forward
+    ("RAYTHEON TECHNOLOGIES CORPORATION", "RTX"),
+    ("RTX CORPORATION", "RTX"),
+
     # Former-name parentheticals
     ("INTUIT INC. (FORMERLY INTUIT SOFTWARE CORP)", "INTUIT"),
     ("HERBERT J. THOMAS MEMORIAL HOSPITAL ASSOCIATION (FKA THOMAS HEALTH)",

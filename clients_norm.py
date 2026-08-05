@@ -38,8 +38,11 @@ EXCLUDED_CLIENT_KEYS = {
 _ON_BEHALF_RE = re.compile(r'\s+ON\s+BEHALF\s+OF\s+|\s+OBO\s+', re.IGNORECASE)
 
 # Parentheticals that carry a former/alternate name, not part of the identity.
+# The closing paren is optional: filers truncate long names mid-parenthetical
+# ("META PLATFORMS INC (FORMERLY FACEBOOK INC AND VARIOUS SUBSIDIARIES"),
+# which would otherwise mint a whole separate identity.
 _FORMER_NAME_PAREN_RE = re.compile(
-    r'\(\s*(?:FORMERLY|FKA|F/K/A|D/B/A|DBA)\b[^)]*\)',
+    r'\(\s*(?:FORMERLY|FKA|F/K/A|D/B/A|DBA)\b[^)]*(?:\)|$)',
     re.IGNORECASE,
 )
 
@@ -49,8 +52,19 @@ _TRAILING_AFFILIATES_RE = re.compile(
     r'\s+AND\s+(?:ITS\s+)?AFFILIATES\s*$', re.IGNORECASE
 )
 _TRAILING_SUBSIDIARIES_RE = re.compile(
-    r'\s+AND\s+SUBSIDIARIES\s*$', re.IGNORECASE
+    r'\s+AND\s+(?:ITS\s+|VARIOUS\s+)?SUBSIDIARIES\s*$', re.IGNORECASE
 )
+
+# Corporate renames within the data window (2020+), so an organization's
+# history doesn't split at the rename. Maps canonical_client_key output of
+# the FORMER name to the canonical key of the CURRENT name. Only add
+# well-known, verifiable renames of major filers — this is curation, not
+# fuzzy matching.
+_FORMER_NAME_ALIASES = {
+    'FACEBOOK': 'META PLATFORMS',                # renamed Oct 2021
+    'RAYTHEON': 'RTX',                           # Raytheon Co pre-merger
+    'RAYTHEON TECHNOLOGIES': 'RTX',              # renamed Jul 2023
+}
 
 # Trailing legal-entity suffixes stripped iteratively (rightmost token first).
 _LEGAL_SUFFIXES = {
@@ -100,7 +114,7 @@ def canonical_client_key(name: str) -> str:
         else:
             break
 
-    return key
+    return _FORMER_NAME_ALIASES.get(key, key)
 
 
 # ─── display_client_name ───

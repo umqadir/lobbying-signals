@@ -470,6 +470,19 @@ function allOrgMovers(frameKey) {
     ];
 }
 
+// Movers plus the always-exported top spenders ("majors") — the pool for
+// drawer lookups and search, where being a mover shouldn't gate whether an
+// organization is inspectable at all. The movers feed itself stays
+// movers-only.
+function allOrgRecords(frameKey) {
+    const c = clientFrame(frameKey);
+    if (!c) return [];
+    return [
+        ...allOrgMovers(frameKey),
+        ...(c.majors || []).map(m => tagOrgMover(m, "major")),
+    ];
+}
+
 // Risers + new entrants only (no fallers), ranked by dollar delta — the
 // ramp-up story used by the hero headline.
 function topOrgRisersAndNewEntrants(limit, frameKey) {
@@ -1656,10 +1669,10 @@ function renderOrgDetail(body, view) {
     // Look in the active frame first; an org may only clear the floors in
     // one frame (e.g. a palette hit), so fall back to the other.
     let frameKey = activeFrameKey();
-    let m = allOrgMovers(frameKey).find(x => x.key === view.key);
+    let m = allOrgRecords(frameKey).find(x => x.key === view.key);
     if (!m) {
         const other = frameKey === "quarter" ? "qtd" : "quarter";
-        const found = allOrgMovers(other).find(x => x.key === view.key);
+        const found = allOrgRecords(other).find(x => x.key === view.key);
         if (found) { m = found; frameKey = other; }
     }
     const { cq, bq } = orgQuarterLabels(frameKey);
@@ -2179,10 +2192,10 @@ function buildPaletteIndex() {
         }
     }
 
-    // Organization movers from both frames, deduped by canonical key —
-    // selecting one opens the org drawer.
+    // Organization movers and majors from both frames, deduped by
+    // canonical key — selecting one opens the org drawer.
     for (const frameKey of FRAME_KEYS) {
-        for (const m of allOrgMovers(frameKey)) {
+        for (const m of allOrgRecords(frameKey)) {
             add("org", null, m.name, `Org · ${fmt.money(orgFrameValues(m, frameKey).current)} in ${clientFrame(frameKey)?.current_quarter?.label || "latest quarter"}`, { orgKey: m.key });
         }
     }
