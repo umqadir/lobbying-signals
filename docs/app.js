@@ -288,15 +288,14 @@ function frameToggleLabel(frameKey) {
 function frameSubtitle(frameKey) {
     const f = frameInfo(frameKey);
     if (!f) return "";
-    const normTag = normalizedOn() ? ` · constant ${normBaseYear()} $` : "";
     if (frameKey === "quarter") {
-        return `Latest complete quarter · filings for ${f.label} vs ${f.baseline_label}${normTag}`;
+        return `Latest complete quarter · filings for ${f.label} vs ${f.baseline_label}`;
     }
     const through = fmtMonthDay(parseDate(f.through));
     const base = f.label.replace(/\s+so far$/i, "");
     let text = `${base} reports filed through ${through} vs the same point last year`;
     if (f.thin_data) text += " — early in the filing cycle, small sample";
-    return text + normTag;
+    return text;
 }
 
 // Short baseline phrase used inside card headlines, e.g. "Q1 2025" /
@@ -837,10 +836,14 @@ function renderHero() {
             : lcq.income_change_pct;
         const dir = change > 0 ? "up" : change < 0 ? "down" : "";
         const sign = change > 0 ? "↑ " : change < 0 ? "↓ " : "";
+        // Dollars are the big value so the percent can't be misread as
+        // filing counts; normalization is flagged in the tooltip only, so
+        // toggling it never reflows the layout.
         statItems.push({
-            value: `${sign}${Math.abs(change).toFixed(1)}%`,
-            label: `${lcq.label} vs Q${lcq.quarter} ${lcq.year - 1} · ${fmt.money(income)} reported${normalizedOn() ? ` · ${normBaseYear()} $` : ""}`,
-            trend: dir
+            value: fmt.money(income),
+            label: `${sign}${Math.abs(change).toFixed(1)}% vs Q${lcq.quarter} ${lcq.year - 1}`,
+            trend: dir,
+            tip: `Total reported lobbying income in ${lcq.label}${normalizedOn() ? `, in constant ${normBaseYear()} dollars (CPI-U)` : ""}.`
         });
     } else if (cmpLatest && cmpPrev) {
         const change = ((cmpLatest.filings - cmpPrev.filings) / cmpPrev.filings) * 100;
@@ -857,6 +860,7 @@ function renderHero() {
         const li = el("li");
         const v = el("span", `stat-value ${s.trend ? `stat-trend ${s.trend}` : ""}`.trim(), s.value);
         const l = el("span", "stat-label", s.label);
+        if (s.tip) li.title = s.tip;
         li.appendChild(v);
         li.appendChild(l);
         statsEl.appendChild(li);
@@ -883,6 +887,11 @@ function renderMovers() {
     }
 
     sub.textContent = frameSubtitle(frame);
+    // Normalization is flagged on hover only — no visible suffix, so
+    // ticking the box never changes the subtitle's line count.
+    sub.title = normalizedOn()
+        ? `Normalized: dollars in constant ${normBaseYear()} dollars (CPI-U); mention histories as each quarter's share of tagged activity.`
+        : "";
 
     if (cat === "all") {
         renderEverythingDigest(list, frame);
