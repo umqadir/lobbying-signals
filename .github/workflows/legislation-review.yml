@@ -43,7 +43,13 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p data
-          gh release download data --pattern 'filings.db' -D data/
+          assets=$(gh release view data --json assets -q '.assets[].name')
+          if echo "$assets" | grep -qx 'filings.db.zst'; then
+            gh release download data --pattern 'filings.db.zst' -D data/
+            zstd -d --rm data/filings.db.zst -o data/filings.db
+          else
+            gh release download data --pattern 'filings.db' -D data/
+          fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
