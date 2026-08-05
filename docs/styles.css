@@ -230,7 +230,7 @@ input { font: inherit; color: inherit; }
 /* ─── Hero ─── */
 
 .hero {
-    padding: 28px 0 22px;
+    padding: 28px 0 18px;
     border-bottom: 1px solid var(--line);
 }
 
@@ -305,8 +305,10 @@ input { font: inherit; color: inherit; }
 
 /* ─── Movers ─── */
 
+/* The hero's border-bottom is the one divider between sections — no
+   second hairline here, and no stacked padding band. */
 .movers {
-    padding: 24px 0 24px;
+    padding: 18px 0 24px;
 }
 
 .movers-head {
@@ -316,8 +318,6 @@ input { font: inherit; color: inherit; }
     gap: 16px;
     flex-wrap: wrap;
     margin-bottom: 12px;
-    padding-top: 14px;
-    border-top: 1px solid var(--line-2);
 }
 
 .movers-title h2 {
@@ -1449,7 +1449,7 @@ input { font: inherit; color: inherit; }
 
     .page { padding: 0 16px 60px; }
     .hero { padding: 36px 0 28px; }
-    .movers { padding: 36px 0 24px; }
+    .movers { padding: 20px 0 24px; }
 
     .hero-stats li {
         flex: 0 0 50%;
