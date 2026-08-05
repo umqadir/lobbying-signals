@@ -70,6 +70,55 @@ _FORMER_NAME_ALIASES = {
     'FACEBOOK': 'META PLATFORMS',                # renamed Oct 2021
     'RAYTHEON': 'RTX',                           # Raytheon Co pre-merger
     'RAYTHEON TECHNOLOGIES': 'RTX',              # renamed Jul 2023
+
+    # ── Monthly identity review, 2026-08 ──
+    # Each entry is a rename/rebrand of ONE continuing organization (or the
+    # same company relabeling the legal vehicle it files lobbying under),
+    # verified against corporate/press records. Acquisitions, spin-offs, and
+    # distinct sister subsidiaries were deliberately left split (see the PR).
+
+    # Trade associations & nonprofits that renamed
+    'AIR TRANSPORT ASSOCIATION OF AMERICA': 'AIRLINES FOR AMERICA',   # renamed 2011
+    'PORTLAND CEMENT ASSOCIATION': 'AMERICAN CEMENT ASSOCIATION',     # renamed May 2025
+    'NATIONAL ASSOCIATION OF THEATRE OWNERS': 'CINEMA UNITED',        # renamed Mar 2025
+    'INSTITUTE OF SCRAP RECYCLING INDUSTRIES': 'RECYCLED MATERIALS ASSOCIATION',  # ReMA, Apr 2024
+    'BIOTECHNOLOGY INDUSTRY ORGANIZATION': 'BIOTECHNOLOGY INNOVATION ORGANIZATION',  # BIO, Jan 2016
+    'NATIONAL COUNCIL FOR BEHAVIORAL HEALTH': 'NATIONAL COUNCIL FOR MENTAL WELLBEING',  # renamed May 2021
+    'US GLOBAL LEADERSHIP CAMPAIGN': 'US GLOBAL LEADERSHIP COALITION',  # renamed Jul 2009
+    'US FUND FOR UNICEF': 'UNICEF',                                   # d/b/a UNICEF USA, ~2017
+    'NATIONAL INDIAN GAMING ASSOCIATION': 'INDIAN GAMING ASSOCIATION',  # dropped "National", 2022
+
+    # Companies that renamed/rebranded (same legal entity continuing)
+    'GLAXOSMITHKLINE': 'GSK',                    # GSK plc, May 2022
+    'AMERISOURCEBERGEN': 'CENCORA',              # renamed Aug 2023
+    'MEDLINE INDUSTRIES': 'MEDLINE',             # shorter form of the same filer
+    'VOYAGER SPACE': 'VOYAGER TECHNOLOGIES',     # Voyager Space Holdings -> Voyager Technologies, Feb 2025
+    'HARTFORD FINANCIAL': 'HARTFORD INSURANCE',  # The Hartford, charter rename Feb 2025
+    'CORELOGIC': 'CORELOGIC DBA COTALITY',       # CoreLogic rebranded as Cotality, Mar 2025
+    'SHELL OIL': 'SHELL',                        # Shell Oil Company -> Shell USA, Inc., 2022
+    'VISTA OUTDOOR': 'REVELYST',                 # Vista Outdoor Inc renamed after divesting ammo (Kinetic Group), 2024
+    'PERIMETER SOLUTIONS': 'PSNA',               # PHOS-CHEK filer relabeled on 2024 Lux->DE redomicile
+    'OWENS AND MINOR': 'ACCENDRA HEALTH',        # Owens & Minor Inc renamed itself Accendra Health, Dec 2025
+    'HUNTINGTON INGALLS': 'HUNTINGTON INGALLS INDUSTRIES',  # legal-name variant of HII
+
+    # Continuing entity that gained a parent tag in its filing name (NOT a
+    # fold into the acquirer's own key — Aerojet Rocketdyne stays its own
+    # identity; L3Harris is moving to spin it back out).
+    'AEROJET ROCKETDYNE': 'AEROJET ROCKETDYNE AN L3HARRIS TECHNOLOGIES',
+
+    # Same company relabeling its in-house filing vehicle (parent brand ->
+    # its own services/finance/operating entity; not a distinct sister sub)
+    'AMEREN': 'AMEREN SERVICE',                  # Ameren Corp -> Ameren Services Company
+    'AMERICAN EXPRESS': 'AMERICAN EXPRESS TRAVEL RELATED',  # AmEx Co -> its TRS operating sub
+    'SYENSQO': 'SYENSQO FINANCE (AMERICA)',      # Syensqo -> its US finance LLC
+    'H AND R BLOCK': 'HRB TAX',                  # H&R Block Inc -> HRB Tax Group Inc
+    'PMI GLOBAL': 'PMI US CORPORATE',            # PMI Global Services -> PMI US Corporate Services (Philip Morris Intl)
+    'VISTRA ENERGY': 'VISTRA CORPORATE',         # Vistra (renamed from Vistra Energy, 2020) -> Vistra Corporate Services Co
+    'SI GROUP CLIENT': 'SWISHER INTERNATIONAL',  # SI Group Client Services -> Swisher International, Inc.
+
+    # Dominant continuing entity renamed after a bolt-on merger (Skydance's
+    # own small, separate lobbying stays under its own key).
+    'PARAMOUNT GLOBAL': 'PARAMOUNT SKYDANCE',    # Paramount Global -> Paramount Skydance Corp, Aug 2025
 }
 
 # Any other trailing parenthetical is stripped when it clearly carries no
