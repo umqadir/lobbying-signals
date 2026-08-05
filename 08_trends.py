@@ -1285,7 +1285,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
     }
 
 
-def compute_client_movers(quarters_back: int = 20) -> dict:
+def compute_client_movers(quarters_back: int = 200) -> dict:
     """Organization-level spend movers: which clients ramped reported
     lobbying income up or down in dollars, under the same two YoY frames as
     the tag views — the latest COMPLETE report quarter vs the same quarter a
@@ -1303,7 +1303,18 @@ def compute_client_movers(quarters_back: int = 20) -> dict:
         ny, nq, qtd_through = specs['qtd']['current']
         _, _, qtd_baseline_through = specs['qtd']['baseline']
 
+        # Clamp the history window to quarters the DB actually holds — the
+        # default quarters_back is deliberately "everything", and padding
+        # back past the first ingested quarter would emit decades of zeros.
+        first_q_index = conn.execute(
+            'SELECT MIN(year * 4 + quarter) FROM filings '
+            'WHERE is_current = 1 AND year IS NOT NULL AND quarter BETWEEN 1 AND 4'
+        ).fetchone()[0]
         window_quarters = _quarters_back_list(cy, cq, quarters_back)
+        if first_q_index is not None:
+            window_quarters = [
+                (y, q) for y, q in window_quarters if y * 4 + q >= first_q_index
+            ]
 
         def pre_baseline_quarters(year: int, quarter: int) -> list[tuple[int, int]]:
             """The four report quarters immediately before (year, quarter)."""
@@ -1915,7 +1926,10 @@ def export_json(output_dir: str = 'docs/data'):
             if item.get('name')
         }
     tracked_topics = names_for('topics')
-    timeseries = get_time_series(20, topics_to_track=tracked_topics, track_names={
+    # 200 quarters = "all history": the SQL LIMIT clamps to quarters that
+    # exist, and the drawer charts should never silently drop early years
+    # as the dataset ages.
+    timeseries = get_time_series(200, topics_to_track=tracked_topics, track_names={
         'entities': names_for('entities'),
         'legislation': names_for('legislation'),
     })

@@ -1077,6 +1077,36 @@ input { font: inherit; color: inherit; }
     margin-top: 8px;
 }
 
+/* History-chart lens toggle, sitting in the section title row */
+.chart-seg {
+    display: inline-flex;
+    gap: 2px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    padding: 2px;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.chart-seg-btn {
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    color: var(--ink-3);
+    transition: all 0.12s var(--ease);
+    white-space: nowrap;
+}
+
+.chart-seg-btn:hover { color: var(--ink); }
+
+.chart-seg-btn.active {
+    background: var(--ink);
+    color: var(--bg);
+}
+
 .detail-list {
     list-style: none;
     display: flex;

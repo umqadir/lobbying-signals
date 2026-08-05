@@ -1249,6 +1249,163 @@ function makeBarChart(values, periods, options = {}) {
     return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" style="color: var(--ink-3);">${grid}${yLabels}${bars}${xLabels}</svg>`;
 }
 
+/* Year/quarter of a period entry: timeseries quarters carry numeric fields,
+   the org history carries "2024 Q1"-style labels. */
+function periodYearQuarter(p) {
+    if (!p) return null;
+    if (Number.isFinite(p.year) && Number.isFinite(p.quarter)) return { year: p.year, quarter: p.quarter };
+    const m = String(p.label || "").match(/(\d{4})\s*Q([1-4])/);
+    return m ? { year: +m[1], quarter: +m[2] } : null;
+}
+
+/* Same-quarter-across-years chart: one bar per year for the frame's report
+   quarter — the clean way to ask "is this Q1 bigger than past Q1s?" in a
+   seasonal quarterly regime. Few bars, so each carries its own printed
+   value; the two years the headline comparison uses get full weight and
+   earlier context years sit lighter. */
+function makeSeasonalChart(values, periods, options = {}) {
+    const { money = false, partialCount = 0, frameQuarter, currentYear, currentPartial = false } = options;
+    const n = values.length;
+    const pts = [];
+    for (let i = 0; i < n; i++) {
+        const yq = periodYearQuarter(periods[i]);
+        if (!yq || yq.quarter !== frameQuarter) continue;
+        pts.push({
+            year: yq.year,
+            value: toNum(values[i]),
+            partial: i >= n - Math.max(0, partialCount) || (currentPartial && yq.year === currentYear)
+        });
+    }
+    if (!pts.length) return "";
+
+    const W = 540, H = 180;
+    const pad = { top: 22, right: 10, bottom: 28, left: 38 };
+    const max = Math.max(...pts.map(p => p.value), 1);
+    const niceMax = niceNum(max);
+    const ticks = [0, niceMax * 0.5, niceMax];
+    const plotBottom = H - pad.bottom;
+    const plotTop = pad.top;
+    const plotW = W - pad.left - pad.right;
+    const plotH = plotBottom - plotTop;
+    const fmtVal = money ? v => fmt.money(v) : v => fmt.num(v);
+
+    const grid = ticks.map(v => {
+        const y = plotTop + (1 - v / niceMax) * plotH;
+        return `<line x1="${pad.left}" y1="${y.toFixed(1)}" x2="${W - pad.right}" y2="${y.toFixed(1)}" stroke="currentColor" stroke-opacity="0.08" stroke-width="1" />`;
+    }).join("");
+
+    const yLabels = ticks.map(v => {
+        const y = plotTop + (1 - v / niceMax) * plotH;
+        return `<text x="${pad.left - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="9" fill="currentColor" fill-opacity="0.55">${fmtVal(v)}</text>`;
+    }).join("");
+
+    const step = plotW / pts.length;
+    const barW = Math.max(10, Math.min(44, step * 0.55));
+    const accent = getCSSVar("--accent", "#1e3a5f");
+
+    const bars = pts.map((p, i) => {
+        const cx = pad.left + i * step + step / 2;
+        const x = cx - barW / 2;
+        const y = plotTop + (1 - p.value / niceMax) * plotH;
+        const h = Math.max(1, plotBottom - y);
+        const prev = i > 0 ? pts[i - 1].value : 0;
+        const yoy = i > 0 && prev > 0 ? ` · ${p.value >= prev ? "+" : ""}${((p.value - prev) / prev * 100).toFixed(0)}% vs ${pts[i - 1].year}` : "";
+        const hover = `<title>Q${frameQuarter} ${p.year} · ${fmtVal(p.value)}${yoy}${p.partial ? " (still reporting)" : ""}</title>`;
+        // The frame's two comparison years carry the visual weight; a
+        // still-filling year renders hollow like the all-quarters view.
+        const emphasis = p.year === currentYear ? 0.95 : p.year === currentYear - 1 ? 0.6 : 0.3;
+        const valueLabel = `<text x="${cx.toFixed(1)}" y="${(y - 5).toFixed(1)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="600" fill="currentColor" fill-opacity="${p.year >= currentYear - 1 ? 0.85 : 0.55}">${fmtVal(p.value)}</text>`;
+        const yearLabel = `<text x="${cx.toFixed(1)}" y="${(plotBottom + 14).toFixed(1)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="currentColor" fill-opacity="${p.year >= currentYear - 1 ? 0.8 : 0.55}">${p.year}</text>`;
+        const rect = p.partial
+            ? `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="0.12" stroke="${accent}" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2 1.5">${hover}</rect>`
+            : `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="${emphasis}">${hover}</rect>`;
+        return rect + valueLabel + yearLabel;
+    }).join("");
+
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" style="color: var(--ink-3);" role="img" aria-label="Q${frameQuarter} totals by year">${grid}${yLabels}${bars}</svg>`;
+}
+
+/* ─── Drawer history section ───
+   One section, two lenses: the full quarter-by-quarter run, and the frame's
+   quarter isolated across every year on record. The chosen lens sticks for
+   the session so flipping between drawers keeps the reader's view. */
+let historyChartMode = "all";
+
+function appendHistorySection(body, opts) {
+    const { title, series, quarters, money = false, frameQuarter, currentYear,
+            currentPartial = false, extraNote, reportingNote } = opts;
+    if (!series?.length || !quarters || quarters.length < 2) return;
+
+    const sliceYears = quarters
+        .map(periodYearQuarter)
+        .filter(yq => yq && yq.quarter === frameQuarter)
+        .map(yq => yq.year);
+    const canSeasonal = Number.isFinite(frameQuarter) && sliceYears.length >= 2;
+    const hasCurrentYear = currentYear != null && sliceYears.includes(currentYear);
+    const hasBaselineYear = currentYear != null && sliceYears.includes(currentYear - 1);
+
+    const sec = el("div", "detail-section");
+    const titleRow = el("div", "detail-section-title");
+    titleRow.appendChild(el("span", "", title));
+    sec.appendChild(titleRow);
+    const box = el("div", "detail-chart-box");
+    sec.appendChild(box);
+    const noteEl = el("p", "detail-chart-note");
+    sec.appendChild(noteEl);
+    body.appendChild(sec);
+
+    let seg = null;
+    if (canSeasonal) {
+        seg = el("div", "chart-seg");
+        seg.setAttribute("role", "tablist");
+        seg.setAttribute("aria-label", "History chart lens");
+        titleRow.appendChild(seg);
+    }
+
+    const partialCount = money ? 0 : partialTrailingCount(quarters);
+
+    const render = () => {
+        const mode = canSeasonal ? historyChartMode : "all";
+        if (seg) {
+            seg.innerHTML = "";
+            for (const [key, label] of [["all", "All quarters"], ["yoy", `Q${frameQuarter} by year`]]) {
+                const b = el("button", "chart-seg-btn" + (mode === key ? " active" : ""), label);
+                b.type = "button";
+                b.setAttribute("role", "tab");
+                b.setAttribute("aria-selected", mode === key ? "true" : "false");
+                b.onclick = () => { if (historyChartMode !== key) { historyChartMode = key; render(); } };
+                seg.appendChild(b);
+            }
+        }
+        const notes = [];
+        if (mode === "yoy") {
+            box.innerHTML = makeSeasonalChart(series, quarters, {
+                money, partialCount, frameQuarter, currentYear, currentPartial
+            });
+            if (hasCurrentYear && hasBaselineYear) {
+                notes.push(`Q${frameQuarter} totals for every year on record — the two darker bars are the years compared above.`);
+            } else {
+                notes.push(`Q${frameQuarter} totals for every year on record.`);
+            }
+            if (hasCurrentYear && currentPartial) {
+                notes.push(`${currentYear} is still being reported (shown dashed) and will keep rising.`);
+            }
+        } else {
+            box.innerHTML = makeBarChart(series, quarters, { partialCount, money });
+            if (partialCount > 0) {
+                const pq = quarters[quarters.length - 1];
+                const yq = periodYearQuarter(pq);
+                if (yq) notes.push(`${yq.year} Q${yq.quarter} is still being reported (shown dashed) and will keep rising.`);
+            }
+            if (reportingNote) notes.push(reportingNote);
+        }
+        if (extraNote) notes.push(extraNote);
+        noteEl.textContent = notes.join(" ");
+        noteEl.style.display = notes.length ? "" : "none";
+    };
+    render();
+}
+
 function pickXIndices(n, count) {
     if (n <= count) return Array.from({ length: n }, (_, i) => i);
     const out = [0];
@@ -1439,21 +1596,28 @@ function renderOrgDetail(body, view) {
     }
     body.appendChild(stats);
 
-    // Quarterly spend chart, aligned to the shared quarters array.
+    // Quarterly spend chart, aligned to the shared quarters array, with the
+    // same all-quarters ⇄ same-quarter-by-year lens as the tag drawers.
+    // Org history only covers complete quarters, so no partial handling.
     const quarters = (state.clients?.quarters || []).map(label => {
         const parts = label.match(/^(\d{4})\s+Q(\d)$/);
-        return { label, short: parts ? `${parts[1].slice(2)}Q${parts[2]}` : label };
+        return {
+            label,
+            short: parts ? `${parts[1].slice(2)}Q${parts[2]}` : label,
+            year: parts ? +parts[1] : null,
+            quarter: parts ? +parts[2] : null
+        };
     });
-    if (m.series?.length && quarters.length > 1) {
-        const sec = el("div", "detail-section");
-        sec.appendChild(el("div", "detail-section-title", "Reported spend by quarter"));
-        const box = el("div", "detail-chart-box");
-        box.innerHTML = makeBarChart(m.series, quarters, { money: true });
-        sec.appendChild(box);
-        sec.appendChild(el("p", "detail-chart-note",
-            "Quarterly LDA filing income, not issue-allocated — the whole filing's income counts toward this organization's total."));
-        body.appendChild(sec);
-    }
+    const orgFrame = state.clients?.frames?.[frameKey];
+    appendHistorySection(body, {
+        title: "Reported spend by quarter",
+        series: m.series,
+        quarters,
+        money: true,
+        frameQuarter: orgFrame?.current_quarter?.quarter,
+        currentYear: orgFrame?.current_quarter?.year,
+        extraNote: "Quarterly LDA filing income, not issue-allocated — the whole filing's income counts toward this organization's total."
+    });
 
     // Top topics — pivot into the matching topic signal if it's tracked there.
     if (m.topics?.length) {
@@ -1581,34 +1745,27 @@ function renderSignalDetail(body, view) {
     }
     body.appendChild(stats);
 
-    // Quarterly history chart (every category)
+    // Quarterly history chart (every category), with an all-quarters ⇄
+    // same-quarter-by-year lens toggle. The seasonal slice follows the
+    // active frame's quarter: latest complete quarter or the one filling.
     {
         const seriesKeyByMode = {
             topics: "topic_series",
             entities: "entity_series",
             legislation: "legislation_series"
         };
-        const series = state.timeseries?.[seriesKeyByMode[m.mode]]?.[m.name];
-        const quarters = state.timeseries?.quarters || [];
-        if (series?.length && quarters.length > 1) {
-            const sec = el("div", "detail-section");
-            sec.appendChild(el("div", "detail-section-title", "Mentions by quarter"));
-            const box = el("div", "detail-chart-box");
-            const partialCount = partialTrailingCount(quarters);
-            box.innerHTML = makeBarChart(series, quarters, { partialCount });
-            sec.appendChild(box);
-            const ctx = state.timeseries?.context;
-            const notes = [];
-            if (partialCount > 0) {
-                const pq = quarters[quarters.length - 1];
-                notes.push(`${pq.year} Q${pq.quarter} is still being reported (shown dashed) and will keep rising.`);
-            }
-            if (ctx?.reporting_note) notes.push(ctx.reporting_note);
-            if (notes.length) {
-                sec.appendChild(el("p", "detail-chart-note", notes.join(" ")));
-            }
-            body.appendChild(sec);
-        }
+        const fq = frameKey === "qtd"
+            ? state.stats?.current_partial_quarter
+            : state.stats?.latest_complete_quarter;
+        appendHistorySection(body, {
+            title: "Mentions by quarter",
+            series: state.timeseries?.[seriesKeyByMode[m.mode]]?.[m.name],
+            quarters: state.timeseries?.quarters || [],
+            frameQuarter: fq?.quarter,
+            currentYear: fq?.year,
+            currentPartial: frameInfo(frameKey)?.complete === false,
+            reportingNote: state.timeseries?.context?.reporting_note
+        });
     }
 
     // Top clients
