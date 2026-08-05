@@ -132,6 +132,7 @@ KNOWN_ACT_PATTERNS = [
     (re.compile(r'\bamerica competes act\b', re.I), 'America COMPETES Act'),
     (re.compile(r'\bfor the people act\b', re.I), 'For the People Act'),
     # 116th
+    (re.compile(r'\bmoving forward act\b', re.I), 'Moving Forward Act'),
     (re.compile(r'\bcoronavirus aid,? (?:relief|response),? and economic security\b', re.I), 'CARES Act'),
     (re.compile(r'\bcares act\b', re.I), 'CARES Act'),
     (re.compile(r'^economic security act$', re.I), 'CARES Act'),  # common truncation
@@ -194,8 +195,12 @@ LEGISLATION_ALIASES = {
     # U.S. Innovation and Competition Act / America COMPETES (117th)
     'S. 1260 (117th Congress)': 'U.S. Innovation and Competition Act',
     'H.R. 4521 (117th Congress)': 'America COMPETES Act',
+    # Moving Forward Act (116th) — ~$1.5T infrastructure bill, H.R. 2, passed
+    # the House 2020, never enacted; folds the bare number into the name.
+    'H.R. 2 (116th Congress)': 'Moving Forward Act',
     # CARES Act & Families First (116th)
     'H.R. 748 (116th Congress)': 'CARES Act',
+    'S. 3548 (116th Congress)': 'CARES Act',  # original Senate CARES vehicle
     'P.L. 116-136': 'CARES Act',
     'H.R. 6201 (116th Congress)': 'Families First Coronavirus Response Act',
     'P.L. 116-127': 'Families First Coronavirus Response Act',
