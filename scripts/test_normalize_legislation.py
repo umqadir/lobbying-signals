@@ -38,10 +38,18 @@ CASES = [
     ("H.R. 1 - Lower Energy Costs Act", 2025, "Lower Energy Costs Act"),   # name beats year
     ("H.R. 1 of 2017", 2026, "Tax Cuts and Jobs Act"),                    # explicit year beats filing year
 
-    # CARES Act: name / number / P.L.
+    # CARES Act: name / number / P.L. / original Senate vehicle (S. 3548)
     ("CARES Act", 2020, "CARES Act"),
     ("H.R. 748", 2020, "CARES Act"),
     ("P.L. 116-136", 2021, "CARES Act"),
+    ("S. 3548", 2020, "CARES Act"),   # original Senate CARES bill, 116th
+    ("S.3548", 2020, "CARES Act"),
+
+    # Moving Forward Act (H.R. 2, 116th) — name / number / name-beats-wrong-year
+    ("Moving Forward Act", 2020, "Moving Forward Act"),
+    ("H.R. 2", 2020, "Moving Forward Act"),
+    ("H.R. 2 (116th Congress)", 2024, "Moving Forward Act"),   # Congress qual beats filing year
+    ("H.R. 2 - Moving Forward Act", 2023, "Moving Forward Act"),  # name beats wrong-year number
 
     # IIJA: name / number / P.L. / "bipartisan infrastructure" nickname
     ("Infrastructure Investment and Jobs Act", 2022, "Infrastructure Investment and Jobs Act"),
@@ -84,6 +92,18 @@ CASES = [
     # A bare number with no known mapping keeps its Congress scope
     ("H.R. 7148", 2026, "H.R. 7148 (119th Congress)"),
     ("H.R. 2670 (118th Congress)", 2024, "H.R. 2670 (118th Congress)"),
+
+    # Cross-Congress number REUSE stays unmapped — same number, different law
+    # per Congress, so a bare number must NOT fold to the other Congress's act.
+    # H.R. 5376 (117th) was BOTH Build Back Better and the IRA vehicle — bare
+    # number is ambiguous, only the enacted P.L. 117-169 maps to the IRA.
+    ("H.R. 5376", 2022, "H.R. 5376 (117th Congress)"),
+    # H.R. 3684 was the IIJA in the 117th; in the 118th it is an unrelated bill.
+    ("H.R. 3684", 2023, "H.R. 3684 (118th Congress)"),
+    # H.R. 748 was the CARES Act in the 116th; in the 117th it is Ethan's Law.
+    ("H.R. 748", 2021, "H.R. 748 (117th Congress)"),
+    # Recurring appropriations title stays a scoped number, never a bare name.
+    ("H.R. 133", 2020, "H.R. 133 (116th Congress)"),
 
     # CARES truncation + Affordable Care Act canonicalization (audit-surfaced)
     ("Economic Security Act", 2020, "CARES Act"),
