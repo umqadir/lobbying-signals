@@ -10,6 +10,11 @@ on:
     # far entirely hypothetical — this is the broad check that would surface
     # it; if it ever does, redesign around the observed behavior.
     - cron: '0 6 3 * *'
+    # Weekly coverage check (Sundays 06:00 UTC): per-period DB counts vs
+    # live API counts; auto-backfills genuinely short periods. Catches the
+    # class of gap the posted-after sweeps can't see (2020 Q1 sat ~4K
+    # filings short from an old ingest boundary).
+    - cron: '0 6 * * 0'
   workflow_dispatch:
     # Allow manual trigger
     inputs:
@@ -104,6 +109,13 @@ jobs:
         if: github.event.inputs.backfill_period != ''
         run: |
           uv run python 01_ingest.py ${{ github.event.inputs.backfill_period }}
+        env:
+          LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
+
+      - name: Weekly coverage check (per-period DB vs API counts)
+        if: github.event.schedule == '0 6 * * 0'
+        run: |
+          uv run python 01_ingest.py coverage-check
         env:
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
 

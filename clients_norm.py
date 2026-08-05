@@ -66,11 +66,73 @@ _FORMER_NAME_ALIASES = {
     'RAYTHEON TECHNOLOGIES': 'RTX',              # renamed Jul 2023
 }
 
+# Any other trailing parenthetical is stripped when it clearly carries no
+# identity: boilerplate scope notes, or a self-referential acronym
+# ("PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA (PHRMA)") whose
+# letters all appear in order in the name itself. A parenthetical that
+# fails both tests — "(TEXAS)", a chapter, a distinct unit — is kept.
+_TRAILING_PAREN_RE = re.compile(r'\s*\(([^)]*)\)\s*$')
+_PAREN_NOISE_RE = re.compile(
+    r'^(?:AND\s+(?:ITS\s+|VARIOUS\s+)?(?:SUBSIDIARIES|AFFILIATES)'
+    r'|CONSOLIDATED(?:\s+(?:REPORT|REPORTING|FILING))?'
+    r'|ON\s+ITS\s+OWN\s+BEHALF)$',
+    re.IGNORECASE,
+)
+
+# Former-name tails written WITHOUT parentheses ("... FKA PROPERTY CASUALTY
+# INSURERS", "... FORMERLY REPORTED AS FACEBOOK") — everything from the
+# marker on is the old name, not the identity.
+_BARE_FORMER_TAIL_RE = re.compile(
+    r'\s+(?:FKA|F/K/A|FORMERLY(?:\s+(?:KNOWN\s+AS|REPORTED\s+AS))?)\s+.*$',
+    re.IGNORECASE,
+)
+
+
+def _is_self_acronym(inner: str, base: str) -> bool:
+    """True when a parenthetical is an acronym of the name it follows:
+    one short token whose letters occur in order within the base name."""
+    token = inner.strip()
+    if not token or ' ' in token:
+        return False
+    letters = [ch for ch in token if ch.isalpha()]
+    if not (2 <= len(letters) <= 10) or len(letters) < len(token.replace('-', '').replace('.', '')):
+        return False
+    base_letters = [ch for ch in base if ch.isalpha()]
+    it = iter(base_letters)
+    return all(ch in it for ch in letters)
+
+
 # Trailing legal-entity suffixes stripped iteratively (rightmost token first).
+# GROUP/HOLDINGS/SERVICES are here deliberately: they mark a corporate shell
+# around the same lobbying identity ("CIGNA GROUP", "AMAZON.COM SERVICES"),
+# and stripping them heals splits between a parent and its filing vehicle.
 _LEGAL_SUFFIXES = {
     'INC', 'INCORPORATED', 'LLC', 'LLP', 'LP', 'LTD', 'LIMITED', 'CORP',
     'CORPORATION', 'COMPANY', 'CO', 'PBC', 'PLC', 'PC', 'GMBH', 'SA', 'NV', 'AG',
+    'GROUP', 'HOLDINGS', 'SERVICES',
 }
+
+# Trailing geographic qualifiers on a US subsidiary of the same brand
+# ("VISA USA", "ORACLE AMERICA", "FRESENIUS MEDICAL CARE NORTH AMERICA").
+# Guarded: never stripped when the preceding word makes it part of the name
+# proper ("BANK OF AMERICA", "PARTNERSHIP FOR AMERICA").
+_GEO_TAIL_TOKENS = {'USA', 'US', 'AMERICA'}
+_GEO_GUARD_TOKENS = {'OF', 'FOR', 'IN', 'THE', 'TO'}
+
+
+def _strip_geo_tail(key: str) -> str:
+    tokens = key.split(' ')
+    while len(tokens) > 1:
+        take = 0
+        if tokens[-1] in _GEO_TAIL_TOKENS:
+            take = 2 if (tokens[-1] == 'AMERICA' and len(tokens) > 2 and tokens[-2] == 'NORTH') else 1
+        if not take:
+            break
+        prev = tokens[-take - 1] if len(tokens) > take else ''
+        if prev in _GEO_GUARD_TOKENS or not prev:
+            break
+        tokens = tokens[:-take]
+    return ' '.join(tokens)
 
 
 def canonical_client_key(name: str) -> str:
@@ -87,9 +149,19 @@ def canonical_client_key(name: str) -> str:
         key = parts[-1].strip()
 
     key = _FORMER_NAME_PAREN_RE.sub('', key).strip()
+    key = _BARE_FORMER_TAIL_RE.sub('', key).strip()
     key = _LEADING_THE_RE.sub('', key).strip()
     key = _TRAILING_AFFILIATES_RE.sub('', key)
     key = _TRAILING_SUBSIDIARIES_RE.sub('', key)
+
+    # Trailing parenthetical: dropped only if boilerplate or a
+    # self-referential acronym (see _is_self_acronym).
+    m = _TRAILING_PAREN_RE.search(key)
+    if m:
+        base = key[:m.start()].strip()
+        inner = m.group(1)
+        if base and (_PAREN_NOISE_RE.match(inner.strip()) or _is_self_acronym(inner, base)):
+            key = base
 
     # Punctuation: "&" carries real meaning ("Procter & Gamble"), so spell it
     # out rather than dropping it; other punctuation is just noise.
@@ -99,19 +171,20 @@ def canonical_client_key(name: str) -> str:
     if not key:
         return ''
 
-    # Iteratively strip trailing legal-entity suffixes ("SOME CORP INC" ->
-    # "SOME CORP" -> "SOME"), but never strip down to nothing.
+    # Iteratively strip trailing legal-entity suffixes and geographic
+    # qualifiers ("T-MOBILE USA, INC." -> "T-MOBILE USA" -> "T-MOBILE"),
+    # but never strip down to nothing.
     while True:
+        before = key
         tokens = key.split(' ')
-        if len(tokens) <= 1:
-            break
-        last = tokens[-1].strip(' .,')
-        if last in _LEGAL_SUFFIXES:
-            candidate = ' '.join(tokens[:-1]).strip()
-            if not candidate:
-                break
-            key = candidate
-        else:
+        if len(tokens) > 1:
+            last = tokens[-1].strip(' .,')
+            if last in _LEGAL_SUFFIXES:
+                candidate = ' '.join(tokens[:-1]).strip()
+                if candidate:
+                    key = candidate
+        key = _strip_geo_tail(key)
+        if key == before:
             break
 
     return _FORMER_NAME_ALIASES.get(key, key)

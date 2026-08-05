@@ -566,6 +566,63 @@ def audit_sample(n: int = 100, max_minutes: float = None) -> dict:
             'activity_mismatch': act_mismatched, 'errors': errors}
 
 
+def coverage_check(max_backfills: int = 2, tolerance: int = 25) -> int:
+    """Compare per-period filing counts in the DB against the live API and
+    re-ingest the worst-shortfall periods.
+
+    The posted-after sweeps only catch what the API reports as newly
+    posted; a period can sit silently short from an old ingest gap (2020 Q1
+    was ~4K filings short for months before anyone noticed it in a chart).
+    One count query per (year, filing_type) is cheap; a shortfall beyond
+    `tolerance` triggers a full re-walk of that period, which is idempotent
+    (sopr_filing_id dedupe). Surpluses (DB > API — expunged filings) are
+    only reported: deleting is the drift audit's judgment call, never
+    automatic. Backfills are capped per run so one pass can't blow the CI
+    window; remaining short periods surface again next week.
+    """
+    with get_db() as conn:
+        rows = conn.execute(
+            '''SELECT year, quarter, COUNT(*) FROM filings
+               WHERE year IS NOT NULL AND quarter BETWEEN 1 AND 4
+               GROUP BY year, quarter ORDER BY year, quarter'''
+        ).fetchall()
+
+    shortfalls = []
+    print(f"Coverage check across {len(rows)} report periods:")
+    for year, quarter, db_count in rows:
+        api_count = 0
+        failed = False
+        for filing_type in _report_types_for_quarter(quarter):
+            try:
+                data = fetch_filings_page(year, filing_type, page=1)
+            except Exception as e:
+                print(f"  {year} Q{quarter}: count fetch failed for {filing_type} ({e}); skipping period")
+                failed = True
+                break
+            api_count += int(data.get('count') or 0)
+            time.sleep(0.6)  # ~100 req/min, under the keyed 120/min limit
+        if failed:
+            continue
+        diff = api_count - db_count
+        flag = ''
+        if diff > tolerance:
+            flag = '  <-- SHORT'
+        elif diff < -tolerance:
+            flag = '  (surplus — possible expunges; see monthly drift audit)'
+        print(f"  {year} Q{quarter}: db={db_count} api={api_count} diff={diff:+d}{flag}")
+        if diff > tolerance:
+            shortfalls.append((diff, year, quarter))
+
+    shortfalls.sort(reverse=True)
+    for diff, year, quarter in shortfalls[:max_backfills]:
+        print(f"\nBackfilling {year} Q{quarter} (short by {diff})...")
+        ingest_quarter(year, quarter)
+    deferred = len(shortfalls) - max_backfills
+    if deferred > 0:
+        print(f"\nNOTE: {deferred} more short period(s) deferred to the next weekly run.")
+    return len(shortfalls)
+
+
 def backfill_non_original(start_year: int):
     """Historical backfill: sweep only the non-original report types
     (amendments/terminations/termination amendments) for every quarter from
@@ -637,6 +694,8 @@ if __name__ == "__main__":
         else:
             posted_after = (datetime.now() - timedelta(days=400)).strftime('%Y-%m-%d')
         ingest_posted_after(posted_after, start_year)
+    elif len(sys.argv) >= 2 and sys.argv[1] == "coverage-check":
+        coverage_check()
     elif len(sys.argv) >= 2 and sys.argv[1] == "backfill-non-original":
         start_year = 2020
         if "--start-year" in sys.argv:

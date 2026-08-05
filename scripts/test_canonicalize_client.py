@@ -26,10 +26,36 @@ KEY_CASES = [
     ("ANTHROPIC, PBC", "ANTHROPIC"),
     ("AQUIA GROUP ON BEHALF OF ANTHROPIC, PBC", "ANTHROPIC"),
 
-    # UnitedHealth — bare / suffix / punctuated suffix
-    ("UNITEDHEALTH GROUP INC", "UNITEDHEALTH GROUP"),
-    ("UNITEDHEALTH GROUP", "UNITEDHEALTH GROUP"),
-    ("UNITEDHEALTH GROUP, INC.", "UNITEDHEALTH GROUP"),
+    # UnitedHealth — bare / suffix / punctuated suffix (GROUP is a legal
+    # suffix now, so the corporate shell folds into the brand)
+    ("UNITEDHEALTH GROUP INC", "UNITEDHEALTH"),
+    ("UNITEDHEALTH GROUP", "UNITEDHEALTH"),
+    ("UNITEDHEALTH GROUP, INC.", "UNITEDHEALTH"),
+
+    # Corporate-shell and US-subsidiary tails fold into the brand
+    ("THE CIGNA GROUP", "CIGNA"),
+    ("AMAZON.COM SERVICES LLC", "AMAZONCOM"),
+    ("T-MOBILE USA, INC.", "T-MOBILE"),
+    ("ORACLE AMERICA, INC.", "ORACLE"),
+    ("VISA U.S.A. INC.", "VISA"),
+    ("FRESENIUS MEDICAL CARE NORTH AMERICA", "FRESENIUS MEDICAL CARE"),
+    # ...but geographic tails guarded by OF/FOR stay part of the name
+    ("BANK OF AMERICA CORPORATION", "BANK OF AMERICA"),
+    ("PARTNERSHIP FOR AMERICA", "PARTNERSHIP FOR AMERICA"),
+
+    # Self-referential acronym parentheticals fold; chapter-style ones don't
+    ("PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA (PHRMA)",
+     "PHARMACEUTICAL RESEARCH AND MANUFACTURERS OF AMERICA"),
+    ("AMERICA'S HEALTH INSURANCE PLANS INC (AHIP)", "AMERICAS HEALTH INSURANCE PLANS"),
+    ("BIOTECHNOLOGY INNOVATION ORGANIZATION (BIO)", "BIOTECHNOLOGY INNOVATION ORGANIZATION"),
+    ("AARP (TEXAS)", "AARP (TEXAS)"),
+
+    # Boilerplate parentheticals and bare former-name tails
+    ("CVS HEALTH (AND SUBSIDIARIES)", "CVS HEALTH"),
+    ("BAYER CORPORATION (CONSOLIDATED REPORT)", "BAYER"),
+    ("AMERICAN PROPERTY CASUALTY INSURANCE ASSOCIATION FKA PROPERTY CASUALTY INSURERS",
+     "AMERICAN PROPERTY CASUALTY INSURANCE ASSOCIATION"),
+    ("META PLATFORMS INC FORMERLY REPORTED AS FACEBOOK", "META PLATFORMS"),
 
     # Meta — every raw variant seen in the data folds to one identity:
     # "and various subsidiaries", truncated former-name parenthetical

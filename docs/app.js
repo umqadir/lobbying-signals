@@ -1675,6 +1675,20 @@ function renderOrgDetail(body, view) {
         const found = allOrgRecords(other).find(x => x.key === view.key);
         if (found) { m = found; frameKey = other; }
     }
+    if (!m && view.key) {
+        // Canonicalization improves over time and only ever shortens keys,
+        // so an old shared link's key starts with the org's current key
+        // ("META PLATFORMS INC AND VARIOUS..." -> "META PLATFORMS").
+        // Salvage it with the longest matching prefix key.
+        const stale = String(view.key).toUpperCase();
+        for (const fk of FRAME_KEYS) {
+            for (const r of allOrgRecords(fk)) {
+                if (stale.startsWith(r.key + " ") && (!m || r.key.length > m.key.length)) {
+                    m = r; frameKey = fk;
+                }
+            }
+        }
+    }
     const { cq, bq } = orgQuarterLabels(frameKey);
     const subLabel = frameKey === "quarter"
         ? `${cq} vs ${bq} · complete quarters`
