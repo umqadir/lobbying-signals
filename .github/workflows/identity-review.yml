@@ -1,0 +1,106 @@
+name: Monthly Client Identity Review
+
+# Once a month, audit client-identity candidates that deterministic rules
+# can't judge — corporate renames, suspected duplicate keys, income
+# outliers — and have Claude research them, then open a PR updating the
+# curated maps in clients_norm.py. Runs through a Claude Pro/Max
+# subscription (CLAUDE_CODE_OAUTH_TOKEN), NOT the metered API. Same
+# recipe and one-time setup as legislation-review.yml.
+
+on:
+  schedule:
+    - cron: '0 12 5 * *'   # 12:00 UTC on the 5th (offset from the legislation review on the 1st)
+  workflow_dispatch:        # allow manual runs
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          uv venv --python 3.12
+          uv pip install --python .venv/bin/python -r requirements.txt
+
+      - name: Download database from release
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          assets=$(gh release view data --json assets -q '.assets[].name')
+          if echo "$assets" | grep -qx 'filings.db.zst'; then
+            gh release download data --pattern 'filings.db.zst' -D data/
+            zstd -d --rm data/filings.db.zst -o data/filings.db
+          else
+            gh release download data --pattern 'filings.db' -D data/
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build identity audit report
+        run: |
+          uv run python scripts/audit_client_identities.py --out client_identity_report.md
+          echo '----- report -----'
+          cat client_identity_report.md
+
+      - name: Claude reviews the audit and proposes identity updates
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: '--max-turns 30 --model claude-opus-4-8'
+          prompt: |
+            You are doing this repo's monthly client-identity review.
+
+            Read `client_identity_report.md` (already generated in the repo
+            root) and `clients_norm.py`. The report has three sections:
+            rename candidates (raw filing names carrying FORMERLY/FKA
+            evidence whose OLD name still holds income under a separate
+            key), suspected duplicate keys among top spenders, and
+            single-quarter income outliers.
+
+            For each candidate, research whether the two keys are the SAME
+            lobbying organization. When — and ONLY when — you are confident,
+            add an entry to `_FORMER_NAME_ALIASES` in `clients_norm.py`
+            mapping the variant/former key to the organization's CURRENT
+            canonical key, and add a matching assertion (using a realistic
+            raw filing name) to `scripts/test_canonicalize_client.py`.
+
+            Hard rules:
+            - Fold renames and rebrands of one continuing organization
+              (Air Transport Association -> Airlines for America). Do NOT
+              fold acquisitions or spin-offs where both organizations
+              previously lobbied as separate entities — an "FKA" marker on
+              post-deal filings is registration bookkeeping, not identity
+              (e.g. do not fold a formerly-independent company into its
+              acquirer; their pre-deal histories are genuinely separate).
+            - Do NOT fold sister subsidiaries with distinct operations, or
+              organizations that merely share a leading word ("SOUTHERN"
+              vs "SOUTHERN POVERTY LAW CENTER").
+            - Aliases must point at the organization's CURRENT canonical
+              key; if a chain forms (A->B and B later ->C), flatten every
+              entry to the final key.
+            - For income outliers: never add to EXCLUDED_CLIENT_KEYS
+              unless you verified against the official Senate record that
+              the figures are not U.S.-dollar lobbying spend, and document
+              the evidence in a comment like the existing Loc Nation entry.
+              Legitimate big spenders are the normal case — leave them.
+
+            Then run `python scripts/test_canonicalize_client.py` and make
+            sure all cases pass. Open ONE pull request with the changes,
+            titled "Monthly client identity review", whose description
+            lists each alias with a one-line justification and citation,
+            and explicitly names candidates you deliberately left split
+            and why. If nothing meets the confidence bar, open no PR and
+            say so.

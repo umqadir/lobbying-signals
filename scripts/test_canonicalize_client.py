@@ -57,6 +57,13 @@ KEY_CASES = [
      "AMERICAN PROPERTY CASUALTY INSURANCE ASSOCIATION"),
     ("META PLATFORMS INC FORMERLY REPORTED AS FACEBOOK", "META PLATFORMS"),
 
+    # Filer typos and interaction bugs seen in the wild: no space after FKA,
+    # an on-behalf-of chain inside a former-name parenthetical, and a
+    # dangling conjunction left by suffix stripping
+    ("RTX CORPORATION AND AFFILIATES (FKARAYTHEON TECHNOLOGIES CORPORATION)", "RTX"),
+    ("LIBERTY MUTUAL (FORMERLY KNOWN AS AKIN GUMP ON BEHALF OF LIBERTY MUTUAL)", "LIBERTY MUTUAL"),
+    ("MERCK & CO.", "MERCK"),
+
     # Meta — every raw variant seen in the data folds to one identity:
     # "and various subsidiaries", truncated former-name parenthetical
     # (no closing paren), and the pre-rename FACEBOOK filings via the
