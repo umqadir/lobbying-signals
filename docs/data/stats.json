@@ -1,50 +1,50 @@
 {
-  "generated_at": "2026-08-21T10:27:30.810431+00:00",
-  "total_filings": 539148,
-  "total_activities": 1136754,
-  "total_extracted": 1087045,
+  "generated_at": "2026-08-22T10:20:45.612645+00:00",
+  "total_filings": 539168,
+  "total_activities": 1136787,
+  "total_extracted": 1087075,
   "extracted_pct": 95.6,
   "extraction_source": "deterministic_rules",
   "date_range": {
     "start": "2020-01-06T10:37:27.950000-05:00",
-    "end": "2026-08-21T00:00:18-04:00"
+    "end": "2026-08-21T23:40:45-04:00"
   },
   "quarters": [
     {
       "year": 2026,
       "quarter": 3,
-      "filings": 64,
+      "filings": 65,
       "income": 549000.0
     },
     {
       "year": 2026,
       "quarter": 2,
-      "filings": 25339,
-      "income": 1643113677.89
+      "filings": 25350,
+      "income": 1643391177.89
     },
     {
       "year": 2026,
       "quarter": 1,
-      "filings": 25403,
-      "income": 1721979470.69
+      "filings": 25404,
+      "income": 1722009470.69
     },
     {
       "year": 2025,
       "quarter": 4,
-      "filings": 24890,
-      "income": 1592850595.72
+      "filings": 24891,
+      "income": 1592910595.72
     },
     {
       "year": 2025,
       "quarter": 3,
-      "filings": 24714,
-      "income": 1528183606.79
+      "filings": 24715,
+      "income": 1528213606.79
     },
     {
       "year": 2025,
       "quarter": 2,
-      "filings": 24289,
-      "income": 1577055219.89
+      "filings": 24290,
+      "income": 1577065219.89
     },
     {
       "year": 2025,
@@ -63,16 +63,16 @@
     "year": 2026,
     "quarter": 2,
     "label": "Q2 2026",
-    "income": 1623113677.8900003,
-    "filings": 25338,
-    "yoy_income": 1557055219.89,
-    "yoy_filings": 24288,
-    "income_change_pct": 4.2
+    "income": 1623391177.8900003,
+    "filings": 25349,
+    "yoy_income": 1557065219.89,
+    "yoy_filings": 24289,
+    "income_change_pct": 4.3
   },
   "current_partial_quarter": {
     "year": 2026,
     "quarter": 3,
     "label": "Q3 2026",
-    "filings": 64
+    "filings": 65
   }
 }
