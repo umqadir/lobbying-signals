@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T17:24:04.181469+00:00",
+  "generated_at": "2026-09-01T14:31:00.163457+00:00",
   "frames": {
     "quarter": {
       "current_quarter": {
@@ -13,10 +13,10 @@
         "label": "Q2 2025"
       },
       "quarter_totals": {
-        "current_income": 1624302513.89,
+        "current_income": 1624349263.89,
         "baseline_income": 1557115219.89,
         "change_pct": 4.3,
-        "current_filings": 25381,
+        "current_filings": 25383,
         "baseline_filings": 24289,
         "current_clients": 18185,
         "baseline_clients": 17247
@@ -692,6 +692,70 @@
           ]
         },
         {
+          "key": "SYLVAMO",
+          "name": "Sylvamo North America LLC",
+          "current": 1100000.0,
+          "baseline": 160000.0,
+          "delta": 940000.0,
+          "ratio": 6.875,
+          "filings_current": 2,
+          "filings_baseline": 1,
+          "topics": [
+            "Tariffs and Trade Enforcement",
+            "Postal Policy",
+            "Biofuels",
+            "Waste and Recycling Management"
+          ],
+          "registrants": [
+            "Sylvamo North America, LLC",
+            "Akin Gump Strauss Hauer & Feld"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            120000.0,
+            150000.0,
+            120000.0,
+            110000.0,
+            90000.0,
+            320000.0,
+            130000.0,
+            100000.0,
+            100000.0,
+            220000.0,
+            150000.0,
+            110000.0,
+            100000.0,
+            1480000.0,
+            160000.0,
+            240000.0,
+            400000.0,
+            2940000.0,
+            1100000.0
+          ],
+          "examples": [
+            {
+              "uuid": "9027407d-4324-4171-a143-39606f8e1da2",
+              "date": "2026-07-20T11:19:29-04:00",
+              "client": "Sylvamo North America LLC",
+              "registrant": "Sylvamo North America, LLC",
+              "income": 1000000.0
+            },
+            {
+              "uuid": "f372f4c1-fe79-41af-9dd5-c49ac54d6e61",
+              "date": "2026-07-20T11:24:39-04:00",
+              "client": "Sylvamo North America LLC",
+              "registrant": "Akin Gump Strauss Hauer & Feld",
+              "income": 100000.0
+            }
+          ]
+        },
+        {
           "key": "IMPULSE SPACE",
           "name": "Impulse Space",
           "current": 960000.0,
@@ -766,70 +830,6 @@
               "client": "Impulse Space",
               "registrant": "American Defense International, Inc.",
               "income": 0
-            }
-          ]
-        },
-        {
-          "key": "SYLVAMO",
-          "name": "Sylvamo North America LLC",
-          "current": 1100000.0,
-          "baseline": 160000.0,
-          "delta": 940000.0,
-          "ratio": 6.875,
-          "filings_current": 2,
-          "filings_baseline": 1,
-          "topics": [
-            "Tariffs and Trade Enforcement",
-            "Postal Policy",
-            "Biofuels",
-            "Waste and Recycling Management"
-          ],
-          "registrants": [
-            "Sylvamo North America, LLC",
-            "Akin Gump Strauss Hauer & Feld"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            120000.0,
-            150000.0,
-            120000.0,
-            110000.0,
-            90000.0,
-            320000.0,
-            130000.0,
-            100000.0,
-            100000.0,
-            220000.0,
-            150000.0,
-            110000.0,
-            100000.0,
-            1480000.0,
-            160000.0,
-            240000.0,
-            400000.0,
-            2940000.0,
-            1100000.0
-          ],
-          "examples": [
-            {
-              "uuid": "9027407d-4324-4171-a143-39606f8e1da2",
-              "date": "2026-07-20T11:19:29-04:00",
-              "client": "Sylvamo North America LLC",
-              "registrant": "Sylvamo North America, LLC",
-              "income": 1000000.0
-            },
-            {
-              "uuid": "f372f4c1-fe79-41af-9dd5-c49ac54d6e61",
-              "date": "2026-07-20T11:24:39-04:00",
-              "client": "Sylvamo North America LLC",
-              "registrant": "Akin Gump Strauss Hauer & Feld",
-              "income": 100000.0
             }
           ]
         },
@@ -1907,88 +1907,85 @@
           ]
         },
         {
-          "key": "MORTGAGE BANKERS ASSOCIATION",
-          "name": "Mortgage Bankers Association",
-          "current": 1420000.0,
-          "baseline": 790000.0,
+          "key": "CORETSU",
+          "name": "Coretsu Inc.",
+          "current": 670000.0,
+          "baseline": 40000.0,
           "delta": 630000.0,
-          "ratio": 1.797,
-          "filings_current": 5,
-          "filings_baseline": 5,
+          "ratio": 16.75,
+          "filings_current": 6,
+          "filings_baseline": 1,
           "topics": [
-            "Housing Policy",
-            "Banking and Financial Regulation",
-            "Data Privacy",
-            "Tax Policy"
+            "Artificial Intelligence"
           ],
           "registrants": [
-            "Rich Feuer Anderson",
-            "Michael Best Strategies LLC",
-            "9th Street Strategies"
+            "Cornerstone Government Affairs, Inc.",
+            "Neale Creek, LLC",
+            "FGS Global (US) LLC (fka FGH Holdings LLC)"
           ],
           "series": [
-            735736.0,
-            807536.0,
-            655687.0,
-            786854.0,
-            647178.0,
-            775529.0,
-            810000.0,
-            740000.0,
-            830000.0,
-            1010000.0,
-            690000.0,
-            720000.0,
-            760000.0,
-            1020000.0,
-            680000.0,
-            450000.0,
-            990000.0,
-            950000.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            40000.0,
+            210000.0,
             550000.0,
-            710000.0,
-            700000.0,
-            790000.0,
-            750000.0,
-            900000.0,
-            960000.0,
-            1420000.0
+            760000.0,
+            670000.0
           ],
           "examples": [
             {
-              "uuid": "a7470d7a-ed39-4a05-ad79-496c81300eaf",
-              "date": "2026-07-20T21:55:08-04:00",
-              "client": "Mortgage Bankers Association",
-              "registrant": "Mortgage Bankers Association",
-              "income": 1220000.0
+              "uuid": "e8881236-890e-41de-b3aa-93ec75a50983",
+              "date": "2026-07-18T13:20:06-04:00",
+              "client": "Coretsu Inc.",
+              "registrant": "Baker & Hostetler LLP",
+              "income": 160000.0
             },
             {
-              "uuid": "94795fc4-d072-44a1-af1e-8cf8153c715f",
-              "date": "2026-07-20T15:39:27-04:00",
-              "client": "Mortgage Bankers Association",
-              "registrant": "Michael Best Strategies LLC",
-              "income": 70000.0
+              "uuid": "7f527baa-205a-47c9-9b7f-7c800fb160b7",
+              "date": "2026-07-16T09:26:54-04:00",
+              "client": "Coretsu Inc.",
+              "registrant": "Neale Creek, LLC",
+              "income": 150000.0
             },
             {
-              "uuid": "49569b8c-b2de-4572-baf5-d746d031efab",
-              "date": "2026-07-19T21:24:40-04:00",
-              "client": "Mortgage Bankers Association",
-              "registrant": "Rich Feuer Anderson",
-              "income": 50000.0
+              "uuid": "f2cbfe91-6d70-4fb4-baa6-5ebb854e59a7",
+              "date": "2026-07-17T16:00:11-04:00",
+              "client": "Coretsu Inc.",
+              "registrant": "Hogan Lovells US LLP",
+              "income": 150000.0
             },
             {
-              "uuid": "0d2242b2-fc02-4fa0-a582-8ea5a1da9a80",
-              "date": "2026-07-20T20:00:22-04:00",
-              "client": "Mortgage Bankers Association",
-              "registrant": "Breakaway",
-              "income": 50000.0
+              "uuid": "9a416bdb-7068-43e3-9780-3150f4f5bd08",
+              "date": "2026-07-07T14:03:52-04:00",
+              "client": "Coretsu Inc.",
+              "registrant": "Cornerstone Government Affairs, Inc.",
+              "income": 130000.0
             },
             {
-              "uuid": "af857f92-bcc2-4ebe-a274-d98e97281695",
-              "date": "2026-07-20T16:36:06-04:00",
-              "client": "Mortgage Bankers Association",
-              "registrant": "9th Street Strategies",
-              "income": 30000.0
+              "uuid": "48defe97-a4ef-4dfa-9ef9-c6766158847e",
+              "date": "2026-07-17T22:52:46-04:00",
+              "client": "Coretsu Inc.",
+              "registrant": "Ballard Partners",
+              "income": 60000.0
             }
           ]
         }
@@ -3537,57 +3534,6 @@
           ]
         },
         {
-          "key": "NOOSHEEN HASHEMI",
-          "name": "Noosheen Hashemi",
-          "current": 750000.0,
-          "baseline": 0.0,
-          "delta": 750000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Checkmate Government Relations"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            750000.0
-          ],
-          "examples": [
-            {
-              "uuid": "9ab86c80-c70a-45c7-954d-1e6170d470b5",
-              "date": "2026-07-17T18:59:52-04:00",
-              "client": "Noosheen Hashemi",
-              "registrant": "Checkmate Government Relations",
-              "income": 750000.0
-            }
-          ]
-        },
-        {
           "key": "NEROBREEZE",
           "name": "Nerobreeze Limited",
           "current": 750000.0,
@@ -3634,6 +3580,57 @@
               "date": "2026-07-15T16:41:39-04:00",
               "client": "Nerobreeze Limited",
               "registrant": "Ballard Partners",
+              "income": 750000.0
+            }
+          ]
+        },
+        {
+          "key": "NOOSHEEN HASHEMI",
+          "name": "Noosheen Hashemi",
+          "current": 750000.0,
+          "baseline": 0.0,
+          "delta": 750000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Checkmate Government Relations"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            750000.0
+          ],
+          "examples": [
+            {
+              "uuid": "9ab86c80-c70a-45c7-954d-1e6170d470b5",
+              "date": "2026-07-17T18:59:52-04:00",
+              "client": "Noosheen Hashemi",
+              "registrant": "Checkmate Government Relations",
               "income": 750000.0
             }
           ]
@@ -7281,8 +7278,8 @@
             3680000.0,
             3265000.0,
             2795000.0,
-            2640000.0,
-            2880000.0,
+            2650000.0,
+            2890000.0,
             2670000.0
           ],
           "examples": [
@@ -7989,70 +7986,6 @@
           ]
         },
         {
-          "key": "INDEPENDENT COMMUNITY BANKERS OF AMERICA",
-          "name": "Independent Community Bankers of America",
-          "current": 2230000.0,
-          "baseline": 2728980.0,
-          "delta": -498980.0,
-          "ratio": 0.817,
-          "filings_current": 2,
-          "filings_baseline": 2,
-          "topics": [
-            "Banking and Financial Regulation",
-            "Housing Policy",
-            "Data Privacy",
-            "Cybersecurity"
-          ],
-          "registrants": [
-            "Independent Community Bankers of America",
-            "K&l Gates, LLP"
-          ],
-          "series": [
-            1140000.0,
-            1060000.0,
-            1050000.0,
-            1170000.0,
-            1120000.0,
-            1040000.0,
-            1150000.0,
-            1440000.0,
-            900000.0,
-            2050000.0,
-            928825.0,
-            1513790.0,
-            1096000.0,
-            2550800.0,
-            1115580.0,
-            1161545.0,
-            760000.0,
-            705730.0,
-            736305.0,
-            834820.0,
-            880760.0,
-            2728980.0,
-            896841.0,
-            1311850.0,
-            920000.0,
-            2230000.0
-          ],
-          "examples": [
-            {
-              "uuid": "a352a3d2-889c-4afd-bdf3-57e6af70c77f",
-              "date": "2026-07-16T10:29:12-04:00",
-              "client": "Independent Community Bankers of America",
-              "registrant": "Independent Community Bankers of America",
-              "income": 2170000.0
-            },
-            {
-              "uuid": "9c2015ed-cdd9-4992-ac1d-deb72bc2738a",
-              "date": "2026-07-19T12:55:36-04:00",
-              "client": "Independent Community Bankers of America",
-              "registrant": "K&l Gates, LLP",
-              "income": 60000.0
-            }
-          ]
-        },
-        {
           "key": "JOHNSON AND JOHNSON",
           "name": "Johnson & Johnson Services, Inc.",
           "current": 2230000.0,
@@ -8135,6 +8068,70 @@
               "client": "Johnson & Johnson Services, Inc.",
               "registrant": "Winning Strategies Washington",
               "income": 70000.0
+            }
+          ]
+        },
+        {
+          "key": "INDEPENDENT COMMUNITY BANKERS OF AMERICA",
+          "name": "Independent Community Bankers of America",
+          "current": 2230000.0,
+          "baseline": 2728980.0,
+          "delta": -498980.0,
+          "ratio": 0.817,
+          "filings_current": 2,
+          "filings_baseline": 2,
+          "topics": [
+            "Banking and Financial Regulation",
+            "Housing Policy",
+            "Data Privacy",
+            "Cybersecurity"
+          ],
+          "registrants": [
+            "Independent Community Bankers of America",
+            "K&l Gates, LLP"
+          ],
+          "series": [
+            1140000.0,
+            1060000.0,
+            1050000.0,
+            1170000.0,
+            1120000.0,
+            1040000.0,
+            1150000.0,
+            1440000.0,
+            900000.0,
+            2050000.0,
+            928825.0,
+            1513790.0,
+            1096000.0,
+            2550800.0,
+            1115580.0,
+            1161545.0,
+            760000.0,
+            705730.0,
+            736305.0,
+            834820.0,
+            880760.0,
+            2728980.0,
+            896841.0,
+            1311850.0,
+            920000.0,
+            2230000.0
+          ],
+          "examples": [
+            {
+              "uuid": "a352a3d2-889c-4afd-bdf3-57e6af70c77f",
+              "date": "2026-07-16T10:29:12-04:00",
+              "client": "Independent Community Bankers of America",
+              "registrant": "Independent Community Bankers of America",
+              "income": 2170000.0
+            },
+            {
+              "uuid": "9c2015ed-cdd9-4992-ac1d-deb72bc2738a",
+              "date": "2026-07-19T12:55:36-04:00",
+              "client": "Independent Community Bankers of America",
+              "registrant": "K&l Gates, LLP",
+              "income": 60000.0
             }
           ]
         },
@@ -8890,85 +8887,6 @@
           ]
         },
         {
-          "key": "ALZHEIMERS ASSOCIATION",
-          "name": "Alzheimer's Association",
-          "current": 2010000.0,
-          "baseline": 1880000.0,
-          "delta": 130000.0,
-          "ratio": 1.069,
-          "filings_current": 4,
-          "filings_baseline": 3,
-          "topics": [
-            "Appropriations",
-            "Medicare and Medicaid",
-            "FDA Regulation",
-            "Veterans Policy"
-          ],
-          "registrants": [
-            "Alston & Bird LLP",
-            "Miller Strategies, LLC",
-            "Alzheimer's Association"
-          ],
-          "series": [
-            540000.0,
-            400000.0,
-            510000.0,
-            500000.0,
-            500000.0,
-            620000.0,
-            490000.0,
-            510000.0,
-            590000.0,
-            1510000.0,
-            890000.0,
-            690000.0,
-            1420000.0,
-            1700000.0,
-            630000.0,
-            590000.0,
-            790000.0,
-            2113000.0,
-            620000.0,
-            560000.0,
-            650000.0,
-            1880000.0,
-            1180000.0,
-            610000.0,
-            620000.0,
-            2010000.0
-          ],
-          "examples": [
-            {
-              "uuid": "82d0e925-8f96-4e10-bb9b-ced64071378f",
-              "date": "2026-07-20T12:42:58-04:00",
-              "client": "Alzheimer's Association",
-              "registrant": "Alzheimer's Association",
-              "income": 1800000.0
-            },
-            {
-              "uuid": "c83c3734-d6c4-482b-be31-2f4e3a9ed826",
-              "date": "2026-07-20T11:11:38-04:00",
-              "client": "Alzheimer's Association",
-              "registrant": "Miller Strategies, LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "cc3103ce-97de-4d00-b956-ac236b6d97e6",
-              "date": "2026-07-20T15:44:18-04:00",
-              "client": "Alzheimer's Association",
-              "registrant": "Tarplin, Downs & Young, LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "2bcf8937-da13-4033-8baf-394c319275b0",
-              "date": "2026-07-20T09:54:31-04:00",
-              "client": "Alzheimer's Association",
-              "registrant": "Alston & Bird LLP",
-              "income": 50000.0
-            }
-          ]
-        },
-        {
           "key": "PARAMOUNT SKYDANCE",
           "name": "Paramount Skydance Corporation (fka Paramount Global)",
           "current": 2010000.0,
@@ -9050,6 +8968,170 @@
               "date": "2026-07-17T08:16:53-04:00",
               "client": "Paramount Skydance Corporation (fka Paramount Global)",
               "registrant": "Acg Advocacy",
+              "income": 60000.0
+            }
+          ]
+        },
+        {
+          "key": "ALZHEIMERS ASSOCIATION",
+          "name": "Alzheimer's Association",
+          "current": 2010000.0,
+          "baseline": 1880000.0,
+          "delta": 130000.0,
+          "ratio": 1.069,
+          "filings_current": 4,
+          "filings_baseline": 3,
+          "topics": [
+            "Appropriations",
+            "Medicare and Medicaid",
+            "FDA Regulation",
+            "Veterans Policy"
+          ],
+          "registrants": [
+            "Alston & Bird LLP",
+            "Miller Strategies, LLC",
+            "Alzheimer's Association"
+          ],
+          "series": [
+            540000.0,
+            400000.0,
+            510000.0,
+            500000.0,
+            500000.0,
+            620000.0,
+            490000.0,
+            510000.0,
+            590000.0,
+            1510000.0,
+            890000.0,
+            690000.0,
+            1420000.0,
+            1700000.0,
+            630000.0,
+            590000.0,
+            790000.0,
+            2113000.0,
+            620000.0,
+            560000.0,
+            650000.0,
+            1880000.0,
+            1180000.0,
+            610000.0,
+            620000.0,
+            2010000.0
+          ],
+          "examples": [
+            {
+              "uuid": "82d0e925-8f96-4e10-bb9b-ced64071378f",
+              "date": "2026-07-20T12:42:58-04:00",
+              "client": "Alzheimer's Association",
+              "registrant": "Alzheimer's Association",
+              "income": 1800000.0
+            },
+            {
+              "uuid": "c83c3734-d6c4-482b-be31-2f4e3a9ed826",
+              "date": "2026-07-20T11:11:38-04:00",
+              "client": "Alzheimer's Association",
+              "registrant": "Miller Strategies, LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "cc3103ce-97de-4d00-b956-ac236b6d97e6",
+              "date": "2026-07-20T15:44:18-04:00",
+              "client": "Alzheimer's Association",
+              "registrant": "Tarplin, Downs & Young, LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "2bcf8937-da13-4033-8baf-394c319275b0",
+              "date": "2026-07-20T09:54:31-04:00",
+              "client": "Alzheimer's Association",
+              "registrant": "Alston & Bird LLP",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
+          "key": "NAREIT",
+          "name": "Nareit",
+          "current": 2000000.0,
+          "baseline": 2375000.0,
+          "delta": -375000.0,
+          "ratio": 0.842,
+          "filings_current": 6,
+          "filings_baseline": 6,
+          "topics": [
+            "Housing Policy",
+            "Banking and Financial Regulation",
+            "Defense Authorization"
+          ],
+          "registrants": [
+            "Brownstein Hyatt Farber Schreck, LLP",
+            "Stumptown Strategies",
+            "Miller Strategies, LLC"
+          ],
+          "series": [
+            1135000.0,
+            1410000.0,
+            1351000.0,
+            1040000.0,
+            1260000.0,
+            1421000.0,
+            1468000.0,
+            1028000.0,
+            1170000.0,
+            1153000.0,
+            1274000.0,
+            1134000.0,
+            1252000.0,
+            306000.0,
+            1318000.0,
+            1019000.0,
+            1159000.0,
+            1420000.0,
+            1340000.0,
+            1200000.0,
+            1950000.0,
+            2375000.0,
+            1604000.0,
+            1523000.0,
+            2060000.0,
+            2000000.0
+          ],
+          "examples": [
+            {
+              "uuid": "1e40d456-88ad-47f2-a755-c1780d29c315",
+              "date": "2026-07-20T17:50:54-04:00",
+              "client": "Nareit",
+              "registrant": "Nareit",
+              "income": 1660000.0
+            },
+            {
+              "uuid": "ebce6adf-f3fb-48ed-a751-aaed554ca5d3",
+              "date": "2026-07-20T13:41:46-04:00",
+              "client": "Nareit",
+              "registrant": "Miller Strategies, LLC",
+              "income": 110000.0
+            },
+            {
+              "uuid": "ea6e80a9-3828-41b8-a7c2-1d155ad085c3",
+              "date": "2026-07-16T19:48:59-04:00",
+              "client": "Nareit",
+              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
+              "income": 90000.0
+            },
+            {
+              "uuid": "3fde4446-2f65-40bb-a4be-255b5cb4b324",
+              "date": "2026-07-20T15:32:14-04:00",
+              "client": "Nareit",
+              "registrant": "Thegroup DC, LLC",
+              "income": 60000.0
+            },
+            {
+              "uuid": "acfe51c1-a9f0-4d3d-b52c-e8ddd001d7de",
+              "date": "2026-07-20T19:06:37-04:00",
+              "client": "Nareit",
+              "registrant": "Invariant LLC",
               "income": 60000.0
             }
           ]
@@ -9137,91 +9219,6 @@
               "client": "Novo Nordisk Inc.",
               "registrant": "NVG, LLC",
               "income": 80000.0
-            }
-          ]
-        },
-        {
-          "key": "NAREIT",
-          "name": "Nareit",
-          "current": 2000000.0,
-          "baseline": 2375000.0,
-          "delta": -375000.0,
-          "ratio": 0.842,
-          "filings_current": 6,
-          "filings_baseline": 6,
-          "topics": [
-            "Housing Policy",
-            "Banking and Financial Regulation",
-            "Defense Authorization"
-          ],
-          "registrants": [
-            "Brownstein Hyatt Farber Schreck, LLP",
-            "Stumptown Strategies",
-            "Miller Strategies, LLC"
-          ],
-          "series": [
-            1135000.0,
-            1410000.0,
-            1351000.0,
-            1040000.0,
-            1260000.0,
-            1421000.0,
-            1468000.0,
-            1028000.0,
-            1170000.0,
-            1153000.0,
-            1274000.0,
-            1134000.0,
-            1252000.0,
-            306000.0,
-            1318000.0,
-            1019000.0,
-            1159000.0,
-            1420000.0,
-            1340000.0,
-            1200000.0,
-            1950000.0,
-            2375000.0,
-            1604000.0,
-            1523000.0,
-            2060000.0,
-            2000000.0
-          ],
-          "examples": [
-            {
-              "uuid": "1e40d456-88ad-47f2-a755-c1780d29c315",
-              "date": "2026-07-20T17:50:54-04:00",
-              "client": "Nareit",
-              "registrant": "Nareit",
-              "income": 1660000.0
-            },
-            {
-              "uuid": "ebce6adf-f3fb-48ed-a751-aaed554ca5d3",
-              "date": "2026-07-20T13:41:46-04:00",
-              "client": "Nareit",
-              "registrant": "Miller Strategies, LLC",
-              "income": 110000.0
-            },
-            {
-              "uuid": "ea6e80a9-3828-41b8-a7c2-1d155ad085c3",
-              "date": "2026-07-16T19:48:59-04:00",
-              "client": "Nareit",
-              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
-              "income": 90000.0
-            },
-            {
-              "uuid": "3fde4446-2f65-40bb-a4be-255b5cb4b324",
-              "date": "2026-07-20T15:32:14-04:00",
-              "client": "Nareit",
-              "registrant": "Thegroup DC, LLC",
-              "income": 60000.0
-            },
-            {
-              "uuid": "acfe51c1-a9f0-4d3d-b52c-e8ddd001d7de",
-              "date": "2026-07-20T19:06:37-04:00",
-              "client": "Nareit",
-              "registrant": "Invariant LLC",
-              "income": 60000.0
             }
           ]
         },
@@ -10065,85 +10062,6 @@
           ]
         },
         {
-          "key": "SALESFORCE",
-          "name": "Salesforce, Inc.",
-          "current": 1800000.0,
-          "baseline": 1505000.0,
-          "delta": 295000.0,
-          "ratio": 1.196,
-          "filings_current": 4,
-          "filings_baseline": 3,
-          "topics": [
-            "Artificial Intelligence",
-            "Cybersecurity",
-            "Data Privacy",
-            "Export Controls and Sanctions"
-          ],
-          "registrants": [
-            "Skyline Capitol LLC",
-            "Checkmate Government Relations",
-            "Salesforce, Inc."
-          ],
-          "series": [
-            540000.0,
-            710000.0,
-            420000.0,
-            380000.0,
-            430000.0,
-            460000.0,
-            530000.0,
-            680000.0,
-            760000.0,
-            750000.0,
-            730000.0,
-            800000.0,
-            1030000.0,
-            830000.0,
-            700000.0,
-            720000.0,
-            990000.0,
-            860000.0,
-            900000.0,
-            760000.0,
-            1115000.0,
-            1505000.0,
-            910000.0,
-            890000.0,
-            1330000.0,
-            1800000.0
-          ],
-          "examples": [
-            {
-              "uuid": "7f080c11-5d6c-45d9-abf8-33454f2f19f6",
-              "date": "2026-07-20T13:55:40-04:00",
-              "client": "Salesforce, Inc.",
-              "registrant": "Salesforce, Inc.",
-              "income": 1540000.0
-            },
-            {
-              "uuid": "f725f42b-c84d-4f69-841a-bc5adfedbede",
-              "date": "2026-07-17T19:15:10-04:00",
-              "client": "Salesforce, Inc.",
-              "registrant": "Checkmate Government Relations",
-              "income": 150000.0
-            },
-            {
-              "uuid": "6e4a56f1-285f-4028-a7a9-7abd956da78b",
-              "date": "2026-07-20T18:35:58-04:00",
-              "client": "Salesforce, Inc.",
-              "registrant": "Invariant LLC",
-              "income": 80000.0
-            },
-            {
-              "uuid": "6810b771-0db0-466f-8df3-6d13b6fc142d",
-              "date": "2026-07-08T10:31:47-04:00",
-              "client": "Salesforce, Inc.",
-              "registrant": "Skyline Capitol LLC",
-              "income": 30000.0
-            }
-          ]
-        },
-        {
           "key": "COINBASE",
           "name": "Coinbase, Inc.",
           "current": 1800000.0,
@@ -10226,6 +10144,85 @@
               "client": "Coinbase, Inc.",
               "registrant": "Franklin Square Group, LLC",
               "income": 80000.0
+            }
+          ]
+        },
+        {
+          "key": "SALESFORCE",
+          "name": "Salesforce, Inc.",
+          "current": 1800000.0,
+          "baseline": 1505000.0,
+          "delta": 295000.0,
+          "ratio": 1.196,
+          "filings_current": 4,
+          "filings_baseline": 3,
+          "topics": [
+            "Artificial Intelligence",
+            "Cybersecurity",
+            "Data Privacy",
+            "Export Controls and Sanctions"
+          ],
+          "registrants": [
+            "Skyline Capitol LLC",
+            "Checkmate Government Relations",
+            "Salesforce, Inc."
+          ],
+          "series": [
+            540000.0,
+            710000.0,
+            420000.0,
+            380000.0,
+            430000.0,
+            460000.0,
+            530000.0,
+            680000.0,
+            760000.0,
+            750000.0,
+            730000.0,
+            800000.0,
+            1030000.0,
+            830000.0,
+            700000.0,
+            720000.0,
+            990000.0,
+            860000.0,
+            900000.0,
+            760000.0,
+            1115000.0,
+            1505000.0,
+            910000.0,
+            890000.0,
+            1330000.0,
+            1800000.0
+          ],
+          "examples": [
+            {
+              "uuid": "7f080c11-5d6c-45d9-abf8-33454f2f19f6",
+              "date": "2026-07-20T13:55:40-04:00",
+              "client": "Salesforce, Inc.",
+              "registrant": "Salesforce, Inc.",
+              "income": 1540000.0
+            },
+            {
+              "uuid": "f725f42b-c84d-4f69-841a-bc5adfedbede",
+              "date": "2026-07-17T19:15:10-04:00",
+              "client": "Salesforce, Inc.",
+              "registrant": "Checkmate Government Relations",
+              "income": 150000.0
+            },
+            {
+              "uuid": "6e4a56f1-285f-4028-a7a9-7abd956da78b",
+              "date": "2026-07-20T18:35:58-04:00",
+              "client": "Salesforce, Inc.",
+              "registrant": "Invariant LLC",
+              "income": 80000.0
+            },
+            {
+              "uuid": "6810b771-0db0-466f-8df3-6d13b6fc142d",
+              "date": "2026-07-08T10:31:47-04:00",
+              "client": "Salesforce, Inc.",
+              "registrant": "Skyline Capitol LLC",
+              "income": 30000.0
             }
           ]
         },
@@ -10392,90 +10389,6 @@
           ]
         },
         {
-          "key": "CENTENE",
-          "name": "Centene Corporation",
-          "current": 1775000.0,
-          "baseline": 1825000.0,
-          "delta": -50000.0,
-          "ratio": 0.973,
-          "filings_current": 5,
-          "filings_baseline": 6,
-          "topics": [
-            "Medicare and Medicaid",
-            "Artificial Intelligence"
-          ],
-          "registrants": [
-            "Brownstein Hyatt Farber Schreck, LLP",
-            "Continental Strategy, LLC",
-            "Centene Corporation"
-          ],
-          "series": [
-            1165000.0,
-            1255000.0,
-            1460000.0,
-            1282500.0,
-            1832500.0,
-            1472500.0,
-            1218000.0,
-            1869000.0,
-            1425000.0,
-            1415000.0,
-            1475000.0,
-            1865000.0,
-            1985000.0,
-            1555000.0,
-            1515000.0,
-            1355000.0,
-            1715000.0,
-            1665000.0,
-            1215000.0,
-            875000.0,
-            1175000.0,
-            1825000.0,
-            1025000.0,
-            1405000.0,
-            1345000.0,
-            1775000.0
-          ],
-          "examples": [
-            {
-              "uuid": "3e6c5f38-2bd0-4493-beea-51efe239e79b",
-              "date": "2026-07-20T11:35:37-04:00",
-              "client": "Centene Corporation",
-              "registrant": "Centene Corporation",
-              "income": 1460000.0
-            },
-            {
-              "uuid": "0243e7bd-01f2-4d92-a109-e3c3000c2ecc",
-              "date": "2026-07-19T10:35:50-04:00",
-              "client": "Centene Corporation",
-              "registrant": "Continental Strategy, LLC",
-              "income": 105000.0
-            },
-            {
-              "uuid": "bbab4a73-debc-4343-afcf-614f1828fd61",
-              "date": "2026-07-20T14:54:26-04:00",
-              "client": "Centene Corporation",
-              "registrant": "BGR Government Affairs",
-              "income": 90000.0
-            },
-            {
-              "uuid": "3a48b3d5-8dca-4ae8-9d35-6c5a6ca7048c",
-              "date": "2026-07-16T11:38:14-04:00",
-              "client": "Centene Corporation",
-              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
-              "income": 60000.0
-            },
-            {
-              "uuid": "88f36d98-3c9e-4b59-8cbc-8a8d4b754a2c",
-              "date": "2026-07-20T12:39:19-04:00",
-              "client": "Centene Corporation",
-              "registrant": "Williams and Jensen, PLLC",
-              "income": 60000.0
-            }
-          ]
-        },
-        {
           "key": "FOX",
           "name": "Fox Corporation",
           "current": 1775000.0,
@@ -10558,6 +10471,90 @@
               "client": "Fox Corporation",
               "registrant": "The Smith-Free Group, LLC",
               "income": 50000.0
+            }
+          ]
+        },
+        {
+          "key": "CENTENE",
+          "name": "Centene Corporation",
+          "current": 1775000.0,
+          "baseline": 1825000.0,
+          "delta": -50000.0,
+          "ratio": 0.973,
+          "filings_current": 5,
+          "filings_baseline": 6,
+          "topics": [
+            "Medicare and Medicaid",
+            "Artificial Intelligence"
+          ],
+          "registrants": [
+            "Brownstein Hyatt Farber Schreck, LLP",
+            "Continental Strategy, LLC",
+            "Centene Corporation"
+          ],
+          "series": [
+            1165000.0,
+            1255000.0,
+            1460000.0,
+            1282500.0,
+            1832500.0,
+            1472500.0,
+            1218000.0,
+            1869000.0,
+            1425000.0,
+            1415000.0,
+            1475000.0,
+            1865000.0,
+            1985000.0,
+            1555000.0,
+            1515000.0,
+            1355000.0,
+            1715000.0,
+            1665000.0,
+            1215000.0,
+            875000.0,
+            1175000.0,
+            1825000.0,
+            1025000.0,
+            1405000.0,
+            1345000.0,
+            1775000.0
+          ],
+          "examples": [
+            {
+              "uuid": "3e6c5f38-2bd0-4493-beea-51efe239e79b",
+              "date": "2026-07-20T11:35:37-04:00",
+              "client": "Centene Corporation",
+              "registrant": "Centene Corporation",
+              "income": 1460000.0
+            },
+            {
+              "uuid": "0243e7bd-01f2-4d92-a109-e3c3000c2ecc",
+              "date": "2026-07-19T10:35:50-04:00",
+              "client": "Centene Corporation",
+              "registrant": "Continental Strategy, LLC",
+              "income": 105000.0
+            },
+            {
+              "uuid": "bbab4a73-debc-4343-afcf-614f1828fd61",
+              "date": "2026-07-20T14:54:26-04:00",
+              "client": "Centene Corporation",
+              "registrant": "BGR Government Affairs",
+              "income": 90000.0
+            },
+            {
+              "uuid": "3a48b3d5-8dca-4ae8-9d35-6c5a6ca7048c",
+              "date": "2026-07-16T11:38:14-04:00",
+              "client": "Centene Corporation",
+              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
+              "income": 60000.0
+            },
+            {
+              "uuid": "88f36d98-3c9e-4b59-8cbc-8a8d4b754a2c",
+              "date": "2026-07-20T12:39:19-04:00",
+              "client": "Centene Corporation",
+              "registrant": "Williams and Jensen, PLLC",
+              "income": 60000.0
             }
           ]
         },
@@ -11697,83 +11694,6 @@
           ]
         },
         {
-          "key": "ENTERPRISE HOLDINGS INC DBA ENTERPRISE MOBILITY",
-          "name": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-          "current": 1590000.0,
-          "baseline": 1520000.0,
-          "delta": 70000.0,
-          "ratio": 1.046,
-          "filings_current": 4,
-          "filings_baseline": 4,
-          "topics": [
-            "Data Privacy",
-            "Electric Vehicles"
-          ],
-          "registrants": [
-            "Venable LLP",
-            "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-            "HB Strategies"
-          ],
-          "series": [
-            300000.0,
-            206000.0,
-            240000.0,
-            250000.0,
-            360000.0,
-            250000.0,
-            220000.0,
-            285000.0,
-            240000.0,
-            840000.0,
-            290000.0,
-            400000.0,
-            290000.0,
-            570000.0,
-            420000.0,
-            350000.0,
-            560000.0,
-            735000.0,
-            610000.0,
-            610000.0,
-            1435000.0,
-            1520000.0,
-            1260000.0,
-            1800000.0,
-            2100000.0,
-            1590000.0
-          ],
-          "examples": [
-            {
-              "uuid": "6f9c5742-9f85-476a-94ae-dd0947599d75",
-              "date": "2026-07-17T15:27:29-04:00",
-              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "registrant": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "income": 1250000.0
-            },
-            {
-              "uuid": "408034b8-a719-47d8-945d-f6e0770973c7",
-              "date": "2026-07-18T11:02:56-04:00",
-              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "registrant": "HB Strategies",
-              "income": 200000.0
-            },
-            {
-              "uuid": "448b3740-de0a-4ab2-bfe7-388c5bca49f3",
-              "date": "2026-07-16T09:20:34-04:00",
-              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "registrant": "Venable LLP",
-              "income": 110000.0
-            },
-            {
-              "uuid": "8a6fe819-e67f-4b61-ae44-a9c49e842317",
-              "date": "2026-07-20T12:27:57-04:00",
-              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
-              "registrant": "Gephardt Group Government Affairs",
-              "income": 30000.0
-            }
-          ]
-        },
-        {
           "key": "ENTERTAINMENT SOFTWARE ASSOCIATION",
           "name": "Entertainment Software Association",
           "current": 1590000.0,
@@ -11856,6 +11776,83 @@
               "client": "Entertainment Software Association",
               "registrant": "Elevate Government Affairs, LLC",
               "income": 50000.0
+            }
+          ]
+        },
+        {
+          "key": "ENTERPRISE HOLDINGS INC DBA ENTERPRISE MOBILITY",
+          "name": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+          "current": 1590000.0,
+          "baseline": 1520000.0,
+          "delta": 70000.0,
+          "ratio": 1.046,
+          "filings_current": 4,
+          "filings_baseline": 4,
+          "topics": [
+            "Data Privacy",
+            "Electric Vehicles"
+          ],
+          "registrants": [
+            "Venable LLP",
+            "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+            "HB Strategies"
+          ],
+          "series": [
+            300000.0,
+            206000.0,
+            240000.0,
+            250000.0,
+            360000.0,
+            250000.0,
+            220000.0,
+            285000.0,
+            240000.0,
+            840000.0,
+            290000.0,
+            400000.0,
+            290000.0,
+            570000.0,
+            420000.0,
+            350000.0,
+            560000.0,
+            735000.0,
+            610000.0,
+            610000.0,
+            1435000.0,
+            1520000.0,
+            1260000.0,
+            1800000.0,
+            2100000.0,
+            1590000.0
+          ],
+          "examples": [
+            {
+              "uuid": "6f9c5742-9f85-476a-94ae-dd0947599d75",
+              "date": "2026-07-17T15:27:29-04:00",
+              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "registrant": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "income": 1250000.0
+            },
+            {
+              "uuid": "408034b8-a719-47d8-945d-f6e0770973c7",
+              "date": "2026-07-18T11:02:56-04:00",
+              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "registrant": "HB Strategies",
+              "income": 200000.0
+            },
+            {
+              "uuid": "448b3740-de0a-4ab2-bfe7-388c5bca49f3",
+              "date": "2026-07-16T09:20:34-04:00",
+              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "registrant": "Venable LLP",
+              "income": 110000.0
+            },
+            {
+              "uuid": "8a6fe819-e67f-4b61-ae44-a9c49e842317",
+              "date": "2026-07-20T12:27:57-04:00",
+              "client": "Enterprise Holdings, Inc. Dba Enterprise Mobility",
+              "registrant": "Gephardt Group Government Affairs",
+              "income": 30000.0
             }
           ]
         },
@@ -12203,6 +12200,70 @@
           ]
         },
         {
+          "key": "UPS (UNITED PARCEL SERVICE)",
+          "name": "Ups (united Parcel Service)",
+          "current": 1550000.0,
+          "baseline": 1520000.0,
+          "delta": 30000.0,
+          "ratio": 1.02,
+          "filings_current": 2,
+          "filings_baseline": 2,
+          "topics": [
+            "Criminal Justice and Policing",
+            "Aviation Policy",
+            "Appropriations",
+            "Renewable Energy"
+          ],
+          "registrants": [
+            "Fierce Government Relations",
+            "Ups (united Parcel Service)"
+          ],
+          "series": [
+            3860000.0,
+            2000000.0,
+            1360000.0,
+            1521000.0,
+            4031000.0,
+            1410000.0,
+            1730434.0,
+            1270000.0,
+            4370000.0,
+            1320000.0,
+            1690000.0,
+            1510000.0,
+            3820000.0,
+            1920000.0,
+            1600000.0,
+            1450000.0,
+            2820000.0,
+            1110000.0,
+            1250000.0,
+            1130000.0,
+            2390000.0,
+            1520000.0,
+            1350000.0,
+            1260000.0,
+            1960000.0,
+            1550000.0
+          ],
+          "examples": [
+            {
+              "uuid": "c7960ddf-d0ce-4f6d-aa70-e8218f67fc01",
+              "date": "2026-07-20T16:23:56-04:00",
+              "client": "Ups (united Parcel Service)",
+              "registrant": "Ups (united Parcel Service)",
+              "income": 1500000.0
+            },
+            {
+              "uuid": "7aad3eeb-0e4a-4e2d-88b2-4bcdbe95a495",
+              "date": "2026-07-20T12:59:26-04:00",
+              "client": "Ups (united Parcel Service)",
+              "registrant": "Fierce Government Relations",
+              "income": 50000.0
+            }
+          ]
+        },
+        {
           "key": "COCA-COLA",
           "name": "The Coca-Cola Company",
           "current": 1550000.0,
@@ -12275,66 +12336,88 @@
           ]
         },
         {
-          "key": "UPS (UNITED PARCEL SERVICE)",
-          "name": "Ups (united Parcel Service)",
-          "current": 1550000.0,
+          "key": "INTUIT",
+          "name": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
+          "current": 1540000.0,
           "baseline": 1520000.0,
-          "delta": 30000.0,
-          "ratio": 1.02,
-          "filings_current": 2,
-          "filings_baseline": 2,
+          "delta": 20000.0,
+          "ratio": 1.013,
+          "filings_current": 14,
+          "filings_baseline": 15,
           "topics": [
-            "Criminal Justice and Policing",
-            "Aviation Policy",
+            "Data Privacy",
+            "Cybersecurity",
             "Appropriations",
-            "Renewable Energy"
+            "Banking and Financial Regulation"
           ],
           "registrants": [
-            "Fierce Government Relations",
-            "Ups (united Parcel Service)"
+            "The Complete Agency",
+            "Wilmer Cutler Pickering Hale and Dorr LLP",
+            "Raffaniello & Associates"
           ],
           "series": [
-            3860000.0,
-            2000000.0,
-            1360000.0,
-            1521000.0,
-            4031000.0,
-            1410000.0,
-            1730434.0,
-            1270000.0,
-            4370000.0,
-            1320000.0,
-            1690000.0,
-            1510000.0,
-            3820000.0,
-            1920000.0,
-            1600000.0,
-            1450000.0,
-            2820000.0,
-            1110000.0,
+            1200000.0,
+            1480000.0,
             1250000.0,
-            1130000.0,
-            2390000.0,
-            1520000.0,
+            1530000.0,
+            900000.0,
+            920000.0,
+            1370000.0,
             1350000.0,
-            1260000.0,
-            1960000.0,
-            1550000.0
+            1250000.0,
+            1280000.0,
+            1300000.0,
+            1320000.0,
+            1430000.0,
+            1360000.0,
+            1400000.0,
+            1590000.0,
+            1675000.0,
+            1605000.0,
+            1605000.0,
+            1570000.0,
+            1850000.0,
+            1520000.0,
+            1450000.0,
+            1420000.0,
+            1700000.0,
+            1540000.0
           ],
           "examples": [
             {
-              "uuid": "c7960ddf-d0ce-4f6d-aa70-e8218f67fc01",
-              "date": "2026-07-20T16:23:56-04:00",
-              "client": "Ups (united Parcel Service)",
-              "registrant": "Ups (united Parcel Service)",
-              "income": 1500000.0
+              "uuid": "7d04a024-b38f-45cb-a93b-083e5b13d367",
+              "date": "2026-07-20T19:51:09-04:00",
+              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
+              "registrant": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
+              "income": 970000.0
             },
             {
-              "uuid": "7aad3eeb-0e4a-4e2d-88b2-4bcdbe95a495",
-              "date": "2026-07-20T12:59:26-04:00",
-              "client": "Ups (united Parcel Service)",
-              "registrant": "Fierce Government Relations",
-              "income": 50000.0
+              "uuid": "b4d0f8c7-1182-4efd-ba1a-62a6ebc98e87",
+              "date": "2026-07-18T11:29:57-04:00",
+              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
+              "registrant": "Wilmer Cutler Pickering Hale and Dorr LLP",
+              "income": 60000.0
+            },
+            {
+              "uuid": "a496fca9-72bd-4548-910c-1c16618cdd55",
+              "date": "2026-07-20T14:32:11-04:00",
+              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
+              "registrant": "Mindset Advocacy, LLC",
+              "income": 60000.0
+            },
+            {
+              "uuid": "f56fbf25-c930-43e4-bbb4-9bfe2439296d",
+              "date": "2026-07-20T17:04:08-04:00",
+              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
+              "registrant": "The Duberstein Group Inc.",
+              "income": 60000.0
+            },
+            {
+              "uuid": "158f6d0c-d9ce-4b97-aa3b-22201a0cfe14",
+              "date": "2026-07-20T18:06:04-04:00",
+              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
+              "registrant": "Capitol Counsel LLC",
+              "income": 60000.0
             }
           ]
         },
@@ -12499,92 +12582,6 @@
               "date": "2026-07-20T00:20:18-04:00",
               "client": "Phillips 66",
               "registrant": "Crossroads Strategies, LLC",
-              "income": 60000.0
-            }
-          ]
-        },
-        {
-          "key": "INTUIT",
-          "name": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
-          "current": 1540000.0,
-          "baseline": 1520000.0,
-          "delta": 20000.0,
-          "ratio": 1.013,
-          "filings_current": 14,
-          "filings_baseline": 15,
-          "topics": [
-            "Data Privacy",
-            "Cybersecurity",
-            "Appropriations",
-            "Banking and Financial Regulation"
-          ],
-          "registrants": [
-            "The Complete Agency",
-            "Wilmer Cutler Pickering Hale and Dorr LLP",
-            "Raffaniello & Associates"
-          ],
-          "series": [
-            1200000.0,
-            1480000.0,
-            1250000.0,
-            1530000.0,
-            900000.0,
-            920000.0,
-            1370000.0,
-            1350000.0,
-            1250000.0,
-            1280000.0,
-            1300000.0,
-            1320000.0,
-            1430000.0,
-            1360000.0,
-            1400000.0,
-            1590000.0,
-            1675000.0,
-            1605000.0,
-            1605000.0,
-            1570000.0,
-            1850000.0,
-            1520000.0,
-            1450000.0,
-            1420000.0,
-            1700000.0,
-            1540000.0
-          ],
-          "examples": [
-            {
-              "uuid": "7d04a024-b38f-45cb-a93b-083e5b13d367",
-              "date": "2026-07-20T19:51:09-04:00",
-              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
-              "registrant": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
-              "income": 970000.0
-            },
-            {
-              "uuid": "b4d0f8c7-1182-4efd-ba1a-62a6ebc98e87",
-              "date": "2026-07-18T11:29:57-04:00",
-              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
-              "registrant": "Wilmer Cutler Pickering Hale and Dorr LLP",
-              "income": 60000.0
-            },
-            {
-              "uuid": "a496fca9-72bd-4548-910c-1c16618cdd55",
-              "date": "2026-07-20T14:32:11-04:00",
-              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
-              "registrant": "Mindset Advocacy, LLC",
-              "income": 60000.0
-            },
-            {
-              "uuid": "f56fbf25-c930-43e4-bbb4-9bfe2439296d",
-              "date": "2026-07-20T17:04:08-04:00",
-              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
-              "registrant": "The Duberstein Group Inc.",
-              "income": 60000.0
-            },
-            {
-              "uuid": "158f6d0c-d9ce-4b97-aa3b-22201a0cfe14",
-              "date": "2026-07-20T18:06:04-04:00",
-              "client": "Intuit, Inc. and Affiliates (formerly Intuit, Inc.)",
-              "registrant": "Capitol Counsel LLC",
               "income": 60000.0
             }
           ]
@@ -13582,92 +13579,6 @@
           ]
         },
         {
-          "key": "OTSUKA AMERICA PHARMACEUTICAL",
-          "name": "Otsuka America Pharmaceutical, Inc.",
-          "current": 1420000.0,
-          "baseline": 1390000.0,
-          "delta": 30000.0,
-          "ratio": 1.022,
-          "filings_current": 5,
-          "filings_baseline": 6,
-          "topics": [
-            "Drug Pricing",
-            "Appropriations",
-            "Veterans Policy",
-            "Medicare and Medicaid"
-          ],
-          "registrants": [
-            "Otsuka America Pharmaceutical, Inc.",
-            "Db3, LLC (fka the Daschle Group)",
-            "Thorn Run Partners"
-          ],
-          "series": [
-            870000.0,
-            710000.0,
-            620000.0,
-            600000.0,
-            80000.0,
-            80000.0,
-            380000.0,
-            320000.0,
-            470000.0,
-            390000.0,
-            490000.0,
-            570000.0,
-            490000.0,
-            360000.0,
-            530000.0,
-            510000.0,
-            610000.0,
-            520000.0,
-            450000.0,
-            540000.0,
-            1410000.0,
-            1390000.0,
-            570000.0,
-            1260000.0,
-            390000.0,
-            1420000.0
-          ],
-          "examples": [
-            {
-              "uuid": "eb26a73f-56e5-41a1-bff5-8a92e5f22f8d",
-              "date": "2026-07-16T08:19:36-04:00",
-              "client": "Otsuka America Pharmaceutical, Inc.",
-              "registrant": "Otsuka America Pharmaceutical, Inc.",
-              "income": 1240000.0
-            },
-            {
-              "uuid": "797fc62a-33b3-4462-8118-80155d3a8ba0",
-              "date": "2026-07-19T23:04:02-04:00",
-              "client": "Otsuka America Pharmaceutical, Inc.",
-              "registrant": "Thorn Run Partners",
-              "income": 50000.0
-            },
-            {
-              "uuid": "934fe037-616a-4e16-9acd-5bb800e1885d",
-              "date": "2026-07-20T14:41:32-04:00",
-              "client": "Otsuka America Pharmaceutical, Inc.",
-              "registrant": "W Strategies, LLC",
-              "income": 50000.0
-            },
-            {
-              "uuid": "7f715dab-4b8f-456a-bd62-54800dc3f55b",
-              "date": "2026-07-20T20:28:46-04:00",
-              "client": "Otsuka America Pharmaceutical, Inc.",
-              "registrant": "Todd Strategy Group",
-              "income": 50000.0
-            },
-            {
-              "uuid": "cb4d155e-cc74-4586-a8c5-dee6cd11f0ee",
-              "date": "2026-07-17T17:18:39-04:00",
-              "client": "Otsuka America Pharmaceutical, Inc.",
-              "registrant": "Db3, LLC (fka the Daschle Group)",
-              "income": 30000.0
-            }
-          ]
-        },
-        {
           "key": "MANAGED FUNDS ASSOCIATION",
           "name": "Managed Funds Association",
           "current": 1420000.0,
@@ -13829,6 +13740,178 @@
               "client": "The Northwestern Mutual Life Insurance Company",
               "registrant": "Mindset Advocacy, LLC",
               "income": 50000.0
+            }
+          ]
+        },
+        {
+          "key": "OTSUKA AMERICA PHARMACEUTICAL",
+          "name": "Otsuka America Pharmaceutical, Inc.",
+          "current": 1420000.0,
+          "baseline": 1390000.0,
+          "delta": 30000.0,
+          "ratio": 1.022,
+          "filings_current": 5,
+          "filings_baseline": 6,
+          "topics": [
+            "Drug Pricing",
+            "Appropriations",
+            "Veterans Policy",
+            "Medicare and Medicaid"
+          ],
+          "registrants": [
+            "Otsuka America Pharmaceutical, Inc.",
+            "Db3, LLC (fka the Daschle Group)",
+            "Thorn Run Partners"
+          ],
+          "series": [
+            870000.0,
+            710000.0,
+            620000.0,
+            600000.0,
+            80000.0,
+            80000.0,
+            380000.0,
+            320000.0,
+            470000.0,
+            390000.0,
+            490000.0,
+            570000.0,
+            490000.0,
+            360000.0,
+            530000.0,
+            510000.0,
+            610000.0,
+            520000.0,
+            450000.0,
+            540000.0,
+            1410000.0,
+            1390000.0,
+            570000.0,
+            1260000.0,
+            390000.0,
+            1420000.0
+          ],
+          "examples": [
+            {
+              "uuid": "eb26a73f-56e5-41a1-bff5-8a92e5f22f8d",
+              "date": "2026-07-16T08:19:36-04:00",
+              "client": "Otsuka America Pharmaceutical, Inc.",
+              "registrant": "Otsuka America Pharmaceutical, Inc.",
+              "income": 1240000.0
+            },
+            {
+              "uuid": "797fc62a-33b3-4462-8118-80155d3a8ba0",
+              "date": "2026-07-19T23:04:02-04:00",
+              "client": "Otsuka America Pharmaceutical, Inc.",
+              "registrant": "Thorn Run Partners",
+              "income": 50000.0
+            },
+            {
+              "uuid": "934fe037-616a-4e16-9acd-5bb800e1885d",
+              "date": "2026-07-20T14:41:32-04:00",
+              "client": "Otsuka America Pharmaceutical, Inc.",
+              "registrant": "W Strategies, LLC",
+              "income": 50000.0
+            },
+            {
+              "uuid": "7f715dab-4b8f-456a-bd62-54800dc3f55b",
+              "date": "2026-07-20T20:28:46-04:00",
+              "client": "Otsuka America Pharmaceutical, Inc.",
+              "registrant": "Todd Strategy Group",
+              "income": 50000.0
+            },
+            {
+              "uuid": "cb4d155e-cc74-4586-a8c5-dee6cd11f0ee",
+              "date": "2026-07-17T17:18:39-04:00",
+              "client": "Otsuka America Pharmaceutical, Inc.",
+              "registrant": "Db3, LLC (fka the Daschle Group)",
+              "income": 30000.0
+            }
+          ]
+        },
+        {
+          "key": "MORTGAGE BANKERS ASSOCIATION",
+          "name": "Mortgage Bankers Association",
+          "current": 1420000.0,
+          "baseline": 790000.0,
+          "delta": 630000.0,
+          "ratio": 1.797,
+          "filings_current": 5,
+          "filings_baseline": 5,
+          "topics": [
+            "Housing Policy",
+            "Banking and Financial Regulation",
+            "Data Privacy",
+            "Tax Policy"
+          ],
+          "registrants": [
+            "Rich Feuer Anderson",
+            "Michael Best Strategies LLC",
+            "9th Street Strategies"
+          ],
+          "series": [
+            735736.0,
+            807536.0,
+            655687.0,
+            786854.0,
+            647178.0,
+            775529.0,
+            810000.0,
+            740000.0,
+            830000.0,
+            1010000.0,
+            690000.0,
+            720000.0,
+            760000.0,
+            1020000.0,
+            680000.0,
+            450000.0,
+            990000.0,
+            950000.0,
+            550000.0,
+            710000.0,
+            700000.0,
+            790000.0,
+            750000.0,
+            900000.0,
+            960000.0,
+            1420000.0
+          ],
+          "examples": [
+            {
+              "uuid": "a7470d7a-ed39-4a05-ad79-496c81300eaf",
+              "date": "2026-07-20T21:55:08-04:00",
+              "client": "Mortgage Bankers Association",
+              "registrant": "Mortgage Bankers Association",
+              "income": 1220000.0
+            },
+            {
+              "uuid": "94795fc4-d072-44a1-af1e-8cf8153c715f",
+              "date": "2026-07-20T15:39:27-04:00",
+              "client": "Mortgage Bankers Association",
+              "registrant": "Michael Best Strategies LLC",
+              "income": 70000.0
+            },
+            {
+              "uuid": "49569b8c-b2de-4572-baf5-d746d031efab",
+              "date": "2026-07-19T21:24:40-04:00",
+              "client": "Mortgage Bankers Association",
+              "registrant": "Rich Feuer Anderson",
+              "income": 50000.0
+            },
+            {
+              "uuid": "0d2242b2-fc02-4fa0-a582-8ea5a1da9a80",
+              "date": "2026-07-20T20:00:22-04:00",
+              "client": "Mortgage Bankers Association",
+              "registrant": "Breakaway",
+              "income": 50000.0
+            },
+            {
+              "uuid": "af857f92-bcc2-4ebe-a274-d98e97281695",
+              "date": "2026-07-20T16:36:06-04:00",
+              "client": "Mortgage Bankers Association",
+              "registrant": "9th Street Strategies",
+              "income": 30000.0
             }
           ]
         },
@@ -14222,12 +14305,12 @@
         "label": "Q3 2025"
       },
       "quarter_totals": {
-        "current_income": 1410666.0,
+        "current_income": 1440666.0,
         "baseline_income": 631500.0,
-        "change_pct": 123.4,
-        "current_filings": 114,
+        "change_pct": 128.1,
+        "current_filings": 115,
         "baseline_filings": 89,
-        "current_clients": 113,
+        "current_clients": 114,
         "baseline_clients": 88
       },
       "risers": [],
@@ -14485,57 +14568,6 @@
           ]
         },
         {
-          "key": "FRESENIUS KABI",
-          "name": "Fresenius Kabi USA LLC",
-          "current": 45000.0,
-          "baseline": 0.0,
-          "delta": 45000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "East End Group, LLC"
-          ],
-          "series": [
-            0.0,
-            85000.0,
-            85000.0,
-            85000.0,
-            85000.0,
-            85000.0,
-            85000.0,
-            85000.0,
-            65000.0,
-            65000.0,
-            65000.0,
-            65000.0,
-            777895.35,
-            115000.0,
-            115000.0,
-            115000.0,
-            604456.68,
-            125000.0,
-            125000.0,
-            125000.0,
-            792941.0,
-            155000.0,
-            480000.0,
-            605000.0,
-            1275000.0,
-            755000.0
-          ],
-          "examples": [
-            {
-              "uuid": "de18a72d-2fb2-49ef-a306-1d04b06e2d50",
-              "date": "2026-07-15T13:00:28-04:00",
-              "client": "Fresenius Kabi USA LLC",
-              "registrant": "East End Group, LLC",
-              "income": 45000.0
-            }
-          ]
-        },
-        {
           "key": "ALVOGEN",
           "name": "Alvogen",
           "current": 45000.0,
@@ -14587,158 +14619,53 @@
           ]
         },
         {
-          "key": "VERIZON",
-          "name": "Verizon",
-          "current": 40000.0,
+          "key": "FRESENIUS KABI",
+          "name": "Fresenius Kabi USA LLC",
+          "current": 45000.0,
           "baseline": 0.0,
-          "delta": 40000.0,
+          "delta": 45000.0,
           "ratio": null,
           "filings_current": 1,
           "filings_baseline": 0,
           "topics": [],
           "registrants": [
-            "Cassidy & Associates, Inc."
-          ],
-          "series": [
-            180000.0,
-            180000.0,
-            170000.0,
-            190000.0,
-            230000.0,
-            240000.0,
-            220000.0,
-            250000.0,
-            215000.0,
-            200000.0,
-            200000.0,
-            200000.0,
-            200000.0,
-            200000.0,
-            200000.0,
-            200000.0,
-            200000.0,
-            190000.0,
-            200000.0,
-            200000.0,
-            180000.0,
-            190000.0,
-            200000.0,
-            200000.0,
-            210000.0,
-            190000.0
-          ],
-          "examples": [
-            {
-              "uuid": "79f16284-3ed3-4880-a78b-5ac8d7a4babd",
-              "date": "2026-08-24T16:30:15-04:00",
-              "client": "Verizon",
-              "registrant": "Cassidy & Associates, Inc.",
-              "income": 40000.0
-            }
-          ]
-        },
-        {
-          "key": "CONNECTIONS HEALTH SOLUTIONS",
-          "name": "Connections Health Solutions",
-          "current": 40000.0,
-          "baseline": 0.0,
-          "delta": 40000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Mcdermott+ LLC"
+            "East End Group, LLC"
           ],
           "series": [
             0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            70000.0,
-            70000.0,
-            70000.0,
-            110000.0,
-            310000.0,
-            310000.0,
-            250000.0,
-            245000.0,
-            245000.0,
-            245000.0,
-            320000.0,
-            320000.0
+            85000.0,
+            85000.0,
+            85000.0,
+            85000.0,
+            85000.0,
+            85000.0,
+            85000.0,
+            65000.0,
+            65000.0,
+            65000.0,
+            65000.0,
+            777895.35,
+            115000.0,
+            115000.0,
+            115000.0,
+            604456.68,
+            125000.0,
+            125000.0,
+            125000.0,
+            792941.0,
+            155000.0,
+            480000.0,
+            605000.0,
+            1275000.0,
+            755000.0
           ],
           "examples": [
             {
-              "uuid": "10c80e8b-83f9-44b3-b038-a8746bece8fa",
-              "date": "2026-08-28T12:31:46-04:00",
-              "client": "Connections Health Solutions",
-              "registrant": "Mcdermott+ LLC",
-              "income": 40000.0
-            }
-          ]
-        },
-        {
-          "key": "UNITY POINT HEALTH",
-          "name": "Unity Point Health",
-          "current": 40000.0,
-          "baseline": 0.0,
-          "delta": 40000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Medicare and Medicaid",
-            "Drug Pricing"
-          ],
-          "registrants": [
-            "Mcdermott+ LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            10000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0,
-            40000.0
-          ],
-          "examples": [
-            {
-              "uuid": "eeabfb3e-b77b-4258-96ce-9e1b9fc92948",
-              "date": "2026-08-28T12:25:12-04:00",
-              "client": "Unity Point Health",
-              "registrant": "Mcdermott+ LLC",
-              "income": 40000.0
+              "uuid": "de18a72d-2fb2-49ef-a306-1d04b06e2d50",
+              "date": "2026-07-15T13:00:28-04:00",
+              "client": "Fresenius Kabi USA LLC",
+              "registrant": "East End Group, LLC",
+              "income": 45000.0
             }
           ]
         },
@@ -14849,6 +14776,57 @@
           ]
         },
         {
+          "key": "CONNECTIONS HEALTH SOLUTIONS",
+          "name": "Connections Health Solutions",
+          "current": 40000.0,
+          "baseline": 0.0,
+          "delta": 40000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Mcdermott+ LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            70000.0,
+            70000.0,
+            70000.0,
+            110000.0,
+            310000.0,
+            310000.0,
+            250000.0,
+            245000.0,
+            245000.0,
+            245000.0,
+            320000.0,
+            320000.0
+          ],
+          "examples": [
+            {
+              "uuid": "10c80e8b-83f9-44b3-b038-a8746bece8fa",
+              "date": "2026-08-28T12:31:46-04:00",
+              "client": "Connections Health Solutions",
+              "registrant": "Mcdermott+ LLC",
+              "income": 40000.0
+            }
+          ]
+        },
+        {
           "key": "URGENT CARE ASSOCIATION",
           "name": "Urgent Care Association",
           "current": 40000.0,
@@ -14895,6 +14873,57 @@
               "date": "2026-08-28T09:19:58-04:00",
               "client": "Urgent Care Association",
               "registrant": "Mcdermott+ LLC",
+              "income": 40000.0
+            }
+          ]
+        },
+        {
+          "key": "VERIZON",
+          "name": "Verizon",
+          "current": 40000.0,
+          "baseline": 0.0,
+          "delta": 40000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Cassidy & Associates, Inc."
+          ],
+          "series": [
+            180000.0,
+            180000.0,
+            170000.0,
+            190000.0,
+            230000.0,
+            240000.0,
+            220000.0,
+            250000.0,
+            215000.0,
+            200000.0,
+            200000.0,
+            200000.0,
+            200000.0,
+            200000.0,
+            200000.0,
+            200000.0,
+            200000.0,
+            190000.0,
+            200000.0,
+            200000.0,
+            180000.0,
+            190000.0,
+            200000.0,
+            200000.0,
+            210000.0,
+            190000.0
+          ],
+          "examples": [
+            {
+              "uuid": "79f16284-3ed3-4880-a78b-5ac8d7a4babd",
+              "date": "2026-08-24T16:30:15-04:00",
+              "client": "Verizon",
+              "registrant": "Cassidy & Associates, Inc.",
               "income": 40000.0
             }
           ]
@@ -14954,52 +14983,109 @@
           ]
         },
         {
-          "key": "BAYLOR SCOTT AND WHITE HEALTH",
-          "name": "Baylor Scott & White Health",
+          "key": "UNITY POINT HEALTH",
+          "name": "Unity Point Health",
+          "current": 40000.0,
+          "baseline": 0.0,
+          "delta": 40000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Medicare and Medicaid",
+            "Drug Pricing"
+          ],
+          "registrants": [
+            "Mcdermott+ LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            10000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0,
+            40000.0
+          ],
+          "examples": [
+            {
+              "uuid": "eeabfb3e-b77b-4258-96ce-9e1b9fc92948",
+              "date": "2026-08-28T12:25:12-04:00",
+              "client": "Unity Point Health",
+              "registrant": "Mcdermott+ LLC",
+              "income": 40000.0
+            }
+          ]
+        },
+        {
+          "key": "CONSUMER TECHNOLOGY ASSOCIATION",
+          "name": "Consumer Technology Association",
           "current": 30000.0,
           "baseline": 0.0,
           "delta": 30000.0,
           "ratio": null,
           "filings_current": 1,
           "filings_baseline": 0,
-          "topics": [],
+          "topics": [
+            "Artificial Intelligence",
+            "Telehealth"
+          ],
           "registrants": [
-            "Lucas | Compton"
+            "Mcdermott+ LLC"
           ],
           "series": [
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0
+            1348000.0,
+            1665000.0,
+            1120000.0,
+            780000.0,
+            720000.0,
+            1330000.0,
+            850000.0,
+            960000.0,
+            890000.0,
+            1340000.0,
+            880000.0,
+            1020000.0,
+            748000.0,
+            1564000.0,
+            1100000.0,
+            1120000.0,
+            1190000.0,
+            1990000.0,
+            1280000.0,
+            1240000.0,
+            890000.0,
+            1650000.0,
+            1000000.0,
+            1250000.0,
+            1000000.0,
+            1560000.0
           ],
           "examples": [
             {
-              "uuid": "f132f21d-1fbf-4fa8-978a-987e4bd5a589",
-              "date": "2026-08-14T16:14:06-04:00",
-              "client": "Baylor Scott & White Health",
-              "registrant": "Lucas | Compton",
+              "uuid": "744f0994-c5dc-4b0e-bd91-47de9e48e1ad",
+              "date": "2026-08-28T13:07:35-04:00",
+              "client": "Consumer Technology Association",
+              "registrant": "Mcdermott+ LLC",
               "income": 30000.0
             }
           ]
@@ -15052,59 +15138,6 @@
               "uuid": "92800b17-c9ab-4fa1-a90a-d78a208d742a",
               "date": "2026-08-28T11:47:44-04:00",
               "client": "National Council on Aging",
-              "registrant": "Mcdermott+ LLC",
-              "income": 30000.0
-            }
-          ]
-        },
-        {
-          "key": "340B HEALTH",
-          "name": "340b Health",
-          "current": 30000.0,
-          "baseline": 0.0,
-          "delta": 30000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Drug Pricing"
-          ],
-          "registrants": [
-            "Mcdermott+ LLC"
-          ],
-          "series": [
-            493453.0,
-            398761.0,
-            392118.0,
-            384229.0,
-            412698.0,
-            392268.0,
-            413586.0,
-            396646.0,
-            382363.0,
-            453804.0,
-            367848.0,
-            320562.0,
-            412429.0,
-            509651.0,
-            433537.0,
-            359606.0,
-            511233.0,
-            420115.0,
-            455454.0,
-            350046.0,
-            517126.0,
-            526483.0,
-            519648.0,
-            430256.0,
-            492175.94,
-            395000.0
-          ],
-          "examples": [
-            {
-              "uuid": "b25bfc41-b95a-4dbe-87c1-ecdb06f99c0d",
-              "date": "2026-08-28T12:19:58-04:00",
-              "client": "340b Health",
               "registrant": "Mcdermott+ LLC",
               "income": 30000.0
             }
@@ -15164,8 +15197,8 @@
           ]
         },
         {
-          "key": "CONSUMER TECHNOLOGY ASSOCIATION",
-          "name": "Consumer Technology Association",
+          "key": "340B HEALTH",
+          "name": "340b Health",
           "current": 30000.0,
           "baseline": 0.0,
           "delta": 30000.0,
@@ -15173,46 +15206,147 @@
           "filings_current": 1,
           "filings_baseline": 0,
           "topics": [
-            "Artificial Intelligence",
-            "Telehealth"
+            "Drug Pricing"
           ],
           "registrants": [
             "Mcdermott+ LLC"
           ],
           "series": [
-            1348000.0,
-            1665000.0,
-            1120000.0,
-            780000.0,
-            720000.0,
-            1330000.0,
-            850000.0,
-            960000.0,
-            890000.0,
-            1340000.0,
-            880000.0,
-            1020000.0,
-            748000.0,
-            1564000.0,
-            1100000.0,
-            1120000.0,
-            1190000.0,
-            1990000.0,
-            1280000.0,
-            1240000.0,
-            890000.0,
-            1650000.0,
-            1000000.0,
-            1250000.0,
-            1000000.0,
-            1560000.0
+            493453.0,
+            398761.0,
+            392118.0,
+            384229.0,
+            412698.0,
+            392268.0,
+            413586.0,
+            396646.0,
+            382363.0,
+            453804.0,
+            367848.0,
+            320562.0,
+            412429.0,
+            509651.0,
+            433537.0,
+            359606.0,
+            511233.0,
+            420115.0,
+            455454.0,
+            350046.0,
+            517126.0,
+            526483.0,
+            519648.0,
+            430256.0,
+            492175.94,
+            395000.0
           ],
           "examples": [
             {
-              "uuid": "744f0994-c5dc-4b0e-bd91-47de9e48e1ad",
-              "date": "2026-08-28T13:07:35-04:00",
-              "client": "Consumer Technology Association",
+              "uuid": "b25bfc41-b95a-4dbe-87c1-ecdb06f99c0d",
+              "date": "2026-08-28T12:19:58-04:00",
+              "client": "340b Health",
               "registrant": "Mcdermott+ LLC",
+              "income": 30000.0
+            }
+          ]
+        },
+        {
+          "key": "BAYLOR SCOTT AND WHITE HEALTH",
+          "name": "Baylor Scott & White Health",
+          "current": 30000.0,
+          "baseline": 0.0,
+          "delta": 30000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Lucas | Compton"
+          ],
+          "series": [
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0
+          ],
+          "examples": [
+            {
+              "uuid": "f132f21d-1fbf-4fa8-978a-987e4bd5a589",
+              "date": "2026-08-14T16:14:06-04:00",
+              "client": "Baylor Scott & White Health",
+              "registrant": "Lucas | Compton",
+              "income": 30000.0
+            }
+          ]
+        },
+        {
+          "key": "VARSITY TUTORS",
+          "name": "Varsity Tutors",
+          "current": 30000.0,
+          "baseline": 0.0,
+          "delta": 30000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Raw Strategies, LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            30000.0,
+            30000.0
+          ],
+          "examples": [
+            {
+              "uuid": "4d5398ad-555d-4a31-932e-0705c8d4d9fc",
+              "date": "2026-08-28T11:52:33-04:00",
+              "client": "Varsity Tutors",
+              "registrant": "Raw Strategies, LLC",
               "income": 30000.0
             }
           ]
@@ -15322,6 +15456,60 @@
           ]
         },
         {
+          "key": "NATIONAL GUARD ASSOCIATION OF THE US",
+          "name": "National Guard Association of the U.S.",
+          "current": 30000.0,
+          "baseline": 0.0,
+          "delta": 30000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Appropriations",
+            "Defense Authorization"
+          ],
+          "registrants": [
+            "Omega Strategies, LLC."
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            20000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0
+          ],
+          "examples": [
+            {
+              "uuid": "2192d4dc-2a74-4aa6-8b66-d215f05bfded",
+              "date": "2026-09-01T09:58:09-04:00",
+              "client": "National Guard Association of the U.S.",
+              "registrant": "Omega Strategies, LLC.",
+              "income": 30000.0
+            }
+          ]
+        },
+        {
           "key": "NATIONAL ACADEMY OF ELDER LAW ATTORNEYS",
           "name": "National Academy of Elder Law Attorneys, Inc.",
           "current": 30000.0,
@@ -15375,17 +15563,17 @@
           ]
         },
         {
-          "key": "VARSITY TUTORS",
-          "name": "Varsity Tutors",
-          "current": 30000.0,
+          "key": "CHILDRENS HOSPITAL OF ALABAMA",
+          "name": "Children's Hospital of Alabama",
+          "current": 20000.0,
           "baseline": 0.0,
-          "delta": 30000.0,
+          "delta": 20000.0,
           "ratio": null,
           "filings_current": 1,
           "filings_baseline": 0,
           "topics": [],
           "registrants": [
-            "Raw Strategies, LLC"
+            "Mcdermott+ LLC"
           ],
           "series": [
             0.0,
@@ -15410,18 +15598,486 @@
             0.0,
             0.0,
             0.0,
-            0.0,
-            20000.0,
+            10000.0,
+            30000.0,
             30000.0,
             30000.0
           ],
           "examples": [
             {
-              "uuid": "4d5398ad-555d-4a31-932e-0705c8d4d9fc",
-              "date": "2026-08-28T11:52:33-04:00",
-              "client": "Varsity Tutors",
-              "registrant": "Raw Strategies, LLC",
-              "income": 30000.0
+              "uuid": "2ef3a7ec-e56e-4c75-b1c1-a08c34c29d64",
+              "date": "2026-08-28T12:30:12-04:00",
+              "client": "Children's Hospital of Alabama",
+              "registrant": "Mcdermott+ LLC",
+              "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "STATIONMD",
+          "name": "Stationmd",
+          "current": 20000.0,
+          "baseline": 0.0,
+          "delta": 20000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Medicare and Medicaid"
+          ],
+          "registrants": [
+            "Mcdermott+ LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0
+          ],
+          "examples": [
+            {
+              "uuid": "2bc8cbea-3acb-4293-90f7-d972c1cb07f2",
+              "date": "2026-08-28T12:26:46-04:00",
+              "client": "Stationmd",
+              "registrant": "Mcdermott+ LLC",
+              "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "RSM",
+          "name": "RSM",
+          "current": 20000.0,
+          "baseline": 0.0,
+          "delta": 20000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Prime Policy Group"
+          ],
+          "series": [
+            70000.0,
+            90000.0,
+            120000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            220000.0,
+            170000.0,
+            150000.0,
+            180000.0,
+            210000.0,
+            150000.0,
+            160000.0,
+            80000.0,
+            320000.0,
+            90000.0,
+            110000.0,
+            90000.0,
+            210000.0,
+            100000.0,
+            100000.0,
+            100000.0,
+            220000.0,
+            140000.0,
+            140000.0,
+            200000.0
+          ],
+          "examples": [
+            {
+              "uuid": "7920d54a-f623-4cfc-8acb-7ee96e60b1aa",
+              "date": "2026-07-20T14:04:45-04:00",
+              "client": "RSM",
+              "registrant": "Prime Policy Group",
+              "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "PATIENTS FOR AFFORDABLE DRUGS NOW",
+          "name": "Patients for Affordable Drugs Now",
+          "current": 20000.0,
+          "baseline": 0.0,
+          "delta": 20000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Drug Pricing"
+          ],
+          "registrants": [
+            "Mcdermott+ LLC"
+          ],
+          "series": [
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            30000.0,
+            30000.0
+          ],
+          "examples": [
+            {
+              "uuid": "9e9fda5b-910d-4130-8cda-edbfa618f34b",
+              "date": "2026-08-28T11:45:53-04:00",
+              "client": "Patients for Affordable Drugs Now",
+              "registrant": "Mcdermott+ LLC",
+              "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "AMERICAN NETWORK OF COMMUNITY OPTIONS AND RESOURCES",
+          "name": "American Network of Community Options and Resources",
+          "current": 20000.0,
+          "baseline": 0.0,
+          "delta": 20000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Medicare and Medicaid"
+          ],
+          "registrants": [
+            "Mcdermott+ LLC"
+          ],
+          "series": [
+            30000.0,
+            100000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            40000.0,
+            40000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            60000.0,
+            70000.0,
+            60000.0,
+            80000.0,
+            52469.0,
+            53366.0,
+            53563.0
+          ],
+          "examples": [
+            {
+              "uuid": "4894256b-76cc-4939-a3ba-95e931f3df1d",
+              "date": "2026-08-28T12:28:48-04:00",
+              "client": "American Network of Community Options and Resources",
+              "registrant": "Mcdermott+ LLC",
+              "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "PMI US CORPORATE",
+          "name": "Pmi US Corporate Services Inc.",
+          "current": 20000.0,
+          "baseline": 0.0,
+          "delta": 20000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "The Ingram Group LLC"
+          ],
+          "series": [
+            2155000.0,
+            1880000.0,
+            2680000.0,
+            2290000.0,
+            2280000.0,
+            2900000.0,
+            3120000.0,
+            3750000.0,
+            2190000.0,
+            2300000.0,
+            1790000.0,
+            1650000.0,
+            1690000.0,
+            1850000.0,
+            1530000.0,
+            1590000.0,
+            1690000.0,
+            1900000.0,
+            2080000.0,
+            2150000.0,
+            1690000.0,
+            2330000.0,
+            2350000.0,
+            2320000.0,
+            2860000.0,
+            2830000.0
+          ],
+          "examples": [
+            {
+              "uuid": "9ec02e9c-d478-478e-9b81-2b474506c15b",
+              "date": "2026-08-28T16:55:22-04:00",
+              "client": "Pmi US Corporate Services Inc.",
+              "registrant": "The Ingram Group LLC",
+              "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "AMERICAN ACADEMY OF OPHTHALMOLOGY",
+          "name": "American Academy of Ophthalmology",
+          "current": 20000.0,
+          "baseline": 0.0,
+          "delta": 20000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Medicare and Medicaid",
+            "FDA Regulation"
+          ],
+          "registrants": [
+            "Mcdermott+ LLC"
+          ],
+          "series": [
+            300000.0,
+            290000.0,
+            250000.0,
+            260000.0,
+            290000.0,
+            310000.0,
+            270000.0,
+            330000.0,
+            320000.0,
+            300000.0,
+            345000.0,
+            456636.0,
+            493000.0,
+            330000.0,
+            345000.0,
+            343932.0,
+            495441.0,
+            400425.0,
+            395134.0,
+            358819.0,
+            527577.0,
+            297259.0,
+            463377.0,
+            250898.0,
+            443597.0,
+            392068.0
+          ],
+          "examples": [
+            {
+              "uuid": "a53b4ea4-78fd-44af-aa6f-85272a759bcf",
+              "date": "2026-08-28T11:43:57-04:00",
+              "client": "American Academy of Ophthalmology",
+              "registrant": "Mcdermott+ LLC",
+              "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "ASSOCIATION OF FLIGHT ATTTENDANTS CWA",
+          "name": "Association of Flight Atttendants Cwa",
+          "current": 20000.0,
+          "baseline": 0.0,
+          "delta": 20000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Defazio and Associates Consulting LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            0.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0
+          ],
+          "examples": [
+            {
+              "uuid": "1ac8f302-e755-4467-9ad0-fd29ceaf564d",
+              "date": "2026-07-01T16:31:38-04:00",
+              "client": "Association of Flight Atttendants Cwa",
+              "registrant": "Defazio and Associates Consulting LLC",
+              "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "AIRBUS AMERICAS",
+          "name": "Airbus Americas Inc",
+          "current": 20000.0,
+          "baseline": 0.0,
+          "delta": 20000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Invariant LLC"
+          ],
+          "series": [
+            975000.0,
+            1125000.0,
+            565000.0,
+            420000.0,
+            600000.0,
+            850000.0,
+            740000.0,
+            650000.0,
+            810000.0,
+            920000.0,
+            900000.0,
+            810000.0,
+            790000.0,
+            1050000.0,
+            790000.0,
+            790000.0,
+            890000.0,
+            1150000.0,
+            910000.0,
+            910000.0,
+            1030000.0,
+            1260000.0,
+            1030000.0,
+            1040000.0,
+            1040000.0,
+            1480000.0
+          ],
+          "examples": [
+            {
+              "uuid": "651d3f7c-b91e-41d7-96a1-f49b4769aef4",
+              "date": "2026-08-13T18:34:53-04:00",
+              "client": "Airbus Americas Inc",
+              "registrant": "Invariant LLC",
+              "income": 20000.0
+            }
+          ]
+        },
+        {
+          "key": "PRIME THERAPEUTICS",
+          "name": "Prime Therapeutics",
+          "current": 20000.0,
+          "baseline": 0.0,
+          "delta": 20000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Government Counsel, LLC"
+          ],
+          "series": [
+            194000.0,
+            164000.0,
+            164000.0,
+            164000.0,
+            144000.0,
+            144000.0,
+            134000.0,
+            134000.0,
+            130000.0,
+            130000.0,
+            130000.0,
+            120000.0,
+            130000.0,
+            130000.0,
+            130000.0,
+            130000.0,
+            140000.0,
+            150000.0,
+            150000.0,
+            150000.0,
+            470000.0,
+            150000.0,
+            150000.0,
+            150000.0,
+            170000.0,
+            150000.0
+          ],
+          "examples": [
+            {
+              "uuid": "1dc52a5c-b809-4d5e-bcd8-0891d9084a2b",
+              "date": "2026-08-18T10:18:25-04:00",
+              "client": "Prime Therapeutics",
+              "registrant": "Government Counsel, LLC",
+              "income": 20000.0
             }
           ]
         },
@@ -15523,525 +16179,6 @@
               "date": "2026-08-24T15:58:15-04:00",
               "client": "Auctane, Inc.",
               "registrant": "Forbes-Tate",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "PATIENTS FOR AFFORDABLE DRUGS NOW",
-          "name": "Patients for Affordable Drugs Now",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Drug Pricing"
-          ],
-          "registrants": [
-            "Mcdermott+ LLC"
-          ],
-          "series": [
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            20000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            30000.0,
-            30000.0
-          ],
-          "examples": [
-            {
-              "uuid": "9e9fda5b-910d-4130-8cda-edbfa618f34b",
-              "date": "2026-08-28T11:45:53-04:00",
-              "client": "Patients for Affordable Drugs Now",
-              "registrant": "Mcdermott+ LLC",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "PMI US CORPORATE",
-          "name": "Pmi US Corporate Services Inc.",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "The Ingram Group LLC"
-          ],
-          "series": [
-            2155000.0,
-            1880000.0,
-            2680000.0,
-            2290000.0,
-            2280000.0,
-            2900000.0,
-            3120000.0,
-            3750000.0,
-            2190000.0,
-            2300000.0,
-            1790000.0,
-            1650000.0,
-            1690000.0,
-            1850000.0,
-            1530000.0,
-            1590000.0,
-            1690000.0,
-            1900000.0,
-            2080000.0,
-            2150000.0,
-            1690000.0,
-            2330000.0,
-            2350000.0,
-            2320000.0,
-            2860000.0,
-            2830000.0
-          ],
-          "examples": [
-            {
-              "uuid": "9ec02e9c-d478-478e-9b81-2b474506c15b",
-              "date": "2026-08-28T16:55:22-04:00",
-              "client": "Pmi US Corporate Services Inc.",
-              "registrant": "The Ingram Group LLC",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "CHILDRENS HOSPITAL OF ALABAMA",
-          "name": "Children's Hospital of Alabama",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Mcdermott+ LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            10000.0,
-            30000.0,
-            30000.0,
-            30000.0
-          ],
-          "examples": [
-            {
-              "uuid": "2ef3a7ec-e56e-4c75-b1c1-a08c34c29d64",
-              "date": "2026-08-28T12:30:12-04:00",
-              "client": "Children's Hospital of Alabama",
-              "registrant": "Mcdermott+ LLC",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "PRIME THERAPEUTICS",
-          "name": "Prime Therapeutics",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Government Counsel, LLC"
-          ],
-          "series": [
-            194000.0,
-            164000.0,
-            164000.0,
-            164000.0,
-            144000.0,
-            144000.0,
-            134000.0,
-            134000.0,
-            130000.0,
-            130000.0,
-            130000.0,
-            120000.0,
-            130000.0,
-            130000.0,
-            130000.0,
-            130000.0,
-            140000.0,
-            150000.0,
-            150000.0,
-            150000.0,
-            470000.0,
-            150000.0,
-            150000.0,
-            150000.0,
-            170000.0,
-            150000.0
-          ],
-          "examples": [
-            {
-              "uuid": "1dc52a5c-b809-4d5e-bcd8-0891d9084a2b",
-              "date": "2026-08-18T10:18:25-04:00",
-              "client": "Prime Therapeutics",
-              "registrant": "Government Counsel, LLC",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "AMERICAN NETWORK OF COMMUNITY OPTIONS AND RESOURCES",
-          "name": "American Network of Community Options and Resources",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Medicare and Medicaid"
-          ],
-          "registrants": [
-            "Mcdermott+ LLC"
-          ],
-          "series": [
-            30000.0,
-            100000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            40000.0,
-            40000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            60000.0,
-            70000.0,
-            60000.0,
-            80000.0,
-            52469.0,
-            53366.0,
-            53563.0
-          ],
-          "examples": [
-            {
-              "uuid": "4894256b-76cc-4939-a3ba-95e931f3df1d",
-              "date": "2026-08-28T12:28:48-04:00",
-              "client": "American Network of Community Options and Resources",
-              "registrant": "Mcdermott+ LLC",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "RSM",
-          "name": "RSM",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Prime Policy Group"
-          ],
-          "series": [
-            70000.0,
-            90000.0,
-            120000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            220000.0,
-            170000.0,
-            150000.0,
-            180000.0,
-            210000.0,
-            150000.0,
-            160000.0,
-            80000.0,
-            320000.0,
-            90000.0,
-            110000.0,
-            90000.0,
-            210000.0,
-            100000.0,
-            100000.0,
-            100000.0,
-            220000.0,
-            140000.0,
-            140000.0,
-            200000.0
-          ],
-          "examples": [
-            {
-              "uuid": "7920d54a-f623-4cfc-8acb-7ee96e60b1aa",
-              "date": "2026-07-20T14:04:45-04:00",
-              "client": "RSM",
-              "registrant": "Prime Policy Group",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "ASSOCIATION OF FLIGHT ATTTENDANTS CWA",
-          "name": "Association of Flight Atttendants Cwa",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Defazio and Associates Consulting LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            0.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0
-          ],
-          "examples": [
-            {
-              "uuid": "1ac8f302-e755-4467-9ad0-fd29ceaf564d",
-              "date": "2026-07-01T16:31:38-04:00",
-              "client": "Association of Flight Atttendants Cwa",
-              "registrant": "Defazio and Associates Consulting LLC",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "STATIONMD",
-          "name": "Stationmd",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Medicare and Medicaid"
-          ],
-          "registrants": [
-            "Mcdermott+ LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0
-          ],
-          "examples": [
-            {
-              "uuid": "2bc8cbea-3acb-4293-90f7-d972c1cb07f2",
-              "date": "2026-08-28T12:26:46-04:00",
-              "client": "Stationmd",
-              "registrant": "Mcdermott+ LLC",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "AMERICAN ACADEMY OF OPHTHALMOLOGY",
-          "name": "American Academy of Ophthalmology",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Medicare and Medicaid",
-            "FDA Regulation"
-          ],
-          "registrants": [
-            "Mcdermott+ LLC"
-          ],
-          "series": [
-            300000.0,
-            290000.0,
-            250000.0,
-            260000.0,
-            290000.0,
-            310000.0,
-            270000.0,
-            330000.0,
-            320000.0,
-            300000.0,
-            345000.0,
-            456636.0,
-            493000.0,
-            330000.0,
-            345000.0,
-            343932.0,
-            495441.0,
-            400425.0,
-            395134.0,
-            358819.0,
-            527577.0,
-            297259.0,
-            463377.0,
-            250898.0,
-            443597.0,
-            392068.0
-          ],
-          "examples": [
-            {
-              "uuid": "a53b4ea4-78fd-44af-aa6f-85272a759bcf",
-              "date": "2026-08-28T11:43:57-04:00",
-              "client": "American Academy of Ophthalmology",
-              "registrant": "Mcdermott+ LLC",
-              "income": 20000.0
-            }
-          ]
-        },
-        {
-          "key": "AIRBUS AMERICAS",
-          "name": "Airbus Americas Inc",
-          "current": 20000.0,
-          "baseline": 0.0,
-          "delta": 20000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Invariant LLC"
-          ],
-          "series": [
-            975000.0,
-            1125000.0,
-            565000.0,
-            420000.0,
-            600000.0,
-            850000.0,
-            740000.0,
-            650000.0,
-            810000.0,
-            920000.0,
-            900000.0,
-            810000.0,
-            790000.0,
-            1050000.0,
-            790000.0,
-            790000.0,
-            890000.0,
-            1150000.0,
-            910000.0,
-            910000.0,
-            1030000.0,
-            1260000.0,
-            1030000.0,
-            1040000.0,
-            1040000.0,
-            1480000.0
-          ],
-          "examples": [
-            {
-              "uuid": "651d3f7c-b91e-41d7-96a1-f49b4769aef4",
-              "date": "2026-08-13T18:34:53-04:00",
-              "client": "Airbus Americas Inc",
-              "registrant": "Invariant LLC",
               "income": 20000.0
             }
           ]
@@ -16256,8 +16393,8 @@
           ]
         },
         {
-          "key": "COUNCIL FOR INVESTOR RIGHTS AND CORPORATE ACCOUNTABILITY",
-          "name": "Council for Investor Rights and Corporate Accountability, Inc.",
+          "key": "UNITED STATES TROTTING ASSOCIATION",
+          "name": "United States Trotting Association (usta)",
           "current": 10000.0,
           "baseline": 0.0,
           "delta": 10000.0,
@@ -16266,180 +16403,25 @@
           "filings_baseline": 0,
           "topics": [],
           "registrants": [
-            "Ius Impact LLC"
+            "The Ingram Group LLC"
           ],
           "series": [
-            50000.0,
-            50000.0,
-            50000.0,
-            50000.0,
-            50000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            50000.0,
-            50000.0,
-            50000.0,
-            50000.0,
-            90000.0,
-            130000.0,
-            120000.0,
-            110000.0,
-            90000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            60000.0
-          ],
-          "examples": [
-            {
-              "uuid": "c6fb867e-578c-48ad-8bb6-78dcd0caadf6",
-              "date": "2026-07-20T22:59:54-04:00",
-              "client": "Council for Investor Rights and Corporate Accountability, Inc.",
-              "registrant": "Ius Impact LLC",
-              "income": 10000.0
-            }
-          ]
-        },
-        {
-          "key": "BENCH IN A BOX TECHNOLOGIES",
-          "name": "Bench in a Box Technologies",
-          "current": 10000.0,
-          "baseline": 0.0,
-          "delta": 10000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Appropriations"
-          ],
-          "registrants": [
-            "Tenagrity Solutions, LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "examples": [
-            {
-              "uuid": "f1ddc7f9-7892-4297-95a0-9e1711636ffd",
-              "date": "2026-07-24T15:30:40-04:00",
-              "client": "Bench in a Box Technologies",
-              "registrant": "Tenagrity Solutions, LLC",
-              "income": 10000.0
-            }
-          ]
-        },
-        {
-          "key": "GOLDCO",
-          "name": "Goldco",
-          "current": 10000.0,
-          "baseline": 0.0,
-          "delta": 10000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Liberty Government Affairs"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            30000.0,
-            80000.0,
-            90000.0,
-            95000.0,
-            65000.0,
-            0.0
-          ],
-          "examples": [
-            {
-              "uuid": "29c6a500-ec45-493b-908d-e68543e66f83",
-              "date": "2026-04-09T13:24:24-04:00",
-              "client": "Goldco",
-              "registrant": "Liberty Government Affairs",
-              "income": 10000.0
-            }
-          ]
-        },
-        {
-          "key": "BAXTER INTERNATIONAL",
-          "name": "Baxter International",
-          "current": 10000.0,
-          "baseline": 0.0,
-          "delta": 10000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Mcdermott+ LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
             30000.0,
             30000.0,
             30000.0,
@@ -16453,17 +16435,17 @@
           ],
           "examples": [
             {
-              "uuid": "c293cb39-055a-4021-96fe-8d41baf67a0b",
-              "date": "2026-08-27T08:35:47-04:00",
-              "client": "Baxter International",
-              "registrant": "Mcdermott+ LLC",
+              "uuid": "b06ff166-54cd-4560-b495-fee1c12e445c",
+              "date": "2026-08-28T16:59:05-04:00",
+              "client": "United States Trotting Association (usta)",
+              "registrant": "The Ingram Group LLC",
               "income": 10000.0
             }
           ]
         },
         {
-          "key": "ENERGY EIGHT",
-          "name": "Energy Eight LLC",
+          "key": "NATIONAL GRID USA SERVICE COMPANY INC D/B/A NATIONAL GRID",
+          "name": "National Grid USA Service Company, Inc. d/b/a National Grid",
           "current": 10000.0,
           "baseline": 0.0,
           "delta": 10000.0,
@@ -16472,7 +16454,7 @@
           "filings_baseline": 0,
           "topics": [],
           "registrants": [
-            "Thornrose Ventures"
+            "Forbes-Tate"
           ],
           "series": [
             0.0,
@@ -16484,90 +16466,37 @@
             0.0,
             0.0,
             0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
+            70000.0,
+            70000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
             80000.0
           ],
           "examples": [
             {
-              "uuid": "5cc7f939-d271-4c96-a5a7-89eecc8f2ef5",
-              "date": "2026-07-22T12:46:51-04:00",
-              "client": "Energy Eight LLC",
-              "registrant": "Thornrose Ventures",
+              "uuid": "5db0642a-437b-4cf2-99cd-b09b5249b23f",
+              "date": "2026-08-24T16:03:25-04:00",
+              "client": "National Grid USA Service Company, Inc. d/b/a National Grid",
+              "registrant": "Forbes-Tate",
               "income": 10000.0
             }
           ]
         },
         {
-          "key": "SJOGRENS FOUNDATION",
-          "name": "Sjogrens Foundation",
-          "current": 10000.0,
-          "baseline": 0.0,
-          "delta": 10000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Medicare and Medicaid"
-          ],
-          "registrants": [
-            "Foley Hoag LLP"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            6000.0,
-            6000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0
-          ],
-          "examples": [
-            {
-              "uuid": "31b37f88-8e6e-4c34-8a0c-2a222a3213ed",
-              "date": "2026-08-07T15:50:50-04:00",
-              "client": "Sjogrens Foundation",
-              "registrant": "Foley Hoag LLP",
-              "income": 10000.0
-            }
-          ]
-        },
-        {
-          "key": "WHOLESOME WAVE",
-          "name": "Wholesome Wave, Inc.",
+          "key": "HALO MD",
+          "name": "Halo MD, LLC",
           "current": 10000.0,
           "baseline": 0.0,
           "delta": 10000.0,
@@ -16602,120 +16531,16 @@
             0.0,
             0.0,
             0.0,
-            40000.0,
+            0.0,
             40000.0,
             40000.0
           ],
           "examples": [
             {
-              "uuid": "592c60c1-038a-42f8-82cb-a44f9164adb5",
-              "date": "2026-08-27T08:51:41-04:00",
-              "client": "Wholesome Wave, Inc.",
+              "uuid": "2313eeea-8c56-498a-b9dc-73ffa896d2cf",
+              "date": "2026-08-27T08:53:22-04:00",
+              "client": "Halo MD, LLC",
               "registrant": "Mcdermott+ LLC",
-              "income": 10000.0
-            }
-          ]
-        },
-        {
-          "key": "PHYSICIANS FOR AMERICAN HEALTHCARE ACCESS",
-          "name": "Physicians for American Healthcare Access",
-          "current": 10000.0,
-          "baseline": 0.0,
-          "delta": 10000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Foley Hoag LLP"
-          ],
-          "series": [
-            6000.0,
-            58000.0,
-            33000.0,
-            33000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            18000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0
-          ],
-          "examples": [
-            {
-              "uuid": "74fa6302-9d80-41c9-9abb-ef56c19a96f7",
-              "date": "2026-08-07T15:49:58-04:00",
-              "client": "Physicians for American Healthcare Access",
-              "registrant": "Foley Hoag LLP",
-              "income": 10000.0
-            }
-          ]
-        },
-        {
-          "key": "ATRICURE",
-          "name": "Atricure",
-          "current": 10000.0,
-          "baseline": 0.0,
-          "delta": 10000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Medicare and Medicaid"
-          ],
-          "registrants": [
-            "Foley Hoag LLP"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            50000.0,
-            0.0,
-            0.0,
-            0.0,
-            10000.0,
-            10000.0,
-            0.0,
-            15000.0,
-            20000.0,
-            18500.0,
-            0.0,
-            22500.0,
-            22500.0,
-            22500.0,
-            22500.0,
-            18000.0,
-            22500.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0
-          ],
-          "examples": [
-            {
-              "uuid": "4530cdd6-49f6-423a-aac5-282c1a735845",
-              "date": "2026-08-07T15:48:22-04:00",
-              "client": "Atricure",
-              "registrant": "Foley Hoag LLP",
               "income": 10000.0
             }
           ]
@@ -16823,59 +16648,8 @@
           ]
         },
         {
-          "key": "NATIONAL HORSEMENS BENEVOLENT AND PROTECTIVE ASSOCIATION",
-          "name": "National Horsemen's Benevolent and Protective Association (hbpa)",
-          "current": 10000.0,
-          "baseline": 0.0,
-          "delta": 10000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "The Ingram Group LLC"
-          ],
-          "series": [
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0
-          ],
-          "examples": [
-            {
-              "uuid": "eaee79e2-ad01-4b85-b8a2-9158e1542ed7",
-              "date": "2026-08-28T16:51:36-04:00",
-              "client": "National Horsemen's Benevolent and Protective Association (hbpa)",
-              "registrant": "The Ingram Group LLC",
-              "income": 10000.0
-            }
-          ]
-        },
-        {
-          "key": "ASSOCIATION FOR ADVANCING PHYSICIAN AND PROVIDER RECRUITMENT",
-          "name": "Association for Advancing Physician and Provider Recruitment",
+          "key": "PHYSICIANS FOR AMERICAN HEALTHCARE ACCESS",
+          "name": "Physicians for American Healthcare Access",
           "current": 10000.0,
           "baseline": 0.0,
           "delta": 10000.0,
@@ -16887,28 +16661,28 @@
             "Foley Hoag LLP"
           ],
           "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            24000.0,
+            6000.0,
+            58000.0,
+            33000.0,
+            33000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
             20000.0,
             20000.0,
             20000.0,
@@ -16916,17 +16690,17 @@
           ],
           "examples": [
             {
-              "uuid": "65da6423-d536-496d-b248-fb1cbf84dd7e",
-              "date": "2026-08-07T15:52:46-04:00",
-              "client": "Association for Advancing Physician and Provider Recruitment",
+              "uuid": "74fa6302-9d80-41c9-9abb-ef56c19a96f7",
+              "date": "2026-08-07T15:49:58-04:00",
+              "client": "Physicians for American Healthcare Access",
               "registrant": "Foley Hoag LLP",
               "income": 10000.0
             }
           ]
         },
         {
-          "key": "HALO MD",
-          "name": "Halo MD, LLC",
+          "key": "WHOLESOME WAVE",
+          "name": "Wholesome Wave, Inc.",
           "current": 10000.0,
           "baseline": 0.0,
           "delta": 10000.0,
@@ -16961,70 +16735,16 @@
             0.0,
             0.0,
             0.0,
-            0.0,
+            40000.0,
             40000.0,
             40000.0
           ],
           "examples": [
             {
-              "uuid": "2313eeea-8c56-498a-b9dc-73ffa896d2cf",
-              "date": "2026-08-27T08:53:22-04:00",
-              "client": "Halo MD, LLC",
+              "uuid": "592c60c1-038a-42f8-82cb-a44f9164adb5",
+              "date": "2026-08-27T08:51:41-04:00",
+              "client": "Wholesome Wave, Inc.",
               "registrant": "Mcdermott+ LLC",
-              "income": 10000.0
-            }
-          ]
-        },
-        {
-          "key": "1DAY SOONER ACTION PROJECT",
-          "name": "1day Sooner Action Project",
-          "current": 10000.0,
-          "baseline": 0.0,
-          "delta": 10000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Appropriations",
-            "Data Privacy"
-          ],
-          "registrants": [
-            "Tenagrity Solutions, LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            20000.0,
-            30000.0,
-            20000.0,
-            40000.0,
-            20000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            80000.0
-          ],
-          "examples": [
-            {
-              "uuid": "3209f2e9-179d-4e11-835c-6eb7f03d07fa",
-              "date": "2026-07-24T15:20:19-04:00",
-              "client": "1day Sooner Action Project",
-              "registrant": "Tenagrity Solutions, LLC",
               "income": 10000.0
             }
           ]
@@ -17084,8 +16804,8 @@
           ]
         },
         {
-          "key": "NATIONAL GRID USA SERVICE COMPANY INC D/B/A NATIONAL GRID",
-          "name": "National Grid USA Service Company, Inc. d/b/a National Grid",
+          "key": "BAXTER INTERNATIONAL",
+          "name": "Baxter International",
           "current": 10000.0,
           "baseline": 0.0,
           "delta": 10000.0,
@@ -17094,7 +16814,60 @@
           "filings_baseline": 0,
           "topics": [],
           "registrants": [
-            "Forbes-Tate"
+            "Mcdermott+ LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0
+          ],
+          "examples": [
+            {
+              "uuid": "c293cb39-055a-4021-96fe-8d41baf67a0b",
+              "date": "2026-08-27T08:35:47-04:00",
+              "client": "Baxter International",
+              "registrant": "Mcdermott+ LLC",
+              "income": 10000.0
+            }
+          ]
+        },
+        {
+          "key": "BENCH IN A BOX TECHNOLOGIES",
+          "name": "Bench in a Box Technologies",
+          "current": 10000.0,
+          "baseline": 0.0,
+          "delta": 10000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Appropriations"
+          ],
+          "registrants": [
+            "Tenagrity Solutions, LLC"
           ],
           "series": [
             0.0,
@@ -17106,37 +16879,401 @@
             0.0,
             0.0,
             0.0,
-            70000.0,
-            70000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0,
-            80000.0
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
           ],
           "examples": [
             {
-              "uuid": "5db0642a-437b-4cf2-99cd-b09b5249b23f",
-              "date": "2026-08-24T16:03:25-04:00",
-              "client": "National Grid USA Service Company, Inc. d/b/a National Grid",
-              "registrant": "Forbes-Tate",
+              "uuid": "f1ddc7f9-7892-4297-95a0-9e1711636ffd",
+              "date": "2026-07-24T15:30:40-04:00",
+              "client": "Bench in a Box Technologies",
+              "registrant": "Tenagrity Solutions, LLC",
               "income": 10000.0
             }
           ]
         },
         {
-          "key": "UNITED STATES TROTTING ASSOCIATION",
-          "name": "United States Trotting Association (usta)",
+          "key": "ATRICURE",
+          "name": "Atricure",
+          "current": 10000.0,
+          "baseline": 0.0,
+          "delta": 10000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Medicare and Medicaid"
+          ],
+          "registrants": [
+            "Foley Hoag LLP"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            50000.0,
+            0.0,
+            0.0,
+            0.0,
+            10000.0,
+            10000.0,
+            0.0,
+            15000.0,
+            20000.0,
+            18500.0,
+            0.0,
+            22500.0,
+            22500.0,
+            22500.0,
+            22500.0,
+            18000.0,
+            22500.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0
+          ],
+          "examples": [
+            {
+              "uuid": "4530cdd6-49f6-423a-aac5-282c1a735845",
+              "date": "2026-08-07T15:48:22-04:00",
+              "client": "Atricure",
+              "registrant": "Foley Hoag LLP",
+              "income": 10000.0
+            }
+          ]
+        },
+        {
+          "key": "1DAY SOONER ACTION PROJECT",
+          "name": "1day Sooner Action Project",
+          "current": 10000.0,
+          "baseline": 0.0,
+          "delta": 10000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Appropriations",
+            "Data Privacy"
+          ],
+          "registrants": [
+            "Tenagrity Solutions, LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            30000.0,
+            20000.0,
+            40000.0,
+            20000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            80000.0
+          ],
+          "examples": [
+            {
+              "uuid": "3209f2e9-179d-4e11-835c-6eb7f03d07fa",
+              "date": "2026-07-24T15:20:19-04:00",
+              "client": "1day Sooner Action Project",
+              "registrant": "Tenagrity Solutions, LLC",
+              "income": 10000.0
+            }
+          ]
+        },
+        {
+          "key": "COUNCIL FOR INVESTOR RIGHTS AND CORPORATE ACCOUNTABILITY",
+          "name": "Council for Investor Rights and Corporate Accountability, Inc.",
+          "current": 10000.0,
+          "baseline": 0.0,
+          "delta": 10000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Ius Impact LLC"
+          ],
+          "series": [
+            50000.0,
+            50000.0,
+            50000.0,
+            50000.0,
+            50000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            50000.0,
+            50000.0,
+            50000.0,
+            50000.0,
+            90000.0,
+            130000.0,
+            120000.0,
+            110000.0,
+            90000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            80000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            60000.0
+          ],
+          "examples": [
+            {
+              "uuid": "c6fb867e-578c-48ad-8bb6-78dcd0caadf6",
+              "date": "2026-07-20T22:59:54-04:00",
+              "client": "Council for Investor Rights and Corporate Accountability, Inc.",
+              "registrant": "Ius Impact LLC",
+              "income": 10000.0
+            }
+          ]
+        },
+        {
+          "key": "SJOGRENS FOUNDATION",
+          "name": "Sjogrens Foundation",
+          "current": 10000.0,
+          "baseline": 0.0,
+          "delta": 10000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [
+            "Medicare and Medicaid"
+          ],
+          "registrants": [
+            "Foley Hoag LLP"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            6000.0,
+            6000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            18000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0
+          ],
+          "examples": [
+            {
+              "uuid": "31b37f88-8e6e-4c34-8a0c-2a222a3213ed",
+              "date": "2026-08-07T15:50:50-04:00",
+              "client": "Sjogrens Foundation",
+              "registrant": "Foley Hoag LLP",
+              "income": 10000.0
+            }
+          ]
+        },
+        {
+          "key": "ENERGY EIGHT",
+          "name": "Energy Eight LLC",
+          "current": 10000.0,
+          "baseline": 0.0,
+          "delta": 10000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Thornrose Ventures"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            80000.0
+          ],
+          "examples": [
+            {
+              "uuid": "5cc7f939-d271-4c96-a5a7-89eecc8f2ef5",
+              "date": "2026-07-22T12:46:51-04:00",
+              "client": "Energy Eight LLC",
+              "registrant": "Thornrose Ventures",
+              "income": 10000.0
+            }
+          ]
+        },
+        {
+          "key": "ASSOCIATION FOR ADVANCING PHYSICIAN AND PROVIDER RECRUITMENT",
+          "name": "Association for Advancing Physician and Provider Recruitment",
+          "current": 10000.0,
+          "baseline": 0.0,
+          "delta": 10000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Foley Hoag LLP"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            24000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0
+          ],
+          "examples": [
+            {
+              "uuid": "65da6423-d536-496d-b248-fb1cbf84dd7e",
+              "date": "2026-08-07T15:52:46-04:00",
+              "client": "Association for Advancing Physician and Provider Recruitment",
+              "registrant": "Foley Hoag LLP",
+              "income": 10000.0
+            }
+          ]
+        },
+        {
+          "key": "GOLDCO",
+          "name": "Goldco",
+          "current": 10000.0,
+          "baseline": 0.0,
+          "delta": 10000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Liberty Government Affairs"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            30000.0,
+            80000.0,
+            90000.0,
+            95000.0,
+            65000.0,
+            0.0
+          ],
+          "examples": [
+            {
+              "uuid": "29c6a500-ec45-493b-908d-e68543e66f83",
+              "date": "2026-04-09T13:24:24-04:00",
+              "client": "Goldco",
+              "registrant": "Liberty Government Affairs",
+              "income": 10000.0
+            }
+          ]
+        },
+        {
+          "key": "NATIONAL HORSEMENS BENEVOLENT AND PROTECTIVE ASSOCIATION",
+          "name": "National Horsemen's Benevolent and Protective Association (hbpa)",
           "current": 10000.0,
           "baseline": 0.0,
           "delta": 10000.0,
@@ -17164,22 +17301,22 @@
             20000.0,
             20000.0,
             20000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0
           ],
           "examples": [
             {
-              "uuid": "b06ff166-54cd-4560-b495-fee1c12e445c",
-              "date": "2026-08-28T16:59:05-04:00",
-              "client": "United States Trotting Association (usta)",
+              "uuid": "eaee79e2-ad01-4b85-b8a2-9158e1542ed7",
+              "date": "2026-08-28T16:51:36-04:00",
+              "client": "National Horsemen's Benevolent and Protective Association (hbpa)",
               "registrant": "The Ingram Group LLC",
               "income": 10000.0
             }
@@ -17291,6 +17428,47 @@
           ]
         },
         {
+          "key": "HONEYWELL INTERNATIONAL",
+          "name": "Honeywell International",
+          "current": 0.0,
+          "baseline": 40000.0,
+          "delta": -40000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            1643000.0,
+            1773000.0,
+            1363000.0,
+            1460000.0,
+            1643000.0,
+            1543000.0,
+            1803000.0,
+            1873000.0,
+            2043000.0,
+            2213000.0,
+            2233000.0,
+            2473000.0,
+            2230000.0,
+            2430000.0,
+            2450000.0,
+            3130000.0,
+            2815000.0,
+            3105000.0,
+            2690000.0,
+            2910000.0,
+            3590000.0,
+            3670000.0,
+            3320000.0,
+            2560000.0,
+            2530000.0,
+            2220000.0
+          ],
+          "examples": []
+        },
+        {
           "key": "SHEIN TECHNOLOGY",
           "name": "Shein Technology LLC",
           "current": 0.0,
@@ -17328,47 +17506,6 @@
             250000.0,
             280000.0,
             280000.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "PRIMARY CARE COLLABORATIVE",
-          "name": "Primary Care Collaborative",
-          "current": 0.0,
-          "baseline": 11000.0,
-          "delta": -11000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            10000.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            32000.0,
-            33000.0,
-            21000.0,
-            0.0,
-            10000.0,
-            40000.0
           ],
           "examples": []
         },
@@ -17414,11 +17551,11 @@
           "examples": []
         },
         {
-          "key": "SHARED HOPE INTERNATIONAL",
-          "name": "Shared Hope International",
+          "key": "PRIMARY CARE COLLABORATIVE",
+          "name": "Primary Care Collaborative",
           "current": 0.0,
-          "baseline": 16500.0,
-          "delta": -16500.0,
+          "baseline": 11000.0,
+          "delta": -11000.0,
           "ratio": 0.0,
           "filings_current": 0,
           "filings_baseline": 1,
@@ -17426,318 +17563,31 @@
           "registrants": [],
           "series": [
             0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            8250.0,
-            16500.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "LEDGER",
-          "name": "Ledger",
-          "current": 0.0,
-          "baseline": 12500.0,
-          "delta": -12500.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            10000.0,
-            40000.0,
-            40000.0,
-            12500.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "METRIKA",
-          "name": "Metrika, Inc.",
-          "current": 0.0,
-          "baseline": 10000.0,
-          "delta": -10000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            23000.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            20000.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "PETERSONS",
-          "name": "Peterson's, LLC",
-          "current": 0.0,
-          "baseline": 10000.0,
-          "delta": -10000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            60000.0,
-            60000.0,
             10000.0,
             0.0,
             0.0,
-            0.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "FOOD SOLUTIONS ACTION",
-          "name": "Food Solutions Action",
-          "current": 0.0,
-          "baseline": 10000.0,
-          "delta": -10000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
             0.0,
             0.0,
             0.0,
             0.0,
             0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            32000.0,
+            33000.0,
+            21000.0,
             0.0,
             10000.0,
-            10000.0,
-            10000.0,
-            60000.0,
-            110000.0,
-            190000.0,
-            220000.0,
-            160000.0,
-            140000.0,
-            250000.0,
-            250000.0,
-            250000.0,
-            250000.0,
-            250000.0,
-            280000.0,
-            310000.0,
-            270000.0,
-            230000.0,
-            250000.0,
-            240000.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "SENIOR CITIZENS LEAGUE",
-          "name": "The Senior Citizens League",
-          "current": 0.0,
-          "baseline": 20000.0,
-          "delta": -20000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "HONEYWELL INTERNATIONAL",
-          "name": "Honeywell International",
-          "current": 0.0,
-          "baseline": 40000.0,
-          "delta": -40000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            1643000.0,
-            1773000.0,
-            1363000.0,
-            1460000.0,
-            1643000.0,
-            1543000.0,
-            1803000.0,
-            1873000.0,
-            2043000.0,
-            2213000.0,
-            2233000.0,
-            2473000.0,
-            2230000.0,
-            2430000.0,
-            2450000.0,
-            3130000.0,
-            2815000.0,
-            3105000.0,
-            2690000.0,
-            2910000.0,
-            3590000.0,
-            3670000.0,
-            3320000.0,
-            2560000.0,
-            2530000.0,
-            2220000.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "GUIDESTONE FINANCIAL RESOURCES",
-          "name": "Guidestone Financial Resources",
-          "current": 0.0,
-          "baseline": 20000.0,
-          "delta": -20000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            0.0,
-            0.0,
-            0.0
+            40000.0
           ],
           "examples": []
         },
@@ -17783,11 +17633,11 @@
           "examples": []
         },
         {
-          "key": "WISDOMTREE DIGITAL MANAGEMENT",
-          "name": "Wisdomtree Digital Management",
+          "key": "PROCORE TECHNOLOGIES",
+          "name": "Procore Technologies, Inc.",
           "current": 0.0,
-          "baseline": 10000.0,
-          "delta": -10000.0,
+          "baseline": 20000.0,
+          "delta": -20000.0,
           "ratio": 0.0,
           "filings_current": 0,
           "filings_baseline": 1,
@@ -17811,147 +17661,24 @@
             0.0,
             0.0,
             0.0,
-            0.0,
-            0.0,
-            0.0,
-            10000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            30000.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "FIRST SOLAR",
-          "name": "First Solar Inc.",
-          "current": 0.0,
-          "baseline": 60000.0,
-          "delta": -60000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
             40000.0,
-            140000.0,
-            40000.0,
-            60000.0,
-            100000.0,
-            176000.0,
-            90000.0,
-            100000.0,
-            90000.0,
-            90000.0,
-            90000.0,
-            160000.0,
-            360000.0,
-            340000.0,
-            340000.0,
-            370000.0,
-            500000.0,
-            320000.0,
-            320000.0,
-            400000.0,
-            690000.0,
-            726000.0,
-            470000.0,
-            440000.0,
-            440000.0,
-            440000.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "COGNITIVE SPACE",
-          "name": "Cognitive Space",
-          "current": 0.0,
-          "baseline": 6000.0,
-          "delta": -6000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
             10000.0,
             0.0,
-            0.0,
-            0.0,
-            0.0,
-            15200.0,
-            6000.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "TRELLISWARE TECHNOLOGIES",
-          "name": "Trellisware Technologies",
-          "current": 0.0,
-          "baseline": 10000.0,
-          "delta": -10000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
             20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            10000.0,
             50000.0,
-            60000.0,
-            60000.0
+            20000.0,
+            0.0,
+            90000.0,
+            90000.0
           ],
           "examples": []
         },
         {
-          "key": "DESERT MOUNTAIN ENERGY",
-          "name": "Desert Mountain Energy",
+          "key": "FOOD SOLUTIONS ACTION",
+          "name": "Food Solutions Action",
           "current": 0.0,
-          "baseline": 45000.0,
-          "delta": -45000.0,
+          "baseline": 10000.0,
+          "delta": -10000.0,
           "ratio": 0.0,
           "filings_current": 0,
           "filings_baseline": 1,
@@ -17964,26 +17691,26 @@
             0.0,
             0.0,
             0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            45000.0,
-            45000.0,
-            45000.0,
-            45000.0,
-            45000.0,
-            45000.0,
-            0.0,
-            0.0,
-            0.0
+            10000.0,
+            10000.0,
+            10000.0,
+            60000.0,
+            110000.0,
+            190000.0,
+            220000.0,
+            160000.0,
+            140000.0,
+            250000.0,
+            250000.0,
+            250000.0,
+            250000.0,
+            250000.0,
+            280000.0,
+            310000.0,
+            270000.0,
+            230000.0,
+            250000.0,
+            240000.0
           ],
           "examples": []
         },
@@ -18029,11 +17756,11 @@
           "examples": []
         },
         {
-          "key": "LIFESCIENCE LOGISTICS",
-          "name": "Lifescience Logistics",
+          "key": "COGNITIVE SPACE",
+          "name": "Cognitive Space",
           "current": 0.0,
-          "baseline": 10000.0,
-          "delta": -10000.0,
+          "baseline": 6000.0,
+          "delta": -6000.0,
           "ratio": 0.0,
           "filings_current": 0,
           "filings_baseline": 1,
@@ -18043,67 +17770,26 @@
             0.0,
             0.0,
             0.0,
-            30000.0,
-            30000.0,
-            30000.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             0.0,
             10000.0,
-            50000.0,
-            80000.0,
-            50000.0,
-            50000.0,
-            50000.0,
-            40000.0,
-            50000.0,
-            50000.0,
-            80000.0,
-            200000.0,
-            115000.0,
-            130000.0,
-            160000.0,
-            230000.0,
-            120000.0,
-            130000.0,
-            130000.0,
-            130000.0
-          ],
-          "examples": []
-        },
-        {
-          "key": "NAVY LEAGUE OF THE UNITED STATES",
-          "name": "Navy League of the United States",
-          "current": 0.0,
-          "baseline": 27500.0,
-          "delta": -27500.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            23375.0,
-            23375.0,
-            23375.0,
-            23375.0,
-            23375.0,
-            23375.0,
-            23375.0,
-            23375.0,
-            26750.0,
-            26750.0,
-            26750.0,
-            26750.0,
-            26750.0,
-            26750.0,
-            26750.0,
-            27500.0,
-            27500.0,
-            27500.0,
-            27500.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            15200.0,
+            6000.0,
             0.0,
             0.0,
             0.0
@@ -18152,47 +17838,6 @@
           "examples": []
         },
         {
-          "key": "BOLTON",
-          "name": "Bolton USA",
-          "current": 0.0,
-          "baseline": 30000.0,
-          "delta": -30000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            30000.0,
-            30000.0,
-            30000.0,
-            0.0,
-            0.0,
-            30000.0,
-            30000.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "examples": []
-        },
-        {
           "key": "NATIONAL DOMESTIC VIOLENCE HOTLINE",
           "name": "National Domestic Violence Hotline",
           "current": 0.0,
@@ -18234,11 +17879,52 @@
           "examples": []
         },
         {
-          "key": "PROCORE TECHNOLOGIES",
-          "name": "Procore Technologies, Inc.",
+          "key": "LIFESCIENCE LOGISTICS",
+          "name": "Lifescience Logistics",
           "current": 0.0,
-          "baseline": 20000.0,
-          "delta": -20000.0,
+          "baseline": 10000.0,
+          "delta": -10000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            0.0,
+            10000.0,
+            50000.0,
+            80000.0,
+            50000.0,
+            50000.0,
+            50000.0,
+            40000.0,
+            50000.0,
+            50000.0,
+            80000.0,
+            200000.0,
+            115000.0,
+            130000.0,
+            160000.0,
+            230000.0,
+            120000.0,
+            130000.0,
+            130000.0,
+            130000.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "LEDGER",
+          "name": "Ledger",
+          "current": 0.0,
+          "baseline": 12500.0,
+          "delta": -12500.0,
           "ratio": 0.0,
           "filings_current": 0,
           "filings_baseline": 1,
@@ -18262,15 +17948,302 @@
             0.0,
             0.0,
             0.0,
+            0.0,
+            0.0,
+            10000.0,
             40000.0,
+            40000.0,
+            12500.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "DESERT MOUNTAIN ENERGY",
+          "name": "Desert Mountain Energy",
+          "current": 0.0,
+          "baseline": 45000.0,
+          "delta": -45000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            45000.0,
+            45000.0,
+            45000.0,
+            45000.0,
+            45000.0,
+            45000.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "NAVY LEAGUE OF THE UNITED STATES",
+          "name": "Navy League of the United States",
+          "current": 0.0,
+          "baseline": 27500.0,
+          "delta": -27500.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            23375.0,
+            23375.0,
+            23375.0,
+            23375.0,
+            23375.0,
+            23375.0,
+            23375.0,
+            23375.0,
+            26750.0,
+            26750.0,
+            26750.0,
+            26750.0,
+            26750.0,
+            26750.0,
+            26750.0,
+            27500.0,
+            27500.0,
+            27500.0,
+            27500.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "WISDOMTREE DIGITAL MANAGEMENT",
+          "name": "Wisdomtree Digital Management",
+          "current": 0.0,
+          "baseline": 10000.0,
+          "delta": -10000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            10000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "PETERSONS",
+          "name": "Peterson's, LLC",
+          "current": 0.0,
+          "baseline": 10000.0,
+          "delta": -10000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            60000.0,
+            60000.0,
             10000.0,
             0.0,
-            20000.0,
-            50000.0,
-            20000.0,
             0.0,
+            0.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "TRELLISWARE TECHNOLOGIES",
+          "name": "Trellisware Technologies",
+          "current": 0.0,
+          "baseline": 10000.0,
+          "delta": -10000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            10000.0,
+            50000.0,
+            60000.0,
+            60000.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "FIRST SOLAR",
+          "name": "First Solar Inc.",
+          "current": 0.0,
+          "baseline": 60000.0,
+          "delta": -60000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            40000.0,
+            140000.0,
+            40000.0,
+            60000.0,
+            100000.0,
+            176000.0,
             90000.0,
-            90000.0
+            100000.0,
+            90000.0,
+            90000.0,
+            90000.0,
+            160000.0,
+            360000.0,
+            340000.0,
+            340000.0,
+            370000.0,
+            500000.0,
+            320000.0,
+            320000.0,
+            400000.0,
+            690000.0,
+            726000.0,
+            470000.0,
+            440000.0,
+            440000.0,
+            440000.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "METRIKA",
+          "name": "Metrika, Inc.",
+          "current": 0.0,
+          "baseline": 10000.0,
+          "delta": -10000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            23000.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            20000.0
           ],
           "examples": []
         },
@@ -18314,9 +18287,173 @@
             110000.0
           ],
           "examples": []
+        },
+        {
+          "key": "SHARED HOPE INTERNATIONAL",
+          "name": "Shared Hope International",
+          "current": 0.0,
+          "baseline": 16500.0,
+          "delta": -16500.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            8250.0,
+            16500.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "BOLTON",
+          "name": "Bolton USA",
+          "current": 0.0,
+          "baseline": 30000.0,
+          "delta": -30000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            0.0,
+            0.0,
+            30000.0,
+            30000.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "GUIDESTONE FINANCIAL RESOURCES",
+          "name": "Guidestone Financial Resources",
+          "current": 0.0,
+          "baseline": 20000.0,
+          "delta": -20000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": []
+        },
+        {
+          "key": "SENIOR CITIZENS LEAGUE",
+          "name": "The Senior Citizens League",
+          "current": 0.0,
+          "baseline": 20000.0,
+          "delta": -20000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": []
         }
       ],
-      "through": "2026-08-31"
+      "through": "2026-09-01"
     }
   },
   "quarters": [
