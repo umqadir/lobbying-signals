@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T14:03:05.881813+00:00",
+  "generated_at": "2026-09-14T16:08:28.274815+00:00",
   "frame": "quarter",
   "frame_label": "Q2 2026",
   "status": "needs_attention",
@@ -17,17 +17,17 @@
     "errors": 198
   },
   "metrics": {
-    "mentions_current_quarter": 45791,
+    "mentions_current_quarter": 45803,
     "mentions_baseline_quarter": 43905,
     "mentions_vs_yoy_pct": 4.3,
-    "filings_current_90d": 26261,
-    "filings_prev_90d": 25677,
-    "filings_yoy_90d": 24263,
+    "filings_current_90d": 26254,
+    "filings_prev_90d": 25660,
+    "filings_yoy_90d": 24271,
     "filings_vs_prev_pct": 2.3,
     "filings_vs_yoy_pct": 8.2,
-    "due_vs_non_due_ratio_4y": 20.71,
+    "due_vs_non_due_ratio_4y": 20.74,
     "due_month_avg_filings": 11627.8,
-    "non_due_month_avg_filings": 561.5,
+    "non_due_month_avg_filings": 560.6,
     "quarter_due_month_share_pct": 91.2,
     "coverage_recent_90d_pct": 96.2,
     "coverage_all_time_pct": 95.6,
@@ -44,7 +44,7 @@
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 20.71x filing volume vs other months."
+      "detail": "Due-cycle months average 20.74x filing volume vs other months."
     },
     {
       "severity": "medium",
