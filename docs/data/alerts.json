@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T14:34:59.889652+00:00",
+  "generated_at": "2026-09-17T14:40:23.821700+00:00",
   "alerts": [
     {
       "type": "signal",
@@ -7,7 +7,7 @@
       "name": "One Big Beautiful Bill Act",
       "current_count": 1917,
       "baseline_count": 4842,
-      "share_delta_pp": -6.845,
+      "share_delta_pp": -6.847,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -17,15 +17,15 @@
         "Amazon.com Services LLC"
       ],
       "total_income": 300092367.0,
-      "headline": "One Big Beautiful Bill Act share down 6.84 pp vs Q2 2025 (1917 mentions)"
+      "headline": "One Big Beautiful Bill Act share down 6.85 pp vs Q2 2025 (1917 mentions)"
     },
     {
       "type": "signal",
       "category": "topic",
       "name": "Tax Policy",
-      "current_count": 1293,
+      "current_count": 1294,
       "baseline_count": 1923,
-      "share_delta_pp": -1.558,
+      "share_delta_pp": -1.557,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -35,7 +35,7 @@
         "Amazon.com"
       ],
       "total_income": 310062046.59000003,
-      "headline": "'Tax Policy' share down 1.56 pp vs Q2 2025 (1293 mentions)"
+      "headline": "'Tax Policy' share down 1.56 pp vs Q2 2025 (1294 mentions)"
     },
     {
       "type": "signal",
@@ -77,9 +77,9 @@
       "type": "signal",
       "category": "topic",
       "name": "Defense Authorization",
-      "current_count": 2134,
+      "current_count": 2137,
       "baseline_count": 1487,
-      "share_delta_pp": 1.27,
+      "share_delta_pp": 1.275,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -88,8 +88,8 @@
         "Amazon.com Services LLC",
         "RTX Corporation and Affiliates"
       ],
-      "total_income": 309373872.29,
-      "headline": "'Defense Authorization' share up 1.27 pp vs Q2 2025 (2134 mentions)"
+      "total_income": 309575577.29,
+      "headline": "'Defense Authorization' share up 1.27 pp vs Q2 2025 (2137 mentions)"
     },
     {
       "type": "signal",
@@ -115,7 +115,7 @@
       "name": "Executive Office of the President",
       "current_count": 2106,
       "baseline_count": 1515,
-      "share_delta_pp": 1.145,
+      "share_delta_pp": 1.143,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -125,13 +125,13 @@
         "Lockheed Martin Corporation"
       ],
       "total_income": 250680915.29,
-      "headline": "Executive Office of the President attention up 1.15 pp vs Q2 2025 (2106 mentions)"
+      "headline": "Executive Office of the President attention up 1.14 pp vs Q2 2025 (2106 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Treasury",
-      "current_count": 2338,
+      "current_count": 2339,
       "baseline_count": 1781,
       "share_delta_pp": 1.046,
       "signal_confidence": "high",
@@ -143,7 +143,7 @@
         "Meta Platforms, Inc."
       ],
       "total_income": 378959618.59000003,
-      "headline": "Treasury attention up 1.05 pp vs Q2 2025 (2338 mentions)"
+      "headline": "Treasury attention up 1.05 pp vs Q2 2025 (2339 mentions)"
     },
     {
       "type": "signal",
@@ -151,7 +151,7 @@
       "name": "Department of Commerce",
       "current_count": 2557,
       "baseline_count": 2048,
-      "share_delta_pp": 0.915,
+      "share_delta_pp": 0.913,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -161,7 +161,7 @@
         "Amazon.com Services LLC"
       ],
       "total_income": 363161386.07,
-      "headline": "Department of Commerce attention up 0.92 pp vs Q2 2025 (2557 mentions)"
+      "headline": "Department of Commerce attention up 0.91 pp vs Q2 2025 (2557 mentions)"
     },
     {
       "type": "signal",
@@ -169,7 +169,7 @@
       "name": "Related Agencies Appropriations Act",
       "current_count": 1067,
       "baseline_count": 627,
-      "share_delta_pp": 0.9,
+      "share_delta_pp": 0.899,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -183,11 +183,29 @@
     },
     {
       "type": "signal",
+      "category": "legislation",
+      "name": "National Defense Authorization Act",
+      "current_count": 1157,
+      "baseline_count": 740,
+      "share_delta_pp": 0.838,
+      "signal_confidence": "high",
+      "top_clients": [
+        "Chamber of Commerce of the U.S.A.",
+        "Pharmaceutical Research and Manufacturers of America",
+        "Amazon.com Services LLC",
+        "Lockheed Martin Corporation",
+        "RTX Corporation and Affiliates"
+      ],
+      "total_income": 203381159.29,
+      "headline": "National Defense Authorization Act share up 0.84 pp vs Q2 2025 (1157 mentions)"
+    },
+    {
+      "type": "signal",
       "category": "entity",
       "name": "White House",
       "current_count": 3350,
       "baseline_count": 2842,
-      "share_delta_pp": 0.837,
+      "share_delta_pp": 0.834,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -197,33 +215,15 @@
         "Lockheed Martin Corporation"
       ],
       "total_income": 370915320.65999997,
-      "headline": "White House attention up 0.84 pp vs Q2 2025 (3350 mentions)"
-    },
-    {
-      "type": "signal",
-      "category": "legislation",
-      "name": "National Defense Authorization Act",
-      "current_count": 1155,
-      "baseline_count": 740,
-      "share_delta_pp": 0.835,
-      "signal_confidence": "high",
-      "top_clients": [
-        "Chamber of Commerce of the U.S.A.",
-        "Pharmaceutical Research and Manufacturers of America",
-        "Amazon.com Services LLC",
-        "Lockheed Martin Corporation",
-        "RTX Corporation and Affiliates"
-      ],
-      "total_income": 203209454.29,
-      "headline": "National Defense Authorization Act share up 0.83 pp vs Q2 2025 (1155 mentions)"
+      "headline": "White House attention up 0.83 pp vs Q2 2025 (3350 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Department of Energy",
-      "current_count": 2231,
+      "current_count": 2232,
       "baseline_count": 1801,
-      "share_delta_pp": 0.766,
+      "share_delta_pp": 0.767,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -232,14 +232,14 @@
         "Amazon.com Services LLC",
         "RTX Corporation"
       ],
-      "total_income": 257261154.66,
-      "headline": "Department of Energy attention up 0.77 pp vs Q2 2025 (2231 mentions)"
+      "total_income": 257321154.66,
+      "headline": "Department of Energy attention up 0.77 pp vs Q2 2025 (2232 mentions)"
     },
     {
       "type": "signal",
       "category": "topic",
       "name": "Housing Policy",
-      "current_count": 1630,
+      "current_count": 1631,
       "baseline_count": 1266,
       "share_delta_pp": 0.674,
       "signal_confidence": "high",
@@ -250,8 +250,8 @@
         "American Bankers Association",
         "General Motors"
       ],
-      "total_income": 167054261.76999998,
-      "headline": "'Housing Policy' share up 0.67 pp vs Q2 2025 (1630 mentions)"
+      "total_income": 167084261.76999998,
+      "headline": "'Housing Policy' share up 0.67 pp vs Q2 2025 (1631 mentions)"
     },
     {
       "type": "signal",
@@ -259,7 +259,7 @@
       "name": "HHS",
       "current_count": 2776,
       "baseline_count": 2376,
-      "share_delta_pp": 0.646,
+      "share_delta_pp": 0.644,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -269,15 +269,15 @@
         "American Hospital Association"
       ],
       "total_income": 278632815.17,
-      "headline": "HHS attention up 0.65 pp vs Q2 2025 (2776 mentions)"
+      "headline": "HHS attention up 0.64 pp vs Q2 2025 (2776 mentions)"
     },
     {
       "type": "signal",
       "category": "entity",
       "name": "Department of Defense",
-      "current_count": 3257,
+      "current_count": 3258,
       "baseline_count": 2866,
-      "share_delta_pp": 0.58,
+      "share_delta_pp": 0.579,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -286,8 +286,8 @@
         "Amazon.com Services LLC",
         "Lockheed Martin Corporation"
       ],
-      "total_income": 290388381.59000003,
-      "headline": "Department of Defense attention up 0.58 pp vs Q2 2025 (3257 mentions)"
+      "total_income": 290448381.59000003,
+      "headline": "Department of Defense attention up 0.58 pp vs Q2 2025 (3258 mentions)"
     },
     {
       "type": "signal",
@@ -295,7 +295,7 @@
       "name": "Department of the Interior",
       "current_count": 1369,
       "baseline_count": 1067,
-      "share_delta_pp": 0.557,
+      "share_delta_pp": 0.556,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -313,7 +313,7 @@
       "name": "USTR",
       "current_count": 1426,
       "baseline_count": 1126,
-      "share_delta_pp": 0.547,
+      "share_delta_pp": 0.546,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
@@ -349,7 +349,7 @@
       "name": "OMB",
       "current_count": 1225,
       "baseline_count": 963,
-      "share_delta_pp": 0.48,
+      "share_delta_pp": 0.479,
       "signal_confidence": "high",
       "top_clients": [
         "Chamber of Commerce of the U.S.A.",
