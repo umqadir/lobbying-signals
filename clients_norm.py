@@ -119,6 +119,86 @@ _FORMER_NAME_ALIASES = {
     # Dominant continuing entity renamed after a bolt-on merger (Skydance's
     # own small, separate lobbying stays under its own key).
     'PARAMOUNT GLOBAL': 'PARAMOUNT SKYDANCE',    # Paramount Global -> Paramount Skydance Corp, Aug 2025
+
+    # ── Monthly identity review, 2026-09 ──
+    # Renames/rebrands of ONE continuing organization, verified against the
+    # raw FKA/FORMERLY evidence in the filings plus corporate/press records.
+    # Acquisitions, spin-offs, joint ventures, and distinct-operation sister
+    # subsidiaries were deliberately left split (see the PR).
+
+    # Trade associations, nonprofits & public agencies that renamed
+    'NATIONAL CANNABIS ROUNDTABLE': 'US CANNABIS ROUNDTABLE',   # rebranded 2024
+    'GAS TECHNOLOGY INSTITUTE': 'GTI ENERGY',                   # GTI Energy, 2022
+    'SONOMA COUNTY WATER AGENCY': 'SONOMA WATER',               # d/b/a Sonoma Water, 2018
+    # American Wild Horse Campaign -> American Wild Horse Conservation (2024).
+    # The org's raw filing name ("... CONSERVATION - FORMERLY ...") leaves a
+    # trailing "-" after the bare-former-tail strip, minting a separate key;
+    # both the old name and that dashed artifact fold to the clean key.
+    'AMERICAN WILD HORSE CAMPAIGN': 'AMERICAN WILD HORSE CONSERVATION',
+    'AMERICAN WILD HORSE CONSERVATION -': 'AMERICAN WILD HORSE CONSERVATION',
+
+    # Companies that renamed/rebranded (same legal entity continuing)
+    'FLEXTRONICS INTERNATIONAL': 'FLEX',         # Flextronics International -> Flex Ltd, 2015
+    'SHORELIGHT EDUCATION': 'SHORELIGHT',        # dropped "Education" from the LLC name
+    'QUALTRICS': 'QUALTRICS INTERNATIONAL',      # Qualtrics LLC -> Qualtrics International Inc
+    'ST ENGINEERING': 'STE',                     # ST Engineering North America -> STE North America
+    'BRAEBURN PHARMACEUTICALS': 'BRAEBURN',      # Braeburn Pharmaceuticals Inc -> Braeburn Inc
+    'BDV SOLUTIONS': 'VANTEO',                   # BDV Solutions rebranded as Vanteo, 2025
+    'TETHER OPERATIONS SA DE CV': 'TETHER HOLDINGS SA DE CV',   # same S.A. de C.V. entity renamed
+
+    # Continuing entity that gained a parent tag on its filing name (NOT a
+    # fold into a separate acquirer's own key — the shipyard's own lobbying
+    # identity continues, cf. AEROJET ROCKETDYNE above).
+    'PHILLY SHIPYARD': 'HANWHA PHILLY SHIPYARD',   # renamed after Hanwha's Dec 2024 acquisition
+
+    # Surviving parent entity renamed in a merger of equals. CONSOL Energy
+    # Inc (the parent) was renamed Core Natural Resources Inc; Arch became a
+    # wholly-owned subsidiary. Arch Resources' own pre-merger lobbying stays
+    # under its own key (cf. PARAMOUNT SKYDANCE above).
+    'CONSOL ENERGY': 'CORE NATURAL RESOURCES',
+
+    # Same legal entity, round-trip rename. Domtar Corporation was renamed
+    # Paper Excellence Holdings Corporation after the 2021 buyout, then back
+    # to Domtar Corporation when the group rebranded as Domtar (Oct 2024);
+    # the filing name carries the full "DOMTAR FKA PAPER EXCELLENCE ... FKA
+    # DOMTAR" chain. This folds that one entity's interim name, not a
+    # separate Paper Excellence lobbying identity.
+    'PAPER EXCELLENCE': 'DOMTAR',
+
+    # US filing entity renamed: Airbus Group Inc -> Airbus Americas Inc
+    # (the "AIRBUS" key holds only the old US-entity spellings, not a
+    # separate global-parent lobbying identity).
+    'AIRBUS': 'AIRBUS AMERICAS',
+
+    # Same organization relabeling the in-house entity it files under
+    'HEALTHFIRST': 'HF MANAGEMENT',              # Healthfirst -> HF Management Services LLC (its corporate entity, a/k/a Healthfirst)
+    'NAVIENT': 'NAVIENT SOLUTIONS',              # Navient Corp -> its Navient Solutions LLC operating sub (holds the bulk of the spend)
+    'AMERICAN PUBLIC UNIVERSITY SYSTEM': 'APEI', # APUS filer relabeled up to its wholly-owning parent, American Public Education Inc
+
+    # Duplicate keys the mechanical rules left split (suffix/DBA/typo/acronym
+    # variants, or a parent's principal operating/services vehicle) that
+    # research confirms are ONE organization. Distinct-operation sisters,
+    # JVs, and acquired entities with their own histories stay split.
+    'VERIZON': 'VERIZON COMMUNICATIONS',         # "Verizon" / "Verizon Services Corp" == Verizon Communications Inc
+    'TOYOTA': 'TOYOTA MOTOR',                    # "Toyota (North America)" == Toyota Motor North America
+    'DELL': 'DELL TECHNOLOGIES',                 # Dell Inc / Dell USA LP == Dell Technologies
+    'ABBOTT': 'ABBOTT LABORATORIES',             # brand vs full legal name
+    'ASTRAZENECA': 'ASTRAZENECA PHARMACEUTICALS',# brand vs US operating LP
+    'MASTERCARD WORLDWIDE': 'MASTERCARD',        # legacy branding of the same company
+    'ORACLE AMERICAN': 'ORACLE',                 # typo of "Oracle America, Inc."
+    'DOW CHEMICAL COMPANY DBA DOW': 'DOW CHEMICAL',  # bare "DBA DOW" tail not stripped mechanically
+    'ELECTRONIC PAYMENTS COALITION (EPC)': 'ELECTRONIC PAYMENTS COALITION',  # quoted acronym survived the self-acronym test
+    'NATIONAL ASSOCIATION OF CHILDRENS HOSPITALS (NACH)-CHA': 'NATIONAL ASSOCIATION OF CHILDRENS HOSPITALS',  # N.A.C.H.-CHA == the same association
+    'GENERAL ELECTRIC COMPANY (INCLUDING SUBSIDIARIES)': 'GENERAL ELECTRIC',  # scope-note parenthetical, same GE (Aerospace) filer
+    'CHARTER COMMUNICATIONS OPERATING': 'CHARTER COMMUNICATIONS',  # Charter's operating LLC
+    'DUKE ENERGY BUSINESS': 'DUKE ENERGY',       # Duke Energy Business Services LLC, its shared-services shell
+    'FLUOR ENTERPRISES': 'FLUOR',                # Fluor's principal US operating subsidiary
+    'LIBERTY MUTUAL INSURANCE': 'LIBERTY MUTUAL',# Liberty Mutual Insurance Co == Liberty Mutual Group
+    'NORTHROP GRUMMAN SYSTEMS': 'NORTHROP GRUMMAN',  # Northrop Grumman Systems Corp, its principal operating entity
+    # Same subsidiary (General Atomics Aeronautical Systems, Inc.) split only
+    # by a hyphen; heal to the un-hyphenated GA-ASI key. GA-ASI stays its own
+    # identity, distinct from the General Atomics parent key.
+    'GENERAL ATOMICS - AERONAUTICAL SYSTEMS': 'GENERAL ATOMICS AERONAUTICAL SYSTEMS',
 }
 
 # Any other trailing parenthetical is stripped when it clearly carries no
