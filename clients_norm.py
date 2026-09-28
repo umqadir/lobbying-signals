@@ -157,23 +157,9 @@ _FORMER_NAME_ALIASES = {
     # under its own key (cf. PARAMOUNT SKYDANCE above).
     'CONSOL ENERGY': 'CORE NATURAL RESOURCES',
 
-    # Same legal entity, round-trip rename. Domtar Corporation was renamed
-    # Paper Excellence Holdings Corporation after the 2021 buyout, then back
-    # to Domtar Corporation when the group rebranded as Domtar (Oct 2024);
-    # the filing name carries the full "DOMTAR FKA PAPER EXCELLENCE ... FKA
-    # DOMTAR" chain. This folds that one entity's interim name, not a
-    # separate Paper Excellence lobbying identity.
-    'PAPER EXCELLENCE': 'DOMTAR',
-
-    # US filing entity renamed: Airbus Group Inc -> Airbus Americas Inc
-    # (the "AIRBUS" key holds only the old US-entity spellings, not a
-    # separate global-parent lobbying identity).
-    'AIRBUS': 'AIRBUS AMERICAS',
-
     # Same organization relabeling the in-house entity it files under
     'HEALTHFIRST': 'HF MANAGEMENT',              # Healthfirst -> HF Management Services LLC (its corporate entity, a/k/a Healthfirst)
     'NAVIENT': 'NAVIENT SOLUTIONS',              # Navient Corp -> its Navient Solutions LLC operating sub (holds the bulk of the spend)
-    'AMERICAN PUBLIC UNIVERSITY SYSTEM': 'APEI', # APUS filer relabeled up to its wholly-owning parent, American Public Education Inc
 
     # Duplicate keys the mechanical rules left split (suffix/DBA/typo/acronym
     # variants, or a parent's principal operating/services vehicle) that
