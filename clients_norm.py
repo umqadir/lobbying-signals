@@ -185,6 +185,44 @@ _FORMER_NAME_ALIASES = {
     # by a hyphen; heal to the un-hyphenated GA-ASI key. GA-ASI stays its own
     # identity, distinct from the General Atomics parent key.
     'GENERAL ATOMICS - AERONAUTICAL SYSTEMS': 'GENERAL ATOMICS AERONAUTICAL SYSTEMS',
+
+    # ── Monthly identity review, 2026-10 ──
+    # Renames/rebrands of ONE continuing organization, plus same-company
+    # short-form / operating-/holding-vehicle variants, verified against the
+    # raw FKA/FORMERLY evidence in the filings and corporate/press records.
+    # Acquisitions, spin-offs, joint ventures, generic-name collisions, and
+    # distinct-operation sister subsidiaries were deliberately left split
+    # (see the PR).
+
+    # Trade associations & companies that renamed (former name -> current)
+    'MOTION PICTURE ASSOCIATION OF AMERICA': 'MOTION PICTURE ASSOCIATION',  # MPAA -> MPA, Sep 2019
+    'SEMPRA ENERGY': 'SEMPRA',                   # dropped "Energy", effective Jul 2021
+    'MORGAN STANLEY DEAN WITTER': 'MORGAN STANLEY',  # reverted to Morgan Stanley, 2002
+    # Same US operating entity (Domtar Corporation) briefly renamed Paper
+    # Excellence Holdings Corporation after Paper Excellence's 2021 acquisition,
+    # then back to Domtar; the raw chains "...FKA PAPER EXCELLENCE HOLDINGS
+    # ... FKA DOMTAR". Paper Excellence had no separate US LDA identity, so
+    # this is a rename of the continuing filer, not a fold into an acquirer.
+    'PAPER EXCELLENCE': 'DOMTAR',
+    # US entity EADS North America -> Airbus Group, Inc. (2014) -> Airbus
+    # Americas, Inc.; the bare "AIRBUS" key comes from the pre-rename "Airbus
+    # Group, Inc." filings. The global parent files as "Airbus SE" (its own key).
+    'AIRBUS': 'AIRBUS AMERICAS',
+
+    # Duplicate keys the mechanical rules left split (short form, principal
+    # operating/holding/services vehicle, or parent<->flagship-subsidiary
+    # relabel) that research confirms are ONE organization.
+    'MASTERCARD INTERNATIONAL': 'MASTERCARD',    # Mastercard International Inc, the operating sub of Mastercard Inc (cf. MASTERCARD WORLDWIDE)
+    'MICRON': 'MICRON TECHNOLOGY',               # short form of Micron Technology, Inc.
+    'VALERO': 'VALERO ENERGY',                   # short form of Valero Energy Corporation
+    'DISTILLED SPIRITS COUNCIL': 'DISTILLED SPIRITS COUNCIL OF THE US',  # DISCUS, same trade association
+    'LUMEN TECHNOLOGIES SERVICE': 'LUMEN TECHNOLOGIES',  # Lumen Technologies Service Group LLC, its services vehicle (cf. CHARTER COMMUNICATIONS OPERATING)
+    'EXELON BUSINESS': 'EXELON',                 # Exelon Business Services Co, Exelon Corp's shared-services shell (cf. DUKE ENERGY BUSINESS)
+    'NEW YORK LIFE': 'NEW YORK LIFE INSURANCE',  # short form of New York Life Insurance Company
+    'HCA': 'HCA HEALTHCARE',                     # HCA Healthcare, Inc. (f/k/a HCA Holdings / Hospital Corp. of America)
+    'BOEHRINGER INGELHEIM PHARMACEUTICALS': 'BOEHRINGER INGELHEIM',  # BI Pharmaceuticals Inc, the US human-pharma entity (Animal Health stays split)
+    'INVESCO': 'INVESCO HOLDING COMPANY (US)',   # Invesco == its US holding entity, where the bulk of the spend files
+    'AMERICAN PUBLIC UNIVERSITY SYSTEM': 'APEI',  # APUS, the wholly-owned flagship of American Public Education, Inc.; filer relabeled to the parent
 }
 
 # Any other trailing parenthetical is stripped when it clearly carries no
