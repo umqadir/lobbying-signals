@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T17:16:59.136903+00:00",
+  "generated_at": "2026-10-07T18:38:58.615807+00:00",
   "frame": "quarter",
   "frame_label": "Q2 2026",
   "status": "needs_attention",
@@ -20,13 +20,13 @@
     "mentions_current_quarter": 45936,
     "mentions_baseline_quarter": 43909,
     "mentions_vs_yoy_pct": 4.6,
-    "filings_current_90d": 25637,
+    "filings_current_90d": 25636,
     "filings_prev_90d": 25140,
     "filings_yoy_90d": 24374,
     "filings_vs_prev_pct": 2.0,
     "filings_vs_yoy_pct": 5.2,
-    "due_vs_non_due_ratio_4y": 19.86,
-    "due_month_avg_filings": 11182.2,
+    "due_vs_non_due_ratio_4y": 19.87,
+    "due_month_avg_filings": 11185.0,
     "non_due_month_avg_filings": 562.9,
     "quarter_due_month_share_pct": 90.9,
     "coverage_recent_90d_pct": 96.1,
@@ -44,7 +44,7 @@
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 19.86x filing volume vs other months."
+      "detail": "Due-cycle months average 19.87x filing volume vs other months."
     },
     {
       "severity": "medium",
