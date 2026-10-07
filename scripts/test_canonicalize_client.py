@@ -188,6 +188,30 @@ KEY_CASES = [
     ("LIBERTY MUTUAL INSURANCE COMPANY", "LIBERTY MUTUAL"),
     ("NORTHROP GRUMMAN SYSTEMS CORPORATION", "NORTHROP GRUMMAN"),
     ("GENERAL ATOMICS - AERONAUTICAL SYSTEMS, INC.", "GENERAL ATOMICS AERONAUTICAL SYSTEMS"),
+
+    # ── Former-name aliases added by the 2026-10 identity review ──
+    # Renames/rebrands of one continuing org: an OLD-name filing folds forward
+    ("MOTION PICTURE ASSOCIATION OF AMERICA, INC.", "MOTION PICTURE ASSOCIATION"),
+    ("SEMPRA ENERGY", "SEMPRA"),
+    ("MORGAN STANLEY DEAN WITTER & CO.", "MORGAN STANLEY"),
+    # Same US Domtar entity, briefly renamed Paper Excellence Holdings and back
+    ("PAPER EXCELLENCE HOLDINGS CORPORATION", "DOMTAR"),
+    # US subsidiary EADS North America -> Airbus Group, Inc. -> Airbus Americas
+    ("AIRBUS GROUP, INC.", "AIRBUS AMERICAS"),
+
+    # Duplicate keys merged: one org fragmented by a short-form / principal
+    # operating-vehicle / parent<->flagship-subsidiary variant
+    ("MASTERCARD INTERNATIONAL INCORPORATED", "MASTERCARD"),
+    ("MICRON", "MICRON TECHNOLOGY"),
+    ("VALERO", "VALERO ENERGY"),
+    ("DISTILLED SPIRITS COUNCIL", "DISTILLED SPIRITS COUNCIL OF THE US"),
+    ("LUMEN TECHNOLOGIES SERVICE GROUP, LLC", "LUMEN TECHNOLOGIES"),
+    ("EXELON BUSINESS SERVICES COMPANY", "EXELON"),
+    ("NEW YORK LIFE", "NEW YORK LIFE INSURANCE"),
+    ("HCA, INC.", "HCA HEALTHCARE"),
+    ("BOEHRINGER INGELHEIM PHARMACEUTICALS, INC.", "BOEHRINGER INGELHEIM"),
+    ("INVESCO", "INVESCO HOLDING COMPANY (US)"),
+    ("AMERICAN PUBLIC UNIVERSITY SYSTEM, INC.", "APEI"),
 ]
 
 # (raw name variants as they'd occur across filings, expected display name)
