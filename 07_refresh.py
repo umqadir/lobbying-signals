@@ -9,6 +9,8 @@ This script is called by GitHub Actions to:
 
 import os
 import sys
+import subprocess
+from pathlib import Path
 from datetime import datetime
 
 from db import init_db
@@ -67,7 +69,25 @@ def refresh(
             conn.close()
         log(f"  Rule-extracted {extracted} activities")
 
-    # 3. Export JSON for dashboard
+    # 3. Reference data persists in the same release DB as the filings.
+    log("Step 3: Refreshing bill introduction dates and official titles...")
+    try:
+        # Shared 100s download/parse budget plus a 110s process watchdog:
+        # even a hung source/DNS/XML parser cannot add two minutes to CI.
+        # Each successfully fetched group is already committed if it times out.
+        subprocess.run(
+            [sys.executable, '-u', str(Path(__file__).resolve().parent /
+                                      'scripts/build_bill_reference.py'),
+             '--max-seconds', '100'],
+            check=True, timeout=110,
+        )
+    except Exception as e:
+        log(f"  Warning: Bill reference refresh failed; using cached data: {e}")
+    # Also reload after a watchdog timeout: completed groups may have committed.
+    from bill_reference import load_reference
+    load_reference.cache_clear()
+
+    # 4. Export JSON for dashboard
     if export:
         log("Step 4: Exporting JSON for dashboard...")
         try:

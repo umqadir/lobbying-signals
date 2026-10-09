@@ -28,6 +28,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from bill_reference import read_reference
 spec = importlib.util.spec_from_file_location("trends", ROOT / "08_trends.py")
 trends = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(trends)
@@ -37,7 +38,7 @@ CANONICAL = set(trends.LEGISLATION_ALIASES.values()) | {
     canonical for _, canonical in trends.KNOWN_ACT_PATTERNS
 }
 
-BARE_NUMBER = re.compile(r'^(H\.R\.|S\.) \d+ \(\d+\w+ Congress\)$')
+BARE_NUMBER = trends.BILL_IDENTITY_RE
 PUBLIC_LAW = re.compile(r'^P\.L\. \d+-\d+$')
 
 
@@ -67,7 +68,7 @@ def main() -> int:
 
     conn = sqlite3.connect(args.db)
     rows = conn.execute('''
-        SELECT e.legislation, f.year
+        SELECT e.legislation, f.year, f.filing_date
         FROM activity_extractions_rules e
         JOIN activities a ON e.activity_id = a.id
         JOIN filings f ON a.filing_id = f.id
@@ -77,13 +78,14 @@ def main() -> int:
     identity_counts = Counter()
     dropped_counts = Counter()          # raw fragment -> count (when it drops to '')
     raw_for_identity = {}               # identity -> Counter of raw variants
-    for legjson, year in rows:
+    reference = read_reference(conn)
+    for legjson, year, filing_date in rows:
         try:
             tags = json.loads(legjson)
         except (TypeError, ValueError):
             continue
         for raw in tags:
-            ident = trends.normalize_legislation(raw, year)
+            ident = trends.normalize_legislation(raw, year, filing_date, reference=reference)
             if not ident:
                 dropped_counts[trends.normalize_tag(raw).lower().strip(' .,;:')] += 1
                 continue

@@ -12,6 +12,7 @@ Run: python scripts/test_normalize_legislation.py
 
 import importlib.util
 import sys
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -21,6 +22,38 @@ spec = importlib.util.spec_from_file_location("trends", ROOT / "08_trends.py")
 trends = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(trends)
 norm = trends.normalize_legislation
+
+# Deterministic fixtures: tests do not depend on network or the production DB.
+REFERENCE = {
+    (118, 'hr', 9495): ('2024-09-09', 'Stop Terror-Financing and Tax Penalties on American Hostages Act'),
+    (119, 'hr', 9495): ('2026-06-26', 'Department of Defense Appropriations Act, 2027'),
+    (118, 'hr', 8800): ('2024-06-21', 'Fixture previous-Congress bill'),
+    (119, 'hr', 8800): ('2026-05-13', 'Fixture current-Congress bill'),
+    (118, 'hr', 9900): ('2024-10-01', 'Previous Congress only'),
+    (119, 'hr', 1234): ('2025-02-10', 'Current Congress only'),
+    (118, 'hr', 1): ('2023-03-14', 'Lower Energy Costs Act'),
+    (119, 'hr', 1): ('2025-05-20', 'Source title must not override curated title'),
+}
+DATED_CASES = [
+    ('H.R. 9495', 2025, '2025-07-15', 'H.R. 9495 (118th Congress)'),
+    ('H.R. 9495', 2026, '2026-07-20', 'H.R. 9495 (119th Congress)'),
+    ('H.R. 9495', 2026, '2026-06-26T08:00:00-04:00', 'H.R. 9495 (119th Congress)'),
+    ('H.R. 8800', 2025, '2025-02-15', 'H.R. 8800 (118th Congress)'),
+    ('H.R. 9900', 2025, '2025-02-15', 'H.R. 9900 (118th Congress)'),
+    # Report-year Congress stays authoritative; posting year supplies only D.
+    ('H.R. 9495', 2024, '2026-07-20', 'H.R. 9495 (118th Congress)'),
+    ('H.R. 9495 (119th Congress)', 2025, '2025-07-15', 'H.R. 9495 (119th Congress)'),
+    ('H.R. 9495 of 2025', 2024, '2025-02-15', 'H.R. 9495 (119th Congress)'),
+    ('H.R. 9495 of 2024', 2026, '2026-07-20', 'H.R. 9495 (118th Congress)'),
+    ('H.R. 9495 - CARES Act', 2025, '2025-02-15', 'CARES Act'),
+    ('H.R. 1', 2025, '2025-02-15', 'Lower Energy Costs Act'),
+    ('H.R. 1', 2025, '2025-05-20', 'One Big Beautiful Bill Act'),
+    ('H.R. 1234', 2025, '2025-02-09', 'H.R. 1234 (119th Congress)'),
+    ('H.R. 1234', 2025, '2025-02-10', 'H.R. 1234 (119th Congress)'),
+    ('H.R. 1234', 2025, None, 'H.R. 1234 (119th Congress)'),
+    ('H.R. 1234', 2025, 'invalid', 'H.R. 1234 (119th Congress)'),
+    ('H.R. 99999', 2025, '2025-02-15', 'H.R. 99999 (119th Congress)'),
+]
 
 # (raw tag, filing year, expected normalized identity)
 CASES = [
@@ -137,18 +170,48 @@ CASES = [
 def main() -> int:
     failures = []
     for raw, year, expected in CASES:
-        got = norm(raw, year)
+        got = norm(raw, year, reference={})
         status = "ok  " if got == expected else "FAIL"
         if got != expected:
             failures.append((raw, year, expected, got))
         print(f"  {status}  [{year}] {raw[:46]:48s} -> {got!r}")
+    unresolved = Counter()
+    for raw, year, posted, expected in DATED_CASES:
+        got = norm(raw, year, posted, reference=REFERENCE, unresolved=unresolved)
+        if got != expected:
+            failures.append((raw, year, expected, got))
+    assert unresolved == {'2025-02': 2, 'unknown': 2}, unresolved
+    # Every bill/resolution type follows the same date and fallback rule.
+    for kind, prefix in trends.BILL_TYPES.items():
+        reference = {(118, kind, 900): ('2024-05-01', 'Previous bill'),
+                     (119, kind, 900): ('2026-01-01', 'New bill')}
+        for raw in (f'{prefix} 900', f'{kind.upper()}900'):
+            assert norm(raw, 2025, '2025-02-15', reference=reference) == f'{prefix} 900 (118th Congress)'
+            assert norm(raw, 2026, '2026-01-01', reference=reference) == f'{prefix} 900 (119th Congress)'
+    prior = trends.load_reference
+    trends.load_reference = lambda: REFERENCE
+    try:
+        bill = 'H.R. 8800 (119th Congress)'
+        label = bill + ' — Fixture current-Congress bill'
+        assert trends.display_legislation(bill) == label
+        assert trends.display_legislation('H.R. 1 (119th Congress)') == 'One Big Beautiful Bill Act'
+        # Detail lookup keys and name values must remain in agreement.
+        payload = {'legislation': [{'name': bill}], 'legislation_series': {bill: [1, 2]},
+                   'recent': [{'legislation': [bill]}]}
+        out = trends._export_bill_labels(payload)
+        assert out['legislation'][0]['name'] == label
+        assert out['legislation_series'][label] == [1, 2]
+        assert out['recent'][0]['legislation'] == [label]
+        assert trends.display_legislation('H.R. 99999 (119th Congress)') == 'H.R. 99999 (119th Congress)'
+    finally:
+        trends.load_reference = prior
     print()
     if failures:
         print(f"{len(failures)} FAILURE(S):")
         for raw, year, exp, got in failures:
             print(f"  [{year}] {raw!r}: expected {exp!r}, got {got!r}")
         return 1
-    print(f"All {len(CASES)} cases passed.")
+    print(f"All {len(CASES)} original and {len(DATED_CASES)} dated cases passed; all eight bill types, unresolved counts, titles and export joins passed.")
     return 0
 
 

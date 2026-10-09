@@ -25,6 +25,7 @@ GitHub Actions (daily cron)
     ├── Download DB from GitHub Release
     ├── Ingest new LDA filings
     ├── Extract topics/entities/legislation with deterministic rules
+    ├── Refresh GovInfo bill introduction dates and official titles
     ├── Compute trends and alerts
     ├── Export JSON to docs/data/
     ├── Upload DB back to Release
@@ -35,10 +36,12 @@ GitHub Actions (daily cron)
 
 - **Senate LDA Filings**: [Senate Lobbying Disclosure](https://lda.senate.gov/filings/public/filing/search/)
 - Covers all federal lobbying activity disclosures
+- **Bill reference data**: keyless [GovInfo BILLSTATUS bulk XML](https://www.govinfo.gov/bulkdata/BILLSTATUS), all eight bill/resolution types from the 116th Congress onward.
 
 ## Methodology Notes
 
 - Mentions are activity-level tags from lobbying activity descriptions, not unique filing counts.
+- Bare bill numbers use the report-year Congress only if introduced by the filing's posted date; otherwise they use the preceding Congress when that number exists there. Explicit years/Congresses and recognized act names take priority. Bills without a curated name display their official short title.
 - Trend comparisons are directional signals, not causal claims.
 - Comparison frames are defined on report quarters, not submission dates. `quarter`: latest complete report quarter against the same quarter a year earlier, a quarter counting as complete ~40 days past its calendar end. `qtd`: current partial quarter through the data-through date against last year's same-quarter filings posted by the same point in the cycle, flagged as a small sample early on. No rolling day-windows.
 - Filing volume is seasonal around statutory filing deadlines.
@@ -62,8 +65,11 @@ python 07_refresh.py
 # Or run individual steps
 python 01_ingest.py              # Download new filings
 python 12_extract_rules.py extract --batch-size 2000000
+python scripts/build_bill_reference.py --max-seconds 1800 --coverage
 python 08_trends.py export       # Generate JSON exports
 ```
+
+Bill reference tables (`bill_reference`, `bill_reference_sync`) live in the release DB; completed Congresses are fetched once and the current Congress refreshes new numbers daily. Offline checks: `python scripts/test_bill_reference.py`, `python scripts/test_normalize_legislation.py`.
 
 ## Pipeline Scripts
 
@@ -125,6 +131,8 @@ SQLite database stored in GitHub Releases (not in repo due to size). Contains:
 - `activities`: Individual lobbying activities
 - `activity_extractions_rules`: deterministic topic/entity/legislation extraction used by the dashboard
 - `activity_extractions`: legacy LLM extraction table retained for historical comparison
+- `bill_reference`: `(congress, type, number)` primary key, `introduced_date` (ISO date), `title` (official short title or trimmed official title); type is a lowercase GovInfo code such as `hr` or `sconres`.
+- `bill_reference_sync`: `(congress, type)` primary key, `checked_at` (UTC timestamp); a row records successful full bootstrap/refresh, so completed Congresses need no later requests.
 
 ## Preview the Dashboard Locally
 

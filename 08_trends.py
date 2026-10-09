@@ -10,6 +10,7 @@ from pathlib import Path
 
 from db import get_db, query_to_dicts
 from clients_norm import canonical_client_key, display_client_name, EXCLUDED_CLIENT_KEYS
+from bill_reference import BILL_TYPES, load_reference
 
 RULES_PATH = Path("rules/topic_rules.json")
 
@@ -224,21 +225,19 @@ def _congress_for_year(year: int) -> int:
     return (year - 1789) // 2 + 1
 
 
-def normalize_legislation(value: str, year: int | None = None) -> str:
+def normalize_legislation(value: str, year: int | None = None,
+                          filing_date: str | None = None, *,
+                          reference: dict | None = None,
+                          unresolved: Counter | None = None) -> str:
     """Normalize legislation tags to stable, non-colliding identities.
 
     year: the filing's report year, used to scope bare bill numbers to a
-    Congress. An explicit "of 20XX" / "(NNNth Congress)" qualifier in the tag
-    wins over the filing year, and a recognized act NAME wins over any number.
-
-    Known limitation: a truly bare number with no name/year/Congress qualifier
-    and no accompanying name tag is scoped to the filing's Congress. A
-    retrospective reference (a 2026 filing citing "H.R. 3684" to mean the 2021
-    IIJA) therefore misbinds to a wrong-Congress number. Measured footprint is
-    ~40/month scattered across a few laws — well below the volume any bill needs
-    to surface on the dashboard — so it is left unresolved rather than fixed with
-    a fuzzy description parser that would risk mislinks on the common (correct)
-    case. The monthly alias audit flags any such number if it ever accumulates.
+    Congress C. For bare numbers, keep C only if introduced by filing_date
+    (the posted date); otherwise use C-1 when that number exists there, else
+    keep C and count an unresolved occurrence by posted month. Missing dates
+    retain C and are unresolved. Explicit "of 20XX" / "(NNNth Congress)"
+    qualifiers win, and a recognized act NAME wins over any number.
+    Reference absence/outages retain scoped identities and remain auditable.
     """
     tag = normalize_tag(value)
     if not tag:
@@ -283,10 +282,37 @@ def normalize_legislation(value: str, year: int | None = None) -> str:
         _congress_for_year(scope_year) if scope_year else None)
 
     def scoped(prefix: str, number: str) -> str:
+        selected = congress
+        number = str(int(number))
+        if congress and not (year_qual or congress_qual):
+            ref = load_reference() if reference is None else reference
+            kind = next(k for k, v in BILL_TYPES.items() if v == prefix)
+            current = ref.get((congress, kind, int(number)))
+            posted = str(filing_date or '')[:10]
+            try:
+                datetime.strptime(posted, '%Y-%m-%d')
+            except ValueError:
+                posted = ''
+            if posted and current and current[0] <= posted:
+                pass
+            elif posted and (congress - 1, kind, int(number)) in ref:
+                selected = congress - 1
+            elif unresolved is not None:
+                unresolved[posted[:7] if posted else 'unknown'] += 1
         base = f"{prefix} {number}"
-        if congress:
-            base = f"{base} ({_ordinal(congress)} Congress)"
+        if selected:
+            base = f"{base} ({_ordinal(selected)} Congress)"
         return LEGISLATION_ALIASES.get(base, base)
+
+    # Resolutions must be tested before H.R./S. bill forms. Accept dotted,
+    # spaced and compact chamber/type spellings, including trailing titles.
+    resolution = re.search(
+        r'\b([HS])\.?\s*(?:(J|Con)\.?\s*)?Res\.?\s*(\d{1,5})\b',
+        tag, flags=re.IGNORECASE)
+    if resolution:
+        chamber, variant, number = resolution.groups()
+        kind = chamber.lower() + (variant or '').lower() + 'res'
+        return scoped(BILL_TYPES[kind], number)
 
     hr_any = re.search(r'\bH\.?\s*R\.?\s*(\d{1,5})\b', tag, flags=re.IGNORECASE)
     if hr_any:
@@ -512,7 +538,7 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
 
         seen_leg = set()
         for leg in json.loads(row['legislation'] or '[]'):
-            leg = normalize_legislation(leg, row.get('filing_year'))
+            leg = normalize_legislation(leg, row.get('filing_year'), filing_date)
             if not leg or leg in seen_leg:
                 # Aliases of one law (number, name, P.L.) collapse to a single
                 # canonical tag; count it once per activity.
@@ -1094,7 +1120,7 @@ def get_recent_filings(limit: int = 300) -> list:
             if entity:
                 rec['entities'][entity] += 1
         for l in json.loads(row.get('legislation') or '[]'):
-            legislation = normalize_legislation(l, row.get('year'))
+            legislation = normalize_legislation(l, row.get('year'), row.get('filing_date'))
             if legislation:
                 rec['legislation'][legislation] += 1
 
@@ -1253,6 +1279,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             SELECT
                 (f.year * 4 + f.quarter) AS q_index,
                 f.year AS filing_year,
+                f.filing_date,
                 e.topics, e.entities, e.legislation
             FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
@@ -1289,6 +1316,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
     topic_by_quarter = defaultdict(Counter)
     entity_by_quarter = defaultdict(Counter)
     legislation_by_quarter = defaultdict(Counter)
+    unresolved_bills = Counter()
     for row in topic_rows:
         q_index = int(row.get('q_index') or 0)
         if not q_index:
@@ -1305,10 +1333,15 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
                 entity_by_quarter[q_index][entity] += 1
         seen_leg = set()
         for leg in json.loads(row.get('legislation') or '[]'):
-            leg = normalize_legislation(leg, row.get('filing_year'))
+            leg = normalize_legislation(leg, row.get('filing_year'), row.get('filing_date'),
+                                        unresolved=unresolved_bills)
             if leg and leg not in seen_leg:
                 seen_leg.add(leg)
                 legislation_by_quarter[q_index][leg] += 1
+
+    if unresolved_bills:
+        print('  Unresolved bill references by posted month (tag occurrences): ' +
+              json.dumps(dict(sorted(unresolved_bills.items()))))
 
     all_topics = Counter()
     for quarter_topics in topic_by_quarter.values():
@@ -1804,7 +1837,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
         leg_rows = query_to_dicts(
             conn,
             """
-            SELECT e.legislation
+            SELECT e.legislation, f.year AS filing_year, f.filing_date
             FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
             JOIN filings f ON a.filing_id = f.id
@@ -1881,7 +1914,7 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
             if not source:
                 continue
             total_leg_tags += 1
-            normalized = normalize_legislation(source)
+            normalized = normalize_legislation(source, row.get('filing_year'), row.get('filing_date'))
             if not normalized:
                 dropped_leg_tags += 1
                 continue
@@ -2049,6 +2082,40 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
     }
 
 
+BILL_IDENTITY_RE = re.compile(
+    r'^(H\.R\.|S\.|H\.Res\.|S\.Res\.|H\.J\.Res\.|S\.J\.Res\.|H\.Con\.Res\.|S\.Con\.Res\.) '
+    r'(\d+) \((\d+)(?:st|nd|rd|th) Congress\)$')
+
+
+def display_legislation(identity: str) -> str:
+    """Enrich labels while retaining the scoped number; curated names win."""
+    if identity in LEGISLATION_ALIASES:
+        return LEGISLATION_ALIASES[identity]
+    match = BILL_IDENTITY_RE.fullmatch(identity)
+    if not match:
+        return identity
+    prefix, number, congress = match.groups()
+    kind = next(k for k, v in BILL_TYPES.items() if v == prefix)
+    ref = load_reference().get((int(congress), kind, int(number)))
+    return f'{identity} — {ref[1]}' if ref and ref[1] else identity
+
+
+def _export_bill_labels(value):
+    """Use the curated-title path (name strings) without adding JSON fields.
+
+    Rewrite both names and keyed series/examples together so every export
+    uses the same label and the dashboard can still join details by name.
+    Normalization/aggregation identities remain independent of title changes.
+    """
+    if isinstance(value, str):
+        return display_legislation(value)
+    if isinstance(value, list):
+        return [_export_bill_labels(v) for v in value]
+    if isinstance(value, dict):
+        return {display_legislation(k): _export_bill_labels(v) for k, v in value.items()}
+    return value
+
+
 def export_json(output_dir: str = 'docs/data'):
     """Export all data as JSON files for the dashboard."""
     import os
@@ -2104,6 +2171,12 @@ def export_json(output_dir: str = 'docs/data'):
         # view when clients.json is absent, so a bug here shouldn't take
         # down the rest of the daily refresh.
         print(f"  Warning: organization movers failed: {e}")
+
+    # Titles use the existing name/string path, including keyed detail data.
+    trends = _export_bill_labels(trends)
+    alerts = _export_bill_labels(alerts)
+    recent = _export_bill_labels(recent)
+    timeseries = _export_bill_labels(timeseries)
 
     # Write files
     with open(f'{output_dir}/trends.json', 'w') as f:

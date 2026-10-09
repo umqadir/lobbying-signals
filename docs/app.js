@@ -1048,15 +1048,19 @@ function renderRecentList(list) {
     }
 }
 
-/* congress.gov link for Congress-scoped bill numbers. Only tags shaped like
-   "H.R. 7148 (119th Congress)" / "S. 1260 (117th Congress)" qualify — named
-   acts carry no scoped number to link. */
-const BILL_LINK_RE = /^(H\.R\.|S\.)\s*(\d{1,5})\s*\((\d{1,3}(?:st|nd|rd|th))\s+Congress\)$/i;
+/* Official titles arrive through the same name string as curated titles.
+   Keep links for all eight bill types, with or without an official title. */
+const BILL_LINK_RE = /^(H\.R\.|S\.|H\.Res\.|S\.Res\.|H\.J\.Res\.|S\.J\.Res\.|H\.Con\.Res\.|S\.Con\.Res\.)\s*(\d{1,5})\s*\((\d{1,3}(?:st|nd|rd|th))\s+Congress\)(?: — .*)?$/i;
 
 function congressGovURL(name) {
     const m = BILL_LINK_RE.exec(String(name || "").trim());
     if (!m) return null;
-    const chamber = m[1].toUpperCase() === "S." ? "senate-bill" : "house-bill";
+    const chamber = {
+        "H.R.": "house-bill", "S.": "senate-bill",
+        "H.RES.": "house-resolution", "S.RES.": "senate-resolution",
+        "H.J.RES.": "house-joint-resolution", "S.J.RES.": "senate-joint-resolution",
+        "H.CON.RES.": "house-concurrent-resolution", "S.CON.RES.": "senate-concurrent-resolution"
+    }[m[1].toUpperCase()];
     return `https://www.congress.gov/bill/${m[3].toLowerCase()}-congress/${chamber}/${m[2]}`;
 }
 
