@@ -2,8 +2,10 @@ name: Refresh Data
 
 on:
   schedule:
-    # Run daily at 10:00 UTC
+    # Run twice daily (10:00 and 22:00 UTC) so one LDA maintenance window
+    # delays data by hours, not a day.
     - cron: '0 10 * * *'
+    - cron: '0 22 * * *'
     # Monthly drift audit (3rd of the month, 06:00 UTC): re-fetch as large a
     # random sample of stored filings as fits the CI window and compare
     # against the live API. Drift (in-place edits, expunged filings) is so
