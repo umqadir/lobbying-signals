@@ -34,7 +34,7 @@ GitHub Actions (daily cron)
 
 ## Data Sources
 
-- **Senate LDA Filings**: [Senate Lobbying Disclosure](https://lda.senate.gov/filings/public/filing/search/)
+- **Senate LDA Filings**: [Senate Lobbying Disclosure](https://lda.gov/filings/public/filing/search/)
 - Covers all federal lobbying activity disclosures
 - **Bill reference data**: keyless [GovInfo BILLSTATUS bulk XML](https://www.govinfo.gov/bulkdata/BILLSTATUS), all eight bill/resolution types from the 116th Congress onward.
 
@@ -46,7 +46,7 @@ GitHub Actions (daily cron)
 - Comparison frames are defined on report quarters, not submission dates. `quarter`: latest complete report quarter against the same quarter a year earlier, a quarter counting as complete ~40 days past its calendar end. `qtd`: current partial quarter through the data-through date against last year's same-quarter filings posted by the same point in the cycle, flagged as a small sample early on. No rolling day-windows.
 - Filing volume is seasonal around statutory filing deadlines.
 - Associated income is filing income connected to matching activity tags, not issue-allocated spend.
-- Organization spend: `compute_client_movers()` in `08_trends.py`, exported to `docs/data/clients.json`, sums each client's reported filing income and expenses per report quarter under both frames. Name variants (legal suffixes, "on behalf of" filers, former names) fold together via `clients_norm.canonical_client_key`; regression cases in `scripts/test_canonicalize_client.py`. Quarterly LDA totals, not split across topics.
+- Organization spend: `compute_client_movers()` in `08_trends.py`, exported to `docs/data/clients.json`, sums each client's reported filing income and expenses per report quarter under both frames. Name variants (legal suffixes, "on behalf of" filers, former names) fold together via `clients_norm.canonical_client_key`; regression cases in `scripts/test_canonicalize_client.py`. Quarterly LDA totals, not split across topics. Organization drawers load `client_details.json` on demand for both comparison periods: reporting methods, firms, lobbyists, issues, and official filings. Missing or partially fetched detail is labeled; both exports regenerate after detail backfill.
 - Amendments and terminations: ingestion covers `Q1`-`Q4`, amendments `1A`-`4A` including no-activity variants, terminations `1T`-`4T`, and termination amendments `1@`-`4@`, all keyed to the original report period. Every `filings` row carries `is_current`; per (registrant, client, report quarter) only the latest filed row is current, and all metrics in `08_trends.py` read current rows only. An amendment restates completely, including a zeroed income when a no-activity amendment supersedes a reported one.
 
 ## Local Development

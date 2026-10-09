@@ -21,7 +21,7 @@ import httpx
 from config import PROJECT_ROOT
 from db import (
     get_db, init_db, get_or_create_registrant, get_or_create_client,
-    recompute_is_current
+    recompute_is_current, normalize_covered_position
 )
 
 API_BASE = "https://lda.gov/api/v1"
@@ -124,7 +124,8 @@ def parse_api_filing(filing: dict) -> dict | None:
     if not year or not quarter:
         return None
 
-    # Detail fields are optional; unexpected shapes must not block core ingest.
+    # Amounts and expenses_method are top-level fields. Partial or malformed
+    # payloads must not block core ingest.
     details_complete = all(k in filing for k in ("expenses", "income", "lobbying_activities"))
     try:
         expenses = _parse_amount(filing.get("expenses"))
@@ -163,6 +164,8 @@ def parse_api_filing(filing: dict) -> dict | None:
         houses = ",".join(n for n in entity_names if "HOUSE" in n.upper() or "SENATE" in n.upper())
         agencies = ",".join(n for n in entity_names if "HOUSE" not in n.upper() and "SENATE" not in n.upper())
 
+        # Each activity's lobbyists entry wraps a nested lobbyist identity,
+        # with covered_position and new alongside it.
         lobbyists = []
         entries = activity.get("lobbyists")
         if "lobbyists" not in activity or (entries is not None and not isinstance(entries, list)):
@@ -188,7 +191,7 @@ def parse_api_filing(filing: dict) -> dict | None:
             lobbyists.append({
                 "lda_lobbyist_id": lobbyist_id,
                 "name": " ".join(name.split()),
-                "covered_position": covered_position,
+                "covered_position": normalize_covered_position(covered_position),
                 "is_new": is_new,
             })
         parsed_activity = {
@@ -280,7 +283,8 @@ def store_filing_details(conn, filing_db_id: int, filing: dict):
                      lda_lobbyist_id, name, covered_position, is_new)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (filing_db_id, activity["activity_index"], index, activity_id,
-                  person["lda_lobbyist_id"], person["name"], person["covered_position"], person["is_new"]))
+                  person["lda_lobbyist_id"], person["name"],
+                  normalize_covered_position(person["covered_position"]), person["is_new"]))
 
 
 def _try_store_filing_details(conn, filing_db_id: int, filing: dict):

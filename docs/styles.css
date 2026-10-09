@@ -373,8 +373,36 @@ input { font: inherit; color: inherit; }
 }
 .seg-btn:disabled:hover { color: var(--ink-4); }
 
-/* Normalization tickbox — sits beside the frame toggle; the explanation
-   lives in its title tooltip, not on-screen. */
+/* Normalization control and category-specific explanation. */
+.norm-control { display: inline-flex; align-items: center; gap: 3px; position: relative; }
+.norm-control[hidden], .norm-explainer[hidden] { display: none; }
+.norm-info {
+    width: 32px;
+    min-height: 32px;
+    flex: none;
+    border: none;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--ink-3);
+    font-size: 1rem;
+}
+.norm-info:hover { color: var(--ink); background: var(--accent-soft); }
+.norm-explainer {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 7px);
+    z-index: 20;
+    width: min(300px, calc(100vw - 36px));
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
+    box-shadow: var(--shadow);
+    color: var(--ink-2);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+.norm-explainer p + p { margin-top: 6px; }
 .norm-toggle {
     display: inline-flex;
     align-items: center;
@@ -1511,4 +1539,51 @@ button:focus-visible,
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+/* Lazy organization filing detail */
+.org-comparison {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+.org-quarter { min-width: 0; overflow-wrap: anywhere; }
+.org-quarter-label {
+    font: 600 0.78rem var(--mono);
+    color: var(--ink);
+    margin: 0 0 12px;
+}
+.org-split-line { font-size: 0.84rem; line-height: 1.6; margin: 0 0 6px; }
+.org-firm, .org-position, .org-issue, .org-filing {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.84rem;
+}
+.org-firm-amount { display: block; font: 0.75rem var(--mono); color: var(--ink-3); margin-top: 4px; }
+.org-firm-status {
+    display: inline-block;
+    margin-left: 6px;
+    font: 0.65rem var(--mono);
+    text-transform: uppercase;
+}
+.org-firm-status.new { color: var(--up); }
+.org-firm-status.dropped { color: var(--down); }
+.org-method-warning {
+    color: var(--cat-org);
+    background: var(--cat-org-soft);
+    border-left: 2px solid var(--cat-org);
+    padding: 7px 10px;
+    margin: 10px 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+.org-position-classes { font: 0.73rem/1.7 var(--mono); margin-top: 10px; }
+.org-disclosure-text, .org-text-expand { font-size: 0.84rem; line-height: 1.65; white-space: pre-wrap; }
+.org-disclosure-text { margin: 6px 0; }
+.org-text-expand summary { cursor: pointer; color: var(--ink-3); }
+.org-text-expand[open] summary { font-size: 0.75rem; }
+.org-filing-amount { font: 0.8rem var(--mono); margin: 6px 0; }
+@media (max-width: 480px) {
+    .org-comparison { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .org-quarter + .org-quarter { border-top: 1px solid var(--line); padding-top: 14px; }
 }

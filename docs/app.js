@@ -255,14 +255,70 @@ function normBaseYear() {
     return deflatorMeta()?.base_year || null;
 }
 
+const NORMALIZED_MENTIONS_LABEL = "Mentions as a share of all tagged activity in each quarter.";
+
+function normalizationExplanation(cat = state.view.cat) {
+    const dollars = `Dollars adjusted for inflation (CPI-U, ${normBaseYear()} dollars).`;
+    const mentions = NORMALIZED_MENTIONS_LABEL;
+    if (cat === "clients") return [dollars];
+    if (SIGNAL_MODES.includes(cat)) return [mentions];
+    return [dollars, mentions];
+}
+
+function updateNormExplainer() {
+    const text = document.getElementById("norm-explainer");
+    if (!text || !deflatorMeta()) return;
+    text.replaceChildren(...normalizationExplanation().map(line => el("p", "", line)));
+}
+
+function bindNormHelp() {
+    const info = document.getElementById("norm-info");
+    const text = document.getElementById("norm-explainer");
+    const control = document.getElementById("norm-control");
+    if (!info || !text || !control) return;
+    let pinned = false;
+    let closeTimer;
+    const show = open => {
+        clearTimeout(closeTimer);
+        text.hidden = !open;
+        info.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    info.onmouseenter = () => show(true);
+    control.onmouseenter = () => clearTimeout(closeTimer);
+    control.onmouseleave = () => {
+        if (!pinned && document.activeElement !== info) closeTimer = setTimeout(() => show(false), 150);
+    };
+    info.onfocus = () => show(true);
+    info.onblur = () => { pinned = false; show(false); };
+    info.onclick = event => {
+        event.stopPropagation();
+        pinned = !pinned;
+        show(pinned);
+    };
+    document.addEventListener("pointerdown", event => {
+        if (!control.contains(event.target)) { pinned = false; show(false); }
+    });
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !text.hidden) {
+            pinned = false;
+            show(false);
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    }, true);
+}
+
 function buildNormToggle() {
     const btn = document.getElementById("norm-toggle");
     if (!btn) return;
     const meta = deflatorMeta();
+    const control = document.getElementById("norm-control");
+    if (control) control.hidden = !meta;
     if (!meta) { btn.hidden = true; return; }
     btn.hidden = false;
     btn.querySelector(".norm-label").textContent = "Normalized";
-    btn.title = `Show dollars in constant ${meta.base_year} dollars (CPI-U) and mention histories as each quarter's share of tagged activity — what shifted relatively, not just what grew with overall volume.`;
+    updateNormExplainer();
+    bindNormHelp();
     btn.classList.toggle("active", state.view.normalized);
     btn.setAttribute("aria-pressed", state.view.normalized ? "true" : "false");
     btn.onclick = () => {
@@ -420,17 +476,32 @@ function buildMentionsHeadline(item, frameKey) {
     };
 }
 
-// Secondary line under the org-count headline: mention volume (with its
-// baseline in parens) and share of all tagged activity.
-function buildSecondaryLine(item) {
-    if (!toNum(item.client_count)) return null; // headline already covers mentions
-    const parts = [`${fmt.int(item.count)} mentions (${fmt.int(item.baseline_count)})`];
-    const share = toNum(item.current_share_pct);
-    if (share > 0) {
-        const pp = toNum(item.share_delta_pp);
-        const sign = pp > 0 ? "+" : "";
-        parts.push(`${share.toFixed(1)}% share of activity (${sign}${pp.toFixed(1)}pp)`);
+// Shared baseline and new-signal logic for cards and the drawer stat grid.
+function signalComparison(item, frameKey) {
+    const current = toNum(item.count);
+    const baseline = toNum(item.baseline_count);
+    return {
+        current, baseline,
+        isNew: current > 0 && baseline === 0,
+        baselineTiming: frameKey === "qtd" ? "at this point last year" : "a year ago",
+        share: item.current_share_pct == null ? null : toNum(item.current_share_pct),
+        delta: item.share_delta_pp == null ? null : toNum(item.share_delta_pp)
+    };
+}
+
+function buildSecondaryLine(item, frameKey) {
+    const comparison = signalComparison(item, frameKey);
+    const noun = comparison.current === 1 ? "mention" : "mentions";
+    const parts = [`${fmt.int(comparison.current)} ${noun}`];
+    if (!comparison.isNew) parts[0] += ` vs ${fmt.int(comparison.baseline)} ${comparison.baselineTiming}`;
+    if (comparison.share != null) {
+        let share = `${comparison.share.toFixed(1)}% of ${comparison.isNew ? "all " : ""}activity`;
+        if (!comparison.isNew && comparison.delta != null) {
+            share += ` (${comparison.delta > 0 ? "+" : ""}${comparison.delta.toFixed(1)} pp)`;
+        }
+        parts.push(share);
     }
+    if (comparison.isNew) parts.push(`none ${comparison.baselineTiming}`);
     return parts.join(" · ");
 }
 
@@ -638,6 +709,8 @@ function buildOrgMoverCard(m) {
     const headlineEl = el("div", "mover-headline");
     headlineEl.innerHTML = head.html;
     main.appendChild(headlineEl);
+
+    if (m.method_changed) appendMethodWarning(main);
 
     if (m.topics?.length) {
         main.appendChild(el("div", "mover-clients", m.topics.slice(0, 3).join(" · ")));
@@ -900,10 +973,9 @@ function renderMovers() {
     }
 
     sub.textContent = frameSubtitle(frame);
-    // Normalization is flagged on hover only — no visible suffix, so
-    // ticking the box never changes the subtitle's line count.
+    // Normalization leaves the subtitle layout unchanged.
     sub.title = normalizedOn()
-        ? `Normalized: dollars in constant ${normBaseYear()} dollars (CPI-U); mention histories as each quarter's share of tagged activity.`
+        ? normalizationExplanation(cat).join("\n")
         : "";
 
     if (cat === "all") {
@@ -1028,6 +1100,7 @@ function renderOrgMovers(list, frame) {
 // a plain chronological list with nothing to compare — it renders disabled
 // but stays put, so the controls never move or vanish between tabs.
 function updateControlsForCat(cat) {
+    updateNormExplainer();
     const frameSeg = document.getElementById("frame-seg");
     if (!frameSeg) return;
     const off = cat === "recent";
@@ -1100,7 +1173,7 @@ function buildMoverCard(m, frameKey) {
     headlineEl.innerHTML = head.html;
     main.appendChild(headlineEl);
 
-    const secondary = buildSecondaryLine(m);
+    const secondary = buildSecondaryLine(m, frameKey);
     if (secondary) {
         main.appendChild(el("div", "mover-clients", secondary));
     }
@@ -1521,7 +1594,7 @@ function appendHistorySection(body, opts) {
             if (reportingNote) notes.push(reportingNote);
         }
         if (money && normalizedOn()) notes.push(`Constant ${normBaseYear()} dollars (CPI-U).`);
-        if (percent) notes.push("Shown as each quarter's share of all tagged activity, so eras with different filing volumes compare cleanly.");
+        if (percent) notes.push(NORMALIZED_MENTIONS_LABEL);
         if (extraNote) notes.push(extraNote);
         noteEl.textContent = notes.join(" ");
         noteEl.style.display = notes.length ? "" : "none";
@@ -1607,7 +1680,7 @@ function openFiling(id, ctx) {
 
 /* Official Senate LDA record for a filing — the primary source. */
 function ldaFilingURL(uuid) {
-    return uuid ? `https://lda.senate.gov/filings/public/filing/${uuid}/print/` : null;
+    return uuid ? `https://lda.gov/filings/public/filing/${uuid}/print/` : null;
 }
 
 function officialLink(uuid, cls = "official-link") {
@@ -1712,6 +1785,7 @@ function renderOrgDetail(body, view) {
     }
 
     body.appendChild(el("div", "detail-sub", subLabel));
+    if (m.method_changed) appendMethodWarning(body);
 
     const head = buildOrgHeadline(m, frameKey);
     const summary = el("div", "detail-summary");
@@ -1757,7 +1831,7 @@ function renderOrgDetail(body, view) {
         money: true,
         frameQuarter: orgFrame?.current_quarter?.quarter,
         currentYear: orgFrame?.current_quarter?.year,
-        extraNote: "Quarterly LDA filing income, not issue-allocated — the whole filing's income counts toward this organization's total."
+        extraNote: "Total reported income and expenses per quarter, across all filings for this organization."
     });
 
     // Top topics — pivot into the matching topic signal if it's tracked there.
@@ -1780,40 +1854,179 @@ function renderOrgDetail(body, view) {
         body.appendChild(sec);
     }
 
-    // Registrants
-    if (m.registrants?.length) {
-        const sec = el("div", "detail-section");
-        sec.appendChild(el("div", "detail-section-title", "Registrants"));
-        const tags = el("div", "detail-tags");
-        for (const r of m.registrants) tags.appendChild(el("span", "detail-tag", r));
-        sec.appendChild(tags);
-        body.appendChild(sec);
-    }
+    appendOrgComparison(body, m, frameKey);
+}
 
-    // Example filings
-    if (m.examples?.length) {
-        const sec = el("div", "detail-section");
-        const title = el("div", "detail-section-title");
-        title.appendChild(el("span", "", "Example filings"));
-        title.appendChild(el("span", "count", `${m.examples.length} shown`));
-        sec.appendChild(title);
-        const list = el("ul", "detail-list");
-        for (const ex of m.examples) {
-            const li = el("div", "filing-row");
-            const left = el("div");
-            left.appendChild(el("div", "filing-row-client", ex.registrant || "Unknown registrant"));
-            left.appendChild(el("div", "filing-row-registrant", fmt.dateShort(ex.date)));
-            li.appendChild(left);
-            const right = el("div", "filing-row-right");
-            right.appendChild(el("div", "filing-row-income", fmt.money(ex.income)));
-            const link = officialLink(ex.uuid, "official-link small");
-            if (link) right.appendChild(link);
-            li.appendChild(right);
-            list.appendChild(li);
-        }
-        sec.appendChild(list);
-        body.appendChild(sec);
+const EXPENSE_METHODS = {
+    A: "LDA definitions",
+    B: "IRC §6033(b)(8) · nonprofits",
+    C: "IRC §162(e) · can include state and grassroots lobbying"
+};
+const METHOD_WARNING = "Reporting method changed between these quarters.";
+let clientDetailsRequest = null;
+
+function appendMethodWarning(parent) {
+    parent.appendChild(el("p", "org-method-warning", METHOD_WARNING));
+}
+
+function orgComparisonSection(parent, title, labels, renderLeg) {
+    const section = el("div", "detail-section");
+    section.appendChild(el("div", "detail-section-title", title));
+    const grid = el("div", "org-comparison");
+    for (const [leg, label] of [["current", labels.cq], ["baseline", labels.bq]]) {
+        const column = el("div", "org-quarter");
+        column.appendChild(el("h4", "org-quarter-label", label));
+        renderLeg(column, leg);
+        grid.appendChild(column);
     }
+    section.appendChild(grid);
+    parent.appendChild(section);
+}
+
+function appendMoreNote(parent, count) {
+    if (count) parent.appendChild(el("p", "detail-chart-note", `${fmt.int(count)} more omitted; see official filings.`));
+}
+
+function appendDisclosureText(parent, text, truncated, previewLength = 220) {
+    if (text.length <= previewLength && !truncated) {
+        parent.appendChild(el("p", "org-disclosure-text", text));
+        return;
+    }
+    const disclosure = el("details", "org-text-expand");
+    disclosure.appendChild(el("summary", "", `${text.slice(0, previewLength)}… · Expand`));
+    disclosure.appendChild(el("p", "org-disclosure-text", text));
+    if (truncated) disclosure.appendChild(el("p", "detail-chart-note", "Excerpt. Full text in the official filing."));
+    parent.appendChild(disclosure);
+}
+
+function appendOrgFilings(parent, filings, more = 0, legacy = false) {
+    if (!filings.length) parent.appendChild(el("p", "detail-chart-note", "No filings in this comparison period."));
+    for (const filing of filings) {
+        const row = el("div", "org-filing");
+        row.appendChild(el("div", "filing-row-client", filing.registrant || "Unknown registrant"));
+        const type = (filing.type || filing.filing_type || "").trim();
+        const kind = /@/.test(type) ? "termination amendment" : /\dAY?$/.test(type) ? "amendment" : /\dTY?$/.test(type) ? "termination" : "";
+        row.appendChild(el("div", "filing-row-registrant", `${fmt.dateShort(filing.date)}${type ? ` · ${type}` : ""}${kind ? ` · ${kind}` : ""}`));
+        const amount = legacy ? filing.income : filing.amount;
+        row.appendChild(el("div", "org-filing-amount", amount == null ? "Amount not yet fetched" : fmt.money(amount)));
+        const link = officialLink(filing.uuid, "official-link small");
+        if (link) row.appendChild(link);
+        parent.appendChild(row);
+    }
+    appendMoreNote(parent, more);
+}
+
+function coveredPositionClassLabel(value) {
+    const labels = {
+        "member of congress": "Member of Congress",
+        "congressional staff": "Congressional staff",
+        "executive branch": "Executive branch",
+        "military": "Military",
+        "other": "Other",
+    };
+    return String(value || "").split(",").map(kind => labels[kind.trim().toLowerCase()] || kind.trim()).join(", ");
+}
+
+function renderOrgComparison(parent, detail, frameKey) {
+    const labels = orgQuarterLabels(frameKey);
+    orgComparisonSection(parent, "In-house & outside firms", labels, (column, leg) => {
+        const q = detail[leg];
+        if (!q.filing_count) {
+            column.appendChild(el("p", "detail-chart-note", "No filings in this comparison period."));
+            return;
+        }
+        for (const [key, label] of [["self", "Self-filed expenses"], ["outside", "Outside-firm income"]]) {
+            const missing = q.split[`${key}_amounts_missing`];
+            const value = q.split[key] == null ? "Not yet fetched" : fmt.money(q.split[key]);
+            column.appendChild(el("div", "org-split-line", `${label}: ${value}${missing ? " (amounts missing)" : ""}`));
+        }
+        if (q.split.unknown_filings) {
+            column.appendChild(el("p", "detail-chart-note", `In-house vs. firm is not available for ${fmt.int(q.split.unknown_filings)} filings (${q.split.unknown == null ? "amount not available" : fmt.money(q.split.unknown)}).`));
+        }
+        if (q.self_inferred) column.appendChild(el("p", "detail-chart-note", "In-house vs. firm is inferred from names for older filings."));
+        column.appendChild(el("p", "org-split-line", `${fmt.int(q.firm_count)} outside firm${q.firm_count === 1 ? "" : "s"}`));
+        for (const firm of q.firms) {
+            const row = el("div", "org-firm");
+            row.appendChild(el("span", "", firm.name));
+            if (firm.status) row.appendChild(el("span", `org-firm-status ${firm.status}`, firm.status));
+            row.appendChild(el("span", "org-firm-amount", `${firm.income == null ? "Not yet fetched" : fmt.money(firm.income)}${firm.amounts_missing ? " · amounts missing" : ""}`));
+            column.appendChild(row);
+        }
+        appendMoreNote(column, q.firms_more);
+    });
+    parent.appendChild(el("p", "detail-chart-note", "Amounts as filed. Self-filed expenses can include fees paid to the firms listed."));
+    orgComparisonSection(parent, "Expense-reporting method", labels, (column, leg) => {
+        const q = detail[leg];
+        if (!q.split.self_filings) {
+            column.appendChild(el("p", "detail-chart-note", "No self-filed reports in this period."));
+            return;
+        }
+        for (const method of q.methods) column.appendChild(el("p", "org-split-line", `${method} · ${EXPENSE_METHODS[method]}`));
+        if (q.methods_missing) column.appendChild(el("p", "detail-chart-note", `Method not available for ${fmt.int(q.methods_missing)} self-filed report${q.methods_missing === 1 ? "" : "s"}.`));
+    });
+    orgComparisonSection(parent, "Lobbyists & covered positions", labels, (column, leg) => {
+        const q = detail[leg];
+        if (!q.filing_count) {
+            column.appendChild(el("p", "detail-chart-note", "No filings in this comparison period."));
+            return;
+        }
+        if (q.lobbyist_count == null) {
+            column.appendChild(el("p", "detail-chart-note", "Not yet available."));
+            return;
+        }
+        column.appendChild(el("p", "org-split-line", `${fmt.int(q.lobbyist_count)} lobbyist${q.lobbyist_count === 1 ? "" : "s"} · ${fmt.int(q.covered_count)} with a covered position`));
+        column.appendChild(el("p", "detail-chart-note", `Details for ${fmt.int(q.details_fetched)} of ${fmt.int(q.filing_count)} filing${q.filing_count === 1 ? "" : "s"}.`));
+        const classes = el("div", "org-position-classes");
+        for (const [kind, count] of Object.entries(q.position_classes || {})) {
+            if (count > 0) classes.appendChild(el("div", "", `${coveredPositionClassLabel(kind)}: ${fmt.int(count)}`));
+        }
+        if (classes.childElementCount) column.appendChild(classes);
+        for (const position of q.positions) {
+            const row = el("div", "org-position");
+            row.appendChild(el("strong", "", position.name));
+            row.appendChild(el("div", "filing-row-registrant", coveredPositionClassLabel(position.class)));
+            appendDisclosureText(row, position.text, position.truncated);
+            column.appendChild(row);
+        }
+        appendMoreNote(column, q.positions_more);
+    });
+    orgComparisonSection(parent, "Specific issues", labels, (column, leg) => {
+        const q = detail[leg];
+        if (!q.issues.length) column.appendChild(el("p", "detail-chart-note", !q.filing_count ? "No filings in this comparison period." : q.details_fetched < q.filing_count ? "Not yet available." : "No activity descriptions reported."));
+        for (const issue of q.issues) {
+            const row = el("div", "org-issue");
+            row.appendChild(el("span", "detail-tag", issue.code));
+            appendDisclosureText(row, issue.text, issue.truncated);
+            column.appendChild(row);
+        }
+        appendMoreNote(column, q.issues_more);
+    });
+    orgComparisonSection(parent, "Filings · official records", labels, (column, leg) => {
+        appendOrgFilings(column, detail[leg].filings, detail[leg].filings_more);
+    });
+}
+
+function appendOrgComparison(body, mover, frameKey) {
+    const host = el("div", "org-detail-comparison");
+    host.appendChild(el("p", "detail-chart-note", "Loading filing details…"));
+    body.appendChild(host);
+    // One request shared across drawer opens, made only on the first org open.
+    if (!clientDetailsRequest) clientDetailsRequest = loadJSON("client_details.json");
+    clientDetailsRequest.then(data => {
+        if (!host.isConnected || state.drawer?.kind !== "org") return;
+        host.replaceChildren();
+        const sameExport = data?.generated_at === state.clients?.generated_at;
+        const detail = sameExport ? data?.frames?.[frameKey]?.[mover.key] : null;
+        if (detail) {
+            renderOrgComparison(host, detail, frameKey);
+        } else {
+            host.appendChild(el("p", "detail-empty", "Not yet available."));
+            if (mover.examples?.length) {
+                host.appendChild(el("div", "detail-section-title", "Current-quarter example filings"));
+                appendOrgFilings(host, mover.examples, 0, true);
+            }
+        }
+    });
 }
 
 /* Signal detail */
@@ -1859,21 +2072,22 @@ function renderSignalDetail(body, view) {
 
     // Stats grid
     const stats = el("div", "detail-stats");
-    const delta = m.share_delta_pp;
+    const comparison = signalComparison(m, frameKey);
+    const delta = comparison.delta;
     const deltaDir = delta > 0.01 ? "up" : delta < -0.01 ? "down" : "";
     const statCells = [
         { value: m.client_count ? fmt.int(m.client_count) : "—", label: "Orgs active",
           tip: "Distinct organizations (name variants folded) whose filings mention this in the selected frame." },
-        { value: m.baseline_client_count ? fmt.int(m.baseline_client_count) : "—", label: "Orgs, year ago",
+        { value: m.baseline_client_count ? fmt.int(m.baseline_client_count) : "—", label: `Orgs, ${comparison.baselineTiming}`,
           tip: "Distinct organizations in the baseline quarter." },
         { value: fmt.int(m.count),                label: "Mentions",
           tip: "Lobbying activity descriptions that reference this in the selected frame. One filing can contribute several mentions." },
-        { value: fmt.int(m.baseline_count),        label: "Mentions, year ago",
-          tip: "Mentions in the baseline quarter (same quarter last year)." },
+        { value: fmt.int(m.baseline_count),        label: `Mentions, ${comparison.baselineTiming}`,
+          tip: `Mentions ${comparison.baselineTiming}.` },
         { value: fmt.pct(m.current_share_pct),    label: "Share",
           tip: "Share of all tagged mentions in the selected frame." },
-        { value: fmt.pp(delta),                    label: "Δ Share", cls: deltaDir,
-          tip: "Change in share versus the same quarter last year, in percentage points." },
+        { value: comparison.isNew ? "new" : fmt.pp(delta), label: "Δ Share", cls: comparison.isNew ? "" : deltaDir,
+          tip: comparison.isNew ? `No mentions ${comparison.baselineTiming}.` : `Change in share versus ${comparison.baselineTiming}, in percentage points.` },
         { value: m.income > 0 ? fmt.money(m.income * deflatorFor(frameInfo(frameKey)?.label)) : "—", label: "Assoc. filing income",
           tip: "Combined reported income of filings whose activities mention this. Filings usually cover several issues, so this is NOT spend attributable to this item alone." }
     ];

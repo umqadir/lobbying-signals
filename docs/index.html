@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260805-identity">
+    <link rel="stylesheet" href="styles.css?v=organization-detail">
 </head>
 <body>
     <header class="topbar">
@@ -53,12 +53,16 @@
                     <p class="movers-sub" id="movers-sub">Loading…</p>
                 </div>
                 <div class="movers-controls">
-                    <button class="norm-toggle" id="norm-toggle" type="button" hidden aria-pressed="false">
-                        <span class="norm-box" aria-hidden="true">
-                            <svg viewBox="0 0 10 10"><path d="M1.5 5.5L4 8L8.5 2.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </span>
-                        <span class="norm-label">Normalized</span>
-                    </button>
+                    <div class="norm-control" id="norm-control" hidden>
+                        <button class="norm-toggle" id="norm-toggle" type="button" hidden aria-pressed="false" aria-describedby="norm-explainer">
+                            <span class="norm-box" aria-hidden="true">
+                                <svg viewBox="0 0 10 10"><path d="M1.5 5.5L4 8L8.5 2.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="norm-label">Normalized</span>
+                        </button>
+                        <button class="norm-info" id="norm-info" type="button" aria-label="About Normalized" aria-describedby="norm-explainer" aria-controls="norm-explainer" aria-expanded="false">ⓘ</button>
+                        <div class="norm-explainer" id="norm-explainer" role="tooltip" hidden></div>
+                    </div>
                     <div class="seg" id="frame-seg" role="tablist" aria-label="Comparison frame"></div>
                 </div>
             </div>
@@ -75,7 +79,7 @@
         </section>
 
         <footer class="footnote">
-            <p>Source: <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate Lobbying Disclosure</a>. Mentions are deterministic rule matches against activity descriptions; comparisons are directional signals, not causal claims about lobbying spend or policy outcomes. Filing volume is seasonal because quarterly reports cluster around statutory deadlines. <button class="footnote-link" type="button" data-open-about>About the data</button> · <a href="https://github.com/umqadir/lobbying-signals" rel="noopener">Source on GitHub</a>.</p>
+            <p>Source: <a href="https://lda.gov/filings/public/filing/search/" rel="noopener">Senate Lobbying Disclosure</a>. Mentions are deterministic rule matches against activity descriptions; comparisons are directional signals, not causal claims about lobbying spend or policy outcomes. Filing volume is seasonal because quarterly reports cluster around statutory deadlines. <button class="footnote-link" type="button" data-open-about>About the data</button> · <a href="https://github.com/umqadir/lobbying-signals" rel="noopener">Source on GitHub</a>.</p>
         </footer>
     </main>
 
@@ -90,7 +94,7 @@
             </header>
             <div class="about-body">
                 <p><strong>What this is.</strong> A signal tracker over federal lobbying disclosures filed with the Senate under the Lobbying Disclosure Act (LDA). It shows which organizations, topics, agencies, and bills are gaining or losing lobbying attention.</p>
-                <p><strong>Where the data comes from.</strong> Quarterly activity reports from the official <a href="https://lda.senate.gov/filings/public/filing/search/" rel="noopener">Senate LDA database</a>, refreshed daily. Coverage: <span id="about-coverage">several years of filings</span>. Every example filing links back to the official Senate record.</p>
+                <p><strong>Where the data comes from.</strong> Quarterly activity reports from the official <a href="https://lda.gov/filings/public/filing/search/" rel="noopener">Senate LDA database</a>, refreshed daily. Coverage: <span id="about-coverage">several years of filings</span>. Every example filing links back to the official Senate record.</p>
                 <p><strong>What a “mention” is.</strong> Each filing describes its lobbying activities in free text. Versioned, deterministic rules (no AI model calls) tag those descriptions with topics, agencies, and legislation. One activity description that matches a tag = one mention. A single filing can produce many mentions. Bill numbers are scoped to their Congress (an “H.R. 1” from 2017 and one from 2025 are different laws), and a law's number, short name, and public-law number are counted as one bill.</p>
                 <p><strong>How comparisons work.</strong> Every view uses the same two comparison frames, both year-over-year and both based on report quarters (LDA disclosure is a quarterly regime — rolling day-windows would mostly measure filing-clerk timing). The default frame compares the latest <em>complete</em> report quarter against the same quarter a year earlier — like-for-like, since lobbying is seasonal. The second frame is a freshness lens: the current, still-filling quarter's reports so far, against reports for the same quarter last year that had been posted by the same point in the filing cycle. Early in a cycle that sample is small — the filing counts are shown so you can judge. “Share” is a tag's slice of all tagged mentions in a frame, which controls for volume swings.</p>
                 <p><strong>Normalized view.</strong> The Normalized tickbox restates aggregate dollar figures in constant dollars (CPI-U, base = the latest complete calendar year, each quarter deflated by its own factor) and switches mention histories to each quarter's share of all tagged activity. Both remove background growth — overall inflation and rising filing volume — so what's left is relative shift. Individual filing records always show as-filed amounts.</p>
@@ -134,6 +138,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=20260805-identity"></script>
+    <script src="app.js?v=organization-detail"></script>
 </body>
 </html>

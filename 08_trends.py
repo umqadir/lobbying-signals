@@ -8,7 +8,7 @@ from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
-from db import get_db, query_to_dicts
+from db import get_db, query_to_dicts, normalize_covered_position
 from clients_norm import canonical_client_key, display_client_name, EXCLUDED_CLIENT_KEYS
 from bill_reference import BILL_TYPES, load_reference
 
@@ -1491,7 +1491,7 @@ def compute_client_movers(quarters_back: int = 200) -> dict:
             conn,
             '''
             SELECT f.id AS filing_id, f.sopr_filing_id AS filing_uuid,
-                   f.year, f.quarter, f.income, f.filing_date, f.is_current,
+                   f.year, f.quarter, f.income, f.filing_date, f.is_current, f.filing_type,
                    f.registrant_id, f.client_id,
                    c.name AS client_name, r.name AS registrant_name
             FROM filings f
@@ -1602,6 +1602,7 @@ def compute_client_movers(quarters_back: int = 200) -> dict:
                     'client': client_name,
                     'registrant': registrant_name,
                     'income': income,
+                    'type': row.get('filing_type'),
                 })
 
     topics_by_frame_key = {fk: defaultdict(Counter) for fk in FRAME_KEYS}
@@ -2115,11 +2116,300 @@ def _export_bill_labels(value):
         return {display_legislation(k): _export_bill_labels(v) for k, v in value.items()}
     return value
 
+# Keep the lazy payload bounded even for organizations with many firms/issues.
+CLIENT_DETAIL_LIMIT = 30
+CLIENT_ISSUE_TEXT_LIMIT = 2400
+CLIENT_POSITION_TEXT_LIMIT = 1200
+POSITION_CLASSES = ('Member of Congress', 'congressional staff', 'executive branch', 'military', 'other')
+
+
+def classify_covered_position(text: str | None) -> str | None:
+    """Keyword classes for raw disclosures; staff roles precede member titles."""
+    text = normalize_covered_position(text)
+    if text is None:
+        return None
+    text = ' '.join(text.casefold().replace('.', '').split())
+    # These uses of House/Representative refer to the executive branch.
+    congress_text = re.sub(r'\b(white house|trade representative)\b', '', text)
+    congress_text = re.sub(r'\bstate (senator|senate|representative|house)\b', '', congress_text)
+    congress = re.search(r'\b(congress\w*|senate|senator|sen|house|representative|rep)\b', congress_text)
+    executive = re.search(
+        r'\b(white house|trade representative|omb|eop|executive|president|department|dept|'
+        r'agency|administration|schedule c|federal|epa|fda|doj|dod|dhs|dot|doe|hhs|'
+        r'usda|fcc|ftc|cms|nasa|nih|nist|sec|gsa|ustr|cia|fbi)\b', text)
+    committee = re.search(r'\b(subcommittee|committee)\b', congress_text) and (congress or not executive)
+    staff = re.search(
+        r'\b(staff|aide|assistant|counsel|director|advisor|adviser|clerk|ld|la|'
+        r'legislative correspondent|press secretary|scheduler|caseworker|fellow)\b', text)
+    office = congress and re.search(r'\boffice\b', congress_text)
+    leadership = re.search(
+        r'\b(speaker|majority leader|minority leader|majority whip|minority whip)\b', congress_text)
+    if ((congress or committee) and staff) or office or (leadership and (congress or re.search(r'\boffice\b', text))):
+        return 'congressional staff'
+    # Diplomatic representatives are not elected members of Congress.
+    if re.search(r'\brepresentative to (the )?(united nations|un|nato)\b', text):
+        return 'executive branch'
+    if re.search(
+        r'\bmember of congress\b|\b(us|united states) (representative|senator)\b|'
+        r'\bmember[, ]+(of (the )?)?(us|united states) (house|senate)\b|'
+        r'^(former )?(senator|congressman|congresswoman|congressperson)\b', congress_text):
+        return 'Member of Congress'
+    if committee or (leadership and congress):
+        return 'congressional staff'
+    # Civilian executive roles can mention military departments. Likewise,
+    # "General Counsel" and "Attorney General" are not military ranks.
+    if re.search(r'\b(secretary|administrator|commissioner|attorney general|inspector general)\b', text):
+        if not re.search(r'\b(city|county|secretary general)\b', text):
+            return 'executive branch'
+    military_text = re.sub(r'\b(general counsel|general services administration|attorney general|inspector general|secretary general|lt governor)\b', '', text)
+    if re.search(
+        r'\b(military|army|navy|usn|air force|marines?|marine corps|usmc|coast guard|'
+        r'space force|armed forces|colonel|lt|lieutenant|captain|general|admiral)\b', military_text):
+        return 'military'
+    if executive:
+        return 'executive branch'
+    if congress:
+        return 'congressional staff'
+    return 'other'
+
+
+def _lobbyist_identity_key(text: str | None) -> str:
+    """Ignore case, spacing, and punctuation when matching reported identities."""
+    return ' '.join(re.findall(r'\w+', (text or '').casefold()))
+
+
+def _deduplicate_lobbyists(lobbyists: list[dict]) -> list[dict]:
+    """Merge ID/name and name/position pairs, including transitive links.
+
+    An ID/name pair can cover several positions; the same name/position can
+    connect IDs assigned by different registrants. Different normalized
+    names never merge, even when they share an ID.
+    """
+    rows = [p for p in lobbyists if p.get('lda_lobbyist_id') is not None or _lobbyist_identity_key(p.get('name'))]
+    parents = list(range(len(rows)))
+
+    def root(index):
+        while parents[index] != index:
+            parents[index] = parents[parents[index]]
+            index = parents[index]
+        return index
+
+    def merge(left, right):
+        left, right = root(left), root(right)
+        parents[max(left, right)] = min(left, right)
+
+    by_id, by_disclosure = {}, {}
+    for index, person in enumerate(rows):
+        name = _lobbyist_identity_key(person.get('name'))
+        identity = person.get('lda_lobbyist_id')
+        if identity is not None:
+            merge(index, by_id.setdefault((identity, name), index))
+        if name:
+            position = normalize_covered_position(person.get('covered_position'))
+            pair = (name, _lobbyist_identity_key(position))
+            merge(index, by_disclosure.setdefault(pair, index))
+    # Missing-ID rows can join a known person by name if all known IDs for
+    # that name have already resolved to a single identity.
+    known_by_name = defaultdict(set)
+    for index, person in enumerate(rows):
+        if person.get('lda_lobbyist_id') is not None:
+            known_by_name[_lobbyist_identity_key(person.get('name'))].add(root(index))
+    for index, person in enumerate(rows):
+        known = {root(known_root) for known_root in known_by_name[_lobbyist_identity_key(person.get('name'))]}
+        if person.get('lda_lobbyist_id') is None and len(known) == 1:
+            merge(index, next(iter(known)))
+    groups = {}
+    for index, person in enumerate(rows):
+        group = groups.setdefault(root(index), {'name': '', 'positions': {}})
+        if not group['name']:
+            group['name'] = (person.get('name') or '').strip()
+        text = normalize_covered_position(person.get('covered_position'))
+        if text is not None:
+            group['positions'].setdefault(_lobbyist_identity_key(text), text)
+    return list(groups.values())
+
+
+def _detail_text_key(text: str) -> str:
+    return ' '.join((text or '').split()).casefold()
+
+
+def _bounded_text(text: str, limit: int) -> dict:
+    return {'text': text[:limit], 'truncated': len(text) > limit}
+
+
+def summarize_client_quarter(filings: list[dict], lobbyists: list[dict], activities: list[dict]) -> dict:
+    """Aggregate one selected leg without treating unfetched detail as zero.
+
+    income is the existing income-or-expenses measure used by mover totals.
+    Historical self-filers retain that amount, with inference made explicit.
+    Counts describe all rows; only displayed lists/text are capped.
+    """
+    split = {}
+    for name, flag in (('self', 1), ('outside', 0), ('unknown', None)):
+        group = [f for f in filings if f.get('is_self_filer') == flag]
+        amounts = [f['income'] for f in group if f.get('income') is not None]
+        split[name] = round(sum(amounts), 2) if amounts or not group else None
+        split[name + '_filings'] = len(group)
+        split[name + '_amounts_missing'] = len(group) - len(amounts)
+    self_filings = [f for f in filings if f.get('is_self_filer') == 1]
+    methods = sorted({str(f.get('expenses_method') or '').strip().upper()
+                      for f in self_filings} & {'A', 'B', 'C'})
+    method_missing = sum(str(f.get('expenses_method') or '').strip().upper() not in {'A', 'B', 'C'}
+                         for f in self_filings)
+    firms = {}
+    for f in filings:
+        if f.get('is_self_filer') != 0:
+            continue
+        key = canonical_client_key(f['registrant_name']) or str(f['registrant_id'])
+        firm = firms.setdefault(key, {'key': key, 'name': display_client_name([f['registrant_name']]),
+                                     'income': 0, 'amounts_missing': 0, 'amounts_known': 0})
+        if f.get('income') is None:
+            firm['amounts_missing'] += 1
+        else:
+            firm['income'] += f['income']
+            firm['amounts_known'] += 1
+    for firm in firms.values():
+        firm['income'] = round(firm['income'], 2) if firm.pop('amounts_known') else None
+    fetched = sum(bool(f.get('details_fetched_at')) for f in filings)
+    people = _deduplicate_lobbyists(lobbyists)
+    covered = [person for person in people if person['positions']]
+    positions = []
+    classes = {name: 0 for name in POSITION_CLASSES}
+    for person in covered:
+        texts = sorted(person['positions'].values(), key=_lobbyist_identity_key)
+        kinds = {classify_covered_position(text) for text in texts}
+        for kind in kinds:
+            classes[kind] += 1
+        positions.append({
+            'name': person['name'] or 'Unnamed lobbyist',
+            'class': ', '.join(kind for kind in POSITION_CLASSES if kind in kinds),
+            **_bounded_text('\n\n'.join(texts), CLIENT_POSITION_TEXT_LIMIT),
+        })
+    issues = {}
+    for activity in activities:
+        text = (activity.get('description') or '').strip()
+        if not text:
+            continue
+        code = activity.get('issue_code') or '—'
+        issues.setdefault((code, _detail_text_key(text)), {
+            'code': code, **_bounded_text(text, CLIENT_ISSUE_TEXT_LIMIT),
+        })
+    filing_list = sorted(filings, key=lambda f: (-(f.get('income') or 0), f['filing_id']))
+    position_list = sorted(positions, key=lambda p: (p['name'].casefold(), p['text']))
+    issue_list = sorted(issues.values(), key=lambda a: (a['code'], a['text']))
+    return {
+        'filing_count': len(filings), 'details_fetched': fetched,
+        'split': split, 'methods': methods, 'methods_missing': method_missing,
+        'self_inferred': sum(not f.get('details_fetched_at') for f in self_filings),
+        'firms': sorted(firms.values(), key=lambda f: (-(f['income'] or 0), f['key'])),
+        'firm_count': len(firms),
+        'lobbyist_count': len(people) if fetched or people or not filings else None,
+        'covered_count': len(covered) if fetched or people or not filings else None,
+        'position_classes': classes if fetched or people or not filings else None,
+        'positions': position_list[:CLIENT_DETAIL_LIMIT],
+        'positions_more': max(0, len(position_list) - CLIENT_DETAIL_LIMIT),
+        'issues': issue_list[:CLIENT_DETAIL_LIMIT],
+        'issues_more': max(0, len(issue_list) - CLIENT_DETAIL_LIMIT),
+        'filings': [{
+            'uuid': f['filing_uuid'], 'date': f['filing_date'],
+            'registrant': display_client_name([f['registrant_name']]),
+            'amount': f['income'], 'type': f.get('filing_type'),
+            'self_filer': f.get('is_self_filer'),
+        } for f in filing_list[:CLIENT_DETAIL_LIMIT]],
+        'filings_more': max(0, len(filing_list) - CLIENT_DETAIL_LIMIT),
+    }
+
+
+def compare_client_quarters(current: dict, baseline: dict) -> dict:
+    """Mark firm arrivals/departures before capping either displayed list."""
+    current_keys = {f['key'] for f in current['firms']}
+    baseline_keys = {f['key'] for f in baseline['firms']}
+    for quarter, other, status in ((current, baseline_keys, 'new'), (baseline, current_keys, 'dropped')):
+        for firm in quarter['firms']:
+            firm['status'] = status if firm['key'] not in other else None
+        quarter['firms_more'] = max(0, len(quarter['firms']) - CLIENT_DETAIL_LIMIT)
+        quarter['firms'] = quarter['firms'][:CLIENT_DETAIL_LIMIT]
+    # Unknown methods cannot establish a change. Different known disclosures
+    # do warrant a warning even when some other self-filings are unfetched.
+    changed = bool(current['methods'] and baseline['methods'] and current['methods'] != baseline['methods'])
+    return {'current': current, 'baseline': baseline, 'method_changed': changed}
+
+
+def compute_client_details(clients_data: dict) -> dict:
+    """Lazy detail for exported movers/majors, using the same frame cutoffs."""
+    details = {'generated_at': clients_data['generated_at'], 'frames': {}}
+    with get_db() as conn:
+        specs = _frame_specs(conn)
+        # Canonicalize client identities once; avoid a full activity/lobbyist
+        # scan or a query per mover against the production-size database.
+        all_clients = query_to_dicts(conn, 'SELECT id, name FROM clients')
+        conn.execute('CREATE TEMP TABLE _detail_clients (id INTEGER PRIMARY KEY, key TEXT)')
+        conn.execute('CREATE TEMP TABLE _detail_filings (id INTEGER PRIMARY KEY)')
+        for frame_key, frame in clients_data['frames'].items():
+            movers = {m['key']: m for group in ('risers', 'fallers', 'new_entrants', 'majors')
+                      for m in frame.get(group, [])}
+            conn.execute('DELETE FROM _detail_clients')
+            conn.executemany('INSERT INTO _detail_clients VALUES (?, ?)', [
+                (c['id'], key) for c in all_clients
+                if (key := canonical_client_key(c['name'])) in movers
+            ])
+            legs = {}
+            for leg in ('current', 'baseline'):
+                year, quarter, through = specs[frame_key][leg]
+                predicate = _as_of_filter('f') if through else 'f.is_current = 1'
+                params = (year, quarter, through, through) if through else (year, quarter)
+                rows = query_to_dicts(conn, f'''
+                    SELECT f.id AS filing_id, f.sopr_filing_id AS filing_uuid,
+                           f.registrant_id, r.name AS registrant_name, dc.key,
+                           f.income, f.filing_date, f.filing_type, f.is_self_filer,
+                           f.expenses_method, f.details_fetched_at
+                    FROM filings f JOIN _detail_clients dc ON dc.id = f.client_id
+                    JOIN registrants r ON r.id = f.registrant_id
+                    WHERE f.year = ? AND f.quarter = ? AND {predicate}
+                ''', params)
+                conn.execute('DELETE FROM _detail_filings')
+                conn.executemany('INSERT INTO _detail_filings VALUES (?)', [(r['filing_id'],) for r in rows])
+                people = query_to_dicts(conn, '''
+                    SELECT l.* FROM _detail_filings d JOIN filing_lobbyists l ON l.filing_id = d.id
+                ''')
+                activities = query_to_dicts(conn, '''
+                    SELECT a.filing_id, a.issue_code, a.description
+                    FROM _detail_filings d JOIN activities a ON a.filing_id = d.id
+                ''')
+                rows_by_key, people_by_id, activities_by_id = defaultdict(list), defaultdict(list), defaultdict(list)
+                for row in rows:
+                    rows_by_key[row['key']].append(row)
+                for person in people:
+                    people_by_id[person['filing_id']].append(person)
+                for activity in activities:
+                    activities_by_id[activity['filing_id']].append(activity)
+                legs[leg] = {key: summarize_client_quarter(
+                    rows_by_key[key],
+                    [p for f in rows_by_key[key] for p in people_by_id[f['filing_id']]],
+                    [a for f in rows_by_key[key] for a in activities_by_id[f['filing_id']]],
+                ) for key in movers}
+            details['frames'][frame_key] = {}
+            for key, mover in movers.items():
+                detail = compare_client_quarters(legs['current'][key], legs['baseline'][key])
+                details['frames'][frame_key][key] = detail
+                # Only the comparability warning belongs on the compact card.
+                mover['method_changed'] = detail['method_changed']
+    return details
+
+
+def _write_client_exports(clients_data: dict, output_dir: str):
+    details = compute_client_details(clients_data)
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    with open(f'{output_dir}/client_details.json', 'w') as f:
+        json.dump(details, f, separators=(',', ':'), ensure_ascii=False)
+    with open(f'{output_dir}/clients.json', 'w') as f:
+        json.dump(clients_data, f, indent=2)
+
+
 def export_clients_json(output_dir: str = 'docs/data'):
     """Re-export organization movers after the bounded detail backfill."""
     clients_data = compute_client_movers()
-    with open(f'{output_dir}/clients.json', 'w') as f:
-        json.dump(clients_data, f, indent=2)
+    _write_client_exports(clients_data, output_dir)
 
 
 def export_json(output_dir: str = 'docs/data'):
@@ -2213,8 +2503,7 @@ def export_json(output_dir: str = 'docs/data'):
         }, f, indent=2)
 
     if clients_data is not None:
-        with open(f'{output_dir}/clients.json', 'w') as f:
-            json.dump(clients_data, f, indent=2)
+        _write_client_exports(clients_data, output_dir)
 
     print(f"Exported JSON files to {output_dir}/")
     print(f"  - {len(alerts)} alerts")

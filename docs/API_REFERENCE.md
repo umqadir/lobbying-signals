@@ -51,12 +51,17 @@ Parameters:
 ```
 
 ## Important Notes
-- The former lda.senate.gov host redirects to lda.gov (use the new host directly).
+- Use lda.gov directly for the API and public filing documents.
 - Government entities broken down per activity only for filings after 2/14/2021
 
 `filings` stores `expenses`, `expenses_method`, `is_self_filer`, and `details_fetched_at`.
 `income` retains the existing income-or-expenses total.
 `filing_lobbyists` stores per-activity names, LDA IDs, covered positions, and new flags.
+The API reports top-level `income`, `expenses`, `expenses_method`, and `expenses_method_display`.
+Each `lobbying_activities[].lobbyists[]` entry contains a nested `lobbyist` identity
+(`id`, `prefix`, `first_name`, `nickname`, `middle_name`, `last_name`, `suffix`),
+with `covered_position` and `new` alongside it. Covered-position placeholders
+(`N/A`, `NA`, `None`, `-`, and blank text, ignoring case and surrounding whitespace) mean no covered position.
 Run `python 01_ingest.py backfill-details` for dashboard movers in both frames and quarter legs.
 Use repeated `--uuid UUID` options to select specific filings.
 Defaults: 600 HTTP attempts including retries and eight minutes; rate limits and backoff apply.

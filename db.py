@@ -267,6 +267,14 @@ def normalize_name(name: str) -> str:
     return normalized.strip().upper()
 
 
+def normalize_covered_position(position: str | None) -> str | None:
+    """Treat API placeholders as absent; preserve actual disclosure text."""
+    text = (position or "").strip()
+    if text.casefold() in {"", "n/a", "na", "none", "-", "not applicable"}:
+        return None
+    return text
+
+
 def get_or_create_registrant(conn: sqlite3.Connection, sopr_id: str, name: str) -> int:
     """Get existing registrant or create new one."""
     cur = conn.execute("SELECT id FROM registrants WHERE sopr_id = ?", (sopr_id,))

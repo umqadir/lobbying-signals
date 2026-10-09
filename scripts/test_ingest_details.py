@@ -89,6 +89,28 @@ class DetailTests(unittest.TestCase):
             self.assertEqual(conn.execute("SELECT is_self_filer FROM filings").fetchone()[0], 0)
             self.assertEqual(conn.execute("SELECT COUNT(*) FROM filing_lobbyists").fetchone()[0], 1)
 
+    def test_covered_position_placeholders_parse_and_store_as_null(self):
+        placeholders = (None, 'N/A', 'NA', 'None', 'n/a', '-', '', ' \t\n ', ' nA ', 'not applicable')
+        for index, placeholder in enumerate(placeholders):
+            with self.subTest(position=placeholder):
+                raw = copy.deepcopy(FIXTURES['self_filer'])
+                raw['filing_uuid'] = f'placeholder-{index}'
+                for activity in raw['lobbying_activities']:
+                    for entry in activity['lobbyists']:
+                        entry['covered_position'] = placeholder
+                parsed = ingest.parse_api_filing(raw)
+                self.assertTrue(parsed['details_complete'])
+                self.assertTrue(all(person['covered_position'] is None
+                                    for activity in parsed['lobbyist_activities']
+                                    for person in activity['lobbyists']))
+                ingest.load_filings_to_db([parsed])
+                with db.get_db() as conn:
+                    rows = conn.execute('''SELECT l.covered_position FROM filing_lobbyists l
+                        JOIN filings f ON f.id = l.filing_id WHERE f.sopr_filing_id = ?''',
+                        (raw['filing_uuid'],)).fetchall()
+                    self.assertEqual(len(rows), 3)
+                    self.assertTrue(all(row['covered_position'] is None for row in rows))
+
     def test_zero_expenses_and_unknown_amounts(self):
         raw = dict(FIXTURES["self_filer"], expenses=0)
         self.assertTrue(ingest.parse_api_filing(raw)["is_self_filer"])
