@@ -31,7 +31,8 @@ def refresh(
     ingest_latest: bool = True,
     rules_batch_size: int = 2_000_000,
     export: bool = True,
-    verbose: bool = True
+    verbose: bool = True,
+    backfill_details: bool = True
 ):
     """Run the full refresh cycle."""
 
@@ -93,6 +94,15 @@ def refresh(
         try:
             trends_module = _load_module("08_trends.py", "trends")
             trends_module.export_json()
+            if backfill_details:
+                log("Step 5: Backfilling dashboard filing details (600 requests / 8 minutes max)...")
+                try:
+                    ingest_module = _load_module("01_ingest.py", "ingest_details")
+                    result = ingest_module.backfill_details(max_requests=600, max_minutes=8)
+                    if result["updated"]:
+                        trends_module.export_clients_json()
+                except Exception as e:
+                    log(f"  Warning: Detail backfill skipped: {e}")
         except Exception as e:
             log(f"  Warning: Export failed: {e}")
             raise
@@ -113,6 +123,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Refresh lobbying data')
     parser.add_argument('--no-ingest', action='store_true', help='Skip ingestion')
     parser.add_argument('--rules-batch-size', type=int, default=2_000_000, help='Max activities to classify with deterministic rules')
+    parser.add_argument('--no-detail-backfill', action='store_true', help='Skip optional filing-detail backfill')
     parser.add_argument('--no-export', action='store_true', help='Skip JSON export')
     parser.add_argument('--check-env', action='store_true', help='Check environment and exit')
 
@@ -126,5 +137,6 @@ if __name__ == "__main__":
     refresh(
         ingest_latest=not args.no_ingest,
         rules_batch_size=args.rules_batch_size,
-        export=not args.no_export
+        export=not args.no_export,
+        backfill_details=not args.no_detail_backfill
     )

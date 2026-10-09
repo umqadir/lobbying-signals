@@ -1,6 +1,6 @@
 """Ingest lobbying filings from the LDA Senate REST API.
 
-API documentation: https://lda.senate.gov/api/
+API documentation: https://lda.gov/api/
 Rate limits:
   - Unauthenticated: 15/minute
   - With API key: 120/minute
@@ -9,23 +9,27 @@ Set LDA_API_KEY env var for faster ingestion.
 """
 
 import os
+import json
+import math
 import time
+from collections import defaultdict, deque
 from datetime import datetime, timedelta
+from pathlib import Path
 
 import httpx
 
-from config import DATA_DIR
+from config import PROJECT_ROOT
 from db import (
     get_db, init_db, get_or_create_registrant, get_or_create_client,
-    insert_filing, insert_activity, recompute_is_current
+    recompute_is_current
 )
 
-API_BASE = "https://lda.senate.gov/api/v1"
+API_BASE = "https://lda.gov/api/v1"
 PAGE_SIZE = 25  # API caps at 25 results per page
 LDA_API_KEY = os.getenv("LDA_API_KEY", "")
 
 # LDA report-period filing types for quarter n (n = 1..4), verified against
-# https://lda.senate.gov/api/v1/constants/filing/filingtypes/:
+# https://lda.gov/api/v1/constants/filing/filingtypes/:
 #   QnY   original quarterly report (activity / no-activity)
 #   nA/nAY    amendment — a COMPLETE restatement that supersedes the original
 #   nT/nTY    termination report — filer's final-period activity
@@ -120,8 +124,20 @@ def parse_api_filing(filing: dict) -> dict | None:
     if not year or not quarter:
         return None
 
-    # Parse income
-    income = filing.get("income") or filing.get("expenses") or 0
+    # Detail fields are optional; unexpected shapes must not block core ingest.
+    details_complete = all(k in filing for k in ("expenses", "income", "lobbying_activities"))
+    try:
+        expenses = _parse_amount(filing.get("expenses"))
+    except (ValueError, TypeError, OverflowError):
+        expenses = None
+        details_complete = False
+    expenses_method = filing.get("expenses_method")
+    if expenses_method is not None and not isinstance(expenses_method, str):
+        expenses_method = None
+        details_complete = False
+
+    # Keep the existing income-or-expenses total for valid amounts.
+    income = filing.get("income") or expenses or 0
     if isinstance(income, str):
         income = float(income.replace(",", "").replace("$", "")) if income else 0
 
@@ -137,22 +153,52 @@ def parse_api_filing(filing: dict) -> dict | None:
 
     # Lobbying activities
     activities = []
-    for activity in filing.get("lobbying_activities", []):
+    lobbyist_activities = []
+    for index, activity in enumerate(filing.get("lobbying_activities") or []):
         description = activity.get("description") or activity.get("specific_issues") or ""
         issue_code = activity.get("general_issue_code") or ""
         # Government entities include houses and agencies
-        entities = activity.get("government_entities", [])
+        entities = activity.get("government_entities") or []
         entity_names = [e.get("name", "") for e in entities]
         houses = ",".join(n for n in entity_names if "HOUSE" in n.upper() or "SENATE" in n.upper())
         agencies = ",".join(n for n in entity_names if "HOUSE" not in n.upper() and "SENATE" not in n.upper())
 
-        if description:
-            activities.append({
-                "description": description,
-                "issue_code": issue_code,
-                "houses": houses,
-                "agencies": agencies
+        lobbyists = []
+        entries = activity.get("lobbyists")
+        if "lobbyists" not in activity or (entries is not None and not isinstance(entries, list)):
+            details_complete = False
+            entries = []
+        for entry in entries or []:
+            person = entry.get("lobbyist") if isinstance(entry, dict) else None
+            if not isinstance(person, dict):
+                details_complete = False
+                continue
+            lobbyist_id = person.get("id")
+            name_parts = [person.get(k) for k in
+                          ("prefix", "first_name", "middle_name", "last_name", "suffix")]
+            covered_position = entry.get("covered_position")
+            is_new = entry.get("new")
+            if (type(lobbyist_id) is not int or not 0 < lobbyist_id < 2 ** 63
+                    or any(part is not None and not isinstance(part, str) for part in name_parts)
+                    or (covered_position is not None and not isinstance(covered_position, str))
+                    or (is_new is not None and not isinstance(is_new, bool))):
+                details_complete = False
+                continue
+            name = " ".join(part or "" for part in name_parts)
+            lobbyists.append({
+                "lda_lobbyist_id": lobbyist_id,
+                "name": " ".join(name.split()),
+                "covered_position": covered_position,
+                "is_new": is_new,
             })
+        parsed_activity = {
+            "description": description, "issue_code": issue_code,
+            "houses": houses, "agencies": agencies,
+            "activity_index": index, "lobbyists": lobbyists,
+        }
+        lobbyist_activities.append(parsed_activity)
+        if description:
+            activities.append(parsed_activity)
 
     filing_date = filing.get("dt_posted") or filing.get("filing_date")
     filing_type = filing.get("filing_type")
@@ -162,6 +208,12 @@ def parse_api_filing(filing: dict) -> dict | None:
         "year": year,
         "quarter": quarter,
         "income": income,
+        "expenses": expenses,
+        "expenses_method": expenses_method,
+        "is_self_filer": (True if expenses is not None else
+                          False if filing.get("income") is not None else None),
+        "details_complete": details_complete,
+        "lobbyist_activities": lobbyist_activities,
         "filing_date": filing_date,
         "filing_type": filing_type,
         "registrant_id": str(registrant_id) if registrant_id else None,
@@ -188,62 +240,194 @@ def parse_quarter(period: str) -> int | None:
     return None
 
 
+def _parse_amount(value):
+    if value is None or value == "":
+        return None
+    if isinstance(value, str):
+        value = float(value.replace(",", "").replace("$", ""))
+    if type(value) not in (int, float) or not math.isfinite(value):
+        raise ValueError("unexpected expense amount")
+    return float(value)
+
+
+def store_filing_details(conn, filing_db_id: int, filing: dict):
+    """Replace detail fields only; leave income and classified activities intact.
+
+    Match activities by their stored content, rather than assuming API order
+    still agrees with the DB after a historical dedupe or an in-place edit.
+    Unmatched/blank activities retain their API index and a NULL activity_id.
+    """
+    conn.execute("""
+        UPDATE filings SET expenses = ?, expenses_method = ?,
+               is_self_filer = COALESCE(?, is_self_filer), details_fetched_at = ?
+        WHERE id = ?
+    """, (filing.get("expenses"), filing.get("expenses_method"),
+          filing.get("is_self_filer"),
+          datetime.now().isoformat() if filing.get("details_complete") else None,
+          filing_db_id))
+    stored = defaultdict(deque)
+    for row in conn.execute("SELECT * FROM activities WHERE filing_id = ? ORDER BY id", (filing_db_id,)):
+        key = tuple(row[k] or "" for k in ("description", "issue_code", "houses_lobbied", "agencies"))
+        stored[key].append(row["id"])
+    conn.execute("DELETE FROM filing_lobbyists WHERE filing_id = ?", (filing_db_id,))
+    for activity in filing.get("lobbyist_activities", []):
+        key = tuple(activity.get(k) or "" for k in ("description", "issue_code", "houses", "agencies"))
+        activity_id = stored[key].popleft() if stored[key] else None
+        for index, person in enumerate(activity["lobbyists"]):
+            conn.execute("""
+                INSERT INTO filing_lobbyists
+                    (filing_id, activity_index, lobbyist_index, activity_id,
+                     lda_lobbyist_id, name, covered_position, is_new)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, (filing_db_id, activity["activity_index"], index, activity_id,
+                  person["lda_lobbyist_id"], person["name"], person["covered_position"], person["is_new"]))
+
+
+def _try_store_filing_details(conn, filing_db_id: int, filing: dict):
+    """A detail write failure must not roll back the core filing or activities."""
+    conn.execute("SAVEPOINT filing_details")
+    try:
+        store_filing_details(conn, filing_db_id, filing)
+    except Exception as e:
+        conn.execute("ROLLBACK TO filing_details")
+        print(f"Warning: Details skipped for filing {filing.get('filing_id')}: {e}")
+    finally:
+        conn.execute("RELEASE filing_details")
+
+
 def load_filings_to_db(filings: list[dict]):
-    """Load parsed filings into SQLite database."""
+    """Load new filings, and capture details on every refetch of an existing UUID."""
     loaded = 0
     with get_db() as conn:
         for f in filings:
             try:
                 existing = conn.execute(
-                    "SELECT id FROM filings WHERE sopr_filing_id = ?",
-                    (f.get("filing_id"),)
+                    "SELECT id FROM filings WHERE sopr_filing_id = ?", (f.get("filing_id"),)
                 ).fetchone()
                 if existing:
+                    _try_store_filing_details(conn, existing["id"], f)
+                    conn.commit()
                     continue
-
                 if not f.get("registrant_id") or not f.get("registrant_name"):
                     continue
                 if not f.get("client_id") or not f.get("client_name"):
                     continue
-
-                reg_id = get_or_create_registrant(
-                    conn, f["registrant_id"], f["registrant_name"]
-                )
-
-                client_id = get_or_create_client(
-                    conn, f["client_id"], f["client_name"]
-                )
-
-                filing_db_id = insert_filing(
-                    conn,
-                    f["filing_id"],
-                    reg_id,
-                    client_id,
-                    f["year"],
-                    f["quarter"],
-                    f.get("income"),
-                    None,
-                    f.get("filing_date"),
-                    f.get("filing_type")
-                )
-
+                reg_id = get_or_create_registrant(conn, f["registrant_id"], f["registrant_name"])
+                client_id = get_or_create_client(conn, f["client_id"], f["client_name"])
+                cur = conn.execute("""
+                    INSERT INTO filings (sopr_filing_id, registrant_id, client_id,
+                        year, quarter, income, filing_date, filing_type)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """, (f["filing_id"], reg_id, client_id, f["year"], f["quarter"],
+                      f.get("income"), f.get("filing_date"), f.get("filing_type")))
+                filing_db_id = cur.lastrowid
                 for activity in f.get("activities", []):
-                    insert_activity(
-                        conn,
-                        filing_db_id,
-                        activity["description"],
-                        activity.get("issue_code"),
-                        activity.get("houses"),
-                        activity.get("agencies")
-                    )
-
+                    conn.execute("""
+                        INSERT INTO activities (filing_id, description, issue_code, houses_lobbied, agencies)
+                        VALUES (?, ?, ?, ?, ?)
+                    """, (filing_db_id, activity["description"], activity.get("issue_code"),
+                          activity.get("houses"), activity.get("agencies")))
+                _try_store_filing_details(conn, filing_db_id, f)
+                conn.commit()
                 loaded += 1
-
             except Exception as e:
+                conn.rollback()
                 print(f"Error loading filing {f.get('filing_id')}: {e}")
-                continue
-
     return loaded
+
+
+def dashboard_filing_uuids(conn, clients_path=None) -> set[str]:
+    """All mover filings in both legs of each exported frame, including amendments.
+
+    Use each frame's own mover set. Include whole quarters (also for QTD),
+    all name variants and all registrants, rather than just example UUIDs.
+    """
+    from clients_norm import canonical_client_key
+
+    path = Path(clients_path) if clients_path else PROJECT_ROOT / "docs/data/clients.json"
+    data = json.loads(path.read_text())
+    client_keys = {row["id"]: canonical_client_key(row["name"])
+                   for row in conn.execute("SELECT id, name FROM clients")}
+    wanted = set()
+    for frame in data["frames"].values():
+        keys = {m["key"] for group in ("risers", "fallers", "new_entrants")
+                for m in frame.get(group, [])}
+        for leg in ("current_quarter", "baseline_quarter"):
+            period = frame[leg]
+            for row in conn.execute("""
+                SELECT sopr_filing_id, client_id FROM filings
+                WHERE year = ? AND quarter = ? AND sopr_filing_id IS NOT NULL
+            """, (period["year"], period["quarter"])):
+                if client_keys.get(row["client_id"]) in keys:
+                    wanted.add(row["sopr_filing_id"])
+    return wanted
+
+
+def backfill_details(uuids=None, max_requests: int = 600, max_minutes: float = 8,
+                     clients_path=None) -> dict:
+    """Resume missing dashboard details within a request and wall-clock budget.
+
+    NULL expense methods and empty lobbyist rosters are legitimate. A complete
+    response is marked by details_fetched_at so those filings won't loop forever.
+    Retries count toward max_requests; persistent API trouble ends the run.
+    """
+    init_db()
+    deadline = time.monotonic() + max_minutes * 60
+    stats = {"eligible": 0, "requests": 0, "updated": 0, "errors": 0,
+             "missing_expenses_method": 0}
+    with get_db() as conn:
+        wanted = set(uuids) if uuids is not None else dashboard_filing_uuids(conn, clients_path)
+        pending = [row for row in conn.execute("""
+            SELECT id, sopr_filing_id FROM filings WHERE details_fetched_at IS NULL ORDER BY id
+        """) if row["sopr_filing_id"] in wanted]
+        stats["eligible"] = len(pending)
+        next_request = time.monotonic()
+        with httpx.Client(headers=get_headers(), follow_redirects=True) as client:
+            for row in pending:
+                for attempt in range(3):
+                    wait = max(0, next_request - time.monotonic())
+                    if stats["requests"] >= max_requests or time.monotonic() + wait >= deadline:
+                        print(f"Detail backfill: {stats} (budget reached)")
+                        return stats
+                    time.sleep(wait)
+                    stats["requests"] += 1
+                    remaining = deadline - time.monotonic()
+                    try:
+                        resp = client.get(f"{API_BASE}/filings/{row['sopr_filing_id']}/",
+                                          timeout=max(0.01, min(10, remaining / 4)))
+                        next_request = time.monotonic() + RATE_LIMIT_DELAY
+                        resp.raise_for_status()
+                        payload = resp.json()
+                        if isinstance(payload, dict) and "expenses_method" not in payload:
+                            stats["missing_expenses_method"] += 1
+                        parsed = parse_api_filing(payload)
+                        if not parsed or parsed["filing_id"] != row["sopr_filing_id"] or not parsed["details_complete"]:
+                            raise ValueError("incomplete or unexpected filing detail response")
+                        store_filing_details(conn, row["id"], parsed)
+                        conn.commit()
+                        stats["updated"] += 1
+                        break
+                    except (httpx.HTTPError, ValueError) as e:
+                        conn.rollback()
+                        retryable = (not isinstance(e, httpx.HTTPStatusError) or
+                                     e.response.status_code == 429 or e.response.status_code >= 500)
+                        if retryable and attempt < 2:
+                            delay = 5 * 2 ** attempt
+                            if isinstance(e, httpx.HTTPStatusError):
+                                try:
+                                    delay = max(delay, float(e.response.headers.get("Retry-After", 0)))
+                                except ValueError:
+                                    pass
+                            next_request = time.monotonic() + max(delay, RATE_LIMIT_DELAY)
+                            continue
+                        stats["errors"] += 1
+                        print(f"  Detail fetch failed for {row['sopr_filing_id']}: {e}")
+                        if retryable:
+                            print(f"Detail backfill: {stats} (API unavailable; resume next run)")
+                            return stats
+                        break
+    print(f"Detail backfill: {stats}")
+    return stats
 
 
 def _ingest_filing_type(year: int, filing_type: str) -> int:
@@ -526,6 +710,9 @@ def audit_sample(n: int = 100, max_minutes: float = None) -> dict:
             time.sleep(RATE_LIMIT_DELAY)
             continue
 
+        parsed = parse_api_filing(live)
+        if parsed:
+            load_filings_to_db([parsed])
         checked += 1
         live_income = live.get('income') or live.get('expenses') or 0
         if isinstance(live_income, str):
@@ -667,7 +854,19 @@ def backfill_non_original(start_year: int):
 if __name__ == "__main__":
     import sys
 
-    if len(sys.argv) >= 2 and sys.argv[1] == "recompute-current":
+    if len(sys.argv) >= 2 and sys.argv[1] == "backfill-details":
+        import argparse
+
+        parser = argparse.ArgumentParser(description="Resume detail backfill for dashboard mover filings")
+        parser.add_argument("--max-requests", type=int, default=600)
+        parser.add_argument("--max-minutes", type=float, default=8)
+        parser.add_argument("--clients-json", type=Path)
+        parser.add_argument("--uuid", action="append", help="Specific filing UUID; repeat for a set")
+        args = parser.parse_args(sys.argv[2:])
+        if args.max_requests < 0 or args.max_minutes <= 0:
+            parser.error("max-requests must be nonnegative and max-minutes must be positive")
+        backfill_details(args.uuid, args.max_requests, args.max_minutes, args.clients_json)
+    elif len(sys.argv) >= 2 and sys.argv[1] == "recompute-current":
         init_db()
         with get_db() as conn:
             recompute_is_current(conn)
@@ -719,6 +918,7 @@ if __name__ == "__main__":
         print("       python 01_ingest.py 2024 1                        # Ingest Q1 2024 (all report types)")
         print("       python 01_ingest.py 2024                          # Ingest all of 2024")
         print("       python 01_ingest.py latest                        # Daily sweep: everything posted in the last 7 days")
+        print("       python 01_ingest.py backfill-details [--max-requests 600] [--uuid UUID]")
         print("       python 01_ingest.py recompute-current             # Recompute is_current for the whole table")
         print("       python 01_ingest.py backfill-non-original --start-year 2020")
         print("                                                          # Historical backfill of amendments/terminations")

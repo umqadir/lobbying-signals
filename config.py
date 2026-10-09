@@ -15,7 +15,7 @@ LLM_MODEL = os.getenv("LLM_MODEL", "gemini-2.0-flash")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 # SOPR Data Source
-SOPR_BASE_URL = "https://lda.senate.gov/system/public/"
+SOPR_BASE_URL = "https://lda.gov/system/public/"
 SOPR_FILING_TYPES = ["LD2"]  # Quarterly activity reports
 
 # Anomaly Detection Thresholds
