@@ -5,11 +5,11 @@
 - **API Key (registered):** 120 requests/minute
 
 ## Authentication
-Register at: https://lda.senate.gov/api/register/
+Register at: https://lda.gov/api/register/
 
 Get API key via POST:
 ```http
-POST https://lda.senate.gov/api/auth/login/
+POST https://lda.gov/api/auth/login/
 Content-Type: application/json
 
 {"username": "your_username", "password": "your_password"}
@@ -51,6 +51,14 @@ Parameters:
 ```
 
 ## Important Notes
-- API at lda.senate.gov sunsets June 30, 2026
-- New API at lda.gov
+- The former lda.senate.gov host redirects to lda.gov (use the new host directly).
 - Government entities broken down per activity only for filings after 2/14/2021
+
+`filings` stores `expenses`, `expenses_method`, `is_self_filer`, and `details_fetched_at`.
+`income` retains the existing income-or-expenses total.
+`filing_lobbyists` stores per-activity names, LDA IDs, covered positions, and new flags.
+Run `python 01_ingest.py backfill-details` for dashboard movers in both frames and quarter legs.
+Use repeated `--uuid UUID` options to select specific filings.
+Defaults: 600 HTTP attempts including retries and eight minutes; rate limits and backoff apply.
+Completed fetches are marked even when `expenses_method` is absent; the run logs that count.
+Malformed details remain incomplete without blocking core ingest; refresh backfill is nonfatal.

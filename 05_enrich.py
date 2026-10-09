@@ -8,7 +8,7 @@ import httpx
 from db import get_db, query_to_dicts
 from llm import get_llm
 
-API_BASE = "https://lda.senate.gov/api/v1"
+API_BASE = "https://lda.gov/api/v1"
 LDA_API_KEY = os.getenv("LDA_API_KEY", "")
 RATE_LIMIT_DELAY = 0.5 if LDA_API_KEY else 4.0
 

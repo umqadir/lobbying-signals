@@ -2049,6 +2049,13 @@ def compute_data_checks(trends: dict, stats: dict | None = None) -> dict:
     }
 
 
+def export_clients_json(output_dir: str = 'docs/data'):
+    """Re-export organization movers after the bounded detail backfill."""
+    clients_data = compute_client_movers()
+    with open(f'{output_dir}/clients.json', 'w') as f:
+        json.dump(clients_data, f, indent=2)
+
+
 def export_json(output_dir: str = 'docs/data'):
     """Export all data as JSON files for the dashboard."""
     import os

@@ -40,6 +40,9 @@ CREATE TABLE IF NOT EXISTS filings (
     quarter INTEGER NOT NULL,
     income REAL,
     expenses REAL,
+    expenses_method TEXT,
+    is_self_filer INTEGER CHECK (is_self_filer IN (0, 1)),
+    details_fetched_at TEXT,
     filing_date TEXT,
     filing_type TEXT,
     is_current INTEGER NOT NULL DEFAULT 1,
@@ -56,6 +59,20 @@ CREATE TABLE IF NOT EXISTS activities (
     agencies TEXT,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Lobbyists as reported on each activity, including activities without descriptions.
+CREATE TABLE IF NOT EXISTS filing_lobbyists (
+    filing_id INTEGER NOT NULL REFERENCES filings(id),
+    activity_index INTEGER NOT NULL,
+    lobbyist_index INTEGER NOT NULL,
+    activity_id INTEGER REFERENCES activities(id),
+    lda_lobbyist_id INTEGER,
+    name TEXT,
+    covered_position TEXT,
+    is_new INTEGER CHECK (is_new IN (0, 1)),
+    PRIMARY KEY (filing_id, activity_index, lobbyist_index)
+);
+CREATE INDEX IF NOT EXISTS idx_filing_lobbyists_activity ON filing_lobbyists(activity_id);
 
 -- LLM-classified granular issues
 CREATE TABLE IF NOT EXISTS issues (
@@ -124,6 +141,10 @@ def _migrate_schema(conn: sqlite3.Connection):
         conn.execute("ALTER TABLE filings ADD COLUMN filing_type TEXT")
     if "is_current" not in cols:
         conn.execute("ALTER TABLE filings ADD COLUMN is_current INTEGER NOT NULL DEFAULT 1")
+    for name, column_type in (("expenses_method", "TEXT"), ("is_self_filer", "INTEGER"),
+                              ("details_fetched_at", "TEXT")):
+        if name not in cols:
+            conn.execute(f"ALTER TABLE filings ADD COLUMN {name} {column_type}")
     conn.execute(
         "CREATE INDEX IF NOT EXISTS idx_filings_reg_client_year_quarter "
         "ON filings(registrant_id, client_id, year, quarter)"
@@ -170,6 +191,45 @@ def _migrate_schema(conn: sqlite3.Connection):
             ("dedupe_activities_v1",),
         )
         print(f"Migration dedupe_activities_v1: removed {n} duplicate activity rows.")
+
+    if "self_filer_v1" not in applied:
+        from clients_norm import canonical_client_key
+
+        # Legacy ingest discarded expenses; use them when present, otherwise
+        # compare canonical names. Blank/missing identities remain unknown.
+        conn.create_function("canonical_client_key", 1, canonical_client_key)
+        conn.execute("""
+            CREATE TEMP TABLE _self_filer_pairs AS
+            SELECT DISTINCT f.registrant_id, f.client_id,
+                   canonical_client_key(r.name) AS reg_key,
+                   canonical_client_key(c.name) AS client_key
+            FROM filings f
+            LEFT JOIN registrants r ON r.id = f.registrant_id
+            LEFT JOIN clients c ON c.id = f.client_id
+        """)
+        conn.execute("CREATE INDEX _self_filer_pairs_ids ON _self_filer_pairs(registrant_id, client_id)")
+        conn.execute("""
+            UPDATE filings SET is_self_filer = CASE
+                WHEN expenses IS NOT NULL THEN 1
+                ELSE (SELECT CASE WHEN reg_key != '' AND client_key != ''
+                                  THEN reg_key = client_key END
+                      FROM _self_filer_pairs p
+                      WHERE p.registrant_id = filings.registrant_id
+                        AND p.client_id = filings.client_id)
+            END
+            WHERE is_self_filer IS NULL
+        """)
+        conn.execute("DROP TABLE _self_filer_pairs")
+        conn.execute(
+            "INSERT INTO migrations (name, applied_at) VALUES (?, datetime('now'))",
+            ("self_filer_v1",),
+        )
+        counts = conn.execute("""
+            SELECT COUNT(*), COUNT(is_self_filer), SUM(is_self_filer = 1)
+            FROM filings
+        """).fetchone()
+        print(f"Migration self_filer_v1: {counts[1]} of {counts[0]} classified, "
+              f"{counts[2] or 0} self-filers (expenses or canonical name match).")
 
     conn.commit()
 
