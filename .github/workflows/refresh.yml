@@ -31,14 +31,16 @@ on:
         required: false
         default: ''
 
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+  queue: max
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    concurrency:
-      group: refresh-data
-      cancel-in-progress: false
 
     steps:
       - name: Checkout repository
@@ -148,5 +150,35 @@ jobs:
           git diff --staged --quiet || git commit -m "Update data exports [skip ci]"
           # The refresh takes ~35 min; rebase over anything that landed on
           # main meanwhile so the exports commit isn't rejected at the end.
-          git pull --rebase origin main
+          # Save the generated tree: during a rebase, --ours means upstream,
+          # not this run. Restore only conflicted exports from this snapshot.
+          exports_commit=$(git rev-parse HEAD)
+          if ! git pull --rebase origin main; then
+            while :; do
+              conflicts=()
+              while IFS= read -r -d '' path; do
+                conflicts+=("$path")
+              done < <(git diff --name-only --diff-filter=U -z)
+              if [ ${#conflicts[@]} -eq 0 ]; then
+                exit 1
+              fi
+              for path in "${conflicts[@]}"; do
+                case "$path" in
+                  docs/data/*)
+                    if git cat-file -e "$exports_commit:$path" 2>/dev/null; then
+                      git restore --source="$exports_commit" --staged --worktree -- "$path"
+                    else
+                      git rm -- "$path"
+                    fi
+                    ;;
+                  *)
+                    echo "Rebase conflict outside generated exports: $path"
+                    git rebase --abort
+                    exit 1
+                    ;;
+                esac
+              done
+              GIT_EDITOR=true git rebase --continue && break
+            done
+          fi
           git push
