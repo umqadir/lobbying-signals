@@ -124,7 +124,8 @@ jobs:
       - name: Run refresh
         run: |
           uv run python 07_refresh.py \
-            --rules-batch-size ${{ github.event.inputs.rules_batch_size || '2000000' }}
+            --rules-batch-size ${{ github.event.inputs.rules_batch_size || '2000000' }} \
+            --failure-marker "$RUNNER_TEMP/ingest-incomplete"
         env:
           LDA_API_KEY: ${{ secrets.LDA_API_KEY }}
 
@@ -182,3 +183,11 @@ jobs:
             done
           fi
           git push
+
+      - name: Fail if ingestion was incomplete
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/ingest-incomplete" ]; then
+            echo "::error::$(cat "$RUNNER_TEMP/ingest-incomplete")"
+            exit 1
+          fi

@@ -13,7 +13,8 @@ import json
 import math
 import time
 from collections import defaultdict, deque
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 import httpx
@@ -67,10 +68,26 @@ def get_headers() -> dict:
 
 # Rate limit delay: 0.5s with key (120/min), 4s without (15/min)
 RATE_LIMIT_DELAY = 0.5 if LDA_API_KEY else 4.0
+PAGE_RETRY_BUDGET_SECONDS = 180
+
+
+def _page_retry_delay(response, attempt: int) -> float:
+    retry_after = response.headers.get("Retry-After") if response is not None else None
+    if retry_after:
+        try:
+            delay = float(retry_after)
+        except ValueError:
+            try:
+                delay = (parsedate_to_datetime(retry_after) - datetime.now(timezone.utc)).total_seconds()
+            except (ValueError, TypeError, OverflowError):
+                delay = None
+        if delay is not None and math.isfinite(delay):
+            return max(0, delay)
+    return 2 ** attempt * 5
 
 
 def fetch_filings_page(year: int, filing_type: str, page: int = 1, max_retries: int = 5,
-                       posted_after: str = None) -> dict:
+                       posted_after: str = None, retry_budget: dict = None) -> dict:
     """Fetch a page of filings from the API with retry logic.
 
     filing_type is one of the codes from _report_types_for_quarter (e.g.
@@ -78,6 +95,8 @@ def fetch_filings_page(year: int, filing_type: str, page: int = 1, max_retries: 
     posted_after (YYYY-MM-DD) filters server-side to filings POSTED on or
     after that date — the cheap way to sweep for late arrivals against old
     report periods without re-paginating the entire year.
+    retry_budget shares retry waits/request time across the posted-after sweep;
+    initial requests keep their existing timeout and do not consume it.
     """
     params = {
         "filing_year": year,
@@ -89,24 +108,41 @@ def fetch_filings_page(year: int, filing_type: str, page: int = 1, max_retries: 
     if posted_after is not None:
         params["filing_dt_posted_after"] = posted_after
 
+    if retry_budget is None:
+        retry_budget = {"remaining": PAGE_RETRY_BUDGET_SECONDS}
     for attempt in range(max_retries):
+        started = time.monotonic()
         try:
             response = httpx.get(
                 f"{API_BASE}/filings/",
                 params=params,
                 headers=get_headers(),
-                timeout=60,
+                timeout=60 if attempt == 0 else min(10, retry_budget["remaining"] / 4),
                 follow_redirects=True
             )
             response.raise_for_status()
-            return response.json()
-        except httpx.HTTPStatusError as e:
-            if e.response.status_code == 429:  # Rate limited
-                wait_time = 2 ** attempt * 5  # 5, 10, 20, 40, 80 seconds
-                print(f"    Rate limited, waiting {wait_time}s (attempt {attempt + 1}/{max_retries})...")
-                time.sleep(wait_time)
-            else:
+            data = response.json()
+        except (httpx.HTTPStatusError, httpx.TransportError) as e:
+            if attempt:
+                retry_budget["remaining"] -= time.monotonic() - started
+            response = e.response if isinstance(e, httpx.HTTPStatusError) else None
+            if response is not None and response.status_code != 429 and not 500 <= response.status_code < 600:
                 raise
+            if attempt + 1 == max_retries:
+                raise
+            wait_time = _page_retry_delay(response, attempt)
+            remaining = retry_budget["remaining"]
+            if wait_time >= remaining:
+                print("    API retry budget exhausted; resume next run")
+                raise
+            print(f"    {type(e).__name__}: {e}; waiting {wait_time}s "
+                  f"(attempt {attempt + 1}/{max_retries})...")
+            time.sleep(wait_time)
+            retry_budget["remaining"] = remaining - wait_time
+        else:
+            if attempt:
+                retry_budget["remaining"] -= time.monotonic() - started
+            return data
     raise Exception(f"Failed after {max_retries} retries")
 
 
@@ -518,7 +554,7 @@ def ingest_quarter(year: int, quarter: int, filing_types: list[str] = None) -> i
     return total_loaded
 
 
-def ingest_posted_after(posted_after: str, start_year: int = 2020) -> int:
+def ingest_posted_after(posted_after: str, start_year: int = 2020) -> dict:
     """Sweep for filings POSTED since a cutoff date against ANY report period
     from start_year on — the long-tail safety net.
 
@@ -537,6 +573,8 @@ def ingest_posted_after(posted_after: str, start_year: int = 2020) -> int:
     init_db()
     current_year = datetime.now().year
     total_loaded = 0
+    failed_years = []
+    retry_budget = {"remaining": PAGE_RETRY_BUDGET_SECONDS}
     BATCH_SIZE = 100
 
     for year in range(start_year, current_year + 1):
@@ -546,9 +584,11 @@ def ingest_posted_after(posted_after: str, start_year: int = 2020) -> int:
         year_seen = 0
         while True:
             try:
-                data = fetch_filings_page(year, None, page, posted_after=posted_after)
+                data = fetch_filings_page(year, None, page, posted_after=posted_after,
+                                          retry_budget=retry_budget)
             except Exception as e:
                 print(f"  [{year}] API error on page {page}: {e}")
+                failed_years.append(year)
                 break
 
             results = data.get("results", [])
@@ -579,8 +619,9 @@ def ingest_posted_after(posted_after: str, start_year: int = 2020) -> int:
 
     with get_db() as conn:
         recompute_is_current(conn)
-    print(f"Posted-after sweep complete: {total_loaded} new filings; is_current recomputed globally.")
-    return total_loaded
+    status = f"incomplete (failed years: {failed_years})" if failed_years else "complete"
+    print(f"Posted-after sweep {status}: {total_loaded} new filings; is_current recomputed globally.")
+    return {"loaded": total_loaded, "complete": not failed_years, "failed_years": failed_years}
 
 
 def ingest_year(year: int):
@@ -640,7 +681,7 @@ def ingest_latest():
               f"{floor_dt:%Y-%m-%d}; the DB looks >120 days stale — run "
               f"'01_ingest.py full-sweep' or a historical backfill to recover fully.")
         cutoff_dt = floor_dt
-    ingest_posted_after(cutoff_dt.strftime('%Y-%m-%d'), start_year=2020)
+    return ingest_posted_after(cutoff_dt.strftime('%Y-%m-%d'), start_year=2020)
 
 
 def audit_sample(n: int = 100, max_minutes: float = None) -> dict:

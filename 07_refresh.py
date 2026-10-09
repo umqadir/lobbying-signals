@@ -32,7 +32,8 @@ def refresh(
     rules_batch_size: int = 2_000_000,
     export: bool = True,
     verbose: bool = True,
-    backfill_details: bool = True
+    backfill_details: bool = True,
+    failure_marker: Path = None
 ):
     """Run the full refresh cycle."""
 
@@ -42,13 +43,18 @@ def refresh(
 
     # Ensure database exists
     init_db()
+    if failure_marker is not None:
+        failure_marker.unlink(missing_ok=True)
+    ingest_complete = True
 
     # 1. Ingest new filings
     if ingest_latest:
         log("Step 1: Ingesting new filings...")
         ingest_module = _load_module("01_ingest.py", "ingest")
-        ingest_module.ingest_latest()
-        log("  Ingestion complete")
+        ingest_result = ingest_module.ingest_latest()
+        ingest_complete = ingest_result["complete"]
+        log("  Ingestion complete" if ingest_complete else
+            f"  WARNING: Ingestion incomplete for years {ingest_result['failed_years']}; publishing partial data")
 
     # 2. Extract deterministic rule-based classifications for new activities
     if rules_batch_size > 0:
@@ -107,7 +113,10 @@ def refresh(
             log(f"  Warning: Export failed: {e}")
             raise
 
-    log("Refresh complete!")
+    if not ingest_complete and failure_marker is not None:
+        failure_marker.write_text(f"Posted-after sweep incomplete for years {ingest_result['failed_years']}\n")
+    log("Refresh complete!" if ingest_complete else "Refresh finished with incomplete ingestion.")
+    return ingest_complete
 
 
 def check_env():
@@ -117,7 +126,7 @@ def check_env():
     return True
 
 
-if __name__ == "__main__":
+def main():
     import argparse
 
     parser = argparse.ArgumentParser(description='Refresh lobbying data')
@@ -126,17 +135,25 @@ if __name__ == "__main__":
     parser.add_argument('--no-detail-backfill', action='store_true', help='Skip optional filing-detail backfill')
     parser.add_argument('--no-export', action='store_true', help='Skip JSON export')
     parser.add_argument('--check-env', action='store_true', help='Check environment and exit')
+    parser.add_argument('--failure-marker', type=Path,
+                        help='Defer incomplete-ingest failure to CI by writing this file')
 
     args = parser.parse_args()
 
     if args.check_env:
-        sys.exit(0 if check_env() else 1)
+        return 0 if check_env() else 1
 
     check_env()
 
-    refresh(
+    complete = refresh(
         ingest_latest=not args.no_ingest,
         rules_batch_size=args.rules_batch_size,
         export=not args.no_export,
-        backfill_details=not args.no_detail_backfill
+        backfill_details=not args.no_detail_backfill,
+        failure_marker=args.failure_marker
     )
+    return 0 if complete or args.failure_marker is not None else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
