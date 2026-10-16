@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T14:42:52.640825+00:00",
+  "generated_at": "2026-10-16T14:37:32.584670+00:00",
   "frame": "quarter",
   "frame_label": "Q2 2026",
   "status": "needs_attention",
@@ -17,22 +17,22 @@
     "errors": 213
   },
   "metrics": {
-    "mentions_current_quarter": 45938,
+    "mentions_current_quarter": 45940,
     "mentions_baseline_quarter": 43910,
     "mentions_vs_yoy_pct": 4.6,
-    "filings_current_90d": 22588,
-    "filings_prev_90d": 23527,
-    "filings_yoy_90d": 21956,
-    "filings_vs_prev_pct": -4.0,
-    "filings_vs_yoy_pct": 2.9,
-    "due_vs_non_due_ratio_4y": 19.95,
-    "due_month_avg_filings": 11214.4,
-    "non_due_month_avg_filings": 562.1,
+    "filings_current_90d": 20920,
+    "filings_prev_90d": 25497,
+    "filings_yoy_90d": 21506,
+    "filings_vs_prev_pct": -18.0,
+    "filings_vs_yoy_pct": -2.7,
+    "due_vs_non_due_ratio_4y": 20.02,
+    "due_month_avg_filings": 11253.1,
+    "non_due_month_avg_filings": 562.0,
     "quarter_due_month_share_pct": 90.9,
-    "coverage_recent_90d_pct": 96.1,
+    "coverage_recent_90d_pct": 96.3,
     "coverage_all_time_pct": 95.6,
-    "legislation_dropped_pct": 1.3,
-    "legislation_normalized_pct": 60.4,
+    "legislation_dropped_pct": 1.2,
+    "legislation_normalized_pct": 60.5,
     "top_topic_share_pct": 17.27,
     "top5_topic_share_pct": 32.56,
     "secular_change_pct": 41.9,
@@ -44,7 +44,7 @@
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 19.95x filing volume vs other months."
+      "detail": "Due-cycle months average 20.02x filing volume vs other months."
     },
     {
       "severity": "medium",
