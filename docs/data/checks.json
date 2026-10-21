@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T14:38:49.399115+00:00",
+  "generated_at": "2026-10-21T15:28:28.803341+00:00",
   "frame": "quarter",
   "frame_label": "Q2 2026",
   "status": "needs_attention",
@@ -17,24 +17,24 @@
     "errors": 213
   },
   "metrics": {
-    "mentions_current_quarter": 45952,
+    "mentions_current_quarter": 45962,
     "mentions_baseline_quarter": 43910,
     "mentions_vs_yoy_pct": 4.7,
-    "filings_current_90d": 12998,
-    "filings_prev_90d": 25908,
-    "filings_yoy_90d": 14637,
-    "filings_vs_prev_pct": -49.8,
-    "filings_vs_yoy_pct": -11.2,
-    "due_vs_non_due_ratio_4y": 19.89,
-    "due_month_avg_filings": 11174.1,
-    "non_due_month_avg_filings": 561.9,
-    "quarter_due_month_share_pct": 90.9,
-    "coverage_recent_90d_pct": 95.1,
-    "coverage_all_time_pct": 95.6,
-    "legislation_dropped_pct": 1.8,
-    "legislation_normalized_pct": 59.5,
+    "filings_current_90d": 25582,
+    "filings_prev_90d": 26004,
+    "filings_yoy_90d": 24304,
+    "filings_vs_prev_pct": -1.6,
+    "filings_vs_yoy_pct": 5.3,
+    "due_vs_non_due_ratio_4y": 20.29,
+    "due_month_avg_filings": 11398.1,
+    "non_due_month_avg_filings": 561.7,
+    "quarter_due_month_share_pct": 91.0,
+    "coverage_recent_90d_pct": 96.4,
+    "coverage_all_time_pct": 95.7,
+    "legislation_dropped_pct": 1.6,
+    "legislation_normalized_pct": 60.8,
     "top_topic_share_pct": 17.27,
-    "top5_topic_share_pct": 32.56,
+    "top5_topic_share_pct": 32.55,
     "secular_change_pct": 41.9,
     "secular_cagr_pct": 7.25,
     "secular_start_year": 2020,
@@ -44,17 +44,17 @@
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 19.89x filing volume vs other months."
+      "detail": "Due-cycle months average 20.29x filing volume vs other months."
     },
     {
       "severity": "medium",
       "title": "Quarter-cycle concentration",
-      "detail": "90.9% of average monthly volume falls in Jan/Apr/Jul/Oct."
+      "detail": "91.0% of average monthly volume falls in Jan/Apr/Jul/Oct."
     },
     {
       "severity": "low",
       "title": "Top-topic concentration",
-      "detail": "Top topic accounts for 17.27% of Q2 2026 extracted mentions (top 5 = 32.56%)."
+      "detail": "Top topic accounts for 17.27% of Q2 2026 extracted mentions (top 5 = 32.55%)."
     }
   ]
 }
