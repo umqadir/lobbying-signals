@@ -15,6 +15,11 @@ on:
     # class of gap the posted-after sweeps can't see (2020 Q1 sat ~4K
     # filings short from an old ingest boundary).
     - cron: '0 6 * * 0'
+    # Recovery slots: refresh again only if the latest finished refresh
+    # failed (an LDA outage outlasting the in-run re-sweeps), so a
+    # multi-hour outage is caught up the same day instead of tomorrow.
+    - cron: '30 21 * * *'
+    - cron: '30 3 * * *'
   workflow_dispatch:
     # Allow manual trigger
     inputs:
@@ -37,7 +42,34 @@ concurrency:
   queue: max
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - name: Skip recovery slot if the latest refresh succeeded
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          set -euo pipefail
+          case "$SCHEDULE" in
+            '30 21 * * *'|'30 3 * * *') ;;
+            *) echo "run=true" >> "$GITHUB_OUTPUT"; exit 0 ;;
+          esac
+          last=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/refresh.yml/runs?branch=main&status=completed&per_page=20" \
+            -q '[.workflow_runs[].conclusion | select(. != "skipped")][0] // "none"')
+          echo "Latest completed refresh: $last"
+          if [ "$last" != "success" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
   refresh:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: write

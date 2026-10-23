@@ -162,6 +162,25 @@ class IngestFailureTests(unittest.TestCase):
         self.assertEqual(result, {"loaded": 0, "complete": True, "failed_years": []})
         self.assertEqual(self.get.call_count, 7)
 
+    def test_latest_resweeps_only_failed_years_until_outage_clears(self):
+        empty = self.response(raw={"results": [], "next": None})
+        # First pass: 2020-2025 fine, 2026 hits a blanket 403. One recovery pass succeeds.
+        self.get.side_effect = [empty] * 6 + [self.response(403), empty]
+        result = ingest.ingest_latest()
+        self.assertEqual(result, {"loaded": 0, "complete": True, "failed_years": []})
+        self.assertEqual([c.kwargs["params"]["filing_year"] for c in self.get.call_args_list],
+                         [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2026])
+        self.assertEqual(self.sleep.call_args_list, [call(2 * 60)])
+
+    def test_latest_gives_up_after_outage_retry_delays(self):
+        self.get.return_value = self.response(403)
+        result = ingest.ingest_latest()
+        self.assertFalse(result["complete"])
+        self.assertEqual(result["failed_years"], list(range(2020, 2027)))
+        self.assertEqual(self.get.call_count, 7 * (1 + len(ingest.OUTAGE_RETRY_DELAYS_MINUTES)))
+        self.assertEqual(self.sleep.call_args_list,
+                         [call(d * 60) for d in ingest.OUTAGE_RETRY_DELAYS_MINUTES])
+
     def run_refresh(self, complete, marker=None):
         calls = []
         source = SimpleNamespace(ingest_latest=lambda: calls.append("ingest") or

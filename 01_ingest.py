@@ -69,6 +69,11 @@ def get_headers() -> dict:
 # Rate limit delay: 0.5s with key (120/min), 4s without (15/min)
 RATE_LIMIT_DELAY = 0.5 if LDA_API_KEY else 4.0
 PAGE_RETRY_BUDGET_SECONDS = 180
+# LDA outages (503s, blanket 403s, read timeouts) have lasted minutes to
+# hours, far past the per-sweep retry budget. The daily sweep re-tries just
+# the failed years after each of these waits (~44 min) before giving up; the
+# workflow's recovery slots cover longer outages.
+OUTAGE_RETRY_DELAYS_MINUTES = (2, 4, 8, 15, 15)
 
 
 def _page_retry_delay(response, attempt: int) -> float:
@@ -554,7 +559,7 @@ def ingest_quarter(year: int, quarter: int, filing_types: list[str] = None) -> i
     return total_loaded
 
 
-def ingest_posted_after(posted_after: str, start_year: int = 2020) -> dict:
+def ingest_posted_after(posted_after: str, start_year: int = 2020, years: list[int] = None) -> dict:
     """Sweep for filings POSTED since a cutoff date against ANY report period
     from start_year on — the long-tail safety net.
 
@@ -568,7 +573,8 @@ def ingest_posted_after(posted_after: str, start_year: int = 2020) -> dict:
 
     Registrations (RR/RA) are skipped — they carry no quarterly report
     period. Ends with a global is_current recompute so late amendments
-    supersede whatever they correct.
+    supersede whatever they correct. years, if given, limits the sweep to
+    those years (re-sweeping the ones an outage interrupted).
     """
     init_db()
     current_year = datetime.now().year
@@ -577,7 +583,7 @@ def ingest_posted_after(posted_after: str, start_year: int = 2020) -> dict:
     retry_budget = {"remaining": PAGE_RETRY_BUDGET_SECONDS}
     BATCH_SIZE = 100
 
-    for year in range(start_year, current_year + 1):
+    for year in years if years is not None else range(start_year, current_year + 1):
         page = 1
         batch = []
         year_loaded = 0
@@ -587,7 +593,10 @@ def ingest_posted_after(posted_after: str, start_year: int = 2020) -> dict:
                 data = fetch_filings_page(year, None, page, posted_after=posted_after,
                                           retry_budget=retry_budget)
             except Exception as e:
-                print(f"  [{year}] API error on page {page}: {e}")
+                body = ""
+                if isinstance(e, httpx.HTTPStatusError):
+                    body = f" — {e.response.text[:200]!r}"
+                print(f"  [{year}] API error on page {page}: {e}{body}")
                 failed_years.append(year)
                 break
 
@@ -681,7 +690,17 @@ def ingest_latest():
               f"{floor_dt:%Y-%m-%d}; the DB looks >120 days stale — run "
               f"'01_ingest.py full-sweep' or a historical backfill to recover fully.")
         cutoff_dt = floor_dt
-    return ingest_posted_after(cutoff_dt.strftime('%Y-%m-%d'), start_year=2020)
+    posted_after = cutoff_dt.strftime('%Y-%m-%d')
+    result = ingest_posted_after(posted_after, start_year=2020)
+    for delay in OUTAGE_RETRY_DELAYS_MINUTES:
+        if result["complete"]:
+            break
+        print(f"Re-sweeping years {result['failed_years']} in {delay} min (LDA API outage)...")
+        time.sleep(delay * 60)
+        retry = ingest_posted_after(posted_after, years=result["failed_years"])
+        result = {"loaded": result["loaded"] + retry["loaded"],
+                  "complete": retry["complete"], "failed_years": retry["failed_years"]}
+    return result
 
 
 def audit_sample(n: int = 100, max_minutes: float = None) -> dict:
