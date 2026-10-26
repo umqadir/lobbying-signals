@@ -1,150 +1,107 @@
 # Lobbying Signals
 
-Automated detection of directional signals in federal lobbying disclosure data. Tracks organizations, topics, agencies, legislation, and recent filings from Senate LDA disclosures.
+Year-over-year signals from Senate Lobbying Disclosure Act (LDA) filings: topics, agencies, legislation, organizations, recent filings.
 
-## Live Dashboard
+Dashboard: https://umqadir.github.io/lobbying-signals/
 
-**[View Dashboard](https://umqadir.github.io/lobbying-signals/)**
+## Data sources
 
-Updated daily via GitHub Actions. The daily run ingests everything posted to the LDA system in the last 7 days: originals, amendments, and terminations against any report period since 2020, by posted-date filter. The window extends automatically after a CI gap. A monthly drift audit re-fetches ~30K stored filings and compares them against the live API for in-place edits and deletions.
+| Source | Endpoint | Used for |
+|---|---|---|
+| Senate LDA API | https://lda.gov/api/v1 | Filings, registrants, clients, activities, lobbyists |
+| GovInfo BILLSTATUS bulk XML | https://www.govinfo.gov/bulkdata/BILLSTATUS | Bill introduction dates and official titles, 116th Congress on |
+| FRED CPIAUCSL | https://fred.stlouisfed.org/series/CPIAUCSL | CPI deflators |
 
-## Features
+| Parameter | Value |
+|---|---|
+| Report years | 2020 to present |
+| Filing types | `Q1`-`Q4`, `1A`-`4A`, `1T`-`4T`, `1@`-`4@` |
+| Daily ingest window | Posted in last 7 days; extended after a gap |
+| Drift audit | Monthly, up to 40,000 stored filings re-fetched |
 
-- **Real-time LDA ingestion**: Downloads and stores Senate lobbying disclosure filings via the LDA API; coverage runs from 2020 to the present
-- **Deterministic extraction**: Uses versioned rules, LDA issue codes, regexes, and dictionaries to extract topics, entities, and legislation without model calls
-- **Trend detection**: Every view shares the same two year-over-year, report-quarter comparison frames — the latest complete quarter vs the same quarter a year earlier (default), and the current partial quarter so far vs the same point in last year's filing cycle
-- **Organization spend movers**: Tracks which organizations raised or cut reported lobbying dollars under the same two frames, with name-variant folding so one organization's filings aren't split across spellings
-- **Static signal browser**: An editorial dashboard — synthesized headline, ranked movers feed with period-comparison charts, detail drawer with quarterly history, command-palette search, and links to each filing's official Senate record
-- **Zero infrastructure cost**: Runs entirely on GitHub (Actions + Pages + Releases)
+The Senate Office of Public Records cannot vouch for this data or analyses derived from it.
 
-## Architecture
+## Metrics
 
-```
-GitHub Actions (daily cron)
-    │
-    ├── Download DB from GitHub Release
-    ├── Ingest new LDA filings
-    ├── Extract topics/entities/legislation with deterministic rules
-    ├── Refresh GovInfo bill introduction dates and official titles
-    ├── Compute trends and alerts
-    ├── Export JSON to docs/data/
-    ├── Upload DB back to Release
-    └── Commit JSON exports → GitHub Pages
-```
+| Term | Definition |
+|---|---|
+| Mention | One activity-level tag from an activity description; not a filing count |
+| Associated income | Income of filings with a matching activity tag; not issue-allocated |
+| Organization spend | Reported income + expenses per client per report quarter (`compute_client_movers()`, `08_trends.py`) |
+| Client key | `clients_norm.canonical_client_key()`; folds legal suffixes, on-behalf-of filers, former names |
+| Current filing | Latest filed row per (registrant, client, report quarter); `filings.is_current = 1`; all metrics use current rows |
+| `quarter` frame | Latest complete report quarter vs same quarter a year earlier; complete = ~40 days after quarter end |
+| `qtd` frame | Current partial quarter through data-through date vs same quarter a year earlier, filings posted by the same point in the cycle |
+| Bare bill number | Report-year Congress if introduced by posted date, else preceding Congress; explicit year/Congress and named acts take priority |
+| Topic L0 / L1 / L2 | LDA `issue_code` / coarse topic from `issue_code` / rule-derived topic (`strict`, `relaxed`, `fallback`) from `rules/topic_rules.json` |
 
-## Data Sources
+## Pipeline
 
-- **Senate LDA Filings**: [Senate Lobbying Disclosure](https://lda.gov/filings/public/filing/search/)
-- Covers all federal lobbying activity disclosures
-- **Bill reference data**: keyless [GovInfo BILLSTATUS bulk XML](https://www.govinfo.gov/bulkdata/BILLSTATUS), all eight bill/resolution types from the 116th Congress onward.
+| Script | Role |
+|---|---|
+| `07_refresh.py` | Daily entry point: ingest, rule extraction, bill reference, export, detail backfill |
+| `01_ingest.py` | LDA ingestion; `full-sweep`, `coverage-check`, `audit-sample`, `backfill-details`, `<year> <quarter>` |
+| `12_extract_rules.py` | Rule-based topic, entity, legislation extraction |
+| `scripts/build_bill_reference.py` | GovInfo bill reference refresh |
+| `08_trends.py` | Trends, alerts, organization movers; JSON export to `docs/data/` |
+| `clients_norm.py` | Client keys and display names |
+| `bill_reference.py`, `db.py`, `config.py` | Shared modules |
+| `scripts/audit_client_identities.py` | Identity review report |
+| `scripts/audit_legislation_aliases.py` | Legislation alias review report |
+| `scripts/make_release_db.py` | Slimmed DB copy for the release asset |
+| `scripts/test_*.py` | Offline tests |
+| `02_`-`06_`, `09_`-`11_`, `llm.py` | Legacy, not in refresh path; `requirements-llm.txt` |
 
-## Methodology Notes
+## Workflows
 
-- Mentions are activity-level tags from lobbying activity descriptions, not unique filing counts.
-- Bare bill numbers use the report-year Congress only if introduced by the filing's posted date; otherwise they use the preceding Congress when that number exists there. Explicit years/Congresses and recognized act names take priority. Bills without a curated name display their official short title.
-- Trend comparisons are directional signals, not causal claims.
-- Comparison frames are defined on report quarters, not submission dates. `quarter`: latest complete report quarter against the same quarter a year earlier, a quarter counting as complete ~40 days past its calendar end. `qtd`: current partial quarter through the data-through date against last year's same-quarter filings posted by the same point in the cycle, flagged as a small sample early on. No rolling day-windows.
-- Filing volume is seasonal around statutory filing deadlines.
-- Associated income is filing income connected to matching activity tags, not issue-allocated spend.
-- Organization spend: `compute_client_movers()` in `08_trends.py`, exported to `docs/data/clients.json`, sums each client's reported filing income and expenses per report quarter under both frames. Name variants (legal suffixes, "on behalf of" filers, former names) fold together via `clients_norm.canonical_client_key`; regression cases in `scripts/test_canonicalize_client.py`. Quarterly LDA totals, not split across topics. Organization drawers load `client_details.json` on demand for both comparison periods: reporting methods, firms, lobbyists, issues, and official filings. Missing or partially fetched detail is labeled; both exports regenerate after detail backfill.
-- Amendments and terminations: ingestion covers `Q1`-`Q4`, amendments `1A`-`4A` including no-activity variants, terminations `1T`-`4T`, and termination amendments `1@`-`4@`, all keyed to the original report period. Every `filings` row carries `is_current`; per (registrant, client, report quarter) only the latest filed row is current, and all metrics in `08_trends.py` read current rows only. An amendment restates completely, including a zeroed income when a no-activity amendment supersedes a reported one.
+| Workflow | Schedule (UTC) | Action |
+|---|---|---|
+| `refresh.yml` | Daily 10:00; 03:30 and 21:30 if last run failed; Sun 06:00 coverage check; 3rd 06:00 drift audit | Update release DB and `docs/data/` |
+| `legislation-review.yml` | 1st 12:00 | Claude proposes `08_trends.py` alias PR |
+| `identity-review.yml` | 5th 12:00 | Claude proposes `clients_norm.py` alias PR |
+| `pr-review.yml` | Mon 13:00 | Gate, review, merge or close automation PRs |
+| `tests.yml` | Push / PR to `main` | `scripts/test_*.py` |
 
-## Local Development
-
-```bash
-# Install dependencies
-uv venv --python 3.12
-uv pip install --python .venv/bin/python -r requirements.txt
-
-# Optional: set LDA_API_KEY for higher Senate API rate limits
-export LDA_API_KEY=your_key
-
-# Run full refresh
-python 07_refresh.py
-
-# Or run individual steps
-python 01_ingest.py              # Download new filings
-python 12_extract_rules.py extract --batch-size 2000000
-python scripts/build_bill_reference.py --max-seconds 1800 --coverage
-python 08_trends.py export       # Generate JSON exports
-```
-
-Bill reference tables (`bill_reference`, `bill_reference_sync`) live in the release DB; completed Congresses are fetched once and the current Congress refreshes new numbers daily. Offline checks: `python scripts/test_bill_reference.py`, `python scripts/test_normalize_legislation.py`.
-
-## Pipeline Scripts
-
-| Script | Purpose |
-|--------|---------|
-| `01_ingest.py` | Download and store filings from the Senate LDA API |
-| `06_extract.py` | Legacy optional Gemini extraction helper |
-| `12_extract_rules.py` | Deterministic no-LLM extraction + candidate mining + gap reports |
-| `07_refresh.py` | Orchestrate full refresh cycle |
-| `08_trends.py` | Compute trends, organization spend movers, and generate alerts |
-| `clients_norm.py` | Client-name canonicalization and display-name rendering used by `08_trends.py` |
-| `scripts/make_release_db.py` | Produce the slimmed DB copy uploaded to the GitHub Release for CI |
-
-## Deterministic Topic Workflow (No LLM)
-
-```bash
-# 1) Run rule-based extraction (L0 issue code + L1 coarse + L2 specific topics)
-python 12_extract_rules.py extract --batch-size 2000000
-
-# 2) Inspect current coverage and top topics
-python 12_extract_rules.py stats
-
-# 3) Sample misses from processed rows (where L2 rules did not fire)
-python 12_extract_rules.py sample-unmapped --mode processed_unmapped --limit 30
-
-# 4) Mine candidate terms from misses by issue_code
-python 12_extract_rules.py mine-candidates \
-  --scope processed_unmapped \
-  --per-code-cap 12000 \
-  --min-doc-freq 50 \
-  --min-lift 2.5 \
-  --top-k 30
-
-# 5) Generate low-coverage gap report for rule expansion
-python 12_extract_rules.py gap-report --max-codes 25 --terms-per-code 15
-
-# 6) Re-run only selected weak issue codes after updating rules
-python 12_extract_rules.py extract \
-  --refresh-existing \
-  --issue-codes CON,GAM,ART,BNK,SPO,UNM,TOB,RET
-```
-
-Rule dictionary lives at `rules/topic_rules.json`.
-
-Coverage levels:
-- **L0**: `issue_code` from Senate filings (100% of activities)
-- **L1**: coarse topic mapped from `issue_code`
-- **L2**: rule-derived topics in tiers:
-  - `strict`: acts/programs, phrase-level matches, or multi-hit rule support
-  - `relaxed`: code-matched single-keyword evidence
-  - `fallback`: broad `general_*` label derived from LDA `issue_code` when no strict/relaxed topic is found
+| Release asset (`data`) | Contents |
+|---|---|
+| `filings.db.zst` | Current DB |
+| `filings.prev.db.zst` | DB before the latest refresh |
+| `filings.YYYY-MM.db.zst` | Monthly copy, newest 3 kept |
 
 ## Database
 
-SQLite database stored in GitHub Releases (not in repo due to size). Contains:
-- `filings`: Core filing metadata
-- `registrants`: Lobbying firms
-- `clients`: Clients being represented
-- `activities`: Individual lobbying activities
-- `activity_extractions_rules`: deterministic topic/entity/legislation extraction used by the dashboard
-- `activity_extractions`: legacy LLM extraction table retained for historical comparison
-- `bill_reference`: `(congress, type, number)` primary key, `introduced_date` (ISO date), `title` (official short title or trimmed official title); type is a lowercase GovInfo code such as `hr` or `sconres`.
-- `bill_reference_sync`: `(congress, type)` primary key, `checked_at` (UTC timestamp); a row records successful full bootstrap/refresh, so completed Congresses need no later requests.
+| Table | Contents |
+|---|---|
+| `filings` | Filing metadata, income, expenses, `filing_type`, `is_current` |
+| `registrants` | Registrants |
+| `clients` | Clients |
+| `activities` | Activities: issue code, description, houses, agencies |
+| `filing_lobbyists` | Lobbyists per activity |
+| `activity_extractions_rules` | Rule-based topics, entities, legislation per activity |
+| `topic_candidate_terms` | Mined candidate rule terms |
+| `bill_reference` | `(congress, type, number)` -> `introduced_date`, `title` |
+| `bill_reference_sync` | `(congress, type)` -> `checked_at` |
+| `audit_log` | Drift audit results |
+| `issues`, `signals`, `migrations` | Legacy issue labels, legacy signals, schema migrations |
 
-## Preview the Dashboard Locally
-
-The dashboard is a static app served from `docs/` (GitHub Pages). To preview it locally:
+## Local use
 
 ```bash
-cd docs
-python -m http.server 8000
+uv venv --python 3.12
+uv pip install --python .venv/bin/python -r requirements.txt
+gh release download data --pattern filings.db.zst -D data/ && zstd -d --rm data/filings.db.zst -o data/filings.db
+.venv/bin/python 07_refresh.py
+cd docs && python -m http.server 8000
 ```
 
-Then open `http://localhost:8000` in your browser.
+| Variable | Use |
+|---|---|
+| `LDA_API_KEY` | Optional; higher LDA API rate limit |
+
+## Corrections
+
+GitHub issues: https://github.com/umqadir/lobbying-signals/issues
 
 ## License
 
-MIT
+MIT (`LICENSE`), code only. Data is from public LDA filings.

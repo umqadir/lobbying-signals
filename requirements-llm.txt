@@ -1,0 +1,3 @@
+# Legacy LLM scripts only (06_extract.py, 11_issue_dictionary_loop.py, scripts/benchmark_llm.py)
+-r requirements.txt
+google-genai==2.33.0

@@ -1,0 +1,37 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          enable-cache: false
+
+      - name: Run scripts/test_*.py
+        run: |
+          set -uo pipefail
+          uv venv --python 3.12 || exit 1
+          uv pip install --python .venv/bin/python -r requirements.txt || exit 1
+          rc=0
+          for t in scripts/test_*.py; do
+            echo "::group::$t"
+            .venv/bin/python "$t" || rc=1
+            echo "::endgroup::"
+          done
+          exit "$rc"
