@@ -181,6 +181,38 @@ class IngestFailureTests(unittest.TestCase):
         self.assertEqual(self.sleep.call_args_list,
                          [call(d * 60) for d in ingest.OUTAGE_RETRY_DELAYS_MINUTES])
 
+    def test_report_types_include_no_activity_original(self):
+        # QnY (no-activity original) must be swept like Qn, or quarter
+        # backfills skip ~2.3K filings per quarter and the coverage check
+        # undercounts the API side.
+        for quarter in range(1, 5):
+            types = ingest._report_types_for_quarter(quarter)
+            self.assertIn(f"Q{quarter}", types)
+            self.assertIn(f"Q{quarter}Y", types)
+            self.assertEqual(len(types), len(set(types)))
+            self.assertEqual(set(types) - set(ingest._non_original_types_for_quarter(quarter)),
+                             {f"Q{quarter}", f"Q{quarter}Y"})
+
+    def test_coverage_check_counts_no_activity_reports(self):
+        db.init_db()
+        with db.get_db() as conn:
+            conn.executemany(
+                "INSERT INTO filings (sopr_filing_id, year, quarter, filing_type) VALUES (?, 2025, 2, ?)",
+                [(f"q2-{i}", "Q2") for i in range(60)] + [(f"q2y-{i}", "Q2Y") for i in range(40)])
+            conn.commit()
+        api_counts = {"Q2": 60, "Q2Y": 40}
+        fetch = self.enterContext(patch.object(
+            ingest, "fetch_filings_page",
+            side_effect=lambda year, filing_type, page=1: {"count": api_counts.get(filing_type, 0)}))
+        backfill = self.enterContext(patch.object(ingest, "ingest_quarter"))
+        out = io.StringIO()
+        with redirect_stdout(out):
+            shortfalls = ingest.coverage_check(tolerance=5)
+        self.assertEqual(shortfalls, 0)
+        backfill.assert_not_called()
+        self.assertIn("Q2Y", [c.args[1] for c in fetch.call_args_list])
+        self.assertIn("2025 Q2: db=100 api=100 diff=+0", out.getvalue())
+
     def run_refresh(self, complete, marker=None):
         calls = []
         source = SimpleNamespace(ingest_latest=lambda: calls.append("ingest") or

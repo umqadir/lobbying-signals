@@ -3,10 +3,12 @@
 The release DB is what the daily GitHub Actions refresh downloads and builds
 on, so it must contain everything the active pipeline reads or writes:
 filings/registrants/clients/activities (01_ingest), activity_extractions_rules
-and topic_candidate_terms (12_extract_rules), issues and signals (db schema).
+and topic_candidate_terms (12_extract_rules).
 
-Everything else is local analysis history — the legacy LLM extraction table
-and the issue-dictionary experiment artifacts — which together account for
+Everything else is local analysis history — the legacy LLM extraction table,
+the legacy Gemini `issues` classifications and `signals` (02_classify /
+03_detect, not part of the daily refresh; init_db recreates them empty), and
+the issue-dictionary experiment artifacts — which together account for
 roughly half the file size. Those stay in the local working DB (and in
 data/archives snapshots); they just don't ship to CI.
 
@@ -28,6 +30,8 @@ DROP_TABLES = [
     "issue_dictionary_iterations_v2",
     "activity_topics",               # abandoned early prototype table
     "normalization_dict",
+    "issues",                        # legacy Gemini issue classifications (02_classify)
+    "signals",                       # legacy anomaly signals (03_detect)
 ]
 
 

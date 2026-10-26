@@ -31,7 +31,10 @@ LDA_API_KEY = os.getenv("LDA_API_KEY", "")
 
 # LDA report-period filing types for quarter n (n = 1..4), verified against
 # https://lda.gov/api/v1/constants/filing/filingtypes/:
-#   QnY   original quarterly report (activity / no-activity)
+#   Qn    original quarterly report
+#   QnY   original quarterly report with no lobbying activity — ~2.3K per
+#         quarter since 2025 Q2; omitting it made the coverage check report
+#         a false surplus and quarter backfills skip these filings
 #   nA/nAY    amendment — a COMPLETE restatement that supersedes the original
 #   nT/nTY    termination report — filer's final-period activity
 #   n@/n@Y    termination amendment — restatement of a termination
@@ -40,7 +43,7 @@ LDA_API_KEY = os.getenv("LDA_API_KEY", "")
 # it 400s), so each type is swept as its own request series.
 def _report_types_for_quarter(quarter: int) -> list[str]:
     n = quarter
-    return [f"Q{n}", f"{n}A", f"{n}AY", f"{n}T", f"{n}TY", f"{n}@", f"{n}@Y"]
+    return [f"Q{n}", f"Q{n}Y", f"{n}A", f"{n}AY", f"{n}T", f"{n}TY", f"{n}@", f"{n}@Y"]
 
 
 def _non_original_types_for_quarter(quarter: int) -> list[str]:
