@@ -1615,6 +1615,10 @@ button:focus-visible,
 .org-text-expand summary { cursor: pointer; color: var(--ink-3); }
 .org-text-expand[open] summary { font-size: 0.75rem; }
 .org-filing-amount { font: 0.8rem var(--mono); margin: 6px 0; }
+/* Amounts already inside the organization's own report: muted, and never
+   part of a total. */
+.org-included { color: var(--ink-3); }
+.org-split-total { font-weight: 600; }
 @media (max-width: 480px) {
     .org-comparison { grid-template-columns: minmax(0, 1fr); gap: 18px; }
     .org-quarter + .org-quarter { border-top: 1px solid var(--line); padding-top: 14px; }
