@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from db import get_db, query_to_dicts, normalize_covered_position
-from clients_norm import canonical_client_key, display_client_name, EXCLUDED_CLIENT_KEYS
+from clients_norm import canonical_client_key, display_client_name, display_person_name, EXCLUDED_CLIENT_KEYS
 from bill_reference import BILL_TYPES, load_reference, load_public_laws
 
 RULES_PATH = Path("rules/topic_rules.json")
@@ -2606,7 +2606,7 @@ def summarize_client_quarter(filings: list[dict], lobbyists: list[dict], activit
         for kind in kinds:
             classes[kind] += 1
         positions.append({
-            'name': person['name'] or 'Unnamed lobbyist',
+            'name': display_person_name(person['name']) or 'Unnamed lobbyist',
             'class': ', '.join(kind for kind in POSITION_CLASSES if kind in kinds),
             **_bounded_text('\n\n'.join(texts), CLIENT_POSITION_TEXT_LIMIT),
         })

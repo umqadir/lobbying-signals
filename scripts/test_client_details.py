@@ -56,6 +56,16 @@ class SummaryTests(unittest.TestCase):
         fetched = trends.summarize_client_quarter([filing(details_fetched_at='2026-10-01')], [], [])
         self.assertEqual(fetched['lobbyist_count'], 0)
 
+    def test_lobbyist_names_export_in_display_case(self):
+        people = [
+            person('mr JOHN FRANCIS WILLIAMS iii', lda_lobbyist_id=1, covered_position='Chief of Staff, Sen. Example'),
+            person("ms ASHLEY ROSE O'SULLIVAN", lda_lobbyist_id=2, covered_position='Counsel, House Committee'),
+            person('ANDREW MCKECHNIE', lda_lobbyist_id=3, covered_position='Legislative Assistant to Rep. Example'),
+        ]
+        q = trends.summarize_client_quarter([filing(details_fetched_at='now')], people, [])
+        self.assertEqual(sorted(p['name'] for p in q['positions']),
+                         ["Andrew McKechnie", "Ashley Rose O'Sullivan", 'John Francis Williams III'])
+
     def test_method_change_and_firm_arrivals(self):
         cur = trends.summarize_client_quarter([
             filing(1, is_self_filer=1, expenses_method=' c '),
