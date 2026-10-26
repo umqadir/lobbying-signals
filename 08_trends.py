@@ -10,7 +10,7 @@ from pathlib import Path
 
 from db import get_db, query_to_dicts, normalize_covered_position
 from clients_norm import canonical_client_key, display_client_name, EXCLUDED_CLIENT_KEYS
-from bill_reference import BILL_TYPES, load_reference
+from bill_reference import BILL_TYPES, load_reference, load_public_laws
 
 RULES_PATH = Path("rules/topic_rules.json")
 
@@ -113,6 +113,10 @@ def normalize_tag(value: str) -> str:
 # same string ("H.R. 1 - Lower Energy Costs Act" is about that act, whatever
 # the filing year). Patterns are matched case-insensitively and tried in order,
 # so specific names precede short-form truncations that resolve unambiguously.
+# A match only counts when it starts the name: if the word right before it is
+# another title word ("Honoring Our Fallen Heroes Act", "SAFE Chips Act",
+# "Sound Science Act"), the tag is a different, longer act that merely ends
+# with a landmark law's short name (see _known_act).
 KNOWN_ACT_PATTERNS = [
     # 119th Congress
     (re.compile(r'\b(?:one,?\s+big,?\s+)?beautiful\s+(?:bill\s+)?act\b', re.I), 'One Big Beautiful Bill Act'),
@@ -125,7 +129,7 @@ KNOWN_ACT_PATTERNS = [
     (re.compile(r'\binflation reduction act\b', re.I), 'Inflation Reduction Act'),
     (re.compile(r'\bbuild back better\b', re.I), 'Build Back Better Act'),
     (re.compile(r'\bchips\b[\s+&/.,-]{0,4}(?:and\s+|for\s+america\s+)?science\b', re.I), 'CHIPS and Science Act'),
-    (re.compile(r'\bchips act\b', re.I), 'CHIPS and Science Act'),
+    (re.compile(r'\bchips act(?:,?\s+(?:of\s+)?2022)?$', re.I), 'CHIPS and Science Act'),
     (re.compile(r'\bamerican rescue plan\b', re.I), 'American Rescue Plan Act'),
     (re.compile(r'\bfamilies first coronavirus\b', re.I), 'Families First Coronavirus Response Act'),
     (re.compile(r'\bheroes act\b', re.I), 'Heroes Act'),
@@ -142,8 +146,9 @@ KNOWN_ACT_PATTERNS = [
     # 115th
     (re.compile(r'\btax cuts (?:and|&) jobs act\b', re.I), 'Tax Cuts and Jobs Act'),
     # Unambiguous short-form truncations (only one federal law each matches).
-    # Unanchored so year-suffixed variants fold too ("Science Act of 2022").
-    (re.compile(r'\bscience act\b', re.I), 'CHIPS and Science Act'),
+    # Anchored at the end so only the bare truncation (optionally with the
+    # law's own year) folds; "Science Act of 2026" is some other act.
+    (re.compile(r'\bscience act(?:,?\s+(?:of\s+)?2022)?$', re.I), 'CHIPS and Science Act'),
     (re.compile(r'\binnovation and competition act of 2021\b', re.I), 'U.S. Innovation and Competition Act'),
     (re.compile(r'^competition act of 2021$', re.I), 'U.S. Innovation and Competition Act'),
     (re.compile(r'^competes act$', re.I), 'America COMPETES Act'),
@@ -163,7 +168,23 @@ LEGISLATION_DROP_FRAGMENTS = {
     # (and successors) — co-occurs with the real H.R./P.L. number on the same
     # activity, so the fragment carries no identity of its own.
     'extensions act',
+    # Tail of every "<Subcommittee>, and Related Agencies Appropriations Act"
+    # title — the subject (Interior, Agriculture, CJS, ...) is cut off.
+    'related agencies appropriations act',
 }
+
+# Fragment shapes too varied for the exact set above. Any tag that STARTS
+# with "Related Agencies" lost its subcommittee subject ("Related Agencies
+# Act", "Related Agencies Subcommittee Appropriations Act", ...), and a bare
+# code-section / U.S.C. / C.F.R. citation ("Section 232", "49 USC 22907") is a
+# provision of some statute, not a bill: without the statute's name it is
+# ambiguous ("Section 301" exists in dozens of laws), and the statute itself,
+# when named, is extracted as its own tag.
+LEGISLATION_DROP_PATTERNS = [
+    re.compile(r'^related\s+agenc(?:y|ies)\b', re.I),
+    re.compile(r'^(?:section|sec\.?)\s+[0-9][0-9A-Za-z\-()]*$', re.I),
+    re.compile(r'^\d+\s+(?:U\.?\s*S\.?\s*C|C\.?\s*F\.?\s*R)\.?\s+\S+$', re.I),
+]
 
 # Congress-scoped bill numbers and public-law numbers that are the same law as
 # a named act above. Kept deliberately to landmark, unambiguous laws; recurring
@@ -225,6 +246,305 @@ def _congress_for_year(year: int) -> int:
     return (year - 1789) // 2 + 1
 
 
+# A capitalized title word immediately before a landmark-law match means the
+# tag names a different act that only ends with the landmark's short name.
+_TITLE_WORD_RE = re.compile(r"^(?:[A-Z][a-z'’]+|[A-Z]{2,})$")
+
+
+def _known_act(tag: str) -> str | None:
+    for pattern, canonical in KNOWN_ACT_PATTERNS:
+        for match in pattern.finditer(tag):
+            prev = re.search(r'(\S+)\s*$', tag[:match.start()])
+            if (prev and _TITLE_WORD_RE.match(prev.group(1))
+                    and prev.group(1).lower() not in ('the', 'a', 'an')):
+                continue
+            return canonical
+    return None
+
+
+# ── Bill-title index ──
+# The rules extractor (12_extract_rules.py) captures a legislation name as a
+# run of up to eight Capitalized tokens ending in "Act" — copied verbatim here.
+# A title containing a lowercase word or longer than eight words is therefore
+# captured only as its TAIL ("Farm, Food, and National Security Act of 2026"
+# -> "National Security Act of 2026"; "21st Century ROAD to Housing Act" ->
+# "Housing Act"), and consecutive names in an unpunctuated list run together
+# ("REPORT Act GUARD Act"). Replaying the same regex over every official title
+# in bill_reference gives, per name key, the bills whose title the name is
+# (exact) or is the extractor-truncated tail of (tails). A name cited after an
+# article inside a title ("to amend the Clean Water Act") is an existing law,
+# not a truncation, and is skipped.
+EXTRACTOR_ACT_RE = re.compile(
+    r"\b[A-Z][A-Za-z0-9'&,\-]+(?:\s+[A-Z][A-Za-z0-9'&,\-]+){0,7}\s+Act(?:\s+of\s+\d{4})?\b")
+_YEAR_TAIL_RE = re.compile(r'(?:,\s*|\s+of\s+|\s+)((?:19|20)\d\d)$', re.I)
+_ARTICLE_BEFORE_RE = re.compile(r'\b(?:the|an?)\s+(?:\S+\s+)?$', re.I)
+_TITLE_REST_RE = re.compile(r'[\s.]*(?:,?\s*(?:of\s+)?((?:19|20)\d\d))?[\s.]*$', re.I)
+
+
+def _name_key(text: str) -> tuple[str, str | None]:
+    """(case/punctuation-free core, trailing year) of an act name."""
+    text = (text or '').replace('’', "'").strip(' .,;:')
+    year = None
+    match = _YEAR_TAIL_RE.search(text)
+    if match:
+        year, text = match.group(1), text[:match.start()]
+    text = re.sub(r'^(?:the|an?)\s+', '', text, flags=re.I)
+    return ' '.join(re.sub(r'[^a-z0-9]+', ' ', text.lower()).split()), year
+
+
+class _TitleIndex:
+    def __init__(self, reference: dict):
+        self.exact = defaultdict(set)    # name key -> {(congress, kind, number, year)}
+        self.tails = defaultdict(set)
+        self.titles = {}                 # (congress, kind, number) -> title
+        self.cache = {}
+        for (congress, kind, number), value in reference.items():
+            title = (value[1] if value else '') or ''
+            if not title or title.endswith('…'):
+                continue
+            title = title.replace('’', "'")
+            bill = (congress, kind, number)
+            key, year = _name_key(title)
+            self.exact[key].add(bill + (year,))
+            self.titles[bill] = title
+            for match in EXTRACTOR_ACT_RE.finditer(title):
+                before = title[:match.start()]
+                rest = _TITLE_REST_RE.fullmatch(title[match.end():])
+                if not before.strip() or not rest or _ARTICLE_BEFORE_RE.search(before):
+                    continue
+                capture_key, capture_year = _name_key(match.group(0))
+                self.tails[capture_key].add(bill + (capture_year or rest.group(1),))
+
+    def names_bill(self, name: str, bill: tuple) -> bool:
+        """True when `name` is bill's title, or the extractor's truncation of it."""
+        cache_key = (name, bill)
+        if cache_key not in self.cache:
+            key, year = _name_key(name)
+            self.cache[cache_key] = any(
+                b[:3] == bill and not (year and b[3] and b[3] != year)
+                for table in (self.exact, self.tails) for b in table.get(key, ()))
+        return self.cache[cache_key]
+
+    def spelling(self, name: str, congress: int | None) -> str:
+        """The official spelling of a name that is the full title of a bill
+        in `congress` (else the one before)."""
+        key, year = _name_key(name)
+        for c in ((congress, congress - 1) if congress else ()):
+            titles = sorted(self.titles[b[:3]] for b in self.exact.get(key, ())
+                            if b[0] == c and b[3] == year)
+            if titles:
+                return Counter(titles).most_common(1)[0][0]
+        return name
+
+
+_TITLE_INDEXES: dict = {}
+
+
+def _title_index(reference: dict) -> _TitleIndex:
+    entry = _TITLE_INDEXES.get(id(reference))
+    if entry is None or entry[0] is not reference:
+        if len(_TITLE_INDEXES) > 8:
+            _TITLE_INDEXES.clear()
+        entry = _TITLE_INDEXES[id(reference)] = (reference, _TitleIndex(reference))
+    return entry[1]
+
+
+def _bill_of(identity: str) -> tuple | None:
+    match = BILL_IDENTITY_RE.fullmatch(identity)
+    if not match:
+        return None
+    prefix, number, congress = match.groups()
+    return int(congress), next(k for k, v in BILL_TYPES.items() if v == prefix), int(number)
+
+
+# Words that continue an act's own name after an inner "Act" ("Endangered
+# Species Act Amendments Act", "No Surprises Act Enforcement Act").
+_ACT_COMPOUND_WORDS = {
+    'amendment', 'amendments', 'reauthorization', 'enforcement', 'modernization',
+    'improvement', 'improvements', 'extension', 'implementation', 'restoration',
+    'repeal', 'compliance', 'clarification', 'technical', 'expansion',
+}
+_LIST_LEAD_RE = re.compile(r'^(?:(?:and|or|&|the|act|acts|bill|bills)\s+)+', re.I)
+
+
+def split_legislation_tag(raw: str, *, reference: dict | None = None) -> list[str]:
+    """Split one raw extracted tag into the act names it actually contains.
+
+    The extractor's capitalized-run regex glues unpunctuated lists together
+    ("Report Act Guard Act", "Act ENFORCE Act", "Bill CONSENT Act") and
+    comma lists of capitalized non-act items onto an act ("Amtrak Funding,
+    SBA Funding, CHIPS Act"). Split after every inner "Act" unless the joined
+    span is a known title or landmark law, or the next word continues the same
+    name (_ACT_COMPOUND_WORDS); within a piece keep only the comma item that
+    carries the act; drop leading leftovers ("Act", "Bill", "and", "the").
+    """
+    tag = normalize_tag(raw)
+    if not tag:
+        return []
+    tokens = tag.split(' ')
+    ends = [i for i, t in enumerate(tokens[:-1])
+            if t.rstrip(',;').lower() == 'act'
+            and tokens[i + 1].rstrip(',;').lower() not in _ACT_COMPOUND_WORDS | {'of'}
+            and not re.match(r'^(?:19|20)\d\d\b', tokens[i + 1])]
+    if not ends and ',' not in tag and not _LIST_LEAD_RE.match(tag):
+        return [tag]
+    index = _title_index(load_reference() if reference is None else reference)
+    segments, start = [], 0
+    while start < len(tokens):
+        candidates = [e for e in ends if e >= start] + [len(tokens) - 1]
+        stop = candidates[0]
+        for later in candidates[1:]:  # inner "Act"s of one longer known name
+            span = ' '.join(tokens[start:later + 1]).rstrip(',;')
+            if _name_key(span)[0] in index.exact or _known_act(span):
+                stop = later
+        segments.append(' '.join(tokens[start:stop + 1]).strip(' ,;'))
+        start = stop + 1
+    out = []
+    for segment in segments:
+        if ',' in segment and not (_known_act(segment) or _name_key(segment)[0] in index.exact):
+            pieces = [p.strip() for p in segment.split(',')]
+            # Keep a trailing year qualifier ("...Act, 2026") with its act.
+            if len(pieces) > 1 and re.fullmatch(r'(?:19|20)\d\d', pieces[-1]):
+                pieces = pieces[:-2] + [pieces[-2] + ', ' + pieces[-1]]
+            segment = pieces[-1]
+        segment = _LIST_LEAD_RE.sub('', segment).strip(' ,;')
+        if segment:
+            out.append(segment)
+    return out
+
+
+# Name -> bill folding learned from the filings themselves. A name-only tag
+# ("SPEED Act", "Housing Act", "National Security Act of 2026") folds into a
+# numbered bill B of the same Congress when B's official title is that name
+# or truncates to it (_TitleIndex), and at least half of the name's
+# occurrences in that Congress sit on activities that also cite B by number.
+# Titles alone can't decide: four 119th-Congress bills are titled "SPEED Act"
+# and dozens of titles end in "Housing Act", while statutes such as "Higher
+# Education Act" also end many titles but are cited on their own — they never
+# reach the co-citation share, so they are left alone.
+NAME_ALIAS_MIN_OCCURRENCES = 5
+NAME_ALIAS_MIN_SHARE = 0.5
+
+
+def learn_name_aliases(rows, reference: dict) -> dict:
+    """rows: (report year, raw legislation tag list) per activity.
+    Returns {(name, congress): numbered identity}.
+
+    Bare numbers are scoped by report year alone here (no posted-date
+    check), which keeps the pass to one cached normalization per distinct
+    tag; a mis-scoped number would also have to carry the name's title to
+    count, so the approximation can't create an alias on its own."""
+    index = _title_index(reference)
+    totals, co = Counter(), defaultdict(Counter)
+    normalized = {}
+    for year, raw_tags in rows:
+        if not year:
+            continue
+        legs = []
+        for raw in raw_tags or []:
+            cache_key = (raw, year)
+            if cache_key not in normalized:
+                normalized[cache_key] = [
+                    leg for part in split_legislation_tag(raw, reference=reference)
+                    if (leg := normalize_legislation(part, year, reference=reference))]
+            legs.extend(leg for leg in normalized[cache_key] if leg not in legs)
+        bills = [(leg, _bill_of(leg)) for leg in legs]
+        congress = _congress_for_year(year)
+        for leg, bill in bills:
+            if bill:
+                continue
+            totals[(leg, congress)] += 1
+            for other, other_bill in bills:
+                if other_bill and other_bill[0] == congress and index.names_bill(leg, other_bill):
+                    co[(leg, congress)][other] += 1
+    aliases = {}
+    for name_congress, counts in co.items():
+        ranked = counts.most_common(2)
+        top, hits = ranked[0]
+        total = totals[name_congress]
+        if (total >= NAME_ALIAS_MIN_OCCURRENCES and hits >= NAME_ALIAS_MIN_SHARE * total
+                and (len(ranked) == 1 or ranked[1][1] < hits)):
+            aliases[name_congress] = top
+    return aliases
+
+
+_LEARNED_ALIASES = None
+
+
+def _learned_name_aliases() -> dict:
+    """Aliases learned once per process from all current filings."""
+    global _LEARNED_ALIASES
+    if _LEARNED_ALIASES is None:
+        with get_db() as conn:
+            rows = conn.execute("""
+                SELECT f.year, e.legislation
+                FROM activity_extractions_rules e
+                JOIN activities a ON e.activity_id = a.id
+                JOIN filings f ON a.filing_id = f.id
+                WHERE f.is_current = 1 AND e.legislation IS NOT NULL
+                  AND e.legislation != '[]'
+            """).fetchall()
+        _LEARNED_ALIASES = learn_name_aliases(
+            ((y, json.loads(leg)) for y, leg in rows), load_reference())
+    return _LEARNED_ALIASES
+
+
+def normalize_legislation_tags(raw_tags, year: int | None = None,
+                               filing_date: str | None = None, *,
+                               reference: dict | None = None,
+                               unresolved: Counter | None = None,
+                               aliases: dict | None = None) -> list[str]:
+    """One activity's raw legislation tags -> distinct canonical identities.
+
+    Splits mashed tags, normalizes each name, folds name-only tags through
+    the learned aliases (production default; pass aliases={} to disable),
+    and drops a name that only repeats (or truncates) the title of a bill the
+    same activity cites by number ("H.R. 6644 21st Century ROAD to Housing
+    Act" counts once, as H.R. 6644).
+    """
+    ref = load_reference() if reference is None else reference
+    if aliases is None:
+        aliases = _learned_name_aliases() if reference is None else {}
+    congress = _congress_for_year(year) if year else None
+    out = []
+    for raw in raw_tags or []:
+        for part in split_legislation_tag(raw, reference=ref):
+            leg = normalize_legislation(part, year, filing_date, reference=reference,
+                                        unresolved=unresolved)
+            leg = aliases.get((leg, congress), leg)
+            if leg and leg not in out:
+                out.append(leg)
+    index = _title_index(ref)
+    bills = [b for b in map(_bill_of, out) if b]
+    if not bills:
+        return out
+    return [leg for leg in out
+            if _bill_of(leg) or not any(index.names_bill(leg, b) for b in bills)]
+
+
+def public_law(number: str, reference: dict | None = None) -> str:
+    """A public law is the same law as the bill that enacted it, so it folds
+    into that bill's identity ("P.L. 119-4" -> H.R. 1968, 119th Congress)
+    when the GovInfo law record is held (bill_reference.public_law_reference).
+    Curated aliases win; an unknown law keeps its P.L. number. Like bill
+    numbers, laws are looked up only on the production path (reference None);
+    a caller-supplied bill reference means no law table."""
+    pl = f"P.L. {number}"
+    if pl in LEGISLATION_ALIASES:
+        return LEGISLATION_ALIASES[pl]
+    congress, law = (int(part) for part in number.split('-'))
+    bill = (load_public_laws() if reference is None else {}).get((congress, law))
+    if bill and bill[1] in BILL_TYPES:
+        return _bill_identity(bill)
+    return pl
+
+
+def _bill_identity(bill: tuple) -> str:
+    congress, kind, number = bill
+    base = f"{BILL_TYPES[kind]} {number} ({_ordinal(congress)} Congress)"
+    return LEGISLATION_ALIASES.get(base, base)
+
+
 def normalize_legislation(value: str, year: int | None = None,
                           filing_date: str | None = None, *,
                           reference: dict | None = None,
@@ -256,9 +576,9 @@ def normalize_legislation(value: str, year: int | None = None,
         return ''
 
     # 1) A recognized act NAME in the tag beats any number in the same tag.
-    for pattern, canonical in KNOWN_ACT_PATTERNS:
-        if pattern.search(tag):
-            return canonical
+    canonical = _known_act(tag)
+    if canonical:
+        return canonical
 
     # 2) Generic truncation fragments carry no identity — drop as noise.
     # A trailing year qualifier doesn't rescue a fragment ("Extensions Act of
@@ -270,6 +590,8 @@ def normalize_legislation(value: str, year: int | None = None,
     ).strip(' .,;:')
     if fragment_probe in LEGISLATION_DROP_FRAGMENTS or \
             fragment_probe_no_year in LEGISLATION_DROP_FRAGMENTS:
+        return ''
+    if any(p.search(tag) for p in LEGISLATION_DROP_PATTERNS):
         return ''
 
     # Explicit qualifiers override the filing year for number scoping.
@@ -324,8 +646,7 @@ def normalize_legislation(value: str, year: int | None = None,
 
     pl_any = re.search(r'\bP\.?\s*L\.?\s*(\d{1,3}-\d{1,5})\b', tag, flags=re.IGNORECASE)
     if pl_any:
-        pl = f"P.L. {pl_any.group(1)}"
-        return LEGISLATION_ALIASES.get(pl, pl)
+        return public_law(pl_any.group(1), reference)
 
     compact = re.sub(r'[^A-Za-z0-9-]', '', tag).upper()
 
@@ -339,8 +660,7 @@ def normalize_legislation(value: str, year: int | None = None,
 
     pl_match = re.match(r'^PL(\d+-\d+)$', compact)
     if pl_match:
-        pl = f"P.L. {pl_match.group(1)}"
-        return LEGISLATION_ALIASES.get(pl, pl)
+        return public_law(pl_match.group(1), reference)
 
     lower = tag.lower()
     if lower in LEGISLATION_NOISE_EXACT:
@@ -357,6 +677,11 @@ def normalize_legislation(value: str, year: int | None = None,
     # Unify fiscal-year spellings so "FY27 NDAA" and "FY2027 NDAA" are one tag
     tag = re.sub(r'\bFY\s*(\d{2})\b(?!\d)', lambda m: f"FY20{m.group(1)}", tag, flags=re.IGNORECASE)
     tag = re.sub(r'\bFY\s*(20\d\d)\b', r'FY\1', tag, flags=re.IGNORECASE)
+
+    # A name that is some bill's full official title takes the official
+    # spelling, so "Report Act" and "REPORT Act" are one identity.
+    if re.search(r'\bact\b', tag, flags=re.IGNORECASE):
+        tag = _title_index(load_reference() if reference is None else reference).spelling(tag, congress)
 
     return tag
 
@@ -537,8 +862,8 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
             add_example(entity_examples, entity, filing_id, filing_date, client, registrant, income, filing_uuid)
 
         seen_leg = set()
-        for leg in json.loads(row['legislation'] or '[]'):
-            leg = normalize_legislation(leg, row.get('filing_year'), filing_date)
+        for leg in normalize_legislation_tags(json.loads(row['legislation'] or '[]'),
+                                              row.get('filing_year'), filing_date):
             if not leg or leg in seen_leg:
                 # Aliases of one law (number, name, P.L.) collapse to a single
                 # canonical tag; count it once per activity.
@@ -1119,8 +1444,8 @@ def get_recent_filings(limit: int = 300) -> list:
             entity = normalize_tag(e)
             if entity:
                 rec['entities'][entity] += 1
-        for l in json.loads(row.get('legislation') or '[]'):
-            legislation = normalize_legislation(l, row.get('year'), row.get('filing_date'))
+        for legislation in normalize_legislation_tags(json.loads(row.get('legislation') or '[]'),
+                                                      row.get('year'), row.get('filing_date')):
             if legislation:
                 rec['legislation'][legislation] += 1
 
@@ -1332,9 +1657,9 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             if entity:
                 entity_by_quarter[q_index][entity] += 1
         seen_leg = set()
-        for leg in json.loads(row.get('legislation') or '[]'):
-            leg = normalize_legislation(leg, row.get('filing_year'), row.get('filing_date'),
-                                        unresolved=unresolved_bills)
+        for leg in normalize_legislation_tags(json.loads(row.get('legislation') or '[]'),
+                                              row.get('filing_year'), row.get('filing_date'),
+                                              unresolved=unresolved_bills):
             if leg and leg not in seen_leg:
                 seen_leg.add(leg)
                 legislation_by_quarter[q_index][leg] += 1

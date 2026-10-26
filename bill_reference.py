@@ -41,7 +41,19 @@ CREATE TABLE IF NOT EXISTS bill_reference_sync (
     checked_at TEXT NOT NULL,
     PRIMARY KEY (congress, type)
 );
+CREATE TABLE IF NOT EXISTS public_law_reference (
+    congress INTEGER NOT NULL,
+    number INTEGER NOT NULL,
+    bill_type TEXT NOT NULL,
+    bill_number INTEGER NOT NULL,
+    PRIMARY KEY (congress, number)
+);
 '''
+# Public law -> enacting bill, from each law's GovInfo MODS record (keyless).
+# Laws are numbered consecutively within a Congress, so the refresh probes
+# upward from the highest number held until the first law not yet published.
+LAW_SOURCE = 'https://www.govinfo.gov/metadata/pkg/PLAW-{congress}publ{number}/mods.xml'
+LAW_BATCH = 16
 
 
 def read_reference(conn):
@@ -58,6 +70,77 @@ def read_reference(conn):
 def load_reference():
     with get_db() as conn:
         return read_reference(conn)
+
+
+def read_public_laws(conn):
+    """{(congress, law number): (congress, bill type, bill number)}."""
+    try:
+        rows = conn.execute('SELECT congress, number, bill_type, bill_number FROM public_law_reference')
+        return {(c, n): (c, t, b) for c, n, t, b in rows}
+    except sqlite3.OperationalError as exc:
+        if 'no such table' not in str(exc):
+            raise
+        return {}
+
+
+@lru_cache(maxsize=1)
+def load_public_laws():
+    with get_db() as conn:
+        return read_public_laws(conn)
+
+
+def parse_law_mods(xml, congress):
+    """The enacting bill named as the law's primary legislative history."""
+    bills = [el for el in ET.fromstring(xml).iter()
+             if el.tag.rsplit('}', 1)[-1] == 'bill' and el.get('priority') == 'primary']
+    bills.sort(key=lambda el: el.get('context') != 'legislative history')
+    for el in bills:
+        kind, number = (el.get('type') or '').lower(), el.get('number') or ''
+        if kind in BILL_TYPES and number.isdigit() and el.get('congress') == str(congress):
+            return kind, int(number)
+    return None
+
+
+def _fetch_law(client, congress, number, deadline):
+    """(bill type, number), None when unpublished, or raise on an outage."""
+    remaining = deadline - time.monotonic()
+    if remaining <= 0:
+        raise TimeoutError('Bill reference refresh time budget exhausted')
+    url = LAW_SOURCE.format(congress=congress, number=number)
+    response = client.get(url, timeout=min(10, remaining), follow_redirects=False)
+    if response.status_code in (301, 302, 303, 307, 404):
+        return None  # GovInfo redirects unknown packages to its error page
+    response.raise_for_status()
+    return parse_law_mods(response.content, congress) or ('', 0)
+
+
+def refresh_public_laws(conn, client, pool, congresses, deadline, log=print):
+    added = 0
+    known = read_public_laws(conn)
+    for congress in congresses:
+        number = max((n for c, n in known if c == congress), default=0) + 1
+        try:
+            while True:
+                batch = list(range(number, number + LAW_BATCH))
+                results = list(pool.map(lambda n: _fetch_law(client, congress, n, deadline), batch))
+                found = []
+                for n, bill in zip(batch, results):
+                    if bill is None:
+                        break
+                    found.append((congress, n) + bill)
+                # A law whose record names no enacting bill is kept as a
+                # placeholder ('', 0) so the probe doesn't stall on it.
+                conn.executemany('INSERT OR IGNORE INTO public_law_reference VALUES (?, ?, ?, ?)', found)
+                conn.commit()
+                added += len(found)
+                if len(found) < len(batch):
+                    break
+                number += LAW_BATCH
+        except (httpx.HTTPError, TimeoutError, ValueError, ET.ParseError) as exc:
+            log(f'  Warning: public laws {congress}: {exc}')
+    load_public_laws.cache_clear()
+    log(f'  Public laws: {added:,} added')
+    return added
 
 
 def parse_bill(xml):
@@ -176,6 +259,10 @@ def refresh_reference(conn, max_seconds=100, current_congress=None, log=print):
                 log(f'  Bill reference {c}/{t}: {len(rows)} fetched')
             except (httpx.HTTPError, TimeoutError, ValueError, ET.ParseError, zipfile.BadZipFile) as exc:
                 log(f'  Warning: bill reference {c}/{t}: {exc}')
+        # Earlier Congresses are probed only until their laws are first held.
+        held = {c for c, _ in read_public_laws(conn)}
+        refresh_public_laws(conn, client, pool, [c for c in range(116, current + 1)
+                                                 if c >= current - 1 or c not in held], deadline, log)
     load_reference.cache_clear()
     elapsed = time.monotonic() - started
     log(f'  Bill reference: {added:,} added in {elapsed:.1f}s')
