@@ -2046,6 +2046,17 @@ function filingTypeText(type) {
     return `Q${q} ${kind}${m[4] ? " (no activity)" : ""}`;
 }
 
+/* Where an organization filed its own report for a quarter, its outside
+   firms' amounts are already inside that report. Those amounts are shown
+   muted with this label and are never added to a total. Older exports
+   lack the flag, so absent means "not included". */
+const INCLUDED_IN_SELF = "included in the organization's own report";
+
+function amountLine(cls, amount, included, extra = "") {
+    const text = `${amount == null ? "Amount not yet fetched" : fmt.money(amount)}${extra}${included ? ` · ${INCLUDED_IN_SELF}` : ""}`;
+    return el("div", `${cls}${included ? " org-included" : ""}`, text);
+}
+
 function appendOrgFilings(parent, filings, more = 0, legacy = false) {
     if (!filings.length) parent.appendChild(el("p", "detail-chart-note", "No filings in this comparison period."));
     for (const filing of filings) {
@@ -2054,7 +2065,7 @@ function appendOrgFilings(parent, filings, more = 0, legacy = false) {
         const typeText = filingTypeText(filing.type || filing.filing_type);
         row.appendChild(el("div", "filing-row-registrant", `${fmt.dateShort(filing.date)}${typeText ? ` · ${typeText}` : ""}`));
         const amount = legacy ? filing.income : filing.amount;
-        row.appendChild(el("div", "org-filing-amount", amount == null ? "Amount not yet fetched" : fmt.money(amount)));
+        row.appendChild(amountLine("org-filing-amount", amount, filing.included_in_self_report === true));
         const link = officialLink(filing.uuid, "official-link small");
         if (link) row.appendChild(link);
         parent.appendChild(row);
@@ -2081,10 +2092,16 @@ function renderOrgComparison(parent, detail, frameKey) {
             column.appendChild(el("p", "detail-chart-note", "No filings in this comparison period."));
             return;
         }
+        const outsideIncluded = q.split.outside_included_in_self === true;
+        if (q.split.total != null) {
+            column.appendChild(el("div", "org-split-line org-split-total", `Total: ${fmt.money(q.split.total)}`));
+        }
         for (const [key, label] of [["self", "Self-filed expenses"], ["outside", "Outside-firm income"]]) {
             const missing = q.split[`${key}_amounts_missing`];
             const value = q.split[key] == null ? "Not yet fetched" : fmt.money(q.split[key]);
-            column.appendChild(el("div", "org-split-line", `${label}: ${value}${missing ? " (amounts missing)" : ""}`));
+            const included = key === "outside" && outsideIncluded && q.split[key] != null;
+            column.appendChild(el("div", `org-split-line${included ? " org-included" : ""}`,
+                `${label}: ${value}${missing ? " (amounts missing)" : ""}${included ? ` · ${INCLUDED_IN_SELF}` : ""}`));
         }
         if (q.split.unknown_filings) {
             column.appendChild(el("p", "detail-chart-note", `In-house vs. firm is not available for ${fmt.int(q.split.unknown_filings)} filings (${q.split.unknown == null ? "amount not available" : fmt.money(q.split.unknown)}).`));
@@ -2095,12 +2112,16 @@ function renderOrgComparison(parent, detail, frameKey) {
             const row = el("div", "org-firm");
             row.appendChild(el("span", "", firm.name));
             if (firm.status) row.appendChild(el("span", `org-firm-status ${firm.status}`, firm.status));
-            row.appendChild(el("span", "org-firm-amount", `${firm.income == null ? "Not yet fetched" : fmt.money(firm.income)}${firm.amounts_missing ? " · amounts missing" : ""}`));
+            const amount = amountLine("org-firm-amount", firm.income, firm.included_in_self_report === true, firm.amounts_missing ? " · amounts missing" : "");
+            row.appendChild(amount);
             column.appendChild(row);
         }
         appendMoreNote(column, q.firms_more);
     });
-    parent.appendChild(el("p", "detail-chart-note", "Amounts as filed. Self-filed expenses can include fees paid to the firms listed."));
+    const anyIncluded = ["current", "baseline"].some(leg => detail[leg]?.split?.outside_included_in_self === true);
+    parent.appendChild(el("p", "detail-chart-note", anyIncluded
+        ? "Amounts as filed. When an organization files its own report, that report already includes what it paid the outside firms listed, so their amounts are not added again; the total counts each dollar once."
+        : "Amounts as filed. Self-filed expenses can include fees paid to the firms listed."));
     orgComparisonSection(parent, "Expense-reporting method", labels, (column, leg) => {
         const q = detail[leg];
         if (!q.split.self_filings) {
@@ -2465,7 +2486,8 @@ function renderFilingDetail(body, view) {
             const stats = el("div", "detail-stats");
             const stat = el("div", "detail-stat");
             stat.appendChild(el("span", "detail-stat-value", fmt.money(ctx.income)));
-            stat.appendChild(el("span", "detail-stat-label", "Income"));
+            stat.appendChild(el("span", "detail-stat-label",
+                ctx.included_in_self_report === true ? `Income · ${INCLUDED_IN_SELF}` : "Income"));
             stats.appendChild(stat);
             body.appendChild(stats);
         }
