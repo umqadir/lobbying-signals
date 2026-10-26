@@ -302,6 +302,22 @@ input { font: inherit; color: inherit; }
 
 .hero-stats .stat-trend.up { color: var(--up); }
 .hero-stats .stat-trend.down { color: var(--down); }
+.hero-stats .stat-change { font-weight: 600; }
+
+/* Phones: the top bar's "data through" date moves under the hero. */
+.hero-asof {
+    display: none;
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+}
+.hero-asof[hidden] { display: none !important; }
+
+/* No physical keyboard shortcut on touch-only devices. */
+@media (hover: none) and (pointer: coarse) {
+    .search-trigger-kbd { display: none; }
+}
 
 /* ─── Movers ─── */
 
@@ -799,6 +815,8 @@ input { font: inherit; color: inherit; }
     max-width: 75ch;
 }
 
+.footnote p + p { margin-top: 10px; }
+
 .footnote a {
     color: var(--ink-2);
     border-bottom: 1px solid var(--line-2);
@@ -950,6 +968,7 @@ input { font: inherit; color: inherit; }
 }
 
 .drawer[aria-hidden="false"] .drawer-card { transform: translateX(0); }
+.drawer-card:focus, .about-card:focus { outline: none; }
 
 .drawer-head {
     display: flex;
@@ -1131,7 +1150,7 @@ input { font: inherit; color: inherit; }
 }
 
 .detail-section-title .count {
-    color: var(--ink-4);
+    color: var(--ink-3);
     font-weight: 400;
 }
 
@@ -1246,6 +1265,15 @@ input { font: inherit; color: inherit; }
     background: var(--accent-soft);
 }
 
+/* Tags with no activity in the selected period: plain text, not a link. */
+.detail-tag-static,
+.detail-tag-static:hover {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--ink-3);
+    cursor: default;
+}
+
 .detail-empty {
     color: var(--ink-3);
     font-size: 0.88rem;
@@ -1255,7 +1283,7 @@ input { font: inherit; color: inherit; }
 /* Filing detail-specific */
 .filing-row {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 12px;
     padding: 12px 0;
     border-bottom: 1px solid var(--line);
@@ -1474,6 +1502,7 @@ input { font: inherit; color: inherit; }
         max-width: none;
     }
     .topbar-meta { display: none; }
+    .hero-asof { display: block; }
 
     .page { padding: 0 16px 60px; }
     .hero { padding: 36px 0 28px; }
@@ -1495,6 +1524,9 @@ input { font: inherit; color: inherit; }
     }
     /* Single-column grid stretches items; keep the category pill its natural width */
     .mover .cat-tag { justify-self: start; }
+    /* Full width is available here, so the name and comparison wrap
+       instead of truncating the numbers. */
+    .mover-name, .mover-headline { white-space: normal; }
 
     .mover-spark { height: 32px; max-width: 100%; }
     .mover-arrow { display: none; }
