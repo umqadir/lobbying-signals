@@ -2404,7 +2404,16 @@ function renderClientDetail(body, view) {
     }
 
     // Stats
-    const totalIncome = filings.reduce((s, f) => s + toNum(f.income), 0);
+    // A self-filed report already includes payments to outside firms, so in a
+    // quarter with one, the firms' filings are not added again.
+    const orgKey = (v) => String(v || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    const selfFiledQuarters = new Set(
+        filings.filter((f) => orgKey(f.registrant) === orgKey(f.client)).map((f) => `${f.year}-${f.quarter}`)
+    );
+    const totalIncome = filings.reduce((s, f) => {
+        const outsideIncluded = orgKey(f.registrant) !== orgKey(f.client) && selfFiledQuarters.has(`${f.year}-${f.quarter}`);
+        return outsideIncluded ? s : s + toNum(f.income);
+    }, 0);
     const stats = el("div", "detail-stats");
     const cells = [
         { value: filings.length ? fmt.int(filings.length) : "—", label: "Recent filings" },
