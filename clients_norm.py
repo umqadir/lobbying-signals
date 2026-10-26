@@ -35,16 +35,48 @@ EXCLUDED_CLIENT_KEYS = {
 
 # ─── canonical_client_key ───
 
-_ON_BEHALF_RE = re.compile(r'\s+ON\s+BEHALF\s+OF\s+|\s+OBO\s+', re.IGNORECASE)
+# "X ON BEHALF OF Y", "X OBO Y", "X O/B/O Y", and the parenthesized forms
+# "X (ON BEHALF OF Y)" / "X (OBO Y)" (plus the "BEHALFOF" typo). The marker
+# must stand alone — preceded by a space or "(" and followed by a space — so
+# words that merely contain the letters ("ROBOTICS") never split.
+_ON_BEHALF_RE = re.compile(
+    r'(?:\s+|\s*\(\s*)(?:ON\s+BEHALF\s*OF|O/?B/?O)\s+',
+    re.IGNORECASE,
+)
+
+# A represented party that names no organization: "ON BEHALF OF ITS
+# CLIENTS / ITS MEMBERS / VARIOUS CLIENTS / ITSELF". Keying on that tail
+# would pool unrelated firms under one "ITS CLIENTS" identity, so the
+# filer named before the phrase is kept instead.
+_GENERIC_PARTY_RE = re.compile(
+    r'^(?:(?:ITS|THEIR|HIS|HER|OUR)\s+(?:OWN\s+)?)?'
+    r'(?:(?:VARIOUS|MULTIPLE|SEVERAL|CERTAIN|UNNAMED|UNDISCLOSED|OTHER|ALL)\s+)?'
+    r'(?:CLIENTS?|MEMBERS?|MEMBERSHIP|AFFILIATES|SUBSIDIARIES|ITSELF|THEMSELVES|SELF)'
+    r'[\s.,;:)]*$',
+    re.IGNORECASE,
+)
+# "ON BEHALF OF THEIR CLIENT ASLRRA" / "OBO ITS SPRAY FOAM COALITION": the
+# possessive lead-in is not part of the represented organization's name.
+# Requires the bare word ITS (so "IT'S ALL GOOD, LLC" is untouched).
+_POSSESSIVE_LEAD_RE = re.compile(
+    r'^(?:ITS|THEIR)\s+(?:CLIENTS?\s+|MEMBERS?\s+)?(?=\S)',
+    re.IGNORECASE,
+)
 
 # Parentheticals that carry a former/alternate name, not part of the identity.
 # The closing paren is optional: filers truncate long names mid-parenthetical
 # ("META PLATFORMS INC (FORMERLY FACEBOOK INC AND VARIOUS SUBSIDIARIES"),
 # which would otherwise mint a whole separate identity.
-# No \b after the marker: filers omit the space ("(FKARAYTHEON ...)"),
-# and inside a parenthetical the prefix alone is unambiguous.
+# No \b after the legacy markers: filers omit the space ("(FKARAYTHEON
+# ...)"), and inside a parenthetical those prefixes are unambiguous. The
+# newer markers (PKA / AKA / PREVIOUSLY ...) DO require a non-letter after
+# them — "(AKAMAI ...)" or "(PREVENTION ...)" are names, not markers.
+# A/K/A and AKA name an alternate for the SAME organization, so dropping the
+# parenthetical keeps the primary name, which is the identity.
 _FORMER_NAME_PAREN_RE = re.compile(
-    r'\(\s*(?:FORMERLY|FKA|F/K/A|D/B/A|DBA)[^)]*(?:\)|$)',
+    r'\(\s*(?:FORMERLY|FKA|F/K/A|D/B/A|DBA'
+    r'|(?:PKA|P/K/A|AKA|A/K/A|PREVIOUSLY|PREV\.?(?=\s))(?![A-Z]))'
+    r'[^)]*(?:\)|$)',
     re.IGNORECASE,
 )
 
@@ -223,6 +255,12 @@ _FORMER_NAME_ALIASES = {
     'BOEHRINGER INGELHEIM PHARMACEUTICALS': 'BOEHRINGER INGELHEIM',  # BI Pharmaceuticals Inc, the US human-pharma entity (Animal Health stays split)
     'INVESCO': 'INVESCO HOLDING COMPANY (US)',   # Invesco == its US holding entity, where the bulk of the spend files
     'AMERICAN PUBLIC UNIVERSITY SYSTEM': 'APEI',  # APUS, the wholly-owned flagship of American Public Education, Inc.; filer relabeled to the parent
+
+    # JBS USA files as "JBS USA", "JBS USA Food Company" (its legal name) and
+    # "JBS USA Food Company Holdings (previously registered as JBS USA Food
+    # Company)" — one continuing US filer; "JBS USA" folds to bare "JBS" via
+    # the geographic-tail strip, so the legal-name key points there.
+    'JBS USA FOOD': 'JBS',
 }
 
 # Any other trailing parenthetical is stripped when it clearly carries no
@@ -242,9 +280,38 @@ _PAREN_NOISE_RE = re.compile(
 # INSURERS", "... FORMERLY REPORTED AS FACEBOOK") — everything from the
 # marker on is the old name, not the identity.
 _BARE_FORMER_TAIL_RE = re.compile(
-    r'\s+(?:FKA|F/K/A|FORMERLY(?:\s+(?:KNOWN\s+AS|REPORTED\s+AS))?)\s+.*$',
+    r'(?:[\s,]+|\s*-\s*)(?:FKA|F/K/A|PKA|P/K/A|AKA|A/K/A'
+    r'|FORMERLY(?:\s+(?:KNOWN|REPORTED|REGISTERED)\s+AS)?'
+    r'|PREVIOUSLY\s+(?:KNOWN|REPORTED|REGISTERED)\s+AS)[\s:]+.*$',
     re.IGNORECASE,
 )
+
+
+def _represented_party(name: str) -> str:
+    """The organization a raw client name actually stands for, as far as
+    "on behalf of" pass-throughs go: the text after the LAST marker (names
+    chain: "A OBO B OBO C"), minus a possessive lead-in, falling back past
+    generic tails ("... ON BEHALF OF ITS CLIENTS") to the nearest part that
+    names an organization. Case is preserved; unbalanced parens left by a
+    parenthesized marker ("FIRM (OBO CLIENT)") are dropped."""
+    parts = _ON_BEHALF_RE.split(name)
+    if len(parts) == 1:
+        return name
+    chosen = ''
+    for part in reversed(parts):
+        part = part.strip(' ,;:-')
+        if not part or _GENERIC_PARTY_RE.match(part):
+            continue
+        chosen = _POSSESSIVE_LEAD_RE.sub('', part).strip()
+        break
+    chosen = chosen or parts[0].strip(' ,;:-')
+    # "FIRM (OBO CLIENT)" leaves "CLIENT)": drop the closing paren the
+    # marker's opening paren owned, then any parens still unbalanced.
+    if chosen.count(')') > chosen.count('('):
+        chosen = re.sub(r'\)\s*$', '', chosen)
+    if chosen.count('(') != chosen.count(')'):
+        chosen = chosen.replace('(', ' ').replace(')', ' ')
+    return re.sub(r'\s+', ' ', chosen).strip(' ,;:-')
 
 
 def _is_self_acronym(inner: str, base: str) -> bool:
@@ -307,10 +374,9 @@ def canonical_client_key(name: str) -> str:
 
     # "X on behalf of Y" / "X OBO Y" — the represented org is what appears
     # after the phrase; a name can chain ("A on behalf of B on behalf of C"),
-    # so keep whatever follows the LAST occurrence.
-    parts = _ON_BEHALF_RE.split(key)
-    if len(parts) > 1:
-        key = parts[-1].strip()
+    # so keep whatever follows the LAST occurrence (unless that is a generic
+    # "its clients"-style tail; see _represented_party).
+    key = _represented_party(key)
 
     key = _BARE_FORMER_TAIL_RE.sub('', key).strip()
     key = _LEADING_THE_RE.sub('', key).strip()
@@ -364,32 +430,88 @@ def canonical_client_key(name: str) -> str:
 
 # ─── display_client_name ───
 
-# Lowercased when not the first word of the name.
+# Lowercased when not the first word of the name. Abbreviated former-/
+# alternate-name markers read as connectives inside a name ("Paramount
+# Skydance Corporation (fka Paramount Global)"), not as title words.
 _SMALL_WORDS = {
     'of', 'the', 'and', 'for', 'on', 'in', 'at', 'to', 'by', 'or', 'a', 'an',
-    'd/b/a',
+    'as', 'c/o', 'd/b/a', 'dba', 'f/k/a', 'fka', 'a/k/a', 'aka', 'p/k/a', 'pka',
 }
 
 # Always rendered uppercase regardless of position (acronyms with vowels that
 # the no-vowel heuristic below can't catch, plus familiar brand acronyms).
 _ACRONYM_ALLOWLIST = {
     'USA', 'US', 'LLC', 'LLP', 'AARP', 'AFLCIO', 'AFL-CIO', 'PG&E', 'IBM',
-    'AT&T', 'CTIA', 'HCA', 'NACDS', 'AHIP',
+    'AT&T', 'CTIA', 'HCA', 'NACDS', 'AHIP', 'NCTA', 'SIIA', 'II', 'III', 'IV',
 }
+
+# Stylized brand spellings no casing rule can recover from the ALL-CAPS
+# source ("THEGROUP DC, LLC" is the firm theGROUP DC).
+_WORD_OVERRIDES = {
+    'THEGROUP': 'theGROUP',
+    'PHRMA': 'PhRMA',
+}
+
+# Foreign legal-form suffixes, uppercased when they END the name ("Norse
+# Atlantic Airways AS", "Airbus SE") — mid-name they are ordinary words.
+_TRAILING_LEGAL_FORMS = {'AS', 'ASA', 'AB', 'SA', 'AG', 'NV', 'BV', 'SE', 'SPA', 'PLC', 'KK', 'OY', 'OYJ'}
 
 # A single letter-dot run like "U.S.A." or "D.C." — uppercase the whole token.
 _DOTTED_ACRONYM_RE = re.compile(r'^[A-Za-z](\.[A-Za-z])+\.?$')
+_EDGE_PUNCT_RE = re.compile(r"^[^A-Za-z0-9]+|[^A-Za-z0-9]+$")
 
 
 def _has_vowel(s: str) -> bool:
     return bool(re.search(r'[AEIOU]', s.upper()))
 
 
-def _render_word(word: str, is_first: bool) -> str:
+def _bare(token: str) -> str:
+    return _EDGE_PUNCT_RE.sub('', token)
+
+
+def _capitalize(seg: str) -> str:
+    """Lowercase a token and capitalize its first LETTER (not its first
+    character: "(NATIONAL" -> "(National", not "(national"), with the
+    surname conventions that also show up in organization names:
+    "MCDERMOTT" -> "McDermott", "O'BRIEN" -> "O'Brien"."""
+    lead = re.match(r'^[^A-Za-z0-9]*', seg).group(0)
+    rest = seg[len(lead):].lower()
+    if re.fullmatch(r'\d+(?:st|nd|rd|th)\W*', rest):
+        return lead + rest                       # ordinals: "21st"
+    if re.match(r'\d+[a-z]{1,2}\W*$', rest):
+        return lead + rest.upper()               # "3M", "5G"
+    if not rest[:1].isalpha():
+        return lead + rest
+    rest = rest[:1].upper() + rest[1:]
+    if re.match(r'Mc[a-z]{2}', rest):
+        rest = 'Mc' + rest[2].upper() + rest[3:]
+    elif re.match(r"[A-Z]'[a-z]", rest):
+        rest = rest[:2] + rest[2].upper() + rest[3:]
+    return lead + rest
+
+
+def _render_segment(seg: str, acronyms: frozenset = frozenset()) -> str:
+    """One hyphen/slash/ampersand-free piece of a word."""
+    bare = _bare(seg)
+    if not bare:
+        return seg
+    upper = bare.upper()
+    if upper in _WORD_OVERRIDES:
+        return seg.replace(bare, _WORD_OVERRIDES[upper])
+    if upper in _ACRONYM_ALLOWLIST or upper in acronyms:
+        return seg.upper()
+    # Pragmatic heuristic: short, all-consonant tokens are almost always
+    # acronyms/initialisms ("PBC", "NV", "GMBH"), not ordinary words.
+    if len(bare) <= 4 and bare.isalpha() and not _has_vowel(bare):
+        return seg.upper()
+    return _capitalize(seg)
+
+
+def _render_word(word: str, is_first: bool, acronyms: frozenset = frozenset()) -> str:
     if not word:
         return word
 
-    bare = re.sub(r"^[^A-Za-z0-9]+|[^A-Za-z0-9]+$", '', word)
+    bare = _bare(word)
     if not bare:
         return word
 
@@ -401,50 +523,90 @@ def _render_word(word: str, is_first: bool) -> str:
     if _DOTTED_ACRONYM_RE.match(word) or _DOTTED_ACRONYM_RE.match(bare):
         return word.upper()
 
-    bare_upper = bare.upper()
-    if bare_upper in _ACRONYM_ALLOWLIST:
-        return word.upper()
-
-    # Pragmatic heuristic: short, all-consonant tokens are almost always
-    # acronyms/initialisms ("PBC", "NV", "GMBH"), not ordinary words.
-    if len(bare) <= 4 and bare.isalpha() and not _has_vowel(bare):
+    upper = bare.upper()
+    if upper in _ACRONYM_ALLOWLIST or upper in acronyms:
         return word.upper()
 
     if not is_first and bare.lower() in _SMALL_WORDS:
         return word.lower()
 
-    # Default: title-case. Hyphenated compounds ("CTIA-The Wireless
-    # Association", "Wal-Mart") get each segment re-checked against the
-    # allowlist/no-vowel heuristic rather than a blind capitalize, and never
-    # get the small-word lowering (a hyphen segment isn't a title word in the
-    # "of/the/and" sense — it's part of a compound brand name).
+    # Ampersand-joined initials ("D&P", "S&P", "P&I") are one acronym;
+    # longer ampersand compounds render piece by piece.
+    if '&' in bare:
+        pieces = bare.split('&')
+        if all(p.isalpha() and len(p) <= 2 for p in pieces):
+            return word.upper()
+        return '&'.join(_render_word(p, True, acronyms) for p in word.split('&'))
+
+    # Slash- and hyphen-joined compounds ("Klein/Johnson Group", "CTIA-The
+    # Wireless Association", "Wal-Mart") get each segment re-checked against
+    # the allowlist/no-vowel heuristic rather than a blind capitalize, and
+    # never get the small-word lowering (a compound segment isn't a title
+    # word in the "of/the/and" sense — it's part of a brand name).
+    if '/' in word:
+        return '/'.join(_render_word(p, True, acronyms) for p in word.split('/'))
     if '-' in word:
-        return '-'.join(_render_hyphen_segment(seg) for seg in word.split('-'))
-    return word[:1].upper() + word[1:].lower()
+        return '-'.join(_render_segment(seg, acronyms) for seg in word.split('-'))
+    return _render_segment(word, acronyms)
 
 
-def _render_hyphen_segment(seg: str) -> str:
-    if not seg:
-        return seg
-    bare = re.sub(r"^[^A-Za-z0-9]+|[^A-Za-z0-9]+$", '', seg)
-    if not bare:
-        return seg
-    bare_upper = bare.upper()
-    if bare_upper in _ACRONYM_ALLOWLIST:
-        return seg.upper()
-    if len(bare) <= 4 and bare.isalpha() and not _has_vowel(bare):
-        return seg.upper()
-    return seg[:1].upper() + seg[1:].lower()
+def _abbreviates(token: str, words: list) -> bool:
+    """True when token reads as an abbreviation of `words`: same first
+    letter as the first word, and every letter found in order in the words'
+    letters ("SIFMA" for "Securities Industry and Financial Markets
+    Association", "WADA" for "World Anti-Doping Association", "NFIB" for
+    "National Federation of Independent Business"). A token that is itself
+    one of the words ("TEXAS ... (TEXAS)") is a name, not an abbreviation."""
+    bares = [_bare(w).upper() for w in words]
+    letters = [ch for b in bares for ch in b if ch.isalpha()]
+    token = token.upper()
+    if not letters or token[0] != letters[0] or token in bares:
+        return False
+    it = iter(letters)
+    return all(ch in it for ch in token)
+
+
+_PAREN_TOKEN_RE = re.compile(r'[(\[]["\']?([A-Za-z]{2,8})["\']?[)\],;:.]+')
+
+
+def _context_acronyms(words: list) -> frozenset:
+    """Acronyms the name itself spells out: a one-token parenthetical that
+    abbreviates the words before it ("... Authorities (CIFA)"), or a token
+    followed by a parenthesized expansion ("NFIB (National Federation ...)",
+    "UPS (United Parcel Service)")."""
+    found = set()
+    for i, w in enumerate(words):
+        m = _PAREN_TOKEN_RE.fullmatch(w)
+        # Two-letter parentheticals are state/country codes ("(WA)", "(UK)").
+        if m and (len(m.group(1)) == 2 or (i >= 2 and _abbreviates(m.group(1), words[:i]))):
+            found.add(m.group(1).upper())
+        if i + 1 < len(words) and words[i + 1].startswith('(') and re.fullmatch(r'[A-Za-z]{2,8},?', w):
+            expansion = []
+            for x in words[i + 1:]:
+                expansion.append(x)
+                if ')' in x:
+                    break
+            if len(expansion) >= 2 and _abbreviates(_bare(w), expansion):
+                found.add(_bare(w).upper())
+    return frozenset(found)
 
 
 def _title_case_name(name: str) -> str:
     words = name.split(' ')
+    acronyms = _context_acronyms(words)
     out = []
     for i, w in enumerate(words):
         if w == '&':
             out.append('&')
             continue
-        out.append(_render_word(w, is_first=(i == 0)))
+        # A word after a standalone separator starts a new title phrase
+        # ("NCTA - The Internet & Television Association").
+        is_first = i == 0 or words[i - 1] in ('-', '–', '—') or words[i - 1].endswith(':')
+        if i == len(words) - 1 and i > 0 and _bare(w).upper() in _TRAILING_LEGAL_FORMS:
+            out.append(w.upper())
+            continue
+        # The last word is capitalized even when it is a small word.
+        out.append(_render_word(w, is_first=is_first or i == len(words) - 1, acronyms=acronyms))
     return ' '.join(out)
 
 
@@ -453,17 +615,64 @@ def display_client_name(raw_names: list) -> str:
     in readable display casing.
 
     raw_names may contain repeats (one entry per occurrence/filing) so the
-    most common spelling wins; ties prefer the shorter raw string.
+    most common spelling wins; ties prefer the shorter raw string. An "on
+    behalf of" pass-through ("FIRM ON BEHALF OF CLIENT") counts as the
+    represented organization's name — the same reading canonical_client_key
+    groups it under — so a client is never displayed under its lobbying
+    firm's name.
     """
-    names = [n for n in (raw_names or []) if n]
+    names = []
+    for n in raw_names or []:
+        if not n:
+            continue
+        n = re.sub(r'\s+', ' ', str(n).strip())
+        if _ON_BEHALF_RE.search(n):
+            n = _represented_party(_FORMER_NAME_PAREN_RE.sub('', n).strip())
+        if n:
+            names.append(n)
     if not names:
         return ''
 
     from collections import Counter
     counts = Counter(names)
     best = max(counts.items(), key=lambda kv: (kv[1], -len(kv[0])))
-    chosen = best[0]
+    return _title_case_name(best[0])
 
-    # Collapse repeated internal whitespace before casing.
-    chosen = re.sub(r'\s+', ' ', chosen.strip())
-    return _title_case_name(chosen)
+
+# ─── display_person_name ───
+
+# Courtesy titles the LDA name fields carry ("mr", "ms", ...) add nothing to
+# a list of people and are often wrong; other honorifics are kept.
+_COURTESY_TITLES = {'MR', 'MRS', 'MS', 'MISS', 'MX'}
+_HONORIFICS = {'DR': 'Dr.', 'HON': 'Hon.', 'REV': 'Rev.', 'SEN': 'Sen.', 'REP': 'Rep.',
+               'AMB': 'Amb.', 'GEN': 'Gen.', 'ADM': 'Adm.', 'COL': 'Col.', 'PROF': 'Prof.'}
+_NAME_SUFFIXES = {'JR': 'Jr.', 'SR': 'Sr.', 'II': 'II', 'III': 'III', 'IV': 'IV',
+                  'MD': 'MD', 'PHD': 'PhD', 'ESQ': 'Esq.'}
+
+
+def display_person_name(name: str) -> str:
+    """Readable casing for a lobbyist name as the LDA API assembles it
+    ("mr JOHN FRANCIS WILLIAMS iii" -> "John Francis Williams III"). A name
+    that already carries its own mixed casing is left alone."""
+    tokens = (name or '').split()
+    if not tokens:
+        return ''
+    if tokens[0].rstrip('.').upper() in _COURTESY_TITLES and len(tokens) > 1:
+        tokens = tokens[1:]
+    core = [t for i, t in enumerate(tokens)
+            if t.rstrip('.,').upper() not in _NAME_SUFFIXES
+            and not (i == 0 and t.rstrip('.').upper() in _HONORIFICS)]
+    if any(c.islower() for t in core for c in t):
+        return ' '.join(tokens)
+    out = []
+    for i, tok in enumerate(tokens):
+        key = tok.rstrip('.,').upper()
+        if i == 0 and key in _HONORIFICS and len(tokens) > 1:
+            out.append(_HONORIFICS[key])
+        elif i > 0 and key in _NAME_SUFFIXES:
+            out.append(_NAME_SUFFIXES[key] + (',' if tok.endswith(',') else ''))
+        elif len(_bare(tok)) == 1:
+            out.append(tok.upper())              # middle initial
+        else:
+            out.append('-'.join(_capitalize(seg) for seg in tok.split('-')))
+    return ' '.join(out)

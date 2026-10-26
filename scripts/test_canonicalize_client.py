@@ -5,7 +5,12 @@ Covers the edge-case classes mined from the real data:
   - "on behalf of" / "OBO" pass-throughs resolving to the represented org
   - former-name parentheticals (FORMERLY/FKA/F/K/A/D/B/A) stripped
   - leading "THE" and trailing "AND (ITS) AFFILIATES"/"AND SUBSIDIARIES" stripped
-  - display-name casing: small words, acronym allowlist, dotted tokens
+  - PKA / A/K/A / AKA / PREVIOUSLY (KNOWN|REPORTED|REGISTERED) AS markers
+  - parenthesized "(ON BEHALF OF X)" / "(OBO X)" / O/B/O pass-throughs, and
+    generic "ON BEHALF OF ITS CLIENTS" tails that must NOT pool firms
+  - must-not-merge pairs of distinct organizations
+  - display-name casing: small words, acronym allowlist, dotted tokens,
+    slash/ampersand compounds, self-spelled acronyms, person names
 
 Run: python scripts/test_canonicalize_client.py
 """
@@ -16,7 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from clients_norm import canonical_client_key, display_client_name
+from clients_norm import canonical_client_key, display_client_name, display_person_name
 
 # (raw name, expected canonical key)
 KEY_CASES = [
@@ -212,6 +217,83 @@ KEY_CASES = [
     ("BOEHRINGER INGELHEIM PHARMACEUTICALS, INC.", "BOEHRINGER INGELHEIM"),
     ("INVESCO", "INVESCO HOLDING COMPANY (US)"),
     ("AMERICAN PUBLIC UNIVERSITY SYSTEM, INC.", "APEI"),
+
+    # ── PKA / A/K/A / AKA / PREVIOUSLY markers (former or alternate names) ──
+    ("CONSUMER BRANDS ASSOCIATION (PKA: GROCERY MANUFACTURERS ASSOCIATION)",
+     "CONSUMER BRANDS ASSOCIATION"),
+    ("CONSUMER BRANDS ASSOCIATION", "CONSUMER BRANDS ASSOCIATION"),
+    ("ARXADA LLC (PREVIOUSLY REPORTED AS LONZA LLC)", "ARXADA"),
+    ("ASHLAND INC (PREVIOUSLY KNOWN AS ASHLAND LLC)", "ASHLAND"),
+    ("ANHEUSER-BUSCH COMPANIES INC (PREVIOUSLY: ANHEUSER BUSCH COMPANIES INC )",
+     "ANHEUSER-BUSCH COMPANIES"),
+    ("BREAKTHROUGH ENERGY VENTURES, LLC (PREV. REPORTED AS BREAKTHROUGH ENERGY, LLC)",
+     "BREAKTHROUGH ENERGY VENTURES"),
+    ("CONSUMER TECHNOLOGY ASSOCIATION (PREVIOUSLY THE CONSUMER ELECTRONICS ASSOCIATION",
+     "CONSUMER TECHNOLOGY ASSOCIATION"),
+    ("GE VERNOVA INTERNATIONAL LLC-PREVIOUSLY REPORTED AS GE RENEWABLES NORTH AMERICA",
+     "GE VERNOVA INTERNATIONAL"),
+    ("MECACC PREVIOUSLY KNOWN AS AMERICAN BUSINESS COUNCIL OF THE GULF COUNTRIES", "MECACC"),
+    # A/K/A and AKA keep the primary name
+    ("GINER, INC. A/K/A GINER LABS", "GINER"),
+    ("SPACEX (AKA SPACE EXPLORATION TECHNOLOGIES CORP.)", "SPACEX"),
+    ("EXPLORATION LABORATORIES LLC, AKA EXLABS", "EXPLORATION LABORATORIES"),
+    # JBS USA's three filing names are one US filer
+    ("JBS USA", "JBS"),
+    ("JBS USA FOOD COMPANY", "JBS"),
+    ("JBS USA FOOD COMPANY HOLDINGS (PREVIOUSLY REGISTERED AS JBS USA FOOD COMPANY)", "JBS"),
+    # Marker letters inside real words are not markers
+    ("SKAROREH KATENUAKA NATION, TUSCARORA NATION OF INDIANS",
+     "SKAROREH KATENUAKA NATION TUSCARORA NATION OF INDIANS"),
+    ("CITY OF APOPKA FL", "CITY OF APOPKA FL"),
+    ("KHAWAM RIPKA, LLP", "KHAWAM RIPKA"),
+    ("AKAMAI TECHNOLOGIES", "AKAMAI TECHNOLOGIES"),
+    ("CENTER FOR DISEASE CONTROL (PREVENTION PROGRAMS)", "CENTER FOR DISEASE CONTROL (PREVENTION PROGRAMS)"),
+    # Bare PREVIOUSLY without KNOWN/REPORTED/REGISTERED AS is left alone
+    ("COALITION FOR PREVIOUSLY INCARCERATED PEOPLE", "COALITION FOR PREVIOUSLY INCARCERATED PEOPLE"),
+
+    # ── On-behalf-of variants ──
+    ("THE DOERRER GROUP LLC (ON BEHALF OF THE BOEING COMPANY)", "BOEING"),
+    ("AKIN GUMP STRAUSS HAUER & FELD (OBO GILA RIVER INDIAN COMMUNITY)", "GILA RIVER INDIAN COMMUNITY"),
+    ("THORN RUN PARTNERS O/B/O FEDEX", "FEDEX"),
+    ("KELLEY DRYE & WARREN LLP (OBO TOBACCO-FREE KIDS ACTION FUND))", "TOBACCO-FREE KIDS ACTION FUND"),
+    ("MERCURY PUBLIC AFFAIRS, LLC (OBO CABOT CORP", "CABOT"),
+    ("TWINLOGIC STRATEGIES LLP ON BEHALFOF INTERNATIONAL ASSOCIATION OF VENUE MANAGERS",
+     "INTERNATIONAL ASSOCIATION OF VENUE MANAGERS"),
+    ("EDUCATIONCOUNSEL (ON BEHALF OF INSTITUTE FOR HIGHER EDUCATION POLICY (IHEP)",
+     "INSTITUTE FOR HIGHER EDUCATION POLICY"),
+    ("LENOVO GROUP (PREV REPORTED AS FGS GLOBAL (ASIA) LIMITED (O/B/O LENOVO GROUP)", "LENOVO"),
+    ("MLA ASSOCIATES ON BEHALF OF CLARK STREET ASSOCIATES LLC ON BEHALF OF QORVO", "QORVO"),
+    # Possessive lead-ins are not part of the represented org's name...
+    ("CHAMBERS CONLON & HARTWELL LLC ON BEHALF OF THEIR CLIENT ASLRRA", "ASLRRA"),
+    ("AMERICAN CHEMISTRY COUNCIL OBO ITS CENTER FOR BIOCIDE CHEMISTRIES",
+     "CENTER FOR BIOCIDE CHEMISTRIES"),
+    # ...but "IT'S" is a word in a real name
+    ("FARUK CAPAN ON BEHALF OF IT'S ALL GOOD, LLC", "ITS ALL GOOD"),
+    # Generic tails name no organization: keep the filer, never a shared
+    # "ITS CLIENTS" key across unrelated firms
+    ("INNOVATIVE FEDERAL STRATEGIES ON BEHALF OF ITS CLIENTS", "INNOVATIVE FEDERAL STRATEGIES"),
+    ("ACME ADVOCATES LLC ON BEHALF OF ITS MEMBERS", "ACME ADVOCATES"),
+    ("ACME ADVOCATES LLC (ON BEHALF OF VARIOUS CLIENTS)", "ACME ADVOCATES"),
+    ("SOME COALITION ON BEHALF OF ITSELF", "SOME COALITION"),
+    # Letters "OBO" inside a word never split
+    ("ROBOTICS INDUSTRIES ASSOCIATION", "ROBOTICS INDUSTRIES ASSOCIATION"),
+    ("GLOBO MEDIA OBOE WORKS", "GLOBO MEDIA OBOE WORKS"),
+]
+
+# Distinct organizations that must keep distinct keys (guards against the
+# marker/pass-through rules over-merging).
+MUST_NOT_MERGE = [
+    ("INNOVATIVE FEDERAL STRATEGIES ON BEHALF OF ITS CLIENTS",
+     "OTHER FIRM LLC ON BEHALF OF ITS CLIENTS"),
+    ("ACME ADVOCATES LLC ON BEHALF OF ITS MEMBERS",
+     "BETA PARTNERS ON BEHALF OF ITS MEMBERS"),
+    ("AMERICAN CHEMISTRY COUNCIL OBO ITS CENTER FOR BIOCIDE CHEMISTRIES",
+     "AMERICAN CHEMISTRY COUNCIL"),
+    ("SPACEX (AKA SPACE EXPLORATION TECHNOLOGIES CORP.)", "SPACE ALLIANCE"),
+    ("AARP (TEXAS)", "AARP"),
+    ("CVS PREVIOUSLY AETNA", "AETNA"),
+    ("JBS USA", "JBS FOUNDATION"),
+    ("ARXADA LLC (PREVIOUSLY REPORTED AS LONZA LLC)", "LONZA LLC"),
 ]
 
 # (raw name variants as they'd occur across filings, expected display name)
@@ -245,6 +327,64 @@ DISPLAY_CASES = [
     # (was a bug: "(N.A.C.H.)" -> "(n.a.c.h.)")
     (["NATIONAL ASSOCIATION OF CHILDRENS HOSPITALS (N.A.C.H.)"],
      "National Association of Childrens Hospitals (N.A.C.H.)"),
+
+    # Slash compounds, ampersand initials, stylized brands
+    (["KLEIN/JOHNSON GROUP"], "Klein/Johnson Group"),
+    (["D&P CREATIVE STRATEGIES, LLC"], "D&P Creative Strategies, LLC"),
+    (["INTERNATIONAL GROUP OF P&I CLUBS"], "International Group of P&I Clubs"),
+    (["JOHNSON&JOHNSON"], "Johnson&Johnson"),
+    (["THEGROUP DC, LLC"], "theGROUP DC, LLC"),
+    # Leading punctuation doesn't swallow the capital ("(national" bug)
+    (["MUSCOGEE (CREEK) NATION OF OKLAHOMA"], "Muscogee (Creek) Nation of Oklahoma"),
+    (["AARP (TEXAS)"], "AARP (Texas)"),
+    # Acronyms the name spells out, either direction; two-letter codes
+    (["COUNCIL OF INFRASTRUCTURE FINANCING AUTHORITIES (CIFA)"],
+     "Council of Infrastructure Financing Authorities (CIFA)"),
+    (["HEALTHCARE SUPPLY CHAIN ASSOCIATION (HSCA)"], "Healthcare Supply Chain Association (HSCA)"),
+    (["SECURITIES INDUSTRY AND FINANCIAL MARKETS ASSOCIATION (SIFMA)"],
+     "Securities Industry and Financial Markets Association (SIFMA)"),
+    (["WORLD ANTI-DOPING ASSOCIATION (WADA)"], "World Anti-Doping Association (WADA)"),
+    (["NFIB (NATIONAL FEDERATION OF INDEPENDENT BUSINESS)"],
+     "NFIB (National Federation of Independent Business)"),
+    (["UPS (UNITED PARCEL SERVICE)"], "UPS (United Parcel Service)"),
+    (["CITY OF RICHLAND (WA)"], "City of Richland (WA)"),
+    (["TEXAS HOSPITAL ASSOCIATION (TEXAS)"], "Texas Hospital Association (Texas)"),
+    # Former-name markers read as connectives; separators restart title case
+    (["TP-LINK SYSTEMS INC. (FKA TP-LINK GLOBAL INC.)"], "TP-Link Systems Inc. (fka TP-Link Global Inc.)"),
+    (["NCTA - THE INTERNET & TELEVISION ASSOCIATION"], "NCTA - The Internet & Television Association"),
+    (["ZIONS BANCORPORATION, N.A. (FORMERLY KNOWN AS ZIONS FIRST NATIONAL BANK)"],
+     "Zions Bancorporation, N.A. (Formerly Known as Zions First National Bank)"),
+    # Surname conventions, numerals, ordinals, trailing foreign legal forms
+    (["MCDERMOTT+ CONSULTING"], "McDermott+ Consulting"),
+    (["LAND O'LAKES"], "Land O'Lakes"),
+    (["3M COMPANY"], "3M Company"),
+    (["21ST CENTURY FOX"], "21st Century Fox"),
+    (["NORSE ATLANTIC AIRWAYS AS"], "Norse Atlantic Airways AS"),
+    (["FIRST AS SECOND"], "First as Second"),
+
+    # On-behalf-of pass-throughs display as the represented organization,
+    # the same reading the canonical key groups them under
+    (["CHRIS KISE & ASSOCIATES, P.A. ON BEHALF OF BANCREDITO HOLDING CORPORATION"],
+     "Bancredito Holding Corporation"),
+    (["THE DOERRER GROUP LLC (ON BEHALF OF THE BOEING COMPANY)",
+      "THE DOERRER GROUP LLC (ON BEHALF OF THE BOEING COMPANY)", "THE BOEING COMPANY"],
+     "The Boeing Company"),
+    (["INNOVATIVE FEDERAL STRATEGIES ON BEHALF OF ITS CLIENTS"], "Innovative Federal Strategies"),
+]
+
+# (raw LDA lobbyist name, expected display name)
+PERSON_CASES = [
+    ("mr JOHN FRANCIS WILLIAMS iii", "John Francis Williams III"),
+    ("mr ROBERT M MAYER jr", "Robert M Mayer Jr."),
+    ("ms ASHLEY ROSE O'SULLIVAN", "Ashley Rose O'Sullivan"),
+    ("ANDREW MCKECHNIE", "Andrew McKechnie"),
+    ("SAMANTHA CARL-YODER", "Samantha Carl-Yoder"),
+    ("JOHN B. GREGG", "John B. Gregg"),
+    ("CHARLES BRITTINGHAM ii", "Charles Brittingham II"),
+    ("dr JANE DOE", "Dr. Jane Doe"),
+    ("CAITLIN VAN SANT", "Caitlin Van Sant"),
+    ("Jane McDoe", "Jane McDoe"),   # already cased: left alone
+    ("", ""),
 ]
 
 
@@ -267,7 +407,23 @@ def main() -> int:
             failures.append(("display", raw_names, expected, got))
         print(f"  {status}  {str(raw_names)[:60]:62s} -> {got!r}")
 
-    total = len(KEY_CASES) + len(DISPLAY_CASES)
+    print("\nmust not merge:")
+    for left, right in MUST_NOT_MERGE:
+        a, b = canonical_client_key(left), canonical_client_key(right)
+        status = "ok  " if a != b else "FAIL"
+        if a == b:
+            failures.append(("distinct", (left, right), "different keys", a))
+        print(f"  {status}  {left[:40]!r} vs {right[:40]!r}")
+
+    print("\ndisplay_person_name:")
+    for raw, expected in PERSON_CASES:
+        got = display_person_name(raw)
+        status = "ok  " if got == expected else "FAIL"
+        if got != expected:
+            failures.append(("person", raw, expected, got))
+        print(f"  {status}  {raw[:60]:62s} -> {got!r}")
+
+    total = len(KEY_CASES) + len(DISPLAY_CASES) + len(MUST_NOT_MERGE) + len(PERSON_CASES)
     print()
     if failures:
         print(f"{len(failures)} FAILURE(S):")
