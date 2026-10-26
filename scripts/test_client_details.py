@@ -45,6 +45,22 @@ class SummaryTests(unittest.TestCase):
         self.assertIsNone(q['position_classes'])
         self.assertEqual(q['methods_missing'], 1)
 
+    def test_outside_firms_inside_a_self_filed_report_are_flagged_not_added(self):
+        q = trends.summarize_client_quarter([
+            filing(1, is_self_filer=1, income=1000000, registrant_name='Example Org'),
+            filing(2, income=40000), filing(3, is_self_filer=None, income=10000),
+        ], [], [])
+        self.assertEqual(q['split']['total'], 1000000)
+        self.assertTrue(q['split']['outside_included_in_self'])
+        self.assertEqual(q['split']['outside'], 40000)  # amounts stay as filed
+        self.assertTrue(q['firms'][0]['included_in_self_report'])
+        self.assertEqual({f['amount']: f['included_in_self_report'] for f in q['filings']},
+                         {1000000: False, 40000: True, 10000: True})
+        firms_only = trends.summarize_client_quarter([filing(2, income=40000), filing(4, income=60000)], [], [])
+        self.assertEqual(firms_only['split']['total'], 100000)
+        self.assertFalse(firms_only['split']['outside_included_in_self'])
+        self.assertFalse(firms_only['firms'][0]['included_in_self_report'])
+
     def test_unknown_amounts_are_not_zero_and_empty_period_is_known(self):
         q = trends.summarize_client_quarter([filing(income=None)], [], [])
         self.assertIsNone(q['split']['outside'])
@@ -324,9 +340,24 @@ class ExportTests(unittest.TestCase):
                 for m in frame[group]:
                     d = details['frames'][fk][m['key']]
                     for leg in ('current', 'baseline'):
-                        self.assertEqual(sum(d[leg]['split'][k] for k in ('self', 'outside', 'unknown')), m[leg])
+                        self.assertEqual(d[leg]['split']['total'], m[leg])
                         self.assertEqual(d[leg]['filing_count'], m[f'filings_{leg}'])
         full = details['frames']['quarter']['ACME']
+        # Acme self-filed, so the outside firm's $100K is inside its own
+        # $1M report: listed and flagged, not added.
+        acme_leg = {m['key']: m for g in ('risers', 'fallers', 'new_entrants', 'majors')
+                    for m in movers['frames']['quarter'][g]}['ACME']
+        self.assertEqual((acme_leg['current'], acme_leg['filings_current']), (1000000, 2))
+        self.assertEqual(full['current']['split']['outside'], 100000)
+        self.assertTrue(full['current']['split']['outside_included_in_self'])
+        self.assertEqual([f['included_in_self_report'] for f in full['current']['firms']], [True])
+        self.assertEqual({e['registrant']: e.get('included_in_self_report', False)
+                          for e in acme_leg['examples']}, {'Acme': False, 'Outside Firm': True})
+        self.assertEqual(movers['frames']['quarter']['quarter_totals']['current_income'], 1300000)
+        # Dated legs pick filings as of the cutoff, amounts from today's row.
+        qtd_acme = {m['key']: m for g in ('risers', 'fallers', 'new_entrants', 'majors')
+                    for m in movers['frames']['qtd'][g]}['ACME']
+        self.assertEqual((qtd_acme['current'], qtd_acme['baseline']), (1200000, 600000))
         self.assertTrue(full['method_changed'])
         acme = next(m for m in movers['frames']['quarter']['risers'] if m['key'] == 'ACME')
         self.assertEqual(acme['examples'][0]['type'], '2A')
@@ -336,6 +367,8 @@ class ExportTests(unittest.TestCase):
         self.assertFalse(qtd['method_changed'])
         self.assertEqual(qtd['current']['filings'][0]['uuid'], 'uuid-5')
         self.assertEqual(qtd['baseline']['filings'][0]['uuid'], 'uuid-7')
+        self.assertEqual(qtd['current']['filings'][0]['amount'], 1200000)
+        self.assertEqual(qtd['baseline']['filings'][0]['amount'], 600000)
         entrant = next(iter(movers['frames']['quarter']['new_entrants']))
         self.assertEqual(details['frames']['quarter'][entrant['key']]['baseline']['filing_count'], 0)
 

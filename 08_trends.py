@@ -6,6 +6,7 @@ import re
 from datetime import datetime, timedelta, timezone
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 
 from db import get_db, query_to_dicts, normalize_covered_position
@@ -89,8 +90,7 @@ class _Agg:
     income_seen_filing_ids: defaultdict
     # Client tracking, keyed by canonical_client_key (folds name variants):
     client_keys: defaultdict          # tag -> set(canonical_key) — for client_count
-    client_income: defaultdict        # tag -> Counter(canonical_key -> income)
-    client_income_seen: defaultdict   # tag -> canonical_key -> set(filing_id), for income dedupe
+    client_income: defaultdict        # tag -> Counter(canonical_key -> allocated tag amount)
     client_raw_names: defaultdict     # tag -> canonical_key -> Counter(raw_name), for display_client_name
 
 
@@ -732,6 +732,122 @@ def _as_of_filter(alias: str = 'f') -> str:
             )'''
 
 
+# ─── Dollar-total conventions ───
+#
+# Every exported dollar figure (headline, stats, time series, organization
+# movers, tag "associated income", organization detail) is built from the
+# same per-filing amounts under the same three rules:
+#
+# 1. Verified-erroneous filers (clients_norm.EXCLUDED_CLIENT_KEYS) are left
+#    out entirely — their filings and their amounts.
+# 2. Self-filer de-duplication (OpenSecrets' convention). An organization
+#    that files its own report (is_self_filer = 1) reports total lobbying
+#    EXPENSES, which under the LDA already include what it paid outside
+#    firms; those firms' reports for the same client and report quarter
+#    restate part of the same money. So for each canonical client and
+#    report quarter with a self-filed report in the snapshot, the outside
+#    filings' amounts are not added (they still count as filings and still
+#    list as the client's firms, flagged included_in_self_report).
+# 3. Dated (quarter-to-date) legs choose WHICH filings count as of their
+#    cutoff, but take the amount — and self-filer flag — from the group's
+#    current row, so a later amendment's corrected figure applies to both
+#    legs of a comparison alike.
+
+_client_key = lru_cache(maxsize=None)(canonical_client_key)
+
+
+def self_filed_duplicate_ids(filings) -> set:
+    """Outside-firm filings whose amount is already inside the client's
+    own (self-filed) report for the same period.
+
+    filings: (filing_id, canonical client key, period, is_self_filer) for
+    ONE snapshot of counted filings (a leg, or all current filings); period
+    is any hashable report-quarter label. Filings with no client key never
+    match."""
+    filings = list(filings)
+    self_filed = {(key, period) for _, key, period, is_self in filings
+                  if key and is_self == 1}
+    return {fid for fid, key, period, is_self in filings
+            if key and is_self != 1 and (key, period) in self_filed}
+
+
+def _excluded_client_filter(conn, alias: str = 'f') -> str:
+    """SQL predicate dropping verified-erroneous filers (rule 1 above)."""
+    ids = [row[0] for row in conn.execute('SELECT id, name FROM clients')
+           if _client_key(row[1] or '') in EXCLUDED_CLIENT_KEYS]
+    if not ids:
+        return '1 = 1'
+    return f"{alias}.client_id NOT IN ({','.join(str(int(i)) for i in ids)})"
+
+
+def _snapshot_filings(conn, year: int | None = None, quarter: int | None = None,
+                      through: str | None = None) -> dict:
+    """{filing id: row} for the filings one snapshot counts — every current
+    filing (year/quarter None), one report quarter's current filings, or one
+    quarter as of `through` — with the dollar conventions above applied.
+
+    Each row carries year, quarter, client_name, key (canonical client),
+    is_self_filer, income (the amount as filed, from the group's current
+    row; None when unknown), included_in_self_report, and counted_income
+    (the amount every dollar total uses: 0 when included_in_self_report)."""
+    where = ['f.year IS NOT NULL', 'f.quarter BETWEEN 1 AND 4', _excluded_client_filter(conn)]
+    params: list = []
+    if year is not None:
+        where.append('f.year = ? AND f.quarter = ?')
+        params += [year, quarter]
+    if through:
+        where.append(_as_of_filter('f'))
+        params += [through, through]
+        amounts = '''CASE WHEN cur.id IS NOT NULL THEN cur.income ELSE f.income END AS income,
+                     CASE WHEN cur.id IS NOT NULL THEN cur.is_self_filer ELSE f.is_self_filer END AS is_self_filer'''
+        join = '''LEFT JOIN filings cur ON cur.registrant_id = f.registrant_id
+                    AND cur.client_id = f.client_id AND cur.year = f.year
+                    AND cur.quarter = f.quarter AND cur.is_current = 1'''
+    else:
+        where.append('f.is_current = 1')
+        amounts = 'f.income AS income, f.is_self_filer AS is_self_filer'
+        join = ''
+    rows = conn.execute(f'''
+        SELECT f.id, f.year, f.quarter, c.name, {amounts}
+        FROM filings f JOIN clients c ON c.id = f.client_id {join}
+        WHERE {' AND '.join(where)}
+    ''', params).fetchall()
+    out = {}
+    for fid, y, q, client_name, income, is_self in rows:
+        out[fid] = {'year': y, 'quarter': q, 'client_name': client_name,
+                    'key': _client_key(client_name or ''), 'income': income,
+                    'is_self_filer': is_self}
+    duplicates = self_filed_duplicate_ids(
+        (fid, r['key'], (r['year'], r['quarter']), r['is_self_filer']) for fid, r in out.items())
+    for fid, r in out.items():
+        r['included_in_self_report'] = fid in duplicates
+        r['counted_income'] = 0.0 if fid in duplicates else (r['income'] or 0.0)
+    return out
+
+
+def _quarter_ended(year: int, quarter: int, anchor: datetime) -> bool:
+    """A report period has ended once its last calendar day is before the
+    data-through date (anchor is max filing_date + 1 day). Only termination
+    reports can exist for a period still running, so such stubs are never a
+    quarter's total."""
+    return _quarter_end_date(year, quarter) < anchor - timedelta(days=1)
+
+
+def _quarter_totals(conn) -> tuple[datetime, dict]:
+    """(anchor, {(year, quarter): {'filings', 'income'}}) over every ENDED
+    report quarter — the one source for stats.json and timeseries.json
+    quarter figures, so the two always agree."""
+    anchor = _anchor_today(conn)
+    totals = defaultdict(lambda: {'filings': 0, 'income': 0.0})
+    for row in _snapshot_filings(conn).values():
+        if not _quarter_ended(row['year'], row['quarter'], anchor):
+            continue
+        t = totals[(row['year'], row['quarter'])]
+        t['filings'] += 1
+        t['income'] += row['counted_income']
+    return anchor, dict(totals)
+
+
 def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
     """Get counts of topics, entities, legislation from extractions for one
     report quarter — the filings labeled (year, quarter), regardless of when
@@ -753,7 +869,7 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
         sql = f'''
             SELECT f.id as filing_id, f.sopr_filing_id as filing_uuid, f.year as filing_year,
                    e.topics, e.entities, e.legislation,
-                   f.filing_date, c.name as client_name, r.name as registrant_name, f.income
+                   f.filing_date, c.name as client_name, r.name as registrant_name
             FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
             JOIN filings f ON a.filing_id = f.id
@@ -763,7 +879,19 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
             AND f.year = ? AND f.quarter = ?
             AND {current_filter}
         '''
-        rows = query_to_dicts(conn, sql, tuple(params))
+        # The leg's counted filings, with the shared dollar conventions
+        # (exclusions, self-filer de-duplication, current-row amounts). A
+        # row whose filing isn't in it belongs to a verified-erroneous filer:
+        # its activities and non-dollar "income" would pollute every tag
+        # they brush against.
+        snapshot = _snapshot_filings(conn, year, quarter, through)
+        rows = [r for r in query_to_dicts(conn, sql, tuple(params)) if r['filing_id'] in snapshot]
+
+    # Tagged activities per filing: a filing's counted amount is spread
+    # evenly over them to rank organizations by the money attached to a
+    # tag's activities, not by their whole report (which put the largest
+    # all-issue filer at the top of every topic).
+    tagged_activities = Counter(r['filing_id'] for r in rows)
 
     def make_agg() -> _Agg:
         return _Agg(
@@ -772,7 +900,6 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
             income_seen_filing_ids=defaultdict(set),
             client_keys=defaultdict(set),
             client_income=defaultdict(Counter),
-            client_income_seen=defaultdict(lambda: defaultdict(set)),
             client_raw_names=defaultdict(lambda: defaultdict(Counter)),
         )
 
@@ -784,66 +911,63 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
     entity_examples = defaultdict(dict)
     legislation_examples = defaultdict(dict)
 
-    def add_example(bucket: defaultdict, tag: str, filing_id: int, filing_date: str, client_name: str, registrant_name: str, income: float, filing_uuid: str = None):
+    def add_example(bucket: defaultdict, tag: str, filing_id: int, filing_date: str, client_name: str, registrant_name: str, filing_uuid: str = None):
         if not tag or not filing_id:
             return
         if filing_id in bucket[tag]:
             return
-        bucket[tag][filing_id] = {
+        example = {
             'id': filing_id,
             'uuid': filing_uuid,  # official LDA filing UUID — links to the Senate record
             'date': filing_date,
             'client': client_name,
             'registrant': registrant_name,
-            'income': income or 0
+            'income': snapshot[filing_id]['income'] or 0,
         }
+        if snapshot[filing_id]['included_in_self_report']:
+            # Amount as filed, but already inside the client's own report.
+            example['included_in_self_report'] = True
+        bucket[tag][filing_id] = example
 
-    def record_client(agg: _Agg, tag: str, client_name: str, filing_id: int, income: float):
-        """Track which organization sits behind a tag mention, keyed by its
-        canonical (name-variant-folded) identity, and accumulate income once
-        per (tag, client, filing) so a filing with several matching
-        activities doesn't multiply its own income."""
-        if not tag or not client_name:
-            return
-        key = canonical_client_key(client_name)
-        if not key:
-            return
-        agg.client_keys[tag].add(key)
-        agg.client_raw_names[tag][key][client_name] += 1
-        if filing_id is not None:
-            seen = agg.client_income_seen[tag][key]
-            if filing_id not in seen:
-                agg.client_income[tag][key] += income or 0
-                seen.add(filing_id)
+    def record(agg: _Agg, tag: str, client_name: str, filing_id: int, share: float):
+        """One activity's mention of a tag: the filing's counted income
+        joins the tag's associated income once per filing; the activity's
+        allocated share joins the organization's tag amount (ranking); the
+        organization is keyed by its canonical (name-variant-folded)
+        identity."""
+        agg.counts[tag] += 1
+        if filing_id not in agg.income_seen_filing_ids[tag]:
+            agg.income[tag] += snapshot[filing_id]['counted_income']
+            agg.income_seen_filing_ids[tag].add(filing_id)
+        key = snapshot[filing_id]['key'] if client_name else ''
+        if key:
+            agg.client_keys[tag].add(key)
+            agg.client_raw_names[tag][key][client_name] += 1
+            agg.client_income[tag][key] += share
 
     for row in rows:
-        filing_id = row.get('filing_id')
+        filing_id = row['filing_id']
         filing_uuid = row.get('filing_uuid')
         client = row.get('client_name')
         registrant = row.get('registrant_name')
-        income = row.get('income') or 0
         filing_date = row.get('filing_date')
+        share = snapshot[filing_id]['counted_income'] / tagged_activities[filing_id]
 
-        # Verified-erroneous filers (see clients_norm.EXCLUDED_CLIENT_KEYS):
-        # their activities and non-dollar "income" would pollute every tag
-        # they brush against.
-        if client and canonical_client_key(client) in EXCLUDED_CLIENT_KEYS:
-            continue
-
+        seen_topics = set()
         for topic in json.loads(row['topics'] or '[]'):
             if is_general_topic(topic):
                 continue
             topic = display_topic(topic)
             if not topic:
                 continue
-            topics.counts[topic] += 1
-            if client:
-                record_client(topics, topic, client, filing_id, income)
-            if filing_id and filing_id not in topics.income_seen_filing_ids[topic]:
-                topics.income[topic] += income
-                topics.income_seen_filing_ids[topic].add(filing_id)
-            add_example(topic_examples, topic, filing_id, filing_date, client, registrant, income, filing_uuid)
+            if topic in seen_topics:
+                topics.counts[topic] += 1
+                continue
+            seen_topics.add(topic)
+            record(topics, topic, client, filing_id, share)
+            add_example(topic_examples, topic, filing_id, filing_date, client, registrant, filing_uuid)
 
+        seen_entities = set()
         for entity in json.loads(row['entities'] or '[]'):
             entity = normalize_tag(entity)
             if not entity:
@@ -853,13 +977,12 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
                 # lobbied, so "Congress"/"Senate"/"House" swamp every window
                 # without telling readers anything about what's moving.
                 continue
-            entities.counts[entity] += 1
-            if client:
-                record_client(entities, entity, client, filing_id, income)
-            if filing_id and filing_id not in entities.income_seen_filing_ids[entity]:
-                entities.income[entity] += income
-                entities.income_seen_filing_ids[entity].add(filing_id)
-            add_example(entity_examples, entity, filing_id, filing_date, client, registrant, income, filing_uuid)
+            if entity in seen_entities:
+                entities.counts[entity] += 1
+                continue
+            seen_entities.add(entity)
+            record(entities, entity, client, filing_id, share)
+            add_example(entity_examples, entity, filing_id, filing_date, client, registrant, filing_uuid)
 
         seen_leg = set()
         for leg in normalize_legislation_tags(json.loads(row['legislation'] or '[]'),
@@ -869,22 +992,18 @@ def get_extraction_counts(year: int, quarter: int, through: str = None) -> dict:
                 # canonical tag; count it once per activity.
                 continue
             seen_leg.add(leg)
-            legislation.counts[leg] += 1
-            if client:
-                record_client(legislation, leg, client, filing_id, income)
-            if filing_id and filing_id not in legislation.income_seen_filing_ids[leg]:
-                legislation.income[leg] += income
-                legislation.income_seen_filing_ids[leg].add(filing_id)
-            add_example(legislation_examples, leg, filing_id, filing_date, client, registrant, income, filing_uuid)
+            record(legislation, leg, client, filing_id, share)
+            add_example(legislation_examples, leg, filing_id, filing_date, client, registrant, filing_uuid)
 
     def top_clients(agg: _Agg, limit: int = 10) -> dict:
-        """Top clients per tag, ranked by summed filing income (each filing
-        counted once per tag-client, not once per mention), rendered as
-        display names with name-variant fragmentation folded."""
+        """Top clients per tag, ranked by the counted income allocated to
+        their activities that carry the tag, rendered as display names with
+        name-variant fragmentation folded."""
         result = {}
         for tag, income_counter in agg.client_income.items():
+            ranked = sorted(income_counter.items(), key=lambda kv: (-kv[1], kv[0]))[:limit]
             names = []
-            for key, _ in income_counter.most_common(limit):
+            for key, _ in ranked:
                 raw_counter = agg.client_raw_names[tag].get(key) or Counter()
                 names.append(display_client_name(list(raw_counter.elements())))
             result[tag] = names
@@ -1036,16 +1155,114 @@ def _frame_specs(conn) -> dict:
 def _filing_count(conn, year: int, quarter: int, through: str = None) -> int:
     # is_current = 1: a superseded original shouldn't inflate the filing
     # count for a period whose real latest-word filing is its amendment.
+    # Verified-erroneous filers are left out, as from every other figure.
+    excluded = _excluded_client_filter(conn, 'f')
     if through:
         # Day-granularity, as-of-cutoff reconstruction (see _as_of_filter).
         return conn.execute(
-            f'SELECT COUNT(*) FROM filings f WHERE f.year = ? AND f.quarter = ? AND {_as_of_filter("f")}',
+            f'SELECT COUNT(*) FROM filings f WHERE f.year = ? AND f.quarter = ? '
+            f'AND {_as_of_filter("f")} AND {excluded}',
             (year, quarter, through, through),
         ).fetchone()[0]
     return conn.execute(
-        'SELECT COUNT(*) FROM filings WHERE year = ? AND quarter = ? AND is_current = 1',
+        f'SELECT COUNT(*) FROM filings f WHERE f.year = ? AND f.quarter = ? '
+        f'AND f.is_current = 1 AND {excluded}',
         (year, quarter),
     ).fetchone()[0]
+
+
+def confidence_label(count: int, baseline_count: int, share_delta_pp: float) -> str:
+    # Wave-1 thresholds required agreement across two baselines (prior
+    # period + year-ago). With one YoY baseline the volume gates stay and
+    # the delta gate uses the yoy leg's old threshold. abs() because big
+    # decliners are now first-class stories, not noise — so the medium
+    # volume gate reads the larger leg: a tag falling from 300 mentions to
+    # none is as well-evidenced as one rising from none to 300.
+    if count >= 50 and baseline_count >= 50 and abs(share_delta_pp) >= 0.35:
+        return 'high'
+    if max(count, baseline_count) >= 25 and abs(share_delta_pp) >= 0.15:
+        return 'medium'
+    return 'low'
+
+
+# Maps a calc_change `key` to the get_extraction_counts dict key holding
+# per-tag distinct-organization counts (irregular suffixes: "topics" ->
+# "topic_client_count", not "topics_client_count").
+CLIENT_COUNT_KEYS = {
+    'topics': 'topic_client_count',
+    'entities': 'entity_client_count',
+    'legislation': 'legislation_client_count',
+}
+
+
+def calc_change(
+    current: dict,
+    baseline: dict,
+    key: str,
+    min_count: int = 1,
+    max_items: int = 500
+) -> tuple[list, dict]:
+    """Year-over-year share change per tag over BOTH legs' tags, so a tag
+    that fell to zero ranks as a decliner instead of vanishing. min_count
+    applies to the larger leg."""
+    current_counts = current[key]
+    baseline_counts = baseline[key]
+    current_total = current.get('total_rows', 0)
+    baseline_total = baseline.get('total_rows', 0)
+
+    client_count_key = CLIENT_COUNT_KEYS.get(key)
+    current_client_counts = current.get(client_count_key, {}) or {} if client_count_key else {}
+    baseline_client_counts = baseline.get(client_count_key, {}) or {} if client_count_key else {}
+
+    results = []
+    dropped_min = 0
+    for item in set(current_counts) | set(baseline_counts):
+        count = current_counts.get(item, 0)
+        baseline_count = baseline_counts.get(item, 0)
+        if max(count, baseline_count) < min_count:
+            dropped_min += 1
+            continue
+
+        current_share = (count / current_total * 100) if current_total else 0
+        baseline_share = (baseline_count / baseline_total * 100) if baseline_total else 0
+        share_delta_pp = current_share - baseline_share
+        ratio = (count / baseline_count) if baseline_count > 0 else None
+        confidence = confidence_label(count, baseline_count, share_delta_pp)
+
+        # Change + a small scale term so a big tag edges out a tiny one at
+        # equal delta. Ranking uses |score| so collapses surface alongside
+        # surges — a topic losing half its share is as much a story as one
+        # doubling.
+        score = share_delta_pp + min(count / 2000, 1) * 0.1
+
+        results.append({
+            'name': item,
+            'count': count,
+            'baseline_count': baseline_count,
+            'client_count': current_client_counts.get(item, 0),
+            'baseline_client_count': baseline_client_counts.get(item, 0),
+            'current_share_pct': round(current_share, 3),
+            'baseline_share_pct': round(baseline_share, 3),
+            'share_delta_pp': round(share_delta_pp, 3),
+            'ratio': round(ratio, 3) if ratio is not None else None,
+            'score': round(score, 4),
+            'confidence': confidence,
+        })
+
+    sorted_results = sorted(
+        results,
+        key=lambda x: (-abs(x['score']), -x['count'], x['name'])
+    )
+    capped_results = sorted_results[:max_items]
+    meta = {
+        'unique_current': len(current_counts),
+        'unique_baseline_only': len(set(baseline_counts) - set(current_counts)),
+        'min_count': min_count,
+        'dropped_min_count': dropped_min,
+        'ranked': len(sorted_results),
+        'exported': len(capped_results),
+    }
+    return capped_results, meta
 
 
 def compute_trends() -> dict:
@@ -1075,90 +1292,6 @@ def compute_trends() -> dict:
         }
         for frame_key, spec in specs.items()
     }
-
-    def confidence_label(count: int, baseline_count: int, share_delta_pp: float) -> str:
-        # Wave-1 thresholds required agreement across two baselines (prior
-        # period + year-ago). With one YoY baseline the volume gates stay and
-        # the delta gate uses the yoy leg's old threshold. abs() because big
-        # decliners are now first-class stories, not noise.
-        if count >= 50 and baseline_count >= 50 and abs(share_delta_pp) >= 0.35:
-            return 'high'
-        if count >= 25 and abs(share_delta_pp) >= 0.15:
-            return 'medium'
-        return 'low'
-
-    # Maps a calc_change `key` to the get_extraction_counts dict key holding
-    # per-tag distinct-organization counts (irregular suffixes: "topics" ->
-    # "topic_client_count", not "topics_client_count").
-    client_count_keys = {
-        'topics': 'topic_client_count',
-        'entities': 'entity_client_count',
-        'legislation': 'legislation_client_count',
-    }
-
-    def calc_change(
-        current: dict,
-        baseline: dict,
-        key: str,
-        min_count: int = 1,
-        max_items: int = 500
-    ) -> tuple[list, dict]:
-        current_counts = current[key]
-        baseline_counts = baseline[key]
-        current_total = current.get('total_rows', 0)
-        baseline_total = baseline.get('total_rows', 0)
-
-        client_count_key = client_count_keys.get(key)
-        current_client_counts = current.get(client_count_key, {}) or {} if client_count_key else {}
-        baseline_client_counts = baseline.get(client_count_key, {}) or {} if client_count_key else {}
-
-        results = []
-        dropped_min = 0
-        for item, count in current_counts.items():
-            if count < min_count:
-                dropped_min += 1
-                continue
-
-            baseline_count = baseline_counts.get(item, 0)
-            current_share = (count / current_total * 100) if current_total else 0
-            baseline_share = (baseline_count / baseline_total * 100) if baseline_total else 0
-            share_delta_pp = current_share - baseline_share
-            ratio = (count / baseline_count) if baseline_count > 0 else None
-            confidence = confidence_label(count, baseline_count, share_delta_pp)
-
-            # Change + a small scale term so a big tag edges out a tiny one at
-            # equal delta. Ranking uses |score| so collapses surface alongside
-            # surges — a topic losing half its share is as much a story as one
-            # doubling.
-            score = share_delta_pp + min(count / 2000, 1) * 0.1
-
-            results.append({
-                'name': item,
-                'count': count,
-                'baseline_count': baseline_count,
-                'client_count': current_client_counts.get(item, 0),
-                'baseline_client_count': baseline_client_counts.get(item, 0),
-                'current_share_pct': round(current_share, 3),
-                'baseline_share_pct': round(baseline_share, 3),
-                'share_delta_pp': round(share_delta_pp, 3),
-                'ratio': round(ratio, 3) if ratio is not None else None,
-                'score': round(score, 4),
-                'confidence': confidence,
-            })
-
-        sorted_results = sorted(
-            results,
-            key=lambda x: (-abs(x['score']), -x['count'], x['name'])
-        )
-        capped_results = sorted_results[:max_items]
-        meta = {
-            'unique_current': len(current_counts),
-            'min_count': min_count,
-            'dropped_min_count': dropped_min,
-            'ranked': len(sorted_results),
-            'exported': len(capped_results),
-        }
-        return capped_results, meta
 
     def keep_for(top_list: list[dict], mapping: dict) -> dict:
         if not mapping:
@@ -1238,7 +1371,8 @@ def generate_alerts(
         for item in trends.get(trend_key, {}).get(frame, []):
             count = item.get('count', 0)
             delta = item.get('share_delta_pp', 0) or 0
-            if count < min_count:
+            # Volume gate on the larger leg, so a collapse to zero alerts.
+            if max(count, item.get('baseline_count', 0) or 0) < min_count:
                 continue
             if abs(delta) < min_share_delta_pp:
                 continue
@@ -1296,57 +1430,33 @@ def get_stats() -> dict:
             WHERE filing_date IS NOT NULL
         ''').fetchone()
 
-        # Get quarter breakdown (is_current=1 so a superseded original isn't
-        # double-counted alongside the amendment/termination that replaced it)
-        quarters = conn.execute('''
-            SELECT year, quarter, COUNT(*) as cnt, SUM(income) as total_income
-            FROM filings
-            WHERE is_current = 1
-            GROUP BY year, quarter
-            ORDER BY year DESC, quarter DESC
-            LIMIT 8
-        ''').fetchall()
+        # Per-quarter filings and income under the shared dollar conventions
+        # (current filings only, verified-erroneous filers out, self-filer
+        # de-duplication), ended report periods only — the same figures as
+        # timeseries.json and the organization-mover quarter totals.
+        anchor, totals = _quarter_totals(conn)
 
-        # Latest COMPLETE report quarter vs the same quarter a year ago — the
-        # headline "$X.XB, +Y% vs Qn last year" figure. Deliberately separate
-        # from the `quarters` breakdown above, which includes the still-filling
-        # newest quarter.
-        anchor = _anchor_today(conn)
-        complete_year, complete_quarter = _latest_complete_quarter(anchor)
-        baseline_year = complete_year - 1
-        # The partial quarter is the one FOLLOWING the latest complete quarter
-        # by the calendar — not max(year, quarter) in the data, which a
-        # handful of legitimate early termination reports for future periods
-        # would skew (e.g. a 3T filed in April).
-        partial_year, partial_quarter = _next_quarter(complete_year, complete_quarter)
-        # Per-filing rows so supersede (is_current) and the verified-erroneous
-        # filer exclusions apply — these figures must agree with the
-        # organization-mover quarter totals in clients.json.
-        filing_rows = query_to_dicts(
-            conn,
-            '''
-            SELECT f.year, f.quarter, f.income, c.name AS client_name
-            FROM filings f JOIN clients c ON f.client_id = c.id
-            WHERE f.is_current = 1
-              AND ((f.year = ? AND f.quarter = ?) OR (f.year = ? AND f.quarter = ?)
-                   OR (f.year = ? AND f.quarter = ?))
-            ''',
-            (complete_year, complete_quarter, baseline_year, complete_quarter,
-             partial_year, partial_quarter),
-        )
-
-    sums = defaultdict(float)
-    counts = defaultdict(int)
-    for r in filing_rows:
-        if canonical_client_key(r.get('client_name') or '') in EXCLUDED_CLIENT_KEYS:
-            continue
-        yq = (r['year'], r['quarter'])
-        sums[yq] += r.get('income') or 0
-        counts[yq] += 1
-    current_income = sums[(complete_year, complete_quarter)]
-    baseline_income = sums[(baseline_year, complete_quarter)]
-    current_filings = counts[(complete_year, complete_quarter)]
-    baseline_filings = counts[(baseline_year, complete_quarter)]
+    # Latest COMPLETE report quarter vs the same quarter a year ago — the
+    # headline "$X.XB, +Y% vs Qn last year" figure. The `quarters` breakdown
+    # also includes the still-filling newest quarter.
+    complete_year, complete_quarter = _latest_complete_quarter(anchor)
+    baseline_year = complete_year - 1
+    # The partial quarter is the one FOLLOWING the latest complete quarter
+    # by the calendar — not max(year, quarter) in the data, which a
+    # handful of legitimate early termination reports for future periods
+    # would skew (e.g. a 3T filed in April).
+    partial_year, partial_quarter = _next_quarter(complete_year, complete_quarter)
+    empty = {'filings': 0, 'income': 0.0}
+    current = totals.get((complete_year, complete_quarter), empty)
+    baseline = totals.get((baseline_year, complete_quarter), empty)
+    current_income = round(current['income'], 2)
+    baseline_income = round(baseline['income'], 2)
+    current_filings = current['filings']
+    baseline_filings = baseline['filings']
+    quarters = [
+        (y, q, totals[(y, q)]['filings'], round(totals[(y, q)]['income'], 2))
+        for y, q in sorted(totals, reverse=True)[:8]
+    ]
 
     return {
         'generated_at': datetime.now(timezone.utc).isoformat(),
@@ -1377,7 +1487,7 @@ def get_stats() -> dict:
             'year': partial_year,
             'quarter': partial_quarter,
             'label': f'Q{partial_quarter} {partial_year}',
-            'filings': counts[(partial_year, partial_quarter)],
+            'filings': totals.get((partial_year, partial_quarter), empty)['filings'],
         },
     }
 
@@ -1551,34 +1661,15 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
         return round((current - baseline) / baseline * 100, 1)
 
     with get_db() as conn:
-        quarter_rows = query_to_dicts(
-            conn,
-            '''
-            WITH quarter_base AS (
-                SELECT
-                    year,
-                    quarter,
-                    (year * 4 + quarter) AS q_index,
-                    COUNT(*) AS filings,
-                    SUM(income) AS income
-                FROM filings
-                WHERE year IS NOT NULL
-                  AND quarter BETWEEN 1 AND 4
-                  AND is_current = 1
-                GROUP BY year, quarter
-            ),
-            latest AS (
-                SELECT *
-                FROM quarter_base
-                ORDER BY q_index DESC
-                LIMIT ?
-            )
-            SELECT year, quarter, q_index, filings, income
-            FROM latest
-            ORDER BY q_index
-            ''',
-            (quarters_back,),
-        )
+        # Ended report quarters under the shared dollar conventions — the
+        # same figures as stats.json (see _quarter_totals).
+        anchor, totals = _quarter_totals(conn)
+        excluded = _excluded_client_filter(conn, 'f')
+    quarter_rows = [
+        {'year': y, 'quarter': q, 'q_index': y * 4 + q,
+         'filings': totals[(y, q)]['filings'], 'income': round(totals[(y, q)]['income'], 2)}
+        for y, q in sorted(totals)[-quarters_back:]
+    ]
 
     if not quarter_rows:
         return {
@@ -1600,7 +1691,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
     with get_db() as conn:
         topic_rows = query_to_dicts(
             conn,
-            '''
+            f'''
             SELECT
                 (f.year * 4 + f.quarter) AS q_index,
                 f.year AS filing_year,
@@ -1613,6 +1704,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
               AND f.quarter BETWEEN 1 AND 4
               AND f.is_current = 1
               AND (f.year * 4 + f.quarter) BETWEEN ? AND ?
+              AND {excluded}
             ''',
             (min_q_index, max_q_index),
         )
@@ -1622,7 +1714,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
         # render any mention series as a share of its quarter's volume.
         tagged_rows = query_to_dicts(
             conn,
-            '''
+            f'''
             SELECT (f.year * 4 + f.quarter) AS q_index, COUNT(*) AS n
             FROM activity_extractions_rules e
             JOIN activities a ON e.activity_id = a.id
@@ -1632,6 +1724,7 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
               AND f.year IS NOT NULL
               AND f.quarter BETWEEN 1 AND 4
               AND (f.year * 4 + f.quarter) BETWEEN ? AND ?
+              AND {excluded}
             GROUP BY 1
             ''',
             (min_q_index, max_q_index),
@@ -1720,8 +1813,13 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
     quarterly_filings = [int(q.get('filings') or 0) for q in quarters]
     top_quarters = sorted(quarters, key=lambda x: x.get('filings', 0), reverse=True)[:3]
 
-    latest_4q_filings = sum(quarterly_filings[-4:]) if quarterly_filings else 0
-    prior_4q_filings = sum(quarterly_filings[-8:-4]) if len(quarterly_filings) >= 8 else 0
+    # Trailing-year comparison over COMPLETE quarters only: the newest
+    # quarter is still filling in, and a partial quarter against a full one
+    # reads as a false decline.
+    cy, cq = _latest_complete_quarter(anchor)
+    complete_filings = [int(q['filings']) for q in quarters if (q['year'], q['quarter']) <= (cy, cq)]
+    latest_4q_filings = sum(complete_filings[-4:]) if complete_filings else 0
+    prior_4q_filings = sum(complete_filings[-8:-4]) if len(complete_filings) >= 8 else 0
 
     return {
         'quarters': quarters,
@@ -1740,10 +1838,11 @@ def get_time_series(quarters_back: int = 20, topics_to_track: set[str] | None = 
             'quarterly_filings_p90': percentile(quarterly_filings, 0.9),
             'quarterly_filings_max': max(quarterly_filings) if quarterly_filings else 0,
             'latest_4q_filings': latest_4q_filings,
-            'prior_4q_filings': prior_4q_filings if len(quarterly_filings) >= 8 else None,
+            'latest_4q_end_label': f'{cy} Q{cq}',
+            'prior_4q_filings': prior_4q_filings if len(complete_filings) >= 8 else None,
             'latest_4q_change_pct': (
                 pct_change(latest_4q_filings, prior_4q_filings)
-                if len(quarterly_filings) >= 8 else None
+                if len(complete_filings) >= 8 else None
             ),
             'top_report_quarters': [
                 {'label': q['label'], 'filings': q['filings']}
@@ -1817,7 +1916,7 @@ def compute_client_movers(quarters_back: int = 200) -> dict:
             '''
             SELECT f.id AS filing_id, f.sopr_filing_id AS filing_uuid,
                    f.year, f.quarter, f.income, f.filing_date, f.is_current, f.filing_type,
-                   f.registrant_id, f.client_id,
+                   f.registrant_id, f.client_id, f.is_self_filer,
                    c.name AS client_name, r.name AS registrant_name
             FROM filings f
             JOIN clients c ON f.client_id = c.id
@@ -1897,38 +1996,71 @@ def compute_client_movers(quarters_back: int = 200) -> dict:
             legs.append(('qtd', 'baseline'))
         return legs
 
+    # Rows this view can attribute: a named, non-excluded canonical client.
+    rows = [dict(row, key=_client_key(row['client_name'])) for row in rows
+            if row.get('client_name')]
+    rows = [row for row in rows if row['key'] and row['key'] not in EXCLUDED_CLIENT_KEYS]
+
+    # Each supersession group's CURRENT row supplies the amount and
+    # self-filer flag for whichever of its filings a leg counts (rule 3 of
+    # the dollar conventions): the qtd legs choose filings as of their
+    # cutoffs, but a later amendment's corrected figure applies to both
+    # years alike.
+    def group_of(row) -> tuple:
+        return (row['registrant_id'], row['client_id'], row['year'], row['quarter'])
+
+    current_by_group = {group_of(row): row for row in rows if row['is_current']}
+
+    def amount_row(row) -> dict:
+        return current_by_group.get(group_of(row), row)
+
+    leg_rows = {(fk, leg): [] for fk in FRAME_KEYS for leg in ('current', 'baseline')}
     for row in rows:
-        client_name = row.get('client_name')
-        if not client_name:
-            continue
-        key = canonical_client_key(client_name)
-        if not key or key in EXCLUDED_CLIENT_KEYS:
-            continue
         q_index = int(row['year']) * 4 + int(row['quarter'])
-        income = row.get('income') or 0
-        filing_date = row.get('filing_date')
-
-        # History series and shared aggregates stay latest-word only.
-        if row['is_current']:
-            income_by_key_q[key][q_index] += income
-            filings_by_key_q[key][q_index] += 1
-            raw_names[key][client_name] += 1
-
         for frame_key, leg in leg_membership(row, q_index):
-            leg_income[frame_key][leg][key] += income
+            leg_rows[(frame_key, leg)].append(row)
+
+    def duplicates_in(snapshot: list) -> set:
+        """Self-filer de-duplication within one snapshot (rule 2)."""
+        return self_filed_duplicate_ids(
+            (int(r['filing_id']), r['key'], (r['year'], r['quarter']), amount_row(r)['is_self_filer'])
+            for r in snapshot)
+
+    # History series and shared aggregates stay latest-word only.
+    current_rows = [row for row in rows if row['is_current']]
+    history_duplicates = duplicates_in(current_rows)
+    for row in current_rows:
+        key = row['key']
+        q_index = int(row['year']) * 4 + int(row['quarter'])
+        if int(row['filing_id']) not in history_duplicates:
+            income_by_key_q[key][q_index] += row.get('income') or 0
+        filings_by_key_q[key][q_index] += 1
+        raw_names[key][row['client_name']] += 1
+
+    for (frame_key, leg), members in leg_rows.items():
+        duplicates = duplicates_in(members)
+        for row in members:
+            key = row['key']
+            amount = amount_row(row).get('income') or 0
+            included = int(row['filing_id']) in duplicates
+            leg_income[frame_key][leg][key] += 0 if included else amount
             leg_filings[frame_key][leg][key] += 1
             if leg == 'current':
                 registrant_name = row.get('registrant_name')
                 if registrant_name:
                     registrants_current[frame_key][key][registrant_name] += 1
-                examples_current[frame_key][key].append({
+                example = {
                     'uuid': row.get('filing_uuid'),
-                    'date': filing_date,
-                    'client': client_name,
+                    'date': row.get('filing_date'),
+                    'client': row['client_name'],
                     'registrant': registrant_name,
-                    'income': income,
+                    'income': amount,
                     'type': row.get('filing_type'),
-                })
+                }
+                if included:
+                    # Amount as filed, already inside the client's own report.
+                    example['included_in_self_report'] = True
+                examples_current[frame_key][key].append(example)
 
     topics_by_frame_key = {fk: defaultdict(Counter) for fk in FRAME_KEYS}
     for frame_key, topic_rows in topic_rows_by_frame.items():
@@ -2568,7 +2700,15 @@ def summarize_client_quarter(filings: list[dict], lobbyists: list[dict], activit
     income is the existing income-or-expenses measure used by mover totals.
     Historical self-filers retain that amount, with inference made explicit.
     Counts describe all rows; only displayed lists/text are capped.
+
+    filings are one organization's filings for one report quarter. When it
+    self-filed, its reported expenses already include what it paid outside
+    firms, so the firms stay listed with their amounts as filed but are
+    flagged included_in_self_report and left out of split['total'] — the
+    figure the mover totals count (see self_filed_duplicate_ids).
     """
+    included_ids = self_filed_duplicate_ids(
+        (f['filing_id'], 'client', 'quarter', f.get('is_self_filer')) for f in filings)
     split = {}
     for name, flag in (('self', 1), ('outside', 0), ('unknown', None)):
         group = [f for f in filings if f.get('is_self_filer') == flag]
@@ -2576,6 +2716,9 @@ def summarize_client_quarter(filings: list[dict], lobbyists: list[dict], activit
         split[name] = round(sum(amounts), 2) if amounts or not group else None
         split[name + '_filings'] = len(group)
         split[name + '_amounts_missing'] = len(group) - len(amounts)
+    split['outside_included_in_self'] = bool(included_ids)
+    split['total'] = round(sum(f['income'] for f in filings
+                               if f.get('income') is not None and f['filing_id'] not in included_ids), 2)
     self_filings = [f for f in filings if f.get('is_self_filer') == 1]
     methods = sorted({str(f.get('expenses_method') or '').strip().upper()
                       for f in self_filings} & {'A', 'B', 'C'})
@@ -2587,7 +2730,8 @@ def summarize_client_quarter(filings: list[dict], lobbyists: list[dict], activit
             continue
         key = canonical_client_key(f['registrant_name']) or str(f['registrant_id'])
         firm = firms.setdefault(key, {'key': key, 'name': display_client_name([f['registrant_name']]),
-                                     'income': 0, 'amounts_missing': 0, 'amounts_known': 0})
+                                     'income': 0, 'amounts_missing': 0, 'amounts_known': 0,
+                                     'included_in_self_report': f['filing_id'] in included_ids})
         if f.get('income') is None:
             firm['amounts_missing'] += 1
         else:
@@ -2640,6 +2784,7 @@ def summarize_client_quarter(filings: list[dict], lobbyists: list[dict], activit
             'registrant': display_client_name([f['registrant_name']]),
             'amount': f['income'], 'type': f.get('filing_type'),
             'self_filer': f.get('is_self_filer'),
+            'included_in_self_report': f['filing_id'] in included_ids,
         } for f in filing_list[:CLIENT_DETAIL_LIMIT]],
         'filings_more': max(0, len(filing_list) - CLIENT_DETAIL_LIMIT),
     }
@@ -2683,13 +2828,22 @@ def compute_client_details(clients_data: dict) -> dict:
                 year, quarter, through = specs[frame_key][leg]
                 predicate = _as_of_filter('f') if through else 'f.is_current = 1'
                 params = (year, quarter, through, through) if through else (year, quarter)
+                # Dated legs list the filings current as of the cutoff, with
+                # the amount and self-filer flag of each group's current row
+                # (the same amounts the mover totals use).
                 rows = query_to_dicts(conn, f'''
                     SELECT f.id AS filing_id, f.sopr_filing_id AS filing_uuid,
                            f.registrant_id, r.name AS registrant_name, dc.key,
-                           f.income, f.filing_date, f.filing_type, f.is_self_filer,
+                           CASE WHEN cur.id IS NULL THEN f.income ELSE cur.income END AS income,
+                           f.filing_date, f.filing_type,
+                           CASE WHEN cur.id IS NULL THEN f.is_self_filer
+                                ELSE cur.is_self_filer END AS is_self_filer,
                            f.expenses_method, f.details_fetched_at
                     FROM filings f JOIN _detail_clients dc ON dc.id = f.client_id
                     JOIN registrants r ON r.id = f.registrant_id
+                    LEFT JOIN filings cur ON cur.registrant_id = f.registrant_id
+                         AND cur.client_id = f.client_id AND cur.year = f.year
+                         AND cur.quarter = f.quarter AND cur.is_current = 1
                     WHERE f.year = ? AND f.quarter = ? AND {predicate}
                 ''', params)
                 conn.execute('DELETE FROM _detail_filings')
