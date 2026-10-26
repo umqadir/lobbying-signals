@@ -164,7 +164,90 @@ CASES = [
     # The full title keeps its identity (year-ambiguous, so not aliased)
     ("Full-Year Continuing Appropriations and Extensions Act, 2025", 2025,
      "Full-Year Continuing Appropriations and Extensions Act, 2025"),
+
+    # "<Subcommittee>, and Related Agencies Appropriations Act" tails lose
+    # their subject in every spelling, with or without a year.
+    ("Related Agencies Appropriations Act", 2026, ""),
+    ("Related Agencies Appropriations Act of 2027", 2026, ""),
+    ("Related Agencies Act", 2026, ""),
+    ("Related Agencies Subcommittee Appropriations Act", 2026, ""),
+    # Statute sections / code citations are provisions, not bills
+    ("Section 232", 2026, ""),
+    ("Section 45Z", 2026, ""),
+    ("49 USC 22907", 2026, ""),
+    ("40 C.F.R. 80", 2026, ""),
+    # Landmark-law patterns only match when they START the name: a longer
+    # act that merely ends with the short name keeps its own identity.
+    ("Honoring Our Fallen Heroes Act", 2026, "Honoring Our Fallen Heroes Act"),
+    ("Helping Our Heroes Act", 2026, "Helping Our Heroes Act"),
+    ("The HEROES Act", 2020, "Heroes Act"),
+    ("H.R. 6800 Heroes Act", 2021, "Heroes Act"),
+    ("Sound Science Act of 2026", 2026, "Sound Science Act of 2026"),
+    ("Science Act of 2026", 2026, "Science Act of 2026"),
+    ("SAFE Chips Act", 2026, "SAFE Chips Act"),
+    ("Stop Stealing Our Chips Act", 2026, "Stop Stealing Our Chips Act"),
+    ("CHIPS Act", 2024, "CHIPS and Science Act"),
+    ("Amtrak Funding, SBA Funding, CHIPS Act", 2024, "CHIPS and Science Act"),
+    ("FY2022 Inflation Reduction Act", 2023, "Inflation Reduction Act"),
+    ("Restoring Affordable Care Act", 2026, "Restoring Affordable Care Act"),
 ]
+
+# Fixture titles for the title-aware cases (shapes copied from the 119th
+# Congress reference: same-titled bills, truncating titles, a curated alias).
+TITLES = {
+    (119, 'hr', 4776): ('2025-07-24', 'SPEED Act'),
+    (119, 's', 1894): ('2025-05-22', 'SPEED Act'),
+    (119, 'hr', 7567): ('2026-02-23', 'Farm, Food, and National Security Act of 2026'),
+    (119, 'hr', 7153): ('2026-01-20', 'Agriculture and National Security Act of 2026'),
+    (119, 'hr', 6644): ('2025-12-11', '21st Century ROAD to Housing Act'),
+    (119, 's', 2651): ('2025-07-29', 'ROAD to Housing Act of 2025'),
+    (119, 'hr', 2563): ('2025-04-01', 'Fostering Success in Higher Education Act of 2025'),
+    (119, 'hr', 3292): ('2025-05-07', 'REPORT Act'),
+    (119, 'hr', 4710): ('2025-07-17', 'No Surprises Act Enforcement Act'),
+    (119, 'hr', 9497): ('2026-07-30', 'Water Resources Development Act of 2026'),
+    (119, 's', 4949): ('2026-07-29', 'Water Resources Development Act of 2026'),
+    (119, 'hr', 1968): ('2025-03-06', 'Full-Year Continuing Appropriations and Extensions Act, 2025'),
+}
+# (raw activity tag list, filing year, expected identities)
+TAG_LIST_CASES = [
+    # Unpunctuated lists split into their acts; leading leftovers drop
+    (["Report Act Guard Act"], 2026, ["REPORT Act", "Guard Act"]),
+    (["Act ENFORCE Act"], 2026, ["ENFORCE Act"]),
+    (["Bill CONSENT Act"], 2026, ["CONSENT Act"]),
+    (["FY27 National Defense Authorization Act FY27 Defense Appropriations Act"], 2026,
+     ["FY2027 National Defense Authorization Act", "FY2027 Defense Appropriations Act"]),
+    (["Jobs Act One Big Beautiful Bill Act"], 2026, ["One Big Beautiful Bill Act"]),
+    (["Beneficial Ownership, Corporate Transparency Act Bank Secrecy Act"], 2026,
+     ["Corporate Transparency Act", "Bank Secrecy Act"]),
+    (["Science Act, FABS Act"], 2023, ["CHIPS and Science Act", "FABS Act"]),
+    # Real titles with an inner "Act" stay whole
+    (["No Surprises Act Enforcement Act"], 2026, ["No Surprises Act Enforcement Act"]),
+    (["Endangered Species Act Amendments Act of 2025"], 2026,
+     ["Endangered Species Act Amendments Act of 2025"]),
+    (["Weather Act Reauthorization Act"], 2026, ["Weather Act Reauthorization Act"]),
+    # A name repeating or truncating the title of a bill the same activity
+    # cites by number counts once, as the number.
+    (["H.R. 4776", "SPEED Act"], 2026, ["H.R. 4776 (119th Congress)"]),
+    (["HR 6644", "Housing Act"], 2026, ["H.R. 6644 (119th Congress)"]),
+    (["H.R. 7567", "National Security Act of 2026"], 2026, ["H.R. 7567 (119th Congress)"]),
+    (["S. 4949", "Water Resources Development Act of 2026"], 2026, ["S. 4949 (119th Congress)"]),
+    # ...but a different year, or a statute named after an article, doesn't.
+    (["S. 2651", "Housing Act of 2024"], 2026, ["S. 2651 (119th Congress)", "Housing Act of 2024"]),
+    # A full title shared by several bills takes the official spelling.
+    (["Report Act"], 2026, ["REPORT Act"]),
+    (["water resources development act of 2026"], 2026, ["Water Resources Development Act of 2026"]),
+]
+# Learned folding: (rows of (year, raw tags), expected aliases subset, absent names)
+ALIAS_ROWS = (
+    [(2026, ["H.R. 4776", "SPEED Act"])] * 6 + [(2026, ["SPEED Act"])] * 4
+    + [(2026, ["HR 6644 21st Century Road to Housing Act Housing Act"])] * 5
+    + [(2026, ["Housing Act"])] * 2
+    + [(2026, ["H.R. 7567", "National Security Act of 2026"])] * 4
+    + [(2026, ["H.R. 7153", "National Security Act of 2026"])]
+    + [(2026, ["National Security Act of 2026"])] * 2
+    # A statute that also ends a bill title: cited mostly on its own.
+    + [(2026, ["H.R. 2563", "Higher Education Act"])] * 2 + [(2026, ["Higher Education Act"])] * 8
+)
 
 
 def main() -> int:
@@ -188,6 +271,44 @@ def main() -> int:
         for raw in (f'{prefix} 900', f'{kind.upper()}900'):
             assert norm(raw, 2025, '2025-02-15', reference=reference) == f'{prefix} 900 (118th Congress)'
             assert norm(raw, 2026, '2026-01-01', reference=reference) == f'{prefix} 900 (119th Congress)'
+    for raw, year, expected in TAG_LIST_CASES:
+        got = trends.normalize_legislation_tags(raw, year, f'{year}-07-20', reference=TITLES)
+        if got != expected:
+            failures.append((raw, year, expected, got))
+    aliases = trends.learn_name_aliases(ALIAS_ROWS, TITLES)
+    expected_aliases = {
+        ('SPEED Act', 119): 'H.R. 4776 (119th Congress)',      # 6 of 10 co-cited
+        ('Housing Act', 119): 'H.R. 6644 (119th Congress)',    # 5 of 7
+        ('National Security Act of 2026', 119): 'H.R. 7567 (119th Congress)',  # 4 of 7, top bill
+    }
+    if aliases != expected_aliases:
+        failures.append(('learn_name_aliases', 2026, expected_aliases, aliases))
+    for raw, expected in ((["SPEED Act"], ["H.R. 4776 (119th Congress)"]),
+                          (["Housing Act"], ["H.R. 6644 (119th Congress)"]),
+                          (["Higher Education Act"], ["Higher Education Act"])):
+        got = trends.normalize_legislation_tags(raw, 2026, '2026-07-20', reference=TITLES, aliases=aliases)
+        if got != expected:
+            failures.append((raw, 2026, expected, got))
+    # Aliases are scoped to their Congress.
+    got = trends.normalize_legislation_tags(["SPEED Act"], 2023, '2023-07-20', reference=TITLES, aliases=aliases)
+    if got != ["SPEED Act"]:
+        failures.append((["SPEED Act"], 2023, ["SPEED Act"], got))
+    # Public laws fold into their enacting bill when the law record is held.
+    prior_laws = trends.load_public_laws
+    trends.load_public_laws = lambda: {(119, 4): (119, 'hr', 1968), (119, 9): (119, '', 0)}
+    try:
+        for raw, expected in (('P.L. 119-4', 'H.R. 1968 (119th Congress)'),
+                              ('PL119-4', 'H.R. 1968 (119th Congress)'),
+                              ('P.L. 119-21', 'One Big Beautiful Bill Act'),  # curated alias wins
+                              ('P.L. 119-9', 'P.L. 119-9'),     # record names no bill
+                              ('P.L. 119-99', 'P.L. 119-99')):  # law not yet held
+            got = norm(raw, 2026)
+            if got != expected:
+                failures.append((raw, 2026, expected, got))
+        # A caller-supplied bill reference means no law table.
+        assert norm('P.L. 119-4', 2026, reference={}) == 'P.L. 119-4'
+    finally:
+        trends.load_public_laws = prior_laws
     prior = trends.load_reference
     trends.load_reference = lambda: REFERENCE
     try:
@@ -211,7 +332,8 @@ def main() -> int:
         for raw, year, exp, got in failures:
             print(f"  [{year}] {raw!r}: expected {exp!r}, got {got!r}")
         return 1
-    print(f"All {len(CASES)} original and {len(DATED_CASES)} dated cases passed; all eight bill types, unresolved counts, titles and export joins passed.")
+    print(f"All {len(CASES)} original, {len(DATED_CASES)} dated and {len(TAG_LIST_CASES)} tag-list cases passed; "
+          "learned name aliases, public laws, all eight bill types, unresolved counts, titles and export joins passed.")
     return 0
 
 

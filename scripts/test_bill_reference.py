@@ -24,6 +24,13 @@ def xml(congress, kind, number, titles='', legacy=False):
         <titles>{titles}</titles></bill></billStatus>'''.encode()
 
 
+def law_mods(congress, kind, number):
+    return f'''<mods xmlns="http://www.loc.gov/mods/v3"><extension>
+        <bill congress="{congress}" context="content" number="9" priority="reference" type="S"/>
+        <bill congress="{congress}" context="legislative history" number="{number}" priority="primary" type="{kind}"/>
+        </extension></mods>'''.encode()
+
+
 def title(kind, value):
     return f'<item><titleType>{kind}</titleType><title>{value}</title></item>'
 
@@ -46,11 +53,22 @@ def main():
     listing = [1, 3]  # Deliberate hole: incremental checks must not use max().
     outage = False
 
+    laws = {116: 2, 117: 0, 118: 0, 119: 17}  # published law counts per Congress
+    law_requests = []
+
     def respond(request):
+        path = request.url.path
+        if path.startswith('/metadata/pkg/PLAW-'):
+            law_requests.append(str(request.url))
+            if outage:
+                return httpx.Response(503, request=request)
+            c, n = (int(v) for v in path.split('PLAW-')[1].split('/')[0].split('publ'))
+            if n > laws.get(c, 0):
+                return httpx.Response(302, headers={'Location': 'https://www.govinfo.gov/error'}, request=request)
+            return httpx.Response(200, content=law_mods(c, 'HR', 100 + n), request=request)
         requests.append(str(request.url))
         if outage:
             return httpx.Response(503, request=request)
-        path = request.url.path
         c, kind = path.split('/')[3:5]
         if path.endswith('.zip'):
             content = io.BytesIO()
@@ -72,6 +90,22 @@ def main():
         assert first['added'] == 4 * 8 * 2
         assert len(requests) == 32 and all(url.endswith('.zip') for url in requests)
         assert conn.execute('SELECT count(*) FROM bill_reference_sync').fetchone()[0] == 32
+        # Public laws: probed upward until the first unpublished number;
+        # the enacting bill is the primary legislative-history entry.
+        assert ref.read_public_laws(conn) == {
+            **{(116, n): (116, 'hr', 100 + n) for n in (1, 2)},
+            **{(119, n): (119, 'hr', 100 + n) for n in range(1, 18)}}
+        assert ref.parse_law_mods(law_mods(119, 'S', 5), 119) == ('s', 5)
+        assert ref.parse_law_mods(law_mods(118, 'HR', 5), 119) is None
+        law_requests.clear()
+        laws[119] = 18
+        ref.refresh_reference(conn, current_congress=119, log=lambda _: None)
+        # Older Congresses already held aren't re-probed; 118 (current-1) and
+        # empty 117 are; 119 resumes after its highest held law.
+        assert not any('PLAW-116' in url for url in law_requests)
+        assert (119, 18) in ref.read_public_laws(conn)
+        assert any('PLAW-119publ18/' in url for url in law_requests)
+        assert not any('PLAW-119publ17/' in url for url in law_requests)
         requests.clear()
         listing[:] = [1, 2, 3, 4]
         second = ref.refresh_reference(conn, current_congress=119, log=lambda _: None)
@@ -87,6 +121,7 @@ def main():
         failed = ref.refresh_reference(conn, current_congress=119, log=lambda _: None)
         assert failed['added'] == 0 and len(requests) == 8
         assert ref.read_reference(conn) == prior
+        assert len(ref.read_public_laws(conn)) == 20  # law outage keeps held laws
         assert conn.execute('SELECT * FROM bill_reference_sync ORDER BY type, congress').fetchall() == markers
         # Expired budget neither downloads nor changes durable reference data.
         requests.clear()
@@ -118,7 +153,7 @@ def main():
         assert exported == [True]  # Export proceeds even if the watchdog fires.
         assert run.call_args.kwargs['timeout'] == 110
         assert run.call_args.args[0][-2:] == ['--max-seconds', '100']
-    print('Bill reference tests passed: XML titles/legacy schema, bootstrap, holes/new numbers, outage, deadline, rollover.')
+    print('Bill reference tests passed: XML titles/legacy schema, bootstrap, holes/new numbers, outage, deadline, rollover, public laws.')
 
 
 if __name__ == '__main__':
