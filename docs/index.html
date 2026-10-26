@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lobbying Signals</title>
-    <meta name="description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
+    <meta name="description" content="Quarterly changes in federal lobbying by organization, topic, agency, and bill, from Lobbying Disclosure Act filings.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Lobbying Signals">
-    <meta property="og:description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
+    <meta property="og:description" content="Quarterly changes in federal lobbying by organization, topic, agency, and bill, from Lobbying Disclosure Act filings.">
     <meta property="og:url" content="https://umqadir.github.io/lobbying-signals/">
+    <meta property="og:site_name" content="Lobbying Signals">
     <meta property="og:image" content="https://umqadir.github.io/lobbying-signals/social-preview.png">
+    <meta property="og:image:width" content="2400">
+    <meta property="og:image:height" content="1260">
+    <meta property="og:image:alt" content="Lobbying Signals: quarterly changes in federal lobbying disclosures">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Lobbying Signals">
-    <meta name="twitter:description" content="What's moving in federal lobbying — tracked from Senate LDA disclosures.">
+    <meta name="twitter:description" content="Quarterly changes in federal lobbying by organization, topic, agency, and bill, from Lobbying Disclosure Act filings.">
     <meta name="twitter:image" content="https://umqadir.github.io/lobbying-signals/social-preview.png">
+    <meta name="twitter:image:alt" content="Lobbying Signals: quarterly changes in federal lobbying disclosures">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 13L6 7L9 10L14 3' stroke='%231e3a5f' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=organization-detail">
+    <link rel="stylesheet" href="styles.css?v=2026-10-26">
 </head>
 <body>
     <header class="topbar">
@@ -44,6 +51,7 @@
             <p class="hero-eyebrow">Federal lobbying disclosures · Senate LDA</p>
             <h1 class="hero-headline" id="hero-headline">Loading the latest signals…</h1>
             <ul class="hero-stats" id="hero-stats"></ul>
+            <p class="hero-asof" id="hero-asof" hidden></p>
         </section>
 
         <section class="movers">
@@ -63,51 +71,54 @@
                         <button class="norm-info" id="norm-info" type="button" aria-label="About Normalized" aria-describedby="norm-explainer" aria-controls="norm-explainer" aria-expanded="false">ⓘ</button>
                         <div class="norm-explainer" id="norm-explainer" role="tooltip" hidden></div>
                     </div>
-                    <div class="seg" id="frame-seg" role="tablist" aria-label="Comparison frame"></div>
+                    <div class="seg" id="frame-seg" role="group" aria-label="Comparison period"></div>
                 </div>
             </div>
-            <div class="cat-row" id="cat-row" role="tablist" aria-label="Categories">
-                <button class="cat-pill active" data-cat="all" type="button">Everything</button>
-                <button class="cat-pill" data-cat="clients" type="button" id="cat-pill-clients">Organizations</button>
-                <button class="cat-pill" data-cat="topics" type="button">Topics</button>
-                <button class="cat-pill" data-cat="entities" type="button">Agencies</button>
-                <button class="cat-pill" data-cat="legislation" type="button">Bills</button>
-                <span class="cat-row-sep"></span>
-                <button class="cat-pill ghost" data-cat="recent" type="button">Recent filings</button>
+            <div class="cat-row" id="cat-row" role="group" aria-label="Category">
+                <button class="cat-pill active" data-cat="all" type="button" aria-pressed="true">Everything</button>
+                <button class="cat-pill" data-cat="clients" type="button" id="cat-pill-clients" aria-pressed="false">Organizations</button>
+                <button class="cat-pill" data-cat="topics" type="button" aria-pressed="false">Topics</button>
+                <button class="cat-pill" data-cat="entities" type="button" aria-pressed="false">Agencies</button>
+                <button class="cat-pill" data-cat="legislation" type="button" aria-pressed="false">Bills</button>
+                <span class="cat-row-sep" aria-hidden="true"></span>
+                <button class="cat-pill ghost" data-cat="recent" type="button" aria-pressed="false">Recent filings</button>
             </div>
             <ol class="mover-list" id="mover-list"></ol>
         </section>
 
         <footer class="footnote">
             <p>Source: <a href="https://lda.gov/filings/public/filing/search/" rel="noopener">Senate Lobbying Disclosure</a>. Mentions are deterministic rule matches against activity descriptions; comparisons are directional signals, not causal claims about lobbying spend or policy outcomes. Filing volume is seasonal because quarterly reports cluster around statutory deadlines. <button class="footnote-link" type="button" data-open-about>About the data</button> · <a href="https://github.com/umqadir/lobbying-signals" rel="noopener">Source on GitHub</a>.</p>
+            <p>Data retrieved from <a href="https://lda.gov/" rel="noopener">LDA.gov</a><span data-retrieved></span>. The Senate Office of Public Records cannot vouch for this data or analyses derived from it. Independent project; not affiliated with the U.S. Senate, House, or any government agency.</p>
+            <p>Figures are derived from filings and may contain errors; the official filing governs. Corrections: open an issue at <a href="https://github.com/umqadir/lobbying-signals/issues" rel="noopener">github.com/umqadir/lobbying-signals/issues</a>.</p>
         </footer>
     </main>
 
     <div class="about" id="about" aria-hidden="true">
         <div class="about-scrim" data-close-about></div>
-        <div class="about-card" role="dialog" aria-modal="true" aria-label="About the data">
+        <div class="about-card" role="dialog" aria-modal="true" aria-labelledby="about-title" tabindex="-1">
             <header class="about-head">
-                <h2>About the data</h2>
+                <h2 id="about-title">About the data</h2>
                 <button class="drawer-close" type="button" data-close-about aria-label="Close">
                     <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                 </button>
             </header>
             <div class="about-body">
-                <p><strong>What this is.</strong> A signal tracker over federal lobbying disclosures filed with the Senate under the Lobbying Disclosure Act (LDA). It shows which organizations, topics, agencies, and bills are gaining or losing lobbying attention.</p>
-                <p><strong>Where the data comes from.</strong> Quarterly activity reports from the official <a href="https://lda.gov/filings/public/filing/search/" rel="noopener">Senate LDA database</a>, refreshed daily. Coverage: <span id="about-coverage">several years of filings</span>. Every example filing links back to the official Senate record.</p>
-                <p><strong>What a “mention” is.</strong> Each filing describes its lobbying activities in free text. Versioned, deterministic rules (no AI model calls) tag those descriptions with topics, agencies, and legislation. One activity description that matches a tag = one mention. A single filing can produce many mentions. Bill numbers are scoped to their Congress (an “H.R. 1” from 2017 and one from 2025 are different laws), and a law's number, short name, and public-law number are counted as one bill.</p>
-                <p><strong>How comparisons work.</strong> Every view uses the same two comparison frames, both year-over-year and both based on report quarters (LDA disclosure is a quarterly regime — rolling day-windows would mostly measure filing-clerk timing). The default frame compares the latest <em>complete</em> report quarter against the same quarter a year earlier — like-for-like, since lobbying is seasonal. The second frame is a freshness lens: the current, still-filling quarter's reports so far, against reports for the same quarter last year that had been posted by the same point in the filing cycle. Early in a cycle that sample is small — the filing counts are shown so you can judge. “Share” is a tag's slice of all tagged mentions in a frame, which controls for volume swings.</p>
-                <p><strong>Normalized view.</strong> The Normalized tickbox restates aggregate dollar figures in constant dollars (CPI-U, base = the latest complete calendar year, each quarter deflated by its own factor) and switches mention histories to each quarter's share of all tagged activity. Both remove background growth — overall inflation and rising filing volume — so what's left is relative shift. Individual filing records always show as-filed amounts.</p>
-                <p><strong>Confidence.</strong> A rule-based label reflecting how much volume sits behind a signal and how far its share moved against the year-ago quarter — not a statistical test.</p>
-                <p><strong>Honest limitations.</strong> Directional signals, not causal claims. Filing income is reported per filing, not per issue, so income figures associate a filing's whole income with each of its tags. The newest quarter is always partially reported until well after the statutory deadline. Rule-based tagging misses paraphrases a human would catch. Amendments and termination reports are ingested alongside original quarterly reports; when a filer amends or terminates a report, its latest filing supersedes the original for that filer's report period, so corrected figures (including a final terminating quarter) are what's shown here, not the as-originally-filed numbers. A very small number of filings verified by hand against the Senate record to report figures that are not U.S.-dollar lobbying spend (for example, amounts a filing itself denominates in a self-issued currency) are excluded, with the reason and evidence documented in the source code.</p>
-                <p><strong>Organization spend.</strong> The Organizations view tracks reported dollars rather than mention counts: each client's filing income/expenses, summed per organization per report quarter, under the same two frames as everything else (a quarter counts as complete roughly six weeks past its statutory filing deadline, so late filers don't read as a false drop). Name variants for the same organization (legal-suffix differences, "on behalf of" filers, former names) are folded together. These are quarterly LDA totals, not issue-allocated — an organization's total isn't split across the topics it lobbied on.</p>
+                <p><strong>What this is.</strong> A tracker of federal lobbying disclosures filed with the Senate under the Lobbying Disclosure Act (LDA). It shows which organizations, topics, agencies, and bills have more or less reported lobbying activity than a year earlier.</p>
+                <p><strong>Where the data comes from.</strong> Quarterly activity reports from the official <a href="https://lda.gov/filings/public/filing/search/" rel="noopener">Senate LDA database</a>, refreshed daily. Coverage: <span id="about-coverage">several years of filings</span>. Every example filing links to the official Senate record.</p>
+                <p><strong>What a “mention” is.</strong> Each filing describes its lobbying activities in free text. Versioned, deterministic rules (no AI model calls) tag those descriptions with topics, agencies, and legislation. One activity description that matches a tag counts as one mention, so a single filing can produce many mentions. Bill numbers are scoped to their Congress (an “H.R. 1” from 2017 and one from 2025 are different laws), and a law's number, short name, and public-law number are counted as one bill.</p>
+                <p><strong>How comparisons work.</strong> Every view uses the same two comparison periods. Both are year-over-year and both use report quarters (Q1 = Jan–Mar, Q2 = Apr–Jun, Q3 = Jul–Sep, Q4 = Oct–Dec). LDA reports are filed quarterly and most arrive just before each deadline, so comparing rolling date windows would mostly measure when reports were filed. The default view compares the latest complete report quarter with the same quarter a year earlier; lobbying is seasonal, so same-quarter comparisons are like for like. The second view covers the most recent quarter, whose reports are still arriving: reports filed so far are compared with reports for the same quarter last year that had been filed by the same date. Early in a filing period that sample is small, and filing counts are shown for both sides. “Share” is a tag's percentage of all tagged mentions in a period, which adjusts for changes in total volume.</p>
+                <p><strong>Normalized view.</strong> The Normalized tickbox restates aggregate dollar figures in constant dollars (CPI-U, base = the latest complete calendar year, each quarter deflated by its own factor) and switches mention histories to each quarter's share of all tagged activity. This removes the effect of overall inflation and of growth in total filing volume. Individual filing records always show as-filed amounts.</p>
+                <p><strong>Confidence.</strong> A rule-based label based on how much volume sits behind a change and how far its share moved against the year-ago quarter. It is not a statistical test.</p>
+                <p><strong>Limitations.</strong> These are descriptive comparisons, not causal claims. Income is reported per filing, not per issue, so income figures attribute a filing's whole income to each of its tags. The newest quarter is incomplete until well after the statutory deadline. Rule-based tagging misses paraphrases a person would catch. Amendments and termination reports are included: when a filer amends or terminates a report, its latest filing replaces the original for that report period, so the figures shown are the corrected ones, not the amounts originally filed. A small number of filings report amounts that are not U.S.-dollar lobbying spending (for example, an amount stated in a currency the filer issued itself). These were checked by hand against the Senate record and are excluded; the reasons and evidence are documented in the source code.</p>
+                <p><strong>Organization spend.</strong> The Organizations view tracks reported dollars rather than mention counts: each client's reported income or expenses, summed per organization per report quarter, under the same two comparison periods as everything else. A quarter counts as complete about six weeks after its statutory filing deadline, so late filings do not appear as a decline. Name variants for the same organization (legal-suffix differences, "on behalf of" filers, former names) are combined. These are quarterly LDA totals and are not divided among the topics an organization lobbied on.</p>
+                <p><strong>Source terms and corrections.</strong> Data retrieved from <a href="https://lda.gov/" rel="noopener">LDA.gov</a><span data-retrieved></span>. The Senate Office of Public Records cannot vouch for this data or analyses derived from it. Independent project; not affiliated with the U.S. Senate, House, or any government agency. Figures are derived from filings and may contain errors; the official filing governs. Corrections: open an issue at <a href="https://github.com/umqadir/lobbying-signals/issues" rel="noopener">github.com/umqadir/lobbying-signals/issues</a>.</p>
             </div>
         </div>
     </div>
 
-    <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Detail panel">
+    <div class="drawer" id="drawer" aria-hidden="true">
         <div class="drawer-scrim" data-close-drawer></div>
-        <div class="drawer-card">
+        <div class="drawer-card" id="drawer-card" role="dialog" aria-modal="true" aria-label="Detail panel" tabindex="-1">
             <header class="drawer-head">
                 <div class="drawer-trail" id="drawer-trail"></div>
                 <button class="drawer-close" type="button" data-close-drawer aria-label="Close detail panel">
@@ -116,7 +127,7 @@
             </header>
             <div class="drawer-body" id="drawer-body"></div>
         </div>
-    </aside>
+    </div>
 
     <div class="palette" id="palette" aria-hidden="true">
         <div class="palette-scrim" data-close-palette></div>
@@ -138,6 +149,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=organization-detail"></script>
+    <script src="app.js?v=2026-10-26"></script>
 </body>
 </html>

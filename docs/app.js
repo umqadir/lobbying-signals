@@ -69,6 +69,9 @@ const state = {
 
     drawer: null,        // current drawer view
     drawerStack: [],     // breadcrumb history within drawer
+    histDepth: 0,        // history entries pushed above the page entry
+    closingDrawer: false,
+    loaded: false,       // every data file has arrived (or failed)
     palette: { open: false, query: "", focusIdx: 0, results: [] }
 };
 
@@ -174,11 +177,10 @@ const fmt = {
         return `${Math.floor(m / 1440)}d ago`;
     },
     titleCase: s => titleCaseName(s),
-    esc: t => {
-        const d = document.createElement("div");
-        d.textContent = t == null ? "" : String(t);
-        return d.innerHTML;
-    }
+    // Safe for both text content and quoted attribute values.
+    esc: t => (t == null ? "" : String(t)).replace(/[&<>"']/g, c => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[c])
 };
 
 function parseDate(value) {
@@ -207,6 +209,38 @@ function fmtMonthDay(d) {
 function fmtMonthDayYear(d) {
     if (!d) return "—";
     return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+}
+
+// U+2060 word joiners keep "Apr–Jun" from wrapping at the dash.
+const QUARTER_MONTHS = { 1: "Jan\u2060–\u2060Mar", 2: "Apr\u2060–\u2060Jun", 3: "Jul\u2060–\u2060Sep", 4: "Oct\u2060–\u2060Dec" };
+
+// "Q2 2026" / "2026 Q2" / "Q2 2026 so far" -> "Q2 2026 (Apr–Jun)". Returns
+// the input unchanged when it isn't a recognizable quarter label.
+function quarterWithMonths(label) {
+    const s = String(label || "");
+    let m = s.match(/Q([1-4])\s+(\d{4})/);
+    let year, quarter;
+    if (m) { quarter = m[1]; year = m[2]; }
+    else {
+        m = s.match(/(\d{4})\s+Q([1-4])/);
+        if (!m) return s;
+        year = m[1]; quarter = m[2];
+    }
+    return `Q${quarter} ${year} (${QUARTER_MONTHS[quarter]})`;
+}
+
+// Legal-form suffixes stripped from organization names in running text
+// ("Anthropic, PBC" -> "Anthropic"). Drawer titles keep the full name.
+const LEGAL_SUFFIX_RE = /,?\s+(?:Inc\.?|Incorporated|L\.?L\.?C\.?|L\.?L\.?P\.?|L\.?P\.?|Corp\.?|Corporation|Co\.|Ltd\.?|Limited|P\.?B\.?C\.?|PLC|P\.?C\.?|N\.?A\.?)$/i;
+
+function shortOrgName(name) {
+    let s = String(name || "").trim();
+    for (let i = 0; i < 3; i++) {
+        const next = s.replace(LEGAL_SUFFIX_RE, "").trim();
+        if (next === s || !next) break;
+        s = next;
+    }
+    return s;
 }
 
 /* ─── Comparison frames ───
@@ -345,12 +379,12 @@ function frameSubtitle(frameKey) {
     const f = frameInfo(frameKey);
     if (!f) return "";
     if (frameKey === "quarter") {
-        return `Latest complete quarter · filings for ${f.label} vs ${f.baseline_label}`;
+        return `${quarterWithMonths(f.label)}, latest complete quarter · compared with ${f.baseline_label}`;
     }
     const through = fmtMonthDay(parseDate(f.through));
-    const base = f.label.replace(/\s+so far$/i, "");
-    let text = `${base} reports filed through ${through} vs the same point last year`;
-    if (f.thin_data) text += " — early in the filing cycle, small sample";
+    const base = quarterWithMonths(f.label.replace(/\s+so far$/i, ""));
+    let text = `${base}, reports still arriving · filed through ${through} vs the same point last year`;
+    if (f.thin_data) text += " · small sample early in the filing period";
     return text;
 }
 
@@ -404,7 +438,7 @@ function buildHeadline(item, frameKey) {
     if (!orgs) return buildMentionsHeadline(item, frameKey);
 
     const baseOrgs = toNum(item.baseline_client_count);
-    const basePhrase = frameBaselinePhrase(frameKey);
+    const basePhrase = fmt.esc(frameBaselinePhrase(frameKey));
     // "in Q1 2025" vs "at the same point in Q2 2025"
     const baseIn = frameKey === "qtd" ? `at ${basePhrase}` : `in ${basePhrase}`;
     const soFar = frameKey === "qtd" ? " so far this quarter" : "";
@@ -440,7 +474,7 @@ function buildHeadline(item, frameKey) {
 function buildMentionsHeadline(item, frameKey) {
     const current = toNum(item.count);
     const baseline = toNum(item.baseline_count);
-    const basePhrase = frameBaselinePhrase(frameKey);
+    const basePhrase = fmt.esc(frameBaselinePhrase(frameKey));
     const baseIn = frameKey === "qtd" ? `at ${basePhrase}` : `in ${basePhrase}`;
     const noun = current === 1 ? "mention" : "mentions";
 
@@ -452,7 +486,7 @@ function buildMentionsHeadline(item, frameKey) {
     }
     if (current === 0 && baseline > 0) {
         return {
-            html: `Quiet — <strong>0</strong> mentions vs <strong>${fmt.int(baseline)}</strong> ${baseIn}.`,
+            html: `<strong>0</strong> mentions, vs <strong>${fmt.int(baseline)}</strong> ${baseIn}.`,
             dir: "down"
         };
     }
@@ -463,15 +497,15 @@ function buildMentionsHeadline(item, frameKey) {
     const pctChange = (ratio - 1) * 100;
     const intensity = deltaIntensity(ratio);
     if (Math.abs(pctChange) >= 5) {
-        const sign = pctChange > 0 ? "+" : "";
+        const word = pctChange > 0 ? "up" : "down";
         const dirCls = pctChange > 0 ? `delta-up${intensity}` : `delta-down${intensity}`;
         return {
-            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta ${dirCls}">${sign}${pctChange.toFixed(0)}%</span> vs ${basePhrase} (${fmt.int(baseline)}).`,
+            html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta ${dirCls}">${word} ${Math.abs(pctChange).toFixed(0)}%</span> vs ${basePhrase} (${fmt.int(baseline)}).`,
             dir: pctChange > 0 ? "up" : "down"
         };
     }
     return {
-        html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-flat">steady</span> vs ${basePhrase} (${fmt.int(baseline)}).`,
+        html: `<strong>${fmt.int(current)}</strong> ${noun} — <span class="delta delta-flat">about even</span> vs ${basePhrase} (${fmt.int(baseline)}).`,
         dir: "flat"
     };
 }
@@ -590,13 +624,16 @@ function reportsDueDate(year, quarter) {
     return new Date(end.getFullYear(), end.getMonth() + 1, 20);
 }
 
-// "reports due Apr 20" — only while that deadline is still relevant (up to
-// ~10 days past it); null once it's stale so the hero doesn't nag forever.
+// "due Apr 20" before the deadline, "were due Apr 20" for ~10 days after
+// it; null once it's stale so the hero doesn't repeat it indefinitely.
 function reportsDueLabel(year, quarter) {
     const deadline = reportsDueDate(year, quarter);
+    const now = new Date();
     const graceEnd = new Date(deadline.getTime() + 10 * 86400000);
-    if (new Date() >= graceEnd) return null;
-    return deadline.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    if (now >= graceEnd) return null;
+    const day = deadline.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    // The deadline is the end of the 20th, so "were due" starts on the 21st.
+    return now >= new Date(deadline.getTime() + 86400000) ? `were due ${day}` : `due ${day}`;
 }
 
 // Frame-leg dollar values for an org mover, deflated when normalization is
@@ -610,7 +647,8 @@ function orgFrameValues(m, frameKey) {
 }
 
 function buildOrgHeadline(m, frameKey) {
-    const { cq, bq, inBq } = orgQuarterLabels(frameKey);
+    const labels = orgQuarterLabels(frameKey);
+    const cq = fmt.esc(labels.cq), bq = fmt.esc(labels.bq), inBq = fmt.esc(labels.inBq);
     const { current, baseline } = orgFrameValues(m, frameKey);
 
     if (baseline === 0 && current > 0) {
@@ -621,7 +659,7 @@ function buildOrgHeadline(m, frameKey) {
     }
     if (current === 0 && baseline > 0) {
         return {
-            html: `Quiet in ${cq} — <strong>$0</strong> vs <strong>${fmt.money(baseline)}</strong> ${inBq}.`,
+            html: `<strong>$0</strong> in ${cq}, vs <strong>${fmt.money(baseline)}</strong> ${inBq}.`,
             dir: "down"
         };
     }
@@ -637,10 +675,10 @@ function buildOrgHeadline(m, frameKey) {
             dir: "up"
         };
     }
-    const sign = pctChange >= 0 ? "+" : "";
+    const word = pctChange >= 0 ? "up" : "down";
     const dirCls = pctChange >= 0 ? `delta-up${intensity}` : `delta-down${intensity}`;
     return {
-        html: `<strong>${fmt.money(current)}</strong> in ${cq} — <span class="delta ${dirCls}">${sign}${pctChange.toFixed(0)}%</span> vs ${bq} (${fmt.money(baseline)}).`,
+        html: `<strong>${fmt.money(current)}</strong> in ${cq} — <span class="delta ${dirCls}">${word} ${Math.abs(pctChange).toFixed(0)}%</span> vs ${bq} (${fmt.money(baseline)}).`,
         dir: pctChange >= 0 ? "up" : "down"
     };
 }
@@ -841,33 +879,26 @@ function renderHero() {
     }
     const moverNames = picks.map(m => `<em>${fmt.esc(displayName(m.mode, m.name))}</em>`);
 
-    // Organizations are the flagship story — lead with the biggest dollar
-    // ramp-ups when clients.json is available, falling back to the
-    // tag-mention synthesis above otherwise. Always the complete quarter.
+    // Organizations lead when clients.json is available; the tag-mention
+    // picks above are the fallback. Always the complete-quarter frame.
+    // Names are separated by semicolons because legal names carry commas.
     const orgPicks = topOrgRisersAndNewEntrants(3, "quarter");
-    const heroCq = clientFrame("quarter")?.current_quarter?.label || "this quarter";
-    let headline;
-    if (orgPicks.length >= 2) {
-        const orgNames = orgPicks.map(m => `<em>${fmt.esc(m.name)}</em>`);
-        const last = orgNames.pop();
-        const head = orgNames.length === 1
-            ? `${orgNames[0]} and ${last}`
-            : `${orgNames.join(", ")}, and ${last}`;
-        headline = `${head} posted the biggest lobbying ramp-ups in ${heroCq}.`;
-    } else if (orgPicks.length === 1) {
-        headline = `<em>${fmt.esc(orgPicks[0].name)}</em> posted the biggest lobbying ramp-up in ${heroCq}.`;
-    } else if (moverNames.length >= 2) {
-        const last = moverNames.pop();
-        const head = moverNames.length === 1
-            ? `${moverNames[0]} and ${last}`
-            : `${moverNames.join(", ")}, and ${last}`;
-        headline = `${head} are gaining ground in federal lobbying activity.`;
-    } else if (moverNames.length === 1) {
-        headline = `${moverNames[0]} is the biggest emerging signal in federal lobbying.`;
-    } else {
-        headline = `Tracking ${fmt.num(stats.total_filings || 0)} federal lobbying filings.`;
+    const heroCq = fmt.esc(quarterWithMonths(clientFrame("quarter")?.current_quarter?.label
+        || frameInfo("quarter")?.label || ""));
+    let headline = null;
+    if (orgPicks.length) {
+        const names = orgPicks.map(m => `<em>${fmt.esc(shortOrgName(m.name))}</em>`).join("; ");
+        const noun = orgPicks.length === 1 ? "increase" : "increases";
+        headline = `Largest year-over-year ${noun} in reported lobbying, ${heroCq}: ${names}.`;
+    } else if (state.loaded && moverNames.length) {
+        const noun = moverNames.length === 1 ? "gain" : "gains";
+        headline = `Largest ${noun} in share of lobbying mentions, ${heroCq}: ${moverNames.join("; ")}.`;
+    } else if (state.loaded) {
+        headline = `${fmt.int(stats.total_filings || 0)} federal lobbying filings tracked.`;
     }
-    headlineEl.innerHTML = headline;
+    // Before every file has arrived, keep the loading text rather than
+    // flash a fallback headline that the full data would replace.
+    if (headline) headlineEl.innerHTML = headline;
 
     // Stats line
     statsEl.replaceChildren();
@@ -889,9 +920,9 @@ function renderHero() {
     if (partial) {
         let partialLabel = `${fmt.num(partial.filings)} filings so far · partial quarter`;
         const due = reportsDueLabel(partial.year, partial.quarter);
-        if (due) partialLabel += ` · reports due ${due}`;
+        if (due) partialLabel += ` · reports ${due}`;
         statItems.push({
-            value: `${partial.year} Q${partial.quarter}`,
+            value: `Q${partial.quarter} ${partial.year}`,
             label: partialLabel
         });
     } else if (latest) {
@@ -899,10 +930,10 @@ function renderHero() {
         let partialLabel = `${fmt.num(latest.filings)} filings so far · partial quarter`;
         if (isPartial) {
             const due = reportsDueLabel(latest.year, latest.quarter);
-            if (due) partialLabel += ` · reports due ${due}`;
+            if (due) partialLabel += ` · reports ${due}`;
         }
         statItems.push({
-            value: `${latest.year} Q${latest.quarter}`,
+            value: `Q${latest.quarter} ${latest.year}`,
             label: isPartial ? partialLabel : `${fmt.num(latest.filings)} filings · ${fmt.money(latest.income * deflatorFor(`${latest.year} Q${latest.quarter}`))}`
         });
     }
@@ -922,14 +953,13 @@ function renderHero() {
             : lcq.income_change_pct;
         const dir = change > 0 ? "up" : change < 0 ? "down" : "";
         const sign = change > 0 ? "↑ " : change < 0 ? "↓ " : "";
-        // Dollars are the big value so the percent can't be misread as
-        // filing counts; normalization is flagged in the tooltip only, so
-        // toggling it never reflows the layout.
+        // Every part of the meaning is visible text (no hover on phones):
+        // what the dollars are, which quarter, and the comparison.
         statItems.push({
             value: fmt.money(income),
-            label: `${sign}${Math.abs(change).toFixed(1)}% vs Q${lcq.quarter} ${lcq.year - 1}`,
-            trend: dir,
-            tip: `Total reported lobbying income in ${lcq.label}${normalizedOn() ? `, in constant ${normBaseYear()} dollars (CPI-U)` : ""}.`
+            label: `reported lobbying, Q${lcq.quarter} ${lcq.year}${normalizedOn() ? ` (${normBaseYear()} dollars)` : ""}`,
+            change: `${sign}${Math.abs(change).toFixed(1)}% vs Q${lcq.quarter} ${lcq.year - 1}`,
+            trend: dir
         });
     } else if (cmpLatest && cmpPrev) {
         const change = ((cmpLatest.filings - cmpPrev.filings) / cmpPrev.filings) * 100;
@@ -944,11 +974,11 @@ function renderHero() {
 
     for (const s of statItems) {
         const li = el("li");
-        const v = el("span", `stat-value ${s.trend ? `stat-trend ${s.trend}` : ""}`.trim(), s.value);
+        const v = el("span", `stat-value ${!s.change && s.trend ? `stat-trend ${s.trend}` : ""}`.trim(), s.value);
         const l = el("span", "stat-label", s.label);
-        if (s.tip) li.title = s.tip;
         li.appendChild(v);
         li.appendChild(l);
+        if (s.change) li.appendChild(el("span", `stat-label stat-change ${s.trend ? `stat-trend ${s.trend}` : ""}`.trim(), s.change));
         statsEl.appendChild(li);
     }
 }
@@ -967,7 +997,7 @@ function renderMovers() {
     updateControlsForCat(cat);
 
     if (cat === "recent") {
-        sub.textContent = `${state.filings.length} latest filings, most recent first`;
+        sub.textContent = `Latest ${fmt.int(state.filings.length)} filings, most recent first`;
         renderRecentList(list);
         return;
     }
@@ -1059,8 +1089,7 @@ function renderEverythingDigest(list, frame) {
 
 function switchCat(cat) {
     state.view.cat = cat;
-    document.querySelectorAll("#cat-row .cat-pill").forEach(x =>
-        x.classList.toggle("active", x.dataset.cat === cat));
+    syncControlsUI();
     syncURL();
     renderMovers();
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1110,14 +1139,25 @@ function updateControlsForCat(cat) {
 }
 
 function renderRecentList(list) {
-    const filings = state.filings.slice(0, 60);
+    const filings = state.filings;
     if (!filings.length) {
         const empty = el("div", "mover-empty", "No recent filings available.");
         list.appendChild(empty);
         return;
     }
-    for (const f of filings) {
+    const VISIBLE = 60;
+    for (const f of filings.slice(0, VISIBLE)) {
         list.appendChild(buildFilingCard(f));
+    }
+    if (filings.length > VISIBLE) {
+        const more = el("button", "mover-more");
+        more.type = "button";
+        more.textContent = `Show all ${fmt.int(filings.length)} filings`;
+        more.onclick = () => {
+            more.remove();
+            for (const f of filings.slice(VISIBLE)) list.appendChild(buildFilingCard(f));
+        };
+        list.appendChild(more);
     }
 }
 
@@ -1368,9 +1408,28 @@ function makeTrendChart(item, options = {}) {
 
 /* ─── Detail chart ─── */
 
+/* Detail charts are drawn in a coordinate system matching the drawer's
+   rendered width, so SVG text shows at its nominal pixel size on phones
+   instead of being scaled down with a fixed 540-wide viewBox. */
+function chartWidth() {
+    const body = document.getElementById("drawer-body");
+    let w = 0;
+    if (body) {
+        const cs = getComputedStyle(body);
+        // 24 = the chart box's horizontal padding
+        w = body.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - 24;
+    }
+    if (!(w > 0)) w = Math.min(window.innerWidth, 560) - 60;
+    return Math.round(clamp(w, 260, 540));
+}
+
+const CHART_FONT = "IBM Plex Mono,monospace";
+
 function makeBarChart(values, periods, options = {}) {
-    const W = 540, H = 180;
-    const pad = { top: 10, right: 10, bottom: 28, left: 38 };
+    const W = chartWidth(), H = 180;
+    const compact = W < 420;
+    const fs = 11;
+    const pad = { top: 10, right: 10, bottom: 30, left: 48 };
     const max = Math.max(...values, 1);
     const niceMax = niceNum(max);
     const ticks = [0, niceMax * 0.5, niceMax];
@@ -1389,7 +1448,7 @@ function makeBarChart(values, periods, options = {}) {
 
     const yLabels = ticks.map(v => {
         const y = plotTop + (1 - v / niceMax) * plotH;
-        return `<text x="${pad.left - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="9" fill="currentColor" fill-opacity="0.55">${fmtY(v)}</text>`;
+        return `<text x="${pad.left - 6}" y="${(y + 4).toFixed(1)}" text-anchor="end" font-family="${CHART_FONT}" font-size="${fs}" fill="currentColor" fill-opacity="0.75">${fmt.esc(fmtY(v))}</text>`;
     }).join("");
 
     const n = values.length;
@@ -1398,6 +1457,19 @@ function makeBarChart(values, periods, options = {}) {
 
     const accent = getCSSVar("--accent", "#1e3a5f");
     const partialFrom = n - Math.max(0, options.partialCount || 0);
+
+    // The frame's two compared quarters carry the weight; with no frame
+    // given, the newest complete quarter does.
+    const { frameQuarter, currentYear } = options;
+    const hasFrame = Number.isFinite(frameQuarter) && Number.isFinite(currentYear);
+    const emphasisFor = i => {
+        if (!hasFrame) return i === partialFrom - 1 ? 1 : 0.55;
+        const yq = periodYearQuarter(periods[i]);
+        if (!yq || yq.quarter !== frameQuarter) return 0.38;
+        if (yq.year === currentYear) return 1;
+        if (yq.year === currentYear - 1) return 0.72;
+        return 0.38;
+    };
 
     const bars = values.map((v, i) => {
         const x = pad.left + i * step + (step - barW) / 2;
@@ -1408,23 +1480,23 @@ function makeBarChart(values, periods, options = {}) {
             : options.percent ? `${v.toFixed(2)}% of tagged activity`
             : `${fmt.int(v)} mentions`;
         const hover = `<title>${fmt.esc(label)} · ${valueLabel}${i >= partialFrom ? " (still reporting)" : ""}</title>`;
-        // Partial (still-reporting) quarters render hollow so a low bar doesn't
-        // read as a real drop; the newest complete quarter gets full weight.
+        const emphasis = emphasisFor(i);
+        // Still-reporting quarters render hollow so a low bar doesn't read
+        // as a real drop.
         if (i >= partialFrom) {
-            return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="0.12" stroke="${accent}" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2 1.5">${hover}</rect>`;
+            return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="0.12" stroke="${accent}" stroke-opacity="${emphasis >= 1 ? 0.9 : 0.5}" stroke-width="1" stroke-dasharray="2 1.5">${hover}</rect>`;
         }
-        const emphasis = i === partialFrom - 1 ? 1 : 0.55;
         return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="${emphasis}">${hover}</rect>`;
     }).join("");
 
-    const xIdx = pickXIndices(n, 5);
+    const xIdx = pickXIndices(n, compact ? 4 : 5);
     const xLabels = xIdx.map(idx => {
-        const x = pad.left + idx * step + step / 2;
+        const x = clamp(pad.left + idx * step + step / 2, pad.left + 14, W - 16);
         const label = periods[idx]?.short || periods[idx]?.label || "";
-        return `<text x="${x.toFixed(1)}" y="${(plotBottom + 14).toFixed(1)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="currentColor" fill-opacity="0.55">${label}</text>`;
+        return `<text x="${x.toFixed(1)}" y="${(plotBottom + 17).toFixed(1)}" text-anchor="middle" font-family="${CHART_FONT}" font-size="${fs}" fill="currentColor" fill-opacity="0.75">${fmt.esc(label)}</text>`;
     }).join("");
 
-    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" style="color: var(--ink-3);">${grid}${yLabels}${bars}${xLabels}</svg>`;
+    return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" style="color: var(--ink-3);" role="img" aria-label="Values by quarter">${grid}${yLabels}${bars}${xLabels}</svg>`;
 }
 
 /* Year/quarter of a period entry: timeseries quarters carry numeric fields,
@@ -1456,8 +1528,9 @@ function makeSeasonalChart(values, periods, options = {}) {
     }
     if (!pts.length) return "";
 
-    const W = 540, H = 180;
-    const pad = { top: 22, right: 10, bottom: 28, left: 38 };
+    const W = chartWidth(), H = 180;
+    const compact = W < 420;
+    const pad = { top: 22, right: 10, bottom: 30, left: 48 };
     const max = Math.max(...pts.map(p => p.value), 1);
     const niceMax = niceNum(max);
     const ticks = [0, niceMax * 0.5, niceMax];
@@ -1476,7 +1549,7 @@ function makeSeasonalChart(values, periods, options = {}) {
 
     const yLabels = ticks.map(v => {
         const y = plotTop + (1 - v / niceMax) * plotH;
-        return `<text x="${pad.left - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="9" fill="currentColor" fill-opacity="0.55">${fmtVal(v)}</text>`;
+        return `<text x="${pad.left - 6}" y="${(y + 4).toFixed(1)}" text-anchor="end" font-family="${CHART_FONT}" font-size="11" fill="currentColor" fill-opacity="0.75">${fmt.esc(fmtVal(v))}</text>`;
     }).join("");
 
     const step = plotW / pts.length;
@@ -1494,8 +1567,8 @@ function makeSeasonalChart(values, periods, options = {}) {
         // The frame's two comparison years carry the visual weight; a
         // still-filling year renders hollow like the all-quarters view.
         const emphasis = p.year === currentYear ? 0.95 : p.year === currentYear - 1 ? 0.6 : 0.3;
-        const valueLabel = `<text x="${cx.toFixed(1)}" y="${(y - 5).toFixed(1)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9.5" font-weight="600" fill="currentColor" fill-opacity="${p.year >= currentYear - 1 ? 0.85 : 0.55}">${fmtVal(p.value)}</text>`;
-        const yearLabel = `<text x="${cx.toFixed(1)}" y="${(plotBottom + 14).toFixed(1)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="currentColor" fill-opacity="${p.year >= currentYear - 1 ? 0.8 : 0.55}">${p.year}</text>`;
+        const valueLabel = `<text x="${cx.toFixed(1)}" y="${(y - 5).toFixed(1)}" text-anchor="middle" font-family="${CHART_FONT}" font-size="${compact ? 10 : 11}" font-weight="600" fill="currentColor" fill-opacity="${p.year >= currentYear - 1 ? 0.9 : 0.7}">${fmt.esc(fmtVal(p.value))}</text>`;
+        const yearLabel = `<text x="${cx.toFixed(1)}" y="${(plotBottom + 17).toFixed(1)}" text-anchor="middle" font-family="${CHART_FONT}" font-size="11" fill="currentColor" fill-opacity="${p.year >= currentYear - 1 ? 0.9 : 0.75}">${p.year}</text>`;
         const rect = p.partial
             ? `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="0.12" stroke="${accent}" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="2 1.5">${hover}</rect>`
             : `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${accent}" fill-opacity="${emphasis}">${hover}</rect>`;
@@ -1511,10 +1584,38 @@ function makeSeasonalChart(values, periods, options = {}) {
    the session so flipping between drawers keeps the reader's view. */
 let historyChartMode = "all";
 
+// A report quarter whose calendar period hasn't ended yet (e.g. early
+// termination reports filed for next quarter) is not plotted at all.
+function periodEnded(p) {
+    const yq = periodYearQuarter(p);
+    if (!yq) return true;
+    return new Date(yq.year, yq.quarter * 3, 1) <= dataAsOfDate();
+}
+
+// Trailing quarters still being reported: from stats.current_partial_quarter
+// on, plus (for mention series) the low-volume heuristic.
+function stillReportingCount(quarters, useVolume) {
+    const cpq = state.stats?.current_partial_quarter;
+    let n = 0;
+    if (cpq) {
+        const cut = cpq.year * 4 + cpq.quarter;
+        for (let i = quarters.length - 1; i >= 0; i--) {
+            const yq = periodYearQuarter(quarters[i]);
+            if (yq && yq.year * 4 + yq.quarter >= cut) n++;
+            else break;
+        }
+    }
+    return Math.min(Math.max(n, useVolume ? partialTrailingCount(quarters) : 0), Math.max(0, quarters.length - 1));
+}
+
 function appendHistorySection(body, opts) {
-    const { title, series, quarters, money = false, frameQuarter, currentYear,
+    const { title, money = false, frameQuarter, currentYear,
             currentPartial = false, extraNote, reportingNote } = opts;
-    if (!series?.length || !quarters || quarters.length < 2) return;
+    if (!opts.series?.length || !opts.quarters) return;
+    const keep = opts.quarters.map(periodEnded);
+    const quarters = opts.quarters.filter((_, i) => keep[i]);
+    const series = opts.series.filter((_, i) => keep[i]);
+    if (!series.length || quarters.length < 2) return;
 
     // Normalization: constant dollars for money series, share-of-quarter
     // for mention series (skipped when the export lacks denominators).
@@ -1551,12 +1652,12 @@ function appendHistorySection(body, opts) {
     let seg = null;
     if (canSeasonal) {
         seg = el("div", "chart-seg");
-        seg.setAttribute("role", "tablist");
+        seg.setAttribute("role", "group");
         seg.setAttribute("aria-label", "History chart lens");
         titleRow.appendChild(seg);
     }
 
-    const partialCount = money ? 0 : partialTrailingCount(quarters);
+    const partialCount = stillReportingCount(quarters, !money);
 
     const render = () => {
         const mode = canSeasonal ? historyChartMode : "all";
@@ -1565,8 +1666,7 @@ function appendHistorySection(body, opts) {
             for (const [key, label] of [["all", "All quarters"], ["yoy", `Q${frameQuarter} by year`]]) {
                 const b = el("button", "chart-seg-btn" + (mode === key ? " active" : ""), label);
                 b.type = "button";
-                b.setAttribute("role", "tab");
-                b.setAttribute("aria-selected", mode === key ? "true" : "false");
+                b.setAttribute("aria-pressed", mode === key ? "true" : "false");
                 b.onclick = () => { if (historyChartMode !== key) { historyChartMode = key; render(); } };
                 seg.appendChild(b);
             }
@@ -1577,19 +1677,24 @@ function appendHistorySection(body, opts) {
                 money, percent, partialCount, frameQuarter, currentYear, currentPartial
             });
             if (hasCurrentYear && hasBaselineYear) {
-                notes.push(`Q${frameQuarter} totals for every year on record — the two darker bars are the years compared above.`);
+                notes.push(`Q${frameQuarter} totals for every year on record. Highlighted bars: the two years compared above.`);
             } else {
                 notes.push(`Q${frameQuarter} totals for every year on record.`);
             }
             if (hasCurrentYear && currentPartial) {
-                notes.push(`${currentYear} is still being reported (shown dashed) and will keep rising.`);
+                notes.push(`Q${frameQuarter} ${currentYear} is still being reported (dashed outline); its total will rise as late filings arrive.`);
             }
         } else {
-            box.innerHTML = makeBarChart(displaySeries, quarters, { partialCount, money, percent });
+            box.innerHTML = makeBarChart(displaySeries, quarters, { partialCount, money, percent, frameQuarter, currentYear });
+            if (hasCurrentYear) {
+                notes.push(hasBaselineYear
+                    ? `Highlighted bars: Q${frameQuarter} ${currentYear} and Q${frameQuarter} ${currentYear - 1}, the quarters compared above.`
+                    : `Highlighted bar: Q${frameQuarter} ${currentYear}, the quarter shown above.`);
+            }
             if (partialCount > 0) {
-                const pq = quarters[quarters.length - 1];
-                const yq = periodYearQuarter(pq);
-                if (yq) notes.push(`${yq.year} Q${yq.quarter} is still being reported (shown dashed) and will keep rising.`);
+                const still = quarters.slice(quarters.length - partialCount)
+                    .map(periodYearQuarter).filter(Boolean).map(yq => `Q${yq.quarter} ${yq.year}`);
+                if (still.length) notes.push(`${still.join(" and ")} ${still.length === 1 ? "is" : "are"} still being reported (dashed outline); totals will rise as late filings arrive.`);
             }
             if (reportingNote) notes.push(reportingNote);
         }
@@ -1624,44 +1729,83 @@ function niceNum(val) {
 
 /* ─── Drawer routing ─── */
 
+/* Each drawer step is its own history entry, so the browser Back button
+   walks back through the panel and then closes it instead of leaving the
+   site. history.state carries the panel and its breadcrumb stack; `depth`
+   counts the entries pushed above the page entry. */
 function pushDrawer(view) {
     if (state.drawer) {
         state.drawerStack.push(state.drawer);
     }
     state.drawer = view;
-    syncURL();
-    renderDrawer();
-    showDrawer();
-}
-
-function replaceDrawer(view) {
-    state.drawer = view;
-    syncURL();
+    state.histDepth = (state.histDepth || 0) + 1;
+    syncURL(true);
     renderDrawer();
     showDrawer();
 }
 
 function closeDrawer() {
-    state.drawer = null;
-    state.drawerStack = [];
-    document.getElementById("drawer").setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-    syncURL();
-}
-
-function popDrawer() {
-    if (state.drawerStack.length === 0) {
-        closeDrawer();
+    if (state.closingDrawer) return;   // a Back is already in flight
+    if (state.histDepth > 0) {
+        // Return to the page entry; the popstate handler hides the panel.
+        state.closingDrawer = true;
+        history.go(-state.histDepth);
         return;
     }
-    state.drawer = state.drawerStack.pop();
+    // Panel opened from a shared link on first load: no entry to go back to.
+    state.drawer = null;
+    state.drawerStack = [];
+    syncURL();
+    hideDrawer();
+}
+
+// Jump to breadcrumb step i (0 = first panel opened).
+function drawerJumpTo(i) {
+    const steps = state.drawerStack.length - i;
+    if (steps > 0 && steps <= state.histDepth) {
+        history.go(-steps);
+        return;
+    }
+    const items = [...state.drawerStack, state.drawer];
+    state.drawer = items[i];
+    state.drawerStack = state.drawerStack.slice(0, i);
     syncURL();
     renderDrawer();
 }
 
+let drawerReturnFocus = null;
+
+// Everything behind an open dialog is inert: no focus, no clicks, hidden
+// from assistive technology.
+function updatePageInert() {
+    const aboutOpen = document.getElementById("about")?.getAttribute("aria-hidden") === "false";
+    const drawerOpen = document.getElementById("drawer")?.getAttribute("aria-hidden") === "false";
+    for (const node of document.querySelectorAll(".topbar, main.page")) node.inert = aboutOpen || drawerOpen;
+    const drawer = document.getElementById("drawer");
+    if (drawer) drawer.inert = aboutOpen || !drawerOpen;
+}
+
 function showDrawer() {
-    document.getElementById("drawer").setAttribute("aria-hidden", "false");
+    const drawer = document.getElementById("drawer");
+    if (drawer.getAttribute("aria-hidden") !== "false") {
+        const active = document.activeElement;
+        drawerReturnFocus = active && active !== document.body ? active : null;
+    }
+    drawer.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    updatePageInert();
+    document.getElementById("drawer-card")?.focus({ preventScroll: true });
+}
+
+function hideDrawer() {
+    const drawer = document.getElementById("drawer");
+    const wasOpen = drawer.getAttribute("aria-hidden") === "false";
+    drawer.setAttribute("aria-hidden", "true");
+    if (!state.palette.open) document.body.style.overflow = "";
+    updatePageInert();
+    if (wasOpen && drawerReturnFocus?.isConnected) drawerReturnFocus.focus({ preventScroll: true });
+    else if (drawer.contains(document.activeElement)) document.activeElement.blur();
+    drawerReturnFocus = null;
 }
 
 function openSignal(mode, name) {
@@ -1711,15 +1855,15 @@ function renderDrawer() {
         const btn = el("button", "drawer-trail-step", drawerLabel(view));
         if (i === items.length - 1) btn.classList.add("current");
         else {
-            btn.onclick = () => {
-                state.drawerStack = state.drawerStack.slice(0, i);
-                state.drawer = view;
-                syncURL();
-                renderDrawer();
-            };
+            btn.type = "button";
+            btn.onclick = () => drawerJumpTo(i);
         }
         trail.appendChild(btn);
     });
+
+    const card = document.getElementById("drawer-card");
+    if (card) card.setAttribute("aria-label", drawerLabel(state.drawer));
+    body.scrollTop = 0;
 
     if (state.drawer.kind === "signal") {
         renderSignalDetail(body, state.drawer);
@@ -1768,8 +1912,8 @@ function renderOrgDetail(body, view) {
     }
     const { cq, bq } = orgQuarterLabels(frameKey);
     const subLabel = frameKey === "quarter"
-        ? `${cq} vs ${bq} · complete quarters`
-        : `${cq} vs ${bq}`;
+        ? `${quarterWithMonths(cq)}, latest complete quarter · compared with ${bq}`
+        : `${quarterWithMonths(cq)}, reports still arriving · compared with ${bq}`;
 
     const eyebrow = el("div", "detail-eyebrow");
     eyebrow.appendChild(el("span", "cat-tag clients", "Org"));
@@ -1839,17 +1983,7 @@ function renderOrgDetail(body, view) {
         const sec = el("div", "detail-section");
         sec.appendChild(el("div", "detail-section-title", "Top topics"));
         const tags = el("div", "detail-tags");
-        const tracked = new Set((state.trends?.topics?.[activeFrameKey()] || []).map(t => t.name));
-        for (const topic of m.topics) {
-            const tag = el("button", "detail-tag", topic);
-            if (tracked.has(topic)) {
-                tag.onclick = () => openSignal("topics", topic);
-            } else {
-                tag.style.cursor = "default";
-                tag.title = "Not currently a tracked signal";
-            }
-            tags.appendChild(tag);
-        }
+        for (const topic of m.topics) tags.appendChild(signalTag("topics", topic));
         sec.appendChild(tags);
         body.appendChild(sec);
     }
@@ -1899,14 +2033,26 @@ function appendDisclosureText(parent, text, truncated, previewLength = 220) {
     parent.appendChild(disclosure);
 }
 
+/* LDA filing-type codes: "Q3" quarterly report, "3A" amendment, "3T"
+   termination, "3@" termination amendment; a trailing "Y" marks a
+   no-activity report. Unknown codes are shown as filed. */
+function filingTypeText(type) {
+    const t = String(type || "").trim().toUpperCase();
+    if (!t) return "";
+    const m = t.match(/^(?:Q([1-4])|([1-4])([AT@]))(Y?)$/);
+    if (!m) return t;
+    const q = m[1] || m[2];
+    const kind = m[1] ? "report" : { A: "amendment", T: "termination", "@": "termination amendment" }[m[3]];
+    return `Q${q} ${kind}${m[4] ? " (no activity)" : ""}`;
+}
+
 function appendOrgFilings(parent, filings, more = 0, legacy = false) {
     if (!filings.length) parent.appendChild(el("p", "detail-chart-note", "No filings in this comparison period."));
     for (const filing of filings) {
         const row = el("div", "org-filing");
         row.appendChild(el("div", "filing-row-client", filing.registrant || "Unknown registrant"));
-        const type = (filing.type || filing.filing_type || "").trim();
-        const kind = /@/.test(type) ? "termination amendment" : /\dAY?$/.test(type) ? "amendment" : /\dTY?$/.test(type) ? "termination" : "";
-        row.appendChild(el("div", "filing-row-registrant", `${fmt.dateShort(filing.date)}${type ? ` · ${type}` : ""}${kind ? ` · ${kind}` : ""}`));
+        const typeText = filingTypeText(filing.type || filing.filing_type);
+        row.appendChild(el("div", "filing-row-registrant", `${fmt.dateShort(filing.date)}${typeText ? ` · ${typeText}` : ""}`));
         const amount = legacy ? filing.income : filing.amount;
         row.appendChild(el("div", "org-filing-amount", amount == null ? "Amount not yet fetched" : fmt.money(amount)));
         const link = officialLink(filing.uuid, "official-link small");
@@ -2027,6 +2173,22 @@ function appendOrgComparison(body, mover, frameKey) {
             }
         }
     });
+}
+
+/* A tag links to its signal panel only when the active frame has activity
+   for it; otherwise the panel would be empty, so it renders as plain text. */
+function signalHasActivity(mode, name, frameKey = activeFrameKey()) {
+    const item = (state.trends?.[mode]?.[frameKey] || []).find(i => i.name === name);
+    return !!item && (toNum(item.count) > 0 || toNum(item.baseline_count) > 0);
+}
+
+function signalTag(mode, name) {
+    const label = displayName(mode, name);
+    if (!signalHasActivity(mode, name)) return el("span", "detail-tag detail-tag-static", label);
+    const tag = el("button", "detail-tag", label);
+    tag.type = "button";
+    tag.onclick = () => openSignal(mode, name);
+    return tag;
 }
 
 /* Signal detail */
@@ -2163,6 +2325,8 @@ function renderSignalDetail(body, view) {
             li.appendChild(left);
             const right = el("div", "filing-row-right");
             right.appendChild(el("div", "filing-row-date", fmt.dateShort(ex.date)));
+            const typeText = filingTypeText(ex.type || ex.filing_type);
+            if (typeText) right.appendChild(el("div", "filing-row-date", typeText));
             const link = officialLink(ex.uuid, "official-link small");
             if (link) right.appendChild(link);
             li.appendChild(right);
@@ -2222,7 +2386,7 @@ function renderClientDetail(body, view) {
     const totalIncome = filings.reduce((s, f) => s + toNum(f.income), 0);
     const stats = el("div", "detail-stats");
     const cells = [
-        { value: fmt.int(filings.length || "—"), label: "Recent filings" },
+        { value: filings.length ? fmt.int(filings.length) : "—", label: "Recent filings" },
         { value: appearances.length ? fmt.int(appearances.length) : "—", label: "Top-N signals" },
         { value: filings.length ? fmt.dateShort(filings[0].date) : "—", label: "Most recent" },
         { value: totalIncome > 0 ? fmt.money(totalIncome) : "—", label: "Recent income" }
@@ -2305,13 +2469,24 @@ function renderFilingDetail(body, view) {
             stats.appendChild(stat);
             body.appendChild(stats);
         }
+        const typeText = filingTypeText(ctx.type || ctx.filing_type);
+        if (typeText) body.appendChild(el("div", "detail-sub", typeText));
         const link = officialLink(ctx.uuid, "official-link block");
         if (link) {
             const sec = el("div", "detail-section");
             sec.appendChild(link);
             body.appendChild(sec);
+            body.appendChild(el("p", "detail-empty", "Tag detail is kept only for the most recent filings. The official record linked above has the complete disclosure."));
+        } else {
+            const p = el("p", "detail-empty", "Tag detail is kept only for the most recent filings, and this filing is not among them. Search for it in the ");
+            const a = el("a", "", "LDA.gov filing database");
+            a.href = "https://lda.gov/filings/public/filing/search/";
+            a.target = "_blank";
+            a.rel = "noopener";
+            p.appendChild(a);
+            p.appendChild(document.createTextNode("."));
+            body.appendChild(p);
         }
-        body.appendChild(el("p", "detail-empty", "Full tag detail is kept for the most recent filings; the official record above has the complete disclosure."));
         return;
     }
 
@@ -2365,11 +2540,7 @@ function renderFilingDetail(body, view) {
         title.appendChild(el("span", "count", `${g.values.length}`));
         sec.appendChild(title);
         const tags = el("div", "detail-tags");
-        for (const v of g.values) {
-            const tag = el("button", "detail-tag", displayName(g.mode, v));
-            tag.onclick = () => openSignal(g.mode, v);
-            tags.appendChild(tag);
-        }
+        for (const v of g.values) tags.appendChild(signalTag(g.mode, v));
         sec.appendChild(tags);
         body.appendChild(sec);
     }
@@ -2389,15 +2560,23 @@ function openAbout() {
     const start = coverageStartDate();
     const end = dataAsOfDate();
     if (covEl && start) covEl.textContent = `${fmtMonthDayYear(start)} through ${fmtMonthDayYear(end)}`;
+    aboutReturnFocus = document.activeElement;
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    updatePageInert();
+    modal.querySelector(".about-card")?.focus({ preventScroll: true });
 }
+
+let aboutReturnFocus = null;
 
 function closeAbout() {
     const modal = document.getElementById("about");
     if (!modal) return;
     modal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
+    if (!state.drawer) document.body.style.overflow = "";
+    updatePageInert();
+    if (aboutReturnFocus?.isConnected) aboutReturnFocus.focus({ preventScroll: true });
+    aboutReturnFocus = null;
 }
 
 /* ─── Command palette ─── */
@@ -2411,8 +2590,15 @@ function buildPaletteIndex() {
         const key = `${kind}:${mode || ""}:${extra?.orgKey || name}`.toUpperCase();
         if (seen.has(key)) return;
         seen.add(key);
-        idx.push({ kind, mode, name, meta, search: name.toLowerCase(), ...(extra || {}) });
+        // Index the display name too, so "H.R. 1" finds the act it names.
+        const shown = displayName(mode, name);
+        const search = (shown === name ? name : `${shown} ${name}`).toLowerCase();
+        idx.push({ kind, mode, name, meta, search, ...(extra || {}) });
     };
+    // Organization records and raw client names often describe the same
+    // organization; a client entry is dropped when an org already covers it.
+    const orgNames = new Set();
+    const orgMatchKey = n => shortOrgName(n).toUpperCase().replace(/[^A-Z0-9]+/g, " ").replace(/^THE /, "").trim();
 
     // Tag signals from both frames, deduped by name (complete-quarter first).
     for (const mode of SIGNAL_MODES) {
@@ -2429,6 +2615,8 @@ function buildPaletteIndex() {
     for (const frameKey of FRAME_KEYS) {
         for (const m of allOrgRecords(frameKey)) {
             add("org", null, m.name, `Org · ${fmt.money(orgFrameValues(m, frameKey).current)} in ${clientFrame(frameKey)?.current_quarter?.label || "latest quarter"}`, { orgKey: m.key });
+            orgNames.add(orgMatchKey(m.name));
+            if (m.key) orgNames.add(orgMatchKey(m.key));
         }
     }
 
@@ -2447,6 +2635,7 @@ function buildPaletteIndex() {
         }
     }
     for (const [c, n] of clientCounts.entries()) {
+        if (orgNames.has(orgMatchKey(c))) continue;
         add("client", null, c, n > 0 ? `Client · ${n} recent filing${n === 1 ? "" : "s"}` : "Client");
     }
 
@@ -2473,6 +2662,8 @@ function searchPalette(query) {
         const lower = item.search;
         let score = 0;
         if (lower === q) score = 100;
+        // Whole-token prefix ("h.r. 1" in "h.r. 1 / one big…", not "h.r. 1689")
+        else if (lower.startsWith(q) && !/[a-z0-9]/.test(lower.charAt(q.length))) score = 90;
         else if (lower.startsWith(q)) score = 80;
         else {
             const words = lower.split(/[^a-z0-9]+/);
@@ -2593,7 +2784,7 @@ function executePalette() {
 
 /* ─── URL state ─── */
 
-function syncURL() {
+function currentURL() {
     // Query string carries the view (frame/category) so any state of the
     // dashboard is a shareable link; the hash carries the open drawer.
     const params = new URLSearchParams();
@@ -2614,14 +2805,23 @@ function syncURL() {
             hash = `#filing/${state.drawer.id}`;
         }
     }
-    const url = `${window.location.pathname}${query}${hash}`;
-    if (url !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
-        history.replaceState(null, "", url);
-    }
+    return `${window.location.pathname}${query}${hash}`;
 }
 
-function readURL() {
-    // View state from the query string
+// push = a new history entry (opening a panel step); otherwise the current
+// entry is updated in place (view toggles, closing a shared-link panel).
+function syncURL(push = false) {
+    const entry = {
+        ls: 1,
+        drawer: state.drawer,
+        stack: state.drawerStack,
+        depth: state.histDepth || 0
+    };
+    if (push) history.pushState(entry, "", currentURL());
+    else history.replaceState(entry, "", currentURL());
+}
+
+function readViewFromURL() {
     const q = new URLSearchParams(window.location.search);
     if (FRAME_KEYS.includes(q.get("f"))) state.view.frame = q.get("f");
     if (q.get("cat") && (q.get("cat") === "recent" || q.get("cat") === "clients" || SIGNAL_MODES.includes(q.get("cat")))) state.view.cat = q.get("cat");
@@ -2631,31 +2831,88 @@ function readURL() {
     else {
         try { state.view.normalized = localStorage.getItem("lsNormalized") === "1"; } catch (e) {}
     }
+}
 
-    // Drawer from the hash
+// The drawer named by the hash, or null for an empty hash.
+function drawerFromHash() {
     const hash = window.location.hash.replace(/^#/, "");
-    if (!hash) return;
-    const parts = hash.split("/").map(decodeURIComponent);
+    if (!hash) return null;
+    let parts;
+    try { parts = hash.split("/").map(decodeURIComponent); } catch (e) { return null; }
     const [kind, ...rest] = parts;
-    if (SIGNAL_MODES.includes(kind)) {
-        state.drawer = { kind: "signal", mode: kind, name: rest.join("/") };
-    } else if (kind === "org") {
+    if (SIGNAL_MODES.includes(kind)) return { kind: "signal", mode: kind, name: rest.join("/") };
+    if (kind === "org") {
         const key = rest.join("/");
-        state.drawer = { kind: "org", key, name: key };
-    } else if (kind === "client") {
-        state.drawer = { kind: "client", name: rest.join("/") };
-    } else if (kind === "filing") {
-        state.drawer = { kind: "filing", id: Number(rest[0]) };
+        return { kind: "org", key, name: key };
+    }
+    if (kind === "client") return { kind: "client", name: rest.join("/") };
+    if (kind === "filing" && Number.isFinite(Number(rest[0]))) return { kind: "filing", id: Number(rest[0]) };
+    return null;
+}
+
+function readURL() {
+    readViewFromURL();
+    state.drawer = drawerFromHash();
+    state.drawerStack = [];
+    state.histDepth = 0;
+}
+
+// Back/Forward, and hand-edited hashes (which arrive with no state).
+function onPopState(event) {
+    const entry = event.state;
+    const before = { ...state.view };
+    readViewFromURL();
+    if (entry && entry.ls) {
+        state.drawer = entry.drawer || null;
+        state.drawerStack = entry.stack || [];
+        state.histDepth = entry.depth || 0;
+    } else {
+        state.drawer = drawerFromHash();
+        state.drawerStack = [];
+        state.histDepth = 0;
+        syncURL();
+    }
+    if (state.closingDrawer) {
+        state.closingDrawer = false;
+        if (state.drawer) {
+            // Landed on a shared-link panel at the bottom of the stack.
+            state.drawer = null;
+            state.drawerStack = [];
+            syncURL();
+        }
+    }
+    if (before.frame !== state.view.frame || before.cat !== state.view.cat || before.normalized !== state.view.normalized) {
+        syncControlsUI();
+        renderHero();
+        renderMovers();
+    }
+    if (state.drawer) {
+        renderDrawer();
+        showDrawer();
+    } else {
+        hideDrawer();
     }
 }
 
 /* Reflect state.view in the control groups (used after readURL restores
    a shared link's view). */
 function syncControlsUI() {
-    document.querySelectorAll("#frame-seg .seg-btn").forEach(x =>
-        x.classList.toggle("active", x.dataset.frame === state.view.frame));
-    document.querySelectorAll("#cat-row .cat-pill").forEach(x =>
-        x.classList.toggle("active", x.dataset.cat === state.view.cat));
+    // Both rows are toggle-button groups, so state is aria-pressed.
+    document.querySelectorAll("#frame-seg .seg-btn").forEach(x => {
+        const on = x.dataset.frame === state.view.frame;
+        x.classList.toggle("active", on);
+        x.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    document.querySelectorAll("#cat-row .cat-pill").forEach(x => {
+        const on = x.dataset.cat === state.view.cat;
+        x.classList.toggle("active", on);
+        x.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    const norm = document.getElementById("norm-toggle");
+    if (norm) {
+        norm.classList.toggle("active", state.view.normalized);
+        norm.setAttribute("aria-pressed", state.view.normalized ? "true" : "false");
+    }
 }
 
 /* ─── Initialization ─── */
@@ -2681,8 +2938,7 @@ function buildFrameToggle() {
         b.onclick = () => {
             if (state.view.frame === frameKey) return;
             state.view.frame = frameKey;
-            seg.querySelectorAll(".seg-btn").forEach(x =>
-                x.classList.toggle("active", x === b));
+            syncControlsUI();
             syncURL();
             renderMovers();
             if (state.drawer) renderDrawer();
@@ -2693,12 +2949,14 @@ function buildFrameToggle() {
 
 function bindControls() {
     document.getElementById("search-trigger").onclick = openPalette;
+    const kbd = document.querySelector(".search-trigger-kbd");
+    const mac = /mac|iphone|ipad/i.test(navigator.userAgentData?.platform || navigator.platform || "");
+    if (kbd && !mac) kbd.textContent = "Ctrl K";
 
     document.querySelectorAll("#cat-row .cat-pill").forEach(b => {
         b.onclick = () => {
             state.view.cat = b.dataset.cat;
-            document.querySelectorAll("#cat-row .cat-pill").forEach(x =>
-                x.classList.toggle("active", x === b));
+            syncControlsUI();
             syncURL();
             renderMovers();
         };
@@ -2766,19 +3024,7 @@ function bindControls() {
         }
     });
 
-    window.addEventListener("hashchange", () => {
-        const before = state.drawer;
-        readURL();
-        if (state.drawer !== before) {
-            if (state.drawer) {
-                renderDrawer();
-                showDrawer();
-            } else {
-                document.getElementById("drawer").setAttribute("aria-hidden", "true");
-                document.body.style.overflow = "";
-            }
-        }
-    });
+    window.addEventListener("popstate", onPopState);
 }
 
 function scrollFocusedIntoView() {
@@ -2786,28 +3032,77 @@ function scrollFocusedIntoView() {
     if (node) node.scrollIntoView({ block: "nearest" });
 }
 
-async function loadJSON(file) {
+/* Data files are cached until the data changes: stats.json (1-2 KB) is
+   revalidated on every load, and its generated_at stamps the URLs of the
+   larger files. Without a stamp, normal HTTP caching applies. */
+let dataVersion = "";
+
+async function loadJSON(file, { revalidate = false } = {}) {
     try {
-        const r = await fetch(`${DATA_PATH}/${file}?v=${Date.now()}`);
+        const v = dataVersion && !revalidate ? `?v=${encodeURIComponent(dataVersion)}` : "";
+        const r = await fetch(`${DATA_PATH}/${file}${v}`, revalidate ? { cache: "no-cache" } : {});
         if (!r.ok) return null;
         return await r.json();
     } catch { return null; }
 }
 
+// Data dates: top bar (desktop), a short line under the hero (phones), and
+// the LDA retrieval date in the footer and About dialog.
+function renderDataDates() {
+    const stats = state.stats;
+    const ts = stats?.generated_at || state.trends?.generated_at;
+    const through = parseDate(stats?.date_range?.end);
+    const parts = [];
+    if (through) parts.push(`data through ${fmtMonthDayYear(through)}`);
+    if (ts) parts.push(`refreshed ${fmt.ago(ts)}`);
+    const text = parts.join(" · ");
+    const meta = document.getElementById("topbar-meta");
+    if (meta) {
+        meta.textContent = text;
+        meta.title = ts ? `Last refresh: ${new Date(ts).toLocaleString()}` : "";
+    }
+    const heroAsOf = document.getElementById("hero-asof");
+    if (heroAsOf) {
+        heroAsOf.textContent = text ? text.charAt(0).toUpperCase() + text.slice(1) : "";
+        heroAsOf.hidden = !text;
+    }
+    const retrieved = parseDate(ts);
+    if (retrieved) {
+        document.querySelectorAll("[data-retrieved]").forEach(n => {
+            n.textContent = ` on ${fmtMonthDayYear(retrieved)}`;
+        });
+    }
+}
+
 async function init() {
-    const [stats, trends, recent, timeseries, clients] = await Promise.all([
-        loadJSON("stats.json"),
-        loadJSON("trends.json"),
-        loadJSON("recent.json"),
-        loadJSON("timeseries.json"),
-        loadJSON("clients.json")
+    const stats = await loadJSON("stats.json", { revalidate: true });
+    state.stats = stats || null;
+    dataVersion = stats?.generated_at || "";
+    renderDataDates();
+
+    const pending = {
+        trends: loadJSON("trends.json"),
+        recent: loadJSON("recent.json"),
+        timeseries: loadJSON("timeseries.json"),
+        clients: loadJSON("clients.json")
+    };
+    // The headline needs only stats + clients; show it before the 4 MB
+    // trends file finishes.
+    pending.clients.then(clients => {
+        if (state.loaded) return;
+        state.clients = clients || null;
+        renderHero();
+    });
+    const [trends, recent, timeseries, clients] = await Promise.all([
+        pending.trends, pending.recent, pending.timeseries, pending.clients
     ]);
 
-    state.stats = stats || null;
     state.trends = trends || null;
     state.filings = recent?.filings || [];
     state.timeseries = timeseries || null;
     state.clients = clients || null;
+    state.loaded = true;
+    paletteIndex = null;
 
     // clients.json may be missing on a live deploy mid-rollout (new app.js,
     // old data). Hide the Organizations pill and skip it everywhere else
@@ -2822,25 +3117,18 @@ async function init() {
         }
     }
 
-    // Top bar meta — show "data through {date} · refreshed Xh ago"
-    const meta = document.getElementById("topbar-meta");
-    const ts = trends?.generated_at || stats?.generated_at;
-    const asOf = dataAsOfDate();
-    if (meta) {
-        const parts = [];
-        if (asOf) parts.push(`data through ${fmtMonthDayYear(asOf)}`);
-        if (ts) parts.push(`refreshed ${fmt.ago(ts)}`);
-        meta.textContent = parts.join(" · ");
-        if (ts) meta.title = `Last refresh: ${new Date(ts).toLocaleString()}`;
-    }
+    renderDataDates();
 
     bindControls();
     readURL();            // restore shared view + drawer state from URL
+    // Stamp the page entry for Back/Forward handling, URL unchanged.
+    history.replaceState({ ls: 1, drawer: state.drawer, stack: [], depth: 0 }, "", window.location.href);
     buildFrameToggle();   // labels come from trends.json's frames
     buildNormToggle();    // hidden until the export ships CPI deflators
     syncControlsUI();
     renderHero();
     renderMovers();
+    updatePageInert();
 
     if (state.drawer) {
         renderDrawer();
