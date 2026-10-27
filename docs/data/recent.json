@@ -1,6 +1,3215 @@
 {
-  "generated_at": "2026-10-26T23:55:47.360797+00:00",
+  "generated_at": "2026-10-27T15:54:26.594475+00:00",
   "filings": [
+    {
+      "id": 564213,
+      "uuid": "b670cab9-1102-46cd-9252-f983252d299d",
+      "date": "2026-10-27T11:33:27-04:00",
+      "client": "69 BRIDGELINK",
+      "registrant": "APPIAN",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564212,
+      "uuid": "cbce0c31-28fe-4c3d-93c3-fd236bd91636",
+      "date": "2026-10-27T11:31:16-04:00",
+      "client": "US 31 COALITION, INC.",
+      "registrant": "APPIAN",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564211,
+      "uuid": "4f6ea0ff-3321-4dcb-b6b9-09f6eda492fb",
+      "date": "2026-10-27T11:28:10-04:00",
+      "client": "HENDRICKS COUNTY INDIANA BOARD OF COMMISSIONERS",
+      "registrant": "APPIAN",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564210,
+      "uuid": "514ba469-0ba4-476e-97a6-326cd56b378b",
+      "date": "2026-10-27T11:27:10-04:00",
+      "client": "RIVERLIFE",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564209,
+      "uuid": "db0a945e-d672-4436-acd2-eb04c8b1464e",
+      "date": "2026-10-27T11:26:37-04:00",
+      "client": "GREEN BUILDING ALLIANCE",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Environment"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "EPA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564208,
+      "uuid": "1fc4570c-b89a-4136-b329-15d3aaa7a644",
+      "date": "2026-10-27T11:26:03-04:00",
+      "client": "CENTER FOR POPULATION HEALTH",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce",
+        "HHS"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564207,
+      "uuid": "7346cd20-4544-4d6b-8766-ebc5ac4de580",
+      "date": "2026-10-27T11:25:29-04:00",
+      "client": "CITY OF HOPEWELL, VA",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564206,
+      "uuid": "f899db61-def8-472a-a060-46dbddb0c728",
+      "date": "2026-10-27T11:25:07-04:00",
+      "client": "NATIONAL FRATERNAL ORDER OF POLICE",
+      "registrant": "NATIONAL FRATERNAL ORDER OF POLICE",
+      "income": 100000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Defense and Security",
+        "Labor and Immigration"
+      ],
+      "topics": [
+        "Criminal Justice and Policing",
+        "Banking and Financial Regulation",
+        "Constitutional and Civil Rights",
+        "Data Privacy",
+        "Substance Use and Treatment",
+        "Medicare and Medicaid",
+        "Education and Student Aid",
+        "Firearms Policy"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "DOJ",
+        "DHS",
+        "Congress",
+        "HHS",
+        "Department of Veterans Affairs",
+        "Department of Labor",
+        "Department of Commerce",
+        "FCC"
+      ],
+      "legislation": [
+        "H.R. 378 (119th Congress) \u2014 Thin Blue Line Act",
+        "H.R. 503 (119th Congress) \u2014 Qualified Immunity Act of 2025",
+        "H.R. 621 (119th Congress) \u2014 Protecting First Responders from Secondary Exposure Act of 2025",
+        "H.R. 633 (119th Congress) \u2014 TAKE IT DOWN Act",
+        "H.R. 911 (119th Congress) \u2014 Patriot Day Act",
+        "H.R. 993 (119th Congress) \u2014 Emerging Innovative Border Technologies Act",
+        "H.R. 1046 (119th Congress) \u2014 Marc Fischer Memorial Act",
+        "H.R. 1236 (119th Congress) \u2014 Chief Herbert D. Proffitt Act of 2025",
+        "H.R. 1260 (119th Congress) \u2014 U.S. Park Police Modernization Act",
+        "H.R. 1266 (119th Congress) \u2014 Combating Illicit Xylazine Act",
+        "H.R. 1269 (119th Congress) \u2014 Honoring Our Fallen Heroes Act of 2025",
+        "H.R. 1443 (119th Congress) \u2014 Public Safety Free Speech Act"
+      ]
+    },
+    {
+      "id": 564205,
+      "uuid": "8c0a5e6a-d432-4b4d-a83c-3e1d274e65db",
+      "date": "2026-10-27T11:24:54-04:00",
+      "client": "CITY OF EAST PALO ALTO, CA",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564204,
+      "uuid": "a3d1b441-7db3-41a0-ab4c-b910edf6d048",
+      "date": "2026-10-27T11:24:16-04:00",
+      "client": "TOWN OF PARACHUTE, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564203,
+      "uuid": "4b1acb2a-01d7-47da-b14b-bd2ada53b76d",
+      "date": "2026-10-27T11:23:44-04:00",
+      "client": "LARIMER COUNTY, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation",
+        "Department of Labor",
+        "Department of the Interior"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564202,
+      "uuid": "54c9c59f-be42-4197-b719-8e7df9f7206a",
+      "date": "2026-10-27T11:23:31-04:00",
+      "client": "BUILD INDIANA COUNCIL",
+      "registrant": "APPIAN",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564201,
+      "uuid": "196bddf8-e0df-4be9-8330-7a7a4b2f5922",
+      "date": "2026-10-27T11:23:09-04:00",
+      "client": "OIL REGIONAL ALLIANCE",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564200,
+      "uuid": "33bf1499-cf14-4562-b9f4-ce59b6a498fe",
+      "date": "2026-10-27T11:22:35-04:00",
+      "client": "TOWN OF CRESTED BUTTE, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564199,
+      "uuid": "4d9e9456-a9c3-4795-a12d-7a9d35433bd8",
+      "date": "2026-10-27T11:22:01-04:00",
+      "client": "TOWN OF SILT, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564198,
+      "uuid": "9392ff80-3a9f-4bd4-8d9a-a9bcaaab57a2",
+      "date": "2026-10-27T11:21:24-04:00",
+      "client": "PITKIN COUNTY, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564197,
+      "uuid": "0add40d0-b22e-47c5-a0c8-84e33720f932",
+      "date": "2026-10-27T11:20:50-04:00",
+      "client": "TOWN OF JACKSON, WY",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564196,
+      "uuid": "7f4c5201-099a-4e45-a994-c11b8643e659",
+      "date": "2026-10-27T11:20:16-04:00",
+      "client": "TOWN OF AVON, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564195,
+      "uuid": "88dc3884-bb5b-4c50-8e43-e68b6026a81c",
+      "date": "2026-10-27T11:19:43-04:00",
+      "client": "CITY OF WOODBURY, MN",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564194,
+      "uuid": "4421f26e-7afa-42cd-944b-18ade0f40d77",
+      "date": "2026-10-27T11:19:11-04:00",
+      "client": "CITY OF ROSWELL, GA",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564193,
+      "uuid": "eba0fd50-ad8a-48c1-bc5c-3a438338bc01",
+      "date": "2026-10-27T11:18:32-04:00",
+      "client": "CITY OF HUNTINGTON, WV",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564192,
+      "uuid": "94646c2c-ae82-47ad-b45e-563be650d8c2",
+      "date": "2026-10-27T11:18:09-04:00",
+      "client": "COALFIELD DEVELOPMENT",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Manufacturing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "Department of Labor"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564191,
+      "uuid": "74fda7cd-bbc0-499b-9b85-07281856422f",
+      "date": "2026-10-27T11:17:37-04:00",
+      "client": "CITY/COUNTY ASSOCIATION OF GOVERNMENTS OF SAN MATEO COUNTY",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564190,
+      "uuid": "1794a9f4-56ed-46cd-8f32-80bf55bffcca",
+      "date": "2026-10-27T11:17:06-04:00",
+      "client": "MOTOR & EQUIPMENT MANUFACTURERS ASSOCIATION",
+      "registrant": "MOTOR & EQUIPMENT MANUFACTURERS ASSOCIATION",
+      "income": 430000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation",
+        "Trade",
+        "Technology"
+      ],
+      "topics": [
+        "Export Controls and Sanctions",
+        "Tariffs and Trade Enforcement",
+        "Trade Agreements"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "White House",
+        "EPA",
+        "FTC",
+        "Department of Transportation",
+        "Department of Commerce",
+        "OMB",
+        "Department of Energy",
+        "Treasury",
+        "DHS"
+      ],
+      "legislation": [
+        "H.R. 1566 (119th Congress) \u2014 REPAIR Act",
+        "H.R. 8730 (119th Congress) \u2014 Connected Vehicle Security Act of 2026",
+        "H.R. 10158 (119th Congress) \u2014 Automotive National and Economic Security Act of 2026",
+        "H.R. 8870 (119th Congress) \u2014 BUILD America 250 Act",
+        "H.R. 7389 (119th Congress) \u2014 Motor Vehicle Modernization Act of 2026",
+        "S. 1379 (119th Congress) \u2014 REPAIR Act",
+        "S. 4429 (119th Congress) \u2014 Connected Vehicle Security Act of 2026",
+        "S. 4679 (119th Congress) \u2014 A bill to amend title 49, United States Code, to allow the introduction of certain noncompliant motor vehicle equipment in interstate commerce for testing\u2026",
+        "Connected Vehicles Security Act of 2026"
+      ]
+    },
+    {
+      "id": 564189,
+      "uuid": "fc8c2755-7660-4dce-a5ec-f2cc21c8861f",
+      "date": "2026-10-27T11:17:00-04:00",
+      "client": "CITY OF RIFLE, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "HHS",
+        "USDA",
+        "Department of Energy"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564188,
+      "uuid": "960efde0-0445-4e45-a451-6e5e38d4bafb",
+      "date": "2026-10-27T11:16:27-04:00",
+      "client": "TOWN OF SILVERTHORNE, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "HHS",
+        "USDA",
+        "Department of Energy"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564187,
+      "uuid": "57793d91-66a4-440f-842a-3db7c12e5e70",
+      "date": "2026-10-27T11:15:50-04:00",
+      "client": "FRIENDS OF BLACKWATER",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Natural Resources"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of the Interior"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564186,
+      "uuid": "2b3f0d65-9539-4a7a-986a-04e268fa459b",
+      "date": "2026-10-27T11:15:12-04:00",
+      "client": "CITY OF CHARLESTON, WV",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564185,
+      "uuid": "e09d1ddc-e507-4a33-95ad-440d96c0b5df",
+      "date": "2026-10-27T11:14:22-04:00",
+      "client": "BRAXTON COUNTY DEVELOPMENT AUTHORITY, WV",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564184,
+      "uuid": "71eb0d61-023f-41e1-b7f5-35c93831e0e4",
+      "date": "2026-10-27T11:13:46-04:00",
+      "client": "ROARING FORK TRANSPORTATION AUTHORITY, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Transportation",
+      "domains": [
+        "Transportation"
+      ],
+      "topics": [
+        "General: Transportation"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564183,
+      "uuid": "6d8eebdb-9e8a-47cd-9250-1f3d1b6509d5",
+      "date": "2026-10-27T11:13:13-04:00",
+      "client": "TOWN OF MINTURN, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "Department of Commerce",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564182,
+      "uuid": "6b15c15d-0cbf-4cef-bd42-876bd45657b0",
+      "date": "2026-10-27T11:12:39-04:00",
+      "client": "GENERATION WEST VIRGINIA",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564181,
+      "uuid": "e51222ff-d8bb-474c-afaa-32779b147868",
+      "date": "2026-10-27T11:12:19-04:00",
+      "client": "CITY OF FREDERICK, MD",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "DOJ",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564180,
+      "uuid": "f0ad8627-76b6-449c-a763-79a15e55698d",
+      "date": "2026-10-27T11:10:55-04:00",
+      "client": "CITY OF ROCHESTER, MN",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "DOJ",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564179,
+      "uuid": "848286b4-5a0c-463d-ab1d-55de0c9a0afd",
+      "date": "2026-10-27T11:10:21-04:00",
+      "client": "WEST VIRGINIA MUNICIPAL LEAGUE",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564178,
+      "uuid": "e28ebcdd-a60c-4359-96c4-1469deb7bc37",
+      "date": "2026-10-27T11:09:42-04:00",
+      "client": "CITY OF WHEELING, WV",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce",
+        "DOJ",
+        "EPA",
+        "Department of Transportation",
+        "Department of Labor",
+        "Department of the Interior"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564177,
+      "uuid": "12d967ef-d4f9-42f8-9a14-8269674dd9cd",
+      "date": "2026-10-27T11:09:07-04:00",
+      "client": "CASPER AREA ECONOMIC DEVELOPMENT ALLIANCE, WY",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564176,
+      "uuid": "285ab9e0-f029-4fb4-93df-50b9693e0c8e",
+      "date": "2026-10-27T11:08:29-04:00",
+      "client": "CITY OF PORT ST. LUCIE, FL",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "DOJ",
+        "HHS",
+        "EPA",
+        "Department of Transportation",
+        "Department of Labor"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564175,
+      "uuid": "81916a05-73f3-42a2-942a-368d163182d0",
+      "date": "2026-10-27T11:07:55-04:00",
+      "client": "CITY OF FRANKFORT, KY",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "DOJ",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564174,
+      "uuid": "5f984c1a-b153-4a19-a586-58d2d493c7b1",
+      "date": "2026-10-27T11:07:21-04:00",
+      "client": "CITY OF GLENWOOD SPRINGS, CO",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564173,
+      "uuid": "f1343907-c80c-44f4-b080-8828a4102e05",
+      "date": "2026-10-27T11:06:50-04:00",
+      "client": "CATALYST CONNECTION",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Manufacturing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA",
+        "Department of Labor"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564172,
+      "uuid": "4ff5e383-f9da-4a7e-8858-a25f52614d96",
+      "date": "2026-10-27T11:06:18-04:00",
+      "client": "HUNTINGTON MUNICIPAL DEVELOPMENT AUTHORITY WV",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564171,
+      "uuid": "4e8fab06-d82b-4d50-b86d-260b68d4bd7e",
+      "date": "2026-10-27T11:05:46-04:00",
+      "client": "CITY OF CHARLES TOWN, WV",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "White House",
+        "DOJ",
+        "HHS",
+        "Department of Energy",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564170,
+      "uuid": "8d234cbc-a0bb-4aaf-8e19-754efbee34e3",
+      "date": "2026-10-27T11:05:10-04:00",
+      "client": "CITY OF STAMFORD, CT",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564169,
+      "uuid": "0ddf9046-d5f2-4f05-ace0-261c760c0f42",
+      "date": "2026-10-27T11:04:36-04:00",
+      "client": "GREATER JOHNSTOWN REGIONAL PARTNERSHIP, PA",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "DOJ",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564168,
+      "uuid": "aa5e8f0d-fc6a-4054-a64f-e383be45022c",
+      "date": "2026-10-27T11:04:03-04:00",
+      "client": "CITY OF RANSON, WV",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564167,
+      "uuid": "89c66f4e-5421-40d2-a2f5-e54513be747e",
+      "date": "2026-10-27T11:03:45-04:00",
+      "client": "CLIMATE COMMUNITIES",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564166,
+      "uuid": "6db6f90e-f116-4cf4-9b4d-73d40a032876",
+      "date": "2026-10-27T11:03:24-04:00",
+      "client": "CITY OF DUBUQUE, IA",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "EPA",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564165,
+      "uuid": "e82cfb4f-06ab-494c-b3b3-e12fe5ef3c87",
+      "date": "2026-10-27T11:02:45-04:00",
+      "client": "CITY OF ITHACA, NY",
+      "registrant": "SUSTAINABLE STRATEGIES DC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Housing and Urban Development",
+      "domains": [
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Urban Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Transportation"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564164,
+      "uuid": "b8b18fed-5f9f-4471-9ec0-e64e838a7bc6",
+      "date": "2026-10-27T10:48:31-04:00",
+      "client": "TRINITY PUBLIC UTILITIES DISTRICT",
+      "registrant": "SUSAN STOHR",
+      "income": 15000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "USDA",
+        "Department of the Interior",
+        "SEC",
+        "HHS",
+        "FDA"
+      ],
+      "legislation": [
+        "H.R. 471 (119th Congress) \u2014 Fix Our Forests Act",
+        "H.R. 2492 (119th Congress) \u2014 Fire Safe Electrical Corridors Act of 2025",
+        "H.R. 7567 (119th Congress) \u2014 Farm, Food, and National Security Act of 2026",
+        "S. 1462 (119th Congress) \u2014 Fix Our Forests Act",
+        "S. 349 (119th Congress) \u2014 Fire-Safe Electrical Corridors Act of 2025",
+        "S. 5653 (119th Congress) \u2014 A bill to prescribe permitting reform, and for other purposes."
+      ]
+    },
+    {
+      "id": 564163,
+      "uuid": "fd4ef826-2b39-45e9-b0a1-da463520d43c",
+      "date": "2026-10-27T10:45:11-04:00",
+      "client": "FORGE NANO",
+      "registrant": "STEPTOE LLP",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Manufacturing"
+      ],
+      "entities": [
+        "White House",
+        "Department of Defense"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564162,
+      "uuid": "8ecfb145-dba2-4f5b-aa49-c85d53953593",
+      "date": "2026-10-27T10:39:35-04:00",
+      "client": "ALASKA PROFESSIONAL HUNTERS ASSOCIATION",
+      "registrant": "BIRCH, HORTON, BITTNER & CHEROT",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment",
+        "Housing and Urban Development"
+      ],
+      "topics": [
+        "General: Natural Resources",
+        "General: Real Estate"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564161,
+      "uuid": "823cf142-49d0-4136-8749-115484504a8b",
+      "date": "2026-10-27T10:37:39-04:00",
+      "client": "GIRL SCOUTS OF THE U.S.A.",
+      "registrant": "GIRL SCOUTS OF THE U.S.A.",
+      "income": 20754.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Education and Social Policy",
+      "domains": [
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "General: Education"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564160,
+      "uuid": "1ddd5ea9-d70d-4e24-95e7-05e640dae3b1",
+      "date": "2026-10-27T10:22:36-04:00",
+      "client": "THE AMERICAN UNIVERSITY IN CAIRO",
+      "registrant": "THE AMERICAN UNIVERSITY IN CAIRO",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564159,
+      "uuid": "92f0eb32-9fba-4d31-afbe-2ad458519ddc",
+      "date": "2026-10-27T10:19:06-04:00",
+      "client": "AMERICAN AMBULANCE ASSOCIATION",
+      "registrant": "AMERICAN AMBULANCE ASSOCIATION",
+      "income": 350000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Finance and Tax",
+        "Labor and Immigration"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "HHS",
+        "Congress",
+        "White House",
+        "CMS",
+        "Department of Labor"
+      ],
+      "legislation": [
+        "H.R. 2232 (119th Congress) \u2014 Protecting Access to Ground Ambulance Medical Services Act of 2025",
+        "H.R. 2538 (119th Congress) \u2014 CARE Act of 2025",
+        "H.R. 7277 (119th Congress) \u2014 Emergency Medical Services Reimbursement for On-Scene and Support Act",
+        "H.R. 4011 (119th Congress) \u2014 Community Paramedicine Act of 2025",
+        "H.R. 3378 (119th Congress) \u2014 Racehorse Health and Safety Act of 2025",
+        "S. 1643 (119th Congress) \u2014 Protecting Access to Ground Ambulance Medical Services Act of 2025",
+        "S. 3145 (119th Congress) \u2014 CARE Act of 2025",
+        "S. 3730 (119th Congress) \u2014 Emergency Medical Services Reimbursement for On-Scene Care and Support Act",
+        "S. 1960 (119th Congress) \u2014 PEAKS Act",
+        "Emergencies Act of 2025",
+        "H.R. 2220 (119th Congress) \u2014 PARA\u2013EMT Act of 2025",
+        "H.R. 2094 (119th Congress) \u2014 HELPER Act of 2025"
+      ]
+    },
+    {
+      "id": 564158,
+      "uuid": "1e5c01ae-d853-40db-b33a-64963d9dfbb3",
+      "date": "2026-10-27T10:03:30-04:00",
+      "client": "WOUNDED WARRIOR PROJECT",
+      "registrant": "WOUNDED WARRIOR PROJECT",
+      "income": 630000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "Department of Veterans Affairs"
+      ],
+      "legislation": [
+        "H.R. 3219 (119th Congress) \u2014 GAMES Act",
+        "H.R. 6444 (119th Congress) \u2014 Blast Overpressure Research and Mitigation Task Force Act",
+        "H.R. 2102 (119th Congress) \u2014 Major Richard Star Act",
+        "H.R. 219 (119th Congress) \u2014 Improving Menopause Care for Veterans Act of 2025",
+        "H.R. 2717 (119th Congress) \u2014 Servicewomen and Veterans Menopause Research Act",
+        "H.R. 2201 (119th Congress) \u2014 Improving VA Training for Military Sexual Trauma Claims Act",
+        "H.R. 2576 (119th Congress) \u2014 Servicemembers and Veterans Empowerment and Support Act of 2025",
+        "H.R. 1971 (119th Congress) \u2014 Veterans SPORT Act",
+        "H.R. 740 (119th Congress) \u2014 Veterans\u2019 ACCESS Act of 2025",
+        "H.R. 6024 (119th Congress) \u2014 BRAVE Act of 2025",
+        "H.R. 6047 (119th Congress) \u2014 Sharri Briley and Eric Edmundson Veterans Benefits Expansion Act of 2026",
+        "H.R. 1364 (119th Congress) \u2014 Automotive Support Services to Improve Safe Transportation Act of 2025"
+      ]
+    },
+    {
+      "id": 564157,
+      "uuid": "18961580-5301-43ed-a67c-9c465eb9cf15",
+      "date": "2026-10-27T09:26:29-04:00",
+      "client": "VT GROUP",
+      "registrant": "JGW INTERNATIONAL LTD.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564156,
+      "uuid": "be87fd20-03b2-4167-aeee-d7c1e4ea1fe2",
+      "date": "2026-10-27T09:26:02-04:00",
+      "client": "SELEX COMMUNICATIONS",
+      "registrant": "JGW INTERNATIONAL LTD.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564155,
+      "uuid": "22d0f5d9-4091-4b43-b318-a931cc907e41",
+      "date": "2026-10-27T09:25:28-04:00",
+      "client": "AIRCONTROL TECHNOLOGIES LTD",
+      "registrant": "JGW INTERNATIONAL LTD.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564154,
+      "uuid": "ad370c5d-0e26-4489-b599-ce49f74491ce",
+      "date": "2026-10-27T09:24:54-04:00",
+      "client": "KLM",
+      "registrant": "JGW INTERNATIONAL LTD.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564153,
+      "uuid": "d26c0a3c-6b2f-4b9a-a354-8e5e91c35bb6",
+      "date": "2026-10-27T09:24:06-04:00",
+      "client": "ARGON ELECTRONICS",
+      "registrant": "JGW INTERNATIONAL LTD.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564152,
+      "uuid": "b8c69528-bcdb-4681-929b-9bf5b989ae92",
+      "date": "2026-10-27T09:23:12-04:00",
+      "client": "OXLEY",
+      "registrant": "JGW INTERNATIONAL LTD.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564151,
+      "uuid": "c7ffb626-f392-41e8-b515-49d39ca5d063",
+      "date": "2026-10-27T09:22:38-04:00",
+      "client": "PROTONEX TECHNOLOGY CORPORATION",
+      "registrant": "JGW INTERNATIONAL LTD.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564150,
+      "uuid": "0d24172b-bb14-4a6b-870c-98076ccb1c33",
+      "date": "2026-10-27T09:22:07-04:00",
+      "client": "SMITHS DETECTIONS",
+      "registrant": "JGW INTERNATIONAL LTD.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564149,
+      "uuid": "898be3a6-5fac-47b0-8c02-733825aae131",
+      "date": "2026-10-27T09:20:34-04:00",
+      "client": "AVON CADILLAC",
+      "registrant": "JGW INTERNATIONAL LTD.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564148,
+      "uuid": "160435ef-87aa-4e1e-a5a9-e24eda35867e",
+      "date": "2026-10-27T09:19:05-04:00",
+      "client": "KNOX SYSTEMS",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2028 National Defense Authorization Act",
+        "FY2028 Defense Appropriations Act",
+        "FY2027 National Defense Authorization Act"
+      ]
+    },
+    {
+      "id": 564147,
+      "uuid": "f4d603af-366e-4b8c-ac28-3f6e017e9049",
+      "date": "2026-10-27T09:16:55-04:00",
+      "client": "GREENBLU INC (DBA TIDAL METALS)",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2028 Defense Appropriations Bill FY2028 National Defense Authorization Act"
+      ]
+    },
+    {
+      "id": 564146,
+      "uuid": "3dbbf299-e1b3-4f29-9239-d4a4b443e548",
+      "date": "2026-10-27T09:14:43-04:00",
+      "client": "TITAN DYNAMICS",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2028 National Defense Authorization Act",
+        "FY2028 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564145,
+      "uuid": "ccb938a7-73fb-4f08-9626-53e6561ecdfa",
+      "date": "2026-10-27T09:14:12-04:00",
+      "client": "WATCHTOWER LABS",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564144,
+      "uuid": "fe187c7e-6751-4bf7-9785-19603e8e2e23",
+      "date": "2026-10-27T09:13:32-04:00",
+      "client": "DISTRIBUTED SPECTRUM",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2028 National Defense Authorization Act",
+        "FY2028 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564143,
+      "uuid": "cdd04688-4563-40e6-8bcf-4f1888f7bfe7",
+      "date": "2026-10-27T09:12:37-04:00",
+      "client": "STANDARD BOTS INC.",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Technology"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2028 National Defense Authorization Act",
+        "FY2028 Defense Appropriations Act",
+        "H.R. 7334 (119th Congress) \u2014 National Commission on Robotics Act"
+      ]
+    },
+    {
+      "id": 564142,
+      "uuid": "5ebd4530-2242-47d5-9ba0-41504df43751",
+      "date": "2026-10-27T09:09:45-04:00",
+      "client": "ATX DEFENSE",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2028 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564141,
+      "uuid": "22f2cb3a-1a9b-4451-be58-524b8171fe8c",
+      "date": "2026-10-27T09:09:01-04:00",
+      "client": "NATIONAL STEM TALENT INITIATIVE",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "Appropriations",
+        "Defense Authorization"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2028 National Defense Authorization Act",
+        "FY2028 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564140,
+      "uuid": "651e31d8-0d04-4bd1-85a1-9097140cd90a",
+      "date": "2026-10-27T09:05:48-04:00",
+      "client": "DOMINO DATA LAB",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564139,
+      "uuid": "10f6bb47-b1be-4d14-8e07-290145793133",
+      "date": "2026-10-27T09:05:24-04:00",
+      "client": "NTOPOLOGY",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564138,
+      "uuid": "3f388d17-14f0-4f5b-ac27-afe3b0fda525",
+      "date": "2026-10-27T09:04:34-04:00",
+      "client": "GENERAL INTUITION FEDERAL",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564137,
+      "uuid": "0f9a4561-2c09-4746-a243-25787ae11123",
+      "date": "2026-10-27T09:04:06-04:00",
+      "client": "DEFENSE UNICORNS",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564136,
+      "uuid": "0b1275c5-2bbb-4049-a8f4-fa7fdac67573",
+      "date": "2026-10-27T09:03:40-04:00",
+      "client": "INTEGRATE SPACE CORPORATION",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 40000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564135,
+      "uuid": "323e1ebf-9a80-4e59-9ebc-e189728c5d5a",
+      "date": "2026-10-27T09:02:39-04:00",
+      "client": "EUDIA",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564134,
+      "uuid": "896bb968-2acb-4e1f-bcfd-493cd1a8499b",
+      "date": "2026-10-27T09:01:49-04:00",
+      "client": "DRUG POLICY ALLIANCE",
+      "registrant": "DRUG POLICY ALLIANCE",
+      "income": 5490.41,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security",
+        "Industry and Business",
+        "Healthcare"
+      ],
+      "topics": [
+        "Substance Use and Treatment",
+        "Appropriations"
+      ],
+      "entities": [
+        "Congress",
+        "Senate"
+      ],
+      "legislation": [
+        "H.R. 5068 (119th Congress) \u2014 MORE Act",
+        "H.R. 1266 (119th Congress) \u2014 Combating Illicit Xylazine Act",
+        "H.R. 5415 (119th Congress) \u2014 Nitazene Control Act of 2025",
+        "H.R. 7970 (119th Congress) \u2014 STOP Nitazenes Act",
+        "S. 545 (119th Congress) \u2014 Combating Illicit Xylazine Act",
+        "S. 3076 (119th Congress) \u2014 Nitazene Control Act",
+        "Opportunity Act",
+        "Combating Xylazine Act",
+        "H.R. 5223 (119th Congress) \u2014 RESTORE Act of 2025",
+        "H.R. 7765 (119th Congress) \u2014 Fair Future Act"
+      ]
+    },
+    {
+      "id": 564133,
+      "uuid": "39d2206b-1403-4ef3-bcd8-e6a66eb9a095",
+      "date": "2026-10-27T08:59:39-04:00",
+      "client": "CORRIDIAN",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564132,
+      "uuid": "f019f9d8-7f93-4444-bc82-923753c3e167",
+      "date": "2026-10-27T08:58:18-04:00",
+      "client": "WEBAI INC.",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564131,
+      "uuid": "dccd27ac-f32b-4532-a469-e5c2bf0ec7e5",
+      "date": "2026-10-27T08:57:47-04:00",
+      "client": "OBVIANT",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 25000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564130,
+      "uuid": "1da03f37-b27d-482a-8a77-75b64a6a44ba",
+      "date": "2026-10-27T08:57:24-04:00",
+      "client": "JAMA SOFTWARE",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 25000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act"
+      ]
+    },
+    {
+      "id": 564129,
+      "uuid": "038c2f7d-c6fe-4e9d-87ab-b0b09a4c8da9",
+      "date": "2026-10-27T08:56:53-04:00",
+      "client": "WIRESCREEN",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 45000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Intelligence Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564128,
+      "uuid": "874ad632-af3c-4a26-ac4c-6ce5a1e76ab3",
+      "date": "2026-10-27T08:55:10-04:00",
+      "client": "CONDUCTOR AI",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564127,
+      "uuid": "09486bdf-8ae2-4766-934c-ca0b0566da15",
+      "date": "2026-10-27T08:54:42-04:00",
+      "client": "MANIFEST CYBER",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564126,
+      "uuid": "b911da3f-2ce7-4d7c-b35b-00de9ea52d0c",
+      "date": "2026-10-27T08:51:11-04:00",
+      "client": "ANTARES INDUSTRIES",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564125,
+      "uuid": "ae7766bd-1ecd-46dc-b7f4-c4666ef117f2",
+      "date": "2026-10-27T08:50:46-04:00",
+      "client": "PICOGRID",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 25000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564124,
+      "uuid": "546d60cc-273c-48ab-bc31-ba95b6b1c677",
+      "date": "2026-10-27T08:50:18-04:00",
+      "client": "NOMINAL",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 25000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564123,
+      "uuid": "866d5fb4-8fa3-4fc5-8aac-09d6b0197d87",
+      "date": "2026-10-27T08:49:43-04:00",
+      "client": "ALBEDO SPACE CORP.",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act",
+        "FY2027 Intelligence Authorization Act"
+      ]
+    },
+    {
+      "id": 564122,
+      "uuid": "1943e290-a202-4c65-97fb-4dd6bafe6bf6",
+      "date": "2026-10-27T08:49:16-04:00",
+      "client": "NOOKS",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 35000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564121,
+      "uuid": "ef305266-9ed0-4b92-9b70-dd3955f41165",
+      "date": "2026-10-27T08:48:50-04:00",
+      "client": "ELROY AIR",
+      "registrant": "REVERE FEDERAL STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Defense and Security",
+      "domains": [
+        "Defense and Security"
+      ],
+      "topics": [
+        "Defense Authorization",
+        "Appropriations"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": [
+        "FY2027 National Defense Authorization Act",
+        "FY2027 Defense Appropriations Act"
+      ]
+    },
+    {
+      "id": 564120,
+      "uuid": "dd4629cb-dcde-422b-b3a3-e26730b5b393",
+      "date": "2026-10-27T08:44:20-04:00",
+      "client": "ASSOCIATION OF JESUIT COLLEGES AND UNIVERSITIES",
+      "registrant": "ASSOCIATION OF JESUIT COLLEGES AND UNIVERSITIES",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Education and Social Policy",
+        "Labor and Immigration"
+      ],
+      "topics": [
+        "Appropriations",
+        "Education and Student Aid",
+        "Immigration and Visas"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "OMB",
+        "IRS",
+        "Department of Veterans Affairs"
+      ],
+      "legislation": [
+        "Higher Education Act",
+        "DREAM Act"
+      ]
+    },
+    {
+      "id": 564119,
+      "uuid": "ea7bfea1-c38f-4890-a762-3f484d0fba63",
+      "date": "2026-10-27T08:27:25-04:00",
+      "client": "VERTEX ENERGY OPERATING, LLC",
+      "registrant": "CAPITOL CONSULTING GROUP LLC (DC)",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564118,
+      "uuid": "2cfad87a-192b-4b59-abb7-625f76eb0a86",
+      "date": "2026-10-27T08:16:18-04:00",
+      "client": "FUTURE OF LIFE INSTITUTE",
+      "registrant": "BG ADVOCACY, LLC",
+      "income": 22200.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564117,
+      "uuid": "dcef633f-3cd3-4be1-afd7-7a275be93341",
+      "date": "2026-10-27T08:13:36-04:00",
+      "client": "DISCOVERY COMMUNICATIONS LLC",
+      "registrant": "BG ADVOCACY, LLC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Industry and Business",
+      "domains": [
+        "Industry and Business",
+        "Technology"
+      ],
+      "topics": [
+        "General: Arts Entertainment",
+        "General: Communications Broadcasting"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564116,
+      "uuid": "44d907bd-158b-46c1-8dc5-f958c20c8fb4",
+      "date": "2026-10-27T00:43:26-04:00",
+      "client": "AMERICAN PUBLIC ADVOCATES, INC.",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564115,
+      "uuid": "8ca40ee7-15c5-4be5-8e02-82d2f3a29c74",
+      "date": "2026-10-27T00:33:03-04:00",
+      "client": "BLACK BELT ENERGY GAS DISTRICT",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Finance and Tax",
+      "domains": [
+        "Finance and Tax",
+        "Energy and Environment",
+        "Industry and Business"
+      ],
+      "topics": [
+        "Disaster Resilience and Recovery"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy"
+      ],
+      "legislation": [
+        "S. 1480 (119th Congress) \u2014 American Infrastructure Bonds Act of 2025",
+        "American Infrastructure Bond Act",
+        "H.R. 4669 (119th Congress) \u2014 FEMA Act of 2025",
+        "S. 4944 (119th Congress) \u2014 American Energy and Mineral Infrastructure Act of 2026",
+        "S. 4506 (119th Congress) \u2014 Advancing Water Reuse Act",
+        "H.R. 2940 (119th Congress) \u2014 Advancing Water Reuse Act",
+        "H.R. 5301 (119th Congress) \u2014 PIPES Act of 2025"
+      ]
+    },
+    {
+      "id": 564114,
+      "uuid": "abf43e6e-0392-4bec-9235-a74da3c96452",
+      "date": "2026-10-27T00:24:29-04:00",
+      "client": "THE HEALTH CARE AUTHORITY CORPORATION OF THE CITY OF THOMASVILLE",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget"
+      ],
+      "topics": [
+        "Medicare and Medicaid",
+        "Drug Pricing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "HHS",
+        "CMS"
+      ],
+      "legislation": [
+        "One Big Beautiful Bill Act",
+        "Affordable Care Act",
+        "Rural Health Transformation Act"
+      ]
+    },
+    {
+      "id": 564113,
+      "uuid": "cd03cfaa-c1b4-4da2-83ed-37d7379484cd",
+      "date": "2026-10-27T00:21:06-04:00",
+      "client": "CITY OF THOMASVILLE",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Tax Policy",
+        "Medicare and Medicaid",
+        "Drug Pricing"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "USDA",
+        "HHS",
+        "Executive Office of the President",
+        "USTR"
+      ],
+      "legislation": [
+        "Affordable Care Act",
+        "S. 4506 (119th Congress) \u2014 Advancing Water Reuse Act",
+        "H.R. 2940 (119th Congress) \u2014 Advancing Water Reuse Act",
+        "One Big Beautiful Bill Act",
+        "H.R. 4669 (119th Congress) \u2014 FEMA Act of 2025",
+        "S. 1480 (119th Congress) \u2014 American Infrastructure Bonds Act of 2025",
+        "Rural Health Transformational Act",
+        "American Infrastructure Bond Act",
+        "H.R. 4213 (119th Congress) \u2014 Department of Homeland Security Appropriations Act, 2026",
+        "H.R. 4552 (119th Congress) \u2014 Transportation, Housing and Urban Development, and Related Agencies Appropriations Act, 2026",
+        "S. 2465 (119th Congress) \u2014 Transportation, Housing and Urban Development, and Related Agencies Appropriations Act, 2026"
+      ]
+    },
+    {
+      "id": 564112,
+      "uuid": "cc5bbb7a-5b8c-4c0c-8409-08499a18f7d1",
+      "date": "2026-10-27T00:14:44-04:00",
+      "client": "WASHINGTON COUNTY HEALTH CARE AUTHORITY, INC.",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare",
+        "Government and Budget",
+        "Industry and Business"
+      ],
+      "topics": [
+        "Drug Pricing",
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "HHS",
+        "CMS"
+      ],
+      "legislation": [
+        "One Big Beautiful Bill Act",
+        "Affordable Care Act",
+        "H.R. 4213 (119th Congress) \u2014 Department of Homeland Security Appropriations Act, 2026"
+      ]
+    },
+    {
+      "id": 564111,
+      "uuid": "5abaac6f-d789-4e40-9009-2b6315e1c689",
+      "date": "2026-10-27T00:08:30-04:00",
+      "client": "SUMTER COUNTY COMMISSION",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Defense and Security",
+        "Industry and Business"
+      ],
+      "topics": [
+        "General: Budget Appropriations",
+        "General: Law Enforcement",
+        "General: Disaster Planning"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress",
+        "OMB",
+        "DHS",
+        "USDA"
+      ],
+      "legislation": [
+        "H.R. 5371 (119th Congress) \u2014 Continuing Appropriations, Agriculture, Legislative Branch, Military Construction and Veterans Affairs, and Extensions Act, 2026",
+        "H.R. 5342 (119th Congress) \u2014 Commerce, Justice, Science, and Related Agencies Appropriations Act, 2026",
+        "H.R. 4552 (119th Congress) \u2014 Transportation, Housing and Urban Development, and Related Agencies Appropriations Act, 2026",
+        "S. 2354 (119th Congress) \u2014 Commerce, Justice, Science, and Related Agencies Appropriations Act, 2026"
+      ]
+    },
+    {
+      "id": 564110,
+      "uuid": "2a4947eb-81ea-4499-878d-9ce9417c2cc6",
+      "date": "2026-10-27T00:02:45-04:00",
+      "client": "MAGNOLIA MANOR, INC.",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564108,
+      "uuid": "aa07b49b-9b59-4058-88ce-ffea8458c691",
+      "date": "2026-10-26T23:50:29-04:00",
+      "client": "TOWN OF GROVE HILL",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "General: Budget Appropriations",
+        "General: Economics"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
+      "legislation": [
+        "S. 4506 (119th Congress) \u2014 Advancing Water Reuse Act",
+        "H.R. 2940 (119th Congress) \u2014 Advancing Water Reuse Act"
+      ]
+    },
+    {
+      "id": 564107,
+      "uuid": "57cb70d0-3ae3-4ac9-a128-0821a7b87e98",
+      "date": "2026-10-26T23:45:52-04:00",
+      "client": "CITY OF JACKSON",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564106,
+      "uuid": "92b728bc-a63f-46c5-b997-e40ba63d86fe",
+      "date": "2026-10-26T22:29:19-04:00",
+      "client": "ROWE PLASTIC SURGERY",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564105,
+      "uuid": "e311be94-354b-4787-ae6b-b833ac5259ea",
+      "date": "2026-10-26T22:28:35-04:00",
+      "client": "AMERICAN ACADEMY OF ORTHOPAEDIC SURGEONS",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564103,
+      "uuid": "d4891b82-80e7-4824-bf15-ddaf82b442b9",
+      "date": "2026-10-26T22:27:07-04:00",
+      "client": "SOUTHEAST ALABAMA GAS DISTRICT",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Economic Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564102,
+      "uuid": "5a48000f-86b9-496b-9d5f-e61ca5f297c6",
+      "date": "2026-10-26T22:26:32-04:00",
+      "client": "PROFESSIONAL COMPOUNDING CENTERS OF AMERICA",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564100,
+      "uuid": "33b09e69-5806-4eb6-adfc-4c1af83e85cd",
+      "date": "2026-10-26T22:24:45-04:00",
+      "client": "NATIONAL INFUSION CENTER ASSOCIATION",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564099,
+      "uuid": "83fbf3ec-2c9e-4a91-8b46-99f8fbb78f14",
+      "date": "2026-10-26T22:23:59-04:00",
+      "client": "NEW JERSEY SHARING NETWORK",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564098,
+      "uuid": "87851444-2f52-405d-860e-1f73357d6e4b",
+      "date": "2026-10-26T22:23:12-04:00",
+      "client": "EMERGENCY DEPARTMENT PRACTICE MANAGEMENT ASSOCIATION",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 30000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564097,
+      "uuid": "b9942fe3-47f4-4240-aaf8-e854b4d8b1f9",
+      "date": "2026-10-26T22:22:20-04:00",
+      "client": "AMERICAN COLLEGE OF SURGEONS",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 60000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564096,
+      "uuid": "0f7bd8bf-3e37-49d0-b17f-7c43847a62a8",
+      "date": "2026-10-26T22:21:34-04:00",
+      "client": "AMERICAN SOCIETY OF BREAST SURGEONS",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564095,
+      "uuid": "c7bf53a8-5499-4870-9835-a996617f7dab",
+      "date": "2026-10-26T22:20:47-04:00",
+      "client": "BALDWIN EXPRESS PIPELINE, A COOPERATIVE DISTRICT",
+      "registrant": "LAW OFFICES OF GEORGE HARRIS, LLC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Finance and Tax"
+      ],
+      "topics": [
+        "Economic Development"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Congress"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564093,
+      "uuid": "a69aa927-ad70-4810-b1eb-297944d76b35",
+      "date": "2026-10-26T22:19:39-04:00",
+      "client": "AMERICAN ACADEMY OF ALLERGY, ASTHMA, AND IMMUNOLOGY",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 15000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564092,
+      "uuid": "7e99799d-71fa-4d5d-8a28-395838d97b2c",
+      "date": "2026-10-26T22:18:43-04:00",
+      "client": "TOBII-DYNAVOX",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564091,
+      "uuid": "0315a748-5f3f-438a-a51b-43af6154090f",
+      "date": "2026-10-26T22:17:59-04:00",
+      "client": "ONCOLOGY NURSING SOCIETY",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 20000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564090,
+      "uuid": "e41ce699-efaf-4176-a8c3-01b86c95076c",
+      "date": "2026-10-26T22:17:05-04:00",
+      "client": "AMERICAN PODIATRIC MEDICAL ASSOCIATION",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564089,
+      "uuid": "a7c359f3-8781-4c86-b271-79739c25435c",
+      "date": "2026-10-26T22:16:04-04:00",
+      "client": "PHARMACEUTICAL RESEARCH MANUFACTURERS OF AMERICA",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564088,
+      "uuid": "a2126039-0e0d-4804-b122-97bbd79dabb1",
+      "date": "2026-10-26T22:15:19-04:00",
+      "client": "JOHNSON & JOHNSON SERVICES INC",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564087,
+      "uuid": "6a4a9e08-d2f4-4696-b405-a8fc504dd290",
+      "date": "2026-10-26T22:13:47-04:00",
+      "client": "ALLIANCE OF SPECIALTY MEDICINE",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 40000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564086,
+      "uuid": "7fd0c156-9a10-4d56-b05b-797cebffa4e2",
+      "date": "2026-10-26T22:12:50-04:00",
+      "client": "AMERICAN COLLEGE OF MOHS SURGEONS",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 10000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564085,
+      "uuid": "8ae923a4-8895-4ad6-8ea1-4a9e5d9fd554",
+      "date": "2026-10-26T22:11:36-04:00",
+      "client": "AMERICAN ASSOCIATION OF TISSUE BANKS",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 60000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564084,
+      "uuid": "8401b526-7dca-4be3-aaf7-4fea8896a08d",
+      "date": "2026-10-26T22:10:49-04:00",
+      "client": "AMERICAN ACADEMY OF HOSPICE AND PALLIATIVE CARE",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 40000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564083,
+      "uuid": "44a4e6e3-ee7f-495c-9733-dc981256dfdd",
+      "date": "2026-10-26T22:09:55-04:00",
+      "client": "HEART RHYTHM SOCIETY",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564082,
+      "uuid": "f5b50bae-08aa-4192-9cda-d64fcfe45ea7",
+      "date": "2026-10-26T22:09:14-04:00",
+      "client": "COALITION OF STATE RHEUMATOLOGY ORGANIZATIONS",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 5000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564081,
+      "uuid": "0826c4ec-9e45-47e2-b517-9209735ec5e3",
+      "date": "2026-10-26T22:08:20-04:00",
+      "client": "INFECTIOUS DISEASE SOCIETY OF AMERICA",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 70000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564080,
+      "uuid": "d6f44330-c0d0-455b-96d3-0e3fda9c2d09",
+      "date": "2026-10-26T22:07:13-04:00",
+      "client": "AMERICAN SOCIETY OF PLASTIC SURGERY",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 70000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564079,
+      "uuid": "436658b9-624d-4cfc-a29d-de016c027328",
+      "date": "2026-10-26T22:06:20-04:00",
+      "client": "AMERICAN GASTROENTEROLOGICAL ASSOCIATION",
+      "registrant": "HART HEALTH STRATEGIES",
+      "income": 50000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 564075,
+      "uuid": "9c8f81a7-efe3-4a01-a993-a90fefd7d224",
+      "date": "2026-10-26T21:36:59-04:00",
+      "client": "MOSAIC",
+      "registrant": "MOSAIC",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Healthcare",
+      "domains": [
+        "Healthcare"
+      ],
+      "topics": [
+        "Medicare and Medicaid"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Labor"
+      ],
+      "legislation": [
+        "H.R. 8540 (119th Congress) \u2014 HCBS Access Act",
+        "H.R. 6137 (119th Congress) \u2014 Recognizing the Role of Direct Support Professionals Act",
+        "S. 5321 (119th Congress) \u2014 HCBS Access Act",
+        "S. 3211 (119th Congress) \u2014 Recognizing the Role of Direct Support Professionals Act"
+      ]
+    },
     {
       "id": 564068,
       "uuid": "252cf687-2e17-475d-83dc-e493c5f0c4f9",
@@ -325,6 +3534,51 @@
       ]
     },
     {
+      "id": 564074,
+      "uuid": "001f33c7-cef9-4205-b34a-adf9e0b3e436",
+      "date": "2026-10-26T15:51:26-04:00",
+      "client": "INTERNATIONAL ASSOCIATION OF REFRIGERATED WAREHOUSES",
+      "registrant": "INTERNATIONAL ASSOCIATION OF REFRIGERATED WAREHOUSES",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564073,
+      "uuid": "9af81df6-e582-45c6-9d25-8dc857e1bc0a",
+      "date": "2026-10-26T15:48:53-04:00",
+      "client": "INTERNATIONAL ASSOCIATION OF REFRIGERATED WAREHOUSES",
+      "registrant": "INTERNATIONAL ASSOCIATION OF REFRIGERATED WAREHOUSES",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 564072,
+      "uuid": "aa688ba6-e2d1-4747-9da5-6813111f38d6",
+      "date": "2026-10-26T15:47:01-04:00",
+      "client": "INTERNATIONAL ASSOCIATION OF REFRIGERATED WAREHOUSES",
+      "registrant": "INTERNATIONAL ASSOCIATION OF REFRIGERATED WAREHOUSES",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 1,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
       "id": 564056,
       "uuid": "1d2b996e-112f-4771-8571-0b2b4d2c4836",
       "date": "2026-10-26T15:43:13-04:00",
@@ -400,27 +3654,18 @@
       "legislation": []
     },
     {
-      "id": 564053,
-      "uuid": "f7b8f7e9-01cf-4ceb-a392-037d37b06b6d",
-      "date": "2026-10-26T15:32:45-04:00",
-      "client": "ALASKA PROFESSIONAL HUNTERS ASSOCIATION",
-      "registrant": "BIRCH, HORTON, BITTNER & CHEROT",
-      "income": 0.0,
+      "id": 564071,
+      "uuid": "f6d2a5a8-cb07-43b6-a06d-8db84c51130a",
+      "date": "2026-10-26T15:26:23-04:00",
+      "client": "FFRF ACTION FUND",
+      "registrant": "FFRF ACTION FUND",
+      "income": 10000.0,
       "year": 2026,
       "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Housing and Urban Development"
-      ],
-      "topics": [
-        "General: Natural Resources",
-        "General: Real Estate"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
       "legislation": []
     },
     {
@@ -711,6 +3956,32 @@
       "legislation": []
     },
     {
+      "id": 564070,
+      "uuid": "59d7ff4d-76e8-43eb-ad36-557b24ee314f",
+      "date": "2026-10-26T13:31:04-04:00",
+      "client": "WOODBERRY ASSOCIATES LLC ON BEHALF OF COLORADO STATE UNIVERSITY FOUNDATION",
+      "registrant": "CAPITOL COUNSEL LLC",
+      "income": 50000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Agriculture and Food",
+      "domains": [
+        "Agriculture and Food",
+        "Healthcare"
+      ],
+      "topics": [
+        "General: Agriculture",
+        "General: Health Issues"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "Department of the Interior"
+      ],
+      "legislation": []
+    },
+    {
       "id": 564041,
       "uuid": "f88123ae-f7c2-4a42-810a-5499cc9c65d1",
       "date": "2026-10-26T13:25:21-04:00",
@@ -748,6 +4019,21 @@
         "Department of Commerce",
         "USTR"
       ],
+      "legislation": []
+    },
+    {
+      "id": 564069,
+      "uuid": "a5790ba6-8133-4476-9481-269ae8cb7683",
+      "date": "2026-10-26T13:08:40-04:00",
+      "client": "IMPOSSIBLE FOODS INC.",
+      "registrant": "IMPOSSIBLE FOODS INC.",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
       "legislation": []
     },
     {
@@ -3924,3479 +7210,6 @@
       "legislation": [
         "One Big Beautiful Bill Act"
       ]
-    },
-    {
-      "id": 563907,
-      "uuid": "3da3d476-264b-4b7d-abec-b2ff0b83767a",
-      "date": "2026-10-23T11:18:05-04:00",
-      "client": "PGA TOUR, INC.",
-      "registrant": "FGS GLOBAL (US) LLC (FKA FGH HOLDINGS LLC)",
-      "income": 150000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563891,
-      "uuid": "e6c6655c-66f1-4edf-838b-f6321301c77c",
-      "date": "2026-10-23T11:17:23-04:00",
-      "client": "TECHNIP ENERGIES USA, INC.",
-      "registrant": "WINNING STRATEGIES WASHINGTON",
-      "income": 0.0,
-      "year": 2025,
-      "quarter": 4,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563906,
-      "uuid": "ad4ac02c-a042-45a2-bfbc-30d7afbfd9d8",
-      "date": "2026-10-23T11:16:25-04:00",
-      "client": "SOLANO COUNTY",
-      "registrant": "PARAGON GOVERNMENT RELATIONS",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Transportation",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Housing Policy",
-        "Farm Policy",
-        "Maritime and Fisheries",
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "EPA",
-        "Department of the Interior",
-        "Army Corps of Engineers",
-        "USDA",
-        "Department of Commerce",
-        "White House",
-        "OMB"
-      ],
-      "legislation": [
-        "H.R. 471 (119th Congress) \u2014 Fix Our Forests Act"
-      ]
-    },
-    {
-      "id": 563890,
-      "uuid": "3def58f6-fd55-4097-8584-534d2cfb20ea",
-      "date": "2026-10-23T11:16:15-04:00",
-      "client": "RESNET",
-      "registrant": "WINNING STRATEGIES WASHINGTON",
-      "income": 30000.0,
-      "year": 2025,
-      "quarter": 4,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Housing and Urban Development",
-        "Finance and Tax"
-      ],
-      "topics": [
-        "Tax Policy",
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "EPA",
-        "Department of Energy",
-        "Department of Veterans Affairs"
-      ],
-      "legislation": [
-        "Consolidated Appropriations Act, 2022"
-      ]
-    },
-    {
-      "id": 563889,
-      "uuid": "b1bca8f7-f00e-4117-9d6d-c07f91b486f3",
-      "date": "2026-10-23T11:14:39-04:00",
-      "client": "PROLOGIS, L.P.",
-      "registrant": "WINNING STRATEGIES WASHINGTON",
-      "income": 40000.0,
-      "year": 2025,
-      "quarter": 4,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation",
-        "Trade",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Tax Policy",
-        "Renewable Energy",
-        "Tariffs and Trade Enforcement",
-        "Electric Vehicles"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Transportation",
-        "Treasury",
-        "Department of Commerce",
-        "FAA",
-        "SEC",
-        "Executive Office of the President"
-      ],
-      "legislation": [
-        "One Big Beautiful Bill Act"
-      ]
-    },
-    {
-      "id": 563905,
-      "uuid": "4d7a7a68-4d83-4d3a-8ce4-aa182bbe1c9a",
-      "date": "2026-10-23T11:12:17-04:00",
-      "client": "NAVIGATORS GLOBAL LLC ON BEHALF OF THE GEO GROUP, INC.",
-      "registrant": "LIBERTY GOVERNMENT AFFAIRS",
-      "income": 7500.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563904,
-      "uuid": "9ef51836-1587-4f77-b253-673f5d632830",
-      "date": "2026-10-23T11:11:13-04:00",
-      "client": "THE SUSAN G. KOMEN BREAST CANCER FOUNDATION, INC. DBA SUSAN G. KOMEN",
-      "registrant": "THE SUSAN G. KOMEN BREAST CANCER FOUNDATION, INC. DBA SUSAN G. KOMEN",
-      "income": 70000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare",
-        "Government and Budget",
-        "Finance and Tax"
-      ],
-      "topics": [
-        "Clinical Research and Diagnostics",
-        "Medicare and Medicaid",
-        "Appropriations",
-        "FDA Regulation",
-        "Postal Policy",
-        "Defense Authorization"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "HHS",
-        "CMS",
-        "OMB",
-        "Department of Defense",
-        "FDA",
-        "Treasury",
-        "Department of Labor",
-        "Department of Energy"
-      ],
-      "legislation": [
-        "H.R. 8358 (119th Congress) \u2014 Breast Cancer Research Stamp Reauthorization Act of 2026",
-        "S. 4318 (119th Congress) \u2014 Breast Cancer Stamp Reauthorization Act",
-        "H.R. 2048 (119th Congress) \u2014 Metastatic Breast Cancer Access to Care Act",
-        "H.R. 6280 (119th Congress) \u2014 Access to Genetic Counselor Services Act of 2025",
-        "H.R. 4752 (119th Congress) \u2014 Reducing Hereditary Cancer Act",
-        "One Big Beautiful Bill Act",
-        "S. 3442 (119th Congress) \u2014 Metastatic Breast Cancer Access to Care Act",
-        "S. 3607 (119th Congress) \u2014 Access to Genetic Counselor Services Act of 2026",
-        "S. 27060 (119th Congress)",
-        "Social Security Act",
-        "H.R. 8646 (119th Congress) \u2014 Agriculture, Rural Development, Food and Drug Administration, and Related Agency Appropriations Act, 2027",
-        "H.R. 9495 (119th Congress) \u2014 Department of Defense Appropriations Act, 2027"
-      ]
-    },
-    {
-      "id": 563888,
-      "uuid": "96d5184b-4acf-4c4b-b29b-ea896d11c5f5",
-      "date": "2026-10-23T11:10:53-04:00",
-      "client": "AMERICAN PROPERTY CASUALTY INSURANCE ASSOCIATION",
-      "registrant": "AMERICAN PROPERTY CASUALTY INSURANCE ASSOCIATION FKA PROPERTY CASUALTY INSURERS ASSOC. OF AMERICA",
-      "income": 1410000.0,
-      "year": 2025,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business",
-        "Finance and Tax",
-        "Transportation"
-      ],
-      "topics": [
-        "Data Privacy",
-        "Cybersecurity",
-        "Disaster Resilience and Recovery",
-        "Housing Policy",
-        "Insurance Policy",
-        "Farm Policy",
-        "Banking and Financial Regulation",
-        "Renewable Energy",
-        "Tax Policy",
-        "Appropriations",
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "DHS",
-        "Treasury",
-        "Department of Transportation",
-        "USDA",
-        "CFPB",
-        "FAA",
-        "SEC",
-        "White House"
-      ],
-      "legislation": [
-        "H.R. 168 (119th Congress) \u2014 TORCH Act",
-        "H.R. 178 (119th Congress) \u2014 To require the Secretary of Agriculture to carry out activities to suppress wildfires, and for other purposes.",
-        "H.R. 179 (119th Congress) \u2014 Proven Forest Management Act of 2025",
-        "H.R. 204 (119th Congress) \u2014 ACRES Act",
-        "H.R. 345 (119th Congress) \u2014 Fire Department Repayment Act of 2025",
-        "H.R. 390 (119th Congress) \u2014 ACERO Act",
-        "H.R. 501 (119th Congress) \u2014 Promoting Resilient Buildings Act of 2025",
-        "H.R. 527 (119th Congress) \u2014 Strengthening Wildfire Resiliency Through Satellites Act of 2025",
-        "H.R. 528 (119th Congress) \u2014 Post-Disaster Reforestation and Restoration Act",
-        "H.R. 582 (119th Congress) \u2014 Community Protection and Wildfire Resilience Act",
-        "H.R. 731 (119th Congress) \u2014 Green Tape Elimination Act of 2025",
-        "H.R. 753 (119th Congress) \u2014 FIRE Act of 2025"
-      ]
-    },
-    {
-      "id": 563903,
-      "uuid": "965f9267-2f3e-4f63-80eb-9e50503d1278",
-      "date": "2026-10-23T11:09:05-04:00",
-      "client": "KINGS COUNTY CALIFORNIA",
-      "registrant": "PARAGON GOVERNMENT RELATIONS",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Housing and Urban Development",
-      "domains": [
-        "Housing and Urban Development",
-        "Agriculture and Food",
-        "Industry and Business"
-      ],
-      "topics": [
-        "Housing Policy",
-        "Farm Policy",
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "USDA",
-        "Department of Transportation"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563902,
-      "uuid": "9a7fb30b-fab9-43a5-8919-fbe71329c997",
-      "date": "2026-10-23T11:07:51-04:00",
-      "client": "DJI TECHNOLOGY, INC.",
-      "registrant": "LIBERTY GOVERNMENT AFFAIRS",
-      "income": 27500.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation",
-        "Technology"
-      ],
-      "topics": [
-        "Defense Authorization"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "FCC"
-      ],
-      "legislation": [
-        "FY2027 National Defense Authorization Act"
-      ]
-    },
-    {
-      "id": 563901,
-      "uuid": "708f7c31-725b-41c2-8ea4-a10654863647",
-      "date": "2026-10-23T11:05:22-04:00",
-      "client": "COUNTY WELFARE DIRECTORS ASSOCIATION OF CALIFORNIA",
-      "registrant": "PARAGON GOVERNMENT RELATIONS",
-      "income": 25000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Education and Social Policy",
-      "domains": [
-        "Education and Social Policy"
-      ],
-      "topics": [
-        "General: Welfare"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "One Big Beautiful Bill Act"
-      ]
-    },
-    {
-      "id": 563900,
-      "uuid": "6ab8dead-7862-4d32-b1c7-40ad9a65a1ce",
-      "date": "2026-10-23T11:04:14-04:00",
-      "client": "CALIFORNIA STATE ASSOCIATION OF COUNTIES",
-      "registrant": "PARAGON GOVERNMENT RELATIONS",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Defense and Security",
-        "Transportation"
-      ],
-      "topics": [
-        "Farm Policy",
-        "Housing Policy",
-        "Disaster Resilience and Recovery"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "USDA",
-        "FCC"
-      ],
-      "legislation": [
-        "H.R. 471 (119th Congress) \u2014 Fix Our Forests Act",
-        "H.R. 3227 (119th Congress) \u2014 Farm Workforce Modernization Act of 2025"
-      ]
-    },
-    {
-      "id": 563899,
-      "uuid": "2ebd5199-c270-417a-925e-5701f6cd9c8d",
-      "date": "2026-10-23T10:58:50-04:00",
-      "client": "WUXI APPTEC SALES LLC",
-      "registrant": "LIBERTY GOVERNMENT AFFAIRS",
-      "income": 40000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563887,
-      "uuid": "a10c1956-4e94-4d80-babd-8fa857ade938",
-      "date": "2026-10-23T10:23:39-04:00",
-      "client": "CROWN CORK & SEAL",
-      "registrant": "GREENLEE PARTNERS, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563886,
-      "uuid": "e4c631d7-702e-47ea-a0cc-571c7d12fcdd",
-      "date": "2026-10-23T10:10:02-04:00",
-      "client": "GUARDANT HEALTH, INC.",
-      "registrant": "TODD STRATEGY GROUP",
-      "income": 80000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Health Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "HHS",
-        "CMS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563885,
-      "uuid": "bd52c253-cbdd-416d-a784-9061ceccd84e",
-      "date": "2026-10-23T09:51:45-04:00",
-      "client": "GOVERNMENT OF THE U.S. VIRGIN ISLANDS",
-      "registrant": "WINSTON & STRAWN LLP",
-      "income": 210000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Finance and Tax",
-        "Labor and Immigration"
-      ],
-      "topics": [
-        "Disaster Resilience and Recovery",
-        "Immigration and Visas",
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "CMS",
-        "Department of the Interior",
-        "White House",
-        "Department of Energy",
-        "EPA",
-        "Treasury",
-        "IRS",
-        "DHS"
-      ],
-      "legislation": [
-        "H.R. 362 (119th Congress) \u2014 Virgin Islands Visa Waiver Act of 2025"
-      ]
-    },
-    {
-      "id": 563884,
-      "uuid": "8ed0e3c6-f79c-4157-bd94-34fa854ef664",
-      "date": "2026-10-23T09:49:58-04:00",
-      "client": "LIBERTY MARITIME CORPORATION",
-      "registrant": "WINSTON & STRAWN LLP",
-      "income": 270000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation"
-      ],
-      "topics": [
-        "Maritime and Fisheries"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "USDA",
-        "Department of Transportation"
-      ],
-      "legislation": [
-        "H.R. 1207 (119th Congress) \u2014 To transfer the functions, duties, responsibilities, assets, liabilities, orders, determinations, rules, regulations, permits, grants, loans, contracts\u2026",
-        "S. 525 (119th Congress) \u2014 A bill to transfer the functions, duties, responsibilities, assets, liabilities, orders, determinations, rules, regulations, permits, grants, loans\u2026"
-      ]
-    },
-    {
-      "id": 563883,
-      "uuid": "3a555569-0f6f-402e-8de0-141a0cbb3d56",
-      "date": "2026-10-23T09:13:15-04:00",
-      "client": "OPERATIONAL CONTROL ALLIANCE",
-      "registrant": "LANDMARK CONSULTING SOLUTIONS",
-      "income": 15000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Other",
-      "domains": [
-        "Other",
-        "Transportation"
-      ],
-      "topics": [
-        "Aviation Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "FAA"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563882,
-      "uuid": "25ff7bec-0952-4b49-a8aa-3e9736c3031a",
-      "date": "2026-10-23T09:05:32-04:00",
-      "client": "ZETA GLOBAL CORP.",
-      "registrant": "EMERGENT STRATEGIES",
-      "income": 75000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Technology",
-      "domains": [
-        "Technology",
-        "Education and Social Policy"
-      ],
-      "topics": [
-        "Data Privacy",
-        "Artificial Intelligence",
-        "Advertising and Marketing"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 8413 (119th Congress) \u2014 SECURE Data Act"
-      ]
-    },
-    {
-      "id": 563881,
-      "uuid": "614e309a-0a66-44ad-b5ae-ac73d8bd1307",
-      "date": "2026-10-23T08:47:32-04:00",
-      "client": "ECHODYNE CORP",
-      "registrant": "ECHODYNE CORP",
-      "income": 11250.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Technology",
-        "Transportation"
-      ],
-      "topics": [
-        "Defense Authorization",
-        "Aviation Policy",
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "FAA",
-        "Department of Transportation",
-        "White House",
-        "DOJ",
-        "FCC",
-        "Department of Energy",
-        "Department of the Interior",
-        "DHS"
-      ],
-      "legislation": [
-        "Skies Act",
-        "S. 4380 (119th Congress) \u2014 Critical Infrastructure Airspace Defense Act",
-        "National Defense Authorization Act",
-        "SAFER SKIES Act"
-      ]
-    },
-    {
-      "id": 563880,
-      "uuid": "119a8692-8f18-49ba-998e-1f05e26be0e6",
-      "date": "2026-10-23T08:32:12-04:00",
-      "client": "SUMMIT SCHOOL SERVICES LLC (FKA NATIONAL EXPRESS, LLC)",
-      "registrant": "HEARTLAND SOLUTIONS GROUP, INC.",
-      "income": 5000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Labor and Immigration",
-      "domains": [
-        "Labor and Immigration",
-        "Transportation"
-      ],
-      "topics": [
-        "Electric Vehicles"
-      ],
-      "entities": [
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563879,
-      "uuid": "8f3e71dc-dd40-420d-8ddd-5126f4e79913",
-      "date": "2026-10-23T08:26:02-04:00",
-      "client": "ZEBRA TECHNOLOGIES CORPORATION",
-      "registrant": "HEARTLAND SOLUTIONS GROUP, INC.",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Technology",
-      "domains": [
-        "Technology",
-        "Defense and Security",
-        "Education and Social Policy"
-      ],
-      "topics": [
-        "Veterans Policy",
-        "Tariffs and Trade Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Veterans Affairs"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563878,
-      "uuid": "8500c306-9210-46ec-8def-5c4186254b52",
-      "date": "2026-10-23T07:51:44-04:00",
-      "client": "DEAF DIPLOMACY GROUP / DEAF HEALTH COALITION",
-      "registrant": "DEAF DIPLOMACY GROUP / DEAF HEALTH COALITION",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563877,
-      "uuid": "5ba3c793-d597-45e1-896b-4f44b0e904db",
-      "date": "2026-10-23T06:50:56-04:00",
-      "client": "BUSINESS SOFTWARE ALLIANCE",
-      "registrant": "BUSINESS SOFTWARE ALLIANCE",
-      "income": 430000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Technology",
-        "Education and Social Policy"
-      ],
-      "topics": [
-        "Intellectual Property",
-        "Data Privacy",
-        "Cybersecurity",
-        "Artificial Intelligence",
-        "Labor and Employment",
-        "Trade Agreements",
-        "Defense Authorization"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "Department of Commerce",
-        "USTR",
-        "FTC"
-      ],
-      "legislation": [
-        "H.R. 6048 (119th Congress) \u2014 NDO Fairness Act of 2025",
-        "S. 3663 (119th Congress) \u2014 NDO Fairness Act of 2026",
-        "H.R. 3220 (119th Congress) \u2014 Quantum Sandbox for Near-Term Applications Act of 2025",
-        "H.R. 3788 (119th Congress) \u2014 Support for Quantum Supply Chains Act",
-        "H.R. 4942 (119th Congress) \u2014 Quantum Encryption Readiness and Resilience Act",
-        "H.R. 1000 (119th Congress) \u2014 Cyber PIVOTT Act",
-        "H.R. 633 (119th Congress) \u2014 TAKE IT DOWN Act",
-        "H.R. 2385 (119th Congress) \u2014 CREATE AI Act of 2025",
-        "H.R. 4142 (119th Congress) \u2014 No Adversarial AI Act",
-        "H.R. 6875 (119th Congress) \u2014 AI OVERWATCH Act",
-        "H.R. 8516 (119th Congress) \u2014 American Leadership in AI Act",
-        "H.R. 9442 (119th Congress) \u2014 Artificial Intelligence Data Center Moratorium Act"
-      ]
-    },
-    {
-      "id": 563876,
-      "uuid": "ecd54811-c94d-4740-b009-72b1f9e121e1",
-      "date": "2026-10-23T06:42:18-04:00",
-      "client": "NATIONAL ASPHALT PAVEMENT ASSOCIATION",
-      "registrant": "NATIONAL ASPHALT PAVEMENT ASSOCIATION",
-      "income": 150000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation",
-        "Energy and Environment",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Appropriations",
-        "Infrastructure and Broadband",
-        "Tax Policy",
-        "Aviation Policy",
-        "Clean Air and Chemicals",
-        "Clean Water",
-        "Carbon and Climate",
-        "Tariffs and Trade Enforcement",
-        "Maritime and Fisheries"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Transportation",
-        "Congress",
-        "EPA",
-        "Department of Defense",
-        "Department of Labor",
-        "OSHA",
-        "FAA",
-        "USTR"
-      ],
-      "legislation": [
-        "H.R. 8870 (119th Congress) \u2014 BUILD America 250 Act",
-        "S. 5653 (119th Congress) \u2014 A bill to prescribe permitting reform, and for other purposes.",
-        "H.R. 3898 (119th Congress) \u2014 PERMIT Act",
-        "H.R. 5394 (119th Congress) \u2014 Freedom from Automated Speed Enforcement Act of 2025",
-        "H.R. 2992 (119th Congress) \u2014 To amend title 23, United States Code, and the Infrastructure Investment and Jobs Act with respect to vehicle roadside crashes, work zone safety, and for\u2026",
-        "S. 3871 (119th Congress) \u2014 Preventing Roadside and Work Zone Deaths Act of 2026",
-        "Infrastructure Investment and Jobs Act",
-        "H.R. 9028 (119th Congress) \u2014 PRC Broker-Dealers and Investment Advisers Moratorium Act",
-        "H.R. 4522 (119th Congress) \u2014 Neutralizing Unfair Chinese Export Subsidies Act of 2025",
-        "H.R. 7437 (119th Congress) \u2014 BASICS Act",
-        "S. 2465 (119th Congress) \u2014 Transportation, Housing and Urban Development, and Related Agencies Appropriations Act, 2026",
-        "H.R. 10545 (118th Congress) \u2014 American Relief Act, 2025"
-      ]
-    },
-    {
-      "id": 563875,
-      "uuid": "feb0c503-de58-42cc-b2d1-8fe899066c10",
-      "date": "2026-10-22T22:17:28-04:00",
-      "client": "NATIONAL VETERINARY ASSOCIATES",
-      "registrant": "INVARIANT LLC",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563874,
-      "uuid": "5c613008-f3c5-4223-b5dc-226065747acd",
-      "date": "2026-10-22T22:04:51-04:00",
-      "client": "NWF ACTION FUND",
-      "registrant": "DAVENPORT POLICY",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563873,
-      "uuid": "926bb40c-4ef4-43d6-add8-09189e327b99",
-      "date": "2026-10-22T21:40:20-04:00",
-      "client": "QUANTUM KNIGHT",
-      "registrant": "QUANTUM POLICY GROUP",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Agriculture and Food",
-        "Industry and Business"
-      ],
-      "topics": [
-        "Cybersecurity",
-        "Defense Authorization",
-        "Farm Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Executive Office of the President",
-        "USDA"
-      ],
-      "legislation": [
-        "National Defense Authorization Act",
-        "Water Resources Development Act"
-      ]
-    },
-    {
-      "id": 563898,
-      "uuid": "87a54089-05fb-4a78-8404-ceed850d892f",
-      "date": "2026-10-22T21:32:46-04:00",
-      "client": "RIDGELINE INTERNATIONAL, LLC",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 60000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Technology",
-      "domains": [
-        "Technology",
-        "Defense and Security",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Cybersecurity",
-        "Defense Authorization",
-        "Data Privacy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense"
-      ],
-      "legislation": [
-        "H.R. 8800 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "S. 4784 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "S. 1071 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2026",
-        "National Defense Authorization Act"
-      ]
-    },
-    {
-      "id": 563872,
-      "uuid": "b5a97a30-15bc-44aa-8795-95b9c522ed89",
-      "date": "2026-10-22T21:28:22-04:00",
-      "client": "NETWORK BRANDED PREPAID CARD ASSOCIATION",
-      "registrant": "NETWORK BRANDED PREPAID CARD ASSOCIATION",
-      "income": 60000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Other",
-      "domains": [
-        "Other"
-      ],
-      "topics": [
-        "General: Banking"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "CFPB"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563871,
-      "uuid": "5f59c151-fc81-4869-a08f-32213773502a",
-      "date": "2026-10-22T21:28:04-04:00",
-      "client": "NATIONAL PUBLIC RADIO",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 70000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Technology",
-      "domains": [
-        "Technology",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Media and Journalism",
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563870,
-      "uuid": "2893aea5-4beb-4633-837a-228ccbdeb372",
-      "date": "2026-10-22T21:23:42-04:00",
-      "client": "JFD NORTH AMERICA LIMITED",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 40000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Defense Authorization",
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense"
-      ],
-      "legislation": [
-        "H.R. 8800 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "H.R. 9495 (119th Congress) \u2014 Department of Defense Appropriations Act, 2027",
-        "S. 4784 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "S. 1071 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2026",
-        "National Defense Authorization Act"
-      ]
-    },
-    {
-      "id": 563869,
-      "uuid": "93932ee9-7d2c-49b4-aa5a-460a68fec607",
-      "date": "2026-10-22T21:21:20-04:00",
-      "client": "GENWORTH FINANCIAL, INC.",
-      "registrant": "GENWORTH FINANCIAL, INC.",
-      "income": 608820.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax",
-        "Housing and Urban Development",
-        "Other"
-      ],
-      "topics": [
-        "Tax Policy",
-        "Banking and Financial Regulation",
-        "Housing Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress",
-        "Treasury",
-        "Federal Reserve",
-        "FDIC",
-        "OCC",
-        "CFPB"
-      ],
-      "legislation": [
-        "One Big Beautiful Bill Act",
-        "H.R. 2760 (119th Congress) \u2014 Middle Class Mortgage Insurance Premium Act of 2025",
-        "H.R. 748 (119th Congress) \u2014 RELIEVE Act",
-        "H.R. 6800 (119th Congress) \u2014 To amend the Internal Revenue Code of 1986 to terminate the tax-exempt status of terrorist supporting organizations.",
-        "H.R. 1319 (119th Congress) \u2014 Modern Worker Empowerment Act",
-        "CARES Act",
-        "Heroes Act"
-      ]
-    },
-    {
-      "id": 563868,
-      "uuid": "0c8090cd-fe24-4acf-aa5b-64d6316fd8da",
-      "date": "2026-10-22T21:18:19-04:00",
-      "client": "AMERICAN CEMENT ASSOCIATION",
-      "registrant": "HUDGINS STRATEGIC PARTNERS, LLC",
-      "income": 60000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Trade",
-      "domains": [
-        "Trade"
-      ],
-      "topics": [
-        "Tariffs and Trade Enforcement"
-      ],
-      "entities": [
-        "OMB",
-        "Department of Commerce",
-        "USTR"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563867,
-      "uuid": "3174d47d-c0cc-4e03-ab09-142b2d10c1c0",
-      "date": "2026-10-22T21:16:51-04:00",
-      "client": "CHEMONICS INTERNATIONAL, INC",
-      "registrant": "HUDGINS STRATEGIC PARTNERS, LLC",
-      "income": 60000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Trade",
-      "domains": [
-        "Trade"
-      ],
-      "topics": [
-        "Foreign Relations and Diplomacy"
-      ],
-      "entities": [
-        "OMB"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563897,
-      "uuid": "b3a0e481-8b65-4940-a30a-346846cd50c1",
-      "date": "2026-10-22T21:09:42-04:00",
-      "client": "WORLD ACTION NETWORK",
-      "registrant": "WORLD ACTION NETWORK",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563866,
-      "uuid": "6f256b17-6ebe-4170-8158-7bc670c17dfb",
-      "date": "2026-10-22T20:58:50-04:00",
-      "client": "LONGPATH TECHNOLOGIES, INC.",
-      "registrant": "MORAN STRATEGIC CONSULTING, LLC.",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563865,
-      "uuid": "22d36b97-54a7-4999-8d2e-ca6cb06ee466",
-      "date": "2026-10-22T20:57:36-04:00",
-      "client": "TETRA TECHNOLOGIES, INC.",
-      "registrant": "MORAN STRATEGIC CONSULTING, LLC.",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment"
-      ],
-      "topics": [
-        "General: Energy Nuclear",
-        "General: Environment"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Energy",
-        "EPA",
-        "Department of Defense",
-        "Department of the Interior"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563864,
-      "uuid": "2b94d126-a0cd-4ded-9d0b-6577c6e72b98",
-      "date": "2026-10-22T19:42:37-04:00",
-      "client": "VLS ENVIRONMENTAL SOLUTIONS",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 60000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Energy and Environment",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Defense Authorization"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 8800 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "S. 4784 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "S. 1071 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2026",
-        "National Defense Authorization Act"
-      ]
-    },
-    {
-      "id": 563863,
-      "uuid": "2a54569f-a207-451e-aaf9-df81bf11bb6e",
-      "date": "2026-10-22T19:40:48-04:00",
-      "client": "CENTER FOR BRAINHEALTH",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Defense Authorization",
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 8800 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "S. 4784 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "National Defense Authorization Act",
-        "H.R. 9495 (119th Congress) \u2014 Department of Defense Appropriations Act, 2027"
-      ]
-    },
-    {
-      "id": 563862,
-      "uuid": "3b87856a-b328-4fa6-b59e-ed3bbadb8e59",
-      "date": "2026-10-22T19:21:42-04:00",
-      "client": "CELONIS, INC.",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Technology",
-      "domains": [
-        "Technology",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Defense Authorization"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense"
-      ],
-      "legislation": [
-        "H.R. 8800 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "S. 4784 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "National Defense Authorization Act"
-      ]
-    },
-    {
-      "id": 563861,
-      "uuid": "e3e03071-c3f0-44ba-ae7d-f96cf08edcc0",
-      "date": "2026-10-22T19:19:18-04:00",
-      "client": "CITGO PETROLEUM CORPORATION",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 120000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment"
-      ],
-      "topics": [
-        "General: Energy Nuclear"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563860,
-      "uuid": "0eaf743d-62a3-46dd-9be0-ef2ccf99bf56",
-      "date": "2026-10-22T19:17:08-04:00",
-      "client": "NIOCORP DEVELOPMENTS LTD",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Finance and Tax",
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Defense Authorization",
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Commerce",
-        "Department of Energy"
-      ],
-      "legislation": [
-        "H.R. 4772 (119th Congress) \u2014 Critical Minerals Investment Tax Modernization Act of 2025",
-        "S. 4033 (119th Congress) \u2014 Critical Minerals Investment Tax Modernization Act of 2026",
-        "H.R. 8800 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "H.R. 9495 (119th Congress) \u2014 Department of Defense Appropriations Act, 2027",
-        "S. 4784 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2027",
-        "S. 1071 (119th Congress) \u2014 National Defense Authorization Act for Fiscal Year 2026",
-        "National Defense Authorization Act"
-      ]
-    },
-    {
-      "id": 563859,
-      "uuid": "9839baac-7ec8-46ee-b446-48e8f40648f7",
-      "date": "2026-10-22T19:12:57-04:00",
-      "client": "BRYAN CAVE LEIGHTON PAISNER LLP ON BEHALF OF ARCELORMITTAL LIBERIA LTD",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563858,
-      "uuid": "6737fac3-858b-4fb2-9f29-423f21e4ef72",
-      "date": "2026-10-22T19:11:38-04:00",
-      "client": "DAIKIN U.S. CORPORATION",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 80000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Industry and Business"
-      ],
-      "topics": [
-        "Defense Procurement",
-        "Tariffs and Trade Enforcement",
-        "Manufacturing and Supply Chains"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Energy",
-        "EPA"
-      ],
-      "legislation": [
-        "Defense Production Act"
-      ]
-    },
-    {
-      "id": 563857,
-      "uuid": "18560bde-b5f7-478d-9fdc-f42ae8b65ed6",
-      "date": "2026-10-22T19:11:17-04:00",
-      "client": "UNIVERSITY OF NORTH CAROLINA AT CHAPEL HILL",
-      "registrant": "CHECKMATE GOVERNMENT RELATIONS",
-      "income": 80000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Health Issues"
-      ],
-      "entities": [
-        "White House",
-        "Department of Commerce"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563856,
-      "uuid": "b73ef213-53b1-4524-8bb1-e86abdeacd12",
-      "date": "2026-10-22T19:08:45-04:00",
-      "client": "SAMSARA, MULTISTATE ASSOCIATES, LLC",
-      "registrant": "CHECKMATE GOVERNMENT RELATIONS",
-      "income": 120000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation"
-      ],
-      "topics": [
-        "General: Transportation"
-      ],
-      "entities": [
-        "Department of the Interior"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563855,
-      "uuid": "7c282d54-54b0-4f2c-ae91-2cbe522c3a24",
-      "date": "2026-10-22T19:08:00-04:00",
-      "client": "CADMUS GROUP",
-      "registrant": "NAVIGATORS GLOBAL LLC (FORMERLY DC NAVIGATORS, LLC)",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Industry and Business",
-        "Technology"
-      ],
-      "topics": [
-        "Disaster Resilience and Recovery",
-        "Carbon and Climate"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563854,
-      "uuid": "6e15e155-c819-4cf0-9480-cdb33164bea9",
-      "date": "2026-10-22T19:07:32-04:00",
-      "client": "NEXO AG",
-      "registrant": "CHECKMATE GOVERNMENT RELATIONS",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax"
-      ],
-      "topics": [
-        "Digital Assets and Crypto"
-      ],
-      "entities": [
-        "White House",
-        "Treasury"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563853,
-      "uuid": "6b246df5-440a-4a84-a682-a88fc7269768",
-      "date": "2026-10-22T19:06:53-04:00",
-      "client": "AMERICAN CONCRETE COALITION, INC.",
-      "registrant": "CHECKMATE GOVERNMENT RELATIONS",
-      "income": 100000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Trade",
-      "domains": [
-        "Trade"
-      ],
-      "topics": [
-        "Tariffs and Trade Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "USTR"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563852,
-      "uuid": "86696559-8291-4707-916a-f6a51d2e4d68",
-      "date": "2026-10-22T19:05:53-04:00",
-      "client": "QUALTRICS INTERNATIONAL INC.",
-      "registrant": "CHECKMATE GOVERNMENT RELATIONS",
-      "income": 90000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Technology",
-      "domains": [
-        "Technology"
-      ],
-      "topics": [
-        "General: Science Technology"
-      ],
-      "entities": [
-        "White House",
-        "Department of Defense",
-        "HHS",
-        "DHS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563851,
-      "uuid": "b6ff36bc-6c8e-4dc5-a23e-06576c1fd68a",
-      "date": "2026-10-22T19:00:19-04:00",
-      "client": "ASSOCIATION OF BLACK CARDIOLOGISTS",
-      "registrant": "VENABLE LLP",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Drug Pricing",
-        "Medicare and Medicaid",
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "HHS",
-        "CMS"
-      ],
-      "legislation": [
-        "H.R. 4818 (119th Congress) \u2014 Gas Pipeline Leak Detection and Repair Act of 2025",
-        "H.R. 307 (119th Congress) \u2014 ARC Act of 2025",
-        "H.R. 1672 (119th Congress) \u2014 Maintaining Investments in New Innovation Act",
-        "H.R. 7417 (119th Congress) \u2014 Women\u2019s Heart Health Expansion Act of 2026",
-        "H.R. 3514 (119th Congress) \u2014 Improving Seniors\u2019 Timely Access to Care Act of 2025",
-        "S. 2407 (119th Congress) \u2014 Charting My Path for Future Success Act",
-        "S. 3944 (119th Congress) \u2014 Women\u2019s Heart Health Expansion Act of 2026",
-        "Reduce Obesity Act",
-        "S. 1816 (119th Congress) \u2014 Improving Seniors\u2019 Timely Access to Care Act of 2025"
-      ]
-    },
-    {
-      "id": 563850,
-      "uuid": "f83954ba-ce73-4457-bafb-15bda9e074e0",
-      "date": "2026-10-22T18:58:59-04:00",
-      "client": "RJG LAW PLLC",
-      "registrant": "CHECKMATE GOVERNMENT RELATIONS",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Oil and Gas"
-      ],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563849,
-      "uuid": "8dfa8ad6-3818-4632-b97e-180fd69ea122",
-      "date": "2026-10-22T18:53:29-04:00",
-      "client": "PANAMA MARITIME AUTHORITY",
-      "registrant": "CHECKMATE GOVERNMENT RELATIONS",
-      "income": 200000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation"
-      ],
-      "topics": [
-        "General: Marine Fishing"
-      ],
-      "entities": [
-        "White House",
-        "Department of Commerce",
-        "Department of Transportation"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563848,
-      "uuid": "b63a6c5c-c7c5-457a-ad36-63b489ba320d",
-      "date": "2026-10-22T18:51:23-04:00",
-      "client": "TRUST FOR AMERICA'S HEALTH",
-      "registrant": "TRUST FOR AMERICA'S HEALTH",
-      "income": 45651.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Nutrition Assistance",
-        "Family and Reproductive Policy",
-        "Substance Use and Treatment",
-        "Appropriations",
-        "Housing Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress",
-        "White House",
-        "OMB",
-        "HHS",
-        "CMS",
-        "FDA"
-      ],
-      "legislation": [
-        "H.R. 5557 (119th Congress) \u2014 Mental Health Services for Students Act of 2025",
-        "H.R. 2904 (119th Congress) \u2014 Pursuing Equity in Mental Health Act",
-        "H.R. 6625 (119th Congress) \u2014 RISE from Trauma Act",
-        "H.R. 2586 (119th Congress) \u2014 Reentry Act of 2025",
-        "H.R. 6121 (119th Congress) \u2014 Promoting Physical Activity for Americans Act",
-        "H.R. 7973 (119th Congress) \u2014 Momnibus Act",
-        "H.R. 2483 (119th Congress) \u2014 SUPPORT for Patients and Communities Reauthorization Act of 2025",
-        "H.R. 2741 (119th Congress) \u2014 PEER Support Act",
-        "H.R. 2509 (119th Congress) \u2014 COMPLETE Care Act",
-        "H.R. 10280 (119th Congress) \u2014 9\u20138\u20138 Implementation Act of 2026",
-        "H.R. 6396 (119th Congress) \u2014 Kid PROOF Act of 2025",
-        "H.R. 1735 (119th Congress) \u2014 Early Action and Responsiveness Lifts Youth Minds Act"
-      ]
-    },
-    {
-      "id": 563847,
-      "uuid": "602c0642-6aa5-42bf-80e0-f7b2c899e0cc",
-      "date": "2026-10-22T18:47:09-04:00",
-      "client": "TRUST FOR AMERICA'S HEALTH",
-      "registrant": "TRUST FOR AMERICA'S HEALTH",
-      "income": 45945.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Nutrition Assistance",
-        "Family and Reproductive Policy",
-        "Substance Use and Treatment",
-        "Appropriations",
-        "Housing Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress",
-        "White House",
-        "OMB",
-        "HHS",
-        "CMS",
-        "FDA"
-      ],
-      "legislation": [
-        "H.R. 5557 (119th Congress) \u2014 Mental Health Services for Students Act of 2025",
-        "H.R. 2904 (119th Congress) \u2014 Pursuing Equity in Mental Health Act",
-        "H.R. 6625 (119th Congress) \u2014 RISE from Trauma Act",
-        "H.R. 2586 (119th Congress) \u2014 Reentry Act of 2025",
-        "H.R. 6121 (119th Congress) \u2014 Promoting Physical Activity for Americans Act",
-        "H.R. 7973 (119th Congress) \u2014 Momnibus Act",
-        "H.R. 2483 (119th Congress) \u2014 SUPPORT for Patients and Communities Reauthorization Act of 2025",
-        "H.R. 2741 (119th Congress) \u2014 PEER Support Act",
-        "H.R. 2509 (119th Congress) \u2014 COMPLETE Care Act",
-        "H.R. 6396 (119th Congress) \u2014 Kid PROOF Act of 2025",
-        "H.R. 1735 (119th Congress) \u2014 Early Action and Responsiveness Lifts Youth Minds Act",
-        "H.R. 7019 (119th Congress) \u2014 Campus Prevention and Recovery Services for Students Act of 2026"
-      ]
-    },
-    {
-      "id": 563846,
-      "uuid": "e9482429-5048-4e13-9046-557f6c0de785",
-      "date": "2026-10-22T18:10:37-04:00",
-      "client": "THE AMERICAN OCCUPATIONAL THERAPY ASSOCIATION, INC. (AOTA)",
-      "registrant": "THE AMERICAN OCCUPATIONAL THERAPY ASSOCIATION, INC. (AOTA)",
-      "income": 189000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare",
-        "Government and Budget",
-        "Education and Social Policy"
-      ],
-      "topics": [
-        "Appropriations",
-        "Telehealth",
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress",
-        "OMB"
-      ],
-      "legislation": [
-        "H.R. 926 (119th Congress) \u2014 Fort Pillow National Battlefield Park Study Act",
-        "H.R. 4037 (119th Congress) \u2014 Occupational Therapy Mental Health Parity Act.",
-        "S. 2847 (119th Congress) \u2014 Occupational Therapy Mental Health Parity Act",
-        "H.R. 2332 (119th Congress) \u2014 SHARE Act of 2026",
-        "S. 1101 (119th Congress) \u2014 SHARE Act of 2025",
-        "H.R. 2598 (119th Congress) \u2014 IDEA Full Funding Act",
-        "H.R. 6574 (119th Congress) \u2014 Loan Equity for Advanced Professionals Act",
-        "H.R. 6739 (119th Congress) \u2014 Clarity in Professional Degree Act",
-        "H.R. 6718 (119th Congress) \u2014 Professional Student Degree Act",
-        "H.R. 6677 (119th Congress) \u2014 Professional Degree Access Restoration Act",
-        "S. 1277 (119th Congress) \u2014 IDEA Full Funding Act",
-        "Professional Degrees Act"
-      ]
-    },
-    {
-      "id": 563845,
-      "uuid": "bb7dacd2-ab7e-4e87-9236-41ae0d512672",
-      "date": "2026-10-22T18:01:21-04:00",
-      "client": "OUTDOOR INDUSTRY ASSOCIATION",
-      "registrant": "OUTDOOR INDUSTRY ASSOCIATION",
-      "income": 40000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Trade",
-      "domains": [
-        "Trade",
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Tariffs and Trade Enforcement",
-        "Maritime and Fisheries"
-      ],
-      "entities": [
-        "House of Representatives",
-        "USTR"
-      ],
-      "legislation": [
-        "H.R. 5334 (119th Congress) \u2014 Lindsey O. Graham Sanctioning Russia and Iran Act of 2026"
-      ]
-    },
-    {
-      "id": 563844,
-      "uuid": "64ea2783-87ef-4e2d-9f85-a9b89518a946",
-      "date": "2026-10-22T17:54:30-04:00",
-      "client": "CURALEAF INC.",
-      "registrant": "CURALEAF INC.",
-      "income": 80000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Other",
-      "domains": [
-        "Other",
-        "Defense and Security",
-        "Finance and Tax"
-      ],
-      "topics": [
-        "Banking and Financial Regulation"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "SAFE Banking Act",
-        "H.R. 1447 (119th Congress) \u2014 No Deductions for Marijuana Businesses Act",
-        "H.R. 7987 (119th Congress) \u2014 CLIMB Act",
-        "Controlled Substances Act"
-      ]
-    },
-    {
-      "id": 563843,
-      "uuid": "9d650a2c-b65d-41e2-8bf3-d2fa80119dba",
-      "date": "2026-10-22T17:48:31-04:00",
-      "client": "TOWN OF HARRISBURG",
-      "registrant": "LUMIN STRATEGIES",
-      "income": 16500.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563842,
-      "uuid": "cc5badc6-5582-4ccb-adb1-15f355b8fb79",
-      "date": "2026-10-22T17:47:33-04:00",
-      "client": "CITY OF HICKORY",
-      "registrant": "LUMIN STRATEGIES",
-      "income": 11500.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563841,
-      "uuid": "e86597f8-eafb-48f9-b785-1b47aa37c465",
-      "date": "2026-10-22T17:29:16-04:00",
-      "client": "ALKERMES, INC",
-      "registrant": "HEALTH AND MEDICINE COUNSEL, LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare",
-        "Government and Budget"
-      ],
-      "topics": [
-        "General: Health Issues",
-        "General: Budget Appropriations"
-      ],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563840,
-      "uuid": "57678077-4524-4788-8129-9a2e8b25b66d",
-      "date": "2026-10-22T16:33:31-04:00",
-      "client": "DELTA HEALTH",
-      "registrant": "MR. JOE MIKLOSI",
-      "income": 6000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Health Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "CMS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563839,
-      "uuid": "f0e8f106-ee75-4f34-bd0a-31e662cc3ea7",
-      "date": "2026-10-22T16:32:39-04:00",
-      "client": "BLOOMBERG LLP",
-      "registrant": "BLOOMBERG LLP",
-      "income": 100000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax"
-      ],
-      "topics": [
-        "General: Financial Institutions"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "SEC"
-      ],
-      "legislation": [
-        "CLARITY Act",
-        "Financial Data Transparency Act"
-      ]
-    },
-    {
-      "id": 563838,
-      "uuid": "fa4a6142-fafc-49ae-86f9-e7e6794e7d14",
-      "date": "2026-10-22T16:31:28-04:00",
-      "client": "WRAY COMMUNITY HOSPITAL",
-      "registrant": "MR. JOE MIKLOSI",
-      "income": 6000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Budget Appropriations",
-        "General: Health Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "USDA"
-      ],
-      "legislation": [
-        "Rural Hospital Revitalization Act"
-      ]
-    },
-    {
-      "id": 563837,
-      "uuid": "25c93550-0197-4e48-8569-bdd68b20dfe9",
-      "date": "2026-10-22T16:29:46-04:00",
-      "client": "LINCOLN COMMUNITY HOSPITAL & CARE CENTER",
-      "registrant": "MR. JOE MIKLOSI",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Health Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "HHS",
-        "USDA"
-      ],
-      "legislation": [
-        "Rural Hospital Revitalization Act"
-      ]
-    },
-    {
-      "id": 563836,
-      "uuid": "d745e769-b7b9-4a12-9120-a56ae8f755dd",
-      "date": "2026-10-22T16:28:43-04:00",
-      "client": "TOWN OF PARADISE, CA",
-      "registrant": "THE FERGUSON GROUP",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Industry and Business",
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Disaster Resilience and Recovery",
-        "Clean Air and Chemicals",
-        "Housing Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "USDA",
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563835,
-      "uuid": "c219ecee-6b70-47b5-9f33-41de79152eee",
-      "date": "2026-10-22T16:27:58-04:00",
-      "client": "UNITEDHEALTH GROUP INC",
-      "registrant": "UNITEDHEALTH GROUP, INC.",
-      "income": 2100000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare",
-        "Defense and Security",
-        "Finance and Tax"
-      ],
-      "topics": [
-        "Medicare and Medicaid",
-        "Family and Reproductive Policy",
-        "Drug Pricing",
-        "Veterans Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "HHS",
-        "Congress",
-        "OMB",
-        "CMS",
-        "Department of Commerce"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563834,
-      "uuid": "9a83ecc3-4d7e-4ee4-8b11-57af027254c8",
-      "date": "2026-10-22T16:27:34-04:00",
-      "client": "ONE WORLD SURGERY",
-      "registrant": "MR. JOE MIKLOSI",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Trade",
-      "domains": [
-        "Trade",
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Foreign Relations",
-        "General: Health Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563833,
-      "uuid": "8f6a54a0-deec-4ba8-968d-221238e1f466",
-      "date": "2026-10-22T16:26:19-04:00",
-      "client": "BUTTE COUNTY-CA",
-      "registrant": "THE FERGUSON GROUP",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business",
-        "Government and Budget",
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Insurance Policy",
-        "Housing Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "DOJ",
-        "Department of Transportation",
-        "Department of the Interior",
-        "Army Corps of Engineers",
-        "USDA"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563832,
-      "uuid": "969acb1b-8318-4702-8f95-5afddbca80c4",
-      "date": "2026-10-22T16:26:02-04:00",
-      "client": "ASH CAPITAL MANAGEMENT",
-      "registrant": "ASH CAPITAL MANAGEMENT",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax",
-        "Agriculture and Food"
-      ],
-      "topics": [
-        "Animal Welfare and Livestock"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563831,
-      "uuid": "677bc3ff-7a51-45f4-beb9-998ebcd8d9d8",
-      "date": "2026-10-22T16:13:25-04:00",
-      "client": "PHARMACEUTICAL INDUSTRY LABOR-MANAGEMENT ASSOCIATION",
-      "registrant": "CHRISTOPHER HEINZ",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Drug Pricing"
-      ],
-      "entities": [
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563830,
-      "uuid": "0fff8155-780f-40a9-9c82-49a1ad69b6c5",
-      "date": "2026-10-22T15:59:45-04:00",
-      "client": "908 DEVICES, INC.",
-      "registrant": "BRENDAN NEAL STRATEGIES, LLC",
-      "income": 22500.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Appropriations",
-        "Criminal Justice and Policing"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563829,
-      "uuid": "8e4b9d2a-2345-47c6-b7ac-d528b73f67f5",
-      "date": "2026-10-22T15:58:27-04:00",
-      "client": "DESALES MEDIA GROUP, INC.",
-      "registrant": "DESALES MEDIA GROUP, INC.",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563828,
-      "uuid": "184f7804-488f-49df-8861-09ca1d1cd4f9",
-      "date": "2026-10-22T15:55:12-04:00",
-      "client": "SANTA CRUZ PORT DISTRICT",
-      "registrant": "THE FERGUSON GROUP",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress",
-        "OMB",
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563827,
-      "uuid": "4be0c97f-dd82-480a-8673-4f8c623d1400",
-      "date": "2026-10-22T15:54:11-04:00",
-      "client": "SANTA CRUZ PORT DISTRICT",
-      "registrant": "THE FERGUSON GROUP",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress",
-        "OMB",
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563826,
-      "uuid": "4f09a7ba-1eb8-45d6-beee-f2fc2c6544ab",
-      "date": "2026-10-22T15:52:50-04:00",
-      "client": "SANTA CRUZ PORT DISTRICT",
-      "registrant": "THE FERGUSON GROUP",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 1,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress",
-        "OMB",
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563825,
-      "uuid": "0d1fe6cf-cf18-4385-a5f6-f9f0384ef5c6",
-      "date": "2026-10-22T15:49:36-04:00",
-      "client": "NATIONAL IMMIGRATION LAW CENTER (NILC)",
-      "registrant": "NATIONAL IMMIGRATION LAW CENTER (NILC)",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Labor and Immigration",
-      "domains": [
-        "Labor and Immigration"
-      ],
-      "topics": [
-        "General: Immigration"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 9432 (119th Congress) \u2014 LIFT the BAR Act",
-        "H.R. 2853 (119th Congress) \u2014 Combating Organized Retail Crime Act of 2025",
-        "H.R. 7008 (119th Congress) \u2014 Stop Insider Trading Act",
-        "H.R. 1589 (119th Congress) \u2014 American Dream and Promise Act of 2025",
-        "H.R. 4393 (119th Congress) \u2014 DIGNIDAD (Dignity) Act of 2025",
-        "H.R. 10326 (119th Congress) \u2014 PROOF Act",
-        "H.R. 10045 (119th Congress) \u2014 Protect American Values Act",
-        "H.R. 9576 (119th Congress) \u2014 National Fraud Enforcement Division Act of 2026",
-        "H.R. 9770 (119th Congress) \u2014 Continuing Appropriations Act, 2027",
-        "H.R. 1689 (119th Congress) \u2014 To require the Secretary of Homeland Security to designate Haiti for temporary protected status.",
-        "S. 1404 (119th Congress) \u2014 Combating Organized Retail Crime Act",
-        "S. 3348 (119th Congress) \u2014 Dream Act of 2025"
-      ]
-    },
-    {
-      "id": 563824,
-      "uuid": "bd60074e-f6ec-4383-a041-a3a0d06f7022",
-      "date": "2026-10-22T15:48:42-04:00",
-      "client": "WBI ENERGY TRANSMISSION, INC.",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563823,
-      "uuid": "045c246d-8246-45e2-923e-fdb05a97b24e",
-      "date": "2026-10-22T15:48:00-04:00",
-      "client": "GREENFIELD HOLDINGS",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563822,
-      "uuid": "fb8d2bf2-04a6-4a3d-abd2-8689adb21280",
-      "date": "2026-10-22T15:47:20-04:00",
-      "client": "ORCA SECURITY",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563821,
-      "uuid": "dbf84e2e-d354-4817-9094-5fec93b0f89a",
-      "date": "2026-10-22T15:46:25-04:00",
-      "client": "CAPTUREPOINT SOLUTIONS",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget"
-      ],
-      "topics": [
-        "General: Government Issues"
-      ],
-      "entities": [
-        "FERC",
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563820,
-      "uuid": "98e35e21-7e6a-4c2f-8379-21eb91f5e411",
-      "date": "2026-10-22T15:45:50-04:00",
-      "client": "MAYS, BYRD, & O'GUINN PLLC",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Defense"
-      ],
-      "entities": [
-        "Senate"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563819,
-      "uuid": "5e150b9e-f116-4325-8b4b-fbd2270b327a",
-      "date": "2026-10-22T15:45:09-04:00",
-      "client": "OVERTON LLC",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget"
-      ],
-      "topics": [
-        "General: Government Issues"
-      ],
-      "entities": [
-        "Department of Energy",
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563818,
-      "uuid": "4176bb86-7bf0-4ae0-b9df-07c93e093a6c",
-      "date": "2026-10-22T15:44:25-04:00",
-      "client": "SYNDERYS",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Technology",
-      "domains": [
-        "Technology"
-      ],
-      "topics": [
-        "Cybersecurity"
-      ],
-      "entities": [
-        "Senate"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563817,
-      "uuid": "e0fdf6a7-dec8-4f1c-b139-56a2101a4c3a",
-      "date": "2026-10-22T15:43:42-04:00",
-      "client": "SUNOCO LOGISTICS",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563816,
-      "uuid": "c0533426-395e-466a-857f-badf5bdf5724",
-      "date": "2026-10-22T15:43:03-04:00",
-      "client": "PROJECT CONSULTING SERVICES, INC.",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563815,
-      "uuid": "3e164b61-77b3-43bf-b108-3ab7c7e62355",
-      "date": "2026-10-22T15:42:12-04:00",
-      "client": "PORT OF SOUTH LOUISIANA",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget"
-      ],
-      "topics": [
-        "General: Government Issues"
-      ],
-      "entities": [
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563814,
-      "uuid": "9a8f081d-c699-4065-95fa-ffcf3d6c71e6",
-      "date": "2026-10-22T15:40:42-04:00",
-      "client": "ACADEMY OF DOCTORS OF AUDIOLOGY",
-      "registrant": "MR. KYLE MULROY",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 4204 (119th Congress) \u2014 Medicare Patient Choice Act",
-        "H.R. 2757 (119th Congress) \u2014 Medicare Audiology Access Improvement Act of 2025"
-      ]
-    },
-    {
-      "id": 563813,
-      "uuid": "dda25926-8c91-4a87-aff0-6c3b2fe88b35",
-      "date": "2026-10-22T15:40:16-04:00",
-      "client": "CATAWBA INDIAN NATION",
-      "registrant": "HOBBS, STRAUS, DEAN & WALKER, LLP",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "Federal Funding Federal Indian Policies Catawba Settlement Act"
-      ]
-    },
-    {
-      "id": 563812,
-      "uuid": "322d2087-530d-4fd1-95d1-3b9e4b447bc5",
-      "date": "2026-10-22T15:39:55-04:00",
-      "client": "ENERGY TRANSFER PARTNERS LP",
-      "registrant": "AUX INITIATIVES, LLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563811,
-      "uuid": "bf9f74b7-10e7-466c-ad4a-524f026a1350",
-      "date": "2026-10-22T15:34:30-04:00",
-      "client": "UNITED MOTORCOACH ASSOCIATION",
-      "registrant": "UNITED MOTORCOACH ASSOCIATION",
-      "income": 51969.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment"
-      ],
-      "topics": [
-        "General: Natural Resources"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Transportation"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563810,
-      "uuid": "d0a6e3b1-82ee-4983-8599-1f9b1d483920",
-      "date": "2026-10-22T15:31:30-04:00",
-      "client": "NATIONAL FALLEN FIREFIGHTERS FOUNDATION",
-      "registrant": "NATIONAL FALLEN FIREFIGHTERS FOUNDATION",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Housing and Urban Development",
-        "Technology"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "HHS",
-        "Department of Transportation",
-        "DHS"
-      ],
-      "legislation": [
-        "H.R. 173 (119th Congress) \u2014 High Rise Fire Sprinkler Incentive Act of 2025",
-        "S. 504 (119th Congress) \u2014 High Rise Fire Sprinkler Incentive Act of 2025",
-        "Hise Rise Fire Sprinkler Act",
-        "H.R. 7386 (119th Congress) \u2014 First Responder Network Authority Reauthorization Act of 2026",
-        "H.R. 2257 (119th Congress) \u2014 National Fallen Firefighters Memorial Coin Act",
-        "S. 4051 (119th Congress) \u2014 National Fallen Firefighters Memorial Coin Act"
-      ]
-    },
-    {
-      "id": 563809,
-      "uuid": "d494e589-8f2d-4d57-9ae0-759d76da7d59",
-      "date": "2026-10-22T15:30:44-04:00",
-      "client": "MARQUIS ENERGY",
-      "registrant": "BOUNDARY STONE PARTNERS",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Renewable Energy"
-      ],
-      "entities": [
-        "Senate"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563808,
-      "uuid": "0a624fa6-bb82-4f84-9b97-36d997f61721",
-      "date": "2026-10-22T15:30:24-04:00",
-      "client": "SAINT PETER'S HEALTHCARE SYSTEM",
-      "registrant": "MR. KYLE MULROY",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Health Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Congress"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563807,
-      "uuid": "b92fcd0a-39b1-478c-9ade-5b4fa515c0f3",
-      "date": "2026-10-22T15:30:09-04:00",
-      "client": "SANTA CLARA PUEBLO",
-      "registrant": "HOBBS, STRAUS, DEAN & WALKER, LLP",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Army Corps of Engineers"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563806,
-      "uuid": "d9276254-728f-4506-9e82-2a601e1d4ae7",
-      "date": "2026-10-22T15:27:49-04:00",
-      "client": "VISITING NURSE ASSOCIATION HEALTH GROUP",
-      "registrant": "MR. KYLE MULROY",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "H.R. 5152 (119th Congress) \u2014 BOP Release Card ID Act of 2025",
-        "H.R. 5142 (119th Congress) \u2014 Home Health Stabilization Act of 2025"
-      ]
-    },
-    {
-      "id": 563805,
-      "uuid": "3d521316-1ef3-43aa-8530-29e91f389233",
-      "date": "2026-10-22T15:26:21-04:00",
-      "client": "STUDENT VETERANS OF AMERICA",
-      "registrant": "STUDENT VETERANS OF AMERICA",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Education and Social Policy",
-      "domains": [
-        "Education and Social Policy",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Veterans Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "Americas Veterans Act",
-        "Understanding Student Parent Outcomes Act",
-        "H.R. 2163 (119th Congress) \u2014 No Penalties for Victims of Fraud Act",
-        "Women Veterans Act"
-      ]
-    },
-    {
-      "id": 563804,
-      "uuid": "3251509a-9a34-4f3c-b1f2-7d7733933bc6",
-      "date": "2026-10-22T15:25:32-04:00",
-      "client": "VIRTUA HEALTH",
-      "registrant": "MR. KYLE MULROY",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid",
-        "Telehealth"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "CMS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563803,
-      "uuid": "8e405bfd-1f79-4034-bc84-0e6f55590fb6",
-      "date": "2026-10-22T15:23:07-04:00",
-      "client": "VALLEY HEALTH SYSTEM",
-      "registrant": "MR. KYLE MULROY",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid",
-        "Telehealth",
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "HHS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563802,
-      "uuid": "3c7cbf95-405f-488a-a6c1-4c27471f2027",
-      "date": "2026-10-22T15:20:54-04:00",
-      "client": "ST. JOSEPHS REGIONAL MEDICAL CENTER",
-      "registrant": "MR. KYLE MULROY",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid",
-        "Drug Pricing",
-        "Telehealth"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563801,
-      "uuid": "bb7f85e8-cb1b-45e7-9078-11386c2f300d",
-      "date": "2026-10-22T15:16:26-04:00",
-      "client": "CENTRASTATE HEALTHCARE SYSTEM",
-      "registrant": "MR. KYLE MULROY",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid",
-        "Drug Pricing"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "CMS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563800,
-      "uuid": "694aff37-3205-416f-bdcf-8aeb610beae6",
-      "date": "2026-10-22T15:15:17-04:00",
-      "client": "CAPITOL COUNSEL LLC ON BEHALF OF SKYVAULT AI LLC",
-      "registrant": "MICHAEL J. LAMOUREUX",
-      "income": 18000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563799,
-      "uuid": "e25d9bdc-dada-45d7-8ae3-f0aa46b3e9fc",
-      "date": "2026-10-22T15:13:14-04:00",
-      "client": "ATLANTICARE",
-      "registrant": "MR. KYLE MULROY",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "CMS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563798,
-      "uuid": "136122ea-9a1a-41da-9e8e-f2b0a5ead3b1",
-      "date": "2026-10-22T15:10:26-04:00",
-      "client": "UNCAC COALITION",
-      "registrant": "MS. CORINNA GILFILLAN",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Trade",
-      "domains": [
-        "Trade",
-        "Government and Budget"
-      ],
-      "topics": [
-        "Foreign Relations and Diplomacy"
-      ],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563797,
-      "uuid": "bb3eb10a-e6b2-4e2a-b39a-538560266a97",
-      "date": "2026-10-22T15:09:13-04:00",
-      "client": "PUEBLO OF SANTA ANA",
-      "registrant": "HOBBS, STRAUS, DEAN & WALKER, LLP",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "Tribal and Native Affairs"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of the Interior"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563796,
-      "uuid": "5043c08a-a6c9-458f-b23d-3acf6df98c58",
-      "date": "2026-10-22T15:09:03-04:00",
-      "client": "NATIVE AMERICAN CONTRACTORS ASSOCIATION",
-      "registrant": "NATIVE AMERICAN CONTRACTORS ASSOCIATION",
-      "income": 105000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business",
-        "Government and Budget",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Tribal and Native Affairs",
-        "Small Business"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "Department of Defense",
-        "Department of the Interior",
-        "Congress",
-        "USDA"
-      ],
-      "legislation": [
-        "Native American Entrepreneurial Act",
-        "H.R. 3485 (119th Congress) \u2014 To amend the Small Business Act to eliminate certain requirements relating to the award of construction subcontracts within the county or State of performance.",
-        "S. 991 (119th Congress) \u2014 A bill to amend the Small Business Act to eliminate certain requirements relating to the award of construction subcontracts within the county or State of\u2026",
-        "Buy Indian Act"
-      ]
-    },
-    {
-      "id": 563795,
-      "uuid": "833f453b-b75c-4230-ba2c-919d16414840",
-      "date": "2026-10-22T15:07:40-04:00",
-      "client": "LAKE OF THE TORCHES FEDERAL DEVELOPMENT CORPORATION",
-      "registrant": "SPIRIT ROCK CONSULTING",
-      "income": 15000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "Gaming and Betting"
-      ],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563794,
-      "uuid": "56f681aa-a48f-4cec-b5ed-a410971d61b6",
-      "date": "2026-10-22T15:00:58-04:00",
-      "client": "NAVAJO NATION",
-      "registrant": "HOBBS, STRAUS, DEAN & WALKER, LLP",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "Department of the Interior"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563793,
-      "uuid": "8b1f47b6-8328-474c-9b18-00feaa8ea767",
-      "date": "2026-10-22T14:59:26-04:00",
-      "client": "SENECA NATION",
-      "registrant": "SPIRIT ROCK CONSULTING",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 2,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business",
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Indian Native American",
-        "General: Gaming Gambling",
-        "General: Law Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "USDA",
-        "Army Corps of Engineers",
-        "DOJ"
-      ],
-      "legislation": [
-        "H.R. 7065 (119th Congress) \u2014 Seneca Nation Law Enforcement Efficiency Act"
-      ]
-    },
-    {
-      "id": 563792,
-      "uuid": "fbf7f1de-3e0c-477a-b704-4989bbc6bdab",
-      "date": "2026-10-22T14:56:00-04:00",
-      "client": "NATIONAL INDIAN EDUCATION ASSOCIATION",
-      "registrant": "HOBBS, STRAUS, DEAN & WALKER, LLP",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563790,
-      "uuid": "231083a5-af74-4d96-b142-2ba0d05e9a79",
-      "date": "2026-10-22T14:52:30-04:00",
-      "client": "NATIONAL INDIAN HEAD START DIRECTORS ASSOCIATION",
-      "registrant": "HOBBS, STRAUS, DEAN & WALKER, LLP",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": [
-        "Federal Funding Head Start Act"
-      ]
-    },
-    {
-      "id": 563789,
-      "uuid": "c3d34db2-b0ce-4620-b392-b996dce2f255",
-      "date": "2026-10-22T14:49:36-04:00",
-      "client": "SENECA NATION",
-      "registrant": "SPIRIT ROCK CONSULTING",
-      "income": 60000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business",
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Indian Native American",
-        "General: Gaming Gambling",
-        "General: Law Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "USDA",
-        "Army Corps of Engineers",
-        "DOJ"
-      ],
-      "legislation": [
-        "H.R. 7065 (119th Congress) \u2014 Seneca Nation Law Enforcement Efficiency Act"
-      ]
-    },
-    {
-      "id": 563788,
-      "uuid": "97fb4210-9826-419a-904e-812c42e338d0",
-      "date": "2026-10-22T14:47:35-04:00",
-      "client": "WUXI APPTEC SALES LLC",
-      "registrant": "SANDER LURIE CONSULTING LLC",
-      "income": 70000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563787,
-      "uuid": "69ddd3ba-3029-460b-a7be-39ff7b1dd5c3",
-      "date": "2026-10-22T14:43:39-04:00",
-      "client": "INDIAN PUEBLOS MARKETING, INC",
-      "registrant": "HOBBS, STRAUS, DEAN & WALKER, LLP",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563786,
-      "uuid": "c4ef559c-5982-428c-a51d-81da0c6ecbdf",
-      "date": "2026-10-22T14:34:16-04:00",
-      "client": "ZEKELMAN HOLOCAUST CENTER",
-      "registrant": "SANDER LURIE CONSULTING LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563785,
-      "uuid": "11507a18-2747-4b72-8d7e-27c3a1549d77",
-      "date": "2026-10-22T14:31:35-04:00",
-      "client": "AMERICAN RACING PIGEON UNION",
-      "registrant": "HOBBS, STRAUS, DEAN & WALKER, LLP",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563784,
-      "uuid": "1e21d119-8915-46fd-985f-884cbef5823b",
-      "date": "2026-10-22T14:29:24-04:00",
-      "client": "AMGEN INC.",
-      "registrant": "MICHAEL J. LAMOUREUX",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Health Issues"
-      ],
-      "entities": [
-        "Senate",
-        "Congress"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563783,
-      "uuid": "38f13107-b8a6-4373-8ab9-afbe03f1273d",
-      "date": "2026-10-22T14:17:55-04:00",
-      "client": "PUEBLO OF ACOMA",
-      "registrant": "HOBBS, STRAUS, DEAN & WALKER, LLP",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Industry and Business",
-      "domains": [
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Indian Native American"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "DOJ",
-        "HHS",
-        "USDA",
-        "Department of the Interior"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563782,
-      "uuid": "6c8b7120-7265-4408-a4ac-60816b490521",
-      "date": "2026-10-22T14:07:07-04:00",
-      "client": "DEFENSE CREDIT UNION COUNCIL",
-      "registrant": "DEFENSE CREDIT UNION COUNCIL",
-      "income": 190000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Finance and Tax",
-      "domains": [
-        "Finance and Tax",
-        "Other",
-        "Industry and Business"
-      ],
-      "topics": [
-        "Appropriations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense",
-        "Treasury",
-        "CFPB",
-        "Department of Veterans Affairs"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563781,
-      "uuid": "bd6370d6-0338-4b2d-89d2-df5318044c28",
-      "date": "2026-10-22T13:54:42-04:00",
-      "client": "BUILD INDIANA COUNCIL CORPORATION",
-      "registrant": "1816 PUBLIC AFFAIRS GROUP",
-      "income": 24000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation"
-      ],
-      "topics": [
-        "General: Roads Highway"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563780,
-      "uuid": "62b1ba55-f71d-4696-bf66-81be55cc438e",
-      "date": "2026-10-22T13:54:41-04:00",
-      "client": "SAS",
-      "registrant": "GROUNDSWELL STRATEGY LLC",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563779,
-      "uuid": "54f60651-a882-4339-824c-d535d3a8df6b",
-      "date": "2026-10-22T13:35:21-04:00",
-      "client": "WISCONSIN HOSPITAL ASSOCIATION",
-      "registrant": "WISCONSIN HOSPITAL ASSOCIATION",
-      "income": 40000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare",
-        "Defense and Security",
-        "Finance and Tax"
-      ],
-      "topics": [
-        "Drug Pricing",
-        "Medicare and Medicaid"
-      ],
-      "entities": [
-        "House of Representatives",
-        "Senate",
-        "CMS"
-      ],
-      "legislation": [
-        "H.R. 7961 (119th Congress) \u2014 H\u20131Bs for Physicians and the Healthcare Workforce Act",
-        "H.R. 3514 (119th Congress) \u2014 Improving Seniors\u2019 Timely Access to Care Act of 2025",
-        "H.R. 9504 (119th Congress) \u2014 Tax Exempt Hospital Transparency Act",
-        "S. 1816 (119th Congress) \u2014 Improving Seniors\u2019 Timely Access to Care Act of 2025",
-        "Healthcare Workforce Act",
-        "Public Health Service Act"
-      ]
-    },
-    {
-      "id": 563778,
-      "uuid": "e772133a-bcfa-4a85-937a-6a2cc55d1087",
-      "date": "2026-10-22T13:29:31-04:00",
-      "client": "THE INDEPENDENCE FUND",
-      "registrant": "TWO BRANCH STRATEGIES",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security"
-      ],
-      "topics": [
-        "General: Veterans"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Veterans Affairs"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563777,
-      "uuid": "dbfebf65-54f9-46a7-8902-16a5a34d26bc",
-      "date": "2026-10-22T13:27:29-04:00",
-      "client": "CITY OF LITTLE ROCK",
-      "registrant": "PETER DAMON GROUP LLC",
-      "income": 25000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation"
-      ],
-      "topics": [
-        "General: Transportation"
-      ],
-      "entities": [
-        "Senate",
-        "Congress",
-        "Department of Transportation"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563776,
-      "uuid": "45b6a2f6-fbaa-4eca-abed-5ee2b93a2fe0",
-      "date": "2026-10-22T13:25:47-04:00",
-      "client": "DAIKIN U.S. CORPORATION",
-      "registrant": "DAIKIN U.S. CORPORATION",
-      "income": 212481.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Finance and Tax",
-        "Industry and Business"
-      ],
-      "topics": [
-        "Defense Procurement",
-        "Tax Policy",
-        "Tariffs and Trade Enforcement"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Energy",
-        "EPA",
-        "Department of Commerce"
-      ],
-      "legislation": [
-        "Defense Production Act",
-        "AIM Act"
-      ]
-    },
-    {
-      "id": 563775,
-      "uuid": "bffb7a9a-4f2b-4316-9aeb-1bc6bed12dc6",
-      "date": "2026-10-22T12:55:38-04:00",
-      "client": "OWNER-OPERATOR INDEPENDENT DRIVERS ASSOCIATION",
-      "registrant": "OWNER-OPERATOR INDEPENDENT DRIVERS ASSOCIATION",
-      "income": 374733.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Transportation",
-      "domains": [
-        "Transportation"
-      ],
-      "topics": [
-        "Trucking and Freight",
-        "Labor and Employment"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "White House",
-        "EPA",
-        "Department of Transportation",
-        "Department of Labor",
-        "DHS"
-      ],
-      "legislation": [
-        "H.R. 1659 (119th Congress) \u2014 Truck Parking Safety Improvement Act",
-        "H.R. 2819 (119th Congress) \u2014 DRIVE Act",
-        "H.R. 2514 (119th Congress) \u2014 Trucker Bathroom Access Act",
-        "H.R. 1962 (119th Congress) \u2014 Guaranteeing Overtime for Truckers Act",
-        "H.R. 880 (119th Congress) \u2014 Household Goods Shipping Consumer Protection Act",
-        "H.R. 3605 (119th Congress) \u2014 Strength in Diversity Act of 2025",
-        "H.R. 5767 (119th Congress) \u2014 Secure Commercial Driver Licensing Act of 2025",
-        "H.R. 5688 (119th Congress) \u2014 Non-Domiciled CDL Integrity Act",
-        "H.R. 5423 (119th Congress) \u2014 Predatory Truck Leasing Prevention Act of 2025",
-        "H.R. 1319 (119th Congress) \u2014 Modern Worker Empowerment Act",
-        "H.R. 6642 (119th Congress) \u2014 ROUTE Act",
-        "H.R. 7390 (119th Congress) \u2014 SELF DRIVE Act of 2026"
-      ]
-    },
-    {
-      "id": 563774,
-      "uuid": "b142635b-4d71-4007-8d67-ee20200bc33f",
-      "date": "2026-10-22T12:50:44-04:00",
-      "client": "THE PROCTER AND GAMBLE COMPANY",
-      "registrant": "THE PROCTER AND GAMBLE COMPANY",
-      "income": 350000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare",
-        "Transportation",
-        "Energy and Environment"
-      ],
-      "topics": [
-        "Consumer Product Safety",
-        "Tariffs and Trade Enforcement",
-        "Trade Agreements",
-        "Clean Air and Chemicals",
-        "Waste and Recycling Management"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "FDA",
-        "FAA"
-      ],
-      "legislation": [
-        "H.R. 8870 (119th Congress) \u2014 BUILD America 250 Act",
-        "S. 4664 (119th Congress) \u2014 Safer Choice Program Authorization Act of 2026",
-        "Toxic Substances Control Act",
-        "H.R. 6832 (119th Congress) \u2014 PACK Act",
-        "H.R. 7502 (119th Congress) \u2014 Recycled Materials Attribution Act of 2026",
-        "H.R. 2269 (119th Congress) \u2014 WIPPES Act",
-        "S. 1092 (119th Congress) \u2014 WIPPES Act",
-        "Claims Knowledge Act",
-        "One Big Beautiful Bill Act",
-        "H.R. 1219 (119th Congress) \u2014 Oral Health Products Inclusion Act",
-        "S. 2003 (119th Congress) \u2014 Strengthening Benefit Plans Act of 2025"
-      ]
-    },
-    {
-      "id": 563773,
-      "uuid": "1487e17e-8428-4938-a4f5-cfa9ba005f05",
-      "date": "2026-10-22T12:39:54-04:00",
-      "client": "ALLIANCE OF DEDICATED CANCER CENTERS",
-      "registrant": "MANATT, PHELPS, AND PHILLIPS",
-      "income": 60000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "Medicare and Medicaid",
-        "Clinical Research and Diagnostics"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563772,
-      "uuid": "74dbc318-2220-4329-ae2b-dfe3aed53618",
-      "date": "2026-10-22T12:39:37-04:00",
-      "client": "GUNNISON COPPER CORP.",
-      "registrant": "GREENTECH MINERALS HOLDINGS LLC (FKA GREENMET CONSULTING)",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment"
-      ],
-      "topics": [
-        "General: Natural Resources"
-      ],
-      "entities": [
-        "Congress"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563771,
-      "uuid": "74e9e394-d76d-4903-be3f-6013fca60472",
-      "date": "2026-10-22T12:33:25-04:00",
-      "client": "GREENTECH MINERALS HOLDINGS LLC (FKA GREENMET CONSULTING)",
-      "registrant": "GREENTECH MINERALS HOLDINGS LLC (FKA GREENMET CONSULTING)",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Energy and Environment",
-      "domains": [
-        "Energy and Environment",
-        "Defense and Security",
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Defense",
-        "General: Energy Nuclear",
-        "General: Manufacturing",
-        "General: Natural Resources",
-        "General: Trade"
-      ],
-      "entities": [
-        "Senate",
-        "Department of Defense",
-        "Department of Commerce",
-        "Department of Energy",
-        "House of Representatives",
-        "Army Corps of Engineers",
-        "White House"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563770,
-      "uuid": "eb3c0a89-c009-4c29-8852-eeb85a3b08d6",
-      "date": "2026-10-22T12:30:28-04:00",
-      "client": "TEXTRON INC",
-      "registrant": "TEXTRON INC.",
-      "income": 1261205.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Trade",
-        "Transportation"
-      ],
-      "topics": [
-        "Appropriations",
-        "Defense Authorization",
-        "Defense Procurement",
-        "Aviation Policy"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense",
-        "DHS",
-        "FAA"
-      ],
-      "legislation": [
-        "Defense Appropriations Act",
-        "National Defense Authorization Act",
-        "H.R. 4213 (119th Congress) \u2014 Department of Homeland Security Appropriations Act, 2026"
-      ]
-    },
-    {
-      "id": 563769,
-      "uuid": "14cdc1c2-abae-49f1-b29b-3b4e8ec43144",
-      "date": "2026-10-22T12:28:47-04:00",
-      "client": "TRIBAL HEALTH",
-      "registrant": "KILPATRICK TOWNSEND & STOCKTON",
-      "income": 30000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563768,
-      "uuid": "6137414f-5ad8-41e7-8327-aedba23bec6e",
-      "date": "2026-10-22T12:26:54-04:00",
-      "client": "PHAROS CAPITAL GROUP",
-      "registrant": "KILPATRICK TOWNSEND & STOCKTON",
-      "income": 70000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Health Issues",
-        "General: Medicare Medicaid"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "HHS",
-        "CMS"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563767,
-      "uuid": "996b70c2-d744-4ff2-8ab4-cc14587019c8",
-      "date": "2026-10-22T12:25:59-04:00",
-      "client": "MILLER INDUSTRIES, INC.",
-      "registrant": "KILPATRICK TOWNSEND & STOCKTON",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": null,
-      "domains": [],
-      "topics": [],
-      "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 563766,
-      "uuid": "bec17e64-c610-4781-815c-0021ec57858b",
-      "date": "2026-10-22T12:25:33-04:00",
-      "client": "GDI ENERGY",
-      "registrant": "KILPATRICK TOWNSEND & STOCKTON",
-      "income": 40000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Government and Budget",
-      "domains": [
-        "Government and Budget",
-        "Defense and Security"
-      ],
-      "topics": [
-        "Science Research Funding"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Defense"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 563765,
-      "uuid": "a1549af6-c3ca-4e03-b15a-bc3c541500b8",
-      "date": "2026-10-22T12:24:15-04:00",
-      "client": "ASSOCIATION OF LANGUAGE COMPANIES",
-      "registrant": "WP RIVERS AND ASSOCIATES",
-      "income": 33000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Labor and Immigration",
-      "domains": [
-        "Labor and Immigration"
-      ],
-      "topics": [
-        "Labor and Employment"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
     }
   ]
 }
