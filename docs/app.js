@@ -1975,7 +1975,7 @@ function renderOrgDetail(body, view) {
         money: true,
         frameQuarter: orgFrame?.current_quarter?.quarter,
         currentYear: orgFrame?.current_quarter?.year,
-        extraNote: "Total reported income and expenses per quarter, across all filings for this organization."
+        extraNote: "Total reported income and expenses per quarter, across this organization's filings; outside-firm amounts already in its own report are not added again."
     });
 
     // Top topics — pivot into the matching topic signal if it's tracked there.
