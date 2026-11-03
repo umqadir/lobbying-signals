@@ -1,71 +1,71 @@
 {
-  "generated_at": "2026-11-02T19:58:47.847643+00:00",
-  "total_filings": 569491,
-  "total_activities": 1184584,
-  "total_extracted": 1133245,
+  "generated_at": "2026-11-03T18:23:33.011365+00:00",
+  "total_filings": 569667,
+  "total_activities": 1184859,
+  "total_extracted": 1133493,
   "extracted_pct": 95.7,
   "extraction_source": "deterministic_rules",
   "date_range": {
     "start": "2020-01-06T10:37:27.950000-05:00",
-    "end": "2026-11-02T13:57:48-05:00"
+    "end": "2026-11-03T13:20:32-05:00"
   },
   "quarters": [
     {
       "year": 2026,
       "quarter": 3,
-      "filings": 24058,
-      "income": 1371768488.11
+      "filings": 24203,
+      "income": 1373971250.3
     },
     {
       "year": 2026,
       "quarter": 2,
-      "filings": 25546,
-      "income": 1390345685.72
+      "filings": 25547,
+      "income": 1390455685.72
     },
     {
       "year": 2026,
       "quarter": 1,
       "filings": 25447,
-      "income": 1465063465.84
+      "income": 1465223465.84
     },
     {
       "year": 2025,
       "quarter": 4,
       "filings": 24897,
-      "income": 1335881315.51
+      "income": 1335971315.51
     },
     {
       "year": 2025,
       "quarter": 3,
       "filings": 24720,
-      "income": 1274983003.79
+      "income": 1275094003.79
     },
     {
       "year": 2025,
       "quarter": 2,
       "filings": 24291,
-      "income": 1329620015.89
+      "income": 1329690015.89
     },
     {
       "year": 2025,
       "quarter": 1,
       "filings": 21256,
-      "income": 1290548516.05
+      "income": 1290678516.05
     },
     {
       "year": 2024,
       "quarter": 4,
       "filings": 19886,
-      "income": 1118463289.0
+      "income": 1118583289.0
     }
   ],
   "latest_complete_quarter": {
     "year": 2026,
     "quarter": 2,
     "label": "Q2 2026",
-    "income": 1390345685.72,
-    "filings": 25546,
-    "yoy_income": 1329620015.89,
+    "income": 1390455685.72,
+    "filings": 25547,
+    "yoy_income": 1329690015.89,
     "yoy_filings": 24291,
     "income_change_pct": 4.6
   },
@@ -73,6 +73,6 @@
     "year": 2026,
     "quarter": 3,
     "label": "Q3 2026",
-    "filings": 24058
+    "filings": 24203
   }
 }
