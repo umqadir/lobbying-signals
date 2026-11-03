@@ -259,6 +259,14 @@ jobs:
           test "$(jq -r .headRefOid .pr-review/pr.json)" = "$HEAD_SHA"
           gh pr diff "$PR" -R "$GITHUB_REPOSITORY" > .pr-review/diff.patch
 
+      - name: Install bubblewrap for Claude Code's subprocess sandbox
+        if: steps.gate.outputs.ok == 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq bubblewrap
+          # Ubuntu 24.04 blocks unprivileged user namespaces, which bwrap needs.
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
       - name: Claude reviews the PR
         id: claude
         if: steps.gate.outputs.ok == 'true'

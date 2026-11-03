@@ -58,6 +58,13 @@ jobs:
           mkdir -p "$RUNNER_TEMP/base"
           cp 08_trends.py scripts/test_normalize_legislation.py "$RUNNER_TEMP/base/"
 
+      - name: Install bubblewrap for Claude Code's subprocess sandbox
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq bubblewrap
+          # Ubuntu 24.04 blocks unprivileged user namespaces, which bwrap needs.
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
       - name: Claude proposes alias updates
         id: claude
         uses: anthropics/claude-code-action@1d6de8cb0c237e7c15e9e1bdf973826ebae490cc # v1.0.248
