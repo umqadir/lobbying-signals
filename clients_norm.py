@@ -261,6 +261,32 @@ _FORMER_NAME_ALIASES = {
     # Company)" — one continuing US filer; "JBS USA" folds to bare "JBS" via
     # the geographic-tail strip, so the legal-name key points there.
     'JBS USA FOOD': 'JBS',
+
+    # ── Monthly identity review, 2026-11 ──
+    # Renames/rebrands of ONE continuing organization, plus same-company
+    # short-form / operating-/holding-vehicle variants, verified against the
+    # raw FKA/FORMERLY evidence in the filings and corporate/press records.
+    # Acquisitions, spin-offs, joint ventures, generic-name collisions, and
+    # distinct-operation sister subsidiaries were deliberately left split
+    # (see the PR).
+
+    # Trade associations, nonprofits & public agencies that renamed
+    'OHIO MUNICIPAL ELECTRIC ASSOCIATION': 'AMERICAN MUNICIPAL POWER',  # American Municipal Power Inc (FORMERLY Ohio Municipal Electric Association)
+    'NATIONAL MENTOR': 'SEVITA',                 # The MENTOR Network / National Mentor Holdings rebranded Sevita, 2021
+    'HOPEWELL FUND': 'HOPEWELL FOUNDATION',      # The Hopewell Foundation FKA Hopewell Fund (same continuing nonprofit)
+
+    # Company renamed (same continuing public company, NDAQ throughout)
+    'NASDAQ OMX': 'NASDAQ',                      # The NASDAQ OMX Group, Inc. -> Nasdaq, Inc., 2015
+
+    # Short-form / principal operating-entity variants of one company
+    # (cf. MICRON, VALERO, NEW YORK LIFE above)
+    'TRUIST': 'TRUIST FINANCIAL',                # Truist / Truist Corp == Truist Financial Corporation
+    'CARRIER': 'CARRIER GLOBAL',                 # Carrier Corporation == Carrier Global Corporation (HVAC)
+
+    # Same company relabeling the legal vehicle it files lobbying under (NOT a
+    # fold into a separate org; the group's competitive/sister subs stay split)
+    'NEXTERA ENERGY': 'NEXTERA ENERGY CAPITAL',  # NextEra Energy Capital Holdings Inc (FORMERLY NextEra Energy Inc), the group's financing filer; NextEra Energy Resources stays split
+    'PSEG': 'PSE AND G',                         # PSE&G (FKA PSEG): Public Service Enterprise Group relabel to its PSE&G utility filer
 }
 
 # Any other trailing parenthetical is stripped when it clearly carries no
