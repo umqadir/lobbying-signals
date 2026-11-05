@@ -218,6 +218,25 @@ KEY_CASES = [
     ("INVESCO", "INVESCO HOLDING COMPANY (US)"),
     ("AMERICAN PUBLIC UNIVERSITY SYSTEM, INC.", "APEI"),
 
+    # ── Former-name aliases added by the 2026-11 identity review ──
+    # Renames/rebrands and same-company short-form/vehicle variants: an
+    # OLD-name (or short-form) filing folds forward to the CURRENT key
+    ("OHIO MUNICIPAL ELECTRIC ASSOCIATION", "AMERICAN MUNICIPAL POWER"),
+    ("SEVITA (FORMERLY KNOWN AS NATIONAL MENTOR HOLDINGS)", "SEVITA"),
+    ("NATIONAL MENTOR HOLDINGS, INC.", "SEVITA"),
+    ("THE HOPEWELL FOUNDATION FKA HOPEWELL FUND", "HOPEWELL FOUNDATION"),
+    ("HOPEWELL FUND", "HOPEWELL FOUNDATION"),
+    ("NASDAQ OMX GROUP, INC.", "NASDAQ"),
+    ("TRUIST", "TRUIST FINANCIAL"),
+    ("CARRIER CORPORATION", "CARRIER GLOBAL"),
+    # Same company relabeling its filing vehicle (financing/utility entity);
+    # the group's distinct sister subs keep their own keys
+    ("NEXTERA ENERGY, INC.", "NEXTERA ENERGY CAPITAL"),
+    ("NEXTERA ENERGY CAPITAL HOLDINGS INC. (FORMERLY NEXTERA ENERGY INC.)", "NEXTERA ENERGY CAPITAL"),
+    ("NEXTERA ENERGY RESOURCES, LLC", "NEXTERA ENERGY RESOURCES"),  # competitive sub stays split
+    ("PSEG", "PSE AND G"),
+    ("PSE&G (FKA PSEG)", "PSE AND G"),
+
     # ── PKA / A/K/A / AKA / PREVIOUSLY markers (former or alternate names) ──
     ("CONSUMER BRANDS ASSOCIATION (PKA: GROCERY MANUFACTURERS ASSOCIATION)",
      "CONSUMER BRANDS ASSOCIATION"),
