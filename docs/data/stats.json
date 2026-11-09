@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-11-08T16:31:27.968223+00:00",
-  "total_filings": 575030,
-  "total_activities": 1185577,
-  "total_extracted": 1134120,
+  "generated_at": "2026-11-09T20:24:43.663315+00:00",
+  "total_filings": 575090,
+  "total_activities": 1185675,
+  "total_extracted": 1134212,
   "extracted_pct": 95.7,
   "extraction_source": "deterministic_rules",
   "date_range": {
     "start": "2020-01-06T10:37:27.950000-05:00",
-    "end": "2026-11-08T00:17:29-05:00"
+    "end": "2026-11-09T15:10:02-05:00"
   },
   "quarters": [
     {
       "year": 2026,
       "quarter": 3,
-      "filings": 24612,
-      "income": 1381664533.25
+      "filings": 24666,
+      "income": 1382648352.25
     },
     {
       "year": 2026,
@@ -61,18 +61,18 @@
   ],
   "latest_complete_quarter": {
     "year": 2026,
-    "quarter": 2,
-    "label": "Q2 2026",
-    "income": 1390513244.72,
-    "filings": 25548,
-    "yoy_income": 1329690015.89,
-    "yoy_filings": 24291,
-    "income_change_pct": 4.6
+    "quarter": 3,
+    "label": "Q3 2026",
+    "income": 1382648352.25,
+    "filings": 24666,
+    "yoy_income": 1275094003.79,
+    "yoy_filings": 24720,
+    "income_change_pct": 8.4
   },
   "current_partial_quarter": {
     "year": 2026,
-    "quarter": 3,
-    "label": "Q3 2026",
-    "filings": 24612
+    "quarter": 4,
+    "label": "Q4 2026",
+    "filings": 0
   }
 }
