@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T17:42:03.000332+00:00",
+  "generated_at": "2026-11-12T17:55:14.886671+00:00",
   "frame": "quarter",
   "frame_label": "Q3 2026",
   "status": "needs_attention",
@@ -17,24 +17,24 @@
     "errors": 1
   },
   "metrics": {
-    "mentions_current_quarter": 44657,
+    "mentions_current_quarter": 44715,
     "mentions_baseline_quarter": 44498,
-    "mentions_vs_yoy_pct": 0.4,
-    "filings_current_90d": 25811,
-    "filings_prev_90d": 26578,
-    "filings_yoy_90d": 24885,
-    "filings_vs_prev_pct": -2.9,
-    "filings_vs_yoy_pct": 3.7,
+    "mentions_vs_yoy_pct": 0.5,
+    "filings_current_90d": 25853,
+    "filings_prev_90d": 26561,
+    "filings_yoy_90d": 24900,
+    "filings_vs_prev_pct": -2.7,
+    "filings_vs_yoy_pct": 3.8,
     "due_vs_non_due_ratio_4y": 20.61,
-    "due_month_avg_filings": 11624.5,
-    "non_due_month_avg_filings": 564.0,
+    "due_month_avg_filings": 11624.4,
+    "non_due_month_avg_filings": 564.2,
     "quarter_due_month_share_pct": 91.2,
     "coverage_recent_90d_pct": 96.4,
     "coverage_all_time_pct": 95.7,
     "legislation_dropped_pct": 5.4,
     "legislation_normalized_pct": 62.2,
-    "top_topic_share_pct": 16.7,
-    "top5_topic_share_pct": 32.18,
+    "top_topic_share_pct": 16.68,
+    "top5_topic_share_pct": 32.15,
     "secular_change_pct": 41.9,
     "secular_cagr_pct": 7.25,
     "secular_start_year": 2020,
@@ -59,7 +59,7 @@
     {
       "severity": "low",
       "title": "Top-topic concentration",
-      "detail": "Top topic accounts for 16.70% of Q3 2026 extracted mentions (top 5 = 32.18%)."
+      "detail": "Top topic accounts for 16.68% of Q3 2026 extracted mentions (top 5 = 32.15%)."
     }
   ]
 }

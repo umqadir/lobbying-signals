@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T17:44:05.682390+00:00",
+  "generated_at": "2026-11-12T17:57:18.062389+00:00",
   "frames": {
     "quarter": {
       "current_quarter": {
@@ -13,12 +13,12 @@
         "label": "Q3 2025"
       },
       "quarter_totals": {
-        "current_income": 1384554626.25,
-        "baseline_income": 1275094003.79,
-        "change_pct": 8.6,
-        "current_filings": 24765,
+        "current_income": 1385476126.25,
+        "baseline_income": 1275124003.79,
+        "change_pct": 8.7,
+        "current_filings": 24807,
         "baseline_filings": 24720,
-        "current_clients": 17559,
+        "current_clients": 17594,
         "baseline_clients": 17359
       },
       "risers": [
@@ -1860,103 +1860,6 @@
           "method_changed": false
         },
         {
-          "key": "AARP",
-          "name": "AARP",
-          "current": 4570000.0,
-          "baseline": 3810000.0,
-          "delta": 760000.0,
-          "ratio": 1.199,
-          "filings_current": 9,
-          "filings_baseline": 10,
-          "topics": [
-            "Drug Pricing",
-            "Appropriations",
-            "Tax Policy",
-            "Medicare and Medicaid"
-          ],
-          "registrants": [
-            "Harper & Bailey Governmental Solutions LLC",
-            "Cornerstone Government Affairs, Inc.",
-            "Pacesetter Strategies Formerly Known as K. Black Strategies LLC"
-          ],
-          "series": [
-            2210000.0,
-            1770000.0,
-            1880000.0,
-            2400000.0,
-            2840000.0,
-            2720000.0,
-            2980000.0,
-            5140000.0,
-            3530000.0,
-            3400000.0,
-            4790000.0,
-            4180000.0,
-            3850000.0,
-            3650000.0,
-            3890000.0,
-            5130000.0,
-            4370000.0,
-            5170000.0,
-            4820000.0,
-            5580000.0,
-            6630000.0,
-            5120000.0,
-            3810000.0,
-            5300000.0,
-            3830000.0,
-            4110000.0,
-            4570000.0
-          ],
-          "examples": [
-            {
-              "uuid": "1ad9d081-53b6-4730-9b34-20c056adeac7",
-              "date": "2026-10-19T08:18:36-04:00",
-              "client": "AARP",
-              "registrant": "AARP",
-              "income": 4570000.0,
-              "type": "Q3"
-            },
-            {
-              "uuid": "fe02a69c-8242-4e81-9094-bdf5c4193985",
-              "date": "2026-10-14T16:03:14-04:00",
-              "client": "AARP",
-              "registrant": "Cornerstone Government Affairs, Inc.",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "92a5d59d-66cc-4ede-9b79-6caa2d23a3f7",
-              "date": "2026-10-20T08:42:29-04:00",
-              "client": "AARP",
-              "registrant": "Mehlman Consulting, Inc.",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "86c65209-d7c8-46e0-a479-ea67e822bbf5",
-              "date": "2026-10-20T18:59:58-04:00",
-              "client": "AARP",
-              "registrant": "theGROUP DC, LLC",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "011e8cf4-606c-43d7-8839-97ce3ead36eb",
-              "date": "2026-10-19T16:55:28-04:00",
-              "client": "AARP",
-              "registrant": "Thorn Run Partners",
-              "income": 40000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            }
-          ],
-          "method_changed": false
-        },
-        {
           "key": "MASTERCARD",
           "name": "Mastercard Worldwide",
           "current": 1850000.0,
@@ -2047,6 +1950,103 @@
               "client": "Mastercard Worldwide",
               "registrant": "Resolution Public Affairs, LLC",
               "income": 60000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            }
+          ],
+          "method_changed": false
+        },
+        {
+          "key": "AARP",
+          "name": "AARP",
+          "current": 4570000.0,
+          "baseline": 3810000.0,
+          "delta": 760000.0,
+          "ratio": 1.199,
+          "filings_current": 9,
+          "filings_baseline": 10,
+          "topics": [
+            "Drug Pricing",
+            "Appropriations",
+            "Tax Policy",
+            "Medicare and Medicaid"
+          ],
+          "registrants": [
+            "Harper & Bailey Governmental Solutions LLC",
+            "Cornerstone Government Affairs, Inc.",
+            "Pacesetter Strategies Formerly Known as K. Black Strategies LLC"
+          ],
+          "series": [
+            2210000.0,
+            1770000.0,
+            1880000.0,
+            2400000.0,
+            2840000.0,
+            2720000.0,
+            2980000.0,
+            5140000.0,
+            3530000.0,
+            3400000.0,
+            4790000.0,
+            4180000.0,
+            3850000.0,
+            3650000.0,
+            3890000.0,
+            5130000.0,
+            4370000.0,
+            5170000.0,
+            4820000.0,
+            5580000.0,
+            6630000.0,
+            5120000.0,
+            3810000.0,
+            5300000.0,
+            3830000.0,
+            4110000.0,
+            4570000.0
+          ],
+          "examples": [
+            {
+              "uuid": "1ad9d081-53b6-4730-9b34-20c056adeac7",
+              "date": "2026-10-19T08:18:36-04:00",
+              "client": "AARP",
+              "registrant": "AARP",
+              "income": 4570000.0,
+              "type": "Q3"
+            },
+            {
+              "uuid": "fe02a69c-8242-4e81-9094-bdf5c4193985",
+              "date": "2026-10-14T16:03:14-04:00",
+              "client": "AARP",
+              "registrant": "Cornerstone Government Affairs, Inc.",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "92a5d59d-66cc-4ede-9b79-6caa2d23a3f7",
+              "date": "2026-10-20T08:42:29-04:00",
+              "client": "AARP",
+              "registrant": "Mehlman Consulting, Inc.",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "86c65209-d7c8-46e0-a479-ea67e822bbf5",
+              "date": "2026-10-20T18:59:58-04:00",
+              "client": "AARP",
+              "registrant": "theGROUP DC, LLC",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "011e8cf4-606c-43d7-8839-97ce3ead36eb",
+              "date": "2026-10-19T16:55:28-04:00",
+              "client": "AARP",
+              "registrant": "Thorn Run Partners",
+              "income": 40000.0,
               "type": "Q3",
               "included_in_self_report": true
             }
@@ -4016,60 +4016,6 @@
           "method_changed": false
         },
         {
-          "key": "HEALTH EDGE INVESTMENT PARTNERS",
-          "name": "Health Edge Investment Partners, LLC",
-          "current": 750000.0,
-          "baseline": 0.0,
-          "delta": 750000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [],
-          "registrants": [
-            "Ballard Partners"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            350000.0,
-            750000.0
-          ],
-          "examples": [
-            {
-              "uuid": "c07ce104-815c-4f28-8567-e4ed4aa7ac1e",
-              "date": "2026-10-15T22:23:13-04:00",
-              "client": "Health Edge Investment Partners, LLC",
-              "registrant": "Ballard Partners",
-              "income": 750000.0,
-              "type": "Q3"
-            }
-          ],
-          "method_changed": false
-        },
-        {
           "key": "NOOSHEEN HASHEMI",
           "name": "Noosheen Hashemi",
           "current": 750000.0,
@@ -4117,6 +4063,60 @@
               "date": "2026-10-20T14:52:50-04:00",
               "client": "Noosheen Hashemi",
               "registrant": "Checkmate Government Relations",
+              "income": 750000.0,
+              "type": "Q3"
+            }
+          ],
+          "method_changed": false
+        },
+        {
+          "key": "HEALTH EDGE INVESTMENT PARTNERS",
+          "name": "Health Edge Investment Partners, LLC",
+          "current": 750000.0,
+          "baseline": 0.0,
+          "delta": 750000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Ballard Partners"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            350000.0,
+            750000.0
+          ],
+          "examples": [
+            {
+              "uuid": "c07ce104-815c-4f28-8567-e4ed4aa7ac1e",
+              "date": "2026-10-15T22:23:13-04:00",
+              "client": "Health Edge Investment Partners, LLC",
+              "registrant": "Ballard Partners",
               "income": 750000.0,
               "type": "Q3"
             }
@@ -5885,103 +5885,6 @@
           "method_changed": false
         },
         {
-          "key": "GENENTECH",
-          "name": "Genentech, Inc.",
-          "current": 2890000.0,
-          "baseline": 3480000.0,
-          "delta": -590000.0,
-          "ratio": 0.83,
-          "filings_current": 20,
-          "filings_baseline": 19,
-          "topics": [
-            "Drug Pricing",
-            "Medicare and Medicaid",
-            "Intellectual Property",
-            "Tax Policy"
-          ],
-          "registrants": [
-            "Cornerstone Government Affairs, Inc.",
-            "Ogr",
-            "Todd Strategy Group"
-          ],
-          "series": [
-            2790000.0,
-            1930000.0,
-            2750000.0,
-            2030000.0,
-            3175000.0,
-            1670000.0,
-            2670000.0,
-            1580000.0,
-            3060000.0,
-            1650000.0,
-            2430000.0,
-            1630000.0,
-            3100000.0,
-            1820000.0,
-            2850000.0,
-            1730000.0,
-            3340000.0,
-            1700000.0,
-            2470000.0,
-            1600000.0,
-            3150000.0,
-            1940000.0,
-            3480000.0,
-            1850000.0,
-            3780000.0,
-            1810000.0,
-            2890000.0
-          ],
-          "examples": [
-            {
-              "uuid": "276d72bf-7456-4b4a-9315-cc95a0461280",
-              "date": "2026-10-19T10:48:33-04:00",
-              "client": "Genentech, Inc.",
-              "registrant": "Genentech, Inc",
-              "income": 2890000.0,
-              "type": "Q3"
-            },
-            {
-              "uuid": "edce8304-2b2e-400c-a3da-68fe0b8764ee",
-              "date": "2026-10-17T11:03:56-04:00",
-              "client": "Genentech, Inc.",
-              "registrant": "Ogr",
-              "income": 60000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "913abd18-4d32-470a-839d-c8fdb3d54431",
-              "date": "2026-10-19T08:29:18-04:00",
-              "client": "Genentech, Inc.",
-              "registrant": "Todd Strategy Group",
-              "income": 60000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "d9017071-680c-4670-a251-eb860954548c",
-              "date": "2026-10-19T18:23:06-04:00",
-              "client": "Genentech, Inc.",
-              "registrant": "Tiber Creek Health Strategies, Inc.",
-              "income": 60000.0,
-              "type": "Q3Y",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "36691c83-59a2-4174-8954-ca892dca0c5a",
-              "date": "2026-10-19T19:20:23-04:00",
-              "client": "Genentech, Inc.",
-              "registrant": "Tiber Creek Group",
-              "income": 60000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            }
-          ],
-          "method_changed": false
-        },
-        {
           "key": "ORACLE",
           "name": "Oracle Corporation",
           "current": 2890000.0,
@@ -6072,6 +5975,103 @@
               "client": "Oracle Corporation",
               "registrant": "Guidepoststrategies, LLC",
               "income": 80000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            }
+          ],
+          "method_changed": false
+        },
+        {
+          "key": "GENENTECH",
+          "name": "Genentech, Inc.",
+          "current": 2890000.0,
+          "baseline": 3480000.0,
+          "delta": -590000.0,
+          "ratio": 0.83,
+          "filings_current": 20,
+          "filings_baseline": 19,
+          "topics": [
+            "Drug Pricing",
+            "Medicare and Medicaid",
+            "Intellectual Property",
+            "Tax Policy"
+          ],
+          "registrants": [
+            "Cornerstone Government Affairs, Inc.",
+            "Ogr",
+            "Todd Strategy Group"
+          ],
+          "series": [
+            2790000.0,
+            1930000.0,
+            2750000.0,
+            2030000.0,
+            3175000.0,
+            1670000.0,
+            2670000.0,
+            1580000.0,
+            3060000.0,
+            1650000.0,
+            2430000.0,
+            1630000.0,
+            3100000.0,
+            1820000.0,
+            2850000.0,
+            1730000.0,
+            3340000.0,
+            1700000.0,
+            2470000.0,
+            1600000.0,
+            3150000.0,
+            1940000.0,
+            3480000.0,
+            1850000.0,
+            3780000.0,
+            1810000.0,
+            2890000.0
+          ],
+          "examples": [
+            {
+              "uuid": "276d72bf-7456-4b4a-9315-cc95a0461280",
+              "date": "2026-10-19T10:48:33-04:00",
+              "client": "Genentech, Inc.",
+              "registrant": "Genentech, Inc",
+              "income": 2890000.0,
+              "type": "Q3"
+            },
+            {
+              "uuid": "edce8304-2b2e-400c-a3da-68fe0b8764ee",
+              "date": "2026-10-17T11:03:56-04:00",
+              "client": "Genentech, Inc.",
+              "registrant": "Ogr",
+              "income": 60000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "913abd18-4d32-470a-839d-c8fdb3d54431",
+              "date": "2026-10-19T08:29:18-04:00",
+              "client": "Genentech, Inc.",
+              "registrant": "Todd Strategy Group",
+              "income": 60000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "d9017071-680c-4670-a251-eb860954548c",
+              "date": "2026-10-19T18:23:06-04:00",
+              "client": "Genentech, Inc.",
+              "registrant": "Tiber Creek Health Strategies, Inc.",
+              "income": 60000.0,
+              "type": "Q3Y",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "36691c83-59a2-4174-8954-ca892dca0c5a",
+              "date": "2026-10-19T19:20:23-04:00",
+              "client": "Genentech, Inc.",
+              "registrant": "Tiber Creek Group",
+              "income": 60000.0,
               "type": "Q3",
               "included_in_self_report": true
             }
@@ -6176,6 +6176,101 @@
           "method_changed": false
         },
         {
+          "key": "NATIONAL ASSOCIATION OF BROADCASTERS",
+          "name": "National Association of Broadcasters",
+          "current": 2700000.0,
+          "baseline": 2540000.0,
+          "delta": 160000.0,
+          "ratio": 1.063,
+          "filings_current": 7,
+          "filings_baseline": 9,
+          "topics": [
+            "Media and Journalism",
+            "Artificial Intelligence"
+          ],
+          "registrants": [
+            "Hillnorth LLC",
+            "Haro Solutions LLC",
+            "The Smith-Free Group, LLC"
+          ],
+          "series": [
+            2720000.0,
+            2310000.0,
+            2030000.0,
+            2140000.0,
+            1960000.0,
+            2180000.0,
+            2030000.0,
+            1960000.0,
+            2550000.0,
+            2680000.0,
+            2830000.0,
+            2880000.0,
+            2760000.0,
+            2730000.0,
+            2730000.0,
+            2930000.0,
+            2930000.0,
+            2870000.0,
+            3030000.0,
+            3090000.0,
+            3050000.0,
+            2890000.0,
+            2540000.0,
+            2980000.0,
+            2910000.0,
+            2620000.0,
+            2700000.0
+          ],
+          "examples": [
+            {
+              "uuid": "8a799cbb-419a-4952-9603-8ee95180d301",
+              "date": "2026-10-20T15:20:55-04:00",
+              "client": "National Association of Broadcasters",
+              "registrant": "National Association of Broadcasters",
+              "income": 2700000.0,
+              "type": "Q3"
+            },
+            {
+              "uuid": "fe5fb0ab-e1e0-4b32-be62-63d2786903f8",
+              "date": "2026-10-20T22:42:33-04:00",
+              "client": "National Association of Broadcasters",
+              "registrant": "Federal Street Strategies, LLC",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "08da880c-4705-443b-bffc-3a09e2456163",
+              "date": "2026-10-20T17:21:46-04:00",
+              "client": "National Association of Broadcasters",
+              "registrant": "Klein/Johnson Group",
+              "income": 40000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "900c6812-624e-4e71-bec1-9d6fb7ae998c",
+              "date": "2026-10-05T14:19:12-04:00",
+              "client": "National Association of Broadcasters",
+              "registrant": "Hillnorth LLC",
+              "income": 37500.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "e7400057-b6ba-4aff-a6cf-c007b24c3469",
+              "date": "2026-10-06T10:27:30-04:00",
+              "client": "National Association of Broadcasters",
+              "registrant": "Haro Solutions LLC",
+              "income": 30000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            }
+          ],
+          "method_changed": false
+        },
+        {
           "key": "BOEING",
           "name": "The Boeing Company",
           "current": 2700000.0,
@@ -6266,101 +6361,6 @@
               "client": "The Boeing Company",
               "registrant": "Crossroads Strategies, LLC",
               "income": 60000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            }
-          ],
-          "method_changed": false
-        },
-        {
-          "key": "NATIONAL ASSOCIATION OF BROADCASTERS",
-          "name": "National Association of Broadcasters",
-          "current": 2700000.0,
-          "baseline": 2540000.0,
-          "delta": 160000.0,
-          "ratio": 1.063,
-          "filings_current": 7,
-          "filings_baseline": 9,
-          "topics": [
-            "Media and Journalism",
-            "Artificial Intelligence"
-          ],
-          "registrants": [
-            "Hillnorth LLC",
-            "Haro Solutions LLC",
-            "The Smith-Free Group, LLC"
-          ],
-          "series": [
-            2720000.0,
-            2310000.0,
-            2030000.0,
-            2140000.0,
-            1960000.0,
-            2180000.0,
-            2030000.0,
-            1960000.0,
-            2550000.0,
-            2680000.0,
-            2830000.0,
-            2880000.0,
-            2760000.0,
-            2730000.0,
-            2730000.0,
-            2930000.0,
-            2930000.0,
-            2870000.0,
-            3030000.0,
-            3090000.0,
-            3050000.0,
-            2890000.0,
-            2540000.0,
-            2980000.0,
-            2910000.0,
-            2620000.0,
-            2700000.0
-          ],
-          "examples": [
-            {
-              "uuid": "8a799cbb-419a-4952-9603-8ee95180d301",
-              "date": "2026-10-20T15:20:55-04:00",
-              "client": "National Association of Broadcasters",
-              "registrant": "National Association of Broadcasters",
-              "income": 2700000.0,
-              "type": "Q3"
-            },
-            {
-              "uuid": "fe5fb0ab-e1e0-4b32-be62-63d2786903f8",
-              "date": "2026-10-20T22:42:33-04:00",
-              "client": "National Association of Broadcasters",
-              "registrant": "Federal Street Strategies, LLC",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "08da880c-4705-443b-bffc-3a09e2456163",
-              "date": "2026-10-20T17:21:46-04:00",
-              "client": "National Association of Broadcasters",
-              "registrant": "Klein/Johnson Group",
-              "income": 40000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "900c6812-624e-4e71-bec1-9d6fb7ae998c",
-              "date": "2026-10-05T14:19:12-04:00",
-              "client": "National Association of Broadcasters",
-              "registrant": "Hillnorth LLC",
-              "income": 37500.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "e7400057-b6ba-4aff-a6cf-c007b24c3469",
-              "date": "2026-10-06T10:27:30-04:00",
-              "client": "National Association of Broadcasters",
-              "registrant": "Haro Solutions LLC",
-              "income": 30000.0,
               "type": "Q3",
               "included_in_self_report": true
             }
@@ -10222,6 +10222,84 @@
           "method_changed": false
         },
         {
+          "key": "OPENAI OPCO",
+          "name": "Openai Opco, LLC",
+          "current": 1530000.0,
+          "baseline": 920000.0,
+          "delta": 610000.0,
+          "ratio": 1.663,
+          "filings_current": 3,
+          "filings_baseline": 3,
+          "topics": [
+            "Artificial Intelligence",
+            "Cybersecurity",
+            "Data Privacy"
+          ],
+          "registrants": [
+            "Akin Gump Strauss Hauer & Feld",
+            "Dla Piper LLP (US)",
+            "Openai Opco, LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            260000.0,
+            340000.0,
+            480000.0,
+            430000.0,
+            510000.0,
+            560000.0,
+            620000.0,
+            920000.0,
+            890000.0,
+            1020000.0,
+            1200000.0,
+            1530000.0
+          ],
+          "examples": [
+            {
+              "uuid": "81e83fa3-9a11-4cbd-be37-3032cb4696f4",
+              "date": "2026-10-20T17:10:24-04:00",
+              "client": "Openai Opco, LLC",
+              "registrant": "Openai Opco, LLC",
+              "income": 1530000.0,
+              "type": "Q3"
+            },
+            {
+              "uuid": "5134c182-7a89-41db-805e-afe6f927adbd",
+              "date": "2026-10-20T10:55:04-04:00",
+              "client": "Openai Opco, LLC",
+              "registrant": "Akin Gump Strauss Hauer & Feld",
+              "income": 110000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "de8c0fc1-e82a-44f6-80ab-d0d415b6d5a9",
+              "date": "2026-10-20T16:31:37-04:00",
+              "client": "Openai Opco, LLC",
+              "registrant": "Dla Piper LLP (US)",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            }
+          ],
+          "method_changed": false
+        },
+        {
           "key": "GSK",
           "name": "Glaxosmithkline LLC",
           "current": 1530000.0,
@@ -10311,84 +10389,6 @@
               "date": "2026-10-18T13:37:44-04:00",
               "client": "Glaxosmithkline LLC",
               "registrant": "Capitol Counsel LLC",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            }
-          ],
-          "method_changed": false
-        },
-        {
-          "key": "OPENAI OPCO",
-          "name": "Openai Opco, LLC",
-          "current": 1530000.0,
-          "baseline": 920000.0,
-          "delta": 610000.0,
-          "ratio": 1.663,
-          "filings_current": 3,
-          "filings_baseline": 3,
-          "topics": [
-            "Artificial Intelligence",
-            "Cybersecurity",
-            "Data Privacy"
-          ],
-          "registrants": [
-            "Akin Gump Strauss Hauer & Feld",
-            "Dla Piper LLP (US)",
-            "Openai Opco, LLC"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            260000.0,
-            340000.0,
-            480000.0,
-            430000.0,
-            510000.0,
-            560000.0,
-            620000.0,
-            920000.0,
-            890000.0,
-            1020000.0,
-            1200000.0,
-            1530000.0
-          ],
-          "examples": [
-            {
-              "uuid": "81e83fa3-9a11-4cbd-be37-3032cb4696f4",
-              "date": "2026-10-20T17:10:24-04:00",
-              "client": "Openai Opco, LLC",
-              "registrant": "Openai Opco, LLC",
-              "income": 1530000.0,
-              "type": "Q3"
-            },
-            {
-              "uuid": "5134c182-7a89-41db-805e-afe6f927adbd",
-              "date": "2026-10-20T10:55:04-04:00",
-              "client": "Openai Opco, LLC",
-              "registrant": "Akin Gump Strauss Hauer & Feld",
-              "income": 110000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "de8c0fc1-e82a-44f6-80ab-d0d415b6d5a9",
-              "date": "2026-10-20T16:31:37-04:00",
-              "client": "Openai Opco, LLC",
-              "registrant": "Dla Piper LLP (US)",
               "income": 50000.0,
               "type": "Q3",
               "included_in_self_report": true
@@ -11280,6 +11280,103 @@
           "method_changed": false
         },
         {
+          "key": "TAKEDA PHARMACEUTICALS",
+          "name": "Takeda Pharmaceuticals America, Inc.",
+          "current": 1450000.0,
+          "baseline": 1370000.0,
+          "delta": 80000.0,
+          "ratio": 1.058,
+          "filings_current": 8,
+          "filings_baseline": 7,
+          "topics": [
+            "Drug Pricing",
+            "Medicare and Medicaid",
+            "Tariffs and Trade Enforcement",
+            "FDA Regulation"
+          ],
+          "registrants": [
+            "Holland & Knight LLP",
+            "Crossroads Strategies, LLC",
+            "Todd Strategy Group"
+          ],
+          "series": [
+            940000.0,
+            1330000.0,
+            1190000.0,
+            420000.0,
+            690000.0,
+            1790000.0,
+            1490000.0,
+            580000.0,
+            1300000.0,
+            1210000.0,
+            1580000.0,
+            780000.0,
+            1460000.0,
+            1250000.0,
+            1380000.0,
+            510000.0,
+            460000.0,
+            1050000.0,
+            970000.0,
+            390000.0,
+            490000.0,
+            1570000.0,
+            1370000.0,
+            590000.0,
+            1410000.0,
+            610000.0,
+            1450000.0
+          ],
+          "examples": [
+            {
+              "uuid": "f96b430e-4fd8-43e2-abfb-0b64bbab6ce2",
+              "date": "2026-10-20T11:16:59-04:00",
+              "client": "Takeda Pharmaceuticals America, Inc.",
+              "registrant": "Takeda Pharmaceuticals America, Inc.",
+              "income": 1450000.0,
+              "type": "Q3"
+            },
+            {
+              "uuid": "00086d11-7688-4fe6-a6aa-4b059d6fc676",
+              "date": "2026-10-07T13:39:47-04:00",
+              "client": "Takeda Pharmaceuticals America, Inc.",
+              "registrant": "Holland & Knight LLP",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "1655dbe5-8f4e-4488-8a89-132c3c1268a0",
+              "date": "2026-10-17T18:14:57-04:00",
+              "client": "Takeda Pharmaceuticals America, Inc.",
+              "registrant": "Crossroads Strategies, LLC",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "e38c73e0-78d4-4791-8313-39550f377fff",
+              "date": "2026-10-19T10:03:05-04:00",
+              "client": "Takeda Pharmaceuticals America, Inc.",
+              "registrant": "Todd Strategy Group",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "00857907-0a37-40a4-a0b4-5dd620289ff4",
+              "date": "2026-10-19T19:04:33-04:00",
+              "client": "Takeda Pharmaceuticals America, Inc.",
+              "registrant": "Tiber Creek Group",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            }
+          ],
+          "method_changed": false
+        },
+        {
           "key": "DELTA AIR LINES",
           "name": "Delta Air Lines",
           "current": 1450000.0,
@@ -11458,103 +11555,6 @@
               "client": "The Dow Chemical Company",
               "registrant": "Miller Strategies, LLC",
               "income": 60000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            }
-          ],
-          "method_changed": false
-        },
-        {
-          "key": "TAKEDA PHARMACEUTICALS",
-          "name": "Takeda Pharmaceuticals America, Inc.",
-          "current": 1450000.0,
-          "baseline": 1370000.0,
-          "delta": 80000.0,
-          "ratio": 1.058,
-          "filings_current": 8,
-          "filings_baseline": 7,
-          "topics": [
-            "Drug Pricing",
-            "Medicare and Medicaid",
-            "Tariffs and Trade Enforcement",
-            "FDA Regulation"
-          ],
-          "registrants": [
-            "Holland & Knight LLP",
-            "Crossroads Strategies, LLC",
-            "Todd Strategy Group"
-          ],
-          "series": [
-            940000.0,
-            1330000.0,
-            1190000.0,
-            420000.0,
-            690000.0,
-            1790000.0,
-            1490000.0,
-            580000.0,
-            1300000.0,
-            1210000.0,
-            1580000.0,
-            780000.0,
-            1460000.0,
-            1250000.0,
-            1380000.0,
-            510000.0,
-            460000.0,
-            1050000.0,
-            970000.0,
-            390000.0,
-            490000.0,
-            1570000.0,
-            1370000.0,
-            590000.0,
-            1410000.0,
-            610000.0,
-            1450000.0
-          ],
-          "examples": [
-            {
-              "uuid": "f96b430e-4fd8-43e2-abfb-0b64bbab6ce2",
-              "date": "2026-10-20T11:16:59-04:00",
-              "client": "Takeda Pharmaceuticals America, Inc.",
-              "registrant": "Takeda Pharmaceuticals America, Inc.",
-              "income": 1450000.0,
-              "type": "Q3"
-            },
-            {
-              "uuid": "00086d11-7688-4fe6-a6aa-4b059d6fc676",
-              "date": "2026-10-07T13:39:47-04:00",
-              "client": "Takeda Pharmaceuticals America, Inc.",
-              "registrant": "Holland & Knight LLP",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "1655dbe5-8f4e-4488-8a89-132c3c1268a0",
-              "date": "2026-10-17T18:14:57-04:00",
-              "client": "Takeda Pharmaceuticals America, Inc.",
-              "registrant": "Crossroads Strategies, LLC",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "e38c73e0-78d4-4791-8313-39550f377fff",
-              "date": "2026-10-19T10:03:05-04:00",
-              "client": "Takeda Pharmaceuticals America, Inc.",
-              "registrant": "Todd Strategy Group",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "00857907-0a37-40a4-a0b4-5dd620289ff4",
-              "date": "2026-10-19T19:04:33-04:00",
-              "client": "Takeda Pharmaceuticals America, Inc.",
-              "registrant": "Tiber Creek Group",
-              "income": 50000.0,
               "type": "Q3",
               "included_in_self_report": true
             }
@@ -12203,103 +12203,6 @@
           "method_changed": false
         },
         {
-          "key": "ASSOCIATION OF EQUIPMENT MANUFACTURERS",
-          "name": "Association of Equipment Manufacturers",
-          "current": 1300000.0,
-          "baseline": 850000.0,
-          "delta": 450000.0,
-          "ratio": 1.529,
-          "filings_current": 5,
-          "filings_baseline": 3,
-          "topics": [
-            "Defense Authorization",
-            "Trade Agreements",
-            "Appropriations",
-            "Carbon and Climate"
-          ],
-          "registrants": [
-            "O'Keeffe Shahmoradi Strategies, LLC",
-            "Association of Equipment Manufacturers",
-            "Brownstein Hyatt Farber Schreck, LLP"
-          ],
-          "series": [
-            683325.0,
-            683325.0,
-            683325.0,
-            680000.0,
-            680000.0,
-            680000.0,
-            680000.0,
-            680000.0,
-            490000.0,
-            700000.0,
-            700000.0,
-            720000.0,
-            750000.0,
-            430000.0,
-            280000.0,
-            990000.0,
-            510000.0,
-            810000.0,
-            640000.0,
-            560000.0,
-            840000.0,
-            760000.0,
-            850000.0,
-            980000.0,
-            1200000.0,
-            810000.0,
-            1300000.0
-          ],
-          "examples": [
-            {
-              "uuid": "706810df-acf3-44b7-a752-1989c986f096",
-              "date": "2026-10-16T11:03:04-04:00",
-              "client": "Association of Equipment Manufacturers",
-              "registrant": "Association of Equipment Manufacturers",
-              "income": 1300000.0,
-              "type": "Q3"
-            },
-            {
-              "uuid": "377cb3d2-933c-4d9f-89ab-17f8a3b25751",
-              "date": "2026-10-20T10:49:33-04:00",
-              "client": "Association of Equipment Manufacturers",
-              "registrant": "Michael Best Strategies LLC",
-              "income": 120000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "cbe3f81e-c2b7-495e-ab57-2cf05aff3eeb",
-              "date": "2026-10-16T13:10:02-04:00",
-              "client": "Association of Equipment Manufacturers",
-              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
-              "income": 60000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "5c821180-791a-4b04-888c-ed629970b2b4",
-              "date": "2026-10-06T13:49:30-04:00",
-              "client": "Association of Equipment Manufacturers",
-              "registrant": "O'Keeffe Shahmoradi Strategies, LLC",
-              "income": 40000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "961d2c8b-714e-4204-a7d2-0dc855d0f22f",
-              "date": "2026-10-20T18:41:27-04:00",
-              "client": "Association of Equipment Manufacturers",
-              "registrant": "Capitol Resources, LLC",
-              "income": 30000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            }
-          ],
-          "method_changed": false
-        },
-        {
           "key": "ABBOTT LABORATORIES",
           "name": "Abbott Laboratories",
           "current": 1300000.0,
@@ -12390,6 +12293,103 @@
               "client": "Abbott Laboratories",
               "registrant": "The Russell Group, Inc.",
               "income": 60000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            }
+          ],
+          "method_changed": false
+        },
+        {
+          "key": "ASSOCIATION OF EQUIPMENT MANUFACTURERS",
+          "name": "Association of Equipment Manufacturers",
+          "current": 1300000.0,
+          "baseline": 850000.0,
+          "delta": 450000.0,
+          "ratio": 1.529,
+          "filings_current": 5,
+          "filings_baseline": 3,
+          "topics": [
+            "Defense Authorization",
+            "Trade Agreements",
+            "Appropriations",
+            "Carbon and Climate"
+          ],
+          "registrants": [
+            "O'Keeffe Shahmoradi Strategies, LLC",
+            "Association of Equipment Manufacturers",
+            "Brownstein Hyatt Farber Schreck, LLP"
+          ],
+          "series": [
+            683325.0,
+            683325.0,
+            683325.0,
+            680000.0,
+            680000.0,
+            680000.0,
+            680000.0,
+            680000.0,
+            490000.0,
+            700000.0,
+            700000.0,
+            720000.0,
+            750000.0,
+            430000.0,
+            280000.0,
+            990000.0,
+            510000.0,
+            810000.0,
+            640000.0,
+            560000.0,
+            840000.0,
+            760000.0,
+            850000.0,
+            980000.0,
+            1200000.0,
+            810000.0,
+            1300000.0
+          ],
+          "examples": [
+            {
+              "uuid": "706810df-acf3-44b7-a752-1989c986f096",
+              "date": "2026-10-16T11:03:04-04:00",
+              "client": "Association of Equipment Manufacturers",
+              "registrant": "Association of Equipment Manufacturers",
+              "income": 1300000.0,
+              "type": "Q3"
+            },
+            {
+              "uuid": "377cb3d2-933c-4d9f-89ab-17f8a3b25751",
+              "date": "2026-10-20T10:49:33-04:00",
+              "client": "Association of Equipment Manufacturers",
+              "registrant": "Michael Best Strategies LLC",
+              "income": 120000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "cbe3f81e-c2b7-495e-ab57-2cf05aff3eeb",
+              "date": "2026-10-16T13:10:02-04:00",
+              "client": "Association of Equipment Manufacturers",
+              "registrant": "Brownstein Hyatt Farber Schreck, LLP",
+              "income": 60000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "5c821180-791a-4b04-888c-ed629970b2b4",
+              "date": "2026-10-06T13:49:30-04:00",
+              "client": "Association of Equipment Manufacturers",
+              "registrant": "O'Keeffe Shahmoradi Strategies, LLC",
+              "income": 40000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "961d2c8b-714e-4204-a7d2-0dc855d0f22f",
+              "date": "2026-10-20T18:41:27-04:00",
+              "client": "Association of Equipment Manufacturers",
+              "registrant": "Capitol Resources, LLC",
+              "income": 30000.0,
               "type": "Q3",
               "included_in_self_report": true
             }
@@ -12873,6 +12873,100 @@
           "method_changed": false
         },
         {
+          "key": "COUPANG",
+          "name": "Coupang, Inc.",
+          "current": 1250000.0,
+          "baseline": 590000.0,
+          "delta": 660000.0,
+          "ratio": 2.119,
+          "filings_current": 7,
+          "filings_baseline": 5,
+          "topics": [
+            "Economic Development"
+          ],
+          "registrants": [
+            "Continental Strategy, LLC",
+            "Williams and Jensen, PLLC",
+            "Ballard Partners"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            450000.0,
+            490000.0,
+            360000.0,
+            440000.0,
+            270000.0,
+            140000.0,
+            120000.0,
+            690000.0,
+            110000.0,
+            510000.0,
+            830000.0,
+            740000.0,
+            730000.0,
+            1010000.0,
+            580000.0,
+            520000.0,
+            590000.0,
+            580000.0,
+            1090000.0,
+            1280000.0,
+            1250000.0
+          ],
+          "examples": [
+            {
+              "uuid": "66089f4d-2021-4f9f-bd47-e6b9e26f31e8",
+              "date": "2026-10-20T19:54:11-04:00",
+              "client": "Coupang, Inc.",
+              "registrant": "Coupang, Inc.",
+              "income": 1250000.0,
+              "type": "Q3"
+            },
+            {
+              "uuid": "7925cd70-9141-45fc-813a-36e40ce1a2cf",
+              "date": "2026-10-20T16:45:31-04:00",
+              "client": "Coupang, Inc.",
+              "registrant": "Miller Strategies, LLC",
+              "income": 300000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "1adf0767-bfe9-4fc0-af39-c0878c55d784",
+              "date": "2026-10-20T14:14:14-04:00",
+              "client": "Coupang, Inc.",
+              "registrant": "Ballard Partners",
+              "income": 250000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "0f84dcbc-2c3f-48da-91a6-827e48908f72",
+              "date": "2026-10-20T17:01:12-04:00",
+              "client": "Coupang, Inc.",
+              "registrant": "Crossroads Strategies, LLC",
+              "income": 120000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "930d3737-dcd1-4098-9d45-5240c09f88c9",
+              "date": "2026-10-19T11:30:25-04:00",
+              "client": "Coupang, Inc.",
+              "registrant": "Williams and Jensen, PLLC",
+              "income": 90000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            }
+          ],
+          "method_changed": false
+        },
+        {
           "key": "SALESFORCE",
           "name": "Salesforce, Inc.",
           "current": 1250000.0,
@@ -13060,100 +13154,6 @@
               "client": "Sanofi US Services Inc.",
               "registrant": "Forbes-Tate",
               "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            }
-          ],
-          "method_changed": false
-        },
-        {
-          "key": "COUPANG",
-          "name": "Coupang, Inc.",
-          "current": 1250000.0,
-          "baseline": 590000.0,
-          "delta": 660000.0,
-          "ratio": 2.119,
-          "filings_current": 7,
-          "filings_baseline": 5,
-          "topics": [
-            "Economic Development"
-          ],
-          "registrants": [
-            "Continental Strategy, LLC",
-            "Williams and Jensen, PLLC",
-            "Ballard Partners"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            450000.0,
-            490000.0,
-            360000.0,
-            440000.0,
-            270000.0,
-            140000.0,
-            120000.0,
-            690000.0,
-            110000.0,
-            510000.0,
-            830000.0,
-            740000.0,
-            730000.0,
-            1010000.0,
-            580000.0,
-            520000.0,
-            590000.0,
-            580000.0,
-            1090000.0,
-            1280000.0,
-            1250000.0
-          ],
-          "examples": [
-            {
-              "uuid": "66089f4d-2021-4f9f-bd47-e6b9e26f31e8",
-              "date": "2026-10-20T19:54:11-04:00",
-              "client": "Coupang, Inc.",
-              "registrant": "Coupang, Inc.",
-              "income": 1250000.0,
-              "type": "Q3"
-            },
-            {
-              "uuid": "7925cd70-9141-45fc-813a-36e40ce1a2cf",
-              "date": "2026-10-20T16:45:31-04:00",
-              "client": "Coupang, Inc.",
-              "registrant": "Miller Strategies, LLC",
-              "income": 300000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "1adf0767-bfe9-4fc0-af39-c0878c55d784",
-              "date": "2026-10-20T14:14:14-04:00",
-              "client": "Coupang, Inc.",
-              "registrant": "Ballard Partners",
-              "income": 250000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "0f84dcbc-2c3f-48da-91a6-827e48908f72",
-              "date": "2026-10-20T17:01:12-04:00",
-              "client": "Coupang, Inc.",
-              "registrant": "Crossroads Strategies, LLC",
-              "income": 120000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "930d3737-dcd1-4098-9d45-5240c09f88c9",
-              "date": "2026-10-19T11:30:25-04:00",
-              "client": "Coupang, Inc.",
-              "registrant": "Williams and Jensen, PLLC",
-              "income": 90000.0,
               "type": "Q3",
               "included_in_self_report": true
             }
@@ -13968,6 +13968,93 @@
           "method_changed": false
         },
         {
+          "key": "NORTHWESTERN MUTUAL LIFE INSURANCE",
+          "name": "The Northwestern Mutual Life Insurance Company",
+          "current": 1140000.0,
+          "baseline": 850000.0,
+          "delta": 290000.0,
+          "ratio": 1.341,
+          "filings_current": 4,
+          "filings_baseline": 4,
+          "topics": [
+            "Banking and Financial Regulation",
+            "Data Privacy",
+            "Artificial Intelligence"
+          ],
+          "registrants": [
+            "Capitol Tax Partners, LLP",
+            "Tiber Creek Group",
+            "Mindset Advocacy, LLC"
+          ],
+          "series": [
+            1070000.0,
+            730000.0,
+            780000.0,
+            670000.0,
+            910000.0,
+            710000.0,
+            1050000.0,
+            990000.0,
+            1450000.0,
+            360000.0,
+            880000.0,
+            890000.0,
+            1180000.0,
+            720000.0,
+            780000.0,
+            900000.0,
+            940000.0,
+            620000.0,
+            740000.0,
+            610000.0,
+            980000.0,
+            740000.0,
+            850000.0,
+            740000.0,
+            1130000.0,
+            1260000.0,
+            1140000.0
+          ],
+          "examples": [
+            {
+              "uuid": "e6f02c38-8418-4202-afbb-2c3d9a791e10",
+              "date": "2026-10-20T14:38:32-04:00",
+              "client": "The Northwestern Mutual Life Insurance Company",
+              "registrant": "The Northwestern Mutual Life Insurance Company",
+              "income": 1140000.0,
+              "type": "Q3"
+            },
+            {
+              "uuid": "3484bbb7-8c19-4c16-be93-000f9376a17c",
+              "date": "2026-10-16T09:33:47-04:00",
+              "client": "The Northwestern Mutual Life Insurance Company",
+              "registrant": "Capitol Tax Partners, LLP",
+              "income": 60000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "3ce28019-6b88-4f40-95ae-02f826ebde55",
+              "date": "2026-10-18T23:44:57-04:00",
+              "client": "The Northwestern Mutual Life Insurance Company",
+              "registrant": "Tiber Creek Group",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "f3f8a914-2276-4065-bb9b-9c731edf534d",
+              "date": "2026-10-20T11:20:31-04:00",
+              "client": "The Northwestern Mutual Life Insurance Company",
+              "registrant": "Mindset Advocacy, LLC",
+              "income": 50000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            }
+          ],
+          "method_changed": false
+        },
+        {
           "key": "SHELL",
           "name": "Shell Oil Company",
           "current": 1140000.0,
@@ -14057,93 +14144,6 @@
               "date": "2026-10-20T14:22:38-04:00",
               "client": "Shell Oil Company",
               "registrant": "Alpine Group Partners, LLC.",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            }
-          ],
-          "method_changed": false
-        },
-        {
-          "key": "NORTHWESTERN MUTUAL LIFE INSURANCE",
-          "name": "The Northwestern Mutual Life Insurance Company",
-          "current": 1140000.0,
-          "baseline": 850000.0,
-          "delta": 290000.0,
-          "ratio": 1.341,
-          "filings_current": 4,
-          "filings_baseline": 4,
-          "topics": [
-            "Banking and Financial Regulation",
-            "Data Privacy",
-            "Artificial Intelligence"
-          ],
-          "registrants": [
-            "Capitol Tax Partners, LLP",
-            "Tiber Creek Group",
-            "Mindset Advocacy, LLC"
-          ],
-          "series": [
-            1070000.0,
-            730000.0,
-            780000.0,
-            670000.0,
-            910000.0,
-            710000.0,
-            1050000.0,
-            990000.0,
-            1450000.0,
-            360000.0,
-            880000.0,
-            890000.0,
-            1180000.0,
-            720000.0,
-            780000.0,
-            900000.0,
-            940000.0,
-            620000.0,
-            740000.0,
-            610000.0,
-            980000.0,
-            740000.0,
-            850000.0,
-            740000.0,
-            1130000.0,
-            1260000.0,
-            1140000.0
-          ],
-          "examples": [
-            {
-              "uuid": "e6f02c38-8418-4202-afbb-2c3d9a791e10",
-              "date": "2026-10-20T14:38:32-04:00",
-              "client": "The Northwestern Mutual Life Insurance Company",
-              "registrant": "The Northwestern Mutual Life Insurance Company",
-              "income": 1140000.0,
-              "type": "Q3"
-            },
-            {
-              "uuid": "3484bbb7-8c19-4c16-be93-000f9376a17c",
-              "date": "2026-10-16T09:33:47-04:00",
-              "client": "The Northwestern Mutual Life Insurance Company",
-              "registrant": "Capitol Tax Partners, LLP",
-              "income": 60000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "3ce28019-6b88-4f40-95ae-02f826ebde55",
-              "date": "2026-10-18T23:44:57-04:00",
-              "client": "The Northwestern Mutual Life Insurance Company",
-              "registrant": "Tiber Creek Group",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "f3f8a914-2276-4065-bb9b-9c731edf534d",
-              "date": "2026-10-20T11:20:31-04:00",
-              "client": "The Northwestern Mutual Life Insurance Company",
-              "registrant": "Mindset Advocacy, LLC",
               "income": 50000.0,
               "type": "Q3",
               "included_in_self_report": true
@@ -14249,103 +14249,6 @@
           "method_changed": false
         },
         {
-          "key": "MANAGED FUNDS ASSOCIATION",
-          "name": "Managed Funds Association",
-          "current": 1130000.0,
-          "baseline": 1180000.0,
-          "delta": -50000.0,
-          "ratio": 0.958,
-          "filings_current": 10,
-          "filings_baseline": 10,
-          "topics": [
-            "Digital Assets and Crypto",
-            "Artificial Intelligence",
-            "Data Privacy",
-            "Retirement and Pensions"
-          ],
-          "registrants": [
-            "RMP Strategies, LLC",
-            "The Williams Group",
-            "Porterfield, Fettig & Sears, LLC"
-          ],
-          "series": [
-            890000.0,
-            1050000.0,
-            470000.0,
-            770000.0,
-            1090000.0,
-            1860000.0,
-            2090000.0,
-            1470000.0,
-            1360000.0,
-            1390000.0,
-            1150000.0,
-            1020000.0,
-            940000.0,
-            970000.0,
-            1050000.0,
-            1150000.0,
-            1150000.0,
-            1190000.0,
-            1260000.0,
-            1130000.0,
-            1250000.0,
-            1330000.0,
-            1180000.0,
-            1270000.0,
-            1630000.0,
-            1100000.0,
-            1130000.0
-          ],
-          "examples": [
-            {
-              "uuid": "2c3e6d32-4bd2-4542-9afe-2c4521c7da32",
-              "date": "2026-10-20T10:52:10-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Managed Funds Association",
-              "income": 1130000.0,
-              "type": "Q3"
-            },
-            {
-              "uuid": "175dd9c7-c76f-4cd1-8386-a23ed3740d3f",
-              "date": "2026-10-19T16:48:11-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Porterfield, Fettig & Sears, LLC",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "998ef9fc-1adb-44a1-9fc8-4a5d5ff76b08",
-              "date": "2026-10-19T21:30:13-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Invariant LLC",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "f49cce89-6179-4260-a0a1-a1cb1e236dd2",
-              "date": "2026-10-20T13:30:41-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Federal Hall Policy Advisors, LLC",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            },
-            {
-              "uuid": "6bd51de5-e616-460b-ba79-8507d9b290a8",
-              "date": "2026-10-22T10:56:46-04:00",
-              "client": "Managed Funds Association",
-              "registrant": "Sternhell Group",
-              "income": 50000.0,
-              "type": "Q3",
-              "included_in_self_report": true
-            }
-          ],
-          "method_changed": false
-        },
-        {
           "key": "HUNTINGTON INGALLS INDUSTRIES",
           "name": "Huntington Ingalls Incorporated",
           "current": 1130000.0,
@@ -14443,95 +14346,95 @@
           "method_changed": false
         },
         {
-          "key": "CISCO SYSTEMS",
-          "name": "Cisco Systems, Inc.",
-          "current": 1120000.0,
-          "baseline": 950000.0,
-          "delta": 170000.0,
-          "ratio": 1.179,
-          "filings_current": 8,
-          "filings_baseline": 9,
+          "key": "MANAGED FUNDS ASSOCIATION",
+          "name": "Managed Funds Association",
+          "current": 1130000.0,
+          "baseline": 1180000.0,
+          "delta": -50000.0,
+          "ratio": 0.958,
+          "filings_current": 10,
+          "filings_baseline": 10,
           "topics": [
-            "Cybersecurity",
+            "Digital Assets and Crypto",
             "Artificial Intelligence",
-            "Defense Authorization",
-            "Appropriations"
+            "Data Privacy",
+            "Retirement and Pensions"
           ],
           "registrants": [
-            "Ballard Partners",
-            "CGCN Group, LLC",
-            "Empire Consulting Group"
+            "RMP Strategies, LLC",
+            "The Williams Group",
+            "Porterfield, Fettig & Sears, LLC"
           ],
           "series": [
-            460000.0,
-            400000.0,
-            530000.0,
-            460000.0,
-            460000.0,
-            700000.0,
-            770000.0,
-            1080000.0,
             890000.0,
-            620000.0,
-            640000.0,
-            760000.0,
-            990000.0,
-            710000.0,
-            490000.0,
-            600000.0,
-            870000.0,
-            570000.0,
-            710000.0,
-            1120000.0,
-            840000.0,
-            700000.0,
-            950000.0,
-            1290000.0,
-            1210000.0,
-            850000.0,
-            1120000.0
+            1050000.0,
+            470000.0,
+            770000.0,
+            1090000.0,
+            1860000.0,
+            2090000.0,
+            1470000.0,
+            1360000.0,
+            1390000.0,
+            1150000.0,
+            1020000.0,
+            940000.0,
+            970000.0,
+            1050000.0,
+            1150000.0,
+            1150000.0,
+            1190000.0,
+            1260000.0,
+            1130000.0,
+            1250000.0,
+            1330000.0,
+            1180000.0,
+            1270000.0,
+            1630000.0,
+            1100000.0,
+            1130000.0
           ],
           "examples": [
             {
-              "uuid": "c9d7a1e1-2a13-4c72-876a-172262b07802",
-              "date": "2026-10-20T20:41:19-04:00",
-              "client": "Cisco Systems, Inc.",
-              "registrant": "Cisco Systems, Inc",
-              "income": 1120000.0,
+              "uuid": "2c3e6d32-4bd2-4542-9afe-2c4521c7da32",
+              "date": "2026-10-20T10:52:10-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Managed Funds Association",
+              "income": 1130000.0,
               "type": "Q3"
             },
             {
-              "uuid": "074602e0-b8c9-40af-8972-778aa710c6d5",
-              "date": "2026-10-16T15:46:37-04:00",
-              "client": "Cisco Systems, Inc.",
-              "registrant": "Ballard Partners",
-              "income": 150000.0,
+              "uuid": "175dd9c7-c76f-4cd1-8386-a23ed3740d3f",
+              "date": "2026-10-19T16:48:11-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Porterfield, Fettig & Sears, LLC",
+              "income": 50000.0,
               "type": "Q3",
               "included_in_self_report": true
             },
             {
-              "uuid": "e9bed1f7-982c-4f7a-a09d-831d50a61e28",
-              "date": "2026-10-19T14:23:30-04:00",
-              "client": "Cisco Systems, Inc.",
-              "registrant": "CGCN Group, LLC",
-              "income": 110000.0,
+              "uuid": "998ef9fc-1adb-44a1-9fc8-4a5d5ff76b08",
+              "date": "2026-10-19T21:30:13-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Invariant LLC",
+              "income": 50000.0,
               "type": "Q3",
               "included_in_self_report": true
             },
             {
-              "uuid": "71860a1b-b1fe-41ca-a9fc-419470770187",
-              "date": "2026-10-20T09:44:17-04:00",
-              "client": "Cisco Systems, Inc.",
-              "registrant": "Fierce Government Relations",
-              "income": 60000.0,
+              "uuid": "f49cce89-6179-4260-a0a1-a1cb1e236dd2",
+              "date": "2026-10-20T13:30:41-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Federal Hall Policy Advisors, LLC",
+              "income": 50000.0,
               "type": "Q3",
               "included_in_self_report": true
             },
             {
-              "uuid": "222f109e-97f1-4c39-9ee9-48bcd3be9158",
-              "date": "2026-10-20T13:55:15-04:00",
-              "client": "Cisco Systems, Inc.",
-              "registrant": "Klein/Johnson Group",
+              "uuid": "6bd51de5-e616-460b-ba79-8507d9b290a8",
+              "date": "2026-10-22T10:56:46-04:00",
+              "client": "Managed Funds Association",
+              "registrant": "Sternhell Group",
               "income": 50000.0,
               "type": "Q3",
               "included_in_self_report": true
@@ -14790,78 +14693,96 @@
           "method_changed": false
         },
         {
-          "key": "ARCHER DANIELS MIDLAND",
-          "name": "Archer Daniels Midland Company",
-          "current": 1100000.0,
-          "baseline": 1560000.0,
-          "delta": -460000.0,
-          "ratio": 0.705,
-          "filings_current": 3,
-          "filings_baseline": 3,
+          "key": "CISCO SYSTEMS",
+          "name": "Cisco Systems, Inc.",
+          "current": 1120000.0,
+          "baseline": 950000.0,
+          "delta": 170000.0,
+          "ratio": 1.179,
+          "filings_current": 8,
+          "filings_baseline": 9,
           "topics": [
-            "Biofuels",
-            "Renewable Energy",
-            "Maritime and Fisheries",
-            "Commodity and Derivatives Markets"
+            "Cybersecurity",
+            "Artificial Intelligence",
+            "Defense Authorization",
+            "Appropriations"
           ],
           "registrants": [
-            "Mehlman Consulting, Inc.",
-            "BGR Government Affairs",
-            "Archer Daniels Midland Company"
+            "Ballard Partners",
+            "CGCN Group, LLC",
+            "Empire Consulting Group"
           ],
           "series": [
-            630000.0,
-            310000.0,
-            390000.0,
-            610000.0,
-            480000.0,
-            300000.0,
-            390000.0,
+            460000.0,
             400000.0,
-            520000.0,
-            510000.0,
-            370000.0,
-            580000.0,
-            570000.0,
+            530000.0,
+            460000.0,
+            460000.0,
+            700000.0,
+            770000.0,
+            1080000.0,
+            890000.0,
+            620000.0,
             640000.0,
-            660000.0,
+            760000.0,
+            990000.0,
+            710000.0,
+            490000.0,
+            600000.0,
             870000.0,
-            870000.0,
-            870000.0,
-            750000.0,
-            1160000.0,
-            1980000.0,
-            1970000.0,
-            1560000.0,
-            1320000.0,
-            2050000.0,
-            1500000.0,
-            1100000.0
+            570000.0,
+            710000.0,
+            1120000.0,
+            840000.0,
+            700000.0,
+            950000.0,
+            1290000.0,
+            1210000.0,
+            850000.0,
+            1120000.0
           ],
           "examples": [
             {
-              "uuid": "ad54a556-62e1-4377-80d2-2f0150162822",
-              "date": "2026-10-20T17:16:55-04:00",
-              "client": "Archer Daniels Midland Company",
-              "registrant": "Archer Daniels Midland Company",
-              "income": 1100000.0,
+              "uuid": "c9d7a1e1-2a13-4c72-876a-172262b07802",
+              "date": "2026-10-20T20:41:19-04:00",
+              "client": "Cisco Systems, Inc.",
+              "registrant": "Cisco Systems, Inc",
+              "income": 1120000.0,
               "type": "Q3"
             },
             {
-              "uuid": "3b1929ea-8a68-4dcc-8676-2d164f24309e",
-              "date": "2026-10-20T08:49:36-04:00",
-              "client": "Archer Daniels Midland Company",
-              "registrant": "Mehlman Consulting, Inc.",
-              "income": 80000.0,
+              "uuid": "074602e0-b8c9-40af-8972-778aa710c6d5",
+              "date": "2026-10-16T15:46:37-04:00",
+              "client": "Cisco Systems, Inc.",
+              "registrant": "Ballard Partners",
+              "income": 150000.0,
               "type": "Q3",
               "included_in_self_report": true
             },
             {
-              "uuid": "9a5503dd-c410-4a4a-bdfc-54f3f324d0f3",
-              "date": "2026-10-20T12:53:35-04:00",
-              "client": "Archer Daniels Midland Company",
-              "registrant": "BGR Government Affairs",
-              "income": 30000.0,
+              "uuid": "e9bed1f7-982c-4f7a-a09d-831d50a61e28",
+              "date": "2026-10-19T14:23:30-04:00",
+              "client": "Cisco Systems, Inc.",
+              "registrant": "CGCN Group, LLC",
+              "income": 110000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "71860a1b-b1fe-41ca-a9fc-419470770187",
+              "date": "2026-10-20T09:44:17-04:00",
+              "client": "Cisco Systems, Inc.",
+              "registrant": "Fierce Government Relations",
+              "income": 60000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "222f109e-97f1-4c39-9ee9-48bcd3be9158",
+              "date": "2026-10-20T13:55:15-04:00",
+              "client": "Cisco Systems, Inc.",
+              "registrant": "Klein/Johnson Group",
+              "income": 50000.0,
               "type": "Q3",
               "included_in_self_report": true
             }
@@ -14959,6 +14880,85 @@
               "client": "Vertex Pharmaceuticals Incorporated",
               "registrant": "Tiber Creek Group",
               "income": 60000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            }
+          ],
+          "method_changed": false
+        },
+        {
+          "key": "ARCHER DANIELS MIDLAND",
+          "name": "Archer Daniels Midland Company",
+          "current": 1100000.0,
+          "baseline": 1560000.0,
+          "delta": -460000.0,
+          "ratio": 0.705,
+          "filings_current": 3,
+          "filings_baseline": 3,
+          "topics": [
+            "Biofuels",
+            "Renewable Energy",
+            "Maritime and Fisheries",
+            "Commodity and Derivatives Markets"
+          ],
+          "registrants": [
+            "Mehlman Consulting, Inc.",
+            "BGR Government Affairs",
+            "Archer Daniels Midland Company"
+          ],
+          "series": [
+            630000.0,
+            310000.0,
+            390000.0,
+            610000.0,
+            480000.0,
+            300000.0,
+            390000.0,
+            400000.0,
+            520000.0,
+            510000.0,
+            370000.0,
+            580000.0,
+            570000.0,
+            640000.0,
+            660000.0,
+            870000.0,
+            870000.0,
+            870000.0,
+            750000.0,
+            1160000.0,
+            1980000.0,
+            1970000.0,
+            1560000.0,
+            1320000.0,
+            2050000.0,
+            1500000.0,
+            1100000.0
+          ],
+          "examples": [
+            {
+              "uuid": "ad54a556-62e1-4377-80d2-2f0150162822",
+              "date": "2026-10-20T17:16:55-04:00",
+              "client": "Archer Daniels Midland Company",
+              "registrant": "Archer Daniels Midland Company",
+              "income": 1100000.0,
+              "type": "Q3"
+            },
+            {
+              "uuid": "3b1929ea-8a68-4dcc-8676-2d164f24309e",
+              "date": "2026-10-20T08:49:36-04:00",
+              "client": "Archer Daniels Midland Company",
+              "registrant": "Mehlman Consulting, Inc.",
+              "income": 80000.0,
+              "type": "Q3",
+              "included_in_self_report": true
+            },
+            {
+              "uuid": "9a5503dd-c410-4a4a-bdfc-54f3f324d0f3",
+              "date": "2026-10-20T12:53:35-04:00",
+              "client": "Archer Daniels Midland Company",
+              "registrant": "BGR Government Affairs",
+              "income": 30000.0,
               "type": "Q3",
               "included_in_self_report": true
             }
@@ -15077,12 +15077,12 @@
       },
       "quarter_totals": {
         "current_income": 158245.0,
-        "baseline_income": 640000.0,
-        "change_pct": -75.3,
-        "current_filings": 23,
-        "baseline_filings": 23,
-        "current_clients": 22,
-        "baseline_clients": 22
+        "baseline_income": 650000.0,
+        "change_pct": -75.7,
+        "current_filings": 25,
+        "baseline_filings": 24,
+        "current_clients": 24,
+        "baseline_clients": 23
       },
       "risers": [],
       "fallers": [
@@ -15448,17 +15448,20 @@
           "method_changed": false
         },
         {
-          "key": "WEILL CORNELL MEDICINE",
-          "name": "Weill Cornell Medicine",
+          "key": "ROWND",
+          "name": "Rownd",
           "current": 10000.0,
           "baseline": 0.0,
           "delta": 10000.0,
           "ratio": null,
           "filings_current": 1,
           "filings_baseline": 0,
-          "topics": [],
+          "topics": [
+            "Defense Procurement",
+            "Defense Authorization"
+          ],
           "registrants": [
-            "Mercury Public Affairs, LLC"
+            "Locke"
           ],
           "series": [
             0.0,
@@ -15481,22 +15484,22 @@
             0.0,
             0.0,
             0.0,
-            0.0,
+            7000.0,
+            15000.0,
+            15000.0,
             20000.0,
             20000.0,
-            20000.0,
-            50000.0,
-            50000.0,
+            30000.0,
             50000.0
           ],
           "examples": [
             {
-              "uuid": "1919306c-a29d-4837-a1b2-e42195767c9e",
-              "date": "2026-10-12T12:44:40-04:00",
-              "client": "Weill Cornell Medicine",
-              "registrant": "Mercury Public Affairs, LLC",
+              "uuid": "25724ebe-4157-4962-9500-5b07b0fc9e2a",
+              "date": "2026-10-16T17:03:19-04:00",
+              "client": "Rownd",
+              "registrant": "Locke",
               "income": 10000.0,
-              "type": "4T"
+              "type": "Q4"
             }
           ],
           "method_changed": false
@@ -15621,6 +15624,60 @@
           "method_changed": false
         },
         {
+          "key": "WEILL CORNELL MEDICINE",
+          "name": "Weill Cornell Medicine",
+          "current": 10000.0,
+          "baseline": 0.0,
+          "delta": 10000.0,
+          "ratio": null,
+          "filings_current": 1,
+          "filings_baseline": 0,
+          "topics": [],
+          "registrants": [
+            "Mercury Public Affairs, LLC"
+          ],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            50000.0,
+            50000.0,
+            50000.0
+          ],
+          "examples": [
+            {
+              "uuid": "1919306c-a29d-4837-a1b2-e42195767c9e",
+              "date": "2026-10-12T12:44:40-04:00",
+              "client": "Weill Cornell Medicine",
+              "registrant": "Mercury Public Affairs, LLC",
+              "income": 10000.0,
+              "type": "4T"
+            }
+          ],
+          "method_changed": false
+        },
+        {
           "key": "WORLD FOOD BANK",
           "name": "World Food Bank Group",
           "current": 10000.0,
@@ -15670,63 +15727,6 @@
               "registrant": "Thornrose Ventures",
               "income": 10000.0,
               "type": "4T"
-            }
-          ],
-          "method_changed": false
-        },
-        {
-          "key": "ROWND",
-          "name": "Rownd",
-          "current": 10000.0,
-          "baseline": 0.0,
-          "delta": 10000.0,
-          "ratio": null,
-          "filings_current": 1,
-          "filings_baseline": 0,
-          "topics": [
-            "Defense Procurement",
-            "Defense Authorization"
-          ],
-          "registrants": [
-            "Locke"
-          ],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            7000.0,
-            15000.0,
-            15000.0,
-            20000.0,
-            20000.0,
-            30000.0,
-            50000.0
-          ],
-          "examples": [
-            {
-              "uuid": "25724ebe-4157-4962-9500-5b07b0fc9e2a",
-              "date": "2026-10-16T17:03:19-04:00",
-              "client": "Rownd",
-              "registrant": "Locke",
-              "income": 10000.0,
-              "type": "Q4"
             }
           ],
           "method_changed": false
@@ -15786,135 +15786,6 @@
               "type": "4T"
             }
           ],
-          "method_changed": false
-        },
-        {
-          "key": "MC GLOBAL",
-          "name": "MC Global Holdings, LLC",
-          "current": 0.0,
-          "baseline": 15000.0,
-          "delta": -15000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            15000.0,
-            15000.0,
-            15000.0,
-            15000.0,
-            15000.0,
-            15000.0,
-            15000.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "examples": [],
-          "method_changed": false
-        },
-        {
-          "key": "EXTHERA MEDICAL",
-          "name": "Exthera Medical Corporation",
-          "current": 0.0,
-          "baseline": 20000.0,
-          "delta": -20000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            80000.0,
-            80000.0,
-            140000.0,
-            90000.0,
-            60000.0,
-            60000.0,
-            60000.0,
-            20000.0,
-            0.0,
-            0.0,
-            0.0
-          ],
-          "examples": [],
-          "method_changed": false
-        },
-        {
-          "key": "COHERUS BIOSCIENCES",
-          "name": "Coherus Biosciences, Inc.",
-          "current": 0.0,
-          "baseline": 80000.0,
-          "delta": -80000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            60000.0,
-            60000.0,
-            50000.0,
-            75000.0,
-            100000.0,
-            100000.0,
-            130000.0,
-            160000.0,
-            200000.0,
-            250000.0,
-            250000.0,
-            275000.0,
-            275000.0,
-            275000.0,
-            275000.0,
-            175000.0,
-            87500.0,
-            87500.0,
-            45000.0,
-            65000.0,
-            65000.0,
-            125000.0,
-            125000.0,
-            80000.0,
-            80000.0,
-            95000.0,
-            110000.0
-          ],
-          "examples": [],
           "method_changed": false
         },
         {
@@ -16004,49 +15875,6 @@
           "method_changed": false
         },
         {
-          "key": "ENERGY EXPLORATION TECHNOLOGIES",
-          "name": "Energy Exploration Technologies",
-          "current": 0.0,
-          "baseline": 10000.0,
-          "delta": -10000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            20000.0,
-            10000.0,
-            10000.0,
-            0.0,
-            0.0,
-            70000.0,
-            30000.0,
-            30000.0,
-            0.0,
-            35000.0,
-            40000.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            10000.0,
-            0.0
-          ],
-          "examples": [],
-          "method_changed": false
-        },
-        {
           "key": "NATIONAL CONFECTIONERS ASSOCIATION",
           "name": "National Confectioners Association",
           "current": 0.0,
@@ -16085,49 +15913,6 @@
             330000.0,
             260000.0,
             260000.0
-          ],
-          "examples": [],
-          "method_changed": false
-        },
-        {
-          "key": "ROBOTIC CONSTRUCTION TECHNOLOGIES",
-          "name": "Robotic Construction Technologies, Inc",
-          "current": 0.0,
-          "baseline": 20000.0,
-          "delta": -20000.0,
-          "ratio": 0.0,
-          "filings_current": 0,
-          "filings_baseline": 1,
-          "topics": [],
-          "registrants": [],
-          "series": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            20000.0,
-            40000.0,
-            50000.0,
-            50000.0,
-            50000.0
           ],
           "examples": [],
           "method_changed": false
@@ -16176,6 +15961,92 @@
           "method_changed": false
         },
         {
+          "key": "ELECTROCORE",
+          "name": "Electrocore",
+          "current": 0.0,
+          "baseline": 10000.0,
+          "delta": -10000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            30000.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            10000.0
+          ],
+          "examples": [],
+          "method_changed": false
+        },
+        {
+          "key": "ROBOTIC CONSTRUCTION TECHNOLOGIES",
+          "name": "Robotic Construction Technologies, Inc",
+          "current": 0.0,
+          "baseline": 20000.0,
+          "delta": -20000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            20000.0,
+            40000.0,
+            50000.0,
+            50000.0,
+            50000.0
+          ],
+          "examples": [],
+          "method_changed": false
+        },
+        {
           "key": "FORESCOUT TECHNOLOGIES",
           "name": "Forescout Technologies, Inc.",
           "current": 0.0,
@@ -16217,9 +16088,181 @@
           ],
           "examples": [],
           "method_changed": false
+        },
+        {
+          "key": "ENERGY EXPLORATION TECHNOLOGIES",
+          "name": "Energy Exploration Technologies",
+          "current": 0.0,
+          "baseline": 10000.0,
+          "delta": -10000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            20000.0,
+            10000.0,
+            10000.0,
+            0.0,
+            0.0,
+            70000.0,
+            30000.0,
+            30000.0,
+            0.0,
+            35000.0,
+            40000.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            10000.0,
+            0.0
+          ],
+          "examples": [],
+          "method_changed": false
+        },
+        {
+          "key": "COHERUS BIOSCIENCES",
+          "name": "Coherus Biosciences, Inc.",
+          "current": 0.0,
+          "baseline": 80000.0,
+          "delta": -80000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            60000.0,
+            60000.0,
+            50000.0,
+            75000.0,
+            100000.0,
+            100000.0,
+            130000.0,
+            160000.0,
+            200000.0,
+            250000.0,
+            250000.0,
+            275000.0,
+            275000.0,
+            275000.0,
+            275000.0,
+            175000.0,
+            87500.0,
+            87500.0,
+            45000.0,
+            65000.0,
+            65000.0,
+            125000.0,
+            125000.0,
+            80000.0,
+            80000.0,
+            95000.0,
+            110000.0
+          ],
+          "examples": [],
+          "method_changed": false
+        },
+        {
+          "key": "EXTHERA MEDICAL",
+          "name": "Exthera Medical Corporation",
+          "current": 0.0,
+          "baseline": 20000.0,
+          "delta": -20000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            80000.0,
+            80000.0,
+            140000.0,
+            90000.0,
+            60000.0,
+            60000.0,
+            60000.0,
+            20000.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": [],
+          "method_changed": false
+        },
+        {
+          "key": "MC GLOBAL",
+          "name": "MC Global Holdings, LLC",
+          "current": 0.0,
+          "baseline": 15000.0,
+          "delta": -15000.0,
+          "ratio": 0.0,
+          "filings_current": 0,
+          "filings_baseline": 1,
+          "topics": [],
+          "registrants": [],
+          "series": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            15000.0,
+            15000.0,
+            15000.0,
+            15000.0,
+            15000.0,
+            15000.0,
+            15000.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "examples": [],
+          "method_changed": false
         }
       ],
-      "through": "2026-11-11"
+      "through": "2026-11-12"
     }
   },
   "quarters": [
