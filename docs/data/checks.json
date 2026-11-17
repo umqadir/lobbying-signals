@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T20:00:31.887183+00:00",
+  "generated_at": "2026-11-17T18:57:28.002111+00:00",
   "frame": "quarter",
   "frame_label": "Q3 2026",
   "status": "needs_attention",
@@ -17,24 +17,24 @@
     "errors": 1
   },
   "metrics": {
-    "mentions_current_quarter": 45141,
+    "mentions_current_quarter": 45214,
     "mentions_baseline_quarter": 44498,
-    "mentions_vs_yoy_pct": 1.4,
-    "filings_current_90d": 26122,
-    "filings_prev_90d": 26364,
-    "filings_yoy_90d": 24946,
-    "filings_vs_prev_pct": -0.9,
-    "filings_vs_yoy_pct": 4.7,
-    "due_vs_non_due_ratio_4y": 20.3,
-    "due_month_avg_filings": 11765.0,
-    "non_due_month_avg_filings": 579.5,
+    "mentions_vs_yoy_pct": 1.6,
+    "filings_current_90d": 26165,
+    "filings_prev_90d": 26335,
+    "filings_yoy_90d": 24933,
+    "filings_vs_prev_pct": -0.6,
+    "filings_vs_yoy_pct": 4.9,
+    "due_vs_non_due_ratio_4y": 20.29,
+    "due_month_avg_filings": 11764.7,
+    "non_due_month_avg_filings": 579.8,
     "quarter_due_month_share_pct": 91.0,
     "coverage_recent_90d_pct": 96.3,
     "coverage_all_time_pct": 95.7,
     "legislation_dropped_pct": 5.3,
     "legislation_normalized_pct": 62.2,
-    "top_topic_share_pct": 16.68,
-    "top5_topic_share_pct": 32.13,
+    "top_topic_share_pct": 16.67,
+    "top5_topic_share_pct": 32.1,
     "secular_change_pct": 41.9,
     "secular_cagr_pct": 7.25,
     "secular_start_year": 2020,
@@ -44,7 +44,7 @@
     {
       "severity": "high",
       "title": "Strong seasonal pattern",
-      "detail": "Due-cycle months average 20.30x filing volume vs other months."
+      "detail": "Due-cycle months average 20.29x filing volume vs other months."
     },
     {
       "severity": "medium",
@@ -59,7 +59,7 @@
     {
       "severity": "low",
       "title": "Top-topic concentration",
-      "detail": "Top topic accounts for 16.68% of Q3 2026 extracted mentions (top 5 = 32.13%)."
+      "detail": "Top topic accounts for 16.67% of Q3 2026 extracted mentions (top 5 = 32.10%)."
     }
   ]
 }
