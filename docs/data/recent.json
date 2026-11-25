@@ -1,6 +1,124 @@
 {
-  "generated_at": "2026-11-24T20:32:10.311083+00:00",
+  "generated_at": "2026-11-25T19:45:56.944771+00:00",
   "filings": [
+    {
+      "id": 585801,
+      "uuid": "5187a680-862d-4fee-adc4-bed7d8a7b912",
+      "date": "2026-11-25T13:50:43-05:00",
+      "client": "JACKSONVILLE REGIONAL CHAMBER OF COMMERCE",
+      "registrant": "JACKSONVILLE REGIONAL CHAMBER OF COMMERCE",
+      "income": 0.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": null,
+      "domains": [],
+      "topics": [],
+      "entities": [],
+      "legislation": []
+    },
+    {
+      "id": 585800,
+      "uuid": "c8cdebe3-6288-4d1e-b2d3-1c21363cfd10",
+      "date": "2026-11-25T11:17:02-05:00",
+      "client": "THURGOOD MARSHALL COLLEGE FUND",
+      "registrant": "THURGOOD MARSHALL COLLEGE FUND",
+      "income": 15000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Government and Budget",
+      "domains": [
+        "Government and Budget",
+        "Technology",
+        "Education and Social Policy"
+      ],
+      "topics": [
+        "Appropriations"
+      ],
+      "entities": [
+        "White House",
+        "Senate",
+        "House of Representatives",
+        "Department of Defense",
+        "Department of Commerce",
+        "HHS",
+        "USDA",
+        "FAA",
+        "Department of Labor"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 585799,
+      "uuid": "e98ab7df-3431-4c54-bd6b-bdfe7ba923ae",
+      "date": "2026-11-25T09:37:48-05:00",
+      "client": "NATURAL GAS SUPPLY ASSOCIATION",
+      "registrant": "NATURAL GAS SUPPLY ASSOCIATION",
+      "income": 280000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Energy and Environment",
+      "domains": [
+        "Energy and Environment"
+      ],
+      "topics": [
+        "General: Natural Resources",
+        "General: Fuel Gas Oil"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Energy",
+        "FERC"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 585798,
+      "uuid": "6c4a1fff-30ba-4089-a165-42109baab848",
+      "date": "2026-11-25T09:23:56-05:00",
+      "client": "META PLATFORMS INC (FORMERLY FACEBOOK INC AND VARIOUS SUBSIDIARIES",
+      "registrant": "HOLLIER & ASSOCIATES",
+      "income": 22500.0,
+      "year": 2026,
+      "quarter": 2,
+      "domain": "Other",
+      "domains": [
+        "Other",
+        "Defense and Security"
+      ],
+      "topics": [
+        "Data Privacy"
+      ],
+      "entities": [
+        "Senate"
+      ],
+      "legislation": []
+    },
+    {
+      "id": 585797,
+      "uuid": "dbb7249d-82a5-4546-b564-c891922baa08",
+      "date": "2026-11-24T17:49:12-05:00",
+      "client": "UTLX",
+      "registrant": "WASHINGTONGPS",
+      "income": 8000.0,
+      "year": 2026,
+      "quarter": 3,
+      "domain": "Trade",
+      "domains": [
+        "Trade",
+        "Transportation"
+      ],
+      "topics": [
+        "Tariffs and Trade Enforcement"
+      ],
+      "entities": [
+        "Senate",
+        "House of Representatives",
+        "Department of Commerce",
+        "FRA"
+      ],
+      "legislation": []
+    },
     {
       "id": 585796,
       "uuid": "18e9c89c-c25b-4c15-a349-53af4fc14b4c",
@@ -6664,127 +6782,6 @@
         "General: Natural Resources"
       ],
       "entities": [],
-      "legislation": []
-    },
-    {
-      "id": 580648,
-      "uuid": "a401515e-2caf-4231-9ea2-9194cfc1aefe",
-      "date": "2026-11-17T11:06:59-05:00",
-      "client": "PLAINTIFF CLASS IN ROEDER ET AL V. IRAN",
-      "registrant": "LANKFORD & REED, PLLC",
-      "income": 0.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Trade",
-      "domains": [
-        "Trade"
-      ],
-      "topics": [
-        "General: Foreign Relations"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 580647,
-      "uuid": "10c68792-6965-494d-a518-e6953108a0eb",
-      "date": "2026-11-17T11:06:52-05:00",
-      "client": "GOVERNMENT CIO",
-      "registrant": "THE NIMITZ GROUP LLC",
-      "income": 50000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Industry and Business"
-      ],
-      "topics": [
-        "General: Veterans",
-        "General: Small Business"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives",
-        "Department of Veterans Affairs"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 580646,
-      "uuid": "a4cf686f-61fd-4fde-bc90-459cbab52801",
-      "date": "2026-11-17T11:04:52-05:00",
-      "client": "PHRONESIS GLOBAL TRAINING SOLUTIONS LLC, D/B/A PGT SOLUTIONS",
-      "registrant": "THE NIMITZ GROUP LLC",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Industry and Business",
-        "Technology"
-      ],
-      "topics": [
-        "General: Veterans",
-        "General: Small Business",
-        "General: Science Technology"
-      ],
-      "entities": [
-        "Department of Veterans Affairs",
-        "White House"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 580645,
-      "uuid": "b963651c-344d-440d-9e25-0b169317a1c9",
-      "date": "2026-11-17T11:01:52-05:00",
-      "client": "PURPLE JAY LLC",
-      "registrant": "THE NIMITZ GROUP LLC",
-      "income": 20000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Defense and Security",
-      "domains": [
-        "Defense and Security",
-        "Industry and Business",
-        "Technology"
-      ],
-      "topics": [
-        "General: Veterans",
-        "General: Small Business",
-        "General: Science Technology"
-      ],
-      "entities": [
-        "Department of Veterans Affairs",
-        "White House"
-      ],
-      "legislation": []
-    },
-    {
-      "id": 580643,
-      "uuid": "e31a71ae-a4a1-4349-a686-052612233bb9",
-      "date": "2026-11-17T10:57:49-05:00",
-      "client": "THE MACLEAN GROUP (TMG)",
-      "registrant": "THE NIMITZ GROUP LLC",
-      "income": 10000.0,
-      "year": 2026,
-      "quarter": 3,
-      "domain": "Healthcare",
-      "domains": [
-        "Healthcare"
-      ],
-      "topics": [
-        "General: Health Issues"
-      ],
-      "entities": [
-        "Senate",
-        "House of Representatives"
-      ],
       "legislation": []
     }
   ]
